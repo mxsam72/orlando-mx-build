@@ -1,0 +1,66 @@
+samples_x = 2049
+samples_z = 2049
+data = terrain.raw
+size_x = 600
+size_z = 600
+scale = 18
+num_surface_layers = 3
+surface_layer0
+{
+ surface = off
+ mask = mask_off.tga
+}
+surface_layer1
+{
+ surface = pit
+ mask = mask_pits.tga
+}
+surface_layer2
+{
+ surface = start
+ mask = mask_start.tga
+}
+num_material_layers = 5
+material_layer0
+{
+ material = compact soil
+}
+material_layer1
+{
+ material = soil
+ thickness = 0.15
+}
+material_layer2
+{
+ material = soft soil
+ thickness = 0.08
+ mask = mask_racing.tga
+}
+material_layer3
+{
+ material = sand
+ thickness = 0.05
+ mask = mask_sand.tga
+}
+material_layer4
+{
+ material = grass
+ thickness = 0.03
+ mask = mask_grass.tga
+}
+scene0
+{
+ name = scenery.edf
+ pos
+ {
+  x = 0
+  y = 0
+  z = 0
+ }
+ rot
+ {
+  x = 0
+  y = 0
+  z = 0
+ }
+}

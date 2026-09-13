@@ -1,0 +1,24 @@
+{
+  "heightmap_bytes": 8396802,
+  "raw_png_match": true,
+  "height_range_m": [
+    2.6510414282444494,
+    6.082673380636302
+  ],
+  "native_centerline_length_m": 1458.1150079999998,
+  "centerline_source_difference_max_m": 0.0006474858528802992,
+  "native_centerline_closure_m": 2.6927125418296782e-08,
+  "start_join_distance_to_main_m": 0.11352454106292953,
+  "pits_count": 24,
+  "pits_minimum_mask_alpha": 255.0,
+  "pits_minimum_spacing_m": 5.0,
+  "grid_count": 24,
+  "grid_minimum_mask_alpha": 255.0,
+  "grid_minimum_spacing_m": 1.5,
+  "pit_rdf_reconstruction_error_max_m": 5.684341886080802e-14,
+  "maximum_jump_profile_grade": 0.3950561505504391,
+  "maximum_jump_profile_angle_deg": 21.556802842847503,
+  "native_compilation": "pending",
+  "in_game_riding": "not performed",
+  "geographic_accuracy": "unverified construction estimate"
+}

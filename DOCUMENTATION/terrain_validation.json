@@ -1,0 +1,20 @@
+{
+  "raw_bytes": 8396802,
+  "raw_expected": 8396802,
+  "raw_png_identical": true,
+  "height_range_m": [
+    2.6510515213012695,
+    6.082745552062988
+  ],
+  "lap_length_m": 1458.1150082346217,
+  "loop_closure_m": 0.0,
+  "width_range_m": [
+    10.0,
+    14.0
+  ],
+  "jump_obstacles": 16,
+  "jump_groups": 12,
+  "turns": 14,
+  "native_compilation": false,
+  "in_game_testing": false
+}

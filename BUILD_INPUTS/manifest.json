@@ -1,0 +1,293 @@
+{
+  "archive_bytes": 10549240,
+  "archive_sha256": "efb4661c035b241a12638e35069e70fb904416b3472c159bff46aeac1e0b7be5",
+  "parts": [
+    {
+      "path": "BUILD_INPUTS/native_inputs.zip.part00",
+      "bytes": 1048576,
+      "sha256": "fe75edb3d651f4d22934c1f869b01a1cf878c62c8e13a7a08cf55c2a742e2511"
+    },
+    {
+      "path": "BUILD_INPUTS/native_inputs.zip.part01",
+      "bytes": 1048576,
+      "sha256": "7011da5698edbc8a204d3c19e8bab990f65b0b512deef6bfa6236f9733d48538"
+    },
+    {
+      "path": "BUILD_INPUTS/native_inputs.zip.part02",
+      "bytes": 1048576,
+      "sha256": "4af30993efa3556604356558a0eb68ab705e6c80c013773b23bc4e770f296e2d"
+    },
+    {
+      "path": "BUILD_INPUTS/native_inputs.zip.part03",
+      "bytes": 1048576,
+      "sha256": "b2048703381b4e5ed75758f5f708e98d180b5fafcb09f43e586e52ee80b0a222"
+    },
+    {
+      "path": "BUILD_INPUTS/native_inputs.zip.part04",
+      "bytes": 1048576,
+      "sha256": "d33d0768b7325d3a0bdcefad90071c77a04155c7eee5ca4a8828ece95c1c23eb"
+    },
+    {
+      "path": "BUILD_INPUTS/native_inputs.zip.part05",
+      "bytes": 1048576,
+      "sha256": "af3999aaa977e9b7ba30535acae9f89f90aaeeccf0763a9ce9476ab9039ac4c4"
+    },
+    {
+      "path": "BUILD_INPUTS/native_inputs.zip.part06",
+      "bytes": 1048576,
+      "sha256": "4ed5520501b9d9af3cd6695c8fe6db5cb86d0e1a6a92de95ff155ac71a404ce1"
+    },
+    {
+      "path": "BUILD_INPUTS/native_inputs.zip.part07",
+      "bytes": 1048576,
+      "sha256": "de8d0b17e7a936f8b1966c76716fe69d28d1aa5a8631afa5ad8f8820b5a67adb"
+    },
+    {
+      "path": "BUILD_INPUTS/native_inputs.zip.part08",
+      "bytes": 1048576,
+      "sha256": "da5a3acef40e407652083bea2f75d350240cb9813e41c97159a93e9ce8b948f1"
+    },
+    {
+      "path": "BUILD_INPUTS/native_inputs.zip.part09",
+      "bytes": 1048576,
+      "sha256": "f162b0bf6975f7cd68e95b4cd7e071a001027bc8e2968146693bc9ec5fef30ab"
+    },
+    {
+      "path": "BUILD_INPUTS/native_inputs.zip.part10",
+      "bytes": 63480,
+      "sha256": "ceead7306b3a4ac13d7a391e3ffb9bf1df94842abb602888d73be20aa34150e2"
+    }
+  ],
+  "files": [
+    {
+      "path": "02_HEIGHTMAP/terrain.raw",
+      "bytes": 8396802,
+      "sha256": "dd16f53669d0ad0a685210c7a0128e3231af6e5e23a4ea59f95c866240f2ab02"
+    },
+    {
+      "path": "03_MASKS/grass.tga",
+      "bytes": 16777260,
+      "sha256": "a069cc07da3bafe5359893194b7cbdd54aeca53fbd842f0b053c88c2bc0b14d1"
+    },
+    {
+      "path": "03_MASKS/off.tga",
+      "bytes": 16777260,
+      "sha256": "917f37d61411ab30f6c751a5928e599e0aa9d3a6c619007eae3bec0fb4f55ce0"
+    },
+    {
+      "path": "03_MASKS/pits.tga",
+      "bytes": 16777260,
+      "sha256": "13d0e43edaeee5c1acce1271f9e700a50170b6a637db851fa9b082ea371eaaef"
+    },
+    {
+      "path": "03_MASKS/racing.tga",
+      "bytes": 16777260,
+      "sha256": "d6269cd3e18b78a7782c0752f079557fb207a5926f6c70f6eb30499a441df914"
+    },
+    {
+      "path": "03_MASKS/ruts.tga",
+      "bytes": 16777260,
+      "sha256": "9ba8b08903c917aed23801d30198d853c44f9e664f91b40aa16b1b77e4df8579"
+    },
+    {
+      "path": "03_MASKS/sand.tga",
+      "bytes": 16777260,
+      "sha256": "735980afd98168040793c74289e3d6e85dc37253c9c375e53f46287179eb7e2e"
+    },
+    {
+      "path": "03_MASKS/shoulder.tga",
+      "bytes": 16777260,
+      "sha256": "e55eacf26a714f2208a3a2e51dc2207b95445cf55bb1c53efb50ffba9f5b59a6"
+    },
+    {
+      "path": "03_MASKS/start.tga",
+      "bytes": 16777260,
+      "sha256": "fa19dc5d25d6e5401ab2bb60930e2a1d6538e0cb824590654aacb320c5802416"
+    },
+    {
+      "path": "04_TEXTURES/banner.tga",
+      "bytes": 342,
+      "sha256": "b175d53e83e334277c23a3b55828b1f24dcd494e00561998068961efe44526f1"
+    },
+    {
+      "path": "04_TEXTURES/bark.tga",
+      "bytes": 343,
+      "sha256": "bfcd2b1b6ce80ce8c6e642f94198759624cfa7e86d0c738990eef93c24287922"
+    },
+    {
+      "path": "04_TEXTURES/basemap.tga",
+      "bytes": 12582956,
+      "sha256": "5a2f729788282355c9d8c319c8c453d03d2b322122d52e270295b41a6472a752"
+    },
+    {
+      "path": "04_TEXTURES/fence_wood.tga",
+      "bytes": 343,
+      "sha256": "b0a4aad90ab50b2df17227bff63a7f133f097dca20c52b3a436ddaaebb3af2f3"
+    },
+    {
+      "path": "04_TEXTURES/foliage_dark.tga",
+      "bytes": 343,
+      "sha256": "da977d39b343f2e961218a54f80b60fa81e2e29ae01d340c5272ac02bf9e2cd6"
+    },
+    {
+      "path": "04_TEXTURES/foliage_light.tga",
+      "bytes": 343,
+      "sha256": "05d8f8858a701b42a21a3841f6ca767a54bca48732152e6605e53b7045887dc6"
+    },
+    {
+      "path": "04_TEXTURES/foliage_mid.tga",
+      "bytes": 343,
+      "sha256": "4fc0a77f7dd44505c43e664ddb2bda91a0cc0d84d41c796a188a6f53a43a598d"
+    },
+    {
+      "path": "04_TEXTURES/grass.tga",
+      "bytes": 786476,
+      "sha256": "9cfcf8fc1b841fa3c22b53e1b1109aa0add4805c7518380443001fb14af10778"
+    },
+    {
+      "path": "04_TEXTURES/grass_wet.tga",
+      "bytes": 786476,
+      "sha256": "303fa8eb5e7bbca6cb6be258831ec52ced300171fbaa4715b130bc278100fdc4"
+    },
+    {
+      "path": "04_TEXTURES/marker_orange.tga",
+      "bytes": 343,
+      "sha256": "bce33320f3e8e53d2ca2519250674332775d711233293683f5bafdd7d0930a90"
+    },
+    {
+      "path": "04_TEXTURES/marker_white.tga",
+      "bytes": 343,
+      "sha256": "d76c04392832d244de66243a25587483da1334ef82aae56e496967d7f833d09d"
+    },
+    {
+      "path": "04_TEXTURES/metal.tga",
+      "bytes": 341,
+      "sha256": "a42e4c5e2baecc16ee083c45ce38ca01d13cc28b567851130037d885b58d3091"
+    },
+    {
+      "path": "04_TEXTURES/roof.tga",
+      "bytes": 342,
+      "sha256": "110506b9ba6f611e324b6659d8844060c9ea00803d04e6344701ddefcf051b0d"
+    },
+    {
+      "path": "04_TEXTURES/sand.tga",
+      "bytes": 786476,
+      "sha256": "2005a93839d48919083b0c5fe8239300b3e4a3abb0325ee4b5a768adb8c3f67f"
+    },
+    {
+      "path": "04_TEXTURES/sand_wet.tga",
+      "bytes": 786476,
+      "sha256": "c7594ae0e98fa16fb97f91089c9a77653093b35525f5e55b026997ef264c9041"
+    },
+    {
+      "path": "04_TEXTURES/soil.tga",
+      "bytes": 786476,
+      "sha256": "63ba9e46ccb336e30023ce5882e13588986bbc1a2d4bc4a73d66b260900e3971"
+    },
+    {
+      "path": "04_TEXTURES/soil_wet.tga",
+      "bytes": 786476,
+      "sha256": "454b02b75f305e7a3c482897bb4ab3409278b3e2fe70f8837e84d03236e4de28"
+    },
+    {
+      "path": "05_NORMALS/grass_n.tga",
+      "bytes": 1048620,
+      "sha256": "f16f7e49acec2ca7c7fcb48f00a026c01f5c87c5d8d32755b1349d16569c4535"
+    },
+    {
+      "path": "05_NORMALS/sand_n.tga",
+      "bytes": 1048620,
+      "sha256": "9649e2a18ab0a6a4b13819bf91771e4f3b9727d79f88c1ac65a28a79283d7ee9"
+    },
+    {
+      "path": "05_NORMALS/soil_n.tga",
+      "bytes": 1048620,
+      "sha256": "36eb921c44b1beb5f1378426bf10eed03f586800a21d83717bbb1ac44bfb798d"
+    },
+    {
+      "path": "06_SHADERS/grass.shd",
+      "bytes": 74,
+      "sha256": "b2645e5379d21334ac2c928cd233016621545f2d187125596079084578f39be3"
+    },
+    {
+      "path": "06_SHADERS/sand.shd",
+      "bytes": 73,
+      "sha256": "a50d70b94ae2a04b29f528c362cf3378507b40fa9fabc7daaa2dcbb049e54e5d"
+    },
+    {
+      "path": "06_SHADERS/soil.shd",
+      "bytes": 73,
+      "sha256": "20c7fa95936d0952b808369422c258afda47a0e30babebbea79672bab3712bb9"
+    },
+    {
+      "path": "07_OBJECTS_SOURCE/scenery.fbx",
+      "bytes": 3781580,
+      "sha256": "ba3bdc5ecacc066945aea1db02cffb69990d7ff221127323b8b8c3c0d83143ac"
+    },
+    {
+      "path": "09_TRACKED/main.tcl",
+      "bytes": 3152,
+      "sha256": "bfab820eb27544b597fecb389fab3379b27ff45250e09edf1de4cb7d79672e69"
+    },
+    {
+      "path": "09_TRACKED/start.tcl",
+      "bytes": 393,
+      "sha256": "b916bc9ef35d64eccef1002b0a5e1e48c4fed6950afa20deffb89ea1e77a6e40"
+    },
+    {
+      "path": "12_RELEASE/orlandomx_2026_v004/checkleft.tl",
+      "bytes": 5856,
+      "sha256": "357866920b373f4ec2a0dc64c512fada119233eb4a37c305fd7a5fb5220b6b2a"
+    },
+    {
+      "path": "12_RELEASE/orlandomx_2026_v004/checkright.tl",
+      "bytes": 5856,
+      "sha256": "8e2ff081299e98d35f4fdab6bf5fec2e58173d68cfbd67ac5751caa04254dd25"
+    },
+    {
+      "path": "12_RELEASE/orlandomx_2026_v004/marshals.cfg",
+      "bytes": 708,
+      "sha256": "89a3ba12604ec155d6cdc606fdc36a19513abe140f1c00f5273f48f6e1d42a9a"
+    },
+    {
+      "path": "12_RELEASE/orlandomx_2026_v004/maxrace.tl",
+      "bytes": 5856,
+      "sha256": "d9b7dc02523f79a119a92bd942d13dfb91c77f7ceff79e296a323674cc09cb9e"
+    },
+    {
+      "path": "12_RELEASE/orlandomx_2026_v004/minrace.tl",
+      "bytes": 5856,
+      "sha256": "bb2f82cab87f9f02196913cf042859ea1d7e2c547c9f5c83fcbf495cffca7c97"
+    },
+    {
+      "path": "12_RELEASE/orlandomx_2026_v004/orlandomx_2026_v004.amb",
+      "bytes": 689,
+      "sha256": "8fe9ed4765bd90658e4f601d9c8a1c302ad8d8ed26ac49994a05bbc29b4db21a"
+    },
+    {
+      "path": "12_RELEASE/orlandomx_2026_v004/orlandomx_2026_v004.ini",
+      "bytes": 303,
+      "sha256": "ee5d46f1627eff4a481bdc896c0e42a0f69310cc18ca3ef8274f352eaa6ddc04"
+    },
+    {
+      "path": "12_RELEASE/orlandomx_2026_v004/orlandomx_2026_v004.rdf",
+      "bytes": 6834,
+      "sha256": "bf66d9aae447a407d24b68acece8182accd1e9bb269777e8c6242d6d03bed9eb"
+    },
+    {
+      "path": "12_RELEASE/orlandomx_2026_v004/orlandomx_2026_v004.tga",
+      "bytes": 2097196,
+      "sha256": "84b3270429b8be43d44570a7238c32b2e7a8eb0f866a1808714ba8e23023afae"
+    },
+    {
+      "path": "12_RELEASE/orlandomx_2026_v004/orlandomx_2026_v004.tsc",
+      "bytes": 2480,
+      "sha256": "b529588a8b5e6891b6ac93f9ddf15696ecdc1e68b5eceee40cf64f006b06e4f2"
+    },
+    {
+      "path": "12_RELEASE/orlandomx_2026_v004/orlandomx_2026_v004_map.tga",
+      "bytes": 3145772,
+      "sha256": "5ffa0c97e55cf31862ae4d9b1ff5d0f3dd5a4b72c947f3ffd4d2d3a345682d40"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+BUILD/stage/
+BUILD/native_tools/
+12_RELEASE/*.pkz
+12_RELEASE/*.sha256
+12_RELEASE/*/*.map
+12_RELEASE/*/*.trh
+08_OBJECTS_GAME/*.edf
+**/__pycache__/
+*.blend1

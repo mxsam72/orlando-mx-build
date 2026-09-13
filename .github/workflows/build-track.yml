@@ -1,0 +1,40 @@
+name: Compile Orlando MX PKZ
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore and verify native inputs
+        shell: pwsh
+        run: python TOOLS/unpack_inputs.py
+      - name: Compile scenery, terrain, collision and centerlines
+        shell: pwsh
+        run: python TOOLS/build_windows.py
+      - name: Upload installable track
+        uses: actions/upload-artifact@v7
+        with:
+          name: OrlandoMX_2026_v004-PKZ
+          path: |
+            12_RELEASE/OrlandoMX_2026_v004.pkz
+            12_RELEASE/OrlandoMX_2026_v004.pkz.sha256
+          if-no-files-found: error
+          retention-days: 30
+          compression-level: 0
+      - name: Upload build evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: OrlandoMX-build-evidence
+          path: |
+            DOCUMENTATION/*.log
+            DOCUMENTATION/*validation.json
+            DOCUMENTATION/*failure.txt
+            DOCUMENTATION/track_code.txt
+          retention-days: 30
