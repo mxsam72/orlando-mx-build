@@ -27,18 +27,28 @@ def cube(name,location,dimensions,material):
 def tube(name,a,b,r,material,verts=6):
     va=Vector(a);vb=Vector(b);delta=vb-va;bpy.ops.mesh.primitive_cylinder_add(vertices=verts,radius=r,depth=delta.length,location=(va+vb)/2);o=bpy.context.object;o.rotation_euler=delta.to_track_quat('Z','Y').to_euler();return finish(o,name,material)
 def tree(x,z,i):
-    y=height(x,z);h=rng.uniform(8,14);r=rng.uniform(3,4.4);tube('trunk_'+str(i),vec(x,y,z),vec(x+.14,y+h*.8,z),rng.uniform(.14,.23),'bark',7);pine=i%3==0;V=[];F=[];centers=[]
+    y=height(x,z);h=rng.uniform(8,14);r=rng.uniform(3,4.4);pine=i%3==0;V=[];F=[];MI=[];centers=[]
+    def branch(a,b,rad1,rad2,sides=6):
+        a=np.array(a,float);b=np.array(b,float);v=(b-a)/np.linalg.norm(b-a);u=np.cross(v,[0,0,1])
+        if np.linalg.norm(u)<.1:u=np.cross(v,[0,1,0])
+        u/=np.linalg.norm(u);w=np.cross(v,u);start=len(V)
+        for c,rad in [(a,rad1),(b,rad2)]:
+            for j in range(sides):V.append((c+rad*(u*math.cos(j*math.tau/sides)+w*math.sin(j*math.tau/sides))).tolist())
+        for j in range(sides):F.append((start+j,start+(j+1)%sides,start+sides+(j+1)%sides,start+sides+j));MI.append(0)
+    branch(vec(x,y,z),vec(x+.14,y+h*.8,z),rng.uniform(.14,.23),.045,7)
     for k in range(9):
-        a=k*math.tau/9+rng.random()*.4;rr=r*(.8 if not pine else (1-k*.065));cy=y+h*(.52+k*.042);cx=x+rr*math.cos(a)*.6;cz=z+rr*math.sin(a)*.6;tube(f'branch_{i}_{k}',vec(x,y+h*.45,z),vec(cx,cy,cz),.055,'bark',5);centers.append((cx,cy,cz,r*.53))
+        a=k*math.tau/9+rng.random()*.4;rr=r*(.8 if not pine else (1-k*.065));cy=y+h*(.52+k*.042);cx=x+rr*math.cos(a)*.6;cz=z+rr*math.sin(a)*.6;branch(vec(x,y+h*.45,z),vec(cx,cy,cz),.055,.015,5);centers.append((cx,cy,cz,r*.53))
     d=float(np.linalg.norm(q[::4,:2]-[x,z],axis=1).min());count=24 if d<22 else 9
     for cx,cy,cz,rad in centers:
         for j in range(count):
             a=rng.random()*math.tau;zz=rng.uniform(-1,1);rr=rad*rng.random()**.32;c=np.array(vec(cx,cy,cz))+rr*np.array([math.sqrt(1-zz*zz)*math.cos(a),math.sqrt(1-zz*zz)*math.sin(a),zz*.75]);a=rng.random()*math.tau;u=np.array([math.cos(a),math.sin(a),rng.uniform(-.7,.7)]);u/=np.linalg.norm(u);v=np.cross(u,[.1,.2,1]);v/=np.linalg.norm(v);le=rng.uniform(.4,.8);wi=le*rng.uniform(.35,.65)
             for angle in [0,1.8]:
-                uu=u*math.cos(angle)+v*math.sin(angle);vv=-u*math.sin(angle)+v*math.cos(angle);b=len(V);V.extend([(c-uu*le).tolist(),(c+vv*wi).tolist(),(c+uu*le).tolist(),(c-vv*wi).tolist(),(c+np.array([0,0,.07])).tolist()]);F.extend([(b,b+1,b+4),(b+1,b+2,b+4),(b+2,b+3,b+4),(b+3,b,b+4)])
-    me=bpy.data.meshes.new('leaf_mesh_'+str(i));me.from_pydata(V,[],F);me.update();o=bpy.data.objects.new('leaf_crown_'+str(i),me);scene.collection.objects.link(o);finish(o,o.name,'foliage_mid');me.materials.append(mats['foliage_dark']);me.materials.append(mats['foliage_light'])
-    for poly in me.polygons:poly.material_index=rng.randrange(3)
+                uu=u*math.cos(angle)+v*math.sin(angle);vv=-u*math.sin(angle)+v*math.cos(angle);b=len(V);V.extend([(c-uu*le).tolist(),(c+vv*wi).tolist(),(c+uu*le).tolist(),(c-vv*wi).tolist(),(c+np.array([0,0,.07])).tolist()]);F.extend([(b,b+1,b+4),(b+1,b+2,b+4),(b+2,b+3,b+4),(b+3,b,b+4)]);MI.extend([1+rng.randrange(3)]*4)
+    me=bpy.data.meshes.new('tree_mesh_'+str(i));me.from_pydata(V,[],F);me.update();o=bpy.data.objects.new('tree_'+str(i),me);scene.collection.objects.link(o);finish(o,o.name,'bark')
+    for name in ['foliage_mid','foliage_dark','foliage_light']:me.materials.append(mats[name])
+    for poly,mi in zip(me.polygons,MI):poly.material_index=mi
     trees.append([x,z,h])
+    if i%100==0:print('Trees',i,flush=True)
 lo=q[:,:2].min(0);hi=q[:,:2].max(0)
 for i in range(16000):
     if len(trees)>=690:break
@@ -47,6 +57,7 @@ for i in range(16000):
     x1,x2,z1,z2=spec['pit_rectangle'];near_pits=(228<x<352 and 80<z<177)
     if d<11.5 or near_pits or (not outside and rng.random()>.40):continue
     if any((x-t[0])**2+(z-t[1])**2<17 for t in trees):continue
+    if height(x,z)<2.5:continue
     tree(x,z,len(trees))
 # Trackside poles, placed outside the racing width and away from nearby lanes.
 width=np.load(ROOT/'01_GIS_AERIAL/route.npz')['width'];stakes=[]
@@ -110,6 +121,7 @@ world=bpy.data.worlds.new('Florida_day') if not scene.world else scene.world;sce
 bpy.ops.object.light_add(type='SUN',location=(100,-100,200));sun=bpy.context.object;sun.data.energy=2.0;sun.rotation_euler=(.45,-.4,-.4);sun.data.angle=.08
 bpy.ops.object.camera_add(location=(477,-564,273));camera=bpy.context.object;target=Vector((295,-292,3));camera.rotation_euler=(target-camera.location).to_track_quat('-Z','Y').to_euler();camera.data.type='ORTHO';camera.data.ortho_scale=420;scene.camera=camera
 scene.render.threads_mode='FIXED';scene.render.threads=6
+scene.render.threads_mode='FIXED';scene.render.threads=6
 scene.render.engine='CYCLES';scene.cycles.device='CPU';scene.cycles.samples=12;scene.render.resolution_x=1600;scene.render.resolution_y=1400;scene.render.resolution_percentage=100;scene.render.image_settings.file_format='PNG';scene.render.filepath=str(ROOT/'DOCUMENTATION/terrain_preview.png');scene.view_settings.view_transform='AgX'
 for image in bpy.data.images:
     if image.source=='FILE':image.pack()
@@ -118,3 +130,4 @@ bpy.ops.wm.save_as_mainfile(filepath=str(ROOT/'07_OBJECTS_SOURCE/OrlandoMX_v005.
 bpy.ops.render.render(write_still=True)
 (ROOT/'DOCUMENTATION/scenery_validation.json').write_text(json.dumps(dict(trees=len(trees),objects=len(assets),markers=len(stakes),scenery_vertices=sum(len(o.data.vertices) for o in assets),scenery_polygons=sum(len(o.data.polygons) for o in assets),fbx_axis='Blender X=game X, Blender Y=-game Z, Blender Z=game Y; FBX -Z forward Y up',native_edf_conversion=False),indent=2)+'\n')
 print('SCENE_COMPLETE',flush=True)
+

@@ -6,6 +6,7 @@ import numpy as np
 from PIL import Image,ImageDraw,ImageFont
 from scipy.ndimage import map_coordinates
 from scipy.spatial import cKDTree
+from scipy.optimize import minimize_scalar
 ROOT=Path(__file__).resolve().parents[1]
 NAME='orlandomx_2026_v005'
 
@@ -19,7 +20,11 @@ def main():
         y=float(map_coordinates(H,[[ (600-z)/600*2048 ],[ x/600*2048 ]],order=1)[0]);angle=(90-math.degrees(theta))%360
         return x,y,z,angle
     def project(x,z,absangle):
-        a=q[:-1,:2];v=q[1:,:2]-a;u=np.clip(((np.array([x,z])-a)*v).sum(1)/(v*v).sum(1),0,1);p=a+u[:,None]*v;i=int(np.argmin(((p-[x,z])**2).sum(1)));ss=q[i,3]+u[i]*(q[i+1,3]-q[i,3]);theta=q[i,2]+u[i]*(q[i+1,2]-q[i,2]);right=np.array([math.sin(theta),-math.cos(theta)]);lat=float(np.dot(np.array([x,z])-p[i],right));angle=(90-math.degrees(theta))%360
+        target=np.array([x,z]);a=q[:-1,:2];v=q[1:,:2]-a;u=np.clip(((target-a)*v).sum(1)/(v*v).sum(1),0,1);p=a+u[:,None]*v;i=int(np.argmin(((p-target)**2).sum(1)));s0=q[i,3]+u[i]*(q[i+1,3]-q[i,3])
+        def residual(ss):
+            px=np.interp(ss,q[:,3],q[:,0]);pz=np.interp(ss,q[:,3],q[:,1]);theta=np.interp(ss,q[:,3],q[:,2]);return ((x-px)*math.cos(theta)+(z-pz)*math.sin(theta))**2
+        ss=minimize_scalar(residual,bounds=(max(0,s0-1.5),min(L,s0+1.5)),method='bounded',options={'xatol':1e-10}).x
+        theta=np.interp(ss,q[:,3],q[:,2]);p=np.array([np.interp(ss,q[:,3],q[:,0]),np.interp(ss,q[:,3],q[:,1])]);right=np.array([math.sin(theta),-math.cos(theta)]);lat=float(np.dot(target-p,right));angle=(90-math.degrees(theta))%360
         return dict(long=f'{(ss-cut)%L:.6f}',lat=f'{lat:.6f}',angle=f'{((absangle-angle+180)%360)-180:.6f}')
     def tcl(path,startxz,angle,segs):
         text=f'x = {startxz[0]:.6f}\nz = {startxz[1]:.6f}\nangle = {angle:.6f}\nnumsegment = {len(segs)}\n'
@@ -106,3 +111,4 @@ def main():
     if not (release/f'{NAME}.tga').exists():im.resize((1024,1024)).save(release/f'{NAME}.tga')
     print('Race data, centerlines, reset boundaries, metadata and compiler inputs generated.')
 if __name__=='__main__':main()
+

@@ -38,3 +38,4 @@ for i in range(300):
     for k in range(15):
         a=rng.random()*math.tau;r=rng.uniform(.2,1.3);cx=x+r*math.cos(a);cz=z+r*math.sin(a);h=rng.uniform(.5,1.3);j=len(V);V.extend([vec(cx-.22,y,cz),vec(cx+.22,y,cz),vec(cx+.1,y+h,cz+.12),vec(cx-.1,y+h,cz+.12)]);F.append((j,j+1,j+2,j+3))
     custommesh('scrub_'+str(i),V,F,'foliage_light')
+

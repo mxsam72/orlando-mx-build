@@ -92,3 +92,4 @@ if __name__=='__main__':
     try:main()
     except Exception as e:
         LOG.mkdir(exist_ok=True);(LOG/'native_build_failure.txt').write_text(str(e)+'\n');raise
+

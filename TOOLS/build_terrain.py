@@ -123,3 +123,4 @@ def main():
     qa=dict(maximum_racing_surface_grade=maxgrade,local_grade_relaxation_passes=passes,local_grade_relaxation_max_height_change_m=float(abs(H-original).max()),initial_surface='Clean; no baked braking bumps',raw_bytes=int(raw.nbytes),raw_expected=2049*2049*2,raw_png_identical=bool(np.array_equal(raw,np.array(Image.open(ROOT/'02_HEIGHTMAP/terrain_16bit.png')))),height_range_m=[float(H.min()),float(H.max())],lap_length_m=total,loop_closure_m=float(np.linalg.norm(q[0,:2]-q[-1,:2])),width_range_m=[float(w.min()),float(w.max())],jump_obstacles=len(jumps),jump_groups=12,turns=14,native_compilation=False,in_game_testing=False)
     savejson(ROOT/'DOCUMENTATION/terrain_validation.json',qa);print(json.dumps(qa,indent=2),flush=True)
 if __name__=='__main__':main()
+
