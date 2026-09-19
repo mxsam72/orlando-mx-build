@@ -8,7 +8,7 @@ def custommesh(name,V,F,material):
 for key,color in {'white':(.81,.80,.75),'blue':(.13,.27,.35),'red':(.56,.17,.10),'glass':(.12,.20,.23),'rubber':(.055,.06,.065),'water':(.24,.29,.25)}.items():mats[key]=mat(key,color)
 # Source-transformed water polygons sit in the terrain basins.
 for i,poly in enumerate(spec['pond_polygons']):
-    c=np.mean(poly,axis=0);V=[vec(c[0],spec['water_level'],c[1])]+[vec(x,spec['water_level'],z) for x,z in poly];F=[(0,j+1,(j+1)%len(poly)+1) for j in range(len(poly))];custommesh('drainage_water_'+str(i),V,F,'water')
+    c=np.mean(poly,axis=0);V=[vec(c[0],spec['water_level'],c[1])]+[vec(x,spec['water_level'],z) for x,z in poly];F=[(0,j+1,(j+1)%len(poly)+1) for j in range(len(poly))];area=sum(poly[j][0]*poly[(j+1)%len(poly)][1]-poly[(j+1)%len(poly)][0]*poly[j][1] for j in range(len(poly)));F=[f if area>0 else tuple(reversed(f)) for f in F];custommesh('drainage_water_'+str(i),V,F,'water')
 def wheel(x,y,z,name):tube(name,vec(x,y,z-.13),vec(x,y,z+.13),.38,'rubber',10)
 def truck(x,z,i,color):
     y=height(x,z);cube('pickup_body_'+str(i),vec(x,y+.74,z),(5.4,1.94,.48),color);cube('pickup_hood_'+str(i),vec(x+1.6,y+1.09,z),(1.5,1.91,.32),color);cube('pickup_cab_'+str(i),vec(x+.15,y+1.42,z),(2.05,1.87,1.02),color);cube('windshield_'+str(i),vec(x+1.185,y+1.58,z),(.025,1.62,.55),'glass')
@@ -29,7 +29,7 @@ for i in range(3):cube('portable_toilet_'+str(i),vec(351+i*1.4,4.1,101),(1.15,1.
 # Original track identifier on the timing shelter.
 from PIL import Image,ImageDraw,ImageFont
 im=Image.new('RGB',(1024,256),(30,43,39));ImageDraw.Draw(im).text((46,59),'ORLANDO MX',font=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf',110),fill=(239,233,210));im.save(ROOT/'04_TEXTURES/sign.tga');m=bpy.data.materials.new('sign');m.use_nodes=True;tex=m.node_tree.nodes.new('ShaderNodeTexImage');tex.image=bpy.data.images.load(str(ROOT/'04_TEXTURES/sign.tga'));m.node_tree.links.new(tex.outputs['Color'],m.node_tree.nodes.get('Principled BSDF').inputs['Base Color']);mats['sign']=m
-x,z=354,169;y=height(x,z);cube('timing_shelter',vec(x,y+1.5,z),(6,3.8,3),'white');cube('timing_roof',vec(x,y+3.08,z),(6.6,4.3,.18),'roof');cube('timing_window',vec(x,y+2,z+1.915),(4.9,.025,.9),'glass');custommesh('timing_sign',[vec(x-2.8,y+3.35,z+1.95),vec(x+2.8,y+3.35,z+1.95),vec(x+2.8,y+4.75,z+1.95),vec(x-2.8,y+4.75,z+1.95)],[(0,1,2,3)],'sign')
+x,z=354,169;y=height(x,z);cube('timing_shelter',vec(x,y+1.5,z),(6,3.8,3),'white');cube('timing_roof',vec(x,y+3.08,z),(6.6,4.3,.18),'roof');cube('timing_window',vec(x,y+2,z+1.915),(4.9,.025,.9),'glass');custommesh('timing_sign',[vec(x-2.8,y+3.35,z+1.95),vec(x+2.8,y+3.35,z+1.95),vec(x+2.8,y+4.75,z+1.95),vec(x-2.8,y+4.75,z+1.95)],[(1,0,3,2)],'sign')
 # Low vegetation beyond racing shoulders; no collision.
 for i in range(300):
     x=rng.uniform(lo[0]-18,hi[0]+18);z=rng.uniform(lo[1]-15,hi[1]+18);d=float(np.linalg.norm(q[::4,:2]-[x,z],axis=1).min())

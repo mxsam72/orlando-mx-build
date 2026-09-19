@@ -12,7 +12,7 @@ origin=spec['origin'];assets=[];trees=[]
 def height(x,z):
     a=np.clip(x/600*2048,0,2048);b=np.clip((600-z)/600*2048,0,2048);i=int(a);j=int(b);ii=min(i+1,2048);jj=min(j+1,2048);u=a-i;v=b-j
     return float(H[j,i]*(1-u)*(1-v)+H[j,ii]*u*(1-v)+H[jj,i]*(1-u)*v+H[jj,ii]*u*v)
-def vec(x,y,z):return (x,-z,y)
+def vec(x,y,z):return (x,z,y)
 def mat(name,color):
     m=bpy.data.materials.new(name);m.diffuse_color=(*color,1);m.use_nodes=True;p=m.node_tree.nodes.get('Principled BSDF');p.inputs['Base Color'].default_value=(*color,1);p.inputs['Roughness'].default_value=.9
     img=bpy.data.images.new(name+'_texture',width=64,height=64);img.generated_color=(*color,1);img.filepath_raw=str(ROOT/'04_TEXTURES'/(name+'.tga'));img.file_format='TARGA';img.save()
@@ -44,6 +44,8 @@ def tree(x,z,i):
             a=rng.random()*math.tau;zz=rng.uniform(-1,1);rr=rad*rng.random()**.32;c=np.array(vec(cx,cy,cz))+rr*np.array([math.sqrt(1-zz*zz)*math.cos(a),math.sqrt(1-zz*zz)*math.sin(a),zz*.75]);a=rng.random()*math.tau;u=np.array([math.cos(a),math.sin(a),rng.uniform(-.7,.7)]);u/=np.linalg.norm(u);v=np.cross(u,[.1,.2,1]);v/=np.linalg.norm(v);le=rng.uniform(.4,.8);wi=le*rng.uniform(.35,.65)
             for angle in [0,1.8]:
                 uu=u*math.cos(angle)+v*math.sin(angle);vv=-u*math.sin(angle)+v*math.cos(angle);b=len(V);V.extend([(c-uu*le).tolist(),(c+vv*wi).tolist(),(c+uu*le).tolist(),(c-vv*wi).tolist(),(c+np.array([0,0,.07])).tolist()]);F.extend([(b,b+1,b+4),(b+1,b+2,b+4),(b+2,b+3,b+4),(b+3,b,b+4)]);MI.extend([1+rng.randrange(3)]*4)
+    leaf=[(tuple(reversed(f)),mi) for f,mi in zip(F,MI) if mi>0]
+    for f,mi in leaf:F.append(f);MI.append(mi)
     me=bpy.data.meshes.new('tree_mesh_'+str(i));me.from_pydata(V,[],F);me.update();o=bpy.data.objects.new('tree_'+str(i),me);scene.collection.objects.link(o);finish(o,o.name,'bark')
     for name in ['foliage_mid','foliage_dark','foliage_light']:me.materials.append(mats[name])
     for poly,mi in zip(me.polygons,MI):poly.material_index=mi
@@ -100,7 +102,7 @@ for o in assets:
         for p in o.data.polygons:
             for li in p.loop_indices:
                 v=o.data.vertices[o.data.loops[li].vertex_index].co;uv.data[li].uv=(v.x*.2,v.z*.2)
-# Blender Y=-game Z ensures this standard FBX conversion emits positive game Z.
+# Native compiler flips FBX Z. Blender Y=game Z emits negative FBX Z, then positive EDF Z.
 bpy.ops.export_scene.fbx(filepath=str(ROOT/'07_OBJECTS_SOURCE/scenery.fbx'),use_selection=True,object_types={'MESH'},axis_forward='-Z',axis_up='Y',global_scale=1,apply_unit_scale=True,apply_scale_options='FBX_SCALE_NONE',bake_space_transform=True,path_mode='COPY',embed_textures=True,add_leaf_bones=False,bake_anim=False,use_mesh_modifiers=True)
 print('SCENERY_EXPORTED',len(assets),'objects',len(trees),'trees',flush=True)
 # A separate ground object is for review. It is excluded from scenery.fbx.
@@ -109,17 +111,17 @@ for z in coords:
     for x in coords:verts.append(vec(x,height(x,z),z))
 for j in range(n-1):
     for i in range(n-1):
-        a=j*n+i;faces.append((a,a+n,a+n+1,a+1))
+        a=j*n+i;faces.append((a,a+1,a+n+1,a+n))
 mesh=bpy.data.meshes.new('Review_terrain');mesh.from_pydata(verts,[],faces);mesh.update();ground=bpy.data.objects.new('TERRAIN_REVIEW_ONLY',mesh);scene.collection.objects.link(ground)
 gm=bpy.data.materials.new('Ground_basemap');gm.use_nodes=True;node=gm.node_tree.nodes.new('ShaderNodeTexImage');node.image=bpy.data.images.load(str(ROOT/'04_TEXTURES/basemap.tga'));gm.node_tree.links.new(node.outputs['Color'],gm.node_tree.nodes.get('Principled BSDF').inputs['Base Color']);gm.node_tree.nodes.get('Principled BSDF').inputs['Roughness'].default_value=.96;mesh.materials.append(gm)
 uv=mesh.uv_layers.new(name='UVMap')
 for p in mesh.polygons:
     p.use_smooth=True
     for li in p.loop_indices:
-        v=mesh.vertices[mesh.loops[li].vertex_index].co;uv.data[li].uv=(v.x/600,-v.y/600)
+        v=mesh.vertices[mesh.loops[li].vertex_index].co;uv.data[li].uv=(v.x/600,v.y/600)
 world=bpy.data.worlds.new('Florida_day') if not scene.world else scene.world;scene.world=world;world.use_nodes=True;world.node_tree.nodes['Background'].inputs[0].default_value=(.55,.69,.83,1);world.node_tree.nodes['Background'].inputs[1].default_value=.65
 bpy.ops.object.light_add(type='SUN',location=(100,-100,200));sun=bpy.context.object;sun.data.energy=2.0;sun.rotation_euler=(.45,-.4,-.4);sun.data.angle=.08
-bpy.ops.object.camera_add(location=(477,-564,273));camera=bpy.context.object;target=Vector((295,-292,3));camera.rotation_euler=(target-camera.location).to_track_quat('-Z','Y').to_euler();camera.data.type='ORTHO';camera.data.ortho_scale=420;scene.camera=camera
+bpy.ops.object.camera_add(location=(477,564,273));camera=bpy.context.object;target=Vector((295,292,3));camera.rotation_euler=(target-camera.location).to_track_quat('-Z','Y').to_euler();camera.data.type='ORTHO';camera.data.ortho_scale=420;scene.camera=camera
 scene.render.threads_mode='FIXED';scene.render.threads=6
 scene.render.threads_mode='FIXED';scene.render.threads=6
 scene.render.engine='CYCLES';scene.cycles.device='CPU';scene.cycles.samples=12;scene.render.resolution_x=1600;scene.render.resolution_y=1400;scene.render.resolution_percentage=100;scene.render.image_settings.file_format='PNG';scene.render.filepath=str(ROOT/'DOCUMENTATION/terrain_preview.png');scene.view_settings.view_transform='AgX'
@@ -128,6 +130,12 @@ for image in bpy.data.images:
 notes=bpy.data.texts.new('BUILD_STATUS');notes.write('Orlando MX v005. Estimated construction from 2026 feature order with width guidance from 2024 footage. Not surveyed. RAW is the native game terrain. Scenery FBX excludes this review terrain. Game compilation and riding status: see DOCUMENTATION/build_status.json.\n')
 bpy.ops.wm.save_as_mainfile(filepath=str(ROOT/'07_OBJECTS_SOURCE/OrlandoMX_v005.blend'))
 bpy.ops.render.render(write_still=True)
-(ROOT/'DOCUMENTATION/scenery_validation.json').write_text(json.dumps(dict(trees=len(trees),objects=len(assets),markers=len(stakes),scenery_vertices=sum(len(o.data.vertices) for o in assets),scenery_polygons=sum(len(o.data.polygons) for o in assets),fbx_axis='Blender X=game X, Blender Y=-game Z, Blender Z=game Y; FBX -Z forward Y up',native_edf_conversion=False),indent=2)+'\n')
+# Rider-height review uses the same handedness as the compiled track.
+camera.data.type='PERSP';camera.data.lens=23;scene.render.resolution_x=1400;scene.render.resolution_y=788
+for tag,ss,ee in [('spectator_straight',20,58),('wooded_return',700,744)]:
+    def eye(st):
+        xx=np.interp(st,q[:,3],q[:,0]);zz=np.interp(st,q[:,3],q[:,1]);return Vector(vec(xx,height(xx,zz)+1.8,zz))
+    camera.location=eye(ss);camera.rotation_euler=(eye(ee)-camera.location).to_track_quat('-Z','Y').to_euler();scene.render.filepath=str(ROOT/f'DOCUMENTATION/{tag}.png');bpy.ops.render.render(write_still=True)
+(ROOT/'DOCUMENTATION/scenery_validation.json').write_text(json.dumps(dict(trees=len(trees),objects=len(assets),markers=len(stakes),scenery_vertices=sum(len(o.data.vertices) for o in assets),scenery_polygons=sum(len(o.data.polygons) for o in assets),fbx_axis='Blender X=game X, Blender Y=game Z, Blender Z=game Y; FBX -Z forward Y up; FBX2EDF negates Z',native_edf_conversion=False),indent=2)+'\n')
 print('SCENE_COMPLETE',flush=True)
 

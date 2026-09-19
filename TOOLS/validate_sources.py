@@ -7,7 +7,7 @@ from PIL import Image
 from scipy.ndimage import map_coordinates
 ROOT=Path(__file__).resolve().parents[1];NAME='orlandomx_2026_v005'
 def main():
-    info=json.loads((ROOT/'01_GIS_AERIAL/geometry.json').read_text());d=np.load(ROOT/'01_GIS_AERIAL/route.npz');q=d['q'];w=d['width'];sa=d['start'];L=info['model_lap_length_m'];cut=info['native_origin_source_s']
+    info=json.loads((ROOT/'01_GIS_AERIAL/geometry.json').read_text());d=np.load(ROOT/'01_GIS_AERIAL/route.npz');q=d['q'];w=d['width'];sa=d['start'];L=info['model_lap_length_m'];cut=0.
     h=np.fromfile(ROOT/'02_HEIGHTMAP/terrain.raw',dtype='<u2').reshape(2049,2049);height=h/65535*18
     results={'heightmap_bytes':h.nbytes,'raw_png_match':bool(np.array_equal(h,np.asarray(Image.open(ROOT/'02_HEIGHTMAP/terrain_16bit.png')))),'height_range_m':[float(height.min()),float(height.max())]}
     assert results['raw_png_match'] and h.nbytes==8396802

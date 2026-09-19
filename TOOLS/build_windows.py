@@ -64,6 +64,22 @@ def main():
         if p.exists():p.unlink()
     results['map']=run(terrain,['track.hmf',mappath,'map_params.ini'],'terrained_map',2400);required(mappath,100000,b'MP')
     results['trh']=run(terrain,['track.tht',trhpath,'trh_params.ini'],'terrained_trh',1200);required(trhpath,2049*2049*2,b'TRH')
+    # Verify scenery's actual compiled coordinates, catching the old FBX Z inversion.
+    probes=json.loads((ROOT/'BUILD/native_coordinate_probes.json').read_text())['expected_xyz_metres']
+    mapbytes=mappath.read_bytes();matches=[]
+    for pos in probes:
+        found=mapbytes.find(struct.pack('<3f',*pos))>=0
+        if not found:
+            px=struct.pack('<f',pos[0]);offset=mapbytes.find(px)
+            while offset>=0 and offset+12<=len(mapbytes):
+                got=struct.unpack_from('<3f',mapbytes,offset)
+                if max(abs(a-b) for a,b in zip(pos,got))<.0001:found=True;break
+                offset=mapbytes.find(px,offset+1)
+        matches.append(found)
+    coordinate_qa={'probes':len(probes),'matches':sum(matches),'expected_positive_game_xz':all(p[0]>0 and p[2]>0 for p in probes)}
+    (LOG/'native_coordinates_validation.json').write_text(json.dumps(coordinate_qa,indent=2)+'\n')
+    if sum(matches)<int(len(matches)*.8):raise RuntimeError('Compiled scenery coordinate mismatch; do not package.')
+    del mapbytes
     unmerged=digest(trhpath)
     results['centerline']=run(tracked,['-merge',trhpath,'cl',STAGE/'main.tcl','sa',STAGE/'start.tcl'],'tracked_merge',900)
     required(trhpath,2049*2049*2,b'TRH')
