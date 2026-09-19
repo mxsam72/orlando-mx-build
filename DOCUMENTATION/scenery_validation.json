@@ -1,9 +1,10 @@
 {
-  "trees": 230,
-  "objects": 1320,
-  "markers": 98,
-  "scenery_vertices": 15672,
-  "scenery_polygons": 21516,
-  "fbx_axis": "Blender X=game X, Blender Y=-game Z, Blender Z=game Y; FBX -Z forward Y up",
-  "native_edf_conversion": false
+  "trees": 690,
+  "objects": 1129,
+  "markers": 93,
+  "scenery_vertices": 754256,
+  "scenery_polygons": 1117662,
+  "fbx_axis": "Blender X=game X, Blender Y=game Z, Blender Z=game Y; FBX -Z forward Y up; FBX2EDF negates Z",
+  "native_edf_conversion": false,
+  "pond_tree_overlap_fixed": 0
 }

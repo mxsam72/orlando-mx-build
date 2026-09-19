@@ -1,16 +1,20 @@
 {
+  "maximum_racing_surface_grade": 0.7625372409820557,
+  "local_grade_relaxation_passes": 32,
+  "local_grade_relaxation_max_height_change_m": 1.6388182640075684,
+  "initial_surface": "Clean; no baked braking bumps",
   "raw_bytes": 8396802,
   "raw_expected": 8396802,
   "raw_png_identical": true,
   "height_range_m": [
-    2.6510515213012695,
-    6.082745552062988
+    1.6201616525650024,
+    7.323777675628662
   ],
-  "lap_length_m": 1458.1150082346217,
+  "lap_length_m": 1440.6832187911943,
   "loop_closure_m": 0.0,
   "width_range_m": [
-    10.0,
-    14.0
+    9.729260913687819,
+    11.894770364405492
   ],
   "jump_obstacles": 16,
   "jump_groups": 12,

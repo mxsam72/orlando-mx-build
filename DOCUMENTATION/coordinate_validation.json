@@ -1,0 +1,5 @@
+{
+  "finding": "FBX2EDF negates Z; old positive FBX Z placed scenery at negative game Z",
+  "evidence": "Six sampled v004 FBX vertices matched compiled MAP only after Z negation. Example FBXmetres[162.52507019,2.93679619,303.13800049] matched MAPbyte476 as[162.52507019,2.93679619,-303.13800049].",
+  "fix": "Use Blender (x,z,height), standard -Z forward/Y up FBX. Compiled scenery then occupies positive game X/Z. Native terrain and lap unchanged."
+}

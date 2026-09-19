@@ -4,7 +4,7 @@ data = terrain.raw
 size_x = 600
 size_z = 600
 scale = 18
-num_layers = 5
+num_layers = 6
 layer0
 {
  map = basemap.tga
@@ -13,7 +13,7 @@ layer0
 layer1
 {
  map = soil.tga
- repetitions = 150
+ repetitions = 110
  thickness = 0.15
  frame1
  {
@@ -22,19 +22,19 @@ layer1
 }
 layer2
 {
- map = soil.tga
- repetitions = 175
- thickness = 0.08
+ map = prepared.tga
+ repetitions = 130
+ thickness = 0.09
  mask = mask_racing.tga
  frame1
  {
-  map = soil_wet.tga
+  map = prepared_wet.tga
  }
 }
 layer3
 {
  map = sand.tga
- repetitions = 170
+ repetitions = 155
  thickness = 0.05
  mask = mask_sand.tga
  frame1
@@ -45,9 +45,20 @@ layer3
 layer4
 {
  map = grass.tga
- repetitions = 120
+ repetitions = 100
  thickness = 0.03
  mask = mask_grass.tga
+}
+layer5
+{
+ map = worked.tga
+ repetitions = 130
+ thickness = 0.015
+ mask = mask_worked.tga
+ frame1
+ {
+  map = worked_wet.tga
+ }
 }
 scene0
 {

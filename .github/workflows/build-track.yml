@@ -20,10 +20,10 @@ jobs:
       - name: Upload installable track
         uses: actions/upload-artifact@v7
         with:
-          name: OrlandoMX_2026_v004-PKZ
+          name: OrlandoMX_2026_v005-PKZ
           path: |
-            12_RELEASE/OrlandoMX_2026_v004.pkz
-            12_RELEASE/OrlandoMX_2026_v004.pkz.sha256
+            12_RELEASE/OrlandoMX_2026_v005.pkz
+            12_RELEASE/OrlandoMX_2026_v005.pkz.sha256
           if-no-files-found: error
           retention-days: 30
           compression-level: 0
