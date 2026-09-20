@@ -52,3 +52,4 @@ verify closure, lane clearance, native line reconstruction, pit/grid placement,
 terrain encoding, scenery axes, and compiler output. These checks do not replace
 an in-game ride or establish exact real-world dimensions. The user's footage
 tests v005; v006 must still be ridden after native compilation.
+

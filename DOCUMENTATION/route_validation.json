@@ -1,15 +1,16 @@
 {
-  "sample_count": 8011,
-  "model_lap_length_m": 1440.6832187911943,
-  "loop_closure_m": 0.0,
+  "sample_count": 7093,
+  "model_lap_length_m": 1415.865803053526,
+  "loop_closure_m": 8.039928421361173e-12,
   "width_range_m": [
-    9.729260913687819,
-    11.894770364405492
+    10.0,
+    13.499999559983157
   ],
-  "minimum_terrain_border_clearance_m": 169.878045504618,
+  "minimum_terrain_border_clearance_m": 169.09765330450992,
   "corridor_conflicts": 0,
   "real_world_fidelity_verified": false,
-  "native_to_spline_max_m": 0.1741513064500977,
-  "closure_error_m": 1.2151336161714201e-11,
-  "hand_marked_route_used": true
+  "native_centerline_length_m": 1415.865803053526,
+  "native_segment_count": 1576,
+  "native_closure_m": 8.039928421361173e-12,
+  "source": "v005 user trace refined using new full GoPro lap; estimated metres"
 }

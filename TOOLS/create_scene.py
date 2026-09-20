@@ -159,3 +159,4 @@ for tag,ss,ee in [('spectator_straight',20,58),('wooded_return',700,744)]:
 (ROOT/'DOCUMENTATION/scenery_validation.json').write_text(json.dumps(dict(trees=len(trees),objects=len(assets),markers=len(stakes),scenery_vertices=sum(len(o.data.vertices) for o in assets),scenery_polygons=sum(len(o.data.polygons) for o in assets),fbx_axis='Blender X=game X, Blender Y=game Z, Blender Z=game Y; FBX -Z forward Y up; FBX2EDF negates Z',native_edf_conversion=False),indent=2)+'\n')
 print('SCENE_COMPLETE',flush=True)
 
+

@@ -27,3 +27,4 @@ cam=scene.camera;cam.data.type='PERSP';cam.data.lens=23;scene.render.resolution_
 for tag,s,end in [('spectator_straight',20,58),('wooded_return',700,744)]:
  cam.location=point(s);cam.rotation_euler=(point(end)-cam.location).to_track_quat('-Z','Y').to_euler();scene.render.filepath=str(ROOT/f'DOCUMENTATION/{tag}.png');bpy.ops.render.render(write_still=True)
 
+

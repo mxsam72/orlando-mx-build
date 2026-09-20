@@ -36,3 +36,4 @@ result['compiler_z_flip_confirmed_in_v004_map']=True
 (ROOT/'BUILD/native_coordinate_probes.json').write_text(json.dumps({'expected_xyz_metres':(np.array(probes)*(unit_cm/100.)*np.array([1,1,-1])).tolist()},indent=2)+'\n')
 print(json.dumps(result,indent=2))
 
+

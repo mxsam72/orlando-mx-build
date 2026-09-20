@@ -1,22 +1,22 @@
 {
-  "maximum_racing_surface_grade": 0.7625372409820557,
-  "local_grade_relaxation_passes": 32,
-  "local_grade_relaxation_max_height_change_m": 1.6388182640075684,
+  "maximum_racing_surface_grade": 0.5236130952835083,
+  "local_grade_relaxation_passes": 0,
+  "local_grade_relaxation_max_height_change_m": 0.0,
   "initial_surface": "Clean; no baked braking bumps",
   "raw_bytes": 8396802,
   "raw_expected": 8396802,
   "raw_png_identical": true,
   "height_range_m": [
-    1.6201616525650024,
-    7.323777675628662
+    1.6387969255447388,
+    6.6677751541137695
   ],
-  "lap_length_m": 1440.6832187911943,
-  "loop_closure_m": 0.0,
+  "lap_length_m": 1415.865803053526,
+  "loop_closure_m": 8.039928421361173e-12,
   "width_range_m": [
-    9.729260913687819,
-    11.894770364405492
+    10.0,
+    13.499999559983157
   ],
-  "jump_obstacles": 16,
+  "jump_obstacles": 18,
   "jump_groups": 12,
   "turns": 14,
   "native_compilation": false,
