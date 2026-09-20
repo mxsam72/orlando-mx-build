@@ -7,7 +7,7 @@ changes, game installation, or game license are needed by the authoring tools.
 from pathlib import Path
 import sys,os,shutil,json,hashlib,zipfile,urllib.request,subprocess,time,struct
 ROOT=Path(__file__).resolve().parents[1]
-NAME='orlandomx_2026_v006'
+NAME='orlandomx_2026_v007'
 LOG=ROOT/'DOCUMENTATION';STAGE=ROOT/'BUILD/stage';OUT=ROOT/'12_RELEASE'/NAME
 def digest(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def copy(src,dst):dst.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(src,dst)
@@ -93,7 +93,7 @@ def main():
     if codes:copy(codes[0],LOG/'track_code.txt')
     native=dict(status='Compiled with official PiBoSo Windows tools',compiled=True,centerline_merged=True,results=results,outputs={p.name:dict(bytes=p.stat().st_size,sha256=digest(p)) for p in OUT.iterdir() if p.is_file()},mapview_visual_check=False,in_game_riding_test=False,multiplayer_test=False,game_version_target='Current MX Bikes authoring workflow; shared start gate introduced in beta15')
     (LOG/'native_build_validation.json').write_text(json.dumps(native,indent=2)+'\n')
-    destination=ROOT/'12_RELEASE/OrlandoMX_2026_v006.pkz';temporary=destination.with_suffix('.pkz.tmp')
+    destination=ROOT/'12_RELEASE/OrlandoMX_2026_v007.pkz';temporary=destination.with_suffix('.pkz.tmp')
     with zipfile.ZipFile(temporary,'w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:
         for p in sorted(OUT.iterdir()):
             if p.is_file():z.write(p,NAME+'/'+p.name)

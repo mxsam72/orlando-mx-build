@@ -3,7 +3,7 @@
   "raw_png_match": true,
   "height_range_m": [
     1.6389105058365758,
-    6.667704280155642
+    6.219455252918288
   ],
   "native_centerline_length_m": 1415.8658030589993,
   "centerline_source_difference_max_m": 0.002757658862674479,
@@ -16,8 +16,8 @@
   "grid_minimum_mask_alpha": 254.99999999999997,
   "grid_minimum_spacing_m": 1.5,
   "pit_rdf_reconstruction_error_max_m": 2.028657241339593e-05,
-  "maximum_jump_profile_grade": 0.45263682615278794,
-  "maximum_jump_profile_angle_deg": 24.353258696387247,
+  "maximum_jump_profile_grade": 0.46630765815500247,
+  "maximum_jump_profile_angle_deg": 25.000000000000185,
   "native_compilation": "pending",
   "in_game_riding": "not performed",
   "geographic_accuracy": "unverified construction estimate"

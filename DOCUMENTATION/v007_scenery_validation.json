@@ -1,0 +1,455 @@
+{
+  "source_fbx_sha256": "5c1f93d633f599fb99ddf819430aceea044b00f75498b8a1a8bdfd499a95c97f",
+  "result_fbx_sha256": "c2ff41f03733e14da464c6a04ed90bc10145a51c9977dde0769623830b31cfac",
+  "unchanged_roundtrip_identical": true,
+  "modified_models": 74,
+  "total_vertices": 834874,
+  "topology_axes_materials_preserved": true,
+  "changes": [
+    {
+      "model": "SOFTCPLAS_marker_21",
+      "vertices": 12,
+      "minimum_shift_m": -0.5567392048380639,
+      "maximum_shift_m": -0.5567392048380639
+    },
+    {
+      "model": "SOFTCPLAS_marker_22",
+      "vertices": 12,
+      "minimum_shift_m": -0.5571179339701576,
+      "maximum_shift_m": -0.5571179339701576
+    },
+    {
+      "model": "SOFTCPLAS_marker_25",
+      "vertices": 12,
+      "minimum_shift_m": -0.439053259899292,
+      "maximum_shift_m": -0.439053259899292
+    },
+    {
+      "model": "SOFTCPLAS_marker_26",
+      "vertices": 12,
+      "minimum_shift_m": -0.43812985335245586,
+      "maximum_shift_m": -0.43812985335245586
+    },
+    {
+      "model": "SOFTCPLAS_marker_35",
+      "vertices": 12,
+      "minimum_shift_m": -1.1303774577903174,
+      "maximum_shift_m": -1.1303774577903174
+    },
+    {
+      "model": "SOFTCPLAS_marker_36",
+      "vertices": 12,
+      "minimum_shift_m": -1.1225652028138624,
+      "maximum_shift_m": -1.1225652028138624
+    },
+    {
+      "model": "SOFTCPLAS_marker_39",
+      "vertices": 12,
+      "minimum_shift_m": 0.005469664390927251,
+      "maximum_shift_m": 0.005469664390927251
+    },
+    {
+      "model": "SOFTCPLAS_marker_40",
+      "vertices": 12,
+      "minimum_shift_m": 0.005800983312829405,
+      "maximum_shift_m": 0.005800983312829405
+    },
+    {
+      "model": "SOFTCPLAS_marker_45",
+      "vertices": 12,
+      "minimum_shift_m": 0.04804162104457643,
+      "maximum_shift_m": 0.04804162104457643
+    },
+    {
+      "model": "SOFTCPLAS_marker_46",
+      "vertices": 12,
+      "minimum_shift_m": 0.048434396565288834,
+      "maximum_shift_m": 0.048434396565288834
+    },
+    {
+      "model": "SOFTCPLAS_marker_49",
+      "vertices": 12,
+      "minimum_shift_m": 0.11754739665588983,
+      "maximum_shift_m": 0.11754739665588983
+    },
+    {
+      "model": "SOFTCPLAS_marker_50",
+      "vertices": 12,
+      "minimum_shift_m": 0.11744984121080312,
+      "maximum_shift_m": 0.11744984121080312
+    },
+    {
+      "model": "SOFTCPLAS_marker_57",
+      "vertices": 12,
+      "minimum_shift_m": -0.238266824502174,
+      "maximum_shift_m": -0.238266824502174
+    },
+    {
+      "model": "SOFTCPLAS_marker_58",
+      "vertices": 12,
+      "minimum_shift_m": -0.23875792917787267,
+      "maximum_shift_m": -0.23875792917787267
+    },
+    {
+      "model": "SOFTCPLAS_marker_64",
+      "vertices": 12,
+      "minimum_shift_m": -0.21284563801785256,
+      "maximum_shift_m": -0.21284563801785256
+    },
+    {
+      "model": "SOFTCPLAS_marker_65",
+      "vertices": 12,
+      "minimum_shift_m": -0.21286829981116973,
+      "maximum_shift_m": -0.21286829981116973
+    },
+    {
+      "model": "SOFTCPLAS_marker_70",
+      "vertices": 12,
+      "minimum_shift_m": 0.10731082223477942,
+      "maximum_shift_m": 0.10731082223477942
+    },
+    {
+      "model": "SOFTCPLAS_marker_71",
+      "vertices": 12,
+      "minimum_shift_m": 0.10595609174725233,
+      "maximum_shift_m": 0.10595609174725233
+    },
+    {
+      "model": "SOFTCPLAS_marker_74",
+      "vertices": 12,
+      "minimum_shift_m": -0.26826022366388225,
+      "maximum_shift_m": -0.26826022366388225
+    },
+    {
+      "model": "SOFTCPLAS_marker_75",
+      "vertices": 12,
+      "minimum_shift_m": -0.27258463058265575,
+      "maximum_shift_m": -0.27258463058265575
+    },
+    {
+      "model": "SOFTCPLAS_marker_84",
+      "vertices": 12,
+      "minimum_shift_m": -0.02115382614236954,
+      "maximum_shift_m": -0.02115382614236954
+    },
+    {
+      "model": "SOFTCPLAS_marker_85",
+      "vertices": 12,
+      "minimum_shift_m": -0.021061215574811824,
+      "maximum_shift_m": -0.021061215574811824
+    },
+    {
+      "model": "SOFTCPLAS_marker_86",
+      "vertices": 12,
+      "minimum_shift_m": -0.11801996762003295,
+      "maximum_shift_m": -0.11801996762003295
+    },
+    {
+      "model": "SOFTCPLAS_marker_87",
+      "vertices": 12,
+      "minimum_shift_m": -0.11874842879759631,
+      "maximum_shift_m": -0.11874842879759631
+    },
+    {
+      "model": "crossarm_1",
+      "vertices": 8,
+      "minimum_shift_m": -0.0015301699473564438,
+      "maximum_shift_m": -0.0015301699473564438
+    },
+    {
+      "model": "drainage_water_1",
+      "vertices": 9,
+      "minimum_shift_m": -0.001763237383623616,
+      "maximum_shift_m": -0.001763237383623616
+    },
+    {
+      "model": "drainage_water_2",
+      "vertices": 7,
+      "minimum_shift_m": -0.3129118438632844,
+      "maximum_shift_m": -0.3129118438632844
+    },
+    {
+      "model": "fence_post_10",
+      "vertices": 12,
+      "minimum_shift_m": 0.14646356930129273,
+      "maximum_shift_m": 0.14646356930129273
+    },
+    {
+      "model": "fence_post_11",
+      "vertices": 12,
+      "minimum_shift_m": 0.060220373750668604,
+      "maximum_shift_m": 0.060220373750668604
+    },
+    {
+      "model": "fence_post_12",
+      "vertices": 12,
+      "minimum_shift_m": -0.029758221370260723,
+      "maximum_shift_m": -0.029758221370260723
+    },
+    {
+      "model": "fence_post_13",
+      "vertices": 12,
+      "minimum_shift_m": -0.15850807141311601,
+      "maximum_shift_m": -0.15850807141311601
+    },
+    {
+      "model": "fence_post_14",
+      "vertices": 12,
+      "minimum_shift_m": -0.04647054823400675,
+      "maximum_shift_m": -0.04647054823400675
+    },
+    {
+      "model": "fence_post_5",
+      "vertices": 12,
+      "minimum_shift_m": -0.19346959359740715,
+      "maximum_shift_m": -0.19346959359740715
+    },
+    {
+      "model": "fence_post_6",
+      "vertices": 12,
+      "minimum_shift_m": -0.3120174445489522,
+      "maximum_shift_m": -0.3120174445489522
+    },
+    {
+      "model": "fence_post_7",
+      "vertices": 12,
+      "minimum_shift_m": -0.23245785955262335,
+      "maximum_shift_m": -0.23245785955262335
+    },
+    {
+      "model": "fence_rail_10_0.45",
+      "vertices": 8,
+      "minimum_shift_m": 0.0,
+      "maximum_shift_m": 0.1472975328039173
+    },
+    {
+      "model": "fence_rail_10_1.1",
+      "vertices": 8,
+      "minimum_shift_m": 0.0,
+      "maximum_shift_m": 0.1472975328039173
+    },
+    {
+      "model": "fence_rail_11_0.45",
+      "vertices": 8,
+      "minimum_shift_m": 0.05970840174560941,
+      "maximum_shift_m": 0.14727534919914198
+    },
+    {
+      "model": "fence_rail_11_1.1",
+      "vertices": 8,
+      "minimum_shift_m": 0.05970840174560941,
+      "maximum_shift_m": 0.14727534919914198
+    },
+    {
+      "model": "fence_rail_12_0.45",
+      "vertices": 8,
+      "minimum_shift_m": -0.029925266156680907,
+      "maximum_shift_m": 0.06091897378905182
+    },
+    {
+      "model": "fence_rail_12_1.1",
+      "vertices": 8,
+      "minimum_shift_m": -0.029925266156680907,
+      "maximum_shift_m": 0.06091897378905182
+    },
+    {
+      "model": "fence_rail_13_0.45",
+      "vertices": 8,
+      "minimum_shift_m": -0.1594364244535365,
+      "maximum_shift_m": -0.029622093156328414
+    },
+    {
+      "model": "fence_rail_13_1.1",
+      "vertices": 8,
+      "minimum_shift_m": -0.1594364244535365,
+      "maximum_shift_m": -0.029622093156328414
+    },
+    {
+      "model": "fence_rail_14_0.45",
+      "vertices": 8,
+      "minimum_shift_m": -0.15941430561913583,
+      "maximum_shift_m": -0.04629861188201045
+    },
+    {
+      "model": "fence_rail_14_1.1",
+      "vertices": 8,
+      "minimum_shift_m": -0.15941430561913583,
+      "maximum_shift_m": -0.04629861188201045
+    },
+    {
+      "model": "fence_rail_15_0.45",
+      "vertices": 8,
+      "minimum_shift_m": -0.046659289629946,
+      "maximum_shift_m": 0.0
+    },
+    {
+      "model": "fence_rail_15_1.1",
+      "vertices": 8,
+      "minimum_shift_m": -0.046659289629946,
+      "maximum_shift_m": 0.0
+    },
+    {
+      "model": "fence_rail_5_0.45",
+      "vertices": 8,
+      "minimum_shift_m": -0.19453304895523596,
+      "maximum_shift_m": 0.0
+    },
+    {
+      "model": "fence_rail_5_1.1",
+      "vertices": 8,
+      "minimum_shift_m": -0.19453304895523596,
+      "maximum_shift_m": 0.0
+    },
+    {
+      "model": "fence_rail_6_0.45",
+      "vertices": 8,
+      "minimum_shift_m": -0.3137760912882903,
+      "maximum_shift_m": -0.19236226458786643
+    },
+    {
+      "model": "fence_rail_6_1.1",
+      "vertices": 8,
+      "minimum_shift_m": -0.3137746053963319,
+      "maximum_shift_m": -0.19236322785832588
+    },
+    {
+      "model": "fence_rail_7_0.45",
+      "vertices": 8,
+      "minimum_shift_m": -0.3137712948352978,
+      "maximum_shift_m": -0.23115025082017307
+    },
+    {
+      "model": "fence_rail_7_1.1",
+      "vertices": 8,
+      "minimum_shift_m": -0.3137712948352978,
+      "maximum_shift_m": -0.23115025082017307
+    },
+    {
+      "model": "fence_rail_8_0.45",
+      "vertices": 8,
+      "minimum_shift_m": -0.23376549639505784,
+      "maximum_shift_m": -0.0002746623941405346
+    },
+    {
+      "model": "fence_rail_8_1.1",
+      "vertices": 8,
+      "minimum_shift_m": -0.23376549639505784,
+      "maximum_shift_m": -0.0002746623941405346
+    },
+    {
+      "model": "scrub_113",
+      "vertices": 60,
+      "minimum_shift_m": -0.13462245737613285,
+      "maximum_shift_m": -0.13462245737613285
+    },
+    {
+      "model": "scrub_119",
+      "vertices": 60,
+      "minimum_shift_m": -0.023332054085632232,
+      "maximum_shift_m": -0.023332054085632232
+    },
+    {
+      "model": "scrub_163",
+      "vertices": 60,
+      "minimum_shift_m": -0.28521429378825786,
+      "maximum_shift_m": -0.28521429378825786
+    },
+    {
+      "model": "scrub_166",
+      "vertices": 60,
+      "minimum_shift_m": -0.2465721944660657,
+      "maximum_shift_m": -0.2465721944660657
+    },
+    {
+      "model": "scrub_172",
+      "vertices": 60,
+      "minimum_shift_m": -0.027180078103661524,
+      "maximum_shift_m": -0.027180078103661524
+    },
+    {
+      "model": "scrub_187",
+      "vertices": 60,
+      "minimum_shift_m": -0.07009377564363614,
+      "maximum_shift_m": -0.07009377564363614
+    },
+    {
+      "model": "scrub_189",
+      "vertices": 60,
+      "minimum_shift_m": -0.002630175692113582,
+      "maximum_shift_m": -0.002630175692113582
+    },
+    {
+      "model": "scrub_228",
+      "vertices": 60,
+      "minimum_shift_m": -0.0014828630625176025,
+      "maximum_shift_m": -0.0014828630625176025
+    },
+    {
+      "model": "scrub_231",
+      "vertices": 60,
+      "minimum_shift_m": -0.04090996464109493,
+      "maximum_shift_m": -0.04090996464109493
+    },
+    {
+      "model": "scrub_232",
+      "vertices": 60,
+      "minimum_shift_m": -0.001189224857622113,
+      "maximum_shift_m": -0.001189224857622113
+    },
+    {
+      "model": "scrub_276",
+      "vertices": 60,
+      "minimum_shift_m": 0.36063455602372774,
+      "maximum_shift_m": 0.36063455602372774
+    },
+    {
+      "model": "scrub_286",
+      "vertices": 60,
+      "minimum_shift_m": 0.021526513317789008,
+      "maximum_shift_m": 0.021526513317789008
+    },
+    {
+      "model": "scrub_293",
+      "vertices": 60,
+      "minimum_shift_m": 0.009501506066547786,
+      "maximum_shift_m": 0.009501506066547786
+    },
+    {
+      "model": "scrub_294",
+      "vertices": 60,
+      "minimum_shift_m": -0.02650899455310484,
+      "maximum_shift_m": -0.02650899455310484
+    },
+    {
+      "model": "scrub_33",
+      "vertices": 60,
+      "minimum_shift_m": -0.0027676146019301575,
+      "maximum_shift_m": -0.0027676146019301575
+    },
+    {
+      "model": "scrub_43",
+      "vertices": 60,
+      "minimum_shift_m": -0.018143442499178465,
+      "maximum_shift_m": -0.018143442499178465
+    },
+    {
+      "model": "scrub_63",
+      "vertices": 60,
+      "minimum_shift_m": 0.10204772015726113,
+      "maximum_shift_m": 0.10204772015726113
+    },
+    {
+      "model": "scrub_72",
+      "vertices": 60,
+      "minimum_shift_m": -0.02844036132410306,
+      "maximum_shift_m": -0.02844036132410306
+    },
+    {
+      "model": "utility_pole_1",
+      "vertices": 16,
+      "minimum_shift_m": -0.0015301699473564438,
+      "maximum_shift_m": -0.0015301699473564438
+    }
+  ],
+  "native_conversion": false
+}

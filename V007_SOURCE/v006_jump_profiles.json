@@ -1,0 +1,704 @@
+[
+  {
+    "id": "J01",
+    "lip_s": 38.497609881698885,
+    "height_m": 2.65,
+    "profile_s": [
+      -11,
+      -9,
+      0,
+      1.2,
+      7.2,
+      9.2,
+      24.2,
+      27.2
+    ],
+    "profile_h": [
+      0,
+      0,
+      2.65,
+      2.8,
+      2.8,
+      2.59,
+      0,
+      0
+    ],
+    "profile_derivative": [
+      0,
+      0,
+      0.3533333333333333,
+      0,
+      0,
+      -0.17666666666666667,
+      0,
+      0
+    ],
+    "face_m": 9,
+    "top_m": 6,
+    "landing_m": 15,
+    "status": "Revised from full GoPro lap; metric estimate; v006 riding validation pending"
+  },
+  {
+    "id": "J02",
+    "lip_s": 132.43781790202559,
+    "height_m": 1.65,
+    "profile_s": [
+      -10,
+      -8,
+      0,
+      1.2,
+      5.2,
+      7.2,
+      19.2,
+      22.2
+    ],
+    "profile_h": [
+      0,
+      0,
+      1.65,
+      1.7999999999999998,
+      1.7999999999999998,
+      1.5899999999999999,
+      0,
+      0
+    ],
+    "profile_derivative": [
+      0,
+      0,
+      0.24749999999999997,
+      0,
+      0,
+      -0.13749999999999998,
+      0,
+      0
+    ],
+    "face_m": 8,
+    "top_m": 4,
+    "landing_m": 12,
+    "status": "Revised from full GoPro lap; metric estimate; v006 riding validation pending"
+  },
+  {
+    "id": "J03",
+    "lip_s": 236.78849837359184,
+    "height_m": 1.05,
+    "profile_s": [
+      -10,
+      -8,
+      0,
+      1.2,
+      2.2,
+      4.2,
+      14.2,
+      17.2
+    ],
+    "profile_h": [
+      0,
+      0,
+      1.05,
+      1.2,
+      1.2,
+      0.99,
+      0,
+      0
+    ],
+    "profile_derivative": [
+      0,
+      0,
+      0.1575,
+      0,
+      0,
+      -0.10500000000000001,
+      0,
+      0
+    ],
+    "face_m": 8,
+    "top_m": 1,
+    "landing_m": 10,
+    "status": "Revised from full GoPro lap; metric estimate; v006 riding validation pending"
+  },
+  {
+    "id": "J03b",
+    "lip_s": 335.5435074581799,
+    "height_m": 1.2,
+    "profile_s": [
+      -10,
+      -8,
+      0,
+      1.2,
+      4.2,
+      6.2,
+      17.2,
+      20.2
+    ],
+    "profile_h": [
+      0,
+      0,
+      1.2,
+      1.3499999999999999,
+      1.3499999999999999,
+      1.14,
+      0,
+      0
+    ],
+    "profile_derivative": [
+      0,
+      0,
+      0.18,
+      0,
+      0,
+      -0.10909090909090909,
+      0,
+      0
+    ],
+    "face_m": 8,
+    "top_m": 3,
+    "landing_m": 11,
+    "status": "Revised from full GoPro lap; metric estimate; v006 riding validation pending"
+  },
+  {
+    "id": "J04",
+    "lip_s": 405.8565995816552,
+    "height_m": 2.75,
+    "profile_s": [
+      -12,
+      -10,
+      0,
+      1.2,
+      9.2,
+      11.2,
+      26.2,
+      29.2
+    ],
+    "profile_h": [
+      0,
+      0,
+      2.75,
+      2.9,
+      2.9,
+      2.69,
+      0,
+      0
+    ],
+    "profile_derivative": [
+      0,
+      0,
+      0.32999999999999996,
+      0,
+      0,
+      -0.18333333333333332,
+      0,
+      0
+    ],
+    "face_m": 10,
+    "top_m": 8,
+    "landing_m": 15,
+    "status": "Revised from full GoPro lap; metric estimate; v006 riding validation pending"
+  },
+  {
+    "id": "J05",
+    "lip_s": 493.6559300981915,
+    "height_m": 0.9,
+    "profile_s": [
+      -11,
+      -9,
+      0,
+      1.2,
+      2.7,
+      4.7,
+      14.7,
+      17.7
+    ],
+    "profile_h": [
+      0,
+      0,
+      0.9,
+      1.05,
+      1.05,
+      0.8400000000000001,
+      0,
+      0
+    ],
+    "profile_derivative": [
+      0,
+      0,
+      0.12000000000000001,
+      0,
+      0,
+      -0.09,
+      0,
+      0
+    ],
+    "face_m": 9,
+    "top_m": 1.5,
+    "landing_m": 10,
+    "status": "Revised from full GoPro lap; metric estimate; v006 riding validation pending"
+  },
+  {
+    "id": "J06",
+    "lip_s": 541.1645498586764,
+    "height_m": 2.85,
+    "profile_s": [
+      -10.5,
+      -8.5,
+      0,
+      1.2,
+      6.2,
+      8.2,
+      21.2,
+      24.2
+    ],
+    "profile_h": [
+      0,
+      0,
+      2.85,
+      3.0,
+      3.0,
+      2.79,
+      0,
+      0
+    ],
+    "profile_derivative": [
+      0,
+      0,
+      0.4023529411764706,
+      0,
+      0,
+      -0.21923076923076923,
+      0,
+      0
+    ],
+    "face_m": 8.5,
+    "top_m": 5,
+    "landing_m": 13,
+    "status": "Revised from full GoPro lap; metric estimate; v006 riding validation pending"
+  },
+  {
+    "id": "J07",
+    "lip_s": 613.0329823072344,
+    "height_m": 0.6,
+    "profile_s": [
+      -9,
+      -7,
+      0,
+      1.2,
+      1.7,
+      3.7,
+      11.7,
+      14.7
+    ],
+    "profile_h": [
+      0,
+      0,
+      0.6,
+      0.75,
+      0.75,
+      0.54,
+      0,
+      0
+    ],
+    "profile_derivative": [
+      0,
+      0,
+      0.10285714285714286,
+      0,
+      0,
+      -0.075,
+      0,
+      0
+    ],
+    "face_m": 7,
+    "top_m": 0.5,
+    "landing_m": 8,
+    "status": "Revised from full GoPro lap; metric estimate; v006 riding validation pending"
+  },
+  {
+    "id": "J08a",
+    "lip_s": 700.0398044238539,
+    "height_m": 1.4,
+    "profile_s": [
+      -10,
+      -8,
+      0,
+      1.2,
+      4.2,
+      6.2,
+      16.2,
+      19.2
+    ],
+    "profile_h": [
+      0,
+      0,
+      1.4,
+      1.5499999999999998,
+      1.5499999999999998,
+      1.3399999999999999,
+      0,
+      0
+    ],
+    "profile_derivative": [
+      0,
+      0,
+      0.21,
+      0,
+      0,
+      -0.13999999999999999,
+      0,
+      0
+    ],
+    "face_m": 8,
+    "top_m": 3,
+    "landing_m": 10,
+    "status": "Revised from full GoPro lap; metric estimate; v006 riding validation pending"
+  },
+  {
+    "id": "J08b",
+    "lip_s": 755.9814668329616,
+    "height_m": 2.6,
+    "profile_s": [
+      -11,
+      -9,
+      0,
+      1.2,
+      7.2,
+      9.2,
+      23.2,
+      26.2
+    ],
+    "profile_h": [
+      0,
+      0,
+      2.6,
+      2.75,
+      2.75,
+      2.54,
+      0,
+      0
+    ],
+    "profile_derivative": [
+      0,
+      0,
+      0.3466666666666667,
+      0,
+      0,
+      -0.18571428571428572,
+      0,
+      0
+    ],
+    "face_m": 9,
+    "top_m": 6,
+    "landing_m": 14,
+    "status": "Revised from full GoPro lap; metric estimate; v006 riding validation pending"
+  },
+  {
+    "id": "J09a",
+    "lip_s": 842.657828695475,
+    "height_m": 0.8,
+    "profile_s": [
+      -8,
+      -6,
+      0,
+      1.2,
+      2.2,
+      4.2,
+      12.2,
+      15.2
+    ],
+    "profile_h": [
+      0,
+      0,
+      0.8,
+      0.9500000000000001,
+      0.9500000000000001,
+      0.74,
+      0,
+      0
+    ],
+    "profile_derivative": [
+      0,
+      0,
+      0.16,
+      0,
+      0,
+      -0.1,
+      0,
+      0
+    ],
+    "face_m": 6,
+    "top_m": 1,
+    "landing_m": 8,
+    "status": "Revised from full GoPro lap; metric estimate; v006 riding validation pending"
+  },
+  {
+    "id": "J09b",
+    "lip_s": 869.9763053747462,
+    "height_m": 2.15,
+    "profile_s": [
+      -10,
+      -8,
+      0,
+      1.2,
+      5.2,
+      7.2,
+      19.2,
+      22.2
+    ],
+    "profile_h": [
+      0,
+      0,
+      2.15,
+      2.3,
+      2.3,
+      2.09,
+      0,
+      0
+    ],
+    "profile_derivative": [
+      0,
+      0,
+      0.32249999999999995,
+      0,
+      0,
+      -0.17916666666666667,
+      0,
+      0
+    ],
+    "face_m": 8,
+    "top_m": 4,
+    "landing_m": 12,
+    "status": "Revised from full GoPro lap; metric estimate; v006 riding validation pending"
+  },
+  {
+    "id": "J10a",
+    "lip_s": 954.1811472217122,
+    "height_m": 1.55,
+    "profile_s": [
+      -9,
+      -7,
+      0,
+      1.2,
+      4.2,
+      6.2,
+      16.2,
+      19.2
+    ],
+    "profile_h": [
+      0,
+      0,
+      1.55,
+      1.7,
+      1.7,
+      1.49,
+      0,
+      0
+    ],
+    "profile_derivative": [
+      0,
+      0,
+      0.2657142857142857,
+      0,
+      0,
+      -0.155,
+      0,
+      0
+    ],
+    "face_m": 7,
+    "top_m": 3,
+    "landing_m": 10,
+    "status": "Revised from full GoPro lap; metric estimate; v006 riding validation pending"
+  },
+  {
+    "id": "J10b",
+    "lip_s": 989.7221809388964,
+    "height_m": 2.55,
+    "profile_s": [
+      -11,
+      -9,
+      0,
+      1.2,
+      6.2,
+      8.2,
+      22.2,
+      25.2
+    ],
+    "profile_h": [
+      0,
+      0,
+      2.55,
+      2.6999999999999997,
+      2.6999999999999997,
+      2.4899999999999998,
+      0,
+      0
+    ],
+    "profile_derivative": [
+      0,
+      0,
+      0.33999999999999997,
+      0,
+      0,
+      -0.18214285714285713,
+      0,
+      0
+    ],
+    "face_m": 9,
+    "top_m": 5,
+    "landing_m": 14,
+    "status": "Revised from full GoPro lap; metric estimate; v006 riding validation pending"
+  },
+  {
+    "id": "J11",
+    "lip_s": 1096.5169859034258,
+    "height_m": 0.95,
+    "profile_s": [
+      -9,
+      -7,
+      0,
+      1.2,
+      2.2,
+      4.2,
+      13.2,
+      16.2
+    ],
+    "profile_h": [
+      0,
+      0,
+      0.95,
+      1.0999999999999999,
+      1.0999999999999999,
+      0.8899999999999999,
+      0,
+      0
+    ],
+    "profile_derivative": [
+      0,
+      0,
+      0.16285714285714284,
+      0,
+      0,
+      -0.10555555555555556,
+      0,
+      0
+    ],
+    "face_m": 7,
+    "top_m": 1,
+    "landing_m": 9,
+    "status": "Revised from full GoPro lap; metric estimate; v006 riding validation pending"
+  },
+  {
+    "id": "J11b",
+    "lip_s": 1137.6751466856956,
+    "height_m": 2.85,
+    "profile_s": [
+      -11,
+      -9,
+      0,
+      1.2,
+      7.2,
+      9.2,
+      24.2,
+      27.2
+    ],
+    "profile_h": [
+      0,
+      0,
+      2.85,
+      3.0,
+      3.0,
+      2.79,
+      0,
+      0
+    ],
+    "profile_derivative": [
+      0,
+      0,
+      0.38,
+      0,
+      0,
+      -0.19,
+      0,
+      0
+    ],
+    "face_m": 9,
+    "top_m": 6,
+    "landing_m": 15,
+    "status": "Revised from full GoPro lap; metric estimate; v006 riding validation pending"
+  },
+  {
+    "id": "J12a",
+    "lip_s": 1290.1723245622384,
+    "height_m": 1.1,
+    "profile_s": [
+      -10,
+      -8,
+      0,
+      1.2,
+      3.2,
+      5.2,
+      16.2,
+      19.2
+    ],
+    "profile_h": [
+      0,
+      0,
+      1.1,
+      1.25,
+      1.25,
+      1.04,
+      0,
+      0
+    ],
+    "profile_derivative": [
+      0,
+      0,
+      0.165,
+      0,
+      0,
+      -0.1,
+      0,
+      0
+    ],
+    "face_m": 8,
+    "top_m": 2,
+    "landing_m": 11,
+    "status": "Revised from full GoPro lap; metric estimate; v006 riding validation pending"
+  },
+  {
+    "id": "J12b",
+    "lip_s": 1334.9144710214869,
+    "height_m": 2.3,
+    "profile_s": [
+      -11,
+      -9,
+      0,
+      1.2,
+      6.2,
+      8.2,
+      21.2,
+      24.2
+    ],
+    "profile_h": [
+      0,
+      0,
+      2.3,
+      2.4499999999999997,
+      2.4499999999999997,
+      2.2399999999999998,
+      0,
+      0
+    ],
+    "profile_derivative": [
+      0,
+      0,
+      0.30666666666666664,
+      0,
+      0,
+      -0.1769230769230769,
+      0,
+      0
+    ],
+    "face_m": 9,
+    "top_m": 5,
+    "landing_m": 13,
+    "status": "Revised from full GoPro lap; metric estimate; v006 riding validation pending"
+  }
+]

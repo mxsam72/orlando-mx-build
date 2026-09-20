@@ -1,0 +1,140 @@
+{
+  "base_commit": "74d00718cf466d8a30cd30a088ef839b80a63303",
+  "base_input_manifest_unchanged": true,
+  "archive_bytes": 2423525,
+  "archive_sha256": "f56d5800e06b6d0c9367796e764733a3db3c075646f9e2b9a9bf495b5125e415",
+  "parts": [
+    {
+      "path": "BUILD_V007/overlay.zip.part00",
+      "bytes": 262144,
+      "sha256": "a7c55afa22c014f2ed2035b4f37c61edc79caeb1269e1f9bedf4741977b2c598",
+      "git_sha": "4d21dfe67721d39c3240a8f426373256a1be9793"
+    },
+    {
+      "path": "BUILD_V007/overlay.zip.part01",
+      "bytes": 262144,
+      "sha256": "3c785e9b3a5313b3665bebfdc2ba15be2b6867ce0088d835eeb71a6e8fab1f1a",
+      "git_sha": "9bdf0ef2c3eb3b5770628cea6d2c1cff286df4a2"
+    },
+    {
+      "path": "BUILD_V007/overlay.zip.part02",
+      "bytes": 262144,
+      "sha256": "3ffdb82c7c9ece1748fcf1868e926a4a03b721f92b65a62a5d7fec00e8eb7da5",
+      "git_sha": "65ae5b5550aac108686b48e22af2feaecf6929c1"
+    },
+    {
+      "path": "BUILD_V007/overlay.zip.part03",
+      "bytes": 262144,
+      "sha256": "8c15b5264f1aac4a18313224b9e41804adc57881db1019da49253a1169edfdfe",
+      "git_sha": "c103e6f6aceb5987ac344f14369e5a54470def48"
+    },
+    {
+      "path": "BUILD_V007/overlay.zip.part04",
+      "bytes": 262144,
+      "sha256": "c7307fee1aaceaf16d89d46e402e6bb9551329bd5504a00f0f043bf3a49585a2",
+      "git_sha": "519e6ce2451c512b35e4472e1a98f14523719bf1"
+    },
+    {
+      "path": "BUILD_V007/overlay.zip.part05",
+      "bytes": 262144,
+      "sha256": "69acdbc030a66380fb52983e256bb4cdf974176780c6de721f20bf763e241094",
+      "git_sha": "e2c8a0a74392f885f208c0af9b652067968cf436"
+    },
+    {
+      "path": "BUILD_V007/overlay.zip.part06",
+      "bytes": 262144,
+      "sha256": "8ade5ad1f73d337bf4d1591ccae8556e9b619fdeb15088ff570e40fc1adf5652",
+      "git_sha": "fb93998d07e653ce86aad333803b23c781e90c93"
+    },
+    {
+      "path": "BUILD_V007/overlay.zip.part07",
+      "bytes": 262144,
+      "sha256": "650e8771005157fb42b68fd9cc1596c77a5c73d4482dcfcfb113f9e5d621524a",
+      "git_sha": "d9858835c4429052a24405a5febb9e866d915980"
+    },
+    {
+      "path": "BUILD_V007/overlay.zip.part08",
+      "bytes": 262144,
+      "sha256": "9600c2fd1f527cd337569c2faf02863a105248ddf51601c9c6a9a861124b3d14",
+      "git_sha": "f70d7b8eb27a78153100dbc91e179fcb66760f6a"
+    },
+    {
+      "path": "BUILD_V007/overlay.zip.part09",
+      "bytes": 64229,
+      "sha256": "f02fe09654e96a8bebce132d3a8a9489153a017f49a9226e377c68ef96367522",
+      "git_sha": "0515c5158b507e44a028db9f76ee7670354ba02b"
+    }
+  ],
+  "files": [
+    {
+      "path": "02_HEIGHTMAP/terrain.raw",
+      "bytes": 8396802,
+      "sha256": "4a8a569a1cc37db2ed10a61d83b71f4821b005a5f188ed7b3f590be55017e57d"
+    },
+    {
+      "path": "BUILD/native_coordinate_probes.json",
+      "bytes": 3540,
+      "sha256": "c42ba9586194d451d48c76a4796e1f54b8466fc5d9c46d5014590af67008ec0c"
+    },
+    {
+      "path": "V007_SOURCE/scenery_patch.json",
+      "bytes": 38789,
+      "sha256": "2373490ce31ea56704b6cc54aa92d9592a60a7c78b88a468bb94cf0f8b08453f"
+    },
+    {
+      "path": "12_RELEASE/orlandomx_2026_v007/checkleft.tl",
+      "bytes": 5680,
+      "sha256": "a30296e3151e01ebc210b290ad385221190783003689b90a1555c41082f1a9a7"
+    },
+    {
+      "path": "12_RELEASE/orlandomx_2026_v007/checkright.tl",
+      "bytes": 5680,
+      "sha256": "a7b855f1c5ff5e905215d70221933d6af983de2cf336066ee4f3edbdcd98685d"
+    },
+    {
+      "path": "12_RELEASE/orlandomx_2026_v007/marshals.cfg",
+      "bytes": 706,
+      "sha256": "2ae0d544fd560212fd6951a48a51a79e491210261d2d2c9f78fc310b0ea012f9"
+    },
+    {
+      "path": "12_RELEASE/orlandomx_2026_v007/maxrace.tl",
+      "bytes": 5680,
+      "sha256": "da69e0faf2cef806db45adbcbdb1489c1883b70eb3f82c13014d034b9d78e23b"
+    },
+    {
+      "path": "12_RELEASE/orlandomx_2026_v007/minrace.tl",
+      "bytes": 5680,
+      "sha256": "9ce5f607e8336b9ed73d19d92c8dd8b34f1a3874225271ca1edf9e57f4d166fb"
+    },
+    {
+      "path": "12_RELEASE/orlandomx_2026_v007/orlandomx_2026_v007.amb",
+      "bytes": 689,
+      "sha256": "8fe9ed4765bd90658e4f601d9c8a1c302ad8d8ed26ac49994a05bbc29b4db21a"
+    },
+    {
+      "path": "12_RELEASE/orlandomx_2026_v007/orlandomx_2026_v007.ini",
+      "bytes": 303,
+      "sha256": "0e78a896844db45b95626e806da9aea335f29968a9463810bc3ba7c368602a63"
+    },
+    {
+      "path": "12_RELEASE/orlandomx_2026_v007/orlandomx_2026_v007.rdf",
+      "bytes": 7434,
+      "sha256": "a4653e39e4321892dd3b3011f0652b4e5732e2448932e33db4a12f2bd36b1959"
+    },
+    {
+      "path": "12_RELEASE/orlandomx_2026_v007/orlandomx_2026_v007.tga",
+      "bytes": 3145772,
+      "sha256": "9809678ca58a731da6d92e9037293f716ad8837070094175932dcf339f82ea8e"
+    },
+    {
+      "path": "12_RELEASE/orlandomx_2026_v007/orlandomx_2026_v007.tsc",
+      "bytes": 2483,
+      "sha256": "e03fe62ea968d74bb6e303a1f50e6ee3f9c786b07975fbcd5b413c622a76aef1"
+    },
+    {
+      "path": "12_RELEASE/orlandomx_2026_v007/orlandomx_2026_v007_map.tga",
+      "bytes": 3145772,
+      "sha256": "3e21857e01a3806189ce0a6e1b79b90d713168a656c0ae549715034cf792ea8f"
+    }
+  ]
+}

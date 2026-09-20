@@ -1,0 +1,23 @@
+{
+  "version": "v007",
+  "baseline_raw_sha256": "671d8af1532872ff9637d53afddf93ea55d03992eacfa69e695bd994324168ee",
+  "raw_sha256": "4a8a569a1cc37db2ed10a61d83b71f4821b005a5f188ed7b3f590be55017e57d",
+  "raw_bytes": 8396802,
+  "raw_png_identical": true,
+  "obstacles": 18,
+  "tabletops": 11,
+  "rollers": 7,
+  "maximum_riding_area_grade": 0.6990538185480349,
+  "height_range_m": [
+    1.6389105058365758,
+    6.219455252918288
+  ],
+  "changed_nodes": 124287,
+  "maximum_raise_m": 2.134950789654383,
+  "maximum_lower_m": 2.194277866788738,
+  "local_grade_relaxation_passes": 5,
+  "local_grade_relaxation_max_height_change_m": 0.21687977220470245,
+  "layout_changed": false,
+  "native_compilation": false,
+  "in_game_riding": false
+}
