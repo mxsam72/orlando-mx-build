@@ -3,8 +3,10 @@ import bpy, math, json, random
 from pathlib import Path
 import numpy as np
 from mathutils import Vector
+from scipy.spatial import ConvexHull
+from matplotlib.path import Path as Polygon
 ROOT=Path(__file__).resolve().parents[1]
-NAME='orlandomx_2026_v005'
+NAME='orlandomx_2026_v006'
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
 scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=1
 q=np.load(ROOT/'01_GIS_AERIAL/route.npz')['q'];spec=json.loads((ROOT/'07_OBJECTS_SOURCE/scene_spec.json').read_text());H=np.load(ROOT/'02_HEIGHTMAP/height_metres.npy');rng=random.Random(94041)
@@ -17,7 +19,7 @@ def mat(name,color):
     m=bpy.data.materials.new(name);m.diffuse_color=(*color,1);m.use_nodes=True;p=m.node_tree.nodes.get('Principled BSDF');p.inputs['Base Color'].default_value=(*color,1);p.inputs['Roughness'].default_value=.9
     img=bpy.data.images.new(name+'_texture',width=64,height=64);img.generated_color=(*color,1);img.filepath_raw=str(ROOT/'04_TEXTURES'/(name+'.tga'));img.file_format='TARGA';img.save()
     tex=m.node_tree.nodes.new('ShaderNodeTexImage');tex.image=img;m.node_tree.links.new(tex.outputs['Color'],p.inputs['Base Color']);return m
-mats={k:mat(k,c) for k,c in {'bark':(.23,.18,.12),'foliage_dark':(.13,.23,.075),'foliage_mid':(.20,.31,.095),'foliage_light':(.29,.38,.13),'fence_wood':(.43,.36,.24),'marker_white':(.89,.87,.72),'marker_orange':(.85,.26,.03),'metal':(.40,.44,.43),'roof':(.25,.29,.23),'banner':(.025,.07,.08)}.items()}
+mats={k:mat(k,c) for k,c in {'bark':(.23,.20,.15),'foliage_dark':(.11,.18,.065),'foliage_mid':(.17,.25,.10),'foliage_light':(.25,.31,.14),'fence_wood':(.43,.36,.24),'marker_white':(.89,.87,.72),'marker_orange':(.85,.26,.03),'metal':(.40,.44,.43),'roof':(.25,.29,.23),'banner':(.025,.07,.08)}.items()}
 def finish(obj,name,material,record=True):
     obj.name=name;obj.data.materials.append(mats[material]);
     if record:assets.append(obj)
@@ -27,7 +29,7 @@ def cube(name,location,dimensions,material):
 def tube(name,a,b,r,material,verts=6):
     va=Vector(a);vb=Vector(b);delta=vb-va;bpy.ops.mesh.primitive_cylinder_add(vertices=verts,radius=r,depth=delta.length,location=(va+vb)/2);o=bpy.context.object;o.rotation_euler=delta.to_track_quat('Z','Y').to_euler();return finish(o,name,material)
 def tree(x,z,i):
-    y=height(x,z);h=rng.uniform(8,14);r=rng.uniform(3,4.4);pine=i%3==0;V=[];F=[];MI=[];centers=[]
+    y=height(x,z);h=rng.uniform(7.5,13);r=rng.uniform(4.2,6.0);pine=i%5==0;V=[];F=[];MI=[];centers=[]
     def branch(a,b,rad1,rad2,sides=6):
         a=np.array(a,float);b=np.array(b,float);v=(b-a)/np.linalg.norm(b-a);u=np.cross(v,[0,0,1])
         if np.linalg.norm(u)<.1:u=np.cross(v,[0,1,0])
@@ -37,28 +39,46 @@ def tree(x,z,i):
         for j in range(sides):F.append((start+j,start+(j+1)%sides,start+sides+(j+1)%sides,start+sides+j));MI.append(0)
     branch(vec(x,y,z),vec(x+.14,y+h*.8,z),rng.uniform(.14,.23),.045,7)
     for k in range(9):
-        a=k*math.tau/9+rng.random()*.4;rr=r*(.8 if not pine else (1-k*.065));cy=y+h*(.52+k*.042);cx=x+rr*math.cos(a)*.6;cz=z+rr*math.sin(a)*.6;branch(vec(x,y+h*.45,z),vec(cx,cy,cz),.055,.015,5);centers.append((cx,cy,cz,r*.53))
-    d=float(np.linalg.norm(q[::4,:2]-[x,z],axis=1).min());count=24 if d<22 else 9
+        a=k*math.tau/9+rng.random()*.4;rr=r*(.95 if not pine else (1-k*.065));cy=y+h*(.40+k*.050);cx=x+rr*math.cos(a)*.6;cz=z+rr*math.sin(a)*.6;branch(vec(x,y+h*.30,z),vec(cx,cy,cz),.065,.020,5);centers.append((cx,cy,cz,r*.55))
+    # Filled irregular crown volumes stop the distant woods looking like rows
+    # of bare sticks. Small leaf geometry breaks up their silhouettes nearby.
+    cloud_faces=[]
+    for cx,cy,cz,rad in centers:
+        b=len(V);rings=7;sides=10
+        for j in range(rings):
+            phi=-math.pi/2+.06+j*(math.pi-.12)/(rings-1)
+            for k in range(sides):
+                a=k*math.tau/sides;rr=rad*rng.uniform(.84,1.12)
+                V.append(vec(cx+rr*math.cos(phi)*math.cos(a),cy+rr*.83*math.sin(phi),cz+rr*math.cos(phi)*math.sin(a)))
+        for j in range(rings-1):
+            for k in range(sides):
+                aa=b+j*sides+k;bb=b+j*sides+(k+1)%sides;F.append((aa,bb,bb+sides,aa+sides));MI.append(1+(i+j//3)%3);cloud_faces.append(len(F)-1)
+        F.append(tuple(b+k for k in reversed(range(sides))));MI.append(1);cloud_faces.append(len(F)-1)
+        F.append(tuple(b+(rings-1)*sides+k for k in range(sides)));MI.append(2);cloud_faces.append(len(F)-1)
+    d=float(np.linalg.norm(q[::4,:2]-[x,z],axis=1).min());count=16 if d<28 else 6
+    leaf_start=len(F)
     for cx,cy,cz,rad in centers:
         for j in range(count):
             a=rng.random()*math.tau;zz=rng.uniform(-1,1);rr=rad*rng.random()**.32;c=np.array(vec(cx,cy,cz))+rr*np.array([math.sqrt(1-zz*zz)*math.cos(a),math.sqrt(1-zz*zz)*math.sin(a),zz*.75]);a=rng.random()*math.tau;u=np.array([math.cos(a),math.sin(a),rng.uniform(-.7,.7)]);u/=np.linalg.norm(u);v=np.cross(u,[.1,.2,1]);v/=np.linalg.norm(v);le=rng.uniform(.4,.8);wi=le*rng.uniform(.35,.65)
             for angle in [0,1.8]:
                 uu=u*math.cos(angle)+v*math.sin(angle);vv=-u*math.sin(angle)+v*math.cos(angle);b=len(V);V.extend([(c-uu*le).tolist(),(c+vv*wi).tolist(),(c+uu*le).tolist(),(c-vv*wi).tolist(),(c+np.array([0,0,.07])).tolist()]);F.extend([(b,b+1,b+4),(b+1,b+2,b+4),(b+2,b+3,b+4),(b+3,b,b+4)]);MI.extend([1+rng.randrange(3)]*4)
-    leaf=[(tuple(reversed(f)),mi) for f,mi in zip(F,MI) if mi>0]
+    leaf=[(tuple(reversed(f)),mi) for f,mi in zip(F[leaf_start:],MI[leaf_start:]) if mi>0]
     for f,mi in leaf:F.append(f);MI.append(mi)
     me=bpy.data.meshes.new('tree_mesh_'+str(i));me.from_pydata(V,[],F);me.update();o=bpy.data.objects.new('tree_'+str(i),me);scene.collection.objects.link(o);finish(o,o.name,'bark')
     for name in ['foliage_mid','foliage_dark','foliage_light']:me.materials.append(mats[name])
     for poly,mi in zip(me.polygons,MI):poly.material_index=mi
+    for fi in cloud_faces:me.polygons[fi].use_smooth=True
     trees.append([x,z,h])
     if i%100==0:print('Trees',i,flush=True)
 lo=q[:,:2].min(0);hi=q[:,:2].max(0)
+forest_infield=Polygon(q[ConvexHull(q[:-1,:2]).vertices,:2])
 for i in range(16000):
-    if len(trees)>=690:break
+    if len(trees)>=580:break
     x=rng.uniform(max(20,lo[0]-65),min(580,hi[0]+65));z=rng.uniform(max(20,lo[1]-65),min(580,hi[1]+65))
     d=float(np.linalg.norm(q[::3,:2]-[x,z],axis=1).min());outside=x<lo[0]-6 or x>hi[0]+6 or z<lo[1]-6 or z>hi[1]+6
     x1,x2,z1,z2=spec['pit_rectangle'];near_pits=(228<x<352 and 80<z<177)
-    if d<11.5 or near_pits or (not outside and rng.random()>.40):continue
-    if any((x-t[0])**2+(z-t[1])**2<17 for t in trees):continue
+    if d<12.5 or near_pits or forest_infield.contains_point((x,z),radius=-3):continue
+    if any((x-t[0])**2+(z-t[1])**2<22 for t in trees):continue
     if height(x,z)<2.5:continue
     tree(x,z,len(trees))
 # Trackside poles, placed outside the racing width and away from nearby lanes.
@@ -127,8 +147,8 @@ scene.render.threads_mode='FIXED';scene.render.threads=6
 scene.render.engine='CYCLES';scene.cycles.device='CPU';scene.cycles.samples=12;scene.render.resolution_x=1600;scene.render.resolution_y=1400;scene.render.resolution_percentage=100;scene.render.image_settings.file_format='PNG';scene.render.filepath=str(ROOT/'DOCUMENTATION/terrain_preview.png');scene.view_settings.view_transform='AgX'
 for image in bpy.data.images:
     if image.source=='FILE':image.pack()
-notes=bpy.data.texts.new('BUILD_STATUS');notes.write('Orlando MX v005. Estimated construction from 2026 feature order with width guidance from 2024 footage. Not surveyed. RAW is the native game terrain. Scenery FBX excludes this review terrain. Game compilation and riding status: see DOCUMENTATION/build_status.json.\n')
-bpy.ops.wm.save_as_mainfile(filepath=str(ROOT/'07_OBJECTS_SOURCE/OrlandoMX_v005.blend'))
+notes=bpy.data.texts.new('BUILD_STATUS');notes.write('Orlando MX v006. Estimated construction from 2026 feature order with width guidance from 2024 footage. Not surveyed. RAW is the native game terrain. Scenery FBX excludes this review terrain. Game compilation and riding status: see DOCUMENTATION/build_status.json.\n')
+bpy.ops.wm.save_as_mainfile(filepath=str(ROOT/'07_OBJECTS_SOURCE/OrlandoMX_v006.blend'))
 bpy.ops.render.render(write_still=True)
 # Rider-height review uses the same handedness as the compiled track.
 camera.data.type='PERSP';camera.data.lens=23;scene.render.resolution_x=1400;scene.render.resolution_y=788

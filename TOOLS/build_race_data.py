@@ -8,7 +8,7 @@ from scipy.ndimage import map_coordinates
 from scipy.spatial import cKDTree
 from scipy.optimize import minimize_scalar
 ROOT=Path(__file__).resolve().parents[1]
-NAME='orlandomx_2026_v005'
+NAME='orlandomx_2026_v006'
 
 def block(name,fields):
     return name+'\n{\n'+''.join(f' {k} = {v}\n' for k,v in fields.items())+'}\n'
@@ -71,7 +71,7 @@ def main():
     for i,e in enumerate(info['turns'][::2]):
         s=(e['arc_start']-cut)%L;side=1 if e['angle']>0 else -1;x,y,z,_=point(s,side*(e['width']/2+3));marshal+=f'marshal{i}\n{{\n pos\n {{\n x = {x:.6f}\n y = {y:.6f}\n z = {z:.6f}\n }}\n long = {s:.6f}\n}}\n'
     (release/'marshals.cfg').write_text(marshal)
-    (release/f'{NAME}.ini').write_text(f'[info]\nname=Orlando MX 2026 v005\nshort_name=Orlando MX\nlength={L:.0f}m\naltitude=20\n\n[race]\ndefaulteventlaps=5\nreflaptime=136\n\n[ui]\npic={NAME}.tga\npic_info={NAME}_map.tga\nauthor=Sir Strange / Codex\nlocation=Orlando, Florida\n\n[weather]\ncloud_prob=0.25\nrainy_prob=0.1\n\n[data]\ncode=2\n')
+    (release/f'{NAME}.ini').write_text(f'[info]\nname=Orlando MX 2026 v006\nshort_name=Orlando MX\nlength={L:.0f}m\naltitude=20\n\n[race]\ndefaulteventlaps=5\nreflaptime=136\n\n[ui]\npic={NAME}.tga\npic_info={NAME}_map.tga\nauthor=Sir Strange / Codex\nlocation=Orlando, Florida\n\n[weather]\ncloud_prob=0.25\nrainy_prob=0.1\n\n[data]\ncode=2\n')
     amb='sun_position\n{\n x = 2\n y = 10\n z = -7\n}\n'
     for name,ambient,sun,fog,density in [('clear',(.48,.53,.60),(1.0,.95,.82),(.74,.81,.87),.00045),('cloudy',(.66,.68,.72),(.26,.27,.30),(.72,.76,.82),.00065),('rainy',(.53,.56,.63),(.22,.24,.29),(.55,.59,.64),.0013)]:
         amb+=name+'\n{\n'+block(' ambient',dict(zip(['red','green','blue'],ambient)))+block(' sun_color',dict(zip(['red','green','blue'],sun)))+block(' fog',dict(density=density,**dict(zip(['red','green','blue'],fog))))+f' sky = *{name}sky.edf\n sky_rot = 0\n'+'}\n'
@@ -80,7 +80,7 @@ def main():
     common='samples_x = 2049\nsamples_z = 2049\ndata = terrain.raw\nsize_x = 600\nsize_z = 600\nscale = 18\n'
     hmf=common+'num_layers = 6\n'
     hmf+=block('layer0',dict(map='basemap.tga',repetitions=1))
-    for i,(texture,reps,mask,thick) in enumerate([('soil',110,None,.15),('prepared',130,'racing.tga',.09),('sand',155,'sand.tga',.05),('grass',100,'grass.tga',.03),('worked',130,'worked.tga',.015)],1):
+    for i,(texture,reps,mask,thick) in enumerate([('soil',110,'shoulder.tga',.15),('prepared',130,'racing.tga',.09),('sand',155,'sand.tga',.05),('grass',100,'grass.tga',.03),('worked',130,'worked.tga',.015)],1):
         text=f'layer{i}\n{{\n map = {texture}.tga\n repetitions = {reps}\n thickness = {thick}\n'
         if mask:text+=f' mask = mask_{mask}\n'
         if texture!='grass':text+=f' frame1\n {{\n  map = {texture}_wet.tga\n }}\n'
@@ -106,7 +106,7 @@ def main():
     fontpath='/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'
     try:font=ImageFont.truetype(fontpath,38);small=ImageFont.truetype(fontpath,20)
     except OSError:font=small=ImageFont.load_default()
-    dr.text((55,30),'ORLANDO MX',font=font,fill='white');dr.text((56,80),f'2026 traced layout  |  {L/1000:.2f} km model  |  v005',font=small,fill=(192,205,183));im.save(release/f'{NAME}_map.tga');im.save(ROOT/'DOCUMENTATION/track_map.png')
+    dr.text((55,30),'ORLANDO MX',font=font,fill='white');dr.text((56,80),f'2026 traced layout  |  {L/1000:.2f} km model  |  v006',font=small,fill=(192,205,183));im.save(release/f'{NAME}_map.tga');im.save(ROOT/'DOCUMENTATION/track_map.png')
     # Temporary image is replaced by the native Blender render during staging.
     if not (release/f'{NAME}.tga').exists():im.resize((1024,1024)).save(release/f'{NAME}.tga')
     print('Race data, centerlines, reset boundaries, metadata and compiler inputs generated.')

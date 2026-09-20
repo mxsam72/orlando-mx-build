@@ -3,7 +3,7 @@ from pathlib import Path
 import numpy as np
 from io_scene_fbx import parse_fbx as parse
 ROOT=Path(__file__).resolve().parents[1]
-bpy.ops.wm.open_mainfile(filepath=str(ROOT/'07_OBJECTS_SOURCE/OrlandoMX_v005.blend'))
+bpy.ops.wm.open_mainfile(filepath=str(ROOT/'07_OBJECTS_SOURCE/OrlandoMX_v006.blend'))
 root,version=parse.parse(str(ROOT/'07_OBJECTS_SOURCE/scenery.fbx'))
 vertices=[];props=[];probes=[]
 for child in root.elems:
@@ -35,3 +35,4 @@ result['compiler_z_flip_confirmed_in_v004_map']=True
 (ROOT/'DOCUMENTATION/fbx_validation.json').write_text(json.dumps(result,indent=2)+'\n')
 (ROOT/'BUILD/native_coordinate_probes.json').write_text(json.dumps({'expected_xyz_metres':(np.array(probes)*(unit_cm/100.)*np.array([1,1,-1])).tolist()},indent=2)+'\n')
 print(json.dumps(result,indent=2))
+

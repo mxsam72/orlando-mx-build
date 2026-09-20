@@ -5,7 +5,7 @@ import math,json,re,struct,hashlib
 import numpy as np
 from PIL import Image
 from scipy.ndimage import map_coordinates
-ROOT=Path(__file__).resolve().parents[1];NAME='orlandomx_2026_v005'
+ROOT=Path(__file__).resolve().parents[1];NAME='orlandomx_2026_v006'
 def main():
     info=json.loads((ROOT/'01_GIS_AERIAL/geometry.json').read_text());d=np.load(ROOT/'01_GIS_AERIAL/route.npz');q=d['q'];w=d['width'];sa=d['start'];L=info['model_lap_length_m'];cut=0.
     h=np.fromfile(ROOT/'02_HEIGHTMAP/terrain.raw',dtype='<u2').reshape(2049,2049);height=h/65535*18
@@ -54,3 +54,4 @@ def main():
     results['native_compilation']='pending';results['in_game_riding']='not performed';results['geographic_accuracy']='unverified construction estimate'
     (ROOT/'DOCUMENTATION/source_validation.json').write_text(json.dumps(results,indent=2)+'\n');print(json.dumps(results,indent=2))
 if __name__=='__main__':main()
+
