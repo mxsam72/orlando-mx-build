@@ -66,17 +66,29 @@ def main():
     results['trh']=run(terrain,['track.tht',trhpath,'trh_params.ini'],'terrained_trh',1200);required(trhpath,2049*2049*2,b'TRH')
     # Verify scenery's actual compiled coordinates, catching the old FBX Z inversion.
     probes=json.loads((ROOT/'BUILD/native_coordinate_probes.json').read_text())['expected_xyz_metres']
-    mapbytes=mappath.read_bytes();matches=[]
+    mapbytes=mappath.read_bytes();matches=[];probe_errors=[];tolerance=.0001
     for pos in probes:
         found=mapbytes.find(struct.pack('<3f',*pos))>=0
+        error=0.0 if found else None
         if not found:
-            px=struct.pack('<f',pos[0]);offset=mapbytes.find(px)
-            while offset>=0 and offset+12<=len(mapbytes):
-                got=struct.unpack_from('<3f',mapbytes,offset)
-                if max(abs(a-b) for a,b in zip(pos,got))<.0001:found=True;break
-                offset=mapbytes.find(px,offset+1)
+            # FBX centimetres -> EDF metres can round X by one float32 ULP.
+            # Searching only exact X bytes incorrectly rejected valid vertices.
+            # Search all positive float32 X encodings in the SAME 0.1 mm
+            # tolerance already applied to Y and Z, then check all three axes.
+            assert pos[0]>tolerance
+            lo=struct.unpack('<I',struct.pack('<f',pos[0]-tolerance))[0]
+            hi=struct.unpack('<I',struct.pack('<f',pos[0]+tolerance))[0]
+            for bits in range(lo,hi+1):
+                px=struct.pack('<I',bits);offset=mapbytes.find(px)
+                while offset>=0 and offset+12<=len(mapbytes):
+                    got=struct.unpack_from('<3f',mapbytes,offset)
+                    difference=max(abs(a-b) for a,b in zip(pos,got))
+                    if difference<tolerance:found=True;error=difference;break
+                    offset=mapbytes.find(px,offset+1)
+                if found:break
         matches.append(found)
-    coordinate_qa={'probes':len(probes),'matches':sum(matches),'expected_positive_game_xz':all(p[0]>0 and p[2]>0 for p in probes)}
+        probe_errors.append(error)
+    coordinate_qa={'probes':len(probes),'matches':sum(matches),'expected_positive_game_xz':all(p[0]>0 and p[2]>0 for p in probes),'tolerance_metres':tolerance,'probe_max_errors_metres':probe_errors}
     (LOG/'native_coordinates_validation.json').write_text(json.dumps(coordinate_qa,indent=2)+'\n')
     if sum(matches)<int(len(matches)*.8):raise RuntimeError('Compiled scenery coordinate mismatch; do not package.')
     del mapbytes
@@ -108,6 +120,5 @@ if __name__=='__main__':
     try:main()
     except Exception as e:
         LOG.mkdir(exist_ok=True);(LOG/'native_build_failure.txt').write_text(str(e)+'\n');raise
-
 
 
