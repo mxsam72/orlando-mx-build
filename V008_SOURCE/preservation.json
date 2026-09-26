@@ -1,0 +1,54 @@
+[
+  {
+    "path": "02_HEIGHTMAP/terrain.raw",
+    "sha256": "4a8a569a1cc37db2ed10a61d83b71f4821b005a5f188ed7b3f590be55017e57d"
+  },
+  {
+    "path": "02_HEIGHTMAP/terrain_16bit.png",
+    "sha256": "5d64c238f0298b9d92dac9ac49078f6a9d69bb6911909d4bf90a59db6fd98d8d"
+  },
+  {
+    "path": "02_HEIGHTMAP/jump_profiles.json",
+    "sha256": "73840472b0aa27971c175c98a442578820d7cfc937f5097836f131e61334c759"
+  },
+  {
+    "path": "02_HEIGHTMAP/height_metres.npy",
+    "sha256": "c3850839fd5cba340876be5539a4c1461ed39abb6b38b4ba36cd6bcb7f31b566"
+  },
+  {
+    "path": "02_HEIGHTMAP/centerline_elevation.csv",
+    "sha256": "35152eea7e2f9e3d7669b2ea7be562efb1a0ddbe6fec7be677c7851a3fa89dbd"
+  },
+  {
+    "path": "09_TRACKED/main.tcl",
+    "sha256": "74e0ea3518613dbd1359af8cd76a6cf0c29f0043fb9746c45aa2372359c4fe07"
+  },
+  {
+    "path": "09_TRACKED/race_positions.json",
+    "sha256": "45deff3bc054e5af0d3ae1c98e46fe7d89e2ec6f83e2f3626e4b02a6eed7a18e"
+  },
+  {
+    "path": "09_TRACKED/start.tcl",
+    "sha256": "20014e8528b26040bbf6ba2950bcfb3ee6b7a5a3b76b21e4efd182e5c4aa3314"
+  },
+  {
+    "path": "07_OBJECTS_SOURCE/OrlandoMX_v006.blend",
+    "sha256": "d1ce4b1551f1cfb61d95e7880c161df07fd50bad33bc6d5e6e386d9e96bf8c04"
+  },
+  {
+    "path": "07_OBJECTS_SOURCE/scene_spec.json",
+    "sha256": "1c55bd6040f7b66d265e09cf5c728f46380566941c81b0bf925f5c83aea2717f"
+  },
+  {
+    "path": "07_OBJECTS_SOURCE/scenery.fbx",
+    "sha256": "c2ff41f03733e14da464c6a04ed90bc10145a51c9977dde0769623830b31cfac"
+  },
+  {
+    "path": "BUILD/track.tht",
+    "sha256": "04aa0b587248caa8fb822c8fa8ed972bd3a919686def52a3639d71fc40cfbc9e"
+  },
+  {
+    "path": "BUILD/native_coordinate_probes.json",
+    "sha256": "c42ba9586194d451d48c76a4796e1f54b8466fc5d9c46d5014590af67008ec0c"
+  }
+]
