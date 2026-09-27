@@ -14,7 +14,7 @@
     "S10",
     "S11"
   ],
-  "native_compilation": false,
+  "native_compilation": true,
   "in_game_riding": false,
   "raw_sha256": "bf6c6d335ff1f555555e4d66c9db5d5ed6d7f07cede21bc39167ad31d20a0f64",
   "height_range_m": [
@@ -33,7 +33,7 @@
   "finite": true,
   "raw_bytes": 8396802,
   "raw_png_identical": true,
-  "outer_terrain_max_delta_m": 0.0,
+  "outer_terrain_max_delta_m": 0,
   "route_unchanged": true,
   "loop_closure_m": 8.039928421361173e-12,
   "effective_width_range_m": [
@@ -121,7 +121,20 @@
     }
   ],
   "centerline_max_longitudinal_grade": 0.3248527072059133,
-  "native_loop_height_difference_m": 0.0,
+  "native_loop_height_difference_m": 0,
   "visual_review": "Authoring plots, not game screenshots",
-  "geometry_checks_pass": true
+  "geometry_checks_pass": true,
+  "native_build": {
+    "workflow_name": "Compile Orlando MX v009",
+    "workflow_run_id": 36320227995,
+    "head_commit": "13e5f09511b3597a5f4b2208b46fbfb1a72622ce",
+    "conclusion": "success",
+    "pkz_artifact_name": "OrlandoMX_2026_v009-PKZ",
+    "pkz_artifact_id": 10931584829,
+    "pkz_filename": "OrlandoMX_2026_v009.pkz",
+    "pkz_bytes": 143332317,
+    "pkz_sha256": "822bfe383d27de718e77e2c150703884f93f018a15e8f706c23d9fb22cccdb8d",
+    "evidence_artifact_name": "OrlandoMX_v009-Evidence",
+    "evidence_artifact_id": 10931968593
+  }
 }
