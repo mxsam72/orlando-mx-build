@@ -7,3 +7,26 @@ BUILD/native_tools/
 08_OBJECTS_GAME/*.edf
 **/__pycache__/
 *.blend1
+
+# Reconstructed authoring/build products; v009 sources stay tracked.
+01_GIS_AERIAL/
+02_HEIGHTMAP/*.raw
+02_HEIGHTMAP/*.png
+02_HEIGHTMAP/*.npy
+02_HEIGHTMAP/*.csv
+03_MASKS/
+04_TEXTURES/
+05_NORMALS/
+06_SHADERS/
+07_OBJECTS_SOURCE/
+09_TRACKED/
+12_RELEASE/
+BUILD/v009_baseline/
+BUILD/v009_cache/
+V008_VISUAL_OVERLAY/
+V008B_BACKUP/
+V008B_EVIDENCE/
+V009_OUTPUT/
+V007_SOURCE/scenery_patch.json
+V008_SOURCE/*.png
+DOCUMENTATION/*.log

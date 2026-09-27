@@ -1,0 +1,684 @@
+You are taking over the Orlando MX 2026 track project for MX Bikes. Your job is to perform the actual v009 geometry rebuild and leave the project in a state that can be compiled and ridden. Do not stop at analysis, recommendations, screenshots, or a design document. Use the real GoPro footage, the current game test lap, the existing source, and the detailed section specification to make the geometry changes.
+
+============================================================
+1. REPOSITORY / VERSION CONTROL — USE THESE EXACT VALUES
+============================================================
+
+Repository:
+mxsam72/orlando-mx-build
+
+Working branch:
+rebuild-v009-geometry
+
+Verified starting commit:
+1bdf86d67796bf2450941b60cf4fdec0433ecd43
+
+This commit is the verified v008b baseline lineage and contains:
+- the proven v007/v008 source pipeline,
+- all 21 verified BUILD_V008 overlay parts,
+- BUILD_V008/manifest.json,
+- BUILD_V008B_LOCAL.bat,
+- TOOLS/v008b_visual_fix.py,
+- TOOLS/prepare_v008b_release.py,
+- TOOLS/build_windows_v008b.py.
+
+Do NOT create the rebuild-v009-geometry branch again. It already exists.
+Do NOT overwrite, reset, or damage v007, v008, or v008b.
+Do NOT rewrite history on any stable branch.
+Commit v009 work only to rebuild-v009-geometry and checkpoint frequently.
+
+Before editing anything:
+1. Confirm the current branch is rebuild-v009-geometry.
+2. Confirm the branch descends from commit 1bdf86d67796bf2450941b60cf4fdec0433ecd43.
+3. Confirm BUILD_V008 contains overlay.zip.part00 through overlay.zip.part20 plus manifest.json.
+4. Confirm the v008b scripts listed above are present.
+5. Create a first checkpoint/status document recording what was verified.
+
+============================================================
+2. REFERENCE FILES — SOURCE PRIORITY
+============================================================
+
+Primary real-life reference video:
+orlando mx gopro for mxbikes(2).mp4
+(If the environment exposes the earlier filename variant "orlando mx gopro for mxbikes(1).mp4", treat it as the same real GoPro reference only after verifying it is the intended file.)
+
+Current game-track test video:
+test v008 mxbikes.mp4
+(Older copies may be named "text v008 mxbikes.mp4". Use the newest user-supplied v008 test lap when both exist.)
+
+Detailed reconstruction specification:
+OrlandoMX_v009_Real_Track_Rebuild_Spec_2026-09-26.md
+or the equivalent DOCX.
+
+The real GoPro footage is the PRIMARY geometry authority.
+
+The current MX Bikes video is NOT a geometry authority. It shows the current build and helps identify what is wrong.
+
+The written S01-S14 specification is the construction brief and should be followed, but you must still inspect the videos yourself before changing terrain.
+
+============================================================
+3. CRITICAL TIMING / SYNCHRONIZATION RULE
+============================================================
+
+The user's GoPro-to-game times are APPROXIMATE SEARCH NEIGHBORHOODS, not frame-perfect sync points:
+
+A: real ~0:00  -> game ~1:50
+B: real ~0:20  -> game ~2:14
+C: real ~0:44  -> game ~0:47-0:48
+D: real ~0:58  -> game ~0:54
+E: real ~1:10  -> game ~1:03
+F: real ~1:19  -> game ~1:19
+G: real ~1:35  -> game ~1:35
+H: real ~2:04  -> game ~1:52
+I: real ~2:12-2:20 -> game ~2:03
+
+DO NOT:
+- force a global time offset,
+- assume same timestamp means same exact physical point,
+- reject a section match merely because the screenshot is visually different,
+- interpolate exact geometry from video timing alone.
+
+The current game track is already known to differ from the real track. A mismatch may be exactly the error that needs fixing.
+
+Identify corresponding sections by TOPOLOGY:
+- turn direction and sequence,
+- jump / crest / roller order,
+- approach -> face -> crest -> landing -> corner relationships,
+- terrain rise and fall,
+- utility-pole positions,
+- vegetation proximity,
+- what comes immediately before and after a feature,
+- whether the rider is braking, accelerating, loading suspension, or airborne.
+
+Use short video windows around each anchor, normally +/-5 to 10 seconds.
+
+============================================================
+4. FIRST REQUIRED DELIVERABLE: SECTION-TO-STATION MAP
+============================================================
+
+Before making large terrain edits, create:
+
+V009_SOURCE/section_station_map.json
+
+Map every real-track section S01-S14 to the current route stationing in route.npz / centerline.
+
+For every section include at least:
+- section_id
+- real_video_start_s
+- real_video_end_s
+- current_game_search_window_s
+- route_station_start_m
+- route_station_end_m
+- confidence: high / medium / low
+- landmark_basis
+- preceding_feature
+- principal_feature
+- following_feature
+- notes_on_current_mismatch
+
+Also create a human-readable:
+DOCUMENTATION/v009_section_station_map.md
+
+Do not pretend uncertain boundaries are exact. Mark uncertainty.
+
+Create a plotted centerline / plan-view image with S01-S14 labels so the mapping can be visually checked before terrain reconstruction.
+
+============================================================
+5. BUILD PHILOSOPHY — THIS IS THE MOST IMPORTANT TECHNICAL RULE
+============================================================
+
+Do NOT treat v009 as "adjust the existing jump heights."
+
+The real Orlando MX footage shows CONTINUOUS MOTOCROSS TERRAIN.
+
+The current build too often behaves like:
+
+flat -> isolated mound -> flat -> broad smooth turn -> flat
+
+The v009 target should behave like:
+
+approach undulation
+-> braking terrain
+-> progressive face
+-> rounded crest/lip
+-> landing
+-> berm/crossfall
+-> compact exit
+-> roller/rise
+-> next obstacle
+
+Each real section should be built as a TERRAIN SECTOR.
+
+A sector may alter:
+- local route/centerline alignment,
+- longitudinal elevation,
+- cross-track banking,
+- outside berm height,
+- inside rut/channel depth,
+- track width,
+- shoulder falloff,
+- braking chop,
+- acceleration rollers,
+- jump toe,
+- jump face length and curvature,
+- lip/crest character,
+- tabletop/gap only where supported by footage,
+- landing position,
+- landing grade,
+- landing runout,
+- transition into the next corner.
+
+The existing J01-J12b / jump_profiles.json entries are editable scaffolding, NOT ground truth.
+Move, replace, merge, split, or reclassify them if the footage requires it.
+
+============================================================
+6. TERRAIN AUTHORING METHOD
+============================================================
+
+Use the existing reproducible heightmap pipeline rather than hand-editing compiled binaries.
+
+Prefer route-relative / Frenet-style sector construction:
+- station s along the route,
+- lateral offset t from centerline,
+- smooth longitudinal windows,
+- smooth cross-track profiles,
+- C1/C2-continuous blends into untouched terrain.
+
+Keep terrain outside the affected track corridor stable unless a real surrounding elevation change is needed.
+
+For berms:
+- create actual collision/heightmap banking,
+- keep the inside preferred line lower,
+- progressively raise the outside half,
+- use a broad supporting berm rather than a thin vertical wall,
+- taper banking in before apex and taper out after exit,
+- allow multiple rideable lines.
+
+For ruts:
+- use shallow physical grooves only where appropriate,
+- do not make deep wheel-catching trenches,
+- align them with actual travel direction,
+- supplement them with visual masks instead of relying on texture alone.
+
+For jumps:
+- give each major obstacle a unique profile,
+- use smooth toe transitions,
+- generally use progressive faces,
+- use rounded/controlled lip transitions,
+- use real downslope landings,
+- avoid repeated identical 7-8 m faces and generic flat decks,
+- avoid supercross-sharp lips unless the GoPro clearly supports them.
+
+Starting construction envelopes may be used only as NON-SURVEYED authoring estimates:
+- effective shaped racing width often ~7-10 m,
+- visually cleared dirt can be wider, roughly ~10-16 m where appropriate,
+- major berm rise roughly ~0.5-1.3 m where the footage supports a strong wall,
+- meaningful bank angles roughly ~8-18 degrees,
+- small crest/roller local relief roughly ~0.7-1.4 m,
+- medium jump roughly ~1.5-2.5 m,
+- major signature feature roughly ~2.3-3.5 m,
+- jump faces can range roughly ~7-18 m,
+- landings/runouts may be ~10-25 m.
+
+These are starting ranges only. They are NOT measured dimensions. The GoPro proportions, riding rhythm, and in-game validation take precedence.
+
+============================================================
+7. SECTION-BY-SECTION REBUILD TARGET
+============================================================
+
+Read the full OrlandoMX_v009_Real_Track_Rebuild_Spec_2026-09-26 before editing. The following is the required operational summary.
+
+S01 — Opening fast straight / low rolling crest
+Real: ~0:00-0:12
+Goal:
+- keep it fast,
+- remove dead-flat runway feeling,
+- add low coherent rolling elevation,
+- narrow the effective riding corridor using shoulders/ruts,
+- use a low rounded crest, not a tabletop,
+- blend directly into S02.
+
+S02 — First major carved sweeper
+Real: ~0:12-0:22
+Goal:
+- make the corner itself a major physical feature,
+- tighten the effective radius,
+- lower the inside groove,
+- substantially raise the outside half into a broad supporting berm,
+- carry braking chop into entry,
+- taper bank smoothly on exit,
+- physically support multiple lines.
+
+S03 — Corner exit / linked crest sequence
+Real: ~0:22-0:34
+Goal:
+- compact acceleration zone,
+- first low roller/crest,
+- second stronger rise,
+- keep suspension active between them,
+- no flat reset,
+- begin next crossfall before the runout fully finishes.
+
+S04 — Long bowl-like banked corner
+Real: ~0:34-0:46
+Goal:
+- make this turn the dominant feature,
+- reduce any oversized isolated-tabletop character,
+- build a long outside berm with varying height,
+- deepest/strongest banking near the loaded middle/apex,
+- carve 2-3 shallow physical grooves,
+- compact the exit toward S05.
+
+S05 — Linked turn complex into clearly airborne jump
+Real: ~0:46-0:58
+Goal:
+- linked direction changes with heavy rut character,
+- short gap between turn exit and takeoff,
+- progressive jump face,
+- stronger upper third,
+- rounded lip/short crest,
+- real downslope landing,
+- landing should already point the bike toward S06.
+
+S06 — Landing / rough acceleration / next berm
+Real: ~0:58-1:08
+Goal:
+- long progressive landing runout,
+- coherent acceleration/braking roughness,
+- no broad smooth plateau,
+- start the next corner banking early,
+- build raised outer berm + lower inside line,
+- narrow the effective usable lane.
+
+S07 — Major elevated transition / jump
+Real: ~1:08-1:18
+Goal:
+- restore the missing/understated vertical event,
+- make it clearly visible from cockpit approach,
+- use a longer meaningful face than a low generic roller,
+- narrow the corridor using terrain shoulders,
+- vegetation/edges should feel closer,
+- landing crossfall should feed directly into S08.
+
+S08 — Deep carved berm / compact exit
+Real: ~1:18-1:30
+Goal:
+- treat S07 and S08 as ONE compound jump-to-berm system,
+- substantially tighten the corner,
+- raise the outside wall relative to the preferred groove,
+- create inside/middle/outside viable lines,
+- shorten the exit,
+- make the next jump approach begin immediately.
+
+S09 — SIGNATURE MAJOR JUMP
+Real: ~1:30-1:41
+This is the highest-priority single obstacle.
+
+The GoPro shows a large face that dominates the forward view around ~1:34-1:36.
+Current v008/v008b is far too low/flat here.
+
+Goal:
+- start the approach shortly after S08's berm exit,
+- build a long progressive face,
+- strengthen the upper face without making an artificial sharp kicker,
+- use a rounded, purposeful crest/lip,
+- make the face obscure much of the horizon on approach,
+- create a distinct downslope landing,
+- continue directly into the next direction change,
+- reshape the WHOLE sector rather than merely adding height to an existing mound.
+
+A rider familiar with the real track should recognize S09 from the approach alone.
+
+S10 — Landing corridor / tree-side acceleration / berm
+Real: ~1:41-1:54
+Goal:
+- landing should narrow into a corridor,
+- add one or two low waves after touchdown,
+- vegetation should visually constrain the lane,
+- braking chop/crossfall begins before the next berm,
+- build the next berm physically.
+
+S11 — Berm exit / fast tree-lined acceleration
+Real: ~1:54-2:05
+Goal:
+- maintain high speed,
+- retain subtle longitudinal relief,
+- do not flatten the setup,
+- use slight crown/crossfall,
+- gradually build elevation toward S12,
+- preserve useful v008b vegetation placement where it agrees with footage.
+
+S12 — Utility-pole approach / broad ramp
+Real: ~2:05-2:16
+This is a high-confidence landmark sector.
+
+Goal:
+- utility-pole relationship is a hard alignment clue,
+- build a rolling/slightly directional approach,
+- no flat runway,
+- make the ramp broad and long,
+- distribute vertical rise over distance,
+- rounded crest rather than blocky tabletop,
+- proper downhill landing,
+- landing should already orient toward S13.
+
+S13 — Post-ramp direction change / second crest
+Real: ~2:16-2:28
+Goal:
+- begin turn geometry during S12 landing/runout,
+- build raised outside shoulder/berm and lower inside groove,
+- place the second crest close to corner exit,
+- make it clearly smaller than S09,
+- eliminate neutral flat space between landing -> turn -> crest.
+
+S14 — Rough finishing straight / final sweeper
+Real: ~2:28-2:38
+Goal:
+- coherent directional roughness, not random noise,
+- broad worked lines,
+- physically bank the final sweeper,
+- make final turn less smooth/planar,
+- blend seamlessly back into S01 with no height seam, centerline kink, or width reset.
+
+============================================================
+8. PRIORITY ORDER
+============================================================
+
+Do not try to modify the whole lap blindly in one giant step.
+
+Use this reconstruction order unless your section mapping provides strong contrary evidence:
+
+PRIORITY 1:
+S09 signature major jump.
+
+PRIORITY 2:
+S07 + S08 compound elevated transition -> landing -> deep berm.
+
+PRIORITY 3:
+S04 + S05 + S06 turn-dominated complex and jump/landing sequence.
+
+PRIORITY 4:
+S12 + S13 utility-pole ramp -> landing -> turn -> second crest.
+
+PRIORITY 5:
+S01 + S02 + S03 opening straight / sweeper / linked crests.
+
+PRIORITY 6:
+S10 + S11 and S14 blending / closure.
+
+After each priority group:
+- save a checkpoint commit,
+- regenerate diagnostics,
+- verify no unintended terrain damage,
+- compare sector sequence against the GoPro.
+
+============================================================
+9. V008B VISUAL BASELINE — DO NOT LOSE IT
+============================================================
+
+v008b's improved dirt color and reduced/cleaned tree wall are approved improvements.
+
+The v009 branch contains the reproducible v008 visual overlay and deterministic v008b correction workflow.
+
+In a clean working copy, materialize the baseline using the existing workflow. At minimum understand and preserve:
+- TOOLS/unpack_inputs.py
+- TOOLS/prepare_v008_local.py
+- TOOLS/v008b_visual_fix.py
+
+Do NOT apply v008b_visual_fix.py twice to already-corrected textures/scenery.
+Detect state using the evidence/backups/hashes or rebuild from the clean verified baseline before applying it.
+
+Preserve:
+- darker/less-orange dirt,
+- worked/prepared dirt differentiation,
+- reduced/re-scaled tree wall.
+
+After heightmap changes:
+- rebind scenery to the new terrain,
+- inspect trees, poles, fences, and trackside objects for floating/buried placement,
+- update visual masks if the shaped racing corridor has moved,
+- preserve physics materials unless the actual racing corridor requires an update.
+
+============================================================
+10. REQUIRED SOURCE / SCRIPT STRUCTURE FOR V009
+============================================================
+
+Create a clear v009 source area, for example:
+
+V009_SOURCE/
+    section_station_map.json
+    baseline_geometry.json
+    baseline_route.npz
+    baseline_jump_profiles.json
+    v009_geometry_spec.json
+    [other generated geometry data]
+
+Create reproducible tools rather than one-off binary edits, for example:
+
+TOOLS/
+    analyze_v009_sections.py
+    rebuild_v009_geometry.py
+    qa_v009_geometry.py
+    prepare_v009_release.py
+    build_windows_v009.py
+
+Naming can vary if the repository has a better convention, but the rebuild must be reproducible from source.
+
+If route alignment needs local correction:
+- preserve untouched route segments,
+- edit only justified local sectors,
+- maintain smooth tangent continuity,
+- regenerate race/start data if needed,
+- explicitly document every centerline change.
+
+============================================================
+11. REQUIRED QA / EVIDENCE
+============================================================
+
+Create:
+
+DOCUMENTATION/v009_geometry_changes.md
+DOCUMENTATION/v009_geometry_validation.json
+DOCUMENTATION/v009_section_station_map.md
+DOCUMENTATION/v009_ride_test_checklist.md
+
+Also create visual QA artifacts:
+- plan-view route with S01-S14 labels,
+- before/after centerline elevation profile,
+- before/after terrain-difference image,
+- longitudinal profiles through major jumps,
+- representative cross-sections through major berms,
+- especially S08, S09, S12, and final sweeper.
+
+Validation must check at least:
+- terrain data is finite,
+- expected height range is respected,
+- no accidental full-map offset,
+- no seams at sector boundaries,
+- no impossible grade spikes,
+- smooth transitions into untouched terrain,
+- track width does not collapse,
+- centerline remains valid,
+- race/start/pit data remain valid,
+- scenery rebind is sane,
+- visual masks still cover the intended racing corridor,
+- v008b visual improvements remain present.
+
+============================================================
+12. NATIVE MX BIKES BUILD / PKZ
+============================================================
+
+The goal is a rideable:
+
+12_RELEASE/OrlandoMX_2026_v009.pkz
+
+Use the official PiBoSo toolchain already used by the project:
+- fbx2edf where required,
+- terrained_map,
+- terrained_trh,
+- tracked_merge,
+- existing validated packaging conventions.
+
+Do not overwrite earlier PKZs.
+
+If your environment can execute the Windows PiBoSo binaries:
+- compile v009,
+- validate the resulting MAP/TRH,
+- package the PKZ,
+- record file size and SHA-256.
+
+If your environment CANNOT run the native Windows binaries:
+DO NOT STOP THE PROJECT THERE.
+
+Instead:
+1. finish all source/geometry work,
+2. finish QA that can be performed cross-platform,
+3. generate a one-click BUILD_V009_LOCAL.bat,
+4. make it restore/materialize the correct inputs,
+5. apply v008b visuals exactly once,
+6. apply the v009 geometry reconstruction,
+7. rebind scenery,
+8. prepare the v009 release folder,
+9. invoke the official PiBoSo Windows tools,
+10. package OrlandoMX_2026_v009.pkz,
+11. emit clear validation and failure messages.
+
+The local build should require as little manual intervention as possible.
+
+============================================================
+13. RIDE-TEST CHECKLIST
+============================================================
+
+Create a checklist keyed to S01-S14.
+
+The most important ride-test questions:
+
+S01:
+Does the straight feel active/rolling instead of dead flat?
+
+S02:
+Does the berm physically support the bike?
+
+S03:
+Do the linked crests flow without a flat reset?
+
+S04:
+Is the berm the defining feature rather than a giant mound?
+
+S05:
+Does the jump grow naturally out of the linked turns?
+
+S06:
+Does landing immediately transition into rough acceleration/corner setup?
+
+S07:
+Is the missing/weak vertical event now obvious?
+
+S08:
+Does the deep berm feel compact and physically carved?
+
+S09:
+Does the signature jump dominate the approach like the GoPro?
+
+S10:
+Does the landing enter a constrained corridor and quickly reach the next berm?
+
+S11:
+Does the fast setup remain subtly rolling rather than flat?
+
+S12:
+Does the utility-pole sector read as rolling approach -> long ramp -> crest -> landing?
+
+S13:
+Does landing -> turn -> second crest occur as one connected sequence?
+
+S14:
+Does the final rough sweeper connect seamlessly back to S01?
+
+The user will provide a new in-game v009 test lap after compiling/riding. Preserve enough documentation that the next iteration can compare that video directly with the real GoPro.
+
+============================================================
+14. THINGS YOU MUST NOT DO
+============================================================
+
+Do NOT:
+- overwrite v007, v008, or v008b,
+- work on the wrong branch,
+- force exact time synchronization,
+- preserve an incorrect J-number merely because it exists,
+- make every jump uniformly larger,
+- use one generic tabletop recipe,
+- turn the course into supercross,
+- simulate major berms with textures only,
+- leave broad flat reset zones where the GoPro shows continuous terrain,
+- fabricate surveyed measurements,
+- change unrelated scenery/physics without need,
+- declare completion after only writing a plan,
+- declare completion if the geometry scripts have not actually been created,
+- silently skip native compilation; either compile or provide the complete one-click local build fallback,
+- delete working prior versions.
+
+============================================================
+15. CHECKPOINT / COMMUNICATION REQUIREMENTS
+============================================================
+
+Work in explicit phases and commit after each meaningful milestone.
+
+Recommended commits:
+
+1. "v009: map real S01-S14 sections to route stations"
+2. "v009: rebuild S09 signature jump sector"
+3. "v009: rebuild S07-S08 jump and berm complex"
+4. "v009: rebuild S04-S06 corner and jump complex"
+5. "v009: rebuild S12-S13 utility-pole ramp sequence"
+6. "v009: rebuild remaining sections and lap closure"
+7. "v009: rebind scenery and update visual masks"
+8. "v009: add geometry QA and ride-test documentation"
+9. "v009: prepare native/local build and release"
+
+Do not bundle the whole project into one irreversible commit.
+
+After each major geometry group, report:
+- which S-sections changed,
+- route station ranges modified,
+- centerline changes if any,
+- jump/berm parameters changed,
+- maximum terrain raise/lower,
+- QA result,
+- commit SHA.
+
+============================================================
+16. DEFINITION OF DONE
+============================================================
+
+v009 is NOT done merely because it compiles.
+
+A successful v009 should satisfy all of the following:
+
+1. The sequence of major jumps and corners is recognizably the same as the GoPro.
+2. Corners have real physical banking/crossfall.
+3. The course no longer feels like isolated jumps on a flat plane.
+4. S09 has the large visually dominant signature jump missing from v008.
+5. S07-S08 behaves as a connected jump/landing/deep-berm system.
+6. S04-S06 is more corner-dominated and organically rolling, not centered on an oversized isolated mound.
+7. S12-S13 matches the utility-pole corridor's rolling approach, broad ramp, landing, immediate turn, and next crest.
+8. Effective racing width changes naturally even when cleared dirt remains broad.
+9. Each major obstacle has individual character.
+10. v008b dirt/tree improvements are preserved.
+11. The build remains stable and playable in MX Bikes.
+12. A separate OrlandoMX_2026_v009.pkz is produced, OR a complete verified one-click local build is provided if native Windows compilation is unavailable in the current environment.
+
+============================================================
+17. START NOW
+============================================================
+
+Begin by:
+1. checking out / verifying rebuild-v009-geometry,
+2. confirming the verified baseline commit lineage,
+3. reading OrlandoMX_v009_Real_Track_Rebuild_Spec_2026-09-26,
+4. examining both supplied videos,
+5. building V009_SOURCE/section_station_map.json,
+6. creating the S01-S14 plan-view mapping,
+7. then implementing the geometry starting with S09.
+
+Do not ask the user to re-explain prior project history that is already encoded here or in the repository/specification. Make conservative assumptions where evidence is weak, record those assumptions, preserve reversibility, and keep working toward a testable v009 track.

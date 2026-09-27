@@ -1,0 +1,21 @@
+{
+  "branch": "rebuild-v009-geometry",
+  "baseline_commit": "1bdf86d67796bf2450941b60cf4fdec0433ecd43",
+  "baseline_tree": "0f42d16ed3dc1dd731e82e829d0c594a3e6e24d5",
+  "terrain_sha256": "4a8a569a1cc37db2ed10a61d83b71f4821b005a5f188ed7b3f590be55017e57d",
+  "scenery_sha256": "36e532eefa2eaac4d3c53e9a66fa8e17865f61a61ef8d9ffd8585b950ef969ee",
+  "texture_sha256": {
+    "soil.tga": "b44a37a1ee469a353b8aca5c1307043425c4a74a01b8644b0af1b5fb090fc339",
+    "soil_wet.tga": "46a01619e0c17a477ba748d49cf76547d4550e3086116d4d6c8caddc8c1383f4",
+    "prepared.tga": "06b5ed2ef7652b851c6bbc86a9e8dff1f35a4ac2f018018fe92eada5941e390e",
+    "prepared_wet.tga": "928df9ffa5aaec493efa40df7f0495c42f53c77fe567e2ee16d4ff636cec97e0",
+    "worked.tga": "698f7310c58efd5f5944ecee7806fe743511ee249a96c820770406f1b8fa8536",
+    "worked_wet.tga": "38d2a7871756dce6679eb71bc23ab7358df0d4c3435968d9dd987eb8309bfb17",
+    "grass.tga": "f80de11fd3f3fb4d5d09dbad0deafc39014caf7d8b1d00e1fd5c8516425737dc"
+  },
+  "route_sha256": "60f980a5e5d0968d89b68f5cdf712d9bfdfb5627aa66ccfb701b95eaa67febe2",
+  "overlay_parts": 21,
+  "visual_correction_applications": 1,
+  "native_compilation": false,
+  "in_game_test": false
+}
