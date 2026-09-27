@@ -34,3 +34,7 @@ DOCUMENTATION/*.log
 BUILD/v009_work/
 BUILD/v009_stage/
 .venv-v009/
+
+DOCUMENTATION/v009_qa/
+BUILD/v009_source_build.log
+BUILD/v009_sections_review_*.png

@@ -15,3 +15,7 @@ Activated S01–S03, including repeat observations S12–S13 and the shared S14 
 ## Checkpoint 5 — full-lap geometry
 
 Activated the remaining S10–S11 physical sectors. All S01–S14 reference windows are now covered, with S12–S14 represented by their repeat-sector aliases. Final encoded heightmap passes the strict full-lap grade gate: maximum changed-terrain grade 0.77953, racing-corridor grade 0.56436, zero newly excessive grade nodes, zero outer-corridor delta and zero native loop height difference. The horizontal route remains unchanged. Native compilation, scenery integration and in-game testing are separate subsequent checks.
+
+## Source integration — ready for native compile
+
+The full seven-stage source pipeline completed successfully. Scenery rebind changed 179 models vertically while preserving 606,512 total vertices, X/Z coordinates, topology and materials. Racing-mask mean core alpha is 0.96; outside-corridor alpha is unchanged. Pit height delta is zero; maximum sampled start-lane change is 0.03195 m. Raw heightmap hash is reproduced across runs. The one-click Windows launcher and separate Windows CI workflow compile and package only v009. Native output and in-game ride checks remain pending at this checkpoint.

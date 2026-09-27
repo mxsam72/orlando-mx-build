@@ -1,0 +1,52 @@
+name: Compile Orlando MX v009
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v009-geometry]
+    paths:
+      - 'V009_SOURCE/**'
+      - 'TOOLS/**'
+      - 'BUILD_V009_LOCAL.bat'
+      - 'requirements-v009.txt'
+      - '.github/workflows/build-v009.yml'
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned geometry dependencies
+        run: python -m pip install -r requirements-v009.txt
+      - name: Rebuild and validate v009, compile official native formats and package
+        run: python TOOLS/build_v009.py
+      - name: Upload separate v009 package
+        uses: actions/upload-artifact@v7
+        with:
+          name: OrlandoMX_2026_v009-PKZ
+          path: |
+            12_RELEASE/OrlandoMX_2026_v009.pkz
+            12_RELEASE/OrlandoMX_2026_v009.pkz.sha256
+            12_RELEASE/OrlandoMX_v009_Validation.json
+            12_RELEASE/Install_v009.txt
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 0
+      - name: Upload v009 build evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: OrlandoMX_v009-Evidence
+          path: |
+            DOCUMENTATION/*.log
+            DOCUMENTATION/*validation.json
+            DOCUMENTATION/*failure.txt
+            DOCUMENTATION/track_code.txt
+            DOCUMENTATION/v009_*.md
+            DOCUMENTATION/v009_qa/**
+            DOCUMENTATION/v009_checkpoints/**
+          retention-days: 90

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Section authoring views from encoded terrain. These are not in-game captures."""
 from pathlib import Path
-import json,numpy as np
+import json,os,numpy as np
 from scipy.ndimage import map_coordinates
 import matplotlib
 matplotlib.use('Agg')
@@ -28,6 +28,12 @@ def main():
   axs[1].set(xlabel='Distance from mapped section start (m)',ylabel='Terrain height (m)',title='Encoded longitudinal lines');axs[1].grid(alpha=.2);axs[1].legend(fontsize=8)
   repeated=' / repeated physical sector' if int(sec['section_id'][1:])>11 else ''
   fig.suptitle(f"{sec['section_id']}{repeated} — authoring view; in-game ride test pending",fontsize=12)
-  fig.savefig(out/(sec['section_id']+'.png'),dpi=135);plt.close(fig)
+  destination=out/(sec['section_id']+'.png')
+  with destination.open('wb') as fp:
+   fig.savefig(fp,format='png',dpi=135);fp.flush();os.fsync(fp.fileno())
+  plt.close(fig)
+ from PIL import Image
+ for sec in sectors:
+  with Image.open(out/(sec['section_id']+'.png')) as im:im.load()
  print('Wrote 14 section authoring views, including repeated-reference aliases.')
 if __name__=='__main__':main()

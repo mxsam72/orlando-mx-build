@@ -121,7 +121,12 @@ def main():
  qa=dict(new_excessive_grade_nodes=new_spikes,version='v009',active_sections=spec['active_sections'],native_compilation=False,in_game_riding=False,raw_sha256=digest(OUT/'terrain.raw'),height_range_m=[float(H.min()),float(H.max())],maximum_raise_m=float(delta.max()),maximum_lower_m=float(-delta.min()),maximum_changed_grade=float(grade[changed].max()),maximum_racing_grade=float(grade[racing].max()),changed_nodes=int(changed.sum()),relaxation=fields['relaxation'],finite=bool(np.isfinite(H).all()),raw_bytes=(OUT/'terrain.raw').stat().st_size,raw_png_identical=bool(np.array_equal(encoded,np.array(Image.open(OUT/'terrain_16bit.png')))),outer_terrain_max_delta_m=float(abs(delta[fields['distance']>fields['width']/2+9]).max()),route_unchanged=digest(SRC/'baseline_route.npz')==manifest['route_sha256'],loop_closure_m=float(np.linalg.norm(q[0,:2]-q[-1,:2])),effective_width_range_m=[float(fields['effective_width'][racing].min()),float(fields['effective_width'][racing].max())])
  (R/'DOCUMENTATION/v009_geometry_validation.json').write_text(json.dumps(qa,indent=2)+'\n');print(json.dumps(qa,indent=2),flush=True)
  # Retain compact cache fields for QA; this file is a generated product.
- np.savez_compressed(OUT/'qa_fields.npz',station=fields['station'],lat=fields['lat'],distance=fields['distance'],width=fields['width'],effective_width=fields['effective_width'])
+ temporary=OUT/'qa_fields.npz.tmp'
+ with temporary.open('wb') as fp:np.savez_compressed(fp,station=fields['station'],lat=fields['lat'],distance=fields['distance'],width=fields['width'],effective_width=fields['effective_width'])
+ import zipfile
+ with zipfile.ZipFile(temporary) as z:
+  if z.testzip() is not None:raise RuntimeError('Incomplete generated QA field archive')
+ temporary.replace(OUT/'qa_fields.npz')
  if qa['maximum_racing_grade']>.84 or new_spikes or (len(spec['active_sections'])==11 and qa['maximum_changed_grade']>.84):raise RuntimeError('Excessive grade; inspect geometry before native build')
  if qa['outer_terrain_max_delta_m']>.001:raise RuntimeError('Terrain outside corridor changed')
 if __name__=='__main__':main()
