@@ -19,3 +19,17 @@ Activated the remaining S10–S11 physical sectors. All S01–S14 reference wind
 ## Source integration — ready for native compile
 
 The full seven-stage source pipeline completed successfully. Scenery rebind changed 179 models vertically while preserving 606,512 total vertices, X/Z coordinates, topology and materials. Racing-mask mean core alpha is 0.96; outside-corridor alpha is unchanged. Pit height delta is zero; maximum sampled start-lane change is 0.03195 m. Raw heightmap hash is reproduced across runs. The one-click Windows launcher and separate Windows CI workflow compile and package only v009. Native output and in-game ride checks remain pending at this checkpoint.
+
+
+## Native compilation — complete
+
+GitHub Actions workflow `Compile Orlando MX v009` completed successfully on run `36320227995` from commit `13e5f09511b3597a5f4b2208b46fbfb1a72622ce`.
+
+Verified release artifact:
+- Artifact: `OrlandoMX_2026_v009-PKZ`
+- Artifact ID: `10931584829`
+- PKZ: `OrlandoMX_2026_v009.pkz`
+- PKZ bytes: `143332317`
+- PKZ SHA-256: `822bfe383d27de718e77e2c150703884f93f018a15e8f706c23d9fb22cccdb8d`
+
+The native compile/package gate is complete. The remaining validation gate is in-game ride testing in MX Bikes; no ride-test pass is claimed yet.
