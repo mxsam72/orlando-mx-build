@@ -5,7 +5,7 @@ import json,hashlib,shutil,subprocess,sys
 R=Path(__file__).resolve().parents[1];WORK=R/'BUILD/v009_work';BASE=R/'BUILD/v009_baseline'
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
- m=json.loads((R/'V009_SOURCE/baseline_manifest.json').read_text());marker=WORK/'v009_baseline_ready.json'
+ m=json.loads((R/'V009_SOURCE/baseline_manifest.json').read_text(encoding='utf-8'));marker=WORK/'v009_baseline_ready.json'
  valid=marker.exists()
  for name,h in [('02_HEIGHTMAP/terrain.raw',m['terrain_sha256']),('07_OBJECTS_SOURCE/scenery.fbx',m['scenery_sha256']),*[(f'04_TEXTURES/{n}',h) for n,h in m['texture_sha256'].items()]]:
   p=WORK/name;valid=valid and p.is_file() and sha(p)==h
@@ -18,7 +18,7 @@ def main():
   assert sha(WORK/'02_HEIGHTMAP/terrain.raw')==m['terrain_sha256']
   assert sha(WORK/'07_OBJECTS_SOURCE/scenery.fbx')==m['scenery_sha256']
   for n,h in m['texture_sha256'].items():assert sha(WORK/'04_TEXTURES'/n)==h,n
-  marker.write_text(json.dumps(m,indent=2)+'\n')
+  marker.write_text(json.dumps(m,indent=2)+'\n', encoding='utf-8')
  BASE.mkdir(exist_ok=True)
  for src,dst in [('02_HEIGHTMAP/terrain.raw','terrain.raw'),('07_OBJECTS_SOURCE/scenery.fbx','scenery.fbx'),('BUILD/native_coordinate_probes.json','native_coordinate_probes.json')]:shutil.copy2(WORK/src,BASE/dst)
  print('Isolated v008b baseline verified; no correction reapplied to corrected inputs.')

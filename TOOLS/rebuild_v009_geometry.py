@@ -42,7 +42,7 @@ def make_profile(p):
 
 def generate_target(spec,base,q,w,info):
  L=q[-1,3];profiles=[make_profile(p) for p in spec['profiles']]
- old=json.loads((SRC/'baseline_jump_profiles.json').read_text());olds=supports(old,q,w);news=supports(profiles,q,w)
+ old=json.loads((SRC/'baseline_jump_profiles.json').read_text(encoding='utf-8'));olds=supports(old,q,w);news=supports(profiles,q,w)
  tree=cKDTree(q[:-1,:2]);axes=np.linspace(0,SIZE,N)
  regs=np.linspace(0,L,round(L/.4)+1);regth=np.unwrap(np.interp(regs,q[:,3],q[:,2]));kk=gaussian_filter1d(np.gradient(regth,regs),3/.4,mode='nearest')
  target=base.copy();stations=np.zeros_like(base);lateral=np.zeros_like(base);distance=np.zeros_like(base);widths=np.zeros_like(base);ewidth=np.zeros_like(base)
@@ -95,17 +95,17 @@ def generate_target(spec,base,q,w,info):
  return dict(target=target.astype(np.float32),station=stations.astype(np.float32),lat=lateral.astype(np.float32),distance=distance.astype(np.float32),width=widths.astype(np.float32),effective_width=ewidth.astype(np.float32),profiles=profiles,relaxation=dict(passes=passes,max_adjustment_m=float(abs(target-before).max())))
 
 def main():
- OUT.mkdir(exist_ok=True);spec=json.loads((SRC/'v009_geometry_spec.json').read_text());manifest=json.loads((SRC/'baseline_manifest.json').read_text());rawpath=R/'BUILD/v009_baseline/terrain.raw'
+ OUT.mkdir(exist_ok=True);spec=json.loads((SRC/'v009_geometry_spec.json').read_text(encoding='utf-8'));manifest=json.loads((SRC/'baseline_manifest.json').read_text(encoding='utf-8'));rawpath=R/'BUILD/v009_baseline/terrain.raw'
  assert digest(rawpath)==manifest['terrain_sha256'],'Exact v008b baseline required; run materialize_v009_baseline.py'
- base=np.fromfile(rawpath,dtype='<u2').reshape(N,N).astype(np.float32)/65535*SCALE;d=np.load(SRC/'baseline_route.npz');q=d['q'];w=d['width'];info=json.loads((SRC/'baseline_geometry.json').read_text());L=q[-1,3]
+ base=np.fromfile(rawpath,dtype='<u2').reshape(N,N).astype(np.float32)/65535*SCALE;d=np.load(SRC/'baseline_route.npz');q=d['q'];w=d['width'];info=json.loads((SRC/'baseline_geometry.json').read_text(encoding='utf-8'));L=q[-1,3]
  cache=R/'BUILD/v009_cache';cache.mkdir(exist_ok=True);structural={k:v for k,v in spec.items() if k!='active_sections'}
  key=hashlib.sha256(json.dumps(structural,sort_keys=True).encode()+''.join(inspect.getsource(f) for f in [generate_target,make_profile,smooth,ease,periodic_delta]).encode()+(R/'TOOLS/refine_jumps.py').read_bytes()+rawpath.read_bytes()).hexdigest();npz=cache/(key+'.npz');meta=cache/(key+'.json')
  if npz.exists():
   with np.load(npz) as f:fields={k:f[k] for k in f.files}
-  fields.update(json.loads(meta.read_text()))
+  fields.update(json.loads(meta.read_text(encoding='utf-8')))
  else:
-  fields=generate_target(spec,base,q,w,info);arrays={k:v for k,v in fields.items() if isinstance(v,np.ndarray)};np.savez_compressed(npz,**arrays);meta.write_text(json.dumps({k:v for k,v in fields.items() if k not in arrays}))
- data=json.loads((SRC/'section_station_map.json').read_text());blend=np.zeros_like(base)
+  fields=generate_target(spec,base,q,w,info);arrays={k:v for k,v in fields.items() if isinstance(v,np.ndarray)};np.savez_compressed(npz,**arrays);meta.write_text(json.dumps({k:v for k,v in fields.items() if k not in arrays}), encoding='utf-8')
+ data=json.loads((SRC/'section_station_map.json').read_text(encoding='utf-8'));blend=np.zeros_like(base)
  for sec in data['sections']:
   if sec['section_id'] in spec['active_sections']:
    blend=np.maximum(blend,window(fields['station'],sec['route_station_start_m'],sec['route_station_end_m'],L))
@@ -115,11 +115,11 @@ def main():
  encoded.tofile(OUT/'terrain.raw');Image.fromarray(encoded).save(OUT/'terrain_16bit.png');np.save(OUT/'height_metres.npy',H)
  coords=[(SIZE-q[:,1])/SIZE*(N-1),q[:,0]/SIZE*(N-1)];elev=map_coordinates(H,coords,order=1)
  np.savetxt(OUT/'centerline_elevation.csv',np.c_[q[:,3],elev],delimiter=',',header='station_m,height_m',comments='')
- (OUT/'jump_profiles.json').write_text(json.dumps(fields['profiles'],indent=2)+'\n')
+ (OUT/'jump_profiles.json').write_text(json.dumps(fields['profiles'],indent=2)+'\n', encoding='utf-8')
  delta=H-base;gy,gx=np.gradient(H,DX);grade=np.hypot(gx,gy);changed=abs(delta)>SCALE/65535*1.1;racing=fields['distance']<fields['effective_width']/2
  by,bx=np.gradient(base,DX);baseline_grade=np.hypot(bx,by);new_spikes=int(((grade>.84)&(grade>baseline_grade+.05)&changed).sum())
  qa=dict(new_excessive_grade_nodes=new_spikes,version='v009',active_sections=spec['active_sections'],native_compilation=False,in_game_riding=False,raw_sha256=digest(OUT/'terrain.raw'),height_range_m=[float(H.min()),float(H.max())],maximum_raise_m=float(delta.max()),maximum_lower_m=float(-delta.min()),maximum_changed_grade=float(grade[changed].max()),maximum_racing_grade=float(grade[racing].max()),changed_nodes=int(changed.sum()),relaxation=fields['relaxation'],finite=bool(np.isfinite(H).all()),raw_bytes=(OUT/'terrain.raw').stat().st_size,raw_png_identical=bool(np.array_equal(encoded,np.array(Image.open(OUT/'terrain_16bit.png')))),outer_terrain_max_delta_m=float(abs(delta[fields['distance']>fields['width']/2+9]).max()),route_unchanged=digest(SRC/'baseline_route.npz')==manifest['route_sha256'],loop_closure_m=float(np.linalg.norm(q[0,:2]-q[-1,:2])),effective_width_range_m=[float(fields['effective_width'][racing].min()),float(fields['effective_width'][racing].max())])
- (R/'DOCUMENTATION/v009_geometry_validation.json').write_text(json.dumps(qa,indent=2)+'\n');print(json.dumps(qa,indent=2),flush=True)
+ (R/'DOCUMENTATION/v009_geometry_validation.json').write_text(json.dumps(qa,indent=2)+'\n', encoding='utf-8');print(json.dumps(qa,indent=2),flush=True)
  # Retain compact cache fields for QA; this file is a generated product.
  temporary=OUT/'qa_fields.npz.tmp'
  with temporary.open('wb') as fp:np.savez_compressed(fp,station=fields['station'],lat=fields['lat'],distance=fields['distance'],width=fields['width'],effective_width=fields['effective_width'])

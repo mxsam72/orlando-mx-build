@@ -12,7 +12,7 @@ def main():
  h=np.fromfile(R/'V009_OUTPUT/terrain.raw','<u2').reshape(2049,2049)/65535*18
  b=np.fromfile(R/'BUILD/v009_baseline/terrain.raw','<u2').reshape(2049,2049)/65535*18
  out=R/'DOCUMENTATION/v009_qa/sections';out.mkdir(parents=True,exist_ok=True)
- sectors=json.loads((R/'V009_SOURCE/section_station_map.json').read_text())['sections']
+ sectors=json.loads((R/'V009_SOURCE/section_station_map.json').read_text(encoding='utf-8'))['sections']
  for sec in sectors:
   a=sec['route_station_start_m'];span=(sec['route_station_end_m']-a)%L;s=np.linspace(a,a+span,600);sm=s%L
   x,z,th=[np.interp(sm,q[:,3],q[:,k]) for k in range(3)]

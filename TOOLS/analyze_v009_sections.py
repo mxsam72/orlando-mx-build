@@ -7,7 +7,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 R=Path(__file__).resolve().parents[1]
 def main():
- data=json.loads((R/'V009_SOURCE/section_station_map.json').read_text());q=np.load(R/'V009_SOURCE/baseline_route.npz')['q'];L=q[-1,3]
+ data=json.loads((R/'V009_SOURCE/section_station_map.json').read_text(encoding='utf-8'));q=np.load(R/'V009_SOURCE/baseline_route.npz')['q'];L=q[-1,3]
  out=R/'DOCUMENTATION/v009_qa';out.mkdir(exist_ok=True)
  fig,ax=plt.subplots(figsize=(10,12),layout='constrained');colors=plt.get_cmap('tab20')
  lines=['# v009 section-to-station mapping','',data['evidence_correction'],'','All stations below are existing construction coordinates, not surveyed distances. Boundaries carry 15-25 m uncertainty. The game anchors are search windows; G at 95 s points later than the actual signature face.', '', '| Section | Real seconds | Native station m | Confidence | Evidence |','|---|---:|---:|---|---|']
@@ -24,6 +24,6 @@ def main():
  ax.set_title('v009 construction map — S01–S14\nS12 = S01; S13 overlaps S02/S03; S14 overlaps S03/S04',fontsize=13)
  fig.savefig(out/'section_plan.png',dpi=150);plt.close(fig)
  lines+=['','No distinct sector is invented for repeated footage. S14 leads onward through S04-S11 before returning to S01. The native loop remains closed.','', '## Video inspection notes','', '- Real 94.7 s: long dominant jump face after right berm; assign to J10b sector, not game 95 s merely because numbers match.','- Real ~74 s: substantial ramp with vegetation close on rider right; J08b sector.','- Real ~6/130 s and ~10/134 s: repeated left turn / utility-pole and ramp sequence.','- Real 156-160 s: end-screen footage; no terrain inference from these frames.','- Game minimap and pole positions used for station identification. No metric photogrammetry, camera calibration, or surveyed heights are claimed.']
- (R/'DOCUMENTATION/v009_section_station_map.md').write_text('\n'.join(lines)+'\n')
+ (R/'DOCUMENTATION/v009_section_station_map.md').write_text('\n'.join(lines)+'\n', encoding='utf-8')
  print('Mapped 14 reference windows to 11 physical sectors, with repeated footage explicitly aliased.')
 if __name__=='__main__':main()
