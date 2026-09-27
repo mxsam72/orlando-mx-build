@@ -11,3 +11,7 @@ This checkpoint verifies inputs only. Terrain reconstruction and native compilat
 ## Checkpoint 4 — opening / utility-pole sequence
 
 Activated S01–S03, including repeat observations S12–S13 and the shared S14 approach. Replaced the pole-side plateau with a broad progressive ramp and downhill landing; reshaped the first carved sweeper and linked crests. Actual encoded-heightmap QA passes with zero new excessive-grade nodes and no terrain change outside the protected corridor. The major profile plots were inspected. Source compilation and in-game validation remain pending.
+
+## Checkpoint 5 — full-lap geometry
+
+Activated the remaining S10–S11 physical sectors. All S01–S14 reference windows are now covered, with S12–S14 represented by their repeat-sector aliases. Final encoded heightmap passes the strict full-lap grade gate: maximum changed-terrain grade 0.77953, racing-corridor grade 0.56436, zero newly excessive grade nodes, zero outer-corridor delta and zero native loop height difference. The horizontal route remains unchanged. Native compilation, scenery integration and in-game testing are separate subsequent checks.

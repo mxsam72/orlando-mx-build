@@ -10,20 +10,22 @@
     "S06",
     "S07",
     "S08",
-    "S09"
+    "S09",
+    "S10",
+    "S11"
   ],
   "native_compilation": false,
   "in_game_riding": false,
-  "raw_sha256": "6a1d4bac3d407f29e816e245c6b137c20fe45f1e60359ec281c0342eddd1c6a9",
+  "raw_sha256": "bf6c6d335ff1f555555e4d66c9db5d5ed6d7f07cede21bc39167ad31d20a0f64",
   "height_range_m": [
     1.6375371217727661,
     6.5320210456848145
   ],
   "maximum_raise_m": 1.532616138458252,
   "maximum_lower_m": 2.16791033744812,
-  "maximum_changed_grade": 1.4049665927886963,
+  "maximum_changed_grade": 0.7795222401618958,
   "maximum_racing_grade": 0.5643534660339355,
-  "changed_nodes": 292942,
+  "changed_nodes": 343085,
   "relaxation": {
     "passes": 31,
     "max_adjustment_m": 0.6933083534240723
@@ -86,24 +88,24 @@
     },
     {
       "station_m": 1057,
-      "max_longitudinal_grade": 0.05382843388566094,
+      "max_longitudinal_grade": 0.05331874801781922,
       "max_125mm_height_step": 0.006972256507705499
     },
     {
       "station_m": 1176,
-      "max_longitudinal_grade": 0.00900751359872487,
-      "max_125mm_height_step": 0.0011439034394578051
+      "max_longitudinal_grade": 0.057741655056844365,
+      "max_125mm_height_step": 0.007217706882105546
     },
     {
       "station_m": 1290,
-      "max_longitudinal_grade": 0.11605010828041173,
-      "max_125mm_height_step": 0.014506263535051467
+      "max_longitudinal_grade": 0.12039740076058081,
+      "max_125mm_height_step": 0.015049675095072601
     }
   ],
   "berm_cross_sections": [
     {
       "turn": "T03",
-      "outside_minus_inside_m": 1.5216984932527708
+      "outside_minus_inside_m": 1.5237419884867007
     },
     {
       "turn": "T09",
@@ -118,7 +120,7 @@
       "outside_minus_inside_m": 1.2382399642868704
     }
   ],
-  "centerline_max_longitudinal_grade": 0.4434011028976226,
+  "centerline_max_longitudinal_grade": 0.3248527072059133,
   "native_loop_height_difference_m": 0.0,
   "visual_review": "Authoring plots, not game screenshots",
   "geometry_checks_pass": true

@@ -1,0 +1,127 @@
+{
+  "new_excessive_grade_nodes": 0,
+  "version": "v009",
+  "active_sections": [
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11"
+  ],
+  "native_compilation": false,
+  "in_game_riding": false,
+  "raw_sha256": "bf6c6d335ff1f555555e4d66c9db5d5ed6d7f07cede21bc39167ad31d20a0f64",
+  "height_range_m": [
+    1.6375371217727661,
+    6.5320210456848145
+  ],
+  "maximum_raise_m": 1.532616138458252,
+  "maximum_lower_m": 2.16791033744812,
+  "maximum_changed_grade": 0.7795222401618958,
+  "maximum_racing_grade": 0.5643534660339355,
+  "changed_nodes": 343085,
+  "relaxation": {
+    "passes": 31,
+    "max_adjustment_m": 0.6933083534240723
+  },
+  "finite": true,
+  "raw_bytes": 8396802,
+  "raw_png_identical": true,
+  "outer_terrain_max_delta_m": 0.0,
+  "route_unchanged": true,
+  "loop_closure_m": 8.039928421361173e-12,
+  "effective_width_range_m": [
+    7.800000190734863,
+    8.699999809265137
+  ],
+  "section_boundary_checks": [
+    {
+      "station_m": 75,
+      "max_longitudinal_grade": 0.08155547500122573,
+      "max_125mm_height_step": 0.010321435025276937
+    },
+    {
+      "station_m": 125,
+      "max_longitudinal_grade": 0.04200952292468685,
+      "max_125mm_height_step": 0.005253749191535206
+    },
+    {
+      "station_m": 230,
+      "max_longitudinal_grade": 0.050353933562984565,
+      "max_125mm_height_step": 0.006297407882911443
+    },
+    {
+      "station_m": 270,
+      "max_longitudinal_grade": 0.07784181666166745,
+      "max_125mm_height_step": 0.009829182755538568
+    },
+    {
+      "station_m": 438,
+      "max_longitudinal_grade": 0.07140747066107878,
+      "max_125mm_height_step": 0.009201939061890041
+    },
+    {
+      "station_m": 563,
+      "max_longitudinal_grade": 0.07327462826322062,
+      "max_125mm_height_step": 0.009159328532902578
+    },
+    {
+      "station_m": 644,
+      "max_longitudinal_grade": 0.07567011447690675,
+      "max_125mm_height_step": 0.009660061911543227
+    },
+    {
+      "station_m": 799,
+      "max_longitudinal_grade": 0.06557036639545188,
+      "max_125mm_height_step": 0.008726606185936792
+    },
+    {
+      "station_m": 899,
+      "max_longitudinal_grade": 0.06123170828671398,
+      "max_125mm_height_step": 0.007724187816883443
+    },
+    {
+      "station_m": 1057,
+      "max_longitudinal_grade": 0.05331874801781922,
+      "max_125mm_height_step": 0.006972256507705499
+    },
+    {
+      "station_m": 1176,
+      "max_longitudinal_grade": 0.057741655056844365,
+      "max_125mm_height_step": 0.007217706882105546
+    },
+    {
+      "station_m": 1290,
+      "max_longitudinal_grade": 0.12039740076058081,
+      "max_125mm_height_step": 0.015049675095072601
+    }
+  ],
+  "berm_cross_sections": [
+    {
+      "turn": "T03",
+      "outside_minus_inside_m": 1.5237419884867007
+    },
+    {
+      "turn": "T09",
+      "outside_minus_inside_m": 1.5704920258988375
+    },
+    {
+      "turn": "T10",
+      "outside_minus_inside_m": 1.5496651356319684
+    },
+    {
+      "turn": "T14",
+      "outside_minus_inside_m": 1.2382399642868704
+    }
+  ],
+  "centerline_max_longitudinal_grade": 0.3248527072059133,
+  "native_loop_height_difference_m": 0.0,
+  "visual_review": "Authoring plots, not game screenshots",
+  "geometry_checks_pass": true
+}

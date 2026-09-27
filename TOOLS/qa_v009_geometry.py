@@ -36,7 +36,7 @@ def main():
  for st in boundaries:
   s=np.linspace(st-2,st+2,33);v=sample(H,s);boundary_checks.append(dict(station_m=st,max_longitudinal_grade=float(abs(np.gradient(v,s)).max()),max_125mm_height_step=float(abs(np.diff(v)).max())))
  qa['section_boundary_checks']=boundary_checks;qa['berm_cross_sections']=berm_metrics;qa['centerline_max_longitudinal_grade']=float(abs(np.gradient(after,ss)).max());qa['native_loop_height_difference_m']=float(abs(after[0]-after[-1]));qa['visual_review']='Authoring plots, not game screenshots'
- qa['geometry_checks_pass']=bool(qa.get('new_excessive_grade_nodes',0)==0 and qa['finite'] and qa['raw_png_identical'] and qa['route_unchanged'] and qa['maximum_racing_grade']<.84 and qa['outer_terrain_max_delta_m']<.001 and qa['native_loop_height_difference_m']<.001 and all(x['max_longitudinal_grade']<.84 for x in boundary_checks))
+ qa['geometry_checks_pass']=bool(qa.get('new_excessive_grade_nodes',0)==0 and qa['finite'] and qa['raw_png_identical'] and qa['route_unchanged'] and qa['maximum_racing_grade']<.84 and (len(cfg['active_sections'])<11 or qa['maximum_changed_grade']<.84) and qa['outer_terrain_max_delta_m']<.001 and qa['native_loop_height_difference_m']<.001 and all(x['max_longitudinal_grade']<.84 for x in boundary_checks))
  (R/'DOCUMENTATION/v009_geometry_validation.json').write_text(json.dumps(qa,indent=2)+'\n')
  print(json.dumps({k:qa[k] for k in ['geometry_checks_pass','maximum_raise_m','maximum_lower_m','maximum_racing_grade','centerline_max_longitudinal_grade','native_loop_height_difference_m']},indent=2))
  if not qa['geometry_checks_pass']:raise RuntimeError('Geometry QA failed')
