@@ -4,7 +4,7 @@
 Metric dimensions are tuning estimates. Native/game QA is separate.
 """
 from pathlib import Path
-import json,hashlib,math,io
+import json,hashlib,math,io,inspect
 import numpy as np
 from scipy.interpolate import CubicHermiteSpline
 from scipy.ndimage import gaussian_filter,gaussian_filter1d,map_coordinates
@@ -99,7 +99,7 @@ def main():
  assert digest(rawpath)==manifest['terrain_sha256'],'Exact v008b baseline required; run materialize_v009_baseline.py'
  base=np.fromfile(rawpath,dtype='<u2').reshape(N,N).astype(np.float32)/65535*SCALE;d=np.load(SRC/'baseline_route.npz');q=d['q'];w=d['width'];info=json.loads((SRC/'baseline_geometry.json').read_text());L=q[-1,3]
  cache=R/'BUILD/v009_cache';cache.mkdir(exist_ok=True);structural={k:v for k,v in spec.items() if k!='active_sections'}
- key=hashlib.sha256(json.dumps(structural,sort_keys=True).encode()+Path(__file__).read_bytes()+rawpath.read_bytes()).hexdigest();npz=cache/(key+'.npz');meta=cache/(key+'.json')
+ key=hashlib.sha256(json.dumps(structural,sort_keys=True).encode()+''.join(inspect.getsource(f) for f in [generate_target,make_profile,smooth,ease,periodic_delta]).encode()+(R/'TOOLS/refine_jumps.py').read_bytes()+rawpath.read_bytes()).hexdigest();npz=cache/(key+'.npz');meta=cache/(key+'.json')
  if npz.exists():
   with np.load(npz) as f:fields={k:f[k] for k in f.files}
   fields.update(json.loads(meta.read_text()))
@@ -117,10 +117,11 @@ def main():
  np.savetxt(OUT/'centerline_elevation.csv',np.c_[q[:,3],elev],delimiter=',',header='station_m,height_m',comments='')
  (OUT/'jump_profiles.json').write_text(json.dumps(fields['profiles'],indent=2)+'\n')
  delta=H-base;gy,gx=np.gradient(H,DX);grade=np.hypot(gx,gy);changed=abs(delta)>SCALE/65535*1.1;racing=fields['distance']<fields['effective_width']/2
- qa=dict(version='v009',active_sections=spec['active_sections'],native_compilation=False,in_game_riding=False,raw_sha256=digest(OUT/'terrain.raw'),height_range_m=[float(H.min()),float(H.max())],maximum_raise_m=float(delta.max()),maximum_lower_m=float(-delta.min()),maximum_changed_grade=float(grade[changed].max()),maximum_racing_grade=float(grade[racing].max()),changed_nodes=int(changed.sum()),relaxation=fields['relaxation'],finite=bool(np.isfinite(H).all()),raw_bytes=(OUT/'terrain.raw').stat().st_size,raw_png_identical=bool(np.array_equal(encoded,np.array(Image.open(OUT/'terrain_16bit.png')))),outer_terrain_max_delta_m=float(abs(delta[fields['distance']>fields['width']/2+9]).max()),route_unchanged=digest(SRC/'baseline_route.npz')==manifest['route_sha256'],loop_closure_m=float(np.linalg.norm(q[0,:2]-q[-1,:2])),effective_width_range_m=[float(fields['effective_width'][racing].min()),float(fields['effective_width'][racing].max())])
+ by,bx=np.gradient(base,DX);baseline_grade=np.hypot(bx,by);new_spikes=int(((grade>.84)&(grade>baseline_grade+.05)&changed).sum())
+ qa=dict(new_excessive_grade_nodes=new_spikes,version='v009',active_sections=spec['active_sections'],native_compilation=False,in_game_riding=False,raw_sha256=digest(OUT/'terrain.raw'),height_range_m=[float(H.min()),float(H.max())],maximum_raise_m=float(delta.max()),maximum_lower_m=float(-delta.min()),maximum_changed_grade=float(grade[changed].max()),maximum_racing_grade=float(grade[racing].max()),changed_nodes=int(changed.sum()),relaxation=fields['relaxation'],finite=bool(np.isfinite(H).all()),raw_bytes=(OUT/'terrain.raw').stat().st_size,raw_png_identical=bool(np.array_equal(encoded,np.array(Image.open(OUT/'terrain_16bit.png')))),outer_terrain_max_delta_m=float(abs(delta[fields['distance']>fields['width']/2+9]).max()),route_unchanged=digest(SRC/'baseline_route.npz')==manifest['route_sha256'],loop_closure_m=float(np.linalg.norm(q[0,:2]-q[-1,:2])),effective_width_range_m=[float(fields['effective_width'][racing].min()),float(fields['effective_width'][racing].max())])
  (R/'DOCUMENTATION/v009_geometry_validation.json').write_text(json.dumps(qa,indent=2)+'\n');print(json.dumps(qa,indent=2),flush=True)
  # Retain compact cache fields for QA; this file is a generated product.
  np.savez_compressed(OUT/'qa_fields.npz',station=fields['station'],lat=fields['lat'],distance=fields['distance'],width=fields['width'],effective_width=fields['effective_width'])
- if qa['maximum_racing_grade']>.84 or qa['maximum_changed_grade']>1.0:raise RuntimeError('Excessive grade; inspect geometry before native build')
+ if qa['maximum_racing_grade']>.84 or new_spikes or (len(spec['active_sections'])==11 and qa['maximum_changed_grade']>.84):raise RuntimeError('Excessive grade; inspect geometry before native build')
  if qa['outer_terrain_max_delta_m']>.001:raise RuntimeError('Terrain outside corridor changed')
 if __name__=='__main__':main()
