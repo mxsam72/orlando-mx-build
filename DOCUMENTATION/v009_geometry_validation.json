@@ -1,20 +1,23 @@
 {
+  "new_excessive_grade_nodes": 0,
   "version": "v009",
   "active_sections": [
+    "S07",
+    "S08",
     "S09"
   ],
   "native_compilation": false,
   "in_game_riding": false,
-  "raw_sha256": "3540c0e021c5dfa3a97fa58e81af1d78a60cba17314eb6b4b3201cd49648cc0f",
+  "raw_sha256": "ccf3d36fb7648aeb7eb506b1da2c23a7564d9ae083fa1b56be4a1222b2142dd4",
   "height_range_m": [
     1.6389104127883911,
     6.5320210456848145
   ],
   "maximum_raise_m": 1.4850993156433105,
   "maximum_lower_m": 1.1895627975463867,
-  "maximum_changed_grade": 0.7826455235481262,
+  "maximum_changed_grade": 2.3015873432159424,
   "maximum_racing_grade": 0.636365532875061,
-  "changed_nodes": 47306,
+  "changed_nodes": 106222,
   "relaxation": {
     "passes": 31,
     "max_adjustment_m": 0.6933083534240723
@@ -62,18 +65,18 @@
     },
     {
       "station_m": 644,
-      "max_longitudinal_grade": 0.006556996122384362,
-      "max_125mm_height_step": 0.0008761409064010905
+      "max_longitudinal_grade": 0.0770106931529515,
+      "max_125mm_height_step": 0.00982555482806946
     },
     {
       "station_m": 799,
-      "max_longitudinal_grade": 0.005488789044159503,
-      "max_125mm_height_step": 0.000850166465736546
+      "max_longitudinal_grade": 0.06557036639545188,
+      "max_125mm_height_step": 0.008726606185936792
     },
     {
       "station_m": 899,
-      "max_longitudinal_grade": 0.060084542538259456,
-      "max_125mm_height_step": 0.007548639289138848
+      "max_longitudinal_grade": 0.06123170828671398,
+      "max_125mm_height_step": 0.007724187816883443
     },
     {
       "station_m": 1057,
@@ -98,7 +101,7 @@
     },
     {
       "turn": "T09",
-      "outside_minus_inside_m": 0.7909772921938636
+      "outside_minus_inside_m": 1.5704920258988375
     },
     {
       "turn": "T10",
