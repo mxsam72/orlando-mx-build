@@ -1,0 +1,355 @@
+{
+  "version": "v009",
+  "metric_status": "ALL dimensions are non-surveyed tuning estimates",
+  "active_sections": [
+    "S09"
+  ],
+  "priority_groups": [
+    [
+      "S09"
+    ],
+    [
+      "S07",
+      "S08"
+    ],
+    [
+      "S04",
+      "S05",
+      "S06"
+    ],
+    [
+      "S01",
+      "S02",
+      "S03"
+    ],
+    [
+      "S10",
+      "S11"
+    ]
+  ],
+  "repeat_views": {
+    "S12": [
+      "S01"
+    ],
+    "S13": [
+      "S02",
+      "S03"
+    ],
+    "S14": [
+      "S03",
+      "S04"
+    ]
+  },
+  "profiles": [
+    {
+      "id": "R01",
+      "section": "S01",
+      "kind": "broad_pole_ramp",
+      "lip_s": 40,
+      "crest_height_m": 2.65,
+      "face_m": 17.0,
+      "rollover_m": 3.8,
+      "landing_m": 22.5,
+      "crest_bridge_m": 0.6
+    },
+    {
+      "id": "R02",
+      "section": "S03",
+      "kind": "low_linked_crest",
+      "lip_s": 140,
+      "crest_height_m": 1.15,
+      "face_m": 10.5,
+      "rollover_m": 4.0,
+      "landing_m": 16.0,
+      "crest_bridge_m": 0
+    },
+    {
+      "id": "R03",
+      "section": "S03",
+      "kind": "rolling_transition",
+      "lip_s": 241,
+      "crest_height_m": 0.85,
+      "face_m": 10.0,
+      "rollover_m": 4.6,
+      "landing_m": 13.5,
+      "crest_bridge_m": 0
+    },
+    {
+      "id": "R04",
+      "section": "S04",
+      "kind": "bowl_exit_crest",
+      "lip_s": 334,
+      "crest_height_m": 0.9,
+      "face_m": 11.5,
+      "rollover_m": 4.2,
+      "landing_m": 15.0,
+      "crest_bridge_m": 0
+    },
+    {
+      "id": "R05",
+      "section": "S04",
+      "kind": "long_low_turn_setup",
+      "lip_s": 402,
+      "crest_height_m": 1.7,
+      "face_m": 14.0,
+      "rollover_m": 4.0,
+      "landing_m": 19.5,
+      "crest_bridge_m": 0.4
+    },
+    {
+      "id": "R06",
+      "section": "S05",
+      "kind": "compact_turn_exit_wave",
+      "lip_s": 492,
+      "crest_height_m": 0.48,
+      "face_m": 7.5,
+      "rollover_m": 3.4,
+      "landing_m": 10.5,
+      "crest_bridge_m": 0
+    },
+    {
+      "id": "R07",
+      "section": "S05",
+      "kind": "progressive_turn_exit_jump",
+      "lip_s": 536,
+      "crest_height_m": 2.45,
+      "face_m": 13.5,
+      "rollover_m": 3.0,
+      "landing_m": 18.5,
+      "crest_bridge_m": 0.5
+    },
+    {
+      "id": "R08",
+      "section": "S06",
+      "kind": "acceleration_wave",
+      "lip_s": 615,
+      "crest_height_m": 0.7,
+      "face_m": 9.5,
+      "rollover_m": 4.5,
+      "landing_m": 12.0,
+      "crest_bridge_m": 0
+    },
+    {
+      "id": "R09",
+      "section": "S07",
+      "kind": "low_pre_ramp",
+      "lip_s": 703,
+      "crest_height_m": 1.05,
+      "face_m": 12.0,
+      "rollover_m": 4.0,
+      "landing_m": 16.0,
+      "crest_bridge_m": 0
+    },
+    {
+      "id": "R10",
+      "section": "S07",
+      "kind": "tree_side_major_ramp",
+      "lip_s": 759,
+      "crest_height_m": 3.05,
+      "face_m": 16.5,
+      "rollover_m": 3.3,
+      "landing_m": 22.0,
+      "crest_bridge_m": 1.0
+    },
+    {
+      "id": "R11",
+      "section": "S08",
+      "kind": "berm_exit_roller",
+      "lip_s": 845,
+      "crest_height_m": 0.65,
+      "face_m": 8.0,
+      "rollover_m": 3.6,
+      "landing_m": 10.5,
+      "crest_bridge_m": 0
+    },
+    {
+      "id": "R12",
+      "section": "S08",
+      "kind": "compact_exit_crest",
+      "lip_s": 871,
+      "crest_height_m": 1.45,
+      "face_m": 11.5,
+      "rollover_m": 3.5,
+      "landing_m": 15.0,
+      "crest_bridge_m": 0.4
+    },
+    {
+      "id": "R13",
+      "section": "S09",
+      "kind": "signature_setup_wave",
+      "lip_s": 953,
+      "crest_height_m": 0.7,
+      "face_m": 10.0,
+      "rollover_m": 4.2,
+      "landing_m": 12.5,
+      "crest_bridge_m": 0
+    },
+    {
+      "id": "R14",
+      "section": "S09",
+      "kind": "signature_major_jump",
+      "lip_s": 989,
+      "crest_height_m": 3.55,
+      "face_m": 16.0,
+      "rollover_m": 3.4,
+      "landing_m": 24.0,
+      "crest_bridge_m": 1.2
+    },
+    {
+      "id": "R15",
+      "section": "S10",
+      "kind": "wooded_settling_roller",
+      "lip_s": 1100,
+      "crest_height_m": 0.8,
+      "face_m": 10.5,
+      "rollover_m": 4.3,
+      "landing_m": 12.5,
+      "crest_bridge_m": 0
+    },
+    {
+      "id": "R16",
+      "section": "S10",
+      "kind": "wooded_corridor_jump",
+      "lip_s": 1137,
+      "crest_height_m": 2.55,
+      "face_m": 15.0,
+      "rollover_m": 3.7,
+      "landing_m": 22.0,
+      "crest_bridge_m": 0.6
+    },
+    {
+      "id": "R17",
+      "section": "S11",
+      "kind": "pole_approach_wave",
+      "lip_s": 1290,
+      "crest_height_m": 0.85,
+      "face_m": 12.5,
+      "rollover_m": 4.8,
+      "landing_m": 15.5,
+      "crest_bridge_m": 0
+    },
+    {
+      "id": "R18",
+      "section": "S01",
+      "kind": "west_edge_broad_ramp",
+      "lip_s": 1324,
+      "crest_height_m": 2.15,
+      "face_m": 16.5,
+      "rollover_m": 4.0,
+      "landing_m": 22.0,
+      "crest_bridge_m": 0.5
+    }
+  ],
+  "berms": [
+    {
+      "id": "T01",
+      "section": "S02",
+      "outer_rise_m": 1.35,
+      "effective_width_m": 8.7,
+      "rut_depth_m": 0.065
+    },
+    {
+      "id": "T02",
+      "section": "S03",
+      "outer_rise_m": 1.1,
+      "effective_width_m": 8.4,
+      "rut_depth_m": 0.065
+    },
+    {
+      "id": "T03",
+      "section": "S04",
+      "outer_rise_m": 1.45,
+      "effective_width_m": 8.1,
+      "rut_depth_m": 0.085
+    },
+    {
+      "id": "T04",
+      "section": "S04",
+      "outer_rise_m": 1.0,
+      "effective_width_m": 8.6,
+      "rut_depth_m": 0.065
+    },
+    {
+      "id": "T05",
+      "section": "S05",
+      "outer_rise_m": 1.35,
+      "effective_width_m": 8.3,
+      "rut_depth_m": 0.065
+    },
+    {
+      "id": "T06",
+      "section": "S05",
+      "outer_rise_m": 1.05,
+      "effective_width_m": 8.2,
+      "rut_depth_m": 0.065
+    },
+    {
+      "id": "T07",
+      "section": "S06",
+      "outer_rise_m": 1.28,
+      "effective_width_m": 8.0,
+      "rut_depth_m": 0.065
+    },
+    {
+      "id": "T08",
+      "section": "S07",
+      "outer_rise_m": 1.18,
+      "effective_width_m": 8.0,
+      "rut_depth_m": 0.065
+    },
+    {
+      "id": "T09",
+      "section": "S08",
+      "outer_rise_m": 1.52,
+      "effective_width_m": 7.8,
+      "rut_depth_m": 0.085
+    },
+    {
+      "id": "T10",
+      "section": "S09",
+      "outer_rise_m": 1.48,
+      "effective_width_m": 7.9,
+      "rut_depth_m": 0.085
+    },
+    {
+      "id": "T11",
+      "section": "S10",
+      "outer_rise_m": 1.28,
+      "effective_width_m": 8.1,
+      "rut_depth_m": 0.065
+    },
+    {
+      "id": "T12",
+      "section": "S11",
+      "outer_rise_m": 1.25,
+      "effective_width_m": 8.3,
+      "rut_depth_m": 0.065
+    },
+    {
+      "id": "T13",
+      "section": "S11",
+      "outer_rise_m": 1.12,
+      "effective_width_m": 8.4,
+      "rut_depth_m": 0.065
+    },
+    {
+      "id": "T14",
+      "section": "S01",
+      "outer_rise_m": 1.18,
+      "effective_width_m": 8.6,
+      "rut_depth_m": 0.065
+    }
+  ],
+  "continuous_relief": {
+    "long_wave_amplitude_m": 0.14,
+    "short_wave_amplitude_m": 0.09,
+    "braking_chop_amplitude_m": 0.035
+  },
+  "route_changes": [],
+  "notes": [
+    "No repeated flat-deck template. Profiles use different progressive faces, rounded lips, short crests and long landings.",
+    "T03/T05 local legacy pedestals are removed in favor of supported corner cross-sections.",
+    "S12/S13 requested early in brief share physical sectors S01-S03, so those edits satisfy both observations.",
+    "Horizontal centerline retained on evidence grounds; preferred racing width/radius changes through actual grooves and banks."
+  ]
+}
