@@ -7,3 +7,7 @@ All 73 native-input parts, 10 v007 parts, and 21 v008 parts passed their byte/ha
 Both supplied videos inspected through frame sequences and detailed obstacle/landmark frames. GoPro content repeats the start-area sequence about 124 seconds later and stops riding before the 160-second file ends. S12-S14 are repeat views of parts of S01-S04, not a new quarter lap. Mapping explicitly records aliases; dimensions and boundaries are authoring estimates.
 
 This checkpoint verifies inputs only. Terrain reconstruction and native compilation are pending.
+
+## Checkpoint 4 — opening / utility-pole sequence
+
+Activated S01–S03, including repeat observations S12–S13 and the shared S14 approach. Replaced the pole-side plateau with a broad progressive ramp and downhill landing; reshaped the first carved sweeper and linked crests. Actual encoded-heightmap QA passes with zero new excessive-grade nodes and no terrain change outside the protected corridor. The major profile plots were inspected. Source compilation and in-game validation remain pending.

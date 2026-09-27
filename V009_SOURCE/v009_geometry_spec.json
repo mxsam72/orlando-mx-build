@@ -2,6 +2,9 @@
   "version": "v009",
   "metric_status": "ALL dimensions are non-surveyed tuning estimates",
   "active_sections": [
+    "S01",
+    "S02",
+    "S03",
     "S04",
     "S05",
     "S06",

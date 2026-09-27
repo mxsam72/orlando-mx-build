@@ -30,3 +30,7 @@ V009_OUTPUT/
 V007_SOURCE/scenery_patch.json
 V008_SOURCE/*.png
 DOCUMENTATION/*.log
+
+BUILD/v009_work/
+BUILD/v009_stage/
+.venv-v009/
