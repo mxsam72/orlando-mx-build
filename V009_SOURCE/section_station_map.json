@@ -1,0 +1,326 @@
+{
+  "lap_length_m": 1415.865803053526,
+  "station_basis": "Verified v007 native route; unchanged horizontal alignment",
+  "metric_status": "Authoring estimates, not surveyed",
+  "evidence_correction": "Reference includes repeated lap footage. S12-S14 overlap S01-S04 and are never applied twice. Closure is at native station 0/1415.8658, within S01/S12, not at the end of the video.",
+  "centerline_change": "None in this candidate; effective riding-line radius tightened with physical banking and grooves. Horizontal relocation lacks sufficient independent evidence.",
+  "sections": [
+    {
+      "section_id": "S01",
+      "real_video_start_s": 0,
+      "real_video_end_s": 12,
+      "current_game_search_window_s": [
+        [
+          104,
+          126
+        ]
+      ],
+      "route_station_start_m": 1290,
+      "route_station_end_m": 75,
+      "wraps_station_zero": true,
+      "confidence": "medium",
+      "boundary_uncertainty_m": 25,
+      "landmark_basis": "J12a/J12b along wooded west edge; left T14 opens onto utility-pole/fence J01 straight",
+      "preceding_feature": "T13 exit",
+      "principal_feature": "low rolling approach, T14, rising spectator straight",
+      "following_feature": "T01 berm",
+      "notes_on_current_mismatch": "Broad neutral corridor; insufficient continuous relief and bank support. Boundaries estimated by topology, not video-speed interpolation."
+    },
+    {
+      "section_id": "S02",
+      "real_video_start_s": 12,
+      "real_video_end_s": 22,
+      "current_game_search_window_s": [
+        [
+          124,
+          140
+        ],
+        [
+          16,
+          27
+        ]
+      ],
+      "route_station_start_m": 75,
+      "route_station_end_m": 125,
+      "wraps_station_zero": false,
+      "confidence": "high",
+      "boundary_uncertainty_m": 15,
+      "landmark_basis": "First left hairpin after fence/poles and J01; T01 topology matches both video passes",
+      "preceding_feature": "J01 landing",
+      "principal_feature": "T01 carved left sweeper",
+      "following_feature": "J02 rise",
+      "notes_on_current_mismatch": "Broad neutral corridor; insufficient continuous relief and bank support. Boundaries estimated by topology, not video-speed interpolation."
+    },
+    {
+      "section_id": "S03",
+      "real_video_start_s": 22,
+      "real_video_end_s": 34,
+      "current_game_search_window_s": [
+        [
+          23,
+          41
+        ],
+        [
+          134,
+          150
+        ]
+      ],
+      "route_station_start_m": 125,
+      "route_station_end_m": 270,
+      "wraps_station_zero": false,
+      "confidence": "medium",
+      "boundary_uncertainty_m": 25,
+      "landmark_basis": "J02 then right T02 then J03 toward right T03; repeat visible at real 142-152",
+      "preceding_feature": "T01 exit",
+      "principal_feature": "linked crests with intervening right direction change",
+      "following_feature": "T03 bowl",
+      "notes_on_current_mismatch": "Broad neutral corridor; insufficient continuous relief and bank support. Boundaries estimated by topology, not video-speed interpolation."
+    },
+    {
+      "section_id": "S04",
+      "real_video_start_s": 34,
+      "real_video_end_s": 46,
+      "current_game_search_window_s": [
+        [
+          34,
+          50
+        ]
+      ],
+      "route_station_start_m": 270,
+      "route_station_end_m": 438,
+      "wraps_station_zero": false,
+      "confidence": "medium",
+      "boundary_uncertainty_m": 25,
+      "landmark_basis": "Right hairpin T03, J03b/T04 left transition and J04; contains more than one turn/crest",
+      "preceding_feature": "J03",
+      "principal_feature": "T03 bowl and linked T04 bank; suppress isolated oversized J04",
+      "following_feature": "T05 left complex",
+      "notes_on_current_mismatch": "Broad neutral corridor; insufficient continuous relief and bank support. Boundaries estimated by topology, not video-speed interpolation."
+    },
+    {
+      "section_id": "S05",
+      "real_video_start_s": 46,
+      "real_video_end_s": 58,
+      "current_game_search_window_s": [
+        [
+          45,
+          59
+        ]
+      ],
+      "route_station_start_m": 438,
+      "route_station_end_m": 563,
+      "wraps_station_zero": false,
+      "confidence": "medium",
+      "boundary_uncertainty_m": 25,
+      "landmark_basis": "Left T05 to right T06 and J06. Airborne at real 58 follows compact direction changes",
+      "preceding_feature": "J04 landing",
+      "principal_feature": "T05/T06 linked turns and progressive J06",
+      "following_feature": "T07",
+      "notes_on_current_mismatch": "Broad neutral corridor; insufficient continuous relief and bank support. Boundaries estimated by topology, not video-speed interpolation."
+    },
+    {
+      "section_id": "S06",
+      "real_video_start_s": 58,
+      "real_video_end_s": 68,
+      "current_game_search_window_s": [
+        [
+          55,
+          67
+        ]
+      ],
+      "route_station_start_m": 563,
+      "route_station_end_m": 644,
+      "wraps_station_zero": false,
+      "confidence": "medium",
+      "boundary_uncertainty_m": 25,
+      "landmark_basis": "Right T07 after J06 landing then low J07 wave; immediate next left T08",
+      "preceding_feature": "J06",
+      "principal_feature": "rough acceleration, T07 and low J07",
+      "following_feature": "T08",
+      "notes_on_current_mismatch": "Broad neutral corridor; insufficient continuous relief and bank support. Boundaries estimated by topology, not video-speed interpolation."
+    },
+    {
+      "section_id": "S07",
+      "real_video_start_s": 68,
+      "real_video_end_s": 78,
+      "current_game_search_window_s": [
+        [
+          62,
+          76
+        ]
+      ],
+      "route_station_start_m": 644,
+      "route_station_end_m": 799,
+      "wraps_station_zero": false,
+      "confidence": "high",
+      "boundary_uncertainty_m": 15,
+      "landmark_basis": "T08 left establishes long tree-side lane with two rises J08a/J08b; strongest ramp near real 74",
+      "preceding_feature": "J07",
+      "principal_feature": "T08 exit and substantial tree-side ramp J08b",
+      "following_feature": "T09",
+      "notes_on_current_mismatch": "Broad neutral corridor; insufficient continuous relief and bank support. Boundaries estimated by topology, not video-speed interpolation."
+    },
+    {
+      "section_id": "S08",
+      "real_video_start_s": 78,
+      "real_video_end_s": 90,
+      "current_game_search_window_s": [
+        [
+          73,
+          86
+        ]
+      ],
+      "route_station_start_m": 799,
+      "route_station_end_m": 899,
+      "wraps_station_zero": false,
+      "confidence": "high",
+      "boundary_uncertainty_m": 15,
+      "landmark_basis": "Left T09 to J09a/J09b on return lane; compact approach to right T10",
+      "preceding_feature": "J08b landing",
+      "principal_feature": "T09 deep bank and linked exit crest",
+      "following_feature": "T10 wall",
+      "notes_on_current_mismatch": "Broad neutral corridor; insufficient continuous relief and bank support. Boundaries estimated by topology, not video-speed interpolation."
+    },
+    {
+      "section_id": "S09",
+      "real_video_start_s": 90,
+      "real_video_end_s": 101,
+      "current_game_search_window_s": [
+        [
+          81,
+          96
+        ]
+      ],
+      "route_station_start_m": 899,
+      "route_station_end_m": 1057,
+      "wraps_station_zero": false,
+      "confidence": "high",
+      "boundary_uncertainty_m": 15,
+      "landmark_basis": "Right T10 wall to J10a low setup/J10b major face, then left T11. GoPro 94.7 face verified; game 95 is already near T11 exit",
+      "preceding_feature": "T09 return lane",
+      "principal_feature": "T10 berm, low setup rise and dominant J10b ramp",
+      "following_feature": "T11",
+      "notes_on_current_mismatch": "Broad neutral corridor; insufficient continuous relief and bank support. Boundaries estimated by topology, not video-speed interpolation."
+    },
+    {
+      "section_id": "S10",
+      "real_video_start_s": 101,
+      "real_video_end_s": 114,
+      "current_game_search_window_s": [
+        [
+          91,
+          106
+        ]
+      ],
+      "route_station_start_m": 1057,
+      "route_station_end_m": 1176,
+      "wraps_station_zero": false,
+      "confidence": "medium",
+      "boundary_uncertainty_m": 25,
+      "landmark_basis": "T11 left, J11/J11b west-side wooded lane, then T12. Do not confuse this ramp with preceding signature J10b",
+      "preceding_feature": "signature landing",
+      "principal_feature": "T11 supported turn and wooded rolling landing lane",
+      "following_feature": "T12 right",
+      "notes_on_current_mismatch": "Broad neutral corridor; insufficient continuous relief and bank support. Boundaries estimated by topology, not video-speed interpolation."
+    },
+    {
+      "section_id": "S11",
+      "real_video_start_s": 114,
+      "real_video_end_s": 125,
+      "current_game_search_window_s": [
+        [
+          100,
+          114
+        ]
+      ],
+      "route_station_start_m": 1176,
+      "route_station_end_m": 1290,
+      "wraps_station_zero": false,
+      "confidence": "medium",
+      "boundary_uncertainty_m": 25,
+      "landmark_basis": "T12 right and T13 left lead to west-edge J12a; both bends remain part of this sector despite brief title calling it a straight",
+      "preceding_feature": "J11b",
+      "principal_feature": "two carved bends and active setup toward west-side ramp",
+      "following_feature": "J12b / T14",
+      "notes_on_current_mismatch": "Broad neutral corridor; insufficient continuous relief and bank support. Boundaries estimated by topology, not video-speed interpolation."
+    },
+    {
+      "section_id": "S12",
+      "real_video_start_s": 125,
+      "real_video_end_s": 136,
+      "current_game_search_window_s": [
+        [
+          110,
+          126
+        ]
+      ],
+      "route_station_start_m": 1290,
+      "route_station_end_m": 75,
+      "wraps_station_zero": true,
+      "confidence": "high",
+      "boundary_uncertainty_m": 15,
+      "landmark_basis": "Repeated poles/fence and J01 after J12b/T14. Same physical sector as S01 ~124 seconds earlier",
+      "preceding_feature": "T13 / J12a",
+      "principal_feature": "broad ramps and immediate T14 direction change",
+      "following_feature": "T01",
+      "notes_on_current_mismatch": "Broad neutral corridor; insufficient continuous relief and bank support. Boundaries estimated by topology, not video-speed interpolation.",
+      "physical_alias_of": [
+        "S01"
+      ]
+    },
+    {
+      "section_id": "S13",
+      "real_video_start_s": 136,
+      "real_video_end_s": 148,
+      "current_game_search_window_s": [
+        [
+          124,
+          143
+        ]
+      ],
+      "route_station_start_m": 75,
+      "route_station_end_m": 230,
+      "wraps_station_zero": false,
+      "confidence": "medium",
+      "boundary_uncertainty_m": 25,
+      "landmark_basis": "Repeated T01 then J02 and right T02; matches S02 and first part of S03",
+      "preceding_feature": "J01",
+      "principal_feature": "banked direction change, second crest",
+      "following_feature": "J03",
+      "notes_on_current_mismatch": "Broad neutral corridor; insufficient continuous relief and bank support. Boundaries estimated by topology, not video-speed interpolation.",
+      "physical_alias_of": [
+        "S02",
+        "S03"
+      ]
+    },
+    {
+      "section_id": "S14",
+      "real_video_start_s": 148,
+      "real_video_end_s": 158,
+      "current_game_search_window_s": [
+        [
+          29,
+          41
+        ],
+        [
+          140,
+          154
+        ]
+      ],
+      "route_station_start_m": 230,
+      "route_station_end_m": 330,
+      "wraps_station_zero": false,
+      "confidence": "medium",
+      "boundary_uncertainty_m": 25,
+      "landmark_basis": "Repeated J03 to T03 bowl. Video ends during this turn, not at physical lap closure. Riding ends about 156s",
+      "preceding_feature": "T02",
+      "principal_feature": "rough J03 approach and T03 supported turn",
+      "following_feature": "J03b / T04",
+      "notes_on_current_mismatch": "Broad neutral corridor; insufficient continuous relief and bank support. Boundaries estimated by topology, not video-speed interpolation.",
+      "physical_alias_of": [
+        "S03",
+        "S04"
+      ]
+    }
+  ]
+}
