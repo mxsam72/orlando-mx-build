@@ -14,7 +14,7 @@
     "S10",
     "S11"
   ],
-  "native_compilation": false,
+  "native_compilation": true,
   "in_game_riding": false,
   "raw_sha256": "207bea281f6c503f2d7d422d9135913c4ca5223b8f7ca295629a0c19e34a522f",
   "height_range_m": [
@@ -33,7 +33,7 @@
   "finite": true,
   "raw_bytes": 8396802,
   "raw_png_identical": true,
-  "outer_terrain_max_delta_m": 0.0,
+  "outer_terrain_max_delta_m": 0,
   "route_unchanged": true,
   "loop_closure_m": 8.039928421361173e-12,
   "effective_width_range_m": [
@@ -46,7 +46,7 @@
       "kind": "tabletop",
       "maximum_actual_grade": 0.3665680601517636,
       "height_above_endpoint_chord_m": 2.794389040974704,
-      "deck_length_m": 10.0,
+      "deck_length_m": 10,
       "actual_deck_height_spread_m": 0.03061270399358218,
       "actual_deck_max_grade": 0.006600871478951831
     },
@@ -107,7 +107,7 @@
       "kind": "tabletop",
       "maximum_actual_grade": 0.42226512400210936,
       "height_above_endpoint_chord_m": 3.2418385547773547,
-      "deck_length_m": 7.0,
+      "deck_length_m": 7,
       "actual_deck_height_spread_m": 0.0031948158281087657,
       "actual_deck_max_grade": 0.004313276927319976
     },
@@ -134,7 +134,7 @@
       "kind": "tabletop",
       "maximum_actual_grade": 0.4467282918808948,
       "height_above_endpoint_chord_m": 3.7029073910402728,
-      "deck_length_m": 12.0,
+      "deck_length_m": 12,
       "actual_deck_height_spread_m": 0.004505183396483758,
       "actual_deck_max_grade": 0.005132445970104982
     },
@@ -164,5 +164,17 @@
       "height_above_endpoint_chord_m": 2.28401913043077
     }
   ],
-  "geometry_checks_pass": true
+  "geometry_checks_pass": true,
+  "native_build": {
+    "workflow_name": "Build v011 IRL corrections",
+    "workflow_run_id": 36446464053,
+    "build_source_commit": "ea330f6b64bbdfcbf72d02f3e58919cec1edbb53",
+    "conclusion": "success",
+    "pkz_filename": "OrlandoMX_2026_v011.pkz",
+    "pkz_bytes": 139735618,
+    "pkz_sha256": "548062110f43b0677dd27f9d31f6be0cdd53821f857ab453f4502360709d270a",
+    "game_artifact_id": 10982205006,
+    "evidence_artifact_id": 10980839995,
+    "source_checkpoint_artifact_id": 10981575049
+  }
 }
