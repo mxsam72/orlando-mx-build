@@ -1,0 +1,1112 @@
+{
+  "review_date": "2026-09-27",
+  "status": "Review and proposal only; no track edits applied",
+  "reference_files": {
+    "real": "orlando mx gopro for mxbikes(2).mp4",
+    "game": "test v009 mxbikes.mp4"
+  },
+  "source_repo": "mxsam72/orlando-mx-build",
+  "source_commit": "4bdb20c2c34ce91cdd15c63546d5f7b662d9c4a4",
+  "timing_basis": "Original uploaded clip clocks. Approximate navigation windows, typically ±1 second. Not telemetry or exact contact timing.",
+  "alignment": "Feature order, corner direction, repeated passes and landmarks. No constant global offset. Native stations identify current source only, not surveyed IRL locations.",
+  "video_comparison": "Section-aligned. IRL speed retained; game speed adjusted per section. Do not infer airtime or speed from the composite.",
+  "gate_status": "User-confirmed area and connection: gate to the right of the T14–T01 spectator frontage on the design map; a separate start lane feeds into the T05 area. Exact dimensions and final merge geometry remain authoring work.",
+  "questions": [
+    "Confirm whether the rise at real 0:23–0:24 (repeat 2:23–2:24) is a separate mound or the raised entry into the right turn.",
+    "Confirm the smaller rise after the signature landing at real 1:38–1:40; is this a separate shaped feature before the left?"
+  ],
+  "sections": [
+    {
+      "id": "P01",
+      "title": "Pole / spectator-side jump",
+      "real": [
+        9,
+        14
+      ],
+      "game": [
+        22,
+        27
+      ],
+      "legacy": "S01 / repeat S12",
+      "ids": "R01; native s 40 m",
+      "confidence": "High",
+      "pairs": [
+        [
+          11,
+          24
+        ],
+        [
+          13,
+          26
+        ]
+      ],
+      "observed": "The GoPro approaches a built face beside poles, fencing and the spectator/paddock edge, crests it, then lands directly into the setup for the first left. The repeated pass at 2:11–2:14 gives a clearer view of the lip and landing. The new user annotations confirm this is the spectator-fence frontage associated with T14–T01.",
+      "current": "The correct broad jump is recognizable, but its long rounded transition and uniform shoulders soften the face-to-lip break. The clean, paired grooves and sparse surroundings make the approach read as a generic raised lane.",
+      "changes": [
+        "Give the takeoff a distinct toe, a progressively steeper upper face and a readable lip; retain a supported crest and landing rather than rounding the entire obstacle into one mound.",
+        "Tune landing pitch and its runout together with T01 entry. Preserve room to settle before committing to the rut, without inserting a long neutral straight.",
+        "Place the spectator fencing along the outside T14–R01–T01 frontage. Keep the gate area to its right on the design map and the separate launch lane heading toward T05. Use GoPro views to refine posts, structures and tree placement."
+      ],
+      "check": "Match the approach silhouette, crest visibility and landing-to-left-turn sequence in both GoPro passes. Do not size the jump from apparent screen height alone. Spectator frontage and the separate gate area must occupy the confirmed sides.",
+      "note": "Primary anchor: poles / fence, jump, then immediate left."
+    },
+    {
+      "id": "P02",
+      "title": "First carved left sweeper",
+      "real": [
+        14,
+        19
+      ],
+      "game": [
+        27,
+        32
+      ],
+      "legacy": "S02 / repeat S13",
+      "ids": "T01; native s 98 m",
+      "confidence": "High",
+      "pairs": [
+        [
+          16,
+          29
+        ],
+        [
+          136,
+          134
+        ]
+      ],
+      "observed": "The real turn has several carved arcs, a clearly loaded outside bank and an uneven inner edge. Its exit points promptly at the next built face. The second pass shows another rider using a different line.",
+      "current": "v009 provides banking, but the preferred lane is broad and smooth and the transition from entry to apex to exit is too even. A raised outer shoulder is present; the missing character is the shape and support of individual riding lines.",
+      "changes": [
+        "Separate the braking entry, deepest apex and releasing exit in both plan and cross-section. Make bank height and bank angle vary along the turn.",
+        "Build an inside option and a supported outer rut, with distinct trajectories and elevation; do not stamp the same parallel grooves across the whole corner.",
+        "Check the exit heading and distance to R02 against the real exit frame. Permit a local route edit if the current arc cannot reproduce that relationship."
+      ],
+      "check": "Ride inside and outside lines: each must enter, hold and release naturally, and reveal R02 at the corresponding phase. The other rider’s game crash at about 0:28 is not proof of a terrain defect.",
+      "note": "Bank shape and line support need more work than overall height."
+    },
+    {
+      "id": "P03",
+      "title": "Early linked rises and right turn",
+      "real": [
+        19,
+        31
+      ],
+      "game": [
+        32,
+        46
+      ],
+      "legacy": "S03, with earlier start than the old time block",
+      "ids": "R02 → candidate extra rise → T02 → R03; s 140–241 m",
+      "confidence": "High sector; medium exact extra-rise placement",
+      "pairs": [
+        [
+          19,
+          34
+        ],
+        [
+          23,
+          38
+        ],
+        [
+          28,
+          43
+        ]
+      ],
+      "observed": "This is not a single roller followed by a right turn. The GoPro shows a built crest near 0:20, a second distinct rise near 0:23–0:24, the right bend near 0:25–0:26, then another defined face near 0:28. The second pass repeats these around 2:20, 2:23–2:24, 2:25–2:26 and 2:28.",
+      "current": "R02 is visible at about 0:34–0:35, followed by a comparatively neutral approach to T02 at 0:39–0:41. R03 is a small rounded transition around 0:43–0:44. There is no comparably distinct pre-T02 face in the tested corridor.",
+      "changes": [
+        "Add a provisional feature record for the rise between R02 and T02. First resolve whether it is a separate mound or an elevated corner entry; either interpretation requires a visible rise-and-drop here.",
+        "Rebuild R02 and R03 as individually shaped built features. In particular, review R03’s current 0.85 m recipe height and 4.6 m rollover: it reads as a roller whereas the real face is well defined. These values are current authoring settings, not real measurements.",
+        "Re-space the three rises and the intervening right bend together. Retain the rough braking approach into T03; avoid solving the extra rise by stretching R02’s landing across the whole straight."
+      ],
+      "check": "The ordered crest / rise / right bend / face sequence must be readable on both real passes. Exact station and geometry of the extra rise remain provisional.",
+      "note": "Sequence issue: an additional rise is visible before T02."
+    },
+    {
+      "id": "P04",
+      "title": "Right bowl and climbing left transition",
+      "real": [
+        31,
+        42
+      ],
+      "game": [
+        46,
+        55
+      ],
+      "legacy": "S04",
+      "ids": "T03 → R04 → T04; s 289–359 m",
+      "confidence": "High turn order; medium crest boundaries",
+      "pairs": [
+        [
+          33,
+          48
+        ],
+        [
+          39,
+          53
+        ]
+      ],
+      "observed": "The real right bowl is cut into the surface, with braking texture and a supported outer line. The exit crosses a low transition and then climbs through a left direction change; the terrain and cornering are continuous.",
+      "current": "The right bowl exists but has a broad, uniformly smoothed floor and bank. R04 and T04 read as tidy, separately rounded shapes with limited line-specific relief. The current source holds the original horizontal alignment fixed.",
+      "changes": [
+        "Carve the T03 riding pocket and outer support together: deepen the local trough relative to the bank where needed, rather than lifting the whole corner onto a pedestal.",
+        "Give entry, apex and exit different radii and cross-sections. Place braking bumps before load builds, and let the exit rut fade into the next feature.",
+        "Blend R04 into the climbing T04 line. Preserve the leftward sweep and changing grade, with no isolated spike or abrupt lateral seam."
+      ],
+      "check": "Compare T03 at real 0:33 / game 0:48 and T04 at real 0:39 / game 0:53. The bike should remain supported through the compound transition.",
+      "note": "Model a carved bowl flowing into a climbing left."
+    },
+    {
+      "id": "P05",
+      "title": "Turn-setup jump into the next left",
+      "real": [
+        42,
+        52
+      ],
+      "game": [
+        55,
+        63
+      ],
+      "legacy": "S04 → S05",
+      "ids": "R05 → T05; s 402–464 m",
+      "confidence": "Medium-high",
+      "pairs": [
+        [
+          43,
+          55
+        ],
+        [
+          47,
+          60
+        ]
+      ],
+      "observed": "The real crest is followed closely by a loaded left, then an uneven release onto the following lane. The jump, landing and turn work as one compact complex rather than three evenly separated shapes.",
+      "current": "R05 is a low, clean crest and T05 is a wide, smooth arc. The surface releases gradually and remains consistent across the available lane, losing the carved, changing shape of the real exit.",
+      "changes": [
+        "Tune R05’s face and landing to place the rider correctly for T05; check the landing-to-braking interval, not just the crest height.",
+        "Reshape T05 around its active rut lines, with a lower inside pocket and varying outside support. Revisit its entry/exit headings if necessary.",
+        "Restore the uneven corner exit and local grade changes, while keeping the small R06 transition separate from the major R07 jump farther ahead.",
+        "Provide the separate race-start approach into the T05 area while preserving the normal R05-to-T05 lap approach. Shape a progressive merge with enough support for inside and outside start lines; the drawn connection is schematic, not a locked merge coordinate."
+      ],
+      "check": "A matched landing view must show the same immediate left-turn commitment, followed by a clear release toward the next right. Validate both the normal lap entry and the first-lap start entry.",
+      "note": "Treat the jump and left turn as a connected complex."
+    },
+    {
+      "id": "P06",
+      "title": "Compact right and turn-exit jump",
+      "real": [
+        52,
+        60
+      ],
+      "game": [
+        63,
+        69
+      ],
+      "legacy": "S05",
+      "ids": "R06 → T06 → R07; s 492–536 m",
+      "confidence": "High",
+      "pairs": [
+        [
+          55,
+          65
+        ],
+        [
+          57,
+          66
+        ]
+      ],
+      "observed": "A small transition precedes a compact right. The real main jump rises directly out of that direction change with a distinct upper face and lip; the bike lands before the next right.",
+      "current": "The corresponding sequence is present, but the turn and ramp blend into a wide smooth shoulder. R07’s rounded upper transition makes the jump less distinct than the GoPro face.",
+      "changes": [
+        "Keep R06 a small transition; do not enlarge every mound equally. Tighten and shape T06’s preferred exit trajectory to aim onto R07.",
+        "Redesign R07’s toe-to-lip curvature, effective face width and side supports independently of its landing. Review the current 2.45 m / 13.5 m face recipe after accounting for underlying terrain and blending.",
+        "Position the landing and braking runout to feed T07. Tune the whole turn-exit jump before adding cosmetic ruts."
+      ],
+      "check": "The main ramp must remain clearly distinguishable from the small preceding wave, including when approaching on the turn’s outer line.",
+      "note": "Priority jump: the real face is more distinct off the right turn."
+    },
+    {
+      "id": "P07",
+      "title": "Right-to-left linking section",
+      "real": [
+        60,
+        70
+      ],
+      "game": [
+        69,
+        78
+      ],
+      "legacy": "S06 → S07",
+      "ids": "T07 → R08 → T08; s 583–665 m",
+      "confidence": "High turn sequence",
+      "pairs": [
+        [
+          63,
+          71
+        ],
+        [
+          68,
+          76
+        ]
+      ],
+      "observed": "The GoPro turns right, crosses a low rising transition, then loads a more pronounced left bank. The intervening surface is active and uneven; the left releases into the two-rise tree-side lane.",
+      "current": "Both turns are present, but their floors, shoulders and linking crest are very evenly smoothed. The T08 wall does not give the same carved-line impression or release.",
+      "changes": [
+        "Differentiate the right and left turns: entry compression and short exit at T07, then a more supported T08 apex with a clear release toward R09.",
+        "Keep R08 low and integrated into the linking grade. Add local acceleration/braking relief where visible, rather than a uniform sine wave throughout the sector.",
+        "Check the spacing and pointing direction between the two turns. Alter local alignment only to match the observed transition, not to force equal video durations."
+      ],
+      "check": "The low transition must stay subordinate to the next two jumps. The T08 exit should reveal R09 and R10 in the correct order.",
+      "note": "Use different corner cross-sections across the right-left link."
+    },
+    {
+      "id": "P08",
+      "title": "Two-rise tree-side straight",
+      "real": [
+        70,
+        78
+      ],
+      "game": [
+        78,
+        84
+      ],
+      "legacy": "S07",
+      "ids": "R09 → R10; s 703 and 759 m",
+      "confidence": "High",
+      "pairs": [
+        [
+          71,
+          79
+        ],
+        [
+          74,
+          81
+        ]
+      ],
+      "observed": "Two separate built rises are visible: the smaller first feature unloads the bike, which settles before attacking the larger second face. The second jump has a definite skyline and feeds the substantial left berm.",
+      "current": "The pair exists, but the first reads as a gentle wave and the second is softened by a long rounded transition. Its lateral shape and surroundings remain very uniform.",
+      "changes": [
+        "Preserve two separate features and a useful trough between them. Tune the first landing, second toe and intervening distance together.",
+        "Give R10 a distinct built face and lip with a shaped landing; review its 3.05 m height, 16.5 m face and 3.3 m rollover as interacting settings, not fixed truths.",
+        "Match the narrowing visual corridor and nearby vegetation without blindly narrowing every part of the rideable surface. Place the R10 landing to set up T09’s real entry line."
+      ],
+      "check": "The rider must encounter two distinct unload/settle cycles, followed by the left berm. Compare approach, crest and landing views, not airborne duration from the retimed comparison.",
+      "note": "Preserve the two-feature rhythm and strengthen the second face."
+    },
+    {
+      "id": "P09",
+      "title": "Deep tree-side left berm",
+      "real": [
+        78,
+        83
+      ],
+      "game": [
+        84,
+        89
+      ],
+      "legacy": "S08",
+      "ids": "T09; native s 819 m",
+      "confidence": "High",
+      "pairs": [
+        [
+          80,
+          86
+        ],
+        [
+          82,
+          88
+        ]
+      ],
+      "observed": "This is a strongly carved left with conspicuous grooves and sustained outer-bank support. Its exit climbs into the return-lane features.",
+      "current": "The game bank is visible and sizeable, but it behaves visually as a broad smooth bowl with faint repeated grooves. The real rut pocket, face and crest have more distinct shapes.",
+      "changes": [
+        "Keep a substantial bank, but redistribute the cross-section into a carved riding pocket, an upper support face and a soft shoulder beyond it.",
+        "Make inside and outside lines follow different arcs and local heights; vary groove depth/width through the apex and let them open on exit.",
+        "Link the releasing bank to R11 so the exit has the right rise and orientation. Do not flatten it simply to make the next jump independent."
+      ],
+      "check": "A rider should be able to hold the supported outer line while the inside option remains visibly different. Compare the bank silhouette at real 1:20 / game 1:26.",
+      "note": "Existing bank needs line-specific shape and sustained support."
+    },
+    {
+      "id": "P10",
+      "title": "Return-lane crests and right wall",
+      "real": [
+        83,
+        93
+      ],
+      "game": [
+        89,
+        96
+      ],
+      "legacy": "S08 → S09",
+      "ids": "R11 → R12 → T10; s 845–916 m",
+      "confidence": "High sector; medium individual crest phase",
+      "pairs": [
+        [
+          84,
+          89
+        ],
+        [
+          91,
+          94
+        ]
+      ],
+      "observed": "The berm exit produces an initial unload, followed by another low crest before a strongly banked right. The right wall releases onto the signature-jump approach.",
+      "current": "The game has two shallow features close together around 1:29–1:31, then a broadly rounded right at 1:33–1:35. Individual crest boundaries are less obvious than the sector’s overall match.",
+      "changes": [
+        "Keep the two exit features distinguishable, but tune their height and spacing as one return-lane rhythm. Use full approach/landing frames before changing their station order.",
+        "Rebuild T10’s loaded right wall, entry pocket and exit trajectory. The high bank should support a specific riding line, not simply elevate the far edge of a flat floor.",
+        "Preserve a short, readable connection from the turn to the signature face. Resolve the small pre-ramp disturbance separately from the post-landing rise in P11."
+      ],
+      "check": "Match the two crests, right wall and signature approach in sequence. Do not substitute the tree-side R10 jump for the later R14 signature jump.",
+      "note": "The right wall is the key landmark before the signature jump."
+    },
+    {
+      "id": "P11",
+      "title": "Signature jump and following rise",
+      "real": [
+        93,
+        101
+      ],
+      "game": [
+        96,
+        102
+      ],
+      "legacy": "S09",
+      "ids": "R13 / R14 plus candidate post-landing rise; s 953–989 m and beyond",
+      "confidence": "High main-jump match; medium small-feature interpretation",
+      "pairs": [
+        [
+          95,
+          98
+        ],
+        [
+          99,
+          100
+        ]
+      ],
+      "observed": "After the right wall, the real main face is unmistakable near 1:35. Following its landing there is another visible rising section near 1:38–1:39, just before the left turn. The real approach near 1:33 also has disturbance, but the footage does not by itself establish a separate engineered pre-jump mound.",
+      "current": "v009 places R13 before R14, then the large ramp at 1:38–1:39 and a comparatively neutral runout into the left. The main-jump sector is correctly identifiable; the smaller-feature sequence is not reproduced convincingly.",
+      "changes": [
+        "Audit the longitudinal sequence before scaling the signature ramp. Add a provisional post-landing rise record between R14’s landing and T11; do not assume the existing pre-jump R13 satisfies it.",
+        "Keep, reduce or relocate R13 only after confirming whether the real pre-face disturbance is a separate obstacle or turn-exit relief. The candidate post-rise should not be another major jump.",
+        "Refine R14’s toe, steepening upper face, lip, supported crest and landing separately. Its current 3.55 m recipe is not an IRL measurement. Check the landing-to-next-rise distance and subsequent left-turn setup."
+      ],
+      "check": "Required visual order: right wall, main built face, landing, smaller rise, left. Ask the user to confirm the smaller rise’s physical identity before final stationing.",
+      "note": "Priority sequence audit: the real landing is followed by another rise."
+    },
+    {
+      "id": "P12",
+      "title": "Wooded left and exit jump",
+      "real": [
+        101,
+        110
+      ],
+      "game": [
+        102,
+        111
+      ],
+      "legacy": "S10",
+      "ids": "T11 → R15 → R16; s 1074–1137 m",
+      "confidence": "High sequence; medium exact small-crest boundary",
+      "pairs": [
+        [
+          103,
+          104
+        ],
+        [
+          107,
+          108
+        ]
+      ],
+      "observed": "A loaded left runs close to vegetation. Its exit has a small crest/unload, then a larger face along the wooded edge, followed by a landing into the next direction change.",
+      "current": "The left and both height features are present, but the corner support, smaller transition and main face share the same smooth visual language. Widely spaced tree objects leave a much more open edge.",
+      "changes": [
+        "Shape the T11 entry/apex/exit as a carved turn and preserve the small R15 release after it; do not use R15 to explain the separate rise before T11.",
+        "Give R16 its own face and landing profile, with adequate distinction from R15. Check the landing approach into T12.",
+        "Build the close vegetation edge and uneven shoulder from the real sightline. Keep objects outside the intended riding options and preserve visibility where the real lane opens."
+      ],
+      "check": "The rider must see a left-turn exit crest followed by a separate larger face, with the vegetation on the corresponding side.",
+      "note": "Separate the small corner-exit crest from the larger wooded jump."
+    },
+    {
+      "id": "P13",
+      "title": "Return right-left bends",
+      "real": [
+        110,
+        118
+      ],
+      "game": [
+        111,
+        120
+      ],
+      "legacy": "S11",
+      "ids": "T12 → T13; s 1196–1261 m",
+      "confidence": "High turn order",
+      "pairs": [
+        [
+          111,
+          114
+        ],
+        [
+          115,
+          118
+        ]
+      ],
+      "observed": "The GoPro changes right then left across carved, variable-width lines. The second bend is supported near the vegetation and releases toward the opening sequence.",
+      "current": "The right-left order exists but the arcs and banking are broad and consistent. The game remains comparatively smooth through the direction reversal.",
+      "changes": [
+        "Revisit the entry/exit headings and local radii of both bends together, preserving their order and the approach to R17.",
+        "Give the right and left their own rut shapes and bank-height envelopes. Carry the local low/high terrain through the reversal instead of flattening the connecting floor.",
+        "Vary the rideable line and cleared shoulder independently. Retain wider usable dirt where the GoPro shows it."
+      ],
+      "check": "A matched transition view must show the same reversal and reveal the first approach rise at the correct exit phase.",
+      "note": "Both bends belong here; this is not merely a closing straight."
+    },
+    {
+      "id": "P14",
+      "title": "Approach rises and turn back to poles",
+      "real": [
+        118,
+        130
+      ],
+      "game": [
+        120,
+        129
+      ],
+      "legacy": "S11 → S01 / repeat S12",
+      "ids": "R17 → R18 → T14; s 1290–1369 m then wrap",
+      "confidence": "High sector; medium individual opening-rise phase",
+      "pairs": [
+        [
+          124,
+          122
+        ],
+        [
+          128,
+          126
+        ]
+      ],
+      "observed": "A low rise and a broader crest lead into a left bend back toward the poles and spectator edge. The start of the GoPro, about 0:00–0:09, is another view of this same physical sequence.",
+      "current": "The game has two modest crests around 2:00–2:03, then the left toward the pole-side straight. The lane and shoulders again remain regular and the environmental transition is weak.",
+      "changes": [
+        "Keep R17 lower than R18 and preserve their separate transitions. Shape R18’s landing to feed the left instead of ending on an extended flat shelf.",
+        "Reshape T14’s supported preferred line and release onto R01’s approach. Retain terrain continuity through native station zero.",
+        "Anchor the spectator fence outside the T14–R01–T01 frontage. Place the gate to its right on the design map, with the start lane leading into T05. Use the historical image for these landmarks, not for the current corner and jump layout."
+      ],
+      "check": "Opening and repeated GoPro views must map to the same terrain. Loop closure is a route property, not the end of the uploaded movie.",
+      "note": "This closes the physical loop; the opening footage repeats it."
+    }
+  ],
+  "events": [
+    {
+      "id": "R01",
+      "description": "Pole-side face/crest",
+      "section": "P01",
+      "real_window_s": [
+        10,
+        12
+      ],
+      "game_window_s": [
+        24,
+        25
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "T01",
+      "description": "First left, loaded phase",
+      "section": "P02",
+      "real_window_s": [
+        15,
+        18
+      ],
+      "game_window_s": [
+        28,
+        31
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "R02",
+      "description": "First post-left crest",
+      "section": "P03",
+      "real_window_s": [
+        19,
+        21
+      ],
+      "game_window_s": [
+        33,
+        35
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "EX1",
+      "description": "Extra rise before T02",
+      "section": "P03",
+      "real_window_s": [
+        22,
+        24
+      ],
+      "game_window_s": null,
+      "confidence": "Medium; expected corridor game 36–39"
+    },
+    {
+      "id": "T02",
+      "description": "Right direction change",
+      "section": "P03",
+      "real_window_s": [
+        24,
+        27
+      ],
+      "game_window_s": [
+        39,
+        42
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "R03",
+      "description": "Face after right",
+      "section": "P03",
+      "real_window_s": [
+        27,
+        30
+      ],
+      "game_window_s": [
+        43,
+        45
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "T03",
+      "description": "Right bowl",
+      "section": "P04",
+      "real_window_s": [
+        31,
+        36
+      ],
+      "game_window_s": [
+        46,
+        50
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "R04",
+      "description": "Low bowl-exit transition",
+      "section": "P04",
+      "real_window_s": [
+        36,
+        38
+      ],
+      "game_window_s": [
+        50,
+        52
+      ],
+      "confidence": "Medium"
+    },
+    {
+      "id": "T04",
+      "description": "Climbing left transition",
+      "section": "P04",
+      "real_window_s": [
+        38,
+        42
+      ],
+      "game_window_s": [
+        52,
+        55
+      ],
+      "confidence": "Medium-high"
+    },
+    {
+      "id": "R05",
+      "description": "Jump before next left",
+      "section": "P05",
+      "real_window_s": [
+        42,
+        45
+      ],
+      "game_window_s": [
+        55,
+        58
+      ],
+      "confidence": "Medium-high"
+    },
+    {
+      "id": "T05",
+      "description": "Loaded left",
+      "section": "P05",
+      "real_window_s": [
+        45,
+        52
+      ],
+      "game_window_s": [
+        58,
+        63
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "R06",
+      "description": "Small pre-right transition",
+      "section": "P06",
+      "real_window_s": [
+        52,
+        54
+      ],
+      "game_window_s": [
+        62,
+        64
+      ],
+      "confidence": "Medium"
+    },
+    {
+      "id": "T06",
+      "description": "Compact right",
+      "section": "P06",
+      "real_window_s": [
+        54,
+        56
+      ],
+      "game_window_s": [
+        64,
+        66
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "R07",
+      "description": "Main turn-exit jump",
+      "section": "P06",
+      "real_window_s": [
+        56,
+        60
+      ],
+      "game_window_s": [
+        66,
+        69
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "T07",
+      "description": "Right after landing",
+      "section": "P07",
+      "real_window_s": [
+        60,
+        65
+      ],
+      "game_window_s": [
+        69,
+        72
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "R08",
+      "description": "Low linking wave",
+      "section": "P07",
+      "real_window_s": [
+        65,
+        67
+      ],
+      "game_window_s": [
+        72,
+        74
+      ],
+      "confidence": "Medium"
+    },
+    {
+      "id": "T08",
+      "description": "Left into two-rise lane",
+      "section": "P07",
+      "real_window_s": [
+        67,
+        70
+      ],
+      "game_window_s": [
+        74,
+        78
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "R09",
+      "description": "First tree-side rise",
+      "section": "P08",
+      "real_window_s": [
+        70,
+        73
+      ],
+      "game_window_s": [
+        78,
+        80
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "R10",
+      "description": "Larger tree-side face",
+      "section": "P08",
+      "real_window_s": [
+        73,
+        78
+      ],
+      "game_window_s": [
+        80,
+        84
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "T09",
+      "description": "Deep tree-side left",
+      "section": "P09",
+      "real_window_s": [
+        78,
+        83
+      ],
+      "game_window_s": [
+        84,
+        89
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "R11",
+      "description": "Initial berm-exit crest",
+      "section": "P10",
+      "real_window_s": [
+        83,
+        86
+      ],
+      "game_window_s": [
+        88,
+        90
+      ],
+      "confidence": "Medium"
+    },
+    {
+      "id": "R12",
+      "description": "Second return-lane crest",
+      "section": "P10",
+      "real_window_s": [
+        86,
+        89
+      ],
+      "game_window_s": [
+        90,
+        92
+      ],
+      "confidence": "Medium"
+    },
+    {
+      "id": "T10",
+      "description": "Right wall",
+      "section": "P10",
+      "real_window_s": [
+        89,
+        93
+      ],
+      "game_window_s": [
+        92,
+        96
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "R13?",
+      "description": "Possible pre-face relief",
+      "section": "P11",
+      "real_window_s": [
+        92,
+        94
+      ],
+      "game_window_s": [
+        95,
+        97
+      ],
+      "confidence": "Low physical-feature equivalence"
+    },
+    {
+      "id": "R14",
+      "description": "Signature face / landing",
+      "section": "P11",
+      "real_window_s": [
+        94,
+        98
+      ],
+      "game_window_s": [
+        97,
+        100
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "EX2",
+      "description": "Post-signature rise",
+      "section": "P11",
+      "real_window_s": [
+        98,
+        101
+      ],
+      "game_window_s": null,
+      "confidence": "Medium; expected corridor game 100–102"
+    },
+    {
+      "id": "T11",
+      "description": "Wooded left",
+      "section": "P12",
+      "real_window_s": [
+        101,
+        104
+      ],
+      "game_window_s": [
+        102,
+        106
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "R15",
+      "description": "Small exit crest",
+      "section": "P12",
+      "real_window_s": [
+        104,
+        106
+      ],
+      "game_window_s": [
+        105,
+        107
+      ],
+      "confidence": "Medium"
+    },
+    {
+      "id": "R16",
+      "description": "Wooded larger jump",
+      "section": "P12",
+      "real_window_s": [
+        106,
+        110
+      ],
+      "game_window_s": [
+        107,
+        111
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "T12",
+      "description": "Return right",
+      "section": "P13",
+      "real_window_s": [
+        110,
+        114
+      ],
+      "game_window_s": [
+        111,
+        116
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "T13",
+      "description": "Return left",
+      "section": "P13",
+      "real_window_s": [
+        114,
+        119
+      ],
+      "game_window_s": [
+        116,
+        120
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "R17",
+      "description": "Low approach rise",
+      "section": "P14",
+      "real_window_s": [
+        119,
+        122
+      ],
+      "game_window_s": [
+        120,
+        122
+      ],
+      "confidence": "Medium; real opening 0–3 is alternative"
+    },
+    {
+      "id": "R18",
+      "description": "Broad approach crest",
+      "section": "P14",
+      "real_window_s": [
+        122,
+        126
+      ],
+      "game_window_s": [
+        122,
+        124
+      ],
+      "confidence": "High; real opening 3–6 is alternative"
+    },
+    {
+      "id": "T14",
+      "description": "Left back toward poles",
+      "section": "P14",
+      "real_window_s": [
+        126,
+        130
+      ],
+      "game_window_s": [
+        124,
+        129
+      ],
+      "confidence": "High; real opening 6–9 is alternative"
+    }
+  ],
+  "changes": [
+    {
+      "id": "C01",
+      "priority": "P0",
+      "area": "Relocate the gate and connect the start to T05",
+      "proposal": "Use the confirmed area to the right of the T14–T01 spectator frontage. Build a separate launch lane outside T01 into T05; update grid, gate objects, start terrain, start checkpoints and related board positions together. Retire the old race-start connector.",
+      "dependency": "Area and connection confirmed by the user; exact dimensions and merge shape require calibration.",
+      "acceptance": "Actual starts feed T05 in race direction; first-lap timing/checkpoints work, and subsequent laps use the normal loop."
+    },
+    {
+      "id": "C02",
+      "priority": "P0",
+      "area": "Replace old video timing map",
+      "proposal": "Adopt P01–P14 and the event ledger for this uploaded test. Keep repeat views as aliases, and retain separate fields for source clip time and native station.",
+      "dependency": "Ready as proposed review metadata.",
+      "acceptance": "No old game search window is reused as a v009 timestamp; repeated footage produces no duplicate terrain."
+    },
+    {
+      "id": "C03",
+      "priority": "P0",
+      "area": "Audit feature count and order",
+      "proposal": "Resolve EX1 between R02 and T02 and EX2 after R14. Treat the physical role of pre-signature R13 as unconfirmed.",
+      "dependency": "User confirmation helpful before final stationing.",
+      "acceptance": "The early three-rise sequence and post-signature rise are represented correctly, with no extra invented major jump."
+    },
+    {
+      "id": "C04",
+      "priority": "P1",
+      "area": "Rebuild signature complex",
+      "proposal": "Rework T10 exit, R14 face/crest/landing and the following rise as one complex. Tune local ground and landing elevation as well as ramp height.",
+      "dependency": "After C03.",
+      "acceptance": "Right wall → main face → landing → smaller rise → left appears in the correct order and spacing."
+    },
+    {
+      "id": "C05",
+      "priority": "P1",
+      "area": "Rebuild tree-side pair and berm",
+      "proposal": "Shape R09/R10 as two distinct features, then rebuild T09’s rut pocket, bank support and exit into R11.",
+      "dependency": "Match P08–P10.",
+      "acceptance": "Two clear unload/settle cycles followed by a carved left, without an overly long flat connector."
+    },
+    {
+      "id": "C06",
+      "priority": "P1",
+      "area": "Rebuild early linked rises",
+      "proposal": "Reshape R02 and R03, resolve EX1, and check T02 placement and T03 braking approach.",
+      "dependency": "After C03.",
+      "acceptance": "The second GoPro pass confirms the same obstacle order and corner relationship."
+    },
+    {
+      "id": "C07",
+      "priority": "P1",
+      "area": "Rebuild turn-exit main jump",
+      "proposal": "Rework R06/T06/R07 and its landing into T07; keep the small transition subordinate to the main ramp.",
+      "dependency": "Match P06.",
+      "acceptance": "The face is distinct off the right turn and the landing feeds the next turn naturally."
+    },
+    {
+      "id": "C08",
+      "priority": "P1",
+      "area": "Reshape all major corners locally",
+      "proposal": "Prioritize T01, T03, T05, T09 and T10, then T06/T08/T11–T14. Edit entry, apex and exit separately; allow local centerline changes where evidence supports them.",
+      "dependency": "Preserve confirmed connectivity; exact radii need calibration.",
+      "acceptance": "Inside and outside lines have purposeful, different support and match the real turn-to-next-feature relationship."
+    },
+    {
+      "id": "C09",
+      "priority": "P2",
+      "area": "Finish remaining jump transitions",
+      "proposal": "Refine R01, R04/R05, R08, R11/R12, R15/R16 and R17/R18; preserve their different roles.",
+      "dependency": "After major sequence and corner work.",
+      "acceptance": "No uniform roller template; landings and next-turn setups match each section."
+    },
+    {
+      "id": "C10",
+      "priority": "P2",
+      "area": "Replace repeated grooves and waves",
+      "proposal": "Author lane-specific rut paths, varying width/depth, broken edges, local braking bumps and acceleration chop.",
+      "dependency": "After geometry is settled.",
+      "acceptance": "Surface variation follows the visible lines and loads; the identical twin-groove appearance is removed."
+    },
+    {
+      "id": "C11",
+      "priority": "P2",
+      "area": "Anchor spectator frontage and scenery",
+      "proposal": "Place the spectator fence outside T14–R01–T01, with the gate on its right in the design orientation. Use the old satellite only for facility relationships; match current jumps, corners and sightlines to the videos. Refine nearby brush, trees, poles and structures.",
+      "dependency": "Facility anchors confirmed; fence endpoints and physical offsets remain to be calibrated.",
+      "acceptance": "The fence frontage matches both GoPro passes, the gate is on the correct side, and the launch lane reaches T05."
+    },
+    {
+      "id": "C12",
+      "priority": "P0 / final gate",
+      "area": "Validate by riding and matched footage",
+      "proposal": "Record an actual race start into T05 plus complete laps. Check first-lap checkpoint order/timing, then compare approach, lip, landing and corner entry/apex/exit views at the established anchors.",
+      "dependency": "After proposed rebuild.",
+      "acceptance": "Actual ride review and user section confirmation pass; compilation and grade checks alone are insufficient."
+    }
+  ],
+  "revision": "2 - user-confirmed gate area and spectator frontage",
+  "revision_date_local": "2026-09-27",
+  "gate_and_spectator_confirmation": {
+    "evidence": [
+      {
+        "file": "image(6).png",
+        "role": "User marks general gate location and an arrow feeding into T05 on the current source plan."
+      },
+      {
+        "file": "image(9).png",
+        "role": "Historical satellite image, gate area circled yellow and spectator frontage circled blue."
+      }
+    ],
+    "historical_image_age": "Over one year old, as reported by the user; exact acquisition date not supplied.",
+    "reference_scope": "Use the historical image for gate/spectator/paddock relationships. Do not retrace the current racing layout from its older corners or jumps.",
+    "gate_area_on_design": "Right of the T14–T01 frontage, in the marked outside area.",
+    "start_connection": "Separate start-only lane outside T01, into the T05 area, then regular race direction toward R06/T06.",
+    "spectator_fence_area": "Outside the T14 → R01 → T01 frontage.",
+    "coordinate_status": "All newly drawn gate, lane and fence coordinates are schematic illustration geometry, not surveyed or approved metric construction coordinates.",
+    "orientation_note": "The raw satellite and native design use different orientations. Right means the side indicated on the annotated design map, not geographic east.",
+    "implementation_status": "Review/specification updated; installed v009 and repository geometry have not been changed.",
+    "remaining_dimensions": [
+      "Gate endpoints and width",
+      "Stall count/spacing",
+      "Precise launch heading",
+      "Launch-lane width, grade and curvature",
+      "Exact T05 merge position/tangency",
+      "Fence endpoints, offset and height"
+    ],
+    "race_start_checks": [
+      "Grid and gate alignment",
+      "Launch through T05 in the correct direction",
+      "First-lap checkpoint order and timing",
+      "All subsequent laps follow the main loop",
+      "Inside/outside stalls, reset paths and boundaries"
+    ]
+  },
+  "open_question_original_numbers": [
+    2,
+    3
+  ]
+}

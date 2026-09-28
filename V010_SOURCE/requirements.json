@@ -1,0 +1,33 @@
+{
+  "version": "v010",
+  "baseline_commit": "4bdb20c2c34ce91cdd15c63546d5f7b662d9c4a4",
+  "branch": "rebuild-v010-irl-corrections",
+  "authorized": "2026-09-28",
+  "confirmed": {
+    "gate": "Right of spectator frontage in native design-map orientation",
+    "start_route": "Separate lane feeds T05, continuing toward R06/T06",
+    "spectators": "Outside T14 -> R01 -> T01 frontage",
+    "satellite": "Historical gate/fence context only; not current obstacle geometry"
+  },
+  "preserve": [
+    "Playable v009 release",
+    "Normal R05 -> T05 race line",
+    "Existing finish until first-lap logic verified",
+    "Current main-loop topology unless explicitly corrected"
+  ],
+  "authoring_estimates": [
+    "Metric gate coordinates and lane width",
+    "Jump dimensions inferred from helmet video",
+    "Berm heights and radii"
+  ],
+  "provisional": [
+    "EX1 pre-T02 rise: mound versus raised turn entry",
+    "EX2 post-signature rise before T11: exact interpretation"
+  ],
+  "release_gates": [
+    "Source geometry and race-data checks",
+    "Native compilation",
+    "In-game grid, first lap, reset and normal lap validation",
+    "User ride comparison"
+  ]
+}
