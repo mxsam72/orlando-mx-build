@@ -73,9 +73,20 @@ def main():
                 if c['name']==b'Media':setvalues(c,('v011_'+name).encode()+b'\x00\x01Video')
                 if c['name']==b'Content':c['props']=b'R'+struct.pack('<I',len(raw))+raw;c['count']=1
                 if c['name']==b'Properties70':
+                    # fbx2edf may fall back to the FBX material's diffuse colour
+                    # when it cannot resolve a generated texture.  v011 previously
+                    # cloned marker_white and left this fallback at pure white,
+                    # which is exactly what appeared in-game.  Encode the intended
+                    # palette colour directly as well as keeping the diffuse texture.
+                    rgb=tuple(float(ch)/255.0 for ch in color)
                     for p in c['children']:
                         v=values(p)
-                        if v and v[0] in [b'DiffuseColor',b'Diffuse']:setvalues(p,*v[:4],1.,1.,1.)
+                        if not v: continue
+                        if v[0] in [b'DiffuseColor',b'AmbientColor']:
+                            setvalues(p,*v[:4],*rgb)
+                        elif v[0]==b'Diffuse':
+                            # Diffuse factor, not RGB.
+                            setvalues(p,*v[:4],1.0)
             objects['children'].append(n)
         connect(ti,mi,'DiffuseColor');connect(vi,ti)
     meshes=read(O/'facility_meshes.json');probes=[];q,w=route();qt=cKDTree(q[:,:2]);sa=np.load(O/'route.npz')['start'];st=cKDTree(sa[:,:2]);cfg=read(S/'facilities.json');clear=[]
