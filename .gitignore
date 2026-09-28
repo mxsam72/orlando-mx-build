@@ -38,3 +38,10 @@ BUILD/v009_stage/
 DOCUMENTATION/v009_qa/
 BUILD/v009_source_build.log
 BUILD/v009_sections_review_*.png
+
+# Isolated v010 generated products
+V010_OUTPUT/
+BUILD/v010_cache/
+BUILD/v010_stage/
+.venv-v010/
+DOCUMENTATION/v010_qa/
