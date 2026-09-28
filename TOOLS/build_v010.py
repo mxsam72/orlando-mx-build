@@ -10,6 +10,6 @@ def main():
     scripts=['materialize_v009_baseline.py','rebuild_v009_geometry.py','v010_common.py','rebuild_v010_geometry.py','qa_v010_geometry.py','build_v010_start_terrain.py','build_v010_race.py','rebind_v010_scenery.py','prepare_v010_release.py','render_v010_layout.py']
     for script in scripts:
         print('RUN',script,flush=True);subprocess.run([sys.executable,str(R/'TOOLS'/script)],cwd=R,env=env,check=True)
-    save(R/'DOCUMENTATION/v010_source_checkpoint.json',dict(version='v010',source_checks_pass=True,native_compilation=False,in_game_riding=False,raw_sha256=sha(O/'terrain.raw'),scenery_sha256=sha(O/'scenery.fbx'),start_tcl_sha256=sha(O/'start.tcl'),rdf_sha256=sha(O/(NAME+'.rdf')),provisional_features_disabled=['EX1','EX2']))
+    save(R/'DOCUMENTATION/v010_source_checkpoint.json',dict(version='v010',source_commit=os.environ.get('GITHUB_SHA','local build; see source hashes'),geometry_spec_sha256=sha(S/'v010_geometry_spec.json'),facilities_spec_sha256=sha(S/'facilities.json'),source_checks_pass=True,native_compilation=False,in_game_riding=False,raw_sha256=sha(O/'terrain.raw'),scenery_sha256=sha(O/'scenery.fbx'),start_tcl_sha256=sha(O/'start.tcl'),rdf_sha256=sha(O/(NAME+'.rdf')),provisional_features_disabled=['EX1','EX2']))
     if not args.source_only:subprocess.run([sys.executable,str(R/'TOOLS/build_windows_v010.py')],cwd=R,env=env,check=True)
 if __name__=='__main__':main()

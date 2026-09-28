@@ -6,7 +6,9 @@ Branch: rebuild-v010-irl-corrections. Baseline v009: 4bdb20c2c34ce91cdd15c63546d
 
 - 00: 5b5414b84da2ae8ea12f5321650759657bc2cbbe — user-confirmed facility relationships and full P01–P14 review metadata.
 - 01: f7bfd6cda5626d98ff718efbe23facafd434273b — generated T05 start connector, level grid apron, relocated grid/board and first-lap checkpoint source. Local geometric and RDF reconstruction checks passed.
-- 02 (this commit): complete v010 source pipeline, differentiated jump profiles and corner pockets/rut paths, spectator-fence relocation, new start/retirement masks, Windows build workflow. Full asset/native build must pass before a candidate is considered compiled.
+- 02: 363ea55e542620b935998d62ddb259094dc38cbd — complete v010 source pipeline, differentiated jump profiles and corner pockets/rut paths, spectator-fence relocation, new start/retirement masks, Windows build workflow. Full asset/native build must pass before a candidate is considered compiled.
+
+- 03 (this commit): open the outside entry bank where the new start joins T05. The actual start profile previously crossed a 1.16 m bank crest. A localized opening now cuts that obstruction and rounds its shoulders; normal centerline and terrain outside the merge are preserved. Local checks: grid height spread/slope 0, maximum start-centerline grade 0.1782, maximum changed grade 0.6721, zero centerline and protected normal-lap height change.
 
 ## Implemented
 
@@ -40,6 +42,6 @@ If interrupted: fetch latest branch HEAD and read this file, then inspect the la
 
 ## Still requires verification
 
-Full source/FBX/mask build and native MAP/TRH merge are pending at this checkpoint. After compilation, test the animated shared gate, all grid slots, full start lane, first finish crossing, full normal lap timing, checkpoints and short/long resets. Compare P01–P14 approach/face/landing and entry/apex/exit footage. Metrics and compilation cannot establish that the game now matches the real track.
+Checkpoint 02 passed the complete Windows source/FBX/mask pipeline. Its source artifact 10971535377 was saved (5,417,907 bytes, SHA256 0cd4359fd477626cfe7b58d9ad92190170cca6ba67f7b694edaf42d8f804d9cc). Checkpoint 03 includes the locally verified T05 entry opening and requires a new native build. Superseded runs are canceled after a new source commit to avoid compiling obsolete candidates; already uploaded checkpoints remain available. The first pipeline run is https://github.com/mxsam72/orlando-mx-build/actions/runs/36423850568 (checkpoint 02). This commit triggers a newer run; use the run whose head SHA matches the latest source checkpoint, not an older candidate. After compilation, test the animated shared gate, all grid slots, full start lane, first finish crossing, full normal lap timing, checkpoints and short/long resets. Compare P01–P14 approach/face/landing and entry/apex/exit footage. Metrics and compilation cannot establish that the game now matches the real track.
 
 More detailed woods/brush placement, local plan-view corner changes where supported, and EX1/EX2 feature completion remain after this candidate and ride feedback.

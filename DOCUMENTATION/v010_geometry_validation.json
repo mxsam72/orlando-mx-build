@@ -1,0 +1,279 @@
+{
+  "new_excessive_grade_nodes": 0,
+  "version": "v010",
+  "active_sections": [
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11"
+  ],
+  "native_compilation": false,
+  "in_game_riding": false,
+  "raw_sha256": "d79476676a551f186e86ac0ef343df743d08c9610c0b32c89f96420358015638",
+  "height_range_m": [
+    1.6375371217727661,
+    6.636118412017822
+  ],
+  "maximum_raise_m": 1.4859237670898438,
+  "maximum_lower_m": 2.467292308807373,
+  "maximum_changed_grade": 0.7798643708229065,
+  "maximum_racing_grade": 0.776904821395874,
+  "changed_nodes": 323571,
+  "relaxation": {
+    "passes": 32,
+    "max_adjustment_m": 0.8148150444030762
+  },
+  "finite": true,
+  "raw_bytes": 8396802,
+  "raw_png_identical": true,
+  "outer_terrain_max_delta_m": 0.0,
+  "route_unchanged": true,
+  "loop_closure_m": 8.039928421361173e-12,
+  "effective_width_range_m": [
+    7.800000190734863,
+    8.699999809265137
+  ],
+  "section_boundary_checks": [
+    {
+      "station_m": 75,
+      "max_longitudinal_grade": 0.06804569678003247,
+      "max_125mm_height_step": 0.008864564642629968
+    },
+    {
+      "station_m": 125,
+      "max_longitudinal_grade": 0.03073854840399015,
+      "max_125mm_height_step": 0.003861737323752834
+    },
+    {
+      "station_m": 230,
+      "max_longitudinal_grade": 0.02462413220849058,
+      "max_125mm_height_step": 0.0030780165260613224
+    },
+    {
+      "station_m": 270,
+      "max_longitudinal_grade": 0.05388801120211717,
+      "max_125mm_height_step": 0.006914683500268914
+    },
+    {
+      "station_m": 438,
+      "max_longitudinal_grade": 0.06295552287533646,
+      "max_125mm_height_step": 0.008646549946524473
+    },
+    {
+      "station_m": 563,
+      "max_longitudinal_grade": 0.05721602571722251,
+      "max_125mm_height_step": 0.00730240361707013
+    },
+    {
+      "station_m": 644,
+      "max_longitudinal_grade": 0.0504158407739439,
+      "max_125mm_height_step": 0.006301980096742987
+    },
+    {
+      "station_m": 799,
+      "max_longitudinal_grade": 0.06765039826587227,
+      "max_125mm_height_step": 0.008817628837209934
+    },
+    {
+      "station_m": 899,
+      "max_longitudinal_grade": 0.053144865979184885,
+      "max_125mm_height_step": 0.00680102382120662
+    },
+    {
+      "station_m": 1057,
+      "max_longitudinal_grade": 0.05124286878920081,
+      "max_125mm_height_step": 0.006642480147229346
+    },
+    {
+      "station_m": 1176,
+      "max_longitudinal_grade": 0.04975691740545507,
+      "max_125mm_height_step": 0.006241782613989777
+    },
+    {
+      "station_m": 1290,
+      "max_longitudinal_grade": 0.11404004806174584,
+      "max_125mm_height_step": 0.014262916670131798
+    }
+  ],
+  "berm_cross_sections": [
+    {
+      "turn": "T03",
+      "outside_minus_inside_m": 1.8278609671832644
+    },
+    {
+      "turn": "T09",
+      "outside_minus_inside_m": 2.0925380148137585
+    },
+    {
+      "turn": "T10",
+      "outside_minus_inside_m": 1.763973387264301
+    },
+    {
+      "turn": "T14",
+      "outside_minus_inside_m": 1.4902781984253313
+    }
+  ],
+  "centerline_max_longitudinal_grade": 0.4163693483857962,
+  "native_loop_height_difference_m": 0.0,
+  "visual_review": "Authoring plots, not game screenshots",
+  "geometry_checks_pass": true,
+  "actual_obstacle_profiles": [
+    {
+      "id": "R01",
+      "station_m": 40,
+      "v009_face_max_grade": 0.23155422081782007,
+      "v010_face_max_grade": 0.2728166551394118,
+      "v010_landing_max_down_grade": 0.17206209209046897,
+      "max_height_delta_m": 0.37161048358514126
+    },
+    {
+      "id": "R02",
+      "station_m": 140,
+      "v009_face_max_grade": 0.139973955559082,
+      "v010_face_max_grade": 0.2066380399582357,
+      "v010_landing_max_down_grade": 0.14104471887458914,
+      "max_height_delta_m": 0.39771023211145673
+    },
+    {
+      "id": "R03",
+      "station_m": 241,
+      "v009_face_max_grade": 0.1615932824387336,
+      "v010_face_max_grade": 0.2551350512986019,
+      "v010_landing_max_down_grade": 0.17690122734871494,
+      "max_height_delta_m": 0.7692176161800139
+    },
+    {
+      "id": "R04",
+      "station_m": 334,
+      "v009_face_max_grade": 0.16110238800366616,
+      "v010_face_max_grade": 0.15886368050881927,
+      "v010_landing_max_down_grade": 0.13416560141862277,
+      "max_height_delta_m": 0.23490802016970225
+    },
+    {
+      "id": "R05",
+      "station_m": 402,
+      "v009_face_max_grade": 0.17263633156357372,
+      "v010_face_max_grade": 0.23108449477389215,
+      "v010_landing_max_down_grade": 0.135555654725529,
+      "max_height_delta_m": 0.3263756531149782
+    },
+    {
+      "id": "R06",
+      "station_m": 492,
+      "v009_face_max_grade": 0.1598539696003023,
+      "v010_face_max_grade": 0.1259388702218338,
+      "v010_landing_max_down_grade": 0.11109763229493552,
+      "max_height_delta_m": 0.317302984002207
+    },
+    {
+      "id": "R07",
+      "station_m": 536,
+      "v009_face_max_grade": 0.2894666433505577,
+      "v010_face_max_grade": 0.3643709398187269,
+      "v010_landing_max_down_grade": 0.2381728952094111,
+      "max_height_delta_m": 0.3801678035546825
+    },
+    {
+      "id": "R08",
+      "station_m": 615,
+      "v009_face_max_grade": 0.12276916796362514,
+      "v010_face_max_grade": 0.10340881527070422,
+      "v010_landing_max_down_grade": 0.10586391587769484,
+      "max_height_delta_m": 0.2317241716564653
+    },
+    {
+      "id": "R09",
+      "station_m": 703,
+      "v009_face_max_grade": 0.1130579590195957,
+      "v010_face_max_grade": 0.19847410329493087,
+      "v010_landing_max_down_grade": 0.13921664047692772,
+      "max_height_delta_m": 0.4443534823415405
+    },
+    {
+      "id": "R10",
+      "station_m": 759,
+      "v009_face_max_grade": 0.27330991735525956,
+      "v010_face_max_grade": 0.35093338203762414,
+      "v010_landing_max_down_grade": 0.20805445861222083,
+      "max_height_delta_m": 0.34267281051621623
+    },
+    {
+      "id": "R11",
+      "station_m": 845,
+      "v009_face_max_grade": 0.11051714485786945,
+      "v010_face_max_grade": 0.13221929703545143,
+      "v010_landing_max_down_grade": 0.10915080293748503,
+      "max_height_delta_m": 0.18422493369570692
+    },
+    {
+      "id": "R12",
+      "station_m": 871,
+      "v009_face_max_grade": 0.18265354787929766,
+      "v010_face_max_grade": 0.23620131991956939,
+      "v010_landing_max_down_grade": 0.20043220149158003,
+      "max_height_delta_m": 0.2551511506462756
+    },
+    {
+      "id": "R13",
+      "station_m": 953,
+      "v009_face_max_grade": 0.07932253445451565,
+      "v010_face_max_grade": 0.08839912618841694,
+      "v010_landing_max_down_grade": 0.07923452362649996,
+      "max_height_delta_m": 0.2092095141176542
+    },
+    {
+      "id": "R14",
+      "station_m": 989,
+      "v009_face_max_grade": 0.32522372644982056,
+      "v010_face_max_grade": 0.41694809430824264,
+      "v010_landing_max_down_grade": 0.2148135536452358,
+      "max_height_delta_m": 0.5904097244473494
+    },
+    {
+      "id": "R15",
+      "station_m": 1100,
+      "v009_face_max_grade": 0.11903305569867229,
+      "v010_face_max_grade": 0.11976427392168887,
+      "v010_landing_max_down_grade": 0.0943249648641391,
+      "max_height_delta_m": 0.1959724043277955
+    },
+    {
+      "id": "R16",
+      "station_m": 1137,
+      "v009_face_max_grade": 0.24106240959575942,
+      "v010_face_max_grade": 0.31895883762159016,
+      "v010_landing_max_down_grade": 0.1751512550793457,
+      "max_height_delta_m": 0.423382520200275
+    },
+    {
+      "id": "R17",
+      "station_m": 1290,
+      "v009_face_max_grade": 0.12445326318605154,
+      "v010_face_max_grade": 0.11386653295585702,
+      "v010_landing_max_down_grade": 0.0869028217336627,
+      "max_height_delta_m": 0.1778166026118586
+    },
+    {
+      "id": "R18",
+      "station_m": 1324,
+      "v009_face_max_grade": 0.20065686891661727,
+      "v010_face_max_grade": 0.2580149348515981,
+      "v010_landing_max_down_grade": 0.20343532345716753,
+      "max_height_delta_m": 0.44238096257171255
+    }
+  ],
+  "comparison_baseline": "Reconstructed exact v009 source terrain",
+  "provisional_features_disabled": [
+    "EX1",
+    "EX2"
+  ],
+  "main_horizontal_route_changed": false
+}

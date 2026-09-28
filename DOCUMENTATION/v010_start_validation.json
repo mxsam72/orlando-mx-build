@@ -1,13 +1,17 @@
 {
-  "raw_sha256": "5f8e1369d2bb08d986857d03f6a741f5ca62f39f5703b00d150bbcebfc8a7f12",
+  "raw_sha256": "50c386cc5c4dc60f07d48b78998a3fe7b92a337bad163e1d767c3bfd00db04db",
   "gate_height_spread_m": 0.0,
   "gate_max_grade": 0.0,
-  "main_lap_max_delta_m": 0.0,
-  "start_max_grade": 0.48245662450790405,
-  "changed_max_grade": 0.29639315605163574,
-  "changed_nodes": 37929,
+  "main_centerline_max_delta_m": 0.0,
+  "normal_lap_outside_merge_max_delta_m": 0.0,
+  "merge_bank_max_lower_m": 1.2873427867889404,
+  "start_max_grade": 0.6720755100250244,
+  "start_centerline_max_grade": 0.17811726033687592,
+  "changed_max_grade": 0.6720755100250244,
+  "changed_nodes": 38855,
   "retired_start_surface": true,
   "native_compilation": false,
   "in_game_riding": false,
-  "start_terrain_checks_pass": true
+  "start_terrain_checks_pass": true,
+  "merge_shoulder_relaxation_passes": 1
 }
