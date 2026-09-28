@@ -11,7 +11,7 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: orlando-v011-${{ github.ref }}
+  group: orlando-v011-materialfix-${{ github.ref }}
   cancel-in-progress: true
 jobs:
   build:
