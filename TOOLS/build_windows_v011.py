@@ -20,7 +20,13 @@ def main():
         orig_stage()
         for name in ['terrain.raw','scenery.fbx','start.tcl']:shutil.copy2(O/name,p/name)
         for mask in (O/'masks').glob('*.tga'):shutil.copy2(mask,p/('mask_'+mask.name))
-        for tex in (O/'facility_textures').glob('*.tga'):shutil.copy2(tex,p/tex.name)
+        # Generated facility textures are referenced by the FBX during
+        # fbx2edf.  Stage them in both the working root and scenery.fbm so the
+        # native importer can resolve either normal FBX relative-path convention.
+        facility_fbm=p/'scenery.fbm';facility_fbm.mkdir(exist_ok=True)
+        for tex in (O/'facility_textures').glob('*.tga'):
+            shutil.copy2(tex,p/tex.name)
+            shutil.copy2(tex,facility_fbm/tex.name)
         shutil.copy2(O/'v011_pit_sand.tga',p/'v011_pit_sand.tga')
         hmf=p/'track.hmf';text=hmf.read_text(encoding='utf-8');match=re.search(r'num_layers\s*=\s*(\d+)',text);assert match
         count=int(match[1]);text=text[:match.start(1)]+str(count+1)+text[match.end(1):]
