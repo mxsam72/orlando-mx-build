@@ -1,0 +1,13 @@
+{
+  "raw_sha256": "5f8e1369d2bb08d986857d03f6a741f5ca62f39f5703b00d150bbcebfc8a7f12",
+  "gate_height_spread_m": 0.0,
+  "gate_max_grade": 0.0,
+  "main_lap_max_delta_m": 0.0,
+  "start_max_grade": 0.48245662450790405,
+  "changed_max_grade": 0.29639315605163574,
+  "changed_nodes": 37929,
+  "retired_start_surface": true,
+  "native_compilation": false,
+  "in_game_riding": false,
+  "start_terrain_checks_pass": true
+}
