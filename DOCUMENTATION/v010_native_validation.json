@@ -1,0 +1,90 @@
+{
+  "status": "Compiled with official PiBoSo Windows tools",
+  "compiled": true,
+  "centerline_merged": true,
+  "results": {
+    "edf": {
+      "returncode": 0,
+      "seconds": 23.94,
+      "log": "fbx2edf.log"
+    },
+    "map": {
+      "returncode": 0,
+      "seconds": 67.82,
+      "log": "terrained_map.log"
+    },
+    "trh": {
+      "returncode": 0,
+      "seconds": 0.88,
+      "log": "terrained_trh.log"
+    },
+    "centerline": {
+      "returncode": 0,
+      "seconds": 6.93,
+      "log": "tracked_merge.log"
+    }
+  },
+  "outputs": {
+    "checkleft.tl": {
+      "bytes": 5680,
+      "sha256": "a30296e3151e01ebc210b290ad385221190783003689b90a1555c41082f1a9a7"
+    },
+    "checkright.tl": {
+      "bytes": 5680,
+      "sha256": "a7b855f1c5ff5e905215d70221933d6af983de2cf336066ee4f3edbdcd98685d"
+    },
+    "marshals.cfg": {
+      "bytes": 786,
+      "sha256": "675d25f9bd9620fae22570cba8c7b080f6cf4f55caf2c17a4ed705dcbeba6ff6"
+    },
+    "maxrace.tl": {
+      "bytes": 5680,
+      "sha256": "da69e0faf2cef806db45adbcbdb1489c1883b70eb3f82c13014d034b9d78e23b"
+    },
+    "minrace.tl": {
+      "bytes": 5680,
+      "sha256": "9ce5f607e8336b9ed73d19d92c8dd8b34f1a3874225271ca1edf9e57f4d166fb"
+    },
+    "orlandomx_2026_v010.amb": {
+      "bytes": 689,
+      "sha256": "8fe9ed4765bd90658e4f601d9c8a1c302ad8d8ed26ac49994a05bbc29b4db21a"
+    },
+    "orlandomx_2026_v010.ini": {
+      "bytes": 325,
+      "sha256": "cc5e68daf8da1bb4d1944c535dd6e7b128c2938031f985a64e86f274ac618382"
+    },
+    "orlandomx_2026_v010.map": {
+      "bytes": 281951796,
+      "sha256": "ac553531be13d86b06497fb0f06cc8dcfff33d48307809a595fa3ae8626ea469"
+    },
+    "orlandomx_2026_v010.rdf": {
+      "bytes": 8296,
+      "sha256": "e53758827b9178582db8e21a089086e3ceb06abd1f6cab8b4e954862b8d074e4"
+    },
+    "orlandomx_2026_v010.tga": {
+      "bytes": 3145772,
+      "sha256": "9809678ca58a731da6d92e9037293f716ad8837070094175932dcf339f82ea8e"
+    },
+    "orlandomx_2026_v010.trh": {
+      "bytes": 33674490,
+      "sha256": "7cd6c2496e4e44d33f2f67d80b28865360c85fe3ad6563977236169b571cd596"
+    },
+    "orlandomx_2026_v010.tsc": {
+      "bytes": 2686,
+      "sha256": "f69750913de06abf195bc1897888865a95e3e95a9d0bb4a4819fa4907ebaa76e"
+    },
+    "orlandomx_2026_v010_map.tga": {
+      "bytes": 3145772,
+      "sha256": "99deb0265e146537cebdd4e83895aa6c62be333d38319a41e6ccb39c3fdd3f78"
+    }
+  },
+  "mapview_visual_check": false,
+  "in_game_riding_test": false,
+  "multiplayer_test": false,
+  "game_version_target": "Current MX Bikes authoring workflow; shared start gate introduced in beta15",
+  "version": "v010",
+  "first_lap_test": false,
+  "start_reset_test": false,
+  "geometry_source_sha256": "50c386cc5c4dc60f07d48b78998a3fe7b92a337bad163e1d767c3bfd00db04db",
+  "source_checks": true
+}

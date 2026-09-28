@@ -1,0 +1,10 @@
+{
+  "source_commit": "87bd80b86ef99d7ebe0ed3ef5585532d38e83c9b",
+  "run_id": 36424583575,
+  "artifact_id": 10971686023,
+  "pkz_bytes": 141233568,
+  "pkz_sha256": "c05f241b877dc0f6bf82ea59123aecb83341717dcf670309d113f13bf56e586a",
+  "compiled": true,
+  "all_output_hashes_verified": true,
+  "in_game_riding": false
+}

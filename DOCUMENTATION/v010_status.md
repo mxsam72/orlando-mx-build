@@ -1,47 +1,70 @@
-# v010 recovery checkpoint
+# v010 recovery checkpoint — native candidate complete
 
-Branch: rebuild-v010-irl-corrections. Baseline v009: 4bdb20c2c34ce91cdd15c63546d5f7b662d9c4a4.
+## Current state
 
-## Saved checkpoints
+The v010 candidate compiled successfully with the pinned official PiBoSo tools on Windows. It is ready for an in-game test. In-game riding, first-lap timing, reset behavior and multiplayer validation have NOT been performed.
 
-- 00: 5b5414b84da2ae8ea12f5321650759657bc2cbbe — user-confirmed facility relationships and full P01–P14 review metadata.
-- 01: f7bfd6cda5626d98ff718efbe23facafd434273b — generated T05 start connector, level grid apron, relocated grid/board and first-lap checkpoint source. Local geometric and RDF reconstruction checks passed.
-- 02: 363ea55e542620b935998d62ddb259094dc38cbd — complete v010 source pipeline, differentiated jump profiles and corner pockets/rut paths, spectator-fence relocation, new start/retirement masks, Windows build workflow. Full asset/native build must pass before a candidate is considered compiled.
+- Branch: rebuild-v010-irl-corrections
+- Source commit used by the package: 87bd80b86ef99d7ebe0ed3ef5585532d38e83c9b
+- Successful workflow: https://github.com/mxsam72/orlando-mx-build/actions/runs/36424583575
+- Native artifact: 10971686023 (OrlandoMX-v010-game-candidate)
+- Source checkpoint artifact: 10970962658
+- Build evidence artifact: 10971228022
+- Package: OrlandoMX_2026_v010.pkz
+- Package size: 141,233,568 bytes
+- SHA256: c05f241b877dc0f6bf82ea59123aecb83341717dcf670309d113f13bf56e586a
+- Final terrain SHA256: 50c386cc5c4dc60f07d48b78998a3fe7b92a337bad163e1d767c3bfd00db04db
 
-- 03 (this commit): open the outside entry bank where the new start joins T05. The actual start profile previously crossed a 1.16 m bank crest. A localized opening now cuts that obstruction and rounds its shoulders; normal centerline and terrain outside the merge are preserved. Local checks: grid height spread/slope 0, maximum start-centerline grade 0.1782, maximum changed grade 0.6721, zero centerline and protected normal-lap height change.
+The downloaded artifact and PKZ CRC passed; every packaged support/MAP/TRH file matched its native-build hash. The native scenery-coordinate check passed 32/32 probes, including the relocated fence. Main and start centerlines merged successfully. Read v010_native_validation.json and v010_package_validation.json for machine-readable evidence. GitHub artifacts currently expire 2026-12-27; the committed source remains reproducible.
 
-## Implemented
+## What changed
 
-Gate: 24 stalls at native (416,184), facing +Z; 115.9 m independent start lane into T05 at station 455, tangent to race direction. Numbers are construction estimates within the user-confirmed zone. Grid and native shared gate move together. Two Start checkpoints, ten Both checkpoints from T05 through T14, four normal checkpoints before T05. Finish/splits/pits unchanged. Long-reset boundaries retain the normal-lap geometry; start-area reset behavior needs an in-game test.
+1. Gate/grid moved to native (416,184), facing +Z, with 24 stalls at 1.5 m spacing. A separate 115.9 m start lane passes outside T01 and joins T05 at main station 455 with matching tangent. These are authoring estimates within the user-confirmed zone.
+2. The apron is level across the stalls. A local opening through the outside T05 entry bank removes the obstruction across the start route. The normal main centerline and terrain outside the junction remain at the main-terrain elevations. The outside normal line changes locally to form the junction.
+3. Native shared gate placement, grid stalls, start checkpoints and 30-second board move together. Two start-only checkpoints cover the connector; T05–T14 use Both; T01–T04 remain normal-lap checkpoints. Finish, splits, pits and pit boards are retained. First-lap flags require actual game verification.
+4. Start/off/racing/grass masks retire the old race-start connector. Normal-lap reset boundaries remain compatible with the unchanged main centerline; start-area resets need an in-game test.
+5. Relocated 68 fence meshes along the T14–R01–T01 spectator frontage, with the gate to its right. The 128.0 m authored frontage has 24 posts and at least 3.95 m clearance from the native track edge at sampled posts. Cleared 18 trees from the new start corridor; no fixed-building conflicts were detected.
+6. Revised R01–R12 and R14–R18 profiles, especially R03, R07, R09/R10 and R14. All 14 corners now have different entry/apex/exit loading, pockets and drifting rut paths. Removed the v009 full-lap repeated wave/twin-groove overlay and compensated the older corner-rut recipe. Main X/Z route and station IDs are retained.
 
-Fence: rebind actual FBX meshes to the new terrain, relocate fence along the outside T14–R01–T01 frontage and place the gate to its right. Reuse original materials and meshes, recalculate normals, remove start-lane trees/stakes if they obstruct the new corridor, fail on fixed building conflicts. Latest fence line is moved slightly outward to retain track-edge clearance. Full FBX verification runs in CI because the large packed inputs are available there.
+See v010_changes.md for the complete parameter table, actual encoded face grades and P01–P14 ledger. The legacy visual-mask coverage records in release_validation describe the main-lap preparation stage; final facility masks are identified by their input hashes and final start/off checks in the same report.
 
-Main terrain: individually tune R01–R12 and R14–R18. R13 dimensions held pending interpretation. Stronger built faces at R03, R07, R09/R10 and R14; shorter crest transitions; distinct modest linking rises. All 14 corners have differentiated loading, carved pockets and authored rut paths. Remove the v009 whole-lap wave/twin-groove overlay and compensate the older v006 repeated corner rut recipe before new grooves. Main horizontal route remains unchanged; no unsupported new plan-view turn radii are claimed.
+## Numerical checks
 
-EX1 and EX2 remain disabled, with provisional records in V010_SOURCE/v010_geometry_spec.json. Their exact forms and stations require the user's clarification. This does not block other improvements.
+- Grid elevation spread and slope: 0.
+- Maximum start-centerline grade: 0.1782.
+- Maximum changed start/merge terrain grade: 0.6721.
+- Normal centerline height change from start grading: 0.
+- Protected normal-lap terrain change from start grading: 0.
+- Gate-position RDF reconstruction error: under 0.000007 m.
+- Encoded full-lap geometry, finite values, loop seam and grade limits passed.
 
-## Build and resume
+These checks establish construction consistency, not an accurate IRL ride match.
 
-Windows: run BUILD_V010_LOCAL.bat, or push source changes on this branch to run .github/workflows/build-v010.yml.
+## Recovery history
 
-Command line:
+- 00 — 5b5414b84da2ae8ea12f5321650759657bc2cbbe: confirmed scope and reviewed section sync.
+- 01 — f7bfd6cda5626d98ff718efbe23facafd434273b: gate terrain and race-data source.
+- 02 — 363ea55e542620b935998d62ddb259094dc38cbd: full geometry/fence/mask/native pipeline. Source and native outputs were generated, but its workflow was superseded. Do not install its earlier merge shape.
+- 03 — 87bd80b86ef99d7ebe0ed3ef5585532d38e83c9b: corrected T05 entry bank opening; this is the tested source commit used by the current PKZ.
+- 04 — this documentation/evidence checkpoint: records native success and verified package hashes. It does not change the compiled sources.
+
+## Resume or rebuild
+
+Read this file and V010_SOURCE/requirements.json first. The last playable baseline v009 remains on rebuild-v009-geometry at 4bdb20c2c34ce91cdd15c63546d5f7b662d9c4a4; no v009 source/release is overwritten by this pipeline.
+
+Windows: run BUILD_V010_LOCAL.bat. For a manual build:
 
     python -m pip install -r requirements-v009.txt
     python TOOLS/build_v010.py --source-only
     python TOOLS/build_windows_v010.py
 
-The source build materializes the hash-checked v008b baseline under BUILD/v009_work, reconstructs exact v009 for before/after comparison, generates v010, validates encoded geometry/start/RDF/scenery/masks, and saves DOCUMENTATION/v010_source_checkpoint.json before native compilation. New outputs stay in V010_OUTPUT and 12_RELEASE/orlandomx_2026_v010. v009 sources and releases are not changed.
+The pipeline reconstructs the verified baseline, generates v010 into V010_OUTPUT, prepares 12_RELEASE/orlandomx_2026_v010, saves a source checkpoint, then compiles a new PKZ. Source-changing pushes on this branch run the same workflow. New source commits cancel obsolete runs, while uploaded artifacts remain. Never reuse the old v009 start.tcl or start/off masks.
 
-GitHub artifacts:
+## Next work
 
-- OrlandoMX-v010-source-checkpoint: actual RAW, start TCL, RDF, facility layout, source checks and QA plots; saved before the expensive compile.
-- OrlandoMX-v010-build-evidence: diagnostics uploaded even on failure.
-- OrlandoMX-v010-game-candidate: fresh PKZ, checksum, validation and install notes, only after native success.
+1. Install the current PKZ and test an actual race start from central and outer stalls. Confirm gate drop, convergence into T05, first finish crossing, then a complete timed lap without false checkpoint penalties. Test short/long resets on the start lane and T05.
+2. Record a full v010 comparison lap against the existing P01–P14 anchors. Assess approach/face/landing and corner entry/apex/exit; recipe dimensions and compilation are not IRL measurements.
+3. Resolve EX1: real 0:23–0:24 (repeat 2:23–2:24), separate mound versus raised T02 entry. Resolve EX2: real 1:38–1:40, the smaller rising section after the signature landing and before T11. Both remain disabled provisional records. R13 dimensions are held until the pre-signature disturbance is identified.
+4. Based on that evidence, finish feature spacing and supported local plan-view corner changes. Close vegetation/brush detailing remains, beyond the completed frontage relocation and start clearing.
 
-If interrupted: fetch latest branch HEAD and read this file, then inspect the latest v010 Actions run and DOCUMENTATION/v010*validation.json. Do not infer success from the existence of old validation files: the workflow uploads current diagnostics. Fix the first failed stage and save a new checkpoint. Never reuse v009 start.tcl or start/off masks in v010.
-
-## Still requires verification
-
-Checkpoint 02 passed the complete Windows source/FBX/mask pipeline. Its source artifact 10971535377 was saved (5,417,907 bytes, SHA256 0cd4359fd477626cfe7b58d9ad92190170cca6ba67f7b694edaf42d8f804d9cc). Checkpoint 03 includes the locally verified T05 entry opening and requires a new native build. Superseded runs are canceled after a new source commit to avoid compiling obsolete candidates; already uploaded checkpoints remain available. The first pipeline run is https://github.com/mxsam72/orlando-mx-build/actions/runs/36423850568 (checkpoint 02). This commit triggers a newer run; use the run whose head SHA matches the latest source checkpoint, not an older candidate. After compilation, test the animated shared gate, all grid slots, full start lane, first finish crossing, full normal lap timing, checkpoints and short/long resets. Compare P01–P14 approach/face/landing and entry/apex/exit footage. Metrics and compilation cannot establish that the game now matches the real track.
-
-More detailed woods/brush placement, local plan-view corner changes where supported, and EX1/EX2 feature completion remain after this candidate and ride feedback.
+Do not mark the full IRL rebuild or ride validation complete before these tests and clarifications.

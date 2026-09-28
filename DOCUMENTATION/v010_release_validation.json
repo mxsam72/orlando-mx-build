@@ -1,0 +1,77 @@
+{
+  "physics_materials_unchanged": true,
+  "race_rdf_unchanged": false,
+  "centerline_alignment_unchanged": true,
+  "reset_boundaries_valid": true,
+  "visual_masks": [
+    {
+      "mask": "visual_racing",
+      "mean_core_alpha": 0.9599998593330383,
+      "outside_corridor_alpha_unchanged": true
+    },
+    {
+      "mask": "visual_worked",
+      "mean_core_alpha": 0.34236493706703186,
+      "outside_corridor_alpha_unchanged": true
+    },
+    {
+      "mask": "visual_grass",
+      "mean_core_alpha": 0.0,
+      "outside_corridor_alpha_unchanged": true
+    }
+  ],
+  "v008b_texture_hashes_preserved": true,
+  "camera_and_marshal_shifts_m": [
+    0.0,
+    0.0,
+    -0.03576145626213184,
+    -1.009882556204502,
+    0.050503410649534404,
+    0.07798489714259611,
+    0.0,
+    0.0,
+    0.0,
+    0.1496924147435581,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    -0.2378252622427811,
+    0.040270448901594584,
+    -0.5224093606952845,
+    0.0031238357952861635,
+    -0.18230484183318746,
+    -0.23395759983127704,
+    -0.30917818898445526
+  ],
+  "pit_max_height_change_m": 0.0,
+  "start_lane_max_height_change_m": 0.0,
+  "native_compilation": false,
+  "in_game_test": false,
+  "version": "v010",
+  "physics_surface_masks_changed": true,
+  "main_centerline_alignment_unchanged": true,
+  "start_centerline_replaced": true,
+  "old_start_alpha_max": 0.0,
+  "new_start_off_alpha_max": 0.04996833434674686,
+  "main_reset_boundaries_preserved": true,
+  "shared_native_gate": true,
+  "release_source_checks_pass": true,
+  "input_sha256": {
+    "V010_OUTPUT\\terrain.raw": "50c386cc5c4dc60f07d48b78998a3fe7b92a337bad163e1d767c3bfd00db04db",
+    "V010_OUTPUT\\scenery.fbx": "aa511bda78779c76048bbe3112cea106f555c2e69488946890b64a408fb7ff89",
+    "V010_OUTPUT\\start.tcl": "705b54ec4adc093ca6b98afd21efa5409e9ec7b26234a4818ea6b85d6da72df7",
+    "V010_OUTPUT\\orlandomx_2026_v010.rdf": "e53758827b9178582db8e21a089086e3ceb06abd1f6cab8b4e954862b8d074e4",
+    "V010_OUTPUT\\masks\\grass.tga": "1626dc8c509878e43bc388867c343e4ff009414097c144c435162685c1c1b942",
+    "V010_OUTPUT\\masks\\off.tga": "5b156d24a5816a2f73f7a6d3583ec46329eb2732b79526996ba5f1f50c9921f1",
+    "V010_OUTPUT\\masks\\racing.tga": "3f91f0ffc49d01880246dbb89aa1503743d918798f0a91720507e7bfe8321f50",
+    "V010_OUTPUT\\masks\\sand.tga": "ffd803407b8230c9e9ba55420743fb6b42ccd0351f61ff7bbf3eff31cbc747eb",
+    "V010_OUTPUT\\masks\\shoulder.tga": "a8f8e70be1112f7bd6b9fb5e0f84cabcb37ba4c9f6cfdefa6d8e8180e8dbaf99",
+    "V010_OUTPUT\\masks\\start.tga": "894cbfc984bcdb06c4a73e230521842a35488e6f885c0b2985cdb97908b251ad",
+    "V010_OUTPUT\\masks\\visual_grass.tga": "575b2fc4b9ab1c00df365d391d9592fc287c241b1cd9d65e5037faa5a4672c3f",
+    "V010_OUTPUT\\masks\\visual_racing.tga": "0acc9095b402b80081682a2ee5fdfba0d85b9b820424203cfd563817093ccf98",
+    "V010_OUTPUT\\masks\\visual_worked.tga": "1169aa809f6a3647452ba1eb0cf101b5736d9adb8d2017121e54670b8412ceb2",
+    "V010_OUTPUT\\masks\\worked.tga": "30f03434410b1e88c6f08b00f751e00654e8d633d43c1da63983fd44d53ea4c1"
+  }
+}

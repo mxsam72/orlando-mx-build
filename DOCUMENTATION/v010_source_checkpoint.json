@@ -1,0 +1,17 @@
+{
+  "version": "v010",
+  "source_commit": "87bd80b86ef99d7ebe0ed3ef5585532d38e83c9b",
+  "geometry_spec_sha256": "deb77cf15b3e5b1e975ac533b614b25f9e9b773a81656aea3ef487dfd78c400d",
+  "facilities_spec_sha256": "96fabbedd8dc24cd329d5b9beed3f083bc397235c819404d6e7afcd1e0f62d98",
+  "source_checks_pass": true,
+  "native_compilation": false,
+  "in_game_riding": false,
+  "raw_sha256": "50c386cc5c4dc60f07d48b78998a3fe7b92a337bad163e1d767c3bfd00db04db",
+  "scenery_sha256": "aa511bda78779c76048bbe3112cea106f555c2e69488946890b64a408fb7ff89",
+  "start_tcl_sha256": "705b54ec4adc093ca6b98afd21efa5409e9ec7b26234a4818ea6b85d6da72df7",
+  "rdf_sha256": "e53758827b9178582db8e21a089086e3ceb06abd1f6cab8b4e954862b8d074e4",
+  "provisional_features_disabled": [
+    "EX1",
+    "EX2"
+  ]
+}
