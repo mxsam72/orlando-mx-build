@@ -1,6 +1,6 @@
 # v011 facility updates
 
-Forms are guided by IMG_3594/3595/3597 and the handover. All sizes and positions are estimates within the established v010 facility orientation. The two unavailable clips may refine the office, restroom and vendor details later.
+Forms were initially guided by IMG_3594/3595/3597 and the handover. IMG_3591 and IMG_3592 have since also been reviewed. Together the five clips support the same overall facility concept: pale sand/gravel pit roads, informal RV/trailer parking, gray office/check-in building, restroom under mature oaks, separate aluminum bleachers, covered spectator structure and concession/vendor presence. All sizes and positions remain unsurveyed authoring estimates within the established v010 facility orientation.
 
 - Replace legacy thin rail fence with dark timber posts at approximately 3 m spacing, two timber rails and open wire infill. Add a pale pedestrian gate. Preserve the v010 frontage line outside T14–R01–T01.
 - Add an open-sided wooden stand: four seating tiers, timber uprights, bracing/rails and a light gabled roof with visible seams.
