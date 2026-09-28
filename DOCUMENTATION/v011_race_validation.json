@@ -1,0 +1,35 @@
+{
+  "grid_stalls": 24,
+  "grid_reconstruction_max_error_m": 6.3205477223087376e-06,
+  "preserved": {
+    "finish_line": true,
+    "split1": true,
+    "split2": true,
+    "pit_lane": true,
+    "pit_board": true
+  },
+  "start_checkpoints": 2,
+  "both_checkpoints": 10,
+  "normal_only_checkpoints": 4,
+  "first_lap_expected_turns": [
+    "T05",
+    "T06",
+    "T07",
+    "T08",
+    "T09",
+    "T10",
+    "T11",
+    "T12",
+    "T13",
+    "T14"
+  ],
+  "board_xyz_angle": [
+    395.0,
+    191.0,
+    180.0
+  ],
+  "shared_gate_placement": "Native shared gate follows RDF grid; no fixed collision gate added",
+  "start_reset_runtime_check_pending": true,
+  "first_lap_runtime_check_pending": true,
+  "race_source_checks_pass": true
+}
