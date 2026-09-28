@@ -1,0 +1,52 @@
+{
+  "version": "v011",
+  "build_status": "success",
+  "workflow_name": "Build v011 IRL corrections",
+  "workflow_run_id": 36446464053,
+  "build_source_commit": "ea330f6b64bbdfcbf72d02f3e58919cec1edbb53",
+  "current_documentation_head": "b94fc87b998ed3d6e9180416062603c824a6e650",
+  "pkz": {
+    "filename": "OrlandoMX_2026_v011.pkz",
+    "bytes": 139735618,
+    "sha256": "548062110f43b0677dd27f9d31f6be0cdd53821f857ab453f4502360709d270a"
+  },
+  "artifacts": {
+    "game_candidate": {
+      "name": "OrlandoMX-v011-game-candidate",
+      "id": 10982205006
+    },
+    "build_evidence": {
+      "name": "OrlandoMX-v011-build-evidence",
+      "id": 10980839995
+    },
+    "source_checkpoint": {
+      "name": "OrlandoMX-v011-source-checkpoint",
+      "id": 10981575049
+    }
+  },
+  "native_stages": {
+    "fbx2edf": {
+      "returncode": 0
+    },
+    "terrained_map": {
+      "returncode": 0
+    },
+    "terrained_trh": {
+      "returncode": 0
+    },
+    "tracked_merge": {
+      "returncode": 0
+    }
+  },
+  "source_checks": true,
+  "terrain_raw_sha256": "6689aa9bc74483a4348a3cc728aa13dd7d4d0729fb362a24edfe034e3f6653f3",
+  "remaining_tests": [
+    "in-game riding",
+    "24-rider start into T05",
+    "first finish crossing",
+    "start-lane and T05 reset behavior",
+    "full timed lap",
+    "P01-P14 real-vs-game comparison",
+    "multiplayer test if desired"
+  ]
+}
