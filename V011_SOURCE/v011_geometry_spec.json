@@ -1,0 +1,803 @@
+{
+  "version": "v011",
+  "metric_status": "ALL dimensions are non-surveyed tuning estimates",
+  "active_sections": [
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11"
+  ],
+  "priority_groups": [
+    [
+      "S09"
+    ],
+    [
+      "S07",
+      "S08"
+    ],
+    [
+      "S04",
+      "S05",
+      "S06"
+    ],
+    [
+      "S01",
+      "S02",
+      "S03"
+    ],
+    [
+      "S10",
+      "S11"
+    ]
+  ],
+  "repeat_views": {
+    "S12": [
+      "S01"
+    ],
+    "S13": [
+      "S02",
+      "S03"
+    ],
+    "S14": [
+      "S03",
+      "S04"
+    ]
+  },
+  "profiles": [
+    {
+      "id": "R01",
+      "section": "S01",
+      "kind": "tabletop",
+      "lip_s": 40,
+      "crest_height_m": 2.8,
+      "face_m": 11.5,
+      "rollover_m": 2.3,
+      "landing_m": 16,
+      "crest_bridge_m": 0.8,
+      "authoring_state": "Video-guided first candidate; ride test pending",
+      "face_progression": 0.48,
+      "racing_width_m": 10.8,
+      "side_taper_m": 7.0,
+      "evidence": "IMG_3594 0-4,16-20s; IMG_3595 25-35s; GoPro 9-14s; type high confidence, dimensions estimated",
+      "deck_m": 10.0,
+      "lip_transition_m": 1.1,
+      "role": "Defined tabletop"
+    },
+    {
+      "id": "R02",
+      "section": "S03",
+      "kind": "roller",
+      "lip_s": 140,
+      "crest_height_m": 1.4,
+      "face_m": 10.2,
+      "rollover_m": 1.8,
+      "landing_m": 13.0,
+      "crest_bridge_m": 0.4,
+      "authoring_state": "Video-guided first candidate; ride test pending",
+      "face_progression": 0.58,
+      "racing_width_m": 10.0,
+      "side_taper_m": 7.5,
+      "evidence": "Existing section sync; retain low feature role",
+      "role": "Low transition / ground-following relief"
+    },
+    {
+      "id": "R03",
+      "section": "S03",
+      "kind": "roller",
+      "lip_s": 241,
+      "crest_height_m": 1.5,
+      "face_m": 9.0,
+      "rollover_m": 1.6,
+      "landing_m": 12.5,
+      "crest_bridge_m": 0.35,
+      "authoring_state": "Video-guided first candidate; ride test pending",
+      "face_progression": 0.58,
+      "racing_width_m": 10.0,
+      "side_taper_m": 7.5,
+      "evidence": "Existing section sync; retain low feature role",
+      "role": "Low transition / ground-following relief"
+    },
+    {
+      "id": "R04",
+      "section": "S04",
+      "kind": "natural_crest",
+      "lip_s": 334,
+      "crest_height_m": 0.9,
+      "face_m": 11.5,
+      "rollover_m": 3.7,
+      "landing_m": 14.5,
+      "crest_bridge_m": 0,
+      "authoring_state": "Video-guided first candidate; ride test pending",
+      "face_progression": 0.58,
+      "racing_width_m": 10.0,
+      "side_taper_m": 7.5,
+      "evidence": "Existing section sync; retain low feature role",
+      "role": "Low transition / ground-following relief"
+    },
+    {
+      "id": "R05",
+      "section": "S04",
+      "kind": "tabletop",
+      "lip_s": 402,
+      "crest_height_m": 1.9,
+      "face_m": 9.2,
+      "rollover_m": 2.0,
+      "landing_m": 12,
+      "crest_bridge_m": 0.5,
+      "authoring_state": "Video-guided first candidate; ride test pending",
+      "face_progression": 0.58,
+      "racing_width_m": 10.0,
+      "side_taper_m": 7.5,
+      "evidence": "Existing section sync; retain low feature role",
+      "deck_m": 4.5,
+      "lip_transition_m": 1.2,
+      "role": "Defined tabletop"
+    },
+    {
+      "id": "R06",
+      "section": "S05",
+      "kind": "roller",
+      "lip_s": 492,
+      "crest_height_m": 0.48,
+      "face_m": 7.5,
+      "rollover_m": 3.4,
+      "landing_m": 10.5,
+      "crest_bridge_m": 0,
+      "authoring_state": "Video-guided first candidate; ride test pending",
+      "face_progression": 0.58,
+      "racing_width_m": 10.0,
+      "side_taper_m": 7.5,
+      "evidence": "Existing section sync; retain low feature role",
+      "role": "Low transition / ground-following relief"
+    },
+    {
+      "id": "R07",
+      "section": "S05",
+      "kind": "double",
+      "lip_s": 536,
+      "crest_height_m": 2.8,
+      "face_m": 10.0,
+      "rollover_m": 1.65,
+      "landing_m": 14,
+      "crest_bridge_m": 0.65,
+      "authoring_state": "Video-guided first candidate; ride test pending",
+      "face_progression": 0.48,
+      "racing_width_m": 10.0,
+      "side_taper_m": 7.5,
+      "evidence": "GoPro 56-59s; steep takeoff and separate landing interpretation medium confidence; hidden valley is an authoring estimate",
+      "gap_m": 15.0,
+      "valley_height_m": 0.5,
+      "landing_crest_height_m": 2.3,
+      "lip_transition_m": 1.0,
+      "role": "Defined double"
+    },
+    {
+      "id": "R08",
+      "section": "S06",
+      "kind": "natural_crest",
+      "lip_s": 615,
+      "crest_height_m": 0.7,
+      "face_m": 9.5,
+      "rollover_m": 4.0,
+      "landing_m": 12.0,
+      "crest_bridge_m": 0,
+      "authoring_state": "Video-guided first candidate; ride test pending",
+      "face_progression": 0.58,
+      "racing_width_m": 10.0,
+      "side_taper_m": 7.5,
+      "evidence": "Existing section sync; retain low feature role",
+      "role": "Low transition / ground-following relief"
+    },
+    {
+      "id": "R09",
+      "section": "S07",
+      "kind": "jump_out_of_turn",
+      "lip_s": 703,
+      "crest_height_m": 1.55,
+      "face_m": 8.2,
+      "rollover_m": 1.9,
+      "landing_m": 10.5,
+      "crest_bridge_m": 0.3,
+      "authoring_state": "Video-guided first candidate; ride test pending",
+      "face_progression": 0.58,
+      "racing_width_m": 10.0,
+      "side_taper_m": 7.5,
+      "evidence": "Existing section sync; retain low feature role",
+      "deck_m": 2,
+      "lip_transition_m": 1.0,
+      "role": "Defined jump out of turn"
+    },
+    {
+      "id": "R10",
+      "section": "S07",
+      "kind": "tabletop",
+      "lip_s": 759,
+      "crest_height_m": 3.25,
+      "face_m": 11.5,
+      "rollover_m": 1.8,
+      "landing_m": 17.5,
+      "crest_bridge_m": 1.2,
+      "authoring_state": "Video-guided first candidate; ride test pending",
+      "face_progression": 0.48,
+      "racing_width_m": 10.0,
+      "side_taper_m": 7.5,
+      "evidence": "GoPro 74-77s; large defined face and elevated top; estimated dimensions",
+      "deck_m": 7.0,
+      "lip_transition_m": 1.0,
+      "role": "Defined tabletop"
+    },
+    {
+      "id": "R11",
+      "section": "S08",
+      "kind": "roller",
+      "lip_s": 845,
+      "crest_height_m": 0.65,
+      "face_m": 8.0,
+      "rollover_m": 3.3,
+      "landing_m": 10.5,
+      "crest_bridge_m": 0,
+      "authoring_state": "Video-guided first candidate; ride test pending",
+      "face_progression": 0.58,
+      "racing_width_m": 10.0,
+      "side_taper_m": 7.5,
+      "evidence": "Existing section sync; retain low feature role",
+      "role": "Low transition / ground-following relief"
+    },
+    {
+      "id": "R12",
+      "section": "S08",
+      "kind": "roller",
+      "lip_s": 871,
+      "crest_height_m": 1.6,
+      "face_m": 10.5,
+      "rollover_m": 1.9,
+      "landing_m": 14.0,
+      "crest_bridge_m": 0.5,
+      "authoring_state": "Video-guided first candidate; ride test pending",
+      "face_progression": 0.58,
+      "racing_width_m": 10.0,
+      "side_taper_m": 7.5,
+      "evidence": "Existing section sync; retain low feature role",
+      "role": "Low transition / ground-following relief"
+    },
+    {
+      "id": "R13",
+      "section": "S09",
+      "kind": "natural_crest",
+      "lip_s": 953,
+      "crest_height_m": 0.7,
+      "face_m": 10.0,
+      "rollover_m": 4.2,
+      "landing_m": 12.5,
+      "crest_bridge_m": 0,
+      "authoring_state": "Unchanged pending feature interpretation",
+      "face_progression": 0.55,
+      "racing_width_m": 10.0,
+      "side_taper_m": 7.5,
+      "evidence": "Existing section sync; retain low feature role",
+      "role": "Low transition / ground-following relief"
+    },
+    {
+      "id": "R14",
+      "section": "S09",
+      "kind": "tabletop",
+      "lip_s": 989,
+      "crest_height_m": 3.7,
+      "face_m": 12.5,
+      "rollover_m": 1.6,
+      "landing_m": 18.0,
+      "crest_bridge_m": 1.4,
+      "authoring_state": "Video-guided first candidate; ride test pending",
+      "face_progression": 0.48,
+      "racing_width_m": 10.0,
+      "side_taper_m": 7.5,
+      "evidence": "GoPro 93-98s; signature elevated top. EX2 remains separate/unconfirmed",
+      "deck_m": 12.0,
+      "lip_transition_m": 1.0,
+      "role": "Defined tabletop"
+    },
+    {
+      "id": "R15",
+      "section": "S10",
+      "kind": "roller",
+      "lip_s": 1100,
+      "crest_height_m": 0.8,
+      "face_m": 10.5,
+      "rollover_m": 3.5,
+      "landing_m": 12.5,
+      "crest_bridge_m": 0,
+      "authoring_state": "Video-guided first candidate; ride test pending",
+      "face_progression": 0.58,
+      "racing_width_m": 10.0,
+      "side_taper_m": 7.5,
+      "evidence": "Existing section sync; retain low feature role",
+      "role": "Low transition / ground-following relief"
+    },
+    {
+      "id": "R16",
+      "section": "S10",
+      "kind": "double",
+      "lip_s": 1137,
+      "crest_height_m": 2.7,
+      "face_m": 10.2,
+      "rollover_m": 1.9,
+      "landing_m": 14,
+      "crest_bridge_m": 0.8,
+      "authoring_state": "Video-guided first candidate; ride test pending",
+      "face_progression": 0.58,
+      "racing_width_m": 10.0,
+      "side_taper_m": 7.5,
+      "evidence": "GoPro 106-109s; takeoff and landing interpretation medium confidence; valley and span provisional",
+      "gap_m": 16.0,
+      "valley_height_m": 0.55,
+      "landing_crest_height_m": 2.2,
+      "lip_transition_m": 1.1,
+      "role": "Defined double"
+    },
+    {
+      "id": "R17",
+      "section": "S11",
+      "kind": "natural_crest",
+      "lip_s": 1290,
+      "crest_height_m": 0.85,
+      "face_m": 12.5,
+      "rollover_m": 4.2,
+      "landing_m": 14.0,
+      "crest_bridge_m": 0,
+      "authoring_state": "Video-guided first candidate; ride test pending",
+      "face_progression": 0.58,
+      "racing_width_m": 10.0,
+      "side_taper_m": 7.5,
+      "evidence": "Existing section sync; retain low feature role",
+      "role": "Low transition / ground-following relief"
+    },
+    {
+      "id": "R18",
+      "section": "S01",
+      "kind": "step_down",
+      "lip_s": 1324,
+      "crest_height_m": 2.3,
+      "face_m": 10.5,
+      "rollover_m": 2.3,
+      "landing_m": 16,
+      "crest_bridge_m": 0.6,
+      "authoring_state": "Video-guided first candidate; ride test pending",
+      "face_progression": 0.58,
+      "racing_width_m": 10.0,
+      "side_taper_m": 7.5,
+      "evidence": "GoPro 123-127s; falling exit toward spectator return; offset an estimate",
+      "deck_m": 4.0,
+      "landing_offset_m": -0.35,
+      "lip_transition_m": 1.3,
+      "role": "Defined step down"
+    }
+  ],
+  "berms": [
+    {
+      "id": "T01",
+      "section": "S02",
+      "outer_rise_m": 1.55,
+      "effective_width_m": 8.7,
+      "rut_depth_m": 0.115,
+      "pocket_depth_m": 0.17,
+      "apex_shift_m": -3,
+      "entry_load": 1.05,
+      "exit_load": 0.85,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.6,
+          "apex_out_m": -0.65,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.5,
+          "apex_out_m": 2.8,
+          "exit_out_m": 1.2,
+          "width_m": 0.68,
+          "depth_scale": 1.0
+        }
+      ],
+      "braking_spacing_m": 3.0
+    },
+    {
+      "id": "T02",
+      "section": "S03",
+      "outer_rise_m": 1.14,
+      "effective_width_m": 8.4,
+      "rut_depth_m": 0.085,
+      "pocket_depth_m": 0.07,
+      "apex_shift_m": 1,
+      "entry_load": 0.9,
+      "exit_load": 0.85,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.48,
+          "apex_out_m": -0.5,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.7,
+          "apex_out_m": 2.6599999999999997,
+          "exit_out_m": 1.5,
+          "width_m": 0.68,
+          "depth_scale": 1.0
+        }
+      ],
+      "braking_spacing_m": 3.35
+    },
+    {
+      "id": "T03",
+      "section": "S04",
+      "outer_rise_m": 1.65,
+      "effective_width_m": 8.1,
+      "rut_depth_m": 0.115,
+      "pocket_depth_m": 0.27,
+      "apex_shift_m": -2,
+      "entry_load": 1.0,
+      "exit_load": 1.0,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.36,
+          "apex_out_m": -0.65,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.5,
+          "apex_out_m": 2.5199999999999996,
+          "exit_out_m": 1.2,
+          "width_m": 0.68,
+          "depth_scale": 1.0
+        }
+      ],
+      "braking_spacing_m": 3.7
+    },
+    {
+      "id": "T04",
+      "section": "S04",
+      "outer_rise_m": 1.1,
+      "effective_width_m": 8.6,
+      "rut_depth_m": 0.085,
+      "pocket_depth_m": 0.08,
+      "apex_shift_m": 3,
+      "entry_load": 0.75,
+      "exit_load": 1.0,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.6,
+          "apex_out_m": -0.5,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.7,
+          "apex_out_m": 2.8,
+          "exit_out_m": 1.5,
+          "width_m": 0.68,
+          "depth_scale": 1.0
+        }
+      ],
+      "braking_spacing_m": 4.05
+    },
+    {
+      "id": "T05",
+      "section": "S05",
+      "outer_rise_m": 1.5,
+      "effective_width_m": 8.3,
+      "rut_depth_m": 0.115,
+      "pocket_depth_m": 0.19,
+      "apex_shift_m": 0,
+      "entry_load": 1.0,
+      "exit_load": 0.85,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.48,
+          "apex_out_m": -0.65,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.5,
+          "apex_out_m": 2.6599999999999997,
+          "exit_out_m": 1.2,
+          "width_m": 0.68,
+          "depth_scale": 1.0
+        }
+      ],
+      "braking_spacing_m": 3.0
+    },
+    {
+      "id": "T06",
+      "section": "S05",
+      "outer_rise_m": 1.25,
+      "effective_width_m": 8.2,
+      "rut_depth_m": 0.085,
+      "pocket_depth_m": 0.14,
+      "apex_shift_m": -1,
+      "entry_load": 0.85,
+      "exit_load": 0.75,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.36,
+          "apex_out_m": -0.5,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.7,
+          "apex_out_m": 2.5199999999999996,
+          "exit_out_m": 1.5,
+          "width_m": 0.68,
+          "depth_scale": 1.0
+        }
+      ],
+      "braking_spacing_m": 3.35
+    },
+    {
+      "id": "T07",
+      "section": "S06",
+      "outer_rise_m": 1.35,
+      "effective_width_m": 8.0,
+      "rut_depth_m": 0.085,
+      "pocket_depth_m": 0.15,
+      "apex_shift_m": -2,
+      "entry_load": 0.85,
+      "exit_load": 0.7,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.6,
+          "apex_out_m": -0.65,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.5,
+          "apex_out_m": 2.8,
+          "exit_out_m": 1.2,
+          "width_m": 0.68,
+          "depth_scale": 1.0
+        }
+      ],
+      "braking_spacing_m": 3.7
+    },
+    {
+      "id": "T08",
+      "section": "S07",
+      "outer_rise_m": 1.4,
+      "effective_width_m": 8.0,
+      "rut_depth_m": 0.085,
+      "pocket_depth_m": 0.17,
+      "apex_shift_m": 2,
+      "entry_load": 0.9,
+      "exit_load": 0.9,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.48,
+          "apex_out_m": -0.5,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.7,
+          "apex_out_m": 2.6599999999999997,
+          "exit_out_m": 1.5,
+          "width_m": 0.68,
+          "depth_scale": 1.0
+        }
+      ],
+      "braking_spacing_m": 4.05
+    },
+    {
+      "id": "T09",
+      "section": "S08",
+      "outer_rise_m": 1.85,
+      "effective_width_m": 7.8,
+      "rut_depth_m": 0.115,
+      "pocket_depth_m": 0.29,
+      "apex_shift_m": 1,
+      "entry_load": 1.05,
+      "exit_load": 1.0,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.36,
+          "apex_out_m": -0.65,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.5,
+          "apex_out_m": 2.5199999999999996,
+          "exit_out_m": 1.2,
+          "width_m": 0.68,
+          "depth_scale": 1.0
+        }
+      ],
+      "braking_spacing_m": 3.0
+    },
+    {
+      "id": "T10",
+      "section": "S09",
+      "outer_rise_m": 1.8,
+      "effective_width_m": 7.9,
+      "rut_depth_m": 0.115,
+      "pocket_depth_m": 0.25,
+      "apex_shift_m": 2,
+      "entry_load": 1.0,
+      "exit_load": 0.8,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.6,
+          "apex_out_m": -0.5,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.7,
+          "apex_out_m": 2.8,
+          "exit_out_m": 1.5,
+          "width_m": 0.68,
+          "depth_scale": 1.0
+        }
+      ],
+      "braking_spacing_m": 3.35
+    },
+    {
+      "id": "T11",
+      "section": "S10",
+      "outer_rise_m": 1.5,
+      "effective_width_m": 8.1,
+      "rut_depth_m": 0.085,
+      "pocket_depth_m": 0.18,
+      "apex_shift_m": -1,
+      "entry_load": 1.0,
+      "exit_load": 0.8,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.48,
+          "apex_out_m": -0.65,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.5,
+          "apex_out_m": 2.6599999999999997,
+          "exit_out_m": 1.2,
+          "width_m": 0.68,
+          "depth_scale": 1.0
+        }
+      ],
+      "braking_spacing_m": 3.7
+    },
+    {
+      "id": "T12",
+      "section": "S11",
+      "outer_rise_m": 1.4,
+      "effective_width_m": 8.3,
+      "rut_depth_m": 0.085,
+      "pocket_depth_m": 0.15,
+      "apex_shift_m": 0,
+      "entry_load": 0.9,
+      "exit_load": 0.8,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.36,
+          "apex_out_m": -0.5,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.7,
+          "apex_out_m": 2.5199999999999996,
+          "exit_out_m": 1.5,
+          "width_m": 0.68,
+          "depth_scale": 1.0
+        }
+      ],
+      "braking_spacing_m": 4.05
+    },
+    {
+      "id": "T13",
+      "section": "S11",
+      "outer_rise_m": 1.4,
+      "effective_width_m": 8.4,
+      "rut_depth_m": 0.085,
+      "pocket_depth_m": 0.15,
+      "apex_shift_m": 2,
+      "entry_load": 0.85,
+      "exit_load": 0.85,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.6,
+          "apex_out_m": -0.65,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.5,
+          "apex_out_m": 2.8,
+          "exit_out_m": 1.2,
+          "width_m": 0.68,
+          "depth_scale": 1.0
+        }
+      ],
+      "braking_spacing_m": 3.0
+    },
+    {
+      "id": "T14",
+      "section": "S01",
+      "outer_rise_m": 1.5,
+      "effective_width_m": 8.6,
+      "rut_depth_m": 0.085,
+      "pocket_depth_m": 0.17,
+      "apex_shift_m": -2,
+      "entry_load": 0.95,
+      "exit_load": 0.9,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.48,
+          "apex_out_m": -0.5,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.7,
+          "apex_out_m": 2.6599999999999997,
+          "exit_out_m": 1.5,
+          "width_m": 0.68,
+          "depth_scale": 1.0
+        }
+      ],
+      "braking_spacing_m": 3.35
+    }
+  ],
+  "continuous_relief": {
+    "long_wave_amplitude_m": 0,
+    "short_wave_amplitude_m": 0,
+    "braking_chop_amplitude_m": 0.035
+  },
+  "route_changes": [],
+  "notes": [
+    "No repeated flat-deck template. Profiles use different progressive faces, rounded lips, short crests and long landings.",
+    "T03/T05 local legacy pedestals are removed in favor of supported corner cross-sections.",
+    "S12/S13 requested early in brief share physical sectors S01-S03, so those edits satisfy both observations.",
+    "Horizontal centerline retained on evidence grounds; preferred racing width/radius changes through actual grooves and banks."
+  ],
+  "evidence_map": "V010_SOURCE/review_section_sync.json",
+  "provisional_features": [
+    {
+      "id": "EX1",
+      "station_estimate_m": 184,
+      "enabled": false,
+      "reason": "Separate mound versus raised T02 entry unresolved"
+    },
+    {
+      "id": "EX2",
+      "station_estimate_m": 1040,
+      "enabled": false,
+      "reason": "Post-R14 rise form and station need user confirmation"
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "new_excessive_grade_nodes": 0,
+  "version": "v011",
+  "active_sections": [
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11"
+  ],
+  "native_compilation": false,
+  "in_game_riding": false,
+  "raw_sha256": "207bea281f6c503f2d7d422d9135913c4ca5223b8f7ca295629a0c19e34a522f",
+  "height_range_m": [
+    1.6334172487258911,
+    6.6872053146362305
+  ],
+  "maximum_raise_m": 2.5535364151000977,
+  "maximum_lower_m": 2.8490729331970215,
+  "maximum_changed_grade": 0.7800129652023315,
+  "maximum_racing_grade": 0.776904821395874,
+  "changed_nodes": 319171,
+  "relaxation": {
+    "passes": 33,
+    "max_adjustment_m": 0.7725653648376465
+  },
+  "finite": true,
+  "raw_bytes": 8396802,
+  "raw_png_identical": true,
+  "outer_terrain_max_delta_m": 0.0,
+  "route_unchanged": true,
+  "loop_closure_m": 8.039928421361173e-12,
+  "effective_width_range_m": [
+    7.800000190734863,
+    8.699999809265137
+  ],
+  "actual_obstacle_profiles": [
+    {
+      "id": "R01",
+      "kind": "tabletop",
+      "maximum_actual_grade": 0.3665680601517636,
+      "height_above_endpoint_chord_m": 2.794389040974704,
+      "deck_length_m": 10.0,
+      "actual_deck_height_spread_m": 0.03061270399358218,
+      "actual_deck_max_grade": 0.006600871478951831
+    },
+    {
+      "id": "R02",
+      "kind": "roller",
+      "maximum_actual_grade": 0.2649359172349932,
+      "height_above_endpoint_chord_m": 1.4124071215114098
+    },
+    {
+      "id": "R03",
+      "kind": "roller",
+      "maximum_actual_grade": 0.31938824821365586,
+      "height_above_endpoint_chord_m": 1.5097120989248491
+    },
+    {
+      "id": "R04",
+      "kind": "natural_crest",
+      "maximum_actual_grade": 0.1853167422676094,
+      "height_above_endpoint_chord_m": 0.9250595969087421
+    },
+    {
+      "id": "R05",
+      "kind": "tabletop",
+      "maximum_actual_grade": 0.3267097558767702,
+      "height_above_endpoint_chord_m": 1.8991333869302478,
+      "deck_length_m": 4.5,
+      "actual_deck_height_spread_m": 0.013844905410413055,
+      "actual_deck_max_grade": 0.008725849625150772
+    },
+    {
+      "id": "R06",
+      "kind": "roller",
+      "maximum_actual_grade": 0.165079972274782,
+      "height_above_endpoint_chord_m": 0.580153906503508
+    },
+    {
+      "id": "R07",
+      "kind": "double",
+      "maximum_actual_grade": 0.7070465670343715,
+      "height_above_endpoint_chord_m": 2.7846700407425455,
+      "actual_valley_below_lower_crest_m": 1.8000223567886646
+    },
+    {
+      "id": "R08",
+      "kind": "natural_crest",
+      "maximum_actual_grade": 0.1279302565209406,
+      "height_above_endpoint_chord_m": 0.7120527674495922
+    },
+    {
+      "id": "R09",
+      "kind": "jump_out_of_turn",
+      "maximum_actual_grade": 0.2937808887632585,
+      "height_above_endpoint_chord_m": 1.548956534061511
+    },
+    {
+      "id": "R10",
+      "kind": "tabletop",
+      "maximum_actual_grade": 0.42226512400210936,
+      "height_above_endpoint_chord_m": 3.2418385547773547,
+      "deck_length_m": 7.0,
+      "actual_deck_height_spread_m": 0.0031948158281087657,
+      "actual_deck_max_grade": 0.004313276927319976
+    },
+    {
+      "id": "R11",
+      "kind": "roller",
+      "maximum_actual_grade": 0.16858662393229196,
+      "height_above_endpoint_chord_m": 0.7243300557723336
+    },
+    {
+      "id": "R12",
+      "kind": "roller",
+      "maximum_actual_grade": 0.3034761628614788,
+      "height_above_endpoint_chord_m": 1.5864869020730192
+    },
+    {
+      "id": "R13",
+      "kind": "natural_crest",
+      "maximum_actual_grade": 0.12786371585365686,
+      "height_above_endpoint_chord_m": 0.6967279074052177
+    },
+    {
+      "id": "R14",
+      "kind": "tabletop",
+      "maximum_actual_grade": 0.4467282918808948,
+      "height_above_endpoint_chord_m": 3.7029073910402728,
+      "deck_length_m": 12.0,
+      "actual_deck_height_spread_m": 0.004505183396483758,
+      "actual_deck_max_grade": 0.005132445970104982
+    },
+    {
+      "id": "R15",
+      "kind": "roller",
+      "maximum_actual_grade": 0.1636843011509228,
+      "height_above_endpoint_chord_m": 0.8466545187187466
+    },
+    {
+      "id": "R16",
+      "kind": "double",
+      "maximum_actual_grade": 0.6173531640987591,
+      "height_above_endpoint_chord_m": 2.6972949114158107,
+      "actual_valley_below_lower_crest_m": 1.6346677352572416
+    },
+    {
+      "id": "R17",
+      "kind": "natural_crest",
+      "maximum_actual_grade": 0.14963048104140952,
+      "height_above_endpoint_chord_m": 0.8803780636828051
+    },
+    {
+      "id": "R18",
+      "kind": "step_down",
+      "maximum_actual_grade": 0.3555966518616458,
+      "height_above_endpoint_chord_m": 2.28401913043077
+    }
+  ],
+  "geometry_checks_pass": true
+}
