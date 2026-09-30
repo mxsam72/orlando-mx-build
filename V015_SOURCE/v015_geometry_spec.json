@@ -305,14 +305,14 @@
       "deck_m": 0,
       "gaps": [
         {
-          "span_m": 27.28,
+          "span_m": 25.68,
           "valley_height_m": 0.36,
           "landing_crest_height_m": 3.168
         }
       ],
-      "notes": "v015: R09 starts 5 m sooner and is 10 m shorter overall, 60 -> 50 m; face/landing lengths retained, gap reduced to 27.28 m, and crest heights reduced 10% to make both takeoff and landing less steep",
-      "gap_length_m": 27.28,
-      "role": "v015: R09 starts 5 m sooner and is 10 m shorter overall, 60 -> 50 m; face/landing lengths retained, gap reduced to 27.28 m, and crest heights reduced 10% to make both takeoff and landing less steep",
+      "notes": "v015: R09 starts 5 m sooner and is 10 m shorter overall, 60 -> 50 m; face/landing lengths retained, gap reduced to 25.68 m after accounting for the 1.6 m lip transition, and crest heights reduced 10% to make both takeoff and landing less steep",
+      "gap_length_m": 25.68,
+      "role": "v015: R09 starts 5 m sooner and is 10 m shorter overall, 60 -> 50 m; face/landing lengths retained, gap reduced to 25.68 m after accounting for the 1.6 m lip transition, and crest heights reduced 10% to make both takeoff and landing less steep",
       "evidence": "v015 user-directed refinement from v014 test videos"
     },
     {
