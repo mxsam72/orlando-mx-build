@@ -335,11 +335,11 @@
       "face_progression": 0.5,
       "lower_face_grade_ratio": 0.6,
       "lip_transition_m": 1.5,
-      "deck_m": 28,
+      "deck_m": 26.5,
       "gaps": [],
-      "notes": "v018: make R10 visibly bigger; begin takeoff 2 m earlier than v017, raise the crest 3.30 -> 3.75 m, shorten the face to 17.5 m for a steeper takeoff, and expand the deck to 28.0 m while retaining the established landing",
+      "notes": "v018: make R10 visibly bigger; begin takeoff 2 m earlier than v017, raise the crest 3.30 -> 3.75 m, shorten the face to 17.5 m for a steeper takeoff, and expand the deck to 26.5 m while retaining the established landing; exact authored total remains 74.0 m including the 1.5 m lip transition",
       "gap_length_m": 0,
-      "role": "v018: larger 74 m tabletop with earlier, steeper takeoff",
+      "role": "v018: larger 74 m tabletop with earlier, steeper takeoff and 26.5 m deck",
       "evidence": "v018 user-directed refinement after v017 ride test"
     },
     {
