@@ -16,10 +16,18 @@ def main():
     tree=cKDTree(sa[:,:2]);cross=[]
     for i,j in tree.query_pairs(.25):
         if abs(sa[i,3]-sa[j,3])>2:cross.append([i,j])
-    b=np.array(assets['restroom']['xz']);a=np.array(assets['rv_02']['xz']);c=np.array(assets['toyhauler_01']['xz']);u=float((b-a)@(c-a)/((c-a)@(c-a)))
-    between_distance=float(np.linalg.norm(b-(a+u*(c-a))))
-    qa=dict(start_length_m=float(sa[-1,3]),gate_stalls=cfg['grid_stalls'],grid_outer_stall_span_m=23*cfg['stall_spacing_m'],gate_apron_width_m=cfg['start_width_knots'][0][1],minimum_start_width_m=float(sw.min()),minimum_other_lane_edge_clearance_m=float(clear.min()),self_crossings=cross,merge_station_m=cfg['merge_station_m'],right_turn='T06',right_turn_angle_deg=t6['angle'],distance_before_right_turn_m=t6['arc_start']-cfg['merge_station_m'],bathroom_between_camper_fraction=u,bathroom_distance_from_camper_axis_m=between_distance,office_left_of_frontage_truck=assets['office']['xz'][0]<assets['pickup_03']['xz'][0],office_view_direction='+Z from pit road toward spectator fence',outside_shoulder_note='Last ~35 m converges alongside the T05 exit. Shoulder overlap here is intentional; the start centerline ends at s493 before T06. It never crosses the T05 apex.',runtime_start_reset_and_timing='Pending in-game test')
-    qa['layout_checks_pass']=bool(clear.min()>.5 and not cross and 0<t6['arc_start']-cfg['merge_station_m']<8 and t6['angle']<0 and 0<u<1 and between_distance<5 and qa['office_left_of_frontage_truck'])
+    b=np.array(assets['restroom']['xz'],dtype=float);rv=np.array(assets['rv_02']['xz'],dtype=float)
+    bathroom_to_rv=float(np.linalg.norm(b-rv))
+    patch=pit['grass_patches'][0];x0,z0,x1,z1=map(float,patch['bounds_xz'])
+    bathroom_in_grass=bool(x0<b[0]<x1 and z0<b[1]<z1)
+    road_clear=float('inf')
+    for road in pit['roads']:
+        pts=np.asarray(road['points'],dtype=float)
+        for aa,bb in zip(pts[:-1],pts[1:]):
+            d=bb-aa;t=np.clip((b-aa)@d/(d@d),0,1);dist=np.linalg.norm(b-(aa+t*d))-road['width']/2
+            road_clear=min(road_clear,float(dist))
+    qa=dict(start_length_m=float(sa[-1,3]),gate_stalls=cfg['grid_stalls'],grid_outer_stall_span_m=23*cfg['stall_spacing_m'],gate_apron_width_m=cfg['start_width_knots'][0][1],minimum_start_width_m=float(sw.min()),minimum_other_lane_edge_clearance_m=float(clear.min()),self_crossings=cross,merge_station_m=cfg['merge_station_m'],right_turn='T06',right_turn_angle_deg=t6['angle'],distance_before_right_turn_m=t6['arc_start']-cfg['merge_station_m'],bathroom_distance_from_rv02_m=bathroom_to_rv,bathroom_in_grass_patch=bathroom_in_grass,bathroom_road_edge_clearance_m=road_clear,office_left_of_frontage_truck=assets['office']['xz'][0]<assets['pickup_03']['xz'][0],office_view_direction='+Z from pit road toward spectator fence',outside_shoulder_note='Last ~35 m converges alongside the T05 exit. Shoulder overlap here is intentional; the start centerline ends at s493 before T06. It never crosses the T05 apex.',runtime_start_reset_and_timing='Pending in-game test')
+    qa['layout_checks_pass']=bool(clear.min()>.5 and not cross and 0<t6['arc_start']-cfg['merge_station_m']<8 and t6['angle']<0 and bathroom_to_rv<=10.1 and bathroom_in_grass and road_clear>.5 and qa['office_left_of_frontage_truck'])
     save(R/'DOCUMENTATION/v015_layout_validation.json',qa);assert qa['layout_checks_pass'],qa
     start=read(S/'start_layout.json');start.update(start_lane_width_m=cfg['start_width_knots'],start_length_m=float(sa[-1,3]),right_corner_start_m=t6['arc_start'],merge_before_corner_m=t6['arc_start']-cfg['merge_station_m']);save(O/'start_layout_resolved.json',start)
     folder=R/'DOCUMENTATION/v015_qa';folder.mkdir(exist_ok=True);meshes=read(O/'facility_meshes.json')
@@ -33,9 +41,9 @@ def main():
         except Exception:continue
         ax.fill(v[h.vertices,0],v[h.vertices,1],color=np.array(PALETTE[m['material']])/255,alpha=.65 if m['material'].startswith('leaf') else 1)
     fence=np.array(cfg['fence_polyline_xz']);ax.plot(*fence.T,lw=2,color='#634c2e')
-    for id,label,offset in [('office','Office: left of frontage truck',(-63,28)),('pickup_03','Red frontage truck',(6,-27)),('restroom','Bathroom between campers',(-112,-35)),('rv_02','Camper / RV',(10,-20)),('toyhauler_01','Toy hauler / camper',(14,15))]:
+    for id,label,offset in [('office','Office: left of frontage truck',(-63,28)),('pickup_03','Red frontage truck',(6,-27)),('restroom','Bathroom beside right RV',(-108,-35)),('rv_02','Camper / RV',(10,-20)),('toyhauler_01','Toy hauler / camper',(14,15))]:
         a=assets[id];ax.annotate(label,a['xz'],xytext=offset,textcoords='offset points',fontsize=9,arrowprops=dict(arrowstyle='->',color='#243d49'),bbox=dict(boxstyle='round,pad=.25',fc='white',alpha=.9,ec='none'))
-    ax.plot([350,356],[110,151],ls=':',c='#57766a',lw=1.4);ax.annotate('View toward spectator fence (+Z)',(240,158),xytext=(240,115),arrowprops=dict(arrowstyle='->'),fontsize=8,rotation=90,va='bottom')
+    gp=pit['grass_patches'][0]['bounds_xz'];ax.fill([gp[0],gp[2],gp[2],gp[0]],[gp[1],gp[1],gp[3],gp[3]],color='#6f8e4d',alpha=.24,label='RV/restroom grass paddock');ax.annotate('View toward spectator fence (+Z)',(240,158),xytext=(240,115),arrowprops=dict(arrowstyle='->'),fontsize=8,rotation=90,va='bottom')
     ax.set(xlim=(230,382),ylim=(88,180),aspect='equal',title='Pit corrections · actual source mesh footprints',xlabel='Native X (m)',ylabel='Native Z (m)')
     ax=axes[1];ax.set_facecolor('#e7e7d8');normal=np.c_[-np.sin(q[:,2]),np.cos(q[:,2])]
     for side in [-1,1]:
