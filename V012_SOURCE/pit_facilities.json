@@ -1,0 +1,309 @@
+{
+  "status": "Video-derived forms; metric sizes and placements are unsurveyed authoring estimates",
+  "references": [
+    "IMG_3591.mov",
+    "IMG_3592.mov",
+    "IMG_3594.mov",
+    "IMG_3595.mov",
+    "IMG_3597.mov"
+  ],
+  "unavailable_references": [],
+  "road_width_m": 7.0,
+  "roads": [
+    {
+      "width": 7.0,
+      "points": [
+        [
+          233,
+          137
+        ],
+        [
+          270,
+          137
+        ],
+        [
+          310,
+          136
+        ],
+        [
+          359,
+          137
+        ],
+        [
+          382,
+          159
+        ]
+      ]
+    },
+    {
+      "width": 6.0,
+      "points": [
+        [
+          241,
+          93
+        ],
+        [
+          346,
+          93
+        ],
+        [
+          373,
+          110
+        ],
+        [
+          373,
+          137
+        ]
+      ]
+    },
+    {
+      "width": 5.0,
+      "points": [
+        [
+          251,
+          93
+        ],
+        [
+          251,
+          115
+        ],
+        [
+          250,
+          137
+        ]
+      ]
+    },
+    {
+      "width": 5.0,
+      "points": [
+        [
+          342,
+          93
+        ],
+        [
+          342,
+          117
+        ],
+        [
+          344,
+          137
+        ]
+      ]
+    }
+  ],
+  "fence_opening_station_m": [
+    113,
+    116.6
+  ],
+  "assets": [
+    {
+      "id": "covered_stand",
+      "type": "covered_stand",
+      "xz": [
+        334,
+        165
+      ],
+      "heading": 0
+    },
+    {
+      "id": "bleachers",
+      "type": "bleachers",
+      "xz": [
+        306,
+        162
+      ],
+      "heading": 0
+    },
+    {
+      "id": "office",
+      "type": "office",
+      "xz": [
+        311,
+        149
+      ],
+      "heading": -90
+    },
+    {
+      "id": "restroom",
+      "type": "restroom",
+      "xz": [
+        349,
+        124
+      ],
+      "heading": 90
+    },
+    {
+      "id": "concession",
+      "type": "concession",
+      "xz": [
+        280,
+        151
+      ],
+      "heading": 180
+    },
+    {
+      "id": "rv_01",
+      "type": "rv",
+      "xz": [
+        237,
+        108
+      ],
+      "heading": 0
+    },
+    {
+      "id": "rv_02",
+      "type": "rv",
+      "xz": [
+        350,
+        110
+      ],
+      "heading": 0
+    },
+    {
+      "id": "toyhauler_01",
+      "type": "trailer",
+      "xz": [
+        356,
+        151
+      ],
+      "heading": 90
+    },
+    {
+      "id": "pickup_01",
+      "type": "pickup",
+      "xz": [
+        268,
+        101
+      ],
+      "heading": 90
+    },
+    {
+      "id": "pickup_02",
+      "type": "pickup",
+      "xz": [
+        295,
+        147
+      ],
+      "heading": 0
+    },
+    {
+      "id": "pickup_03",
+      "type": "pickup",
+      "xz": [
+        321,
+        149
+      ],
+      "heading": -15
+    },
+    {
+      "id": "trailer_02",
+      "type": "trailer",
+      "xz": [
+        316,
+        101
+      ],
+      "heading": 90
+    },
+    {
+      "id": "canopy_01",
+      "type": "pop_up",
+      "xz": [
+        304,
+        149
+      ],
+      "heading": 0
+    },
+    {
+      "id": "canopy_02",
+      "type": "pop_up",
+      "xz": [
+        282,
+        101
+      ],
+      "heading": 0
+    },
+    {
+      "id": "oak_restroom",
+      "type": "oak",
+      "xz": [
+        358,
+        126
+      ],
+      "heading": 0,
+      "radius": 7.8
+    },
+    {
+      "id": "oak_bleachers",
+      "type": "oak",
+      "xz": [
+        299,
+        157
+      ],
+      "heading": 0,
+      "radius": 7.0
+    },
+    {
+      "id": "oak_front",
+      "type": "oak",
+      "xz": [
+        347,
+        160
+      ],
+      "heading": 0,
+      "radius": 6.4
+    },
+    {
+      "id": "oak_pits",
+      "type": "oak",
+      "xz": [
+        275,
+        126
+      ],
+      "heading": 0,
+      "radius": 6.8
+    },
+    {
+      "id": "oak_entry",
+      "type": "oak",
+      "xz": [
+        363,
+        99
+      ],
+      "heading": 0,
+      "radius": 7.2
+    },
+    {
+      "id": "front_flag",
+      "type": "flagpole",
+      "xz": [
+        326,
+        171
+      ],
+      "heading": 15
+    },
+    {
+      "id": "light_01",
+      "type": "utility",
+      "xz": [
+        275,
+        167
+      ],
+      "heading": 0
+    },
+    {
+      "id": "light_02",
+      "type": "utility",
+      "xz": [
+        362,
+        171
+      ],
+      "heading": 0
+    }
+  ],
+  "placement_intent": {
+    "bathroom": "Between RV02 (350,110) and toyhauler01 (356,151), east of their pit-road connector; clear of pit spawn rows",
+    "office": "Left / negative X of red frontage pickup03 (321,149), viewed from the pit road toward spectator fence (+Z)",
+    "precision": "Relational placement from user instruction and videos; metric positions are authored, not surveyed",
+    "supporting_adjustment": "Move bathroom shade tree into camper cluster, preserving its asset/materials"
+  }
+}
