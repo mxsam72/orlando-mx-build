@@ -339,6 +339,135 @@
       "gap_length_m": 0,
       "role": "50 m tabletop: 13 face + 1 lip + 17 deck + 19 landing",
       "evidence": "v012 handover supersedes v011 classification"
+    },
+    {
+      "id": "R11",
+      "kind": "double",
+      "target_type": "DOUBLE",
+      "station_start_m": 844.0,
+      "station_end_m": 864.0,
+      "user_target_length_m": 20.0,
+      "face_m": 4.5,
+      "face_length_m": 4.5,
+      "crest_height_m": 0.5,
+      "lip_height_m": 0.5,
+      "landing_m": 5.0,
+      "landing_length_m": 5.0,
+      "lip_s": 848.5,
+      "racing_width_m": 10.0,
+      "side_taper_m": 7.5,
+      "face_progression": 0.5,
+      "lower_face_grade_ratio": 0.6,
+      "lip_transition_m": 0.6,
+      "deck_m": 0.0,
+      "gaps": [
+        {
+          "span_m": 9.9,
+          "valley_height_m": 0.05,
+          "landing_crest_height_m": 0.45
+        }
+      ],
+      "notes": "20 m low-lipped double; shallow speed-dependent launch",
+      "gap_length_m": 9.9,
+      "role": "20 m low-lipped double; shallow speed-dependent launch",
+      "evidence": "v012 handover supersedes v011 classification"
+    },
+    {
+      "id": "R12",
+      "kind": "roller_sequence",
+      "target_type": "ROLLER_SEQUENCE",
+      "station_start_m": 868.5,
+      "station_end_m": 888.5,
+      "user_target_length_m": 20.0,
+      "face_m": 2.5,
+      "face_length_m": 2.5,
+      "crest_height_m": 0.55,
+      "lip_height_m": 0.55,
+      "landing_m": 2.5,
+      "landing_length_m": 2.5,
+      "lip_s": 871.0,
+      "racing_width_m": 10.0,
+      "side_taper_m": 7.5,
+      "face_progression": 0.5,
+      "lower_face_grade_ratio": 0.6,
+      "lip_transition_m": 0.8,
+      "deck_m": 0.0,
+      "gaps": [],
+      "notes": "Four rolling singles with crests at s871,876,881,886",
+      "roller_count": 4,
+      "spacing_m": 5.0,
+      "roller_heights_m": [
+        0.45,
+        0.5,
+        0.55,
+        0.45
+      ],
+      "gap_length_m": 0,
+      "role": "Four rolling singles with crests at s871,876,881,886",
+      "evidence": "v012 handover supersedes v011 classification"
+    },
+    {
+      "id": "R13",
+      "kind": "none",
+      "target_type": "NONE",
+      "station_start_m": 943.0,
+      "station_end_m": 969.7,
+      "user_target_length_m": null,
+      "face_m": 10.0,
+      "face_length_m": 10.0,
+      "crest_height_m": 0,
+      "lip_height_m": 0,
+      "landing_m": 16.7,
+      "landing_length_m": 16.7,
+      "lip_s": 953.0,
+      "racing_width_m": 10.0,
+      "side_taper_m": 7.5,
+      "face_progression": 0.5,
+      "lower_face_grade_ratio": 0.6,
+      "lip_transition_m": 0.8,
+      "deck_m": 0.0,
+      "gaps": [],
+      "notes": "NO JUMP: remove previous obstacle; retain corner/normal ground",
+      "gap_length_m": 0,
+      "role": "NO JUMP: remove previous obstacle; retain corner/normal ground",
+      "evidence": "v012 handover supersedes v011 classification"
+    },
+    {
+      "id": "R14",
+      "kind": "triple",
+      "target_type": "TRIPLE",
+      "station_start_m": 981.0,
+      "station_end_m": 1016.0,
+      "user_target_length_m": 35.0,
+      "face_m": 8.0,
+      "face_length_m": 8.0,
+      "crest_height_m": 3.2,
+      "lip_height_m": 3.2,
+      "landing_m": 8.2,
+      "landing_length_m": 8.2,
+      "lip_s": 989.0,
+      "racing_width_m": 10.0,
+      "side_taper_m": 7.5,
+      "face_progression": 0.5,
+      "lower_face_grade_ratio": 0.6,
+      "lip_transition_m": 0.8,
+      "deck_m": 0.0,
+      "gaps": [
+        {
+          "span_m": 9,
+          "valley_height_m": 0.55,
+          "landing_crest_height_m": 2.7
+        },
+        {
+          "span_m": 9,
+          "valley_height_m": 0.55,
+          "landing_crest_height_m": 3.0
+        }
+      ],
+      "notes": "35 m signature triple: 8 face + .8 lip + 9 / 9 gaps + 8.2 landing",
+      "gap_length_m": 18,
+      "role": "35 m signature triple: 8 face + .8 lip + 9 / 9 gaps + 8.2 landing",
+      "evidence": "v012 handover supersedes v011 classification"
     }
   ],
   "berms": [
@@ -765,6 +894,7 @@
   "authority": "User v012 handover, 2026-09-29",
   "completed_groups": [
     "A",
-    "B"
+    "B",
+    "C"
   ]
 }
