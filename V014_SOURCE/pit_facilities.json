@@ -1,5 +1,5 @@
 {
-  "status": "Video-derived forms; metric sizes and placements are unsurveyed authoring estimates",
+  "status": "Video/screenshot-derived forms; metric sizes and placements are unsurveyed v014 authoring estimates",
   "references": [
     "IMG_3591.mov",
     "IMG_3592.mov",
@@ -8,10 +8,10 @@
     "IMG_3597.mov"
   ],
   "unavailable_references": [],
-  "road_width_m": 7.0,
+  "road_width_m": 7,
   "roads": [
     {
-      "width": 7.0,
+      "width": 7,
       "points": [
         [
           233,
@@ -36,7 +36,7 @@
       ]
     },
     {
-      "width": 6.0,
+      "width": 6,
       "points": [
         [
           241,
@@ -57,7 +57,7 @@
       ]
     },
     {
-      "width": 5.0,
+      "width": 5,
       "points": [
         [
           251,
@@ -74,7 +74,7 @@
       ]
     },
     {
-      "width": 5.0,
+      "width": 5,
       "points": [
         [
           342,
@@ -127,8 +127,8 @@
       "id": "restroom",
       "type": "restroom",
       "xz": [
-        349,
-        124
+        365,
+        119
       ],
       "heading": 90
     },
@@ -226,7 +226,7 @@
       "id": "oak_restroom",
       "type": "oak",
       "xz": [
-        358,
+        369,
         126
       ],
       "heading": 0,
@@ -240,7 +240,7 @@
         157
       ],
       "heading": 0,
-      "radius": 7.0
+      "radius": 7
     },
     {
       "id": "oak_front",
@@ -301,9 +301,20 @@
     }
   ],
   "placement_intent": {
-    "bathroom": "Between RV02 (350,110) and toyhauler01 (356,151), east of their pit-road connector; clear of pit spawn rows",
+    "bathroom": "v014: move restroom into the grass patch close to RV02 shown in the annotated v013 test screenshot; authored center (365,119), clear of the east pit road",
     "office": "Left / negative X of red frontage pickup03 (321,149), viewed from the pit road toward spectator fence (+Z)",
     "precision": "Relational placement from user instruction and videos; metric positions are authored, not surveyed",
-    "supporting_adjustment": "Move bathroom shade tree into camper cluster, preserving its asset/materials"
+    "supporting_adjustment": "Bathroom shade oak moved slightly east with restroom; track-area tree clearing is handled separately in scenery source"
+  },
+  "tree_removal_intent": {
+    "description": "Remove baseline tree/scrub objects inside the start/track infield visible left of the rightmost gate, continuing toward the approach before the corner that leads to R09.",
+    "authored_zone_xz": {
+      "min_x": 285,
+      "max_x": 435,
+      "min_z": 180,
+      "max_z": 320
+    },
+    "preserve_facility_trees_below_z": 174,
+    "reference": "trees to remove inside track.png"
   }
 }
