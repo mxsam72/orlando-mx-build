@@ -18,7 +18,11 @@ def make_profile(source):
         edge=min(transition,length*.22);slope=(height-ys[-1])/(length-edge)
         grade(edge,0,slope);grade(length-2*edge,slope,slope);grade(edge,slope,0);ys[-1]=height
     def landing(length):
-        entry=min(1.4,length*.20);run=min(4.0,length*.30);slope=-ys[-1]/(length-(entry+run)/2)
+        rounding=float(p.get('landing_rounding_scale',1.0))
+        entry=min(1.4*rounding,length*.28);run=min(4.0*rounding,length*.42)
+        if entry+run>length*.80:
+            k=(length*.80)/(entry+run);entry*=k;run*=k
+        slope=-ys[-1]/(length-(entry+run)/2)
         grade(entry,0,slope);grade(length-entry-run,slope,slope);grade(run,slope,0);ys[-1]=0.
     def gap(span,valley,height,number):
         a=xs[-1];ramp(span*.45,valley);v0=xs[-1];grade(span*.10,0,0);v1=xs[-1];ramp(span*.45,height)
