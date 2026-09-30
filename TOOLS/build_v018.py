@@ -18,6 +18,19 @@ def materialize_runtime():
     fmp=R/'TOOLS/facility_mesh_v018.py'
     fm=fmp.read_text(encoding='utf-8')
     fm=fm.replace("'gravel':(174,169,153)}","'gravel':(174,169,153),\n         'sticker_white':(240,239,229),'sticker_black':(24,25,24),'sticker_yellow':(226,201,60),\n         'sticker_blue':(45,98,153),'sticker_green':(77,133,73),'sticker_orange':(211,111,48),\n         'sticker_pink':(184,83,123)}")
+    # The legacy restroom helper added a timber side enclosure extending well
+    # beyond the actual building footprint. The supplied bathroom video shows
+    # the compact building/front-door mass instead; remove that enclosure so it
+    # neither distorts the silhouette nor conflicts with preserved pit spawns.
+    legacy_restroom_side="""            else:
+                for z in np.arange(-2,2.2,.18):s.box([-4.1,.9,z],[.13,1.8,.16],'timber')
+                s.box([-3.5,.9,2.1],[1.3,1.8,.12],'timber')
+"""
+    if legacy_restroom_side not in fm: raise RuntimeError('legacy restroom side enclosure marker missing')
+    fm=fm.replace(legacy_restroom_side,"""            else:
+                # v018: no oversized side enclosure; keep the photo-derived compact restroom body.
+                pass
+""")
     marker="        elif typ in ['flagpole','utility']:"
     sign=r'''        elif typ=='sticker_stop_sign':
             # Photo-derived Bithlo landmark: tall stickered pole, lower number board,
