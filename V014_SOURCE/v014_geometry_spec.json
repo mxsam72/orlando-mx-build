@@ -245,17 +245,17 @@
       "landing_length_m": 24.3,
       "lip_s": 552,
       "racing_width_m": 10,
-      "side_taper_m": 14,
+      "side_taper_m": 20,
       "face_progression": 0.5,
       "lower_face_grade_ratio": 0.6,
       "lip_transition_m": 0.8,
       "deck_m": 0,
       "gaps": [],
-      "notes": "v014: retain ant-hill crest at s552; increase crest height by exactly 5 m (3.2 -> 8.2 m) while reducing v013 takeoff maximum slope by 5%; landing length increased to keep encoded grade within track QA limits; side taper broadened to 14 m with a local 16 m terrain-support allowance to avoid an artificial lateral cliff from the +5 m height increase",
+      "notes": "v014: retain ant-hill crest at s552; increase crest height by exactly 5 m (3.2 -> 8.2 m) while reducing v013 takeoff maximum slope by 5%; landing length increased to keep encoded grade within track QA limits; side taper broadened to 20 m with a local 23 m terrain-support allowance",
       "gap_length_m": 0,
-      "role": "v014: retain ant-hill crest at s552; increase crest height by exactly 5 m (3.2 -> 8.2 m) while reducing v013 takeoff maximum slope by 5%; landing length increased to keep encoded grade within track QA limits; side taper broadened to 14 m with a local 16 m terrain-support allowance to avoid an artificial lateral cliff from the +5 m height increase",
+      "role": "v014: retain ant-hill crest at s552; increase crest height by exactly 5 m (3.2 -> 8.2 m) while reducing v013 takeoff maximum slope by 5%; landing length increased to keep encoded grade within track QA limits; side taper broadened to 20 m with a local 23 m terrain-support allowance",
       "evidence": "v014 user-directed refinement from testing v013 long video and annotated screenshots",
-      "wide_support_extra_m": 16
+      "wide_support_extra_m": 23
     },
     {
       "id": "R08",
