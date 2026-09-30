@@ -1,0 +1,13 @@
+# v012 status
+
+Authoritative instructions: `DOCUMENTATION/v012_handover.md` (2026-09-29).
+Base: corrected v011 commit `56b7fed68c210c6090458d046a6ddc7490be9267` on `rebuild-v011-jumps-facilities`.
+Its native workflow run `36481701635` completed successfully. The older v011 build-record file predates the material fix; use the corrected commit/run above.
+
+New branch: `rebuild-v012-final-obstacles-layout`. Previous versions remain intact.
+
+Checkpoint 01: corrected base and authoritative instructions captured. All R01–R18 types in the handover supersede earlier interpretations. Geometry, facility relocation and new start loop are in progress; no v012 native compilation or game test is claimed yet.
+
+Material invariants: palette colors encoded in FBX diffuse/ambient properties, diffuse bitmap connections retained, generated textures staged at root and in `scenery.fbm/` before native import.
+
+Available references: v011 test ride; all five IMG_3591/3592/3594/3595/3597 clips; prior GoPro and section mapping. Metric authoring dimensions use the user's requested approximate lengths, not claimed survey measurements.
