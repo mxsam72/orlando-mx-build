@@ -49,7 +49,8 @@ def main():
             for i,k in enumerate(peaks,1):ax.annotate(str(i),(x[k],rel[k]),xytext=(0,5),textcoords='offset points',ha='center',fontsize=7)
         if kind=='ant_hill':
             peaks,_=find_peaks(rel,prominence=.8);m['encoded_major_crest_count']=len(peaks);m['encoded_crest_station_m']=float(s[peaks[0]]) if len(peaks) else None
-            assert len(peaks)==1 and abs(s[peaks[0]]-552)<1.5,(p['id'],'ant-hill placement',m)
+            expected_crest=float(p['lip_s'])
+            assert len(peaks)==1 and abs(s[peaks[0]]-expected_crest)<2.0,(p['id'],'ant-hill placement',expected_crest,m)
         if kind=='none':
             assert max(p['profile_h'])==0;m['authored_jump_height_m']=0
         if kind=='inside_roller':
