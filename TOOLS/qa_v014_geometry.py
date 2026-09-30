@@ -42,7 +42,9 @@ def main():
             peaks,_=find_peaks(rel,prominence=.18,distance=int(3.2/(xs[1]-xs[0])))
             crests=s[peaks];m.update(encoded_roller_count=len(peaks),encoded_crest_stations_m=crests.tolist(),encoded_crest_spacing_m=np.diff(crests).tolist())
             assert len(peaks)==p['roller_count'],(p['id'],'roller count',crests)
-            expected=np.asarray(p.get('crest_spacings_m',[p['spacing_m']]*(len(crests)-1)),dtype=float)\n            assert len(expected)==len(crests)-1\n            assert np.max(abs(np.diff(crests)-expected))<max(.65,float(expected.max())*.10),(p['id'],'roller spacing',expected,crests)
+            expected=np.asarray(p.get('crest_spacings_m',[p['spacing_m']]*(len(crests)-1)),dtype=float)
+            assert len(expected)==len(crests)-1
+            assert np.max(abs(np.diff(crests)-expected))<max(.65,float(expected.max())*.10),(p['id'],'roller spacing',expected,crests)
             ax.scatter(x[peaks],rel[peaks],c='#cc6336',s=18,zorder=4)
             for i,k in enumerate(peaks,1):ax.annotate(str(i),(x[k],rel[k]),xytext=(0,5),textcoords='offset points',ha='center',fontsize=7)
         if kind=='ant_hill':
