@@ -1,0 +1,1023 @@
+{
+  "version": "v017",
+  "metric_status": "ALL dimensions are non-surveyed v017 tuning estimates based on the September 30 v016 ride-test feedback",
+  "active_sections": [
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11"
+  ],
+  "priority_groups": [
+    [
+      "S09"
+    ],
+    [
+      "S07",
+      "S08"
+    ],
+    [
+      "S04",
+      "S05",
+      "S06"
+    ],
+    [
+      "S01",
+      "S02",
+      "S03"
+    ],
+    [
+      "S10",
+      "S11"
+    ]
+  ],
+  "repeat_views": {
+    "S12": [
+      "S01"
+    ],
+    "S13": [
+      "S02",
+      "S03"
+    ],
+    "S14": [
+      "S03",
+      "S04"
+    ]
+  },
+  "profiles": [
+    {
+      "id": "R01",
+      "kind": "tabletop",
+      "target_type": "TABLETOP",
+      "station_start_m": -2,
+      "station_end_m": 49.4666666667,
+      "user_target_length_m": 51.4666666667,
+      "face_m": 12.5,
+      "face_length_m": 12.5,
+      "crest_height_m": 2.8,
+      "lip_height_m": 2.8,
+      "landing_m": 18,
+      "landing_length_m": 18,
+      "lip_s": 10.5,
+      "racing_width_m": 10.8,
+      "side_taper_m": 7.5,
+      "face_progression": 0.5,
+      "lower_face_grade_ratio": 0.6,
+      "lip_transition_m": 1.1,
+      "deck_m": 19.8666666667,
+      "gaps": [],
+      "notes": "v017: shorten v012 R01 overall length by one-third (77.2 m -> 51.47 m); preserve front-tabletop character and finish-plane-on-deck behavior",
+      "gap_length_m": 0,
+      "role": "v017: shorten v012 R01 overall length by one-third (77.2 m -> 51.47 m); preserve front-tabletop character and finish-plane-on-deck behavior",
+      "evidence": "v017 user-directed refinement from testing v012.mp4"
+    },
+    {
+      "id": "R02",
+      "kind": "triple",
+      "target_type": "TRIPLE",
+      "station_start_m": 128,
+      "station_end_m": 177,
+      "user_target_length_m": 49,
+      "face_m": 8,
+      "face_length_m": 8,
+      "crest_height_m": 2.6,
+      "lip_height_m": 2.6,
+      "landing_m": 12.5,
+      "landing_length_m": 12.5,
+      "lip_s": 136,
+      "racing_width_m": 10,
+      "side_taper_m": 7.5,
+      "face_progression": 0.5,
+      "lower_face_grade_ratio": 0.6,
+      "lip_transition_m": 0.8,
+      "deck_m": 0,
+      "gaps": [
+        {
+          "span_m": 18,
+          "valley_height_m": 0.3,
+          "landing_crest_height_m": 2.25
+        },
+        {
+          "span_m": 9.7,
+          "valley_height_m": 0.3,
+          "landing_crest_height_m": 2.4
+        }
+      ],
+      "notes": "v017: shorten v013 R02 triple by 5 m overall, retaining first 18 m gap and reducing second gap 14.7 -> 9.7 m",
+      "gap_length_m": 27.7,
+      "role": "v017: shorten v013 R02 triple by 5 m overall, retaining first 18 m gap and reducing second gap 14.7 -> 9.7 m",
+      "evidence": "v017 user-directed refinement from testing v013 long video and annotated screenshots"
+    },
+    {
+      "id": "R03",
+      "kind": "table_single",
+      "target_type": "TABLE_SINGLE",
+      "station_start_m": 232,
+      "station_end_m": 279,
+      "user_target_length_m": 47,
+      "face_m": 9,
+      "face_length_m": 9,
+      "crest_height_m": 2.6,
+      "lip_height_m": 2.6,
+      "landing_m": 11.2,
+      "landing_length_m": 11.2,
+      "lip_s": 241,
+      "racing_width_m": 10,
+      "side_taper_m": 7.5,
+      "face_progression": 0.5,
+      "lower_face_grade_ratio": 0.6,
+      "lip_transition_m": 0.8,
+      "deck_m": 12,
+      "gaps": [
+        {
+          "span_m": 14,
+          "valley_height_m": 0.35,
+          "landing_crest_height_m": 2.3
+        }
+      ],
+      "notes": "v017: shorten R03 table-single by 3 m, 50 -> 47 m, entirely by reducing the landing 14.2 -> 11.2 m so the landing mass is visibly smaller",
+      "gap_length_m": 14,
+      "role": "v017: shorten R03 table-single by 3 m, 50 -> 47 m, entirely by reducing the landing 14.2 -> 11.2 m so the landing mass is visibly smaller",
+      "evidence": "v017 user-directed refinement from v014 test videos"
+    },
+    {
+      "id": "R04",
+      "kind": "none",
+      "target_type": "NONE",
+      "station_start_m": 322.5,
+      "station_end_m": 352.2,
+      "user_target_length_m": null,
+      "face_m": 11.5,
+      "face_length_m": 11.5,
+      "crest_height_m": 0,
+      "lip_height_m": 0,
+      "landing_m": 18.2,
+      "landing_length_m": 18.2,
+      "lip_s": 334,
+      "racing_width_m": 10,
+      "side_taper_m": 7.5,
+      "face_progression": 0.5,
+      "lower_face_grade_ratio": 0.6,
+      "lip_transition_m": 0.8,
+      "deck_m": 0,
+      "gaps": [],
+      "notes": "NO JUMP: remove previous obstacle; retain corner/normal ground",
+      "gap_length_m": 0,
+      "role": "NO JUMP: remove previous obstacle; retain corner/normal ground",
+      "evidence": "v012 handover supersedes v011 classification"
+    },
+    {
+      "id": "R05",
+      "kind": "double",
+      "target_type": "DOUBLE",
+      "station_start_m": 399.6,
+      "station_end_m": 428.6,
+      "user_target_length_m": 29,
+      "face_m": 6.4,
+      "face_length_m": 6.4,
+      "crest_height_m": 1.4,
+      "lip_height_m": 1.4,
+      "landing_m": 6.8,
+      "landing_length_m": 6.8,
+      "lip_s": 406,
+      "racing_width_m": 10,
+      "side_taper_m": 7.5,
+      "face_progression": 0.5,
+      "lower_face_grade_ratio": 0.6,
+      "lip_transition_m": 1.2,
+      "deck_m": 0,
+      "gaps": [
+        {
+          "span_m": 14.6,
+          "valley_height_m": 0.14,
+          "landing_crest_height_m": 1.2
+        }
+      ],
+      "notes": "v017: push R05 15 m forward along route and extend overall length 24 -> 29 m by lengthening the gap 9.6 -> 14.6 m; v013 height retained",
+      "gap_length_m": 14.6,
+      "role": "v017: push R05 15 m forward along route and extend overall length 24 -> 29 m by lengthening the gap 9.6 -> 14.6 m; v013 height retained",
+      "evidence": "v017 user-directed refinement from testing v013 long video and annotated screenshots"
+    },
+    {
+      "id": "R06",
+      "kind": "none",
+      "target_type": "NONE",
+      "station_start_m": 484.5,
+      "station_end_m": 505.9,
+      "user_target_length_m": null,
+      "face_m": 7.5,
+      "face_length_m": 7.5,
+      "crest_height_m": 0,
+      "lip_height_m": 0,
+      "landing_m": 13.899999999999999,
+      "landing_length_m": 13.899999999999999,
+      "lip_s": 492,
+      "racing_width_m": 10,
+      "side_taper_m": 7.5,
+      "face_progression": 0.5,
+      "lower_face_grade_ratio": 0.6,
+      "lip_transition_m": 0.8,
+      "deck_m": 0,
+      "gaps": [],
+      "notes": "NO JUMP: remove previous obstacle; retain corner/normal ground",
+      "gap_length_m": 0,
+      "role": "NO JUMP: remove previous obstacle; retain corner/normal ground",
+      "evidence": "v012 handover supersedes v011 classification"
+    },
+    {
+      "id": "R07",
+      "kind": "ant_hill",
+      "target_type": "ANT_HILL",
+      "station_start_m": 535.6134868421053,
+      "station_end_m": 568.4025,
+      "user_target_length_m": 32.78901315789474,
+      "face_m": 16.386513157894736,
+      "face_length_m": 16.386513157894736,
+      "crest_height_m": 5.534999999999999,
+      "lip_height_m": 5.534999999999999,
+      "landing_m": 16.402500000000003,
+      "landing_length_m": 16.402500000000003,
+      "lip_s": 552,
+      "racing_width_m": 10,
+      "side_taper_m": 9.450000000000001,
+      "face_progression": 0.5,
+      "lower_face_grade_ratio": 0.6,
+      "lip_transition_m": 0.8,
+      "deck_m": 0,
+      "gaps": [],
+      "notes": "v017: make R07 ant-hill 10% smaller than v015 in longitudinal footprint, height and shoulder support; preserve crest station s552 and 10 m riding width",
+      "gap_length_m": 0,
+      "role": "v017: make R07 ant-hill 10% smaller than v015 in longitudinal footprint, height and shoulder support; preserve crest station s552 and 10 m riding width",
+      "evidence": "v017 user-directed refinement from testing v015.mp4 and focused v015 issue videos",
+      "wide_support_extra_m": 10.8
+    },
+    {
+      "id": "R08",
+      "kind": "none",
+      "target_type": "NONE",
+      "station_start_m": 605.5,
+      "station_end_m": 631,
+      "user_target_length_m": null,
+      "face_m": 9.5,
+      "face_length_m": 9.5,
+      "crest_height_m": 0,
+      "lip_height_m": 0,
+      "landing_m": 16,
+      "landing_length_m": 16,
+      "lip_s": 615,
+      "racing_width_m": 10,
+      "side_taper_m": 7.5,
+      "face_progression": 0.5,
+      "lower_face_grade_ratio": 0.6,
+      "lip_transition_m": 0.8,
+      "deck_m": 0,
+      "gaps": [],
+      "notes": "NO JUMP: remove previous obstacle; retain corner/normal ground",
+      "gap_length_m": 0,
+      "role": "NO JUMP: remove previous obstacle; retain corner/normal ground",
+      "evidence": "v012 handover supersedes v011 classification"
+    },
+    {
+      "id": "R09",
+      "kind": "double",
+      "target_type": "DOUBLE",
+      "station_start_m": 691.2,
+      "station_end_m": 741.2,
+      "user_target_length_m": 50,
+      "face_m": 10.88,
+      "face_length_m": 10.88,
+      "crest_height_m": 3.2832,
+      "lip_height_m": 3.2832,
+      "landing_m": 14.208,
+      "landing_length_m": 14.208,
+      "lip_s": 702.08,
+      "racing_width_m": 10,
+      "side_taper_m": 7.5,
+      "face_progression": 0.5,
+      "lower_face_grade_ratio": 0.6,
+      "lip_transition_m": 1.6,
+      "deck_m": 0,
+      "gaps": [
+        {
+          "span_m": 23.311999999999998,
+          "valley_height_m": 0.36,
+          "landing_crest_height_m": 3.0096
+        }
+      ],
+      "notes": "v017: R09 remains 50 m; reduce takeoff and landing crest heights 5% for slightly less steep geometry, lengthen the landing 20%, and use 1.35x landing-transition rounding; shorten the gap to preserve exact total length",
+      "gap_length_m": 23.311999999999998,
+      "role": "v017: R09 remains 50 m; reduce takeoff and landing crest heights 5% for slightly less steep geometry, lengthen the landing 20%, and use 1.35x landing-transition rounding; shorten the gap to preserve exact total length",
+      "evidence": "v017 user-directed refinement from 20260930-0806-37.3173269.mp4 and explicit change list",
+      "landing_rounding_scale": 1.35
+    },
+    {
+      "id": "R10",
+      "kind": "tabletop",
+      "target_type": "TABLETOP",
+      "station_start_m": 741.2,
+      "station_end_m": 813.2,
+      "user_target_length_m": 72,
+      "face_m": 18.57142857142857,
+      "face_length_m": 18.57142857142857,
+      "crest_height_m": 3.3,
+      "lip_height_m": 3.3,
+      "landing_m": 28.5,
+      "landing_length_m": 28.5,
+      "lip_s": 759.7714285714286,
+      "racing_width_m": 10,
+      "side_taper_m": 7.5,
+      "face_progression": 0.5,
+      "lower_face_grade_ratio": 0.6,
+      "lip_transition_m": 1.5,
+      "deck_m": 23.42857142857143,
+      "gaps": [],
+      "notes": "v017: move R10 start 5 m later to s741.2 and shorten total length 75 -> 72 m by removing 3 m from the tabletop deck; retain v016 takeoff grade/height and landing",
+      "gap_length_m": 0,
+      "role": "v017: move R10 start 5 m later to s741.2 and shorten total length 75 -> 72 m by removing 3 m from the tabletop deck; retain v016 takeoff grade/height and landing",
+      "evidence": "v017 user-directed refinement from 20260930-0806-37.3173269.mp4 and explicit change list"
+    },
+    {
+      "id": "R11",
+      "kind": "double",
+      "target_type": "DOUBLE",
+      "station_start_m": 839,
+      "station_end_m": 859,
+      "user_target_length_m": 20,
+      "face_m": 4.5,
+      "face_length_m": 4.5,
+      "crest_height_m": 0.55125,
+      "lip_height_m": 0.55125,
+      "landing_m": 5,
+      "landing_length_m": 5,
+      "lip_s": 843.5,
+      "racing_width_m": 10,
+      "side_taper_m": 7.5,
+      "face_progression": 0.5,
+      "lower_face_grade_ratio": 0.6,
+      "lip_transition_m": 0.6,
+      "deck_m": 0,
+      "gaps": [
+        {
+          "span_m": 9.9,
+          "valley_height_m": 0.05,
+          "landing_crest_height_m": 0.49612500000000004
+        }
+      ],
+      "notes": "v017: make R11 another 5% steeper than v016 by increasing takeoff and landing crest heights 5% while preserving its 20 m length and position",
+      "gap_length_m": 9.9,
+      "role": "v017: make R11 another 5% steeper than v016 by increasing takeoff and landing crest heights 5% while preserving its 20 m length and position",
+      "evidence": "v017 user-directed refinement from 20260930-0806-37.3173269.mp4 and explicit change list"
+    },
+    {
+      "id": "R12",
+      "kind": "roller_sequence",
+      "target_type": "ROLLER_SEQUENCE",
+      "station_start_m": 868.5,
+      "station_end_m": 903.5,
+      "user_target_length_m": 35,
+      "face_m": 5,
+      "face_length_m": 5,
+      "crest_height_m": 0.55,
+      "lip_height_m": 0.55,
+      "landing_m": 5,
+      "landing_length_m": 5,
+      "lip_s": 871,
+      "racing_width_m": 10,
+      "side_taper_m": 7.5,
+      "face_progression": 0.5,
+      "lower_face_grade_ratio": 0.6,
+      "lip_transition_m": 0.8,
+      "deck_m": 0,
+      "gaps": [],
+      "notes": "v017: four rolling singles; first two crest gaps remain ~10 m and the final crest is ~5 m after the third; explicit non-uniform crest spacing [10,10,5]",
+      "roller_count": 4,
+      "spacing_m": 10,
+      "roller_heights_m": [
+        0.45,
+        0.5,
+        0.55,
+        0.45
+      ],
+      "gap_length_m": 0,
+      "role": "v017: four rolling singles; first two crest gaps remain ~10 m and the final crest is ~5 m after the third; explicit non-uniform crest spacing [10,10,5]",
+      "evidence": "v017 user-directed refinement from testing v013 long video and annotated screenshots",
+      "crest_spacings_m": [
+        10,
+        10,
+        5
+      ],
+      "roller_width_m": 10
+    },
+    {
+      "id": "R13",
+      "kind": "none",
+      "target_type": "NONE",
+      "station_start_m": 943,
+      "station_end_m": 951,
+      "user_target_length_m": null,
+      "face_m": 4,
+      "face_length_m": 4,
+      "crest_height_m": 0,
+      "lip_height_m": 0,
+      "landing_m": 4,
+      "landing_length_m": 4,
+      "lip_s": 947,
+      "racing_width_m": 10,
+      "side_taper_m": 7.5,
+      "face_progression": 0.5,
+      "lower_face_grade_ratio": 0.6,
+      "lip_transition_m": 0.8,
+      "deck_m": 0,
+      "gaps": [],
+      "notes": "v017: no authored jump; shortened no-jump span because R14 takeoff now begins 30 m earlier",
+      "gap_length_m": 0,
+      "role": "v017: no authored jump; shortened no-jump span because R14 takeoff now begins 30 m earlier",
+      "evidence": "v017 user-directed refinement from testing v013 long video and annotated screenshots"
+    },
+    {
+      "id": "R14",
+      "kind": "triple",
+      "target_type": "TRIPLE",
+      "station_start_m": 951,
+      "station_end_m": 1006,
+      "user_target_length_m": 55,
+      "face_m": 12,
+      "face_length_m": 12,
+      "crest_height_m": 3.2,
+      "lip_height_m": 3.2,
+      "landing_m": 13,
+      "landing_length_m": 13,
+      "lip_s": 963,
+      "racing_width_m": 10,
+      "side_taper_m": 7.5,
+      "face_progression": 0.5,
+      "lower_face_grade_ratio": 0.6,
+      "lip_transition_m": 1,
+      "deck_m": 0,
+      "gaps": [
+        {
+          "span_m": 14.5,
+          "valley_height_m": 0.55,
+          "landing_crest_height_m": 2.7
+        },
+        {
+          "span_m": 14.5,
+          "valley_height_m": 0.55,
+          "landing_crest_height_m": 2.7
+        }
+      ],
+      "notes": "v017: retain v014 R14 very-big triple at approximately 55 m; no geometry change requested this pass",
+      "gap_length_m": 29,
+      "role": "v017: retain v014 R14 very-big triple at approximately 55 m; no geometry change requested this pass",
+      "evidence": "v017 user-directed refinement from v014 test videos"
+    },
+    {
+      "id": "R15",
+      "kind": "single",
+      "target_type": "SINGLE",
+      "station_start_m": 1089.5,
+      "station_end_m": 1112.5,
+      "user_target_length_m": 23,
+      "face_m": 10.5,
+      "face_length_m": 10.5,
+      "crest_height_m": 0.8,
+      "lip_height_m": 0.8,
+      "landing_m": 12.5,
+      "landing_length_m": 12.5,
+      "lip_s": 1100,
+      "racing_width_m": 10,
+      "side_taper_m": 7.5,
+      "face_progression": 0.5,
+      "lower_face_grade_ratio": 0.6,
+      "lip_transition_m": 0.8,
+      "deck_m": 0,
+      "gaps": [],
+      "notes": "Preserve v011 R15 rounded single dimensions and location",
+      "gap_length_m": 0,
+      "role": "Preserve v011 R15 rounded single dimensions and location",
+      "evidence": "v012 handover supersedes v011 classification"
+    },
+    {
+      "id": "R16",
+      "kind": "tabletop",
+      "target_type": "TABLETOP",
+      "station_start_m": 1116.8,
+      "station_end_m": 1160.1,
+      "user_target_length_m": 43.3,
+      "face_m": 10.2,
+      "face_length_m": 10.2,
+      "crest_height_m": 2.7,
+      "lip_height_m": 2.7,
+      "landing_m": 14,
+      "landing_length_m": 14,
+      "lip_s": 1127,
+      "racing_width_m": 10,
+      "side_taper_m": 7.5,
+      "face_progression": 0.5,
+      "lower_face_grade_ratio": 0.6,
+      "lip_transition_m": 1.1,
+      "deck_m": 18,
+      "gaps": [],
+      "notes": "v017: shorten R16 tabletop by 3 m, 46.3 -> 43.3 m, by reducing the deck 21 -> 18 m; start/face/height/landing retained",
+      "gap_length_m": 0,
+      "role": "v017: shorten R16 tabletop by 3 m, 46.3 -> 43.3 m, by reducing the deck 21 -> 18 m; start/face/height/landing retained",
+      "evidence": "v017 user-directed refinement from v014 test videos"
+    },
+    {
+      "id": "R17",
+      "kind": "roller_sequence",
+      "target_type": "ROLLER_SEQUENCE",
+      "station_start_m": 1257.5,
+      "station_end_m": 1337.5,
+      "user_target_length_m": 80,
+      "face_m": 5,
+      "face_length_m": 5,
+      "crest_height_m": 0.55,
+      "lip_height_m": 0.55,
+      "landing_m": 5,
+      "landing_length_m": 5,
+      "lip_s": 1262.5,
+      "racing_width_m": 10,
+      "side_taper_m": 7.5,
+      "face_progression": 0.5,
+      "lower_face_grade_ratio": 0.6,
+      "lip_transition_m": 0.8,
+      "deck_m": 0,
+      "gaps": [],
+      "notes": "v017: shift the complete eight-single R17 sequence 10 m later; dimensions, heights and 10 m crest spacing remain unchanged",
+      "roller_count": 8,
+      "spacing_m": 10,
+      "roller_heights_m": [
+        0.4,
+        0.48,
+        0.52,
+        0.55,
+        0.55,
+        0.52,
+        0.48,
+        0.4
+      ],
+      "gap_length_m": 0,
+      "role": "v017: shift the complete eight-single R17 sequence 10 m later; dimensions, heights and 10 m crest spacing remain unchanged",
+      "evidence": "v017 user-directed refinement from v014 test videos"
+    },
+    {
+      "id": "R18",
+      "kind": "inside_roller",
+      "target_type": "INSIDE_ROLLER",
+      "station_start_m": 1352,
+      "station_end_m": 1370,
+      "user_target_length_m": 18,
+      "face_m": 9,
+      "face_length_m": 9,
+      "crest_height_m": 1.5,
+      "lip_height_m": 1.5,
+      "landing_m": 9,
+      "landing_length_m": 9,
+      "lip_s": 1361,
+      "racing_width_m": 10.1,
+      "side_taper_m": 2.4,
+      "face_progression": 0.5,
+      "lower_face_grade_ratio": 0.6,
+      "lip_transition_m": 0.8,
+      "deck_m": 0,
+      "gaps": [],
+      "notes": "v017: widen R18 inside-line-only roller by exactly 3.0 m, racing width 7.1 -> 10.1 m; preserve its longitudinal geometry, lateral offset and main-line exclusion",
+      "lateral_offset_m": 3.4,
+      "gap_length_m": 0,
+      "role": "v017: widen R18 inside-line-only roller by exactly 3.0 m, racing width 7.1 -> 10.1 m; preserve its longitudinal geometry, lateral offset and main-line exclusion",
+      "evidence": "v017 user-directed refinement from testing v015.mp4 and focused v015 issue videos"
+    }
+  ],
+  "berms": [
+    {
+      "id": "T01",
+      "section": "S02",
+      "outer_rise_m": 1.55,
+      "effective_width_m": 8.7,
+      "rut_depth_m": 0.115,
+      "pocket_depth_m": 0.17,
+      "apex_shift_m": -3,
+      "entry_load": 1.05,
+      "exit_load": 0.85,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.6,
+          "apex_out_m": -0.65,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.5,
+          "apex_out_m": 2.8,
+          "exit_out_m": 1.2,
+          "width_m": 0.68,
+          "depth_scale": 1
+        }
+      ],
+      "braking_spacing_m": 3
+    },
+    {
+      "id": "T02",
+      "section": "S03",
+      "outer_rise_m": 1.14,
+      "effective_width_m": 8.4,
+      "rut_depth_m": 0.085,
+      "pocket_depth_m": 0.07,
+      "apex_shift_m": 1,
+      "entry_load": 0.9,
+      "exit_load": 0.85,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.48,
+          "apex_out_m": -0.5,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.7,
+          "apex_out_m": 2.6599999999999997,
+          "exit_out_m": 1.5,
+          "width_m": 0.68,
+          "depth_scale": 1
+        }
+      ],
+      "braking_spacing_m": 3.35
+    },
+    {
+      "id": "T03",
+      "section": "S04",
+      "outer_rise_m": 1.65,
+      "effective_width_m": 8.1,
+      "rut_depth_m": 0.115,
+      "pocket_depth_m": 0.27,
+      "apex_shift_m": -2,
+      "entry_load": 1,
+      "exit_load": 1,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.36,
+          "apex_out_m": -0.65,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.5,
+          "apex_out_m": 2.5199999999999996,
+          "exit_out_m": 1.2,
+          "width_m": 0.68,
+          "depth_scale": 1
+        }
+      ],
+      "braking_spacing_m": 3.7
+    },
+    {
+      "id": "T04",
+      "section": "S04",
+      "outer_rise_m": 1.1,
+      "effective_width_m": 8.6,
+      "rut_depth_m": 0.085,
+      "pocket_depth_m": 0.08,
+      "apex_shift_m": 3,
+      "entry_load": 0.75,
+      "exit_load": 1,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.6,
+          "apex_out_m": -0.5,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.7,
+          "apex_out_m": 2.8,
+          "exit_out_m": 1.5,
+          "width_m": 0.68,
+          "depth_scale": 1
+        }
+      ],
+      "braking_spacing_m": 4.05
+    },
+    {
+      "id": "T05",
+      "section": "S05",
+      "outer_rise_m": 1.5,
+      "effective_width_m": 8.3,
+      "rut_depth_m": 0.115,
+      "pocket_depth_m": 0.19,
+      "apex_shift_m": 0,
+      "entry_load": 1,
+      "exit_load": 0.85,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.48,
+          "apex_out_m": -0.65,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.5,
+          "apex_out_m": 2.6599999999999997,
+          "exit_out_m": 1.2,
+          "width_m": 0.68,
+          "depth_scale": 1
+        }
+      ],
+      "braking_spacing_m": 3
+    },
+    {
+      "id": "T06",
+      "section": "S05",
+      "outer_rise_m": 1.25,
+      "effective_width_m": 8.2,
+      "rut_depth_m": 0.085,
+      "pocket_depth_m": 0.14,
+      "apex_shift_m": -1,
+      "entry_load": 0.85,
+      "exit_load": 0.75,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.36,
+          "apex_out_m": -0.5,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.7,
+          "apex_out_m": 2.5199999999999996,
+          "exit_out_m": 1.5,
+          "width_m": 0.68,
+          "depth_scale": 1
+        }
+      ],
+      "braking_spacing_m": 3.35
+    },
+    {
+      "id": "T07",
+      "section": "S06",
+      "outer_rise_m": 1.35,
+      "effective_width_m": 8,
+      "rut_depth_m": 0.085,
+      "pocket_depth_m": 0.15,
+      "apex_shift_m": -2,
+      "entry_load": 0.85,
+      "exit_load": 0.7,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.6,
+          "apex_out_m": -0.65,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.5,
+          "apex_out_m": 2.8,
+          "exit_out_m": 1.2,
+          "width_m": 0.68,
+          "depth_scale": 1
+        }
+      ],
+      "braking_spacing_m": 3.7
+    },
+    {
+      "id": "T08",
+      "section": "S07",
+      "outer_rise_m": 1.4,
+      "effective_width_m": 8,
+      "rut_depth_m": 0.085,
+      "pocket_depth_m": 0.17,
+      "apex_shift_m": 2,
+      "entry_load": 0.9,
+      "exit_load": 0.9,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.48,
+          "apex_out_m": -0.5,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.7,
+          "apex_out_m": 2.6599999999999997,
+          "exit_out_m": 1.5,
+          "width_m": 0.68,
+          "depth_scale": 1
+        }
+      ],
+      "braking_spacing_m": 4.05
+    },
+    {
+      "id": "T09",
+      "section": "S08",
+      "outer_rise_m": 1.85,
+      "effective_width_m": 7.8,
+      "rut_depth_m": 0.115,
+      "pocket_depth_m": 0.29,
+      "apex_shift_m": 1,
+      "entry_load": 1.05,
+      "exit_load": 1,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.36,
+          "apex_out_m": -0.65,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.5,
+          "apex_out_m": 2.5199999999999996,
+          "exit_out_m": 1.2,
+          "width_m": 0.68,
+          "depth_scale": 1
+        }
+      ],
+      "braking_spacing_m": 3
+    },
+    {
+      "id": "T10",
+      "section": "S09",
+      "outer_rise_m": 1.8,
+      "effective_width_m": 7.9,
+      "rut_depth_m": 0.115,
+      "pocket_depth_m": 0.25,
+      "apex_shift_m": 2,
+      "entry_load": 1,
+      "exit_load": 0.8,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.6,
+          "apex_out_m": -0.5,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.7,
+          "apex_out_m": 2.8,
+          "exit_out_m": 1.5,
+          "width_m": 0.68,
+          "depth_scale": 1
+        }
+      ],
+      "braking_spacing_m": 3.35
+    },
+    {
+      "id": "T11",
+      "section": "S10",
+      "outer_rise_m": 1.5,
+      "effective_width_m": 8.1,
+      "rut_depth_m": 0.085,
+      "pocket_depth_m": 0.18,
+      "apex_shift_m": -1,
+      "entry_load": 1,
+      "exit_load": 0.8,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.48,
+          "apex_out_m": -0.65,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.5,
+          "apex_out_m": 2.6599999999999997,
+          "exit_out_m": 1.2,
+          "width_m": 0.68,
+          "depth_scale": 1
+        }
+      ],
+      "braking_spacing_m": 3.7
+    },
+    {
+      "id": "T12",
+      "section": "S11",
+      "outer_rise_m": 1.4,
+      "effective_width_m": 8.3,
+      "rut_depth_m": 0.085,
+      "pocket_depth_m": 0.15,
+      "apex_shift_m": 0,
+      "entry_load": 0.9,
+      "exit_load": 0.8,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.36,
+          "apex_out_m": -0.5,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.7,
+          "apex_out_m": 2.5199999999999996,
+          "exit_out_m": 1.5,
+          "width_m": 0.68,
+          "depth_scale": 1
+        }
+      ],
+      "braking_spacing_m": 4.05
+    },
+    {
+      "id": "T13",
+      "section": "S11",
+      "outer_rise_m": 1.4,
+      "effective_width_m": 8.4,
+      "rut_depth_m": 0.085,
+      "pocket_depth_m": 0.15,
+      "apex_shift_m": 2,
+      "entry_load": 0.85,
+      "exit_load": 0.85,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.6,
+          "apex_out_m": -0.65,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.5,
+          "apex_out_m": 2.8,
+          "exit_out_m": 1.2,
+          "width_m": 0.68,
+          "depth_scale": 1
+        }
+      ],
+      "braking_spacing_m": 3
+    },
+    {
+      "id": "T14",
+      "section": "S01",
+      "outer_rise_m": 1.5,
+      "effective_width_m": 8.6,
+      "rut_depth_m": 0.085,
+      "pocket_depth_m": 0.17,
+      "apex_shift_m": -2,
+      "entry_load": 0.95,
+      "exit_load": 0.9,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.48,
+          "apex_out_m": -0.5,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.7,
+          "apex_out_m": 2.6599999999999997,
+          "exit_out_m": 1.5,
+          "width_m": 0.68,
+          "depth_scale": 1
+        }
+      ],
+      "braking_spacing_m": 3.35
+    }
+  ],
+  "continuous_relief": {
+    "long_wave_amplitude_m": 0,
+    "short_wave_amplitude_m": 0,
+    "braking_chop_amplitude_m": 0.035
+  },
+  "route_changes": [],
+  "notes": [
+    "No repeated flat-deck template. Profiles use different progressive faces, rounded lips, short crests and long landings.",
+    "T03/T05 local legacy pedestals are removed in favor of supported corner cross-sections.",
+    "S12/S13 requested early in brief share physical sectors S01-S03, so those edits satisfy both observations.",
+    "Horizontal centerline retained on evidence grounds; preferred racing width/radius changes through actual grooves and banks."
+  ],
+  "evidence_map": "V010_SOURCE/review_section_sync.json",
+  "provisional_features": [
+    {
+      "id": "EX1",
+      "station_estimate_m": 184,
+      "enabled": false,
+      "reason": "Separate mound versus raised T02 entry unresolved"
+    },
+    {
+      "id": "EX2",
+      "station_estimate_m": 1040,
+      "enabled": false,
+      "reason": "Post-R14 rise form and station need user confirmation"
+    }
+  ],
+  "authority": "User v012 handover, 2026-09-29",
+  "completed_groups": [
+    "V017_USER_REFINEMENT"
+  ]
+}
