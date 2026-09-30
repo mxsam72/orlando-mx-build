@@ -61,6 +61,15 @@ def main():
     # Remove only trees/track stakes intruding on the newly opened route. Keep
     # buildings and other fixed assets; fail for review if any block the apron.
     sa=np.load(O/'route.npz')['start'];tree=cKDTree(sa[:,:2]);remove=set();removed=[];blocked=[]
+    # v016 user-directed cleanup: drainage_water_2 is the visible water patch
+    # beside the R07 ant-hill.  Remove only that water geometry/model pair;
+    # preserve drainage_water_1 elsewhere on the facility.
+    water_removed=[]
+    for water_name in ['drainage_water_2']:
+        if water_name in geometries:
+            gid=values(geometries[water_name])[0]
+            remove.update([gid,geometry_to_model[gid]])
+            removed.append(water_name);water_removed.append(water_name)
     for name,geom in geometries.items():
         if name in changed:continue
         v=array(child(geom,b'Vertices')).reshape(-1,3)*np.array([.01,.01,-.01]);low=v[v[:,1]<v[:,1].min()+.5]
@@ -88,6 +97,6 @@ def main():
     save(O/'native_coordinate_probes.json',dict(expected_xyz_metres=probes))
     q,w=route();qt=cKDTree(q[:,:2]);dist,idx=qt.query(positions);clear=dist-w[idx]/2
     gate_left=min(g['x'] for g in cfg['grid']); assert positions[:,0].max()<gate_left and clear.min()>2
-    qa=dict(source_sha256=sha(R/'BUILD/v009_baseline/scenery.fbx'),output_sha256=sha(O/'scenery.fbx'),fence_models_moved=len(changed),fence_posts=len(posts),fence_length_m=float(ss[-1]),fence_min_track_edge_clearance_m=float(clear.min()),fence_frontage='T14 -> R01 -> T01; gate to right',removed_start_obstructions=removed,fixed_object_conflicts=blocked,coordinate_probes=len(probes),native_compilation=False,in_game_riding=False,scenery_checks_pass=True)
+    qa=dict(source_sha256=sha(R/'BUILD/v009_baseline/scenery.fbx'),output_sha256=sha(O/'scenery.fbx'),fence_models_moved=len(changed),fence_posts=len(posts),fence_length_m=float(ss[-1]),fence_min_track_edge_clearance_m=float(clear.min()),fence_frontage='T14 -> R01 -> T01; gate to right',removed_start_obstructions=removed,removed_water_models=water_removed,preserved_other_water='drainage_water_1',fixed_object_conflicts=blocked,coordinate_probes=len(probes),native_compilation=False,in_game_riding=False,scenery_checks_pass=True)
     save(R/'DOCUMENTATION/v016_scenery_validation.json',qa);print(qa)
 if __name__=='__main__':main()
