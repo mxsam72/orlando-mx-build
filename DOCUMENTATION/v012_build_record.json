@@ -1,0 +1,50 @@
+{
+  "version": "v012",
+  "branch": "rebuild-v012-final-obstacles-layout",
+  "build_source_commit": "60b028fdc38f1c3e6470d4d7ae2ff61fee13e877",
+  "workflow_name": "Build v012 final obstacles and layout",
+  "workflow_run_id": 36660342389,
+  "conclusion": "success",
+  "pkz": {
+    "filename": "OrlandoMX_2026_v012.pkz",
+    "sha256": "48345f6e11191e3c30291e45e5c507770de30cd82cd07b598d70809f8a265a25"
+  },
+  "artifacts": {
+    "game_candidate": {
+      "name": "OrlandoMX-v012-game-candidate",
+      "id": 11074262287
+    },
+    "build_evidence": {
+      "name": "OrlandoMX-v012-build-evidence",
+      "id": 11074092566
+    },
+    "source_checkpoint": {
+      "name": "OrlandoMX-v012-source-checkpoint",
+      "id": 11074650064
+    }
+  },
+  "native_stages": {
+    "fbx2edf": {
+      "returncode": 0,
+      "seconds": 27.41
+    },
+    "terrained_map": {
+      "returncode": 0,
+      "seconds": 73.63
+    },
+    "terrained_trh": {
+      "returncode": 0,
+      "seconds": 0.88
+    },
+    "tracked_merge": {
+      "returncode": 0,
+      "seconds": 7.03
+    }
+  },
+  "geometry_source_sha256": "51fdde42715d5494c6e33cd20740fde442ae51f55e4d99fd4567b21f6c4782ad",
+  "source_checks": true,
+  "in_game_riding": false,
+  "first_lap_test": false,
+  "start_reset_test": false,
+  "multiplayer_test": false
+}
