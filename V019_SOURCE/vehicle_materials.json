@@ -1,0 +1,420 @@
+{
+  "sam_paint": {
+    "file": "vehicle_textures/sam_paint.png",
+    "rgb": [
+      26,
+      31,
+      30
+    ],
+    "width": 128,
+    "height": 128,
+    "sha256": "bd30ec94d296674362587fde65513d202a4e4e23a6b020553f607f128d0e8665"
+  },
+  "sam_tan": {
+    "file": "vehicle_textures/sam_tan.png",
+    "rgb": [
+      165,
+      151,
+      115
+    ],
+    "width": 128,
+    "height": 128,
+    "sha256": "973c8805df987f322e20035a42e710635fd9be6eb2db0f2353119acf3e9ab420"
+  },
+  "van_paint": {
+    "file": "vehicle_textures/van_paint.png",
+    "rgb": [
+      28,
+      30,
+      29
+    ],
+    "width": 128,
+    "height": 128,
+    "sha256": "ce4dad8714c0116b0e645495e610c88222372a28f8a16c6822b198344fedf2d7"
+  },
+  "cyber_steel": {
+    "file": "vehicle_textures/cyber_steel.png",
+    "rgb": [
+      168,
+      171,
+      168
+    ],
+    "width": 128,
+    "height": 128,
+    "sha256": "5e3d2df29332a8f7cb915db79bc6d2051717e0d17d5dfad0c07d06b9d34a089d"
+  },
+  "premier_blue": {
+    "file": "vehicle_textures/premier_blue.png",
+    "rgb": [
+      24,
+      100,
+      151
+    ],
+    "width": 128,
+    "height": 128,
+    "sha256": "78fc6335bd68c8e562c9172c005b807f92e574aabd1b3b50e8685496538341d9"
+  },
+  "white": {
+    "file": "vehicle_textures/white.png",
+    "rgb": [
+      226,
+      228,
+      228
+    ],
+    "width": 128,
+    "height": 128,
+    "sha256": "cde585edf1ef6b6d0fed9daf613ea577d18583695ee71ffbe926be21cef24805"
+  },
+  "yamaha_blue": {
+    "file": "vehicle_textures/yamaha_blue.png",
+    "rgb": [
+      31,
+      54,
+      173
+    ],
+    "width": 128,
+    "height": 128,
+    "sha256": "4e9e97d0a74190d2344d0c51c6874317ab82a23c5376ca3f3c457eeb83fde1b5"
+  },
+  "husky_white": {
+    "file": "vehicle_textures/husky_white.png",
+    "rgb": [
+      222,
+      226,
+      224
+    ],
+    "width": 128,
+    "height": 128,
+    "sha256": "61fc0904903a0410c5c32ff47493b044b6c53195dd567cab0c55d09c6ae1bfcb"
+  },
+  "dark": {
+    "file": "vehicle_textures/dark.png",
+    "rgb": [
+      22,
+      26,
+      29
+    ],
+    "width": 128,
+    "height": 128,
+    "sha256": "8806543e3fee1a1ed555db3b86e644d6913bc9c77adfe8100c616fa47a570f22"
+  },
+  "glass": {
+    "file": "vehicle_textures/glass.png",
+    "rgb": [
+      31,
+      47,
+      57
+    ],
+    "width": 128,
+    "height": 128,
+    "sha256": "a33d1f4e6e70b1d7b2721616582ccf922ff0b9dcd42cfd8d82be5be97663d362"
+  },
+  "rubber": {
+    "file": "vehicle_textures/rubber.png",
+    "rgb": [
+      32,
+      33,
+      35
+    ],
+    "width": 128,
+    "height": 128,
+    "sha256": "38e3df9be30f213f24c4bf9f6f704bca41c02a93b8fd926f5edbf1a979e7f6ec"
+  },
+  "tire": {
+    "file": "vehicle_textures/tire.png",
+    "rgb": [
+      35,
+      36,
+      38
+    ],
+    "width": 128,
+    "height": 128,
+    "sha256": "d65bd3a8ef1652eacb9073b2005e403e4199c35fc6d598bd04e94ec4bd88d9a1"
+  },
+  "tread": {
+    "file": "vehicle_textures/tread.png",
+    "rgb": [
+      40,
+      40,
+      41
+    ],
+    "width": 128,
+    "height": 128,
+    "sha256": "44d8dcbb8e33f30cb127f58624366f49d6287fa47aa5956738af7d0d123a2af7"
+  },
+  "steel": {
+    "file": "vehicle_textures/steel.png",
+    "rgb": [
+      115,
+      122,
+      128
+    ],
+    "width": 128,
+    "height": 128,
+    "sha256": "4c20d66e2f3a867ecd6a0694d8bdbf7576706abae4b0f662c115c0f34ad5371c"
+  },
+  "alloy": {
+    "file": "vehicle_textures/alloy.png",
+    "rgb": [
+      183,
+      192,
+      198
+    ],
+    "width": 128,
+    "height": 128,
+    "sha256": "0272da6f4943973671fc5e425a89fb7d429e3934f3c641e3a349801ba3105fc7"
+  },
+  "wheel_black": {
+    "file": "vehicle_textures/wheel_black.png",
+    "rgb": [
+      47,
+      50,
+      55
+    ],
+    "width": 128,
+    "height": 128,
+    "sha256": "8b857db3dd636adcec41a28d01b13fd151ff700db0dc6b7b9d67e58e10c1ae8c"
+  },
+  "rim_blue": {
+    "file": "vehicle_textures/rim_blue.png",
+    "rgb": [
+      28,
+      66,
+      187
+    ],
+    "width": 128,
+    "height": 128,
+    "sha256": "8f0c02b0045461c998e7ec28d0ad43bed8ae1face416823fc108364dfae6557c"
+  },
+  "fork_gold": {
+    "file": "vehicle_textures/fork_gold.png",
+    "rgb": [
+      164,
+      147,
+      98
+    ],
+    "width": 128,
+    "height": 128,
+    "sha256": "69b570fc3584648193b9ca5a453d0eec19d8795edf24bdda3f93904427bd8406"
+  },
+  "engine": {
+    "file": "vehicle_textures/engine.png",
+    "rgb": [
+      108,
+      110,
+      109
+    ],
+    "width": 128,
+    "height": 128,
+    "sha256": "fcc43b1fd95e6bf147b98b1c61ac24fde0ca61d5a3872dd18fd89a386bb262a6"
+  },
+  "black_seat": {
+    "file": "vehicle_textures/black_seat.png",
+    "rgb": [
+      29,
+      30,
+      33
+    ],
+    "width": 128,
+    "height": 128,
+    "sha256": "be697a29e0858851a0bcb8ea40340dc4744d47bda4fec6055de9cff689dd175a"
+  },
+  "blue_seat": {
+    "file": "vehicle_textures/blue_seat.png",
+    "rgb": [
+      28,
+      44,
+      84
+    ],
+    "width": 128,
+    "height": 128,
+    "sha256": "eb414e23ce447e292826c7e4e8d46a117c25bea198e5fd21e7ae64415a892e61"
+  },
+  "red_light": {
+    "file": "vehicle_textures/red_light.png",
+    "rgb": [
+      166,
+      25,
+      24
+    ],
+    "width": 128,
+    "height": 128,
+    "sha256": "19ee779b1eb00ae067307e0245d327b294a52637ede33d1dd7ac2d0d199caf88"
+  },
+  "amber": {
+    "file": "vehicle_textures/amber.png",
+    "rgb": [
+      218,
+      132,
+      27
+    ],
+    "width": 128,
+    "height": 128,
+    "sha256": "47fe65a357df474f062917ed924e0a597227d809203c0c81c956d09639362d35"
+  },
+  "headlight": {
+    "file": "vehicle_textures/headlight.png",
+    "rgb": [
+      213,
+      222,
+      216
+    ],
+    "width": 128,
+    "height": 128,
+    "sha256": "510bcc026626fa1e69925036a4df7bf200b409cc61dc912966499ddb72cc99b6"
+  },
+  "premier_wrap": {
+    "file": "vehicle_textures/premier_wrap.png",
+    "rgb": [
+      255,
+      255,
+      255
+    ],
+    "width": 1024,
+    "height": 512,
+    "sha256": "a8012bc65a19d2e99e0a9ef593fbee4dd2136f72425a9b056fb05eba7b487318"
+  },
+  "premier_tail": {
+    "file": "vehicle_textures/premier_tail.png",
+    "rgb": [
+      255,
+      255,
+      255
+    ],
+    "width": 512,
+    "height": 256,
+    "sha256": "45a36e33922307f36390620cae975082531ea2e3e1b32eb5cbfc99f43775ce33"
+  },
+  "ford_badge": {
+    "file": "vehicle_textures/ford_badge.png",
+    "rgb": [
+      255,
+      255,
+      255
+    ],
+    "width": 256,
+    "height": 96,
+    "sha256": "ed41f19bf61986c8ff8bb0012452f677a2381fbfbc6016716872282876d4a22e"
+  },
+  "king_ranch": {
+    "file": "vehicle_textures/king_ranch.png",
+    "rgb": [
+      255,
+      255,
+      255
+    ],
+    "width": 256,
+    "height": 96,
+    "sha256": "51650025110ee6659298aaa5bb9e0d1fb7e93f58f170e9d7fcd0b885933e7105"
+  },
+  "four_by_four": {
+    "file": "vehicle_textures/four_by_four.png",
+    "rgb": [
+      255,
+      255,
+      255
+    ],
+    "width": 256,
+    "height": 96,
+    "sha256": "cc7d83b17496b1b83d6c09ab943bbde86ef756387fa051f529c178e30799e5f3"
+  },
+  "chevy_badge": {
+    "file": "vehicle_textures/chevy_badge.png",
+    "rgb": [
+      255,
+      255,
+      255
+    ],
+    "width": 256,
+    "height": 96,
+    "sha256": "685301e31e4478d35916423de6d997ff76318455883e3a239b9a24c2f33ed3d1"
+  },
+  "jordan_number": {
+    "file": "vehicle_textures/jordan_number.png",
+    "rgb": [
+      255,
+      255,
+      255
+    ],
+    "width": 512,
+    "height": 320,
+    "sha256": "367fe458a9b450f970266da51edaa966790b308f35db67b32bc35c1b67b88693"
+  },
+  "jordan_shroud": {
+    "file": "vehicle_textures/jordan_shroud.png",
+    "rgb": [
+      255,
+      255,
+      255
+    ],
+    "width": 512,
+    "height": 384,
+    "sha256": "cd9be36eba1285d1e9268bc2006156871a629ba83142ef79cf24845a3013342e"
+  },
+  "premier_number": {
+    "file": "vehicle_textures/premier_number.png",
+    "rgb": [
+      255,
+      255,
+      255
+    ],
+    "width": 512,
+    "height": 320,
+    "sha256": "c9edf6f31aab1015c15a1c51f015c22e4e53ca09b7cfea7dd4270b0a9c6ce3bb"
+  },
+  "premier_shroud": {
+    "file": "vehicle_textures/premier_shroud.png",
+    "rgb": [
+      255,
+      255,
+      255
+    ],
+    "width": 512,
+    "height": 384,
+    "sha256": "b08daaba9d9f137884ff5afa555da6623a6e76a890017d54b1ad07c64e8e56a7"
+  },
+  "sam_number": {
+    "file": "vehicle_textures/sam_number.png",
+    "rgb": [
+      255,
+      255,
+      255
+    ],
+    "width": 512,
+    "height": 320,
+    "sha256": "67c15b3bd1e8818b63549e13e3a4762d1028cc2abd2abc344f5fc569d150a2ea"
+  },
+  "sam_shroud": {
+    "file": "vehicle_textures/sam_shroud.png",
+    "rgb": [
+      255,
+      255,
+      255
+    ],
+    "width": 512,
+    "height": 384,
+    "sha256": "4f7e8246f6538934cbc1e2557973d9bb9aad8492dab16cf1e4c2292fb7429c5d"
+  },
+  "shane_number": {
+    "file": "vehicle_textures/shane_number.png",
+    "rgb": [
+      255,
+      255,
+      255
+    ],
+    "width": 512,
+    "height": 320,
+    "sha256": "82886ed374bdad1695d5f0d49cbf64f9182248049387a0d9b020a82169c60501"
+  },
+  "shane_shroud": {
+    "file": "vehicle_textures/shane_shroud.png",
+    "rgb": [
+      255,
+      255,
+      255
+    ],
+    "width": 512,
+    "height": 384,
+    "sha256": "effce8a4aaf85e19af400156df381da0eeff34774fee4199f22456c3ff5ba629"
+  }
+}
