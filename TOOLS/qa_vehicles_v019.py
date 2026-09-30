@@ -53,7 +53,7 @@ def main():
         grass=any((p[:,0]>patch['bounds_xz'][0]).all() and (p[:,0]<patch['bounds_xz'][2]).all() and (p[:,1]>patch['bounds_xz'][1]).all() and (p[:,1]<patch['bounds_xz'][3]).all() for patch in pit['grass_patches'])
         fence=np.array(cfg['fence_polyline_xz']);fc=min(line_clear(p,aa,bb) for aa,bb in zip(fence[:-1],fence[1:]))
         row=dict(asset=a['id'],main_track_edge_m=mc,start_route_edge_m=sc,pit_spawn_m=pc,road_edge_m=min(roads.values()),existing_asset_m=min(other.values()),existing_asset_nearest=min(other,key=other.get),other_new_asset_m=min(pair.values()),other_new_asset_nearest=min(pair,key=pair.get),fence_m=fc,grass_footprint=grass,existing_clearances_m=other,paired_clearances_m=pair,road_clearances_m=roads)
-        row['passes']=mc>1 and sc>1 and pc>2 and min(roads.values())>1 and min(other.values())>.75 and min(pair.values())>.35 and fc>2 and grass
+        row['passes']=mc>1 and sc>1 and pc>2 and min(roads.values())>1 and min(other.values())>.75 and min(pair.values())>.50 and fc>2 and grass
         records.append(row)
     baselinepit=read(R/'V018_SOURCE/pit_facilities.json');assert pit['assets']==baselinepit['assets'] and pit['roads']==baselinepit['roads'] and pit['grass_patches']==baselinepit['grass_patches']
     bathroom=oldassets['restroom'];assert bathroom['xz']==[275,112.5] and bathroom['heading']==0;assert 'bithlo_stop_sign' in oldassets or any(a['type']=='sticker_stop_sign' for a in oldassets.values())

@@ -6,18 +6,27 @@ import numpy as np
 from vehicle_geometry_v019 import MeshBuilder
 from v019_common import *
 
-def arch_profile(length,axles,r,top):
+def arch_profile(length,axles,r,top,front_top=None):
     # Monotonic lower outline with semicircular wheel openings, closed along top.
     pts=[[-length/2,.45]]
     for axle in sorted(axles):
         pts += [[axle-r,.45]]
         for t in np.linspace(math.pi,0,13):pts.append([axle+r*math.cos(t),.45+r*math.sin(t)])
-    pts += [[length/2,.45],[length/2,top],[-length/2,top]]
+    pts += [[length/2,.45],[length/2,top if front_top is None else front_top],[1.15,top],[-length/2,top]]
     # Suppress repeated lower-arc endpoint vertices.
     clean=[]
     for p in pts:
         if not clean or np.linalg.norm(np.array(p)-clean[-1])>1e-7:clean.append(p)
     return clean
+
+def skin_panel(m,zy,sections,side,mat):
+    """Place glazing on the actual tapered body surface, with 12mm offset."""
+    sec=np.array(sections);vv=[]
+    for z,y in zy:
+        shoulder,top,w,r=[np.interp(z,sec[:,0],sec[:,i]) for i in [2,3,4,5]]
+        x=w if y<=shoulder else w+(r-w)*(y-shoulder)/(top-shoulder)
+        vv.append([side*(x+.012),y,z])
+    m.panel(vv,mat,side>0)
 
 def fender(m,x,axle,r,mat,square=False):
     if square:
@@ -34,7 +43,7 @@ def pickup(owner):
     sam=owner=='sam';m=MeshBuilder('truck_'+owner);L=5.88 if sam else 5.82;w=1.02 if sam else 1.04;axles=[-1.83,1.81];paint='sam_paint' if sam else 'white';lower='sam_tan' if sam else 'dark';r=.415 if sam else .465
     m.box([0,.45,0],[1.6,.23,L-.2],'dark')
     for side in [-1,1]:
-        m.prism(arch_profile(L,axles,.54,1.38),side*w-.05,side*w+.05,paint)
+        m.prism(arch_profile(L,axles,.54,1.38,1.19),side*w-.05,side*w+.05,paint)
         # Lower trim interrupted at the wheel openings, not painted across tires.
         for a,b in [(-L/2,-2.39),(-1.27,1.25),(2.37,L/2)]:m.box([side*(w+.035),.64,(a+b)/2],[.04,.24,b-a],lower)
         for axle in axles:fender(m,side*(w+.045),axle,.545,lower if sam else 'dark',not sam)
@@ -65,17 +74,24 @@ def pickup(owner):
             poly += [[-1.29,.80],[1.07,.80],[1.07,1.39],[-2.62,1.39]]
             from vehicle_geometry_v019 import triangulate
             vs=[[side*(w+.064),yy,zz] for zz,yy in poly]
-            for tri in triangulate(poly):
-                uv=[[(poly[i][0]+2.62)/3.69,(poly[i][1]-.80)/.59] for i in tri]
-                m.add(vs,[tri], 'premier_wrap', [uv])
-                m.add(vs,[list(reversed(tri))], 'premier_wrap', [list(reversed(uv))])
-            m.panel([[side*(w-.038),1.40,-1.02],[side*(w-.038),1.40,-.27],[side*(w-.19),1.95,-.27],[side*(w-.19),1.95,-1.02]],'premier_wrap',side>0)
+            material='premier_wrap_right' if side>0 else 'premier_wrap'
+            def wrap(vs,poly):
+                for tri in triangulate(poly):
+                    uv=[[(poly[i][0]+2.62)/3.69,(poly[i][1]-.80)/1.15] for i in tri]
+                    if side>0:uv=[[1-u,v] for u,v in uv]
+                    m.add(vs,[tri],material,[uv]);m.add(vs,[list(reversed(tri))],material,[list(reversed(uv))])
+            wrap(vs,poly)
+            poly=[[-1.02,1.40],[-.27,1.40],[-.27,1.95],[-1.02,1.93]];vs=[]
+            for zz,yy in poly:
+                sh=np.interp(zz,[-1.11,-.88,.47],[1.77,1.87,1.87]);top=np.interp(zz,[-1.11,-.88,.47],[1.98,2.04,2.02]);wide=w-.06;xx=wide if yy<=sh else wide+((w-.21)-wide)*(yy-sh)/(top-sh);vs.append([side*(xx+.018),yy,zz])
+            wrap(vs,poly)
     # Real bed cavity: floor, raised rails, front bulkhead and tailgate.
     m.box([0,.93,-2.0],[1.80,.10,1.65],'rubber')
     for side in [-1,1]:m.box([side*.95,1.43,-2.0],[.15,.12,1.73],'dark' if not sam else paint)
-    m.box([0,1.20,-2.91],[2.02,.56,.11],paint);m.box([0,1.46,-2.93],[2.02,.08,.15],'dark');m.box([0,1.32,-2.985],[.28,.05,.024],'dark')
+    m.box([0,1.20,-2.91],[2.02,.56,.11],paint if sam else 'premier_blue');m.box([0,1.46,-2.93],[2.02,.08,.15],'dark');m.box([0,1.32,-2.985],[.28,.05,.024],'dark')
     m.box([0,.62,-2.99],[2.13,.20,.22],'alloy' if sam else 'steel');m.box([0,.71,-3.015],[1.30,.04,.23],'dark');m.box([0,.48,-3.08],[.22,.10,.28],'dark')
     for side in [-1,1]:m.box([side*.88,1.12,-2.995],[.23,.47,.045],'red_light');m.box([side*.88,1.12,-3.022],[.22,.055,.015],'headlight')
+    if not sam:m.panel([[.72,.92,-2.978],[-.72,.92,-2.978],[-.72,1.42,-2.978],[.72,1.42,-2.978]],'premier_tail')
     # Front fascia: chrome surround, inset grille bars, rectangular lamp clusters.
     m.box([0,.76,2.99],[2.03,.23,.18],lower);m.box([0,1.04,2.94],[1.12,.45,.14],'alloy');m.box([0,1.04,3.018],[.99,.33,.025],'dark')
     for zrow in range(4):m.box([0,.91+zrow*.086,3.04],[.96,.021,.015],'alloy')
@@ -87,14 +103,15 @@ def pickup(owner):
 def cybertruck():
     m=MeshBuilder('truck_jordan');w=1.06;L=5.67;axles=[-1.88,1.74]
     m.box([0,.43,0],[1.83,.21,5.45],'dark')
-    for side in [-1,1]:m.prism(arch_profile(L,axles,.57,1.34),side*w-.048,side*w+.048,'cyber_steel')
-    m.loft([[-2.835,.85,1.40,1.45,1.055,.99],[-1.02,.92,1.58,1.89,1.055,.87],[.06,.92,1.61,1.92,1.055,.84],[2.82,.84,1.08,1.18,1.01,.97]],'cyber_steel')
+    for side in [-1,1]:m.prism(arch_profile(L,axles,.57,1.34,1.07),side*w-.048,side*w+.048,'cyber_steel')
+    shell=[[-2.835,.85,1.40,1.45,1.055,.99],[-1.02,.92,1.34,1.89,1.055,.87],[.06,.92,1.34,1.92,1.055,.84],[2.82,.84,1.08,1.18,1.01,.97]]
+    m.loft(shell,'cyber_steel')
     # Windshield forms the long planar nose slope; four trapezoidal side windows.
     m.panel([[-.92,1.285,2.48],[.92,1.285,2.48],[.82,1.925,.10],[-.82,1.925,.10]],'glass')
     for side in [-1,1]:
         x=side*1.060
-        m.panel([[x,1.42,-.96],[x,1.42,-.12],[side*.893,1.86,-.04],[side*.925,1.83,-.96]],'glass',side>0)
-        m.panel([[x,1.42,-.04],[side*1.038,1.29,1.86],[side*.915,1.84,.10],[side*.893,1.86,-.04]],'glass',side>0)
+        skin_panel(m,[[-.96,1.43],[-.12,1.40],[-.04,1.86],[-.96,1.83]],shell,side,'glass')
+        skin_panel(m,[[-.04,1.40],[1.86,1.23],[.10,1.85],[-.04,1.87]],shell,side,'glass')
         for zz in [-1.01,-.08,1.70]:m.beam([x,.64,zz],[x,1.43,zz],.008,'dark',4)
         for axle in axles:fender(m,side*1.115,axle,.58,'dark',True)
         m.prism([[.78,1.43],[1.01,1.35],[1.01,1.54]],side*1.13-.045,side*1.13+.045,'dark')
@@ -109,13 +126,14 @@ def cybertruck():
 def van():
     m=MeshBuilder('van_shane');w=1.02;L=5.69;axles=[-1.70,1.84]
     m.box([0,.44,0],[1.78,.20,5.47],'dark')
-    for side in [-1,1]:m.prism(arch_profile(L,axles,.48,1.32),side*w-.045,side*w+.045,'van_paint')
+    for side in [-1,1]:m.prism(arch_profile(L,axles,.48,1.32,1.20),side*w-.045,side*w+.045,'van_paint')
     # Full-height cargo shell with curved shoulders and short separate hood.
-    m.loft([[-2.84,.80,1.99,2.17,.97,.79],[-2.57,.80,2.04,2.23,1.035,.85],[.68,.80,2.04,2.23,1.035,.85],[1.49,.80,1.45,1.53,1.015,.88]],'van_paint')
+    shell=[[-2.84,.80,1.99,2.17,.97,.79],[-2.57,.80,2.04,2.23,1.035,.85],[.68,.80,2.04,2.23,1.035,.85],[1.49,.80,1.45,1.53,1.015,.88]]
+    m.loft(shell,'van_paint')
     m.loft([[1.40,.77,1.37,1.42,1.00,.87],[2.40,.74,1.29,1.36,.995,.83],[2.84,.70,1.21,1.29,.96,.78]],'van_paint')
     m.panel([[-.80,1.558,1.475],[.80,1.558,1.475],[.80,2.195,.74],[-.80,2.195,.74]],'glass')
     for side in [-1,1]:
-        m.panel([[side*1.04,1.42,.0],[side*1.035,1.42,1.35],[side*.87,2.10,.73],[side*.88,2.11,.0]],'glass',side>0)
+        skin_panel(m,[[0,1.42],[1.35,1.42],[.73,2.10],[0,2.11]],shell,side,'glass')
         m.beam([side*1.065,.64,-.08],[side*1.065,2.10,-.08],.008,'dark',4)
         # Cargo sliding/swing door seams; photo shows solid panels, not passenger glass.
         for zz in [-2.51,-1.20]:m.beam([side*1.073,.73,zz],[side*1.059,2.05,zz],.007,'dark',4)

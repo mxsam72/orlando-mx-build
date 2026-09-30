@@ -271,8 +271,19 @@
       255
     ],
     "width": 1024,
-    "height": 512,
-    "sha256": "a8012bc65a19d2e99e0a9ef593fbee4dd2136f72425a9b056fb05eba7b487318"
+    "height": 320,
+    "sha256": "369cbbb0c5440140fe2c94cc737ca64bc5cfcaca928163ef10a9d731e6cce20d"
+  },
+  "premier_wrap_right": {
+    "file": "vehicle_textures/premier_wrap_right.png",
+    "rgb": [
+      255,
+      255,
+      255
+    ],
+    "width": 1024,
+    "height": 320,
+    "sha256": "6a39eb004dc20ad8b1fc87f901bf8fbc7deb4f8ea4d0e4aff241065eccac5771"
   },
   "premier_tail": {
     "file": "vehicle_textures/premier_tail.png",
@@ -294,7 +305,7 @@
     ],
     "width": 256,
     "height": 96,
-    "sha256": "ed41f19bf61986c8ff8bb0012452f677a2381fbfbc6016716872282876d4a22e"
+    "sha256": "51c5eb549657257929e8730c3cad7281b05575657c1fbff66a18a6c7ba8e7d57"
   },
   "king_ranch": {
     "file": "vehicle_textures/king_ranch.png",
@@ -327,7 +338,7 @@
     ],
     "width": 256,
     "height": 96,
-    "sha256": "685301e31e4478d35916423de6d997ff76318455883e3a239b9a24c2f33ed3d1"
+    "sha256": "0b2c5e230c40319913ed68f9fbd3c1dc97906b75c7af301f1f3fee86486a39f2"
   },
   "jordan_number": {
     "file": "vehicle_textures/jordan_number.png",

@@ -17,7 +17,7 @@ def raster(meshes,eye,target,span,output,title,size=(1280,800),ground_y=None):
     for mesh in meshes:
         v=np.asarray(mesh['vertices']);p=(v-target)@cam;p[:,0]=W/2+p[:,0]*scale;p[:,1]=H/2-p[:,1]*scale
         if p[:,0].max()<0 or p[:,0].min()>=W or p[:,1].max()<0 or p[:,1].min()>=H:continue
-        mat=mesh['material'];bitmap=tex.get(mat);rgb=np.array(mesh.get('rgb',PALETTE.get(mat,[100,100,100])))
+        mat=mesh['material'];bitmap=tex.get(mat) if "uv" in mesh else None;rgb=np.array(mesh.get('rgb',PALETTE.get(mat,[100,100,100])))
         for fi,face in enumerate(mesh['faces']):
             for k in range(1,len(face)-1):
                 ids=[face[0],face[k],face[k+1]];t=p[ids];a,b,c=t

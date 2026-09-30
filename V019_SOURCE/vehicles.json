@@ -31,7 +31,7 @@
       "owner": "premier",
       "kind": "vehicle",
       "xz": [
-        332.1,
+        332.9,
         154.0
       ],
       "heading": 184,
@@ -43,7 +43,7 @@
       "owner": "premier",
       "kind": "bike",
       "xz": [
-        334.6,
+        335.4,
         153.35
       ],
       "heading": 177,
@@ -55,7 +55,7 @@
       "owner": "sam",
       "kind": "vehicle",
       "xz": [
-        337.0,
+        338.4,
         153.1
       ],
       "heading": 178,
@@ -67,7 +67,7 @@
       "owner": "sam",
       "kind": "bike",
       "xz": [
-        339.5,
+        340.9,
         152.45
       ],
       "heading": 171,
@@ -79,7 +79,7 @@
       "owner": "shane",
       "kind": "vehicle",
       "xz": [
-        342.0,
+        343.8,
         153.8
       ],
       "heading": 186,
@@ -91,7 +91,7 @@
       "owner": "shane",
       "kind": "bike",
       "xz": [
-        344.5,
+        346.3,
         153.15
       ],
       "heading": 179,

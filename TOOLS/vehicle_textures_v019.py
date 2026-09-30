@@ -35,19 +35,30 @@ def build():
         arr=np.clip(np.array(c)+noise[...,None],0,255).astype('uint8');keep(name,Image.fromarray(arr),c)
     # Silverado-style side wrap: white front door, oversized red power icon,
     # blue lightning bed and dark sill band, faithfully distinct at pit distance.
-    im=Image.new('RGB',(1024,512),(23,98,148));d=ImageDraw.Draw(im)
+    # Atlas dimensions match the physical 3.69 x 1.15 m side region.
+    base=Image.new('RGB',(1024,320),(23,98,148));d=ImageDraw.Draw(base)
     for i in range(11):
-        pts=[(rng.integers(0,480),0)]
-        for y in range(0,500,45):pts.append((pts[-1][0]+rng.integers(-44,45),y))
+        pts=[(rng.integers(0,430),0)]
+        for y in range(0,321,32):pts.append((pts[-1][0]+rng.integers(-34,35),y))
         d.line(pts,fill=(88,164,194),width=2)
-    d.polygon([(450,0),(1024,0),(1024,430),(360,430)],fill=(230,231,226));d.rectangle((0,420,1024,512),fill=(22,26,27))
-    d.ellipse((445,-95,820,300),fill=(200,37,52));power(d,(636,106),118,(241,241,235))
-    textfit(d,(730,244,285,56),'premier',(25,28,31));textfit(d,(730,299,285,56),'power',(25,28,31));power(d,(781,326),16,(199,35,50))
-    textfit(d,(55,90,340,42),'Premier Power','white');textfit(d,(50,150,350,26),'ELECTRICAL SERVICES','white');d.ellipse((70,240,180,350),fill=(224,234,231),outline=(20,68,98),width=5);textfit(d,(75,267,100,38),'B & R',(17,90,122));textfit(d,(40,446,940,24),'QUALITY & SAFE ELECTRICAL INSTALLATIONS','white')
-    keep('premier_wrap',im,(255,255,255))
+    d.polygon([(450,0),(1024,0),(1024,285),(380,285)],fill=(230,231,226));d.rectangle((0,282,1024,320),fill=(22,26,27))
+    d.ellipse((440,-45,750,265),fill=(200,37,52));power(d,(595,108),103,(241,241,235))
+    for mirrored in [False,True]:
+        im=base.transpose(Image.Transpose.FLIP_LEFT_RIGHT) if mirrored else base.copy();d=ImageDraw.Draw(im)
+        def label(box,text,color='white',bold=True):
+            x,y,w,h=box;textfit(d,(1024-x-w if mirrored else x,y,w,h),text,color,bold)
+        label((760,178,250,35),'premier',(25,28,31));label((760,213,250,35),'power',(25,28,31))
+        label((30,78,360,30),'Premier Power');label((35,119,350,16),'ELECTRICAL SERVICES');label((62,188,150,24),'B & R ELECTRICAL');label((40,293,940,15),'QUALITY & SAFE ELECTRICAL INSTALLATIONS')
+        keep('premier_wrap_right' if mirrored else 'premier_wrap',im,(255,255,255))
     im=Image.new('RGB',(512,256),(24,98,148));d=ImageDraw.Draw(im);textfit(d,(20,23,472,80),'premier');textfit(d,(20,99,472,85),'power');textfit(d,(20,200,472,28),'ELECTRICAL SERVICES');keep('premier_tail',im,(255,255,255))
     for name,label,bg,fg in [('ford_badge','FORD',(19,49,84),'white'),('king_ranch','KING RANCH',(171,155,114),(45,45,36)),('four_by_four','4x4',(26,31,30),'white'),('chevy_badge','CHEVROLET',(44,47,47),(210,169,49))]:
-        im=Image.new('RGB',(256,96),bg);d=ImageDraw.Draw(im);textfit(d,(7,20,242,55),label,fg);keep(name,im,(255,255,255))
+        im=Image.new('RGB',(256,96),bg);d=ImageDraw.Draw(im)
+        if name=='chevy_badge':
+            d.polygon([(88,17),(167,17),(159,36),(234,36),(225,64),(159,64),(153,83),(73,83),(80,64),(20,64),(29,36),(82,36)],fill=(214,169,60),outline=(220,220,216),width=4)
+        elif name=='ford_badge':
+            d.ellipse((5,3,251,93),fill=(20,51,92),outline=(205,217,228),width=5);textfit(d,(28,20,200,52),'Ford','white')
+        else:textfit(d,(7,20,242,55),label,fg)
+        keep(name,im,(255,255,255))
     for owner,number,bg,fg in [('jordan','759',(231,234,229),(19,23,28)),('premier','277',(229,232,228),(18,21,26)),('sam','373',(23,27,34),(238,238,228)),('shane','927',(21,25,32),(239,239,231))]:
         im=Image.new('RGB',(512,320),bg);d=ImageDraw.Draw(im);d.polygon([(0,0),(512,0),(485,27),(20,40)],fill=(30,55,159) if owner!='jordan' else (22,24,27));textfit(d,(12,42,488,230),number,fg);textfit(d,(16,285,480,20),'HUSQVARNA' if owner=='jordan' else 'YAMAHA',fg);keep(owner+'_number',im,(255,255,255))
         im=Image.new('RGB',(512,384),(23,34,62) if owner!='jordan' else (25,27,31));d=ImageDraw.Draw(im)
