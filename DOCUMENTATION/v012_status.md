@@ -16,4 +16,27 @@ Checkpoint 02: R01–R05 authored. R01 is 77.2 m, R02 triple 40 m, R03 table-sin
 
 Checkpoints 03–07: remaining obstacle groups authored; bathroom and office relocated; start loop rerouted. New start is 166.79 m long, with 38 m apron, 7 m minimum corridor and tangent join at s493 (4.694 m before T06). Three start-only checks, nine Both turn checks, five normal-only turns.
 
-Checkpoint 08: all 18 encoded profiles pass; R12/R17 counts are four/eight; decks and independent valleys survive encoding. R01's inherited s21 ledge was removed by grading its actual deck to a continuous plane. R07's rounded crest is authored at s552; the encoded terrain maximum falls ~1.05 m later because of underlying ground, still within the former landing area. All 91 facility meshes clear racing/start lanes and pit spawns. New start leaves the main centerline exactly unchanged. Source/native material assertions added for intended FBX RGB, diffuse bitmap links and dual texture staging. Native build and runtime riding are not yet claimed.
+Checkpoint 08: all 18 encoded profiles pass; R12/R17 counts are four/eight; decks and independent valleys survive encoding. R01's inherited s21 ledge was removed by grading its actual deck to a continuous plane. R07's rounded crest is authored at s552; the encoded terrain maximum falls ~1.05 m later because of underlying ground, still within the former landing area. All 91 facility meshes clear racing/start lanes and pit spawns. New start leaves the main centerline exactly unchanged. Source/native material assertions added for intended FBX RGB, diffuse bitmap links and dual texture staging. Native build is now verified successful. Runtime riding, first-lap timing, start reset behavior, multiplayer behavior and in-game material appearance are not yet claimed.
+
+
+## Verified native build
+
+GitHub Actions workflow `Build v012 final obstacles and layout` completed successfully.
+
+- Workflow run: `36660342389`
+- Build source commit: `60b028fdc38f1c3e6470d4d7ae2ff61fee13e877`
+- Branch documentation head at cleanup: `e18ffaaa4f9e43611cb9b13346b742b4724d7456`
+- Game artifact: `OrlandoMX-v012-game-candidate`
+- Game artifact ID: `11074262287`
+- Build-evidence artifact ID: `11074092566`
+- Source-checkpoint artifact ID: `11074650064`
+- PKZ: `OrlandoMX_2026_v012.pkz`
+- PKZ SHA-256: `48345f6e11191e3c30291e45e5c507770de30cd82cd07b598d70809f8a265a25`
+
+Native stages all returned success:
+- fbx2edf
+- terrained_map
+- terrained_trh
+- tracked_merge
+
+The remaining gate is in-game validation only.
