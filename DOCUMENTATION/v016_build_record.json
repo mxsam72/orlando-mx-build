@@ -1,0 +1,48 @@
+{
+  "version": "v016",
+  "branch": "rebuild-v016-jump-water-pit-refinement",
+  "build_source_commit": "fcc51f24ff24d7c43f07f5f6b33ec6ced48a4d6c",
+  "workflow_name": "Build v016 jump water pit refinement",
+  "workflow_run_id": 36680836162,
+  "conclusion": "success",
+  "native_pkz": {
+    "filename": "OrlandoMX_2026_v016.pkz",
+    "bytes": 137643626,
+    "sha256": "6ebf9f8070b7fc8cbd88ceef74183d2ef761240bdd7ee720ae90bc0d48b01049"
+  },
+  "distributed_pkz": {
+    "filename": "OrlandoMX_2026_v016.pkz",
+    "sha256": "33fe6e7bd32cca1325c82360132bfe4660066ab7f261c9a593fe1c6ce65bac3c",
+    "only_changed_member": "orlandomx_2026_v016/orlandomx_2026_v016.tga",
+    "purpose": "Orlando MX Park logo preview"
+  },
+  "artifacts": {
+    "game_candidate_id": 11082545331,
+    "build_evidence_id": 11081929021,
+    "source_checkpoint_id": 11082425420
+  },
+  "qa": {
+    "geometry_checks_pass": true,
+    "maximum_racing_grade": 0.7771743535995483,
+    "r07_authored_length_m": 32.789013157894715,
+    "r10_authored_length_m": 75,
+    "r11_authored_length_m": 20,
+    "r18_inside_width_m": 10.1,
+    "removed_water_models": [
+      "drainage_water_2"
+    ],
+    "preserved_water_model": "drainage_water_1",
+    "bathroom_distance_from_red_truck_m": 7.280109889280518,
+    "bathroom_left_of_canopy": true,
+    "bathroom_in_grass_patch": true,
+    "bathroom_road_edge_clearance_m": 4.947360612148628,
+    "grass_patch_area_m2": 1604.1968312320457
+  },
+  "native_stages": {
+    "fbx2edf": 0,
+    "terrained_map": 0,
+    "terrained_trh": 0,
+    "tracked_merge": 0
+  },
+  "in_game_riding": false
+}
