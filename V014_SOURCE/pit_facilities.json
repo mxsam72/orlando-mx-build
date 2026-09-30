@@ -127,8 +127,8 @@
       "id": "restroom",
       "type": "restroom",
       "xz": [
-        365,
-        119
+        356,
+        124
       ],
       "heading": 90
     },
@@ -226,8 +226,8 @@
       "id": "oak_restroom",
       "type": "oak",
       "xz": [
-        369,
-        126
+        362,
+        128
       ],
       "heading": 0,
       "radius": 7.8
@@ -301,10 +301,10 @@
     }
   ],
   "placement_intent": {
-    "bathroom": "v014: move restroom into the grass patch close to RV02 shown in the annotated v013 test screenshot; authored center (365,119), clear of the east pit road",
+    "bathroom": "v014 corrected after authored-layout QA: restroom moved into the user-marked grass patch close to RV02 at (356,124), still between the RV02-to-toyhauler camper axis and clear of the pit road",
     "office": "Left / negative X of red frontage pickup03 (321,149), viewed from the pit road toward spectator fence (+Z)",
     "precision": "Relational placement from user instruction and videos; metric positions are authored, not surveyed",
-    "supporting_adjustment": "Bathroom shade oak moved slightly east with restroom; track-area tree clearing is handled separately in scenery source"
+    "supporting_adjustment": "Bathroom shade oak moved with restroom to (362,128); exact positions remain unsurveyed authoring estimates from screenshot context"
   },
   "tree_removal_intent": {
     "description": "Remove baseline tree/scrub objects inside the start/track infield visible left of the rightmost gate, continuing toward the approach before the corner that leads to R09.",
