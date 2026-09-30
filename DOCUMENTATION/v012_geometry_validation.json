@@ -14,7 +14,7 @@
     "S10",
     "S11"
   ],
-  "native_compilation": false,
+  "native_compilation": true,
   "in_game_riding": false,
   "raw_sha256": "d6bc0695eeecd0ea7d2a74a8d8c86529dd8d748e478a94a393a167e0864ddc5f",
   "height_range_m": [
@@ -33,7 +33,7 @@
   "finite": true,
   "raw_bytes": 8396802,
   "raw_png_identical": true,
-  "outer_terrain_max_delta_m": 0.0,
+  "outer_terrain_max_delta_m": 0,
   "route_unchanged": true,
   "loop_closure_m": 8.039928421361173e-12,
   "effective_width_range_m": [
@@ -44,7 +44,7 @@
     {
       "id": "R01",
       "target_type": "TABLETOP",
-      "station_start_m": -2.0,
+      "station_start_m": -2,
       "station_end_m": 75.2,
       "overall_length_m": 77.2,
       "maximum_actual_grade": 0.37445109350390027,
@@ -56,9 +56,9 @@
     {
       "id": "R02",
       "target_type": "TRIPLE",
-      "station_start_m": 128.0,
-      "station_end_m": 168.0,
-      "overall_length_m": 40.0,
+      "station_start_m": 128,
+      "station_end_m": 168,
+      "overall_length_m": 40,
       "maximum_actual_grade": 0.6703512602976716,
       "height_above_endpoint_chord_m": 2.589550232350141,
       "encoded_valley_depths_m": [
@@ -70,12 +70,12 @@
     {
       "id": "R03",
       "target_type": "TABLE_SINGLE",
-      "station_start_m": 232.0,
-      "station_end_m": 267.0,
-      "overall_length_m": 35.0,
+      "station_start_m": 232,
+      "station_end_m": 267,
+      "overall_length_m": 35,
       "maximum_actual_grade": 0.6771224061319074,
       "height_above_endpoint_chord_m": 2.5953517934245727,
-      "deck_length_m": 7.0,
+      "deck_length_m": 7,
       "actual_deck_height_spread_m": 0.0036050679709234146,
       "actual_deck_max_grade": 0.003493562280695528,
       "encoded_valley_depths_m": [
@@ -98,7 +98,7 @@
       "target_type": "DOUBLE",
       "station_start_m": 424.6,
       "station_end_m": 436.6,
-      "overall_length_m": 12.0,
+      "overall_length_m": 12,
       "maximum_actual_grade": 0.4359353609337546,
       "height_above_endpoint_chord_m": 0.7275846637612715,
       "encoded_valley_depths_m": [
@@ -119,9 +119,9 @@
     {
       "id": "R07",
       "target_type": "ANT_HILL",
-      "station_start_m": 542.0,
-      "station_end_m": 563.0,
-      "overall_length_m": 21.0,
+      "station_start_m": 542,
+      "station_end_m": 563,
+      "overall_length_m": 21,
       "maximum_actual_grade": 0.5478425704286707,
       "height_above_endpoint_chord_m": 2.788481700356141,
       "encoded_major_crest_count": 1,
@@ -131,7 +131,7 @@
       "id": "R08",
       "target_type": "NONE",
       "station_start_m": 605.5,
-      "station_end_m": 631.0,
+      "station_end_m": 631,
       "overall_length_m": 25.5,
       "maximum_actual_grade": 0.05334388431412407,
       "height_above_endpoint_chord_m": 0.03479636099969996,
@@ -142,7 +142,7 @@
       "target_type": "DOUBLE",
       "station_start_m": 696.2,
       "station_end_m": 721.2,
-      "overall_length_m": 25.0,
+      "overall_length_m": 25,
       "maximum_actual_grade": 0.5677410995571393,
       "height_above_endpoint_chord_m": 2.3951709227850664,
       "encoded_valley_depths_m": [
@@ -153,21 +153,21 @@
     {
       "id": "R10",
       "target_type": "TABLETOP",
-      "station_start_m": 746.0,
-      "station_end_m": 796.0,
-      "overall_length_m": 50.0,
+      "station_start_m": 746,
+      "station_end_m": 796,
+      "overall_length_m": 50,
       "maximum_actual_grade": 0.4281536899260203,
       "height_above_endpoint_chord_m": 3.289287699727196,
-      "deck_length_m": 17.0,
+      "deck_length_m": 17,
       "actual_deck_height_spread_m": 0.011099168340339638,
       "actual_deck_max_grade": 0.005048788372064905
     },
     {
       "id": "R11",
       "target_type": "DOUBLE",
-      "station_start_m": 844.0,
-      "station_end_m": 864.0,
-      "overall_length_m": 20.0,
+      "station_start_m": 844,
+      "station_end_m": 864,
+      "overall_length_m": 20,
       "maximum_actual_grade": 0.19122923946173387,
       "height_above_endpoint_chord_m": 0.4995677815618964,
       "encoded_valley_depths_m": [
@@ -180,7 +180,7 @@
       "target_type": "ROLLER_SEQUENCE",
       "station_start_m": 868.5,
       "station_end_m": 888.5,
-      "overall_length_m": 20.0,
+      "overall_length_m": 20,
       "maximum_actual_grade": 0.4583871862557771,
       "height_above_endpoint_chord_m": 0.5364913027662559,
       "encoded_roller_count": 4,
@@ -199,7 +199,7 @@
     {
       "id": "R13",
       "target_type": "NONE",
-      "station_start_m": 943.0,
+      "station_start_m": 943,
       "station_end_m": 969.7,
       "overall_length_m": 26.700000000000045,
       "maximum_actual_grade": 0.032638676454354254,
@@ -209,9 +209,9 @@
     {
       "id": "R14",
       "target_type": "TRIPLE",
-      "station_start_m": 981.0,
-      "station_end_m": 1016.0,
-      "overall_length_m": 35.0,
+      "station_start_m": 981,
+      "station_end_m": 1016,
+      "overall_length_m": 35,
       "maximum_actual_grade": 0.7729521399940751,
       "height_above_endpoint_chord_m": 3.180905792842175,
       "encoded_valley_depths_m": [
@@ -225,7 +225,7 @@
       "target_type": "SINGLE",
       "station_start_m": 1089.5,
       "station_end_m": 1112.5,
-      "overall_length_m": 23.0,
+      "overall_length_m": 23,
       "maximum_actual_grade": 0.16377832635384948,
       "height_above_endpoint_chord_m": 0.8465934457295954
     },
@@ -237,7 +237,7 @@
       "overall_length_m": 46.299999999999955,
       "maximum_actual_grade": 0.43277301980035077,
       "height_above_endpoint_chord_m": 2.702320711924511,
-      "deck_length_m": 21.0,
+      "deck_length_m": 21,
       "actual_deck_height_spread_m": 0.06080618745983024,
       "actual_deck_max_grade": 0.013978426296233692
     },
@@ -246,7 +246,7 @@
       "target_type": "ROLLER_SEQUENCE",
       "station_start_m": 1287.5,
       "station_end_m": 1327.5,
-      "overall_length_m": 40.0,
+      "overall_length_m": 40,
       "maximum_actual_grade": 0.4095652786497652,
       "height_above_endpoint_chord_m": 0.5288247558367782,
       "encoded_roller_count": 8,
@@ -273,15 +273,27 @@
     {
       "id": "R18",
       "target_type": "INSIDE_ROLLER",
-      "station_start_m": 1352.0,
-      "station_end_m": 1358.0,
-      "overall_length_m": 6.0,
+      "station_start_m": 1352,
+      "station_end_m": 1358,
+      "overall_length_m": 6,
       "maximum_actual_grade": 0.36158576609946635,
       "height_above_endpoint_chord_m": 0.5084131984270295,
-      "main_line_authored_jump_max_m": 0.0,
+      "main_line_authored_jump_max_m": 0,
       "inside_line_authored_jump_max_m": 0.4999999402805132,
       "inside_offset_m": 3.4
     }
   ],
-  "geometry_checks_pass": true
+  "geometry_checks_pass": true,
+  "native_build": {
+    "workflow_name": "Build v012 final obstacles and layout",
+    "workflow_run_id": 36660342389,
+    "build_source_commit": "60b028fdc38f1c3e6470d4d7ae2ff61fee13e877",
+    "conclusion": "success",
+    "game_artifact_name": "OrlandoMX-v012-game-candidate",
+    "game_artifact_id": 11074262287,
+    "evidence_artifact_id": 11074092566,
+    "source_checkpoint_artifact_id": 11074650064,
+    "pkz_filename": "OrlandoMX_2026_v012.pkz",
+    "pkz_sha256": "48345f6e11191e3c30291e45e5c507770de30cd82cd07b598d70809f8a265a25"
+  }
 }
