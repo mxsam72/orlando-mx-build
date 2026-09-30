@@ -1,0 +1,116 @@
+{
+  "status": "User-confirmed area/connectivity; metric construction estimates for first ride",
+  "grid_center_xz": [
+    416.0,
+    184.0
+  ],
+  "grid_angle_deg": 0.0,
+  "grid_stalls": 24,
+  "stall_spacing_m": 1.5,
+  "start_origin_xz": [
+    416.0,
+    172.0
+  ],
+  "start_controls_xz": [
+    [
+      416,
+      200
+    ],
+    [
+      409,
+      238
+    ],
+    [
+      395,
+      260
+    ],
+    [
+      379,
+      272
+    ],
+    [
+      365,
+      278
+    ],
+    [
+      351,
+      281
+    ],
+    [
+      340,
+      277
+    ]
+  ],
+  "merge_station_m": 493.0,
+  "merge_blend_length_m": 22.0,
+  "start_width_knots": [
+    [
+      0,
+      38
+    ],
+    [
+      28,
+      38
+    ],
+    [
+      60,
+      24
+    ],
+    [
+      95,
+      12
+    ],
+    [
+      118,
+      7
+    ],
+    [
+      145,
+      7
+    ],
+    [
+      170,
+      9
+    ]
+  ],
+  "fence_polyline_xz": [
+    [
+      248,
+      173
+    ],
+    [
+      270,
+      171
+    ],
+    [
+      300,
+      172
+    ],
+    [
+      335,
+      174
+    ],
+    [
+      355,
+      177
+    ],
+    [
+      375,
+      182
+    ]
+  ],
+  "fence_post_spacing_m": 3.2,
+  "fence_height_m": 1.35,
+  "finish_station_m": 23.0,
+  "start_checkpoint_stations_m": [
+    20,
+    85,
+    140
+  ],
+  "native_checkpoint_modes": {
+    "normal": 0,
+    "start_only": 1,
+    "both": 2
+  },
+  "native_checkpoint_mode_status": "TrackEd Start/Both intent applied; verify generated RDF in TrackEd and by a race start"
+}

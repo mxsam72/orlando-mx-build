@@ -80,5 +80,5 @@ def main():
     center = np.array(cfg['grid_center_xz']); spacing = cfg['stall_spacing_m']
     grid = [dict(x=float(center[0]+(i-(cfg['grid_stalls']-1)/2)*spacing), z=float(center[1]), angle=cfg['grid_angle_deg']) for i in range(cfg['grid_stalls'])]
     save(O/'facility_layout.json', dict(**cfg, start_length_m=float(sa[-1, 3]), start_segments=segs, grid=grid, merge_xz=merge[:2].tolist(), merge_heading_error_deg=math.degrees(err)))
-    print('v012 start line:', len(segs), 'native segments;', round(sa[-1, 3], 2), 'm; T05 merge exact')
+    print('v012 start line:', len(segs), 'native segments;', round(sa[-1, 3], 2), 'm; merge before T06 exact')
 if __name__ == '__main__': main()
