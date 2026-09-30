@@ -29,9 +29,31 @@ def make_profile(source):
         rounded(F,H);crests.append(xs[-1]);marks['single_crest']=xs[-1];rounded(L,0);g=2*H/F
     elif kind=='roller_sequence':
         spacing=p['spacing_m'];heights=p['roller_heights_m']
-        for i,h in enumerate(heights):
-            rounded(spacing/2,h);crests.append(xs[-1]);marks[f'roller_{i+1}']=xs[-1];rounded(spacing/2,0)
-        g=4*max(heights)/spacing
+        custom=p.get('crest_spacings_m')
+        if custom:
+            # Non-uniform rolling-single sequence.  v014 uses this for R12 so
+            # the final crest sits only ~5 m after the third while the first
+            # two crest gaps remain ~10 m.  Build a dense smooth composite
+            # profile so the final two singles may overlap naturally.
+            width=float(p.get('roller_width_m',spacing))
+            startx=-F;endx=end-p['lip_s']
+            centers=[startx+width/2]
+            for ds_gap in custom:centers.append(centers[-1]+float(ds_gap))
+            assert len(centers)==len(heights)
+            assert centers[-1]+width/2<=endx+1e-6,(p['id'],'custom rollers exceed section',centers,endx)
+            xcore=np.linspace(startx,endx,max(40,int((endx-startx)/.10)+1))
+            ycore=np.zeros_like(xcore)
+            for i,(center,h) in enumerate(zip(centers,heights)):
+                u=(xcore-center)/(width/2)
+                bump=np.where(np.abs(u)<=1,h*.5*(1+np.cos(np.pi*u)),0.)
+                ycore=np.maximum(ycore,bump);crests.append(center);marks[f'roller_{i+1}']=center
+            dcore=np.gradient(ycore,xcore);dcore[0]=0.;dcore[-1]=0.
+            xs=[startx-3.0]+xcore.tolist();ys=[0.0]+ycore.tolist();ds=[0.0]+dcore.tolist()
+            g=float(np.max(np.abs(dcore)))
+        else:
+            for i,h in enumerate(heights):
+                rounded(spacing/2,h);crests.append(xs[-1]);marks[f'roller_{i+1}']=xs[-1];rounded(spacing/2,0)
+            g=4*max(heights)/spacing
     else:
         lip=p['lip_transition_m'];split=p.get('face_progression',.5);ratio=p.get('lower_face_grade_ratio',.6)
         g=H/(F*(split*ratio/2+(1-split)*(ratio+1)/2)+lip/2)
