@@ -66,7 +66,7 @@ def materialize_runtime():
     end=q.index("    save(R/'DOCUMENTATION/v018_layout_validation.json'",start)
     rel="""    b=np.array(assets['restroom']['xz'],dtype=float);truck=np.array(assets['pickup_01']['xz'],dtype=float);canopy=np.array(assets['canopy_02']['xz'],dtype=float)
     bathroom_to_truck=float(np.linalg.norm(b-truck));bathroom_to_canopy=float(np.linalg.norm(b-canopy))
-    patch=next(p for p in pit['grass_patches'] if p['id']=='lower_redtruck_restroom_grass')
+    patch=next(p for p in pit['grass_patches'] if p['id']=='lower_pit_parking_grass')
     x0,z0,x1,z1=map(float,patch['bounds_xz']);bathroom_in_grass=bool(x0<b[0]<x1 and z0<b[1]<z1)
     road_clear=float('inf')
     for road in pit['roads']:
@@ -74,7 +74,7 @@ def materialize_runtime():
         for aa,bb in zip(pts[:-1],pts[1:]):
             d=bb-aa;t=np.clip((b-aa)@d/(d@d),0,1);dist=np.linalg.norm(b-(aa+t*d))-road['width']/2
             road_clear=min(road_clear,float(dist))
-    qa=dict(start_length_m=float(sa[-1,3]),gate_stalls=cfg['grid_stalls'],grid_outer_stall_span_m=23*cfg['stall_spacing_m'],gate_apron_width_m=cfg['start_width_knots'][0][1],minimum_start_width_m=float(sw.min()),minimum_other_lane_edge_clearance_m=float(clear.min()),self_crossings=cross,merge_station_m=cfg['merge_station_m'],right_turn='T06',right_turn_angle_deg=t6['angle'],distance_before_right_turn_m=t6['arc_start']-cfg['merge_station_m'],bathroom_distance_from_lower_red_truck_m=bathroom_to_truck,bathroom_distance_from_lower_canopy_m=bathroom_to_canopy,bathroom_in_grass_patch=bathroom_in_grass,bathroom_road_edge_clearance_m=road_clear,office_left_of_frontage_truck=assets['office']['xz'][0]<assets['pickup_03']['xz'][0],office_view_direction='+Z from pit road toward spectator fence',outside_shoulder_note='Start loop unchanged from v016.',runtime_start_reset_and_timing='Pending in-game test')
+    qa=dict(start_length_m=float(sa[-1,3]),gate_stalls=cfg['grid_stalls'],grid_outer_stall_span_m=23*cfg['stall_spacing_m'],gate_apron_width_m=cfg['start_width_knots'][0][1],minimum_start_width_m=float(sw.min()),minimum_other_lane_edge_clearance_m=float(clear.min()),self_crossings=cross,merge_station_m=cfg['merge_station_m'],right_turn='T06',right_turn_angle_deg=t6['angle'],distance_before_right_turn_m=t6['arc_start']-cfg['merge_station_m'],bathroom_distance_from_lower_red_truck_m=bathroom_to_truck,bathroom_distance_from_lower_canopy_m=bathroom_to_canopy,bathroom_in_grass_patch=bathroom_in_grass,bathroom_road_edge_clearance_m=road_clear,office_left_of_frontage_truck=assets['office']['xz'][0]<assets['pickup_03']['xz'][0],office_view_direction='+Z from pit road toward spectator fence',outside_shoulder_note='Start loop unchanged from v017.',runtime_start_reset_and_timing='Pending in-game test')
     qa['layout_checks_pass']=bool(clear.min()>.5 and not cross and 0<t6['arc_start']-cfg['merge_station_m']<8 and t6['angle']<0 and bathroom_to_truck<13 and bathroom_to_canopy<14 and bathroom_in_grass and road_clear>.5 and qa['office_left_of_frontage_truck'])
 """
     q=q[:start]+rel+q[end:]
@@ -89,7 +89,7 @@ def materialize_runtime():
     for k in range(len(xx)):rgb[yy[k],xx[k]]=np.clip(rgb[yy[k],xx[k]].astype(int)+fleck[k],0,255)
     Image.fromarray(rgb).save(O/'v018_pit_gravel.tga')""")
     pr=pr.replace("O/'v018_pit_sand.tga'","O/'v018_pit_gravel.tga'")
-    pr=pr.replace("print('Pit roads and RV/restroom grass paddock prepared')","print('Restored gravel roads and correct opposite-road bathroom grass paddock prepared')")
+    pr=pr.replace("print('Pit roads and RV/restroom grass paddock prepared')","print('v018 connected gravel loop and expanded grass paddocks prepared')")
     (R/'TOOLS/pit_roads_v018.py').write_text(pr,encoding='utf-8')
 
     bw=transformed('build_windows_v016.py')
