@@ -1,6 +1,6 @@
 {
   "version": "v014",
-  "metric_status": "ALL dimensions are non-surveyed v014 tuning estimates based on user-directed v012 ride-test changes",
+  "metric_status": "ALL dimensions are non-surveyed v014 tuning estimates based on user-directed v013 ride-test changes",
   "active_sections": [
     "S01",
     "S02",
@@ -82,8 +82,8 @@
       "kind": "triple",
       "target_type": "TRIPLE",
       "station_start_m": 128,
-      "station_end_m": 182,
-      "user_target_length_m": 54,
+      "station_end_m": 177,
+      "user_target_length_m": 49,
       "face_m": 8,
       "face_length_m": 8,
       "crest_height_m": 2.6,
@@ -104,15 +104,15 @@
           "landing_crest_height_m": 2.25
         },
         {
-          "span_m": 14.7,
+          "span_m": 9.7,
           "valley_height_m": 0.3,
           "landing_crest_height_m": 2.4
         }
       ],
-      "notes": "v014 interpretation of user instruction: first triple landing/double distance is twice v012 (9 -> 18 m); third landing is 5 m farther from second than v012 spacing (9.7 -> 14.7 m)",
-      "gap_length_m": 32.7,
-      "role": "v014 interpretation of user instruction: first triple landing/double distance is twice v012 (9 -> 18 m); third landing is 5 m farther from second than v012 spacing (9.7 -> 14.7 m)",
-      "evidence": "v014 user-directed refinement from testing v012.mp4"
+      "notes": "v014: shorten v013 R02 triple by 5 m overall, retaining first 18 m gap and reducing second gap 14.7 -> 9.7 m",
+      "gap_length_m": 27.7,
+      "role": "v014: shorten v013 R02 triple by 5 m overall, retaining first 18 m gap and reducing second gap 14.7 -> 9.7 m",
+      "evidence": "v014 user-directed refinement from testing v013 long video and annotated screenshots"
     },
     {
       "id": "R03",
@@ -176,16 +176,16 @@
       "id": "R05",
       "kind": "double",
       "target_type": "DOUBLE",
-      "station_start_m": 384.6,
-      "station_end_m": 408.6,
-      "user_target_length_m": 24,
+      "station_start_m": 399.6,
+      "station_end_m": 428.6,
+      "user_target_length_m": 29,
       "face_m": 6.4,
       "face_length_m": 6.4,
       "crest_height_m": 1.4,
       "lip_height_m": 1.4,
       "landing_m": 6.8,
       "landing_length_m": 6.8,
-      "lip_s": 391,
+      "lip_s": 406,
       "racing_width_m": 10,
       "side_taper_m": 7.5,
       "face_progression": 0.5,
@@ -194,15 +194,15 @@
       "deck_m": 0,
       "gaps": [
         {
-          "span_m": 9.6,
+          "span_m": 14.6,
           "valley_height_m": 0.14,
           "landing_crest_height_m": 1.2
         }
       ],
-      "notes": "v014: move R05 40 m earlier along route and double v012 linear dimensions and height (12 -> 24 m, 0.7 -> 1.4 m)",
-      "gap_length_m": 9.6,
-      "role": "v014: move R05 40 m earlier along route and double v012 linear dimensions and height (12 -> 24 m, 0.7 -> 1.4 m)",
-      "evidence": "v014 user-directed refinement from testing v012.mp4"
+      "notes": "v014: push R05 15 m forward along route and extend overall length 24 -> 29 m by lengthening the gap 9.6 -> 14.6 m; v013 height retained",
+      "gap_length_m": 14.6,
+      "role": "v014: push R05 15 m forward along route and extend overall length 24 -> 29 m by lengthening the gap 9.6 -> 14.6 m; v013 height retained",
+      "evidence": "v014 user-directed refinement from testing v013 long video and annotated screenshots"
     },
     {
       "id": "R06",
@@ -234,15 +234,15 @@
       "id": "R07",
       "kind": "ant_hill",
       "target_type": "ANT_HILL",
-      "station_start_m": 543,
-      "station_end_m": 565,
-      "user_target_length_m": 22,
-      "face_m": 9,
-      "face_length_m": 9,
-      "crest_height_m": 3.2,
-      "lip_height_m": 3.2,
-      "landing_m": 13,
-      "landing_length_m": 13,
+      "station_start_m": 527.7236842105264,
+      "station_end_m": 576.3,
+      "user_target_length_m": 48.57631578947368,
+      "face_m": 24.27631578947368,
+      "face_length_m": 24.27631578947368,
+      "crest_height_m": 8.2,
+      "lip_height_m": 8.2,
+      "landing_m": 24.3,
+      "landing_length_m": 24.3,
       "lip_s": 552,
       "racing_width_m": 10,
       "side_taper_m": 7.5,
@@ -251,10 +251,10 @@
       "lip_transition_m": 0.8,
       "deck_m": 0,
       "gaps": [],
-      "notes": "v014: keep ant-hill single crest at s552 but make it moderately larger and steeper than v012 (2.8 -> 3.2 m; 10 -> 9 m face; longer runout)",
+      "notes": "v014: retain ant-hill crest at s552; increase crest height by exactly 5 m (3.2 -> 8.2 m) while reducing v013 takeoff maximum slope by 5%; landing length increased to keep encoded grade within track QA limits",
       "gap_length_m": 0,
-      "role": "v014: keep ant-hill single crest at s552 but make it moderately larger and steeper than v012 (2.8 -> 3.2 m; 10 -> 9 m face; longer runout)",
-      "evidence": "v014 user-directed refinement from testing v012.mp4"
+      "role": "v014: retain ant-hill crest at s552; increase crest height by exactly 5 m (3.2 -> 8.2 m) while reducing v013 takeoff maximum slope by 5%; landing length increased to keep encoded grade within track QA limits",
+      "evidence": "v014 user-directed refinement from testing v013 long video and annotated screenshots"
     },
     {
       "id": "R08",
@@ -287,15 +287,15 @@
       "kind": "double",
       "target_type": "DOUBLE",
       "station_start_m": 696.2,
-      "station_end_m": 746.2,
-      "user_target_length_m": 50,
-      "face_m": 13.6,
-      "face_length_m": 13.6,
-      "crest_height_m": 4.8,
-      "lip_height_m": 4.8,
-      "landing_m": 14.8,
-      "landing_length_m": 14.8,
-      "lip_s": 709.8,
+      "station_end_m": 756.2,
+      "user_target_length_m": 60,
+      "face_m": 10.88,
+      "face_length_m": 10.88,
+      "crest_height_m": 3.84,
+      "lip_height_m": 3.84,
+      "landing_m": 11.84,
+      "landing_length_m": 11.84,
+      "lip_s": 707.08,
       "racing_width_m": 10,
       "side_taper_m": 7.5,
       "face_progression": 0.5,
@@ -304,48 +304,48 @@
       "deck_m": 0,
       "gaps": [
         {
-          "span_m": 20,
-          "valley_height_m": 0.5,
-          "landing_crest_height_m": 4.4
+          "span_m": 35.68,
+          "valley_height_m": 0.4,
+          "landing_crest_height_m": 3.52
         }
       ],
-      "notes": "v014: scale R09 double to twice v012 overall length/height proportions (25 -> 50 m; 2.4 -> 4.8 m)",
-      "gap_length_m": 20,
-      "role": "v014: scale R09 double to twice v012 overall length/height proportions (25 -> 50 m; 2.4 -> 4.8 m)",
-      "evidence": "v014 user-directed refinement from testing v012.mp4"
+      "notes": "v014: make R09 10 m longer overall (50 -> 60 m) while reducing takeoff and landing mound length/height by 20%; extra distance becomes the larger gap",
+      "gap_length_m": 35.68,
+      "role": "v014: make R09 10 m longer overall (50 -> 60 m) while reducing takeoff and landing mound length/height by 20%; extra distance becomes the larger gap",
+      "evidence": "v014 user-directed refinement from testing v013 long video and annotated screenshots"
     },
     {
       "id": "R10",
       "kind": "tabletop",
       "target_type": "TABLETOP",
-      "station_start_m": 746.2,
+      "station_start_m": 756.2,
       "station_end_m": 821.2,
-      "user_target_length_m": 75,
+      "user_target_length_m": 65,
       "face_m": 19.5,
       "face_length_m": 19.5,
       "crest_height_m": 3.3,
       "lip_height_m": 3.3,
       "landing_m": 28.5,
       "landing_length_m": 28.5,
-      "lip_s": 765.7,
+      "lip_s": 775.7,
       "racing_width_m": 10,
       "side_taper_m": 7.5,
       "face_progression": 0.5,
       "lower_face_grade_ratio": 0.6,
       "lip_transition_m": 1.5,
-      "deck_m": 25.5,
+      "deck_m": 15.5,
       "gaps": [],
-      "notes": "v014: increase R10 tabletop from 50 m to 75 m; horizontal components scaled 1.5x while retaining v012 height; start nudged 0.2 m to avoid overlap with enlarged R09",
+      "notes": "v014: shorten R10 tabletop from 75 -> 65 m by reducing deck 25.5 -> 15.5 m; takeoff height/face and landing retained",
       "gap_length_m": 0,
-      "role": "v014: increase R10 tabletop from 50 m to 75 m; horizontal components scaled 1.5x while retaining v012 height; start nudged 0.2 m to avoid overlap with enlarged R09",
-      "evidence": "v014 user-directed refinement from testing v012.mp4"
+      "role": "v014: shorten R10 tabletop from 75 -> 65 m by reducing deck 25.5 -> 15.5 m; takeoff height/face and landing retained",
+      "evidence": "v014 user-directed refinement from testing v013 long video and annotated screenshots"
     },
     {
       "id": "R11",
       "kind": "double",
       "target_type": "DOUBLE",
-      "station_start_m": 844,
-      "station_end_m": 864,
+      "station_start_m": 839,
+      "station_end_m": 859,
       "user_target_length_m": 20,
       "face_m": 4.5,
       "face_length_m": 4.5,
@@ -353,7 +353,7 @@
       "lip_height_m": 0.5,
       "landing_m": 5,
       "landing_length_m": 5,
-      "lip_s": 848.5,
+      "lip_s": 843.5,
       "racing_width_m": 10,
       "side_taper_m": 7.5,
       "face_progression": 0.5,
@@ -367,18 +367,18 @@
           "landing_crest_height_m": 0.45
         }
       ],
-      "notes": "20 m low-lipped double; shallow speed-dependent launch",
+      "notes": "v014: move the entire R11 low-lipped double 5 m earlier; dimensions unchanged",
       "gap_length_m": 9.9,
-      "role": "20 m low-lipped double; shallow speed-dependent launch",
-      "evidence": "v012 handover supersedes v011 classification"
+      "role": "v014: move the entire R11 low-lipped double 5 m earlier; dimensions unchanged",
+      "evidence": "v014 user-directed refinement from testing v013 long video and annotated screenshots"
     },
     {
       "id": "R12",
       "kind": "roller_sequence",
       "target_type": "ROLLER_SEQUENCE",
       "station_start_m": 868.5,
-      "station_end_m": 908.5,
-      "user_target_length_m": 40,
+      "station_end_m": 903.5,
+      "user_target_length_m": 35,
       "face_m": 5,
       "face_length_m": 5,
       "crest_height_m": 0.55,
@@ -393,7 +393,7 @@
       "lip_transition_m": 0.8,
       "deck_m": 0,
       "gaps": [],
-      "notes": "v014: retain four rolling singles but increase crest spacing from ~5 m to ~10 m",
+      "notes": "v014: four rolling singles; first two crest gaps remain ~10 m and the final crest is ~5 m after the third; explicit non-uniform crest spacing [10,10,5]",
       "roller_count": 4,
       "spacing_m": 10,
       "roller_heights_m": [
@@ -403,23 +403,29 @@
         0.45
       ],
       "gap_length_m": 0,
-      "role": "v014: retain four rolling singles but increase crest spacing from ~5 m to ~10 m",
-      "evidence": "v014 user-directed refinement from testing v012.mp4"
+      "role": "v014: four rolling singles; first two crest gaps remain ~10 m and the final crest is ~5 m after the third; explicit non-uniform crest spacing [10,10,5]",
+      "evidence": "v014 user-directed refinement from testing v013 long video and annotated screenshots",
+      "crest_spacings_m": [
+        10,
+        10,
+        5
+      ],
+      "roller_width_m": 10
     },
     {
       "id": "R13",
       "kind": "none",
       "target_type": "NONE",
       "station_start_m": 943,
-      "station_end_m": 969.7,
+      "station_end_m": 951,
       "user_target_length_m": null,
-      "face_m": 10,
-      "face_length_m": 10,
+      "face_m": 4,
+      "face_length_m": 4,
       "crest_height_m": 0,
       "lip_height_m": 0,
-      "landing_m": 16.7,
-      "landing_length_m": 16.7,
-      "lip_s": 953,
+      "landing_m": 4,
+      "landing_length_m": 4,
+      "lip_s": 947,
       "racing_width_m": 10,
       "side_taper_m": 7.5,
       "face_progression": 0.5,
@@ -427,17 +433,17 @@
       "lip_transition_m": 0.8,
       "deck_m": 0,
       "gaps": [],
-      "notes": "NO JUMP: remove previous obstacle; retain corner/normal ground",
+      "notes": "v014: no authored jump; shortened no-jump span because R14 takeoff now begins 30 m earlier",
       "gap_length_m": 0,
-      "role": "NO JUMP: remove previous obstacle; retain corner/normal ground",
-      "evidence": "v012 handover supersedes v011 classification"
+      "role": "v014: no authored jump; shortened no-jump span because R14 takeoff now begins 30 m earlier",
+      "evidence": "v014 user-directed refinement from testing v013 long video and annotated screenshots"
     },
     {
       "id": "R14",
       "kind": "triple",
       "target_type": "TRIPLE",
-      "station_start_m": 981,
-      "station_end_m": 1036,
+      "station_start_m": 951,
+      "station_end_m": 1006,
       "user_target_length_m": 55,
       "face_m": 12,
       "face_length_m": 12,
@@ -445,7 +451,7 @@
       "lip_height_m": 3.2,
       "landing_m": 13,
       "landing_length_m": 13,
-      "lip_s": 993,
+      "lip_s": 963,
       "racing_width_m": 10,
       "side_taper_m": 7.5,
       "face_progression": 0.5,
@@ -461,13 +467,13 @@
         {
           "span_m": 14.5,
           "valley_height_m": 0.55,
-          "landing_crest_height_m": 3
+          "landing_crest_height_m": 2.7
         }
       ],
-      "notes": "v014: enlarge signature triple from 35 m to 55 m; preserve crest heights while extending face, both gaps and landing",
+      "notes": "v014: shift R14 triple 30 m earlier with same 55 m overall size; reduce final landing crest peak by 10% (3.0 -> 2.7 m)",
       "gap_length_m": 29,
-      "role": "v014: enlarge signature triple from 35 m to 55 m; preserve crest heights while extending face, both gaps and landing",
-      "evidence": "v014 user-directed refinement from testing v012.mp4"
+      "role": "v014: shift R14 triple 30 m earlier with same 55 m overall size; reduce final landing crest peak by 10% (3.0 -> 2.7 m)",
+      "evidence": "v014 user-directed refinement from testing v013 long video and annotated screenshots"
     },
     {
       "id": "R15",
@@ -499,8 +505,8 @@
       "id": "R16",
       "kind": "tabletop",
       "target_type": "TABLETOP",
-      "station_start_m": 1126.8,
-      "station_end_m": 1173.1,
+      "station_start_m": 1116.8,
+      "station_end_m": 1163.1,
       "user_target_length_m": 46.3,
       "face_m": 10.2,
       "face_length_m": 10.2,
@@ -508,7 +514,7 @@
       "lip_height_m": 2.7,
       "landing_m": 14,
       "landing_length_m": 14,
-      "lip_s": 1137,
+      "lip_s": 1127,
       "racing_width_m": 10,
       "side_taper_m": 7.5,
       "face_progression": 0.5,
@@ -516,10 +522,10 @@
       "lip_transition_m": 1.1,
       "deck_m": 21,
       "gaps": [],
-      "notes": "Replace double with tabletop; 46.3 m vs v011 41.3 m, exactly 5 m longer",
+      "notes": "v014: move R16 tabletop start 5 m earlier; dimensions unchanged",
       "gap_length_m": 0,
-      "role": "Replace double with tabletop; 46.3 m vs v011 41.3 m, exactly 5 m longer",
-      "evidence": "v012 handover supersedes v011 classification"
+      "role": "v014: move R16 tabletop start 5 m earlier; dimensions unchanged",
+      "evidence": "v014 user-directed refinement from testing v013 long video and annotated screenshots"
     },
     {
       "id": "R17",
@@ -573,18 +579,18 @@
       "landing_m": 9,
       "landing_length_m": 9,
       "lip_s": 1361,
-      "racing_width_m": 2.8,
-      "side_taper_m": 1.2,
+      "racing_width_m": 5.6,
+      "side_taper_m": 2.4,
       "face_progression": 0.5,
       "lower_face_grade_ratio": 0.6,
       "lip_transition_m": 0.8,
       "deck_m": 0,
       "gaps": [],
-      "notes": "v014: triple R18 inside-line roller size (6 -> 18 m and 0.5 -> 1.5 m) while keeping it off the main line",
+      "notes": "v014: double R18 inside-line roller width from 2.8 -> 5.6 m and double side taper while retaining inside-only center-line exclusion and 18 m / 1.5 m geometry",
       "lateral_offset_m": 3.4,
       "gap_length_m": 0,
-      "role": "v014: triple R18 inside-line roller size (6 -> 18 m and 0.5 -> 1.5 m) while keeping it off the main line",
-      "evidence": "v014 user-directed refinement from testing v012.mp4"
+      "role": "v014: double R18 inside-line roller width from 2.8 -> 5.6 m and double side taper while retaining inside-only center-line exclusion and 18 m / 1.5 m geometry",
+      "evidence": "v014 user-directed refinement from testing v013 long video and annotated screenshots"
     }
   ],
   "berms": [
