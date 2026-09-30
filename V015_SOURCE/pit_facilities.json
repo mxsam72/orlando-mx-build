@@ -1,5 +1,5 @@
 {
-  "status": "Video/screenshot-derived forms; metric sizes and placements are unsurveyed v015 authoring estimates",
+  "status": "Video-derived v015 pit placement; dimensions remain unsurveyed authoring estimates",
   "references": [
     "IMG_3591.mov",
     "IMG_3592.mov",
@@ -127,8 +127,8 @@
       "id": "restroom",
       "type": "restroom",
       "xz": [
-        356,
-        124
+        360,
+        110
       ],
       "heading": 90
     },
@@ -226,8 +226,8 @@
       "id": "oak_restroom",
       "type": "oak",
       "xz": [
-        362,
-        128
+        366,
+        118
       ],
       "heading": 0,
       "radius": 7.8
@@ -301,10 +301,11 @@
     }
   ],
   "placement_intent": {
-    "bathroom": "v015 corrected after authored-layout QA: restroom moved into the user-marked grass patch close to RV02 at (356,124), still between the RV02-to-toyhauler camper axis and clear of the pit road",
+    "bathroom": "v015: restroom moved directly beside/near RV02 in the user-identified right-side RV grass area; authored center (360,110), about 10 m from RV02 center",
     "office": "Left / negative X of red frontage pickup03 (321,149), viewed from the pit road toward spectator fence (+Z)",
     "precision": "Relational placement from user instruction and videos; metric positions are authored, not surveyed",
-    "supporting_adjustment": "Bathroom shade oak moved with restroom to (362,128); exact positions remain unsurveyed authoring estimates from screenshot context"
+    "supporting_adjustment": "Move bathroom shade oak to (366,118) and convert the surrounding RV02/restroom paddock rectangle to grass, while preserving all authored road corridors as pale compacted road",
+    "grass_area": "v015: entire RV02/restroom area X344-372, Z98-135 is authored as grass except wherever pit roadway masks overlap"
   },
   "tree_removal_intent": {
     "description": "Remove baseline tree/scrub objects inside the start/track infield visible left of the rightmost gate, continuing toward the approach before the corner that leads to R09.",
@@ -316,5 +317,18 @@
     },
     "preserve_facility_trees_below_z": 174,
     "reference": "trees to remove inside track.png"
-  }
+  },
+  "grass_patches": [
+    {
+      "id": "rv02_restroom_grass",
+      "bounds_xz": [
+        344,
+        98,
+        372,
+        135
+      ],
+      "feather_m": 1.5,
+      "description": "Grass paddock around RV02 and relocated restroom; pit road masks override this patch"
+    }
+  ]
 }
