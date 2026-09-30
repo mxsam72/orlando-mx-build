@@ -15,3 +15,36 @@ Important interpretation:
 - R14 remains the v014 55 m triple.
 
 Native compilation and in-game validation remain pending until the latest workflow completes.
+
+
+## Native build complete
+
+GitHub Actions workflow `Build v015 jump pit grass refinement` completed successfully.
+
+- Workflow run: `36677294186`
+- Build source commit: `9f30e988a06553941c48c0c42e9fad9b792fea62`
+- Game artifact: `OrlandoMX-v015-game-candidate`
+- Game artifact ID: `11080464297`
+- Evidence artifact ID: `11080534203`
+- Source checkpoint artifact ID: `11079863681`
+- PKZ: `OrlandoMX_2026_v015.pkz`
+- PKZ bytes: `137612370`
+- PKZ SHA-256: `c8772ade97b915da1de4387f773ccc9155a886141f4b226f578725adc2d25c9f`
+
+Source QA:
+- 0 new excessive-grade nodes
+- route unchanged
+- outer terrain delta 0
+- layout checks pass
+- restroom is 10.0 m from RV02 center and inside the grass patch
+- restroom has 3.93 m clearance from the nearest road edge
+- RV/restroom grass patch area ~942.83 m², with road masks overriding grass
+- release source checks pass
+
+Native stages all succeeded:
+- fbx2edf
+- terrained_map
+- terrained_trh
+- tracked_merge
+
+Remaining gate: in-game ride validation only.
