@@ -49,7 +49,15 @@ def main():
     prefixes=('fence_post_','fence_rail_','WLLCONC_canopy_','canopy_','utility_pole_','crossarm_', 'pickup_','windshield_','sideglass_','bed_','bedrail_','wheel_','headlight_', 'trailer_','stripe_','trailerwheel_','hitch_','portable_toilet_','toilet_roof_','timing_')
     for gid,mid in geomodel.items():
         name=models[mid];v=array(child(byid[gid],'Vertices')).reshape(-1,3)*[.01,.01,-.01];low=v[v[:,1]<v[:,1].min()+.5];xz=low[:,[0,2]].mean(0)
-        replace=name.startswith(prefixes) or (name.startswith(('tree_','scrub_')) and 220<xz[0]<389 and 80<xz[1]<174)
+        facility_tree_replace=(name.startswith(('tree_','scrub_')) and 220<xz[0]<389 and 80<xz[1]<174)
+        # v014 user-marked clearing: remove baseline trees/scrub inside the
+        # starting-area infield, left of the rightmost gate and before the
+        # approach/corner sequence that leads toward R09.  Facility oaks live
+        # below z=174 and are preserved as separate parametric assets.
+        zone=read(S/'pit_facilities.json').get('tree_removal_intent',{}).get('authored_zone_xz',{})
+        start_tree_replace=(name.startswith(('tree_','scrub_')) and zone and
+                            zone['min_x']<xz[0]<zone['max_x'] and zone['min_z']<xz[1]<zone['max_z'])
+        replace=name.startswith(prefixes) or facility_tree_replace or start_tree_replace
         if replace:remove.update([gid,mid]);removed.append(name)
     objects['children']=[n for n in objects['children'] if values(n)[0] not in remove]
     conns['children']=[n for n in conns['children'] if not any(v in remove for v in values(n)[1:3])]
