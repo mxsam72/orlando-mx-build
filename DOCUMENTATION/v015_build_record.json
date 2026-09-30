@@ -1,0 +1,38 @@
+{
+  "version": "v015",
+  "branch": "rebuild-v015-jump-pit-grass-refinement",
+  "build_source_commit": "9f30e988a06553941c48c0c42e9fad9b792fea62",
+  "workflow_name": "Build v015 jump pit grass refinement",
+  "workflow_run_id": 36677294186,
+  "conclusion": "success",
+  "pkz": {
+    "filename": "OrlandoMX_2026_v015.pkz",
+    "bytes": 137612370,
+    "sha256": "c8772ade97b915da1de4387f773ccc9155a886141f4b226f578725adc2d25c9f"
+  },
+  "artifacts": {
+    "game_candidate_id": 11080464297,
+    "build_evidence_id": 11080534203,
+    "source_checkpoint_id": 11079863681
+  },
+  "geometry_source_sha256": "5df6492478504f5f2a94e22c1f05501fc3d6a10518d995d721408e506b73e8e9",
+  "geometry_checks": {
+    "new_excessive_grade_nodes": 0,
+    "maximum_racing_grade": 0.7771743535995483,
+    "route_unchanged": true,
+    "outer_terrain_max_delta_m": 0
+  },
+  "pit_checks": {
+    "restroom_distance_from_rv02_m": 10,
+    "restroom_in_grass_patch": true,
+    "restroom_road_edge_clearance_m": 3.9265725059198244,
+    "grass_patch_area_m2": 942.8264795383714
+  },
+  "native_stages": {
+    "fbx2edf": 0,
+    "terrained_map": 0,
+    "terrained_trh": 0,
+    "tracked_merge": 0
+  },
+  "in_game_riding": false
+}
