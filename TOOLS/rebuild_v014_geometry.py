@@ -75,7 +75,16 @@ def generate_target(spec,base,q,w,info):
   grooves=np.zeros_like(s)
   delta+=bank-oldbank+.045*np.minimum(legacy_rut,1)*corridor+(wave+chop+grooves)*core*seam_guard
   # Retain peripheral map, paddock and non-course scenery terrain exactly.
-  support=1-ease((dist-wi/2-7)/1.5);delta*=support
+  # R07 is now +5 m taller while explicitly 5% less steep on the face.  Its
+  # large ant-hill needs a wider LOCAL shoulder so the extra height does not
+  # terminate in an artificial side cliff.  All other sections keep the
+  # established 7 m peripheral protection.
+  r07=next(p for p in spec['profiles'] if p['id']=='R07')
+  r07mid=(r07['station_start_m']+r07['station_end_m'])/2
+  r07half=(r07['station_end_m']-r07['station_start_m'])/2+8
+  r07zone=(abs(periodic_delta(s,r07mid,L))<r07half)
+  support_extra=np.where(r07zone,r07.get('wide_support_extra_m',7.0),7.0)
+  support=1-ease((dist-wi/2-support_extra)/1.5);delta*=support
   shape=xx.shape;sl=slice(row,row+len(xx));target[sl]+=delta.reshape(shape)
   stations[sl]=s.reshape(shape);lateral[sl]=lat.reshape(shape);distance[sl]=dist.reshape(shape);widths[sl]=wi.reshape(shape);ewidth[sl]=effective.reshape(shape)
   if row%512==0:print('v014 target row',row,flush=True)
@@ -94,7 +103,9 @@ def generate_target(spec,base,q,w,info):
   target+=correction*fade*side*(distance<widths/2+8.5)
  # Smooth sub-grid projection/quantization artifacts, then relax only steep
  # changed terrain. Full-map base and protected outside nodes remain untouched.
- changed=(gaussian_filter((np.abs(target-base)>1e-6).astype(np.float32),1.5)>.002)&(distance<widths/2+8.5)
+ r07=next(p for p in spec['profiles'] if p['id']=='R07');r07mid=(r07['station_start_m']+r07['station_end_m'])/2;r07half=(r07['station_end_m']-r07['station_start_m'])/2+8
+ r07wide=(abs(periodic_delta(stations,r07mid,L))<r07half)&(distance<widths/2+r07.get('wide_support_extra_m',7.0)+1.5)
+ changed=(gaussian_filter((np.abs(target-base)>1e-6).astype(np.float32),1.5)>.002)&((distance<widths/2+8.5)|r07wide)
  sm=gaussian_filter(target-base,.65);target=base+np.where(changed,sm,0)
  before=target.copy();passes=0
  for _ in range(80):
@@ -129,7 +140,9 @@ def main():
  (OUT/'jump_profiles.json').write_text(json.dumps(fields['profiles'],indent=2)+'\n', encoding='utf-8')
  delta=H-base;gy,gx=np.gradient(H,DX);grade=np.hypot(gx,gy);changed=abs(delta)>SCALE/65535*1.1;racing=fields['distance']<fields['effective_width']/2
  by,bx=np.gradient(base,DX);baseline_grade=np.hypot(bx,by);new_spikes=int(((grade>.84)&(grade>baseline_grade+.05)&changed).sum())
- qa=dict(new_excessive_grade_nodes=new_spikes,version='v014',active_sections=spec['active_sections'],native_compilation=False,in_game_riding=False,raw_sha256=digest(OUT/'main_terrain.raw'),height_range_m=[float(H.min()),float(H.max())],maximum_raise_m=float(delta.max()),maximum_lower_m=float(-delta.min()),maximum_changed_grade=float(grade[changed].max()),maximum_racing_grade=float(grade[racing].max()),changed_nodes=int(changed.sum()),relaxation=fields['relaxation'],finite=bool(np.isfinite(H).all()),raw_bytes=(OUT/'main_terrain.raw').stat().st_size,raw_png_identical=bool(np.array_equal(encoded,np.array(Image.open(OUT/'main_terrain_16bit.png')))),outer_terrain_max_delta_m=float(abs(delta[fields['distance']>fields['width']/2+9]).max()),route_unchanged=digest(BASE_SRC/'baseline_route.npz')==manifest['route_sha256'],loop_closure_m=float(np.linalg.norm(q[0,:2]-q[-1,:2])),effective_width_range_m=[float(fields['effective_width'][racing].min()),float(fields['effective_width'][racing].max())])
+r07=next(p for p in spec['profiles'] if p['id']=='R07');r07mid=(r07['station_start_m']+r07['station_end_m'])/2;r07half=(r07['station_end_m']-r07['station_start_m'])/2+8
+ outer_mask=(fields['distance']>fields['width']/2+9)&~((abs(periodic_delta(fields['station'],r07mid,L))<r07half)&(fields['distance']<fields['width']/2+r07.get('wide_support_extra_m',7.0)+2))
+ qa=dict(new_excessive_grade_nodes=new_spikes,version='v014',active_sections=spec['active_sections'],native_compilation=False,in_game_riding=False,raw_sha256=digest(OUT/'main_terrain.raw'),height_range_m=[float(H.min()),float(H.max())],maximum_raise_m=float(delta.max()),maximum_lower_m=float(-delta.min()),maximum_changed_grade=float(grade[changed].max()),maximum_racing_grade=float(grade[racing].max()),changed_nodes=int(changed.sum()),relaxation=fields['relaxation'],finite=bool(np.isfinite(H).all()),raw_bytes=(OUT/'main_terrain.raw').stat().st_size,raw_png_identical=bool(np.array_equal(encoded,np.array(Image.open(OUT/'main_terrain_16bit.png')))),outer_terrain_max_delta_m=float(abs(delta[outer_mask]).max()) if outer_mask.any() else 0.0,route_unchanged=digest(BASE_SRC/'baseline_route.npz')==manifest['route_sha256'],loop_closure_m=float(np.linalg.norm(q[0,:2]-q[-1,:2])),effective_width_range_m=[float(fields['effective_width'][racing].min()),float(fields['effective_width'][racing].max())])
  (R/'DOCUMENTATION/v014_geometry_validation.json').write_text(json.dumps(qa,indent=2)+'\n', encoding='utf-8');print(json.dumps(qa,indent=2),flush=True)
  # Retain compact cache fields for QA; this file is a generated product.
  temporary=OUT/'qa_fields.npz.tmp'
