@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "51fdde42715d5494c6e33cd20740fde442ae51f55e4d99fd4567b21f6c4782ad",
+  "gate_height_spread_m": 0.0,
+  "gate_max_grade": 0.0,
+  "main_centerline_max_delta_m": 0.0,
+  "normal_lap_outside_merge_max_delta_m": 0.0,
+  "merge_bank_max_lower_m": 1.21785306930542,
+  "start_max_grade": 0.6871156096458435,
+  "start_centerline_max_grade": 0.18561023473739624,
+  "changed_max_grade": 0.7450332641601562,
+  "changed_nodes": 49044,
+  "retired_start_surface": true,
+  "native_compilation": false,
+  "in_game_riding": false,
+  "start_terrain_checks_pass": true,
+  "merge_shoulder_relaxation_passes": 0
+}

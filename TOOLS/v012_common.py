@@ -17,6 +17,13 @@ def save(p, value):
     Path(p).parent.mkdir(parents=True, exist_ok=True)
     Path(p).write_text(json.dumps(value, indent=2)+'\n', encoding='utf-8')
 def sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+def save_plot(fig,path,**kwargs):
+    """Buffer and verify PNGs before replacing a checkpoint preview."""
+    import io
+    from PIL import Image
+    buffer=io.BytesIO();fig.savefig(buffer,format='png',**kwargs);raw=buffer.getvalue()
+    Image.open(io.BytesIO(raw)).verify();path=Path(path);temporary=path.with_suffix('.png.tmp')
+    temporary.write_bytes(raw);Image.open(temporary).verify();temporary.replace(path)
 def ease(t):
     t = np.clip(t, 0, 1)
     return t**3*(10-15*t+6*t*t)

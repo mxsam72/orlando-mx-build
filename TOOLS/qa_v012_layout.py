@@ -51,6 +51,6 @@ def main():
         p=route_point(sa,station);ax.arrow(p[0],p[1],3*np.cos(p[2]),3*np.sin(p[2]),head_width=2,width=.25,color='#725c0b')
     ax.annotate('7 m corridor\nR08 remains separate',route_point(sa,134)[:2],xytext=(35,35),textcoords='offset points',arrowprops=dict(arrowstyle='->'),fontsize=8)
     ax.set(xlim=(304,441),ylim=(171,313),aspect='equal',title='Gate → outside T05 loop → before T06',xlabel='Native X (m)',ylabel='Native Z (m)');ax.legend(loc='lower left',fontsize=8)
-    fig.suptitle('v012 facility and start corrections — measured from the authored source\nPositions are construction estimates; first-lap timing, 24 riders and resets require an in-game check',fontsize=14);fig.savefig(folder/'facility_start_corrections.png',dpi=150);plt.close(fig)
+    fig.suptitle('v012 facility and start corrections — measured from the authored source\nPositions are construction estimates; first-lap timing, 24 riders and resets require an in-game check',fontsize=14);save_plot(fig,folder/'facility_start_corrections.png',dpi=150);plt.close(fig)
     print('Start topology and facility relations passed',qa)
 if __name__=='__main__':main()

@@ -79,6 +79,19 @@ def generate_target(spec,base,q,w,info):
   shape=xx.shape;sl=slice(row,row+len(xx));target[sl]+=delta.reshape(shape)
   stations[sl]=s.reshape(shape);lateral[sl]=lat.reshape(shape);distance[sl]=dist.reshape(shape);widths[sl]=wi.reshape(shape);ewidth[sl]=effective.reshape(shape)
   if row%512==0:print('v012 target row',row,flush=True)
+ # The immutable base contains a legacy flattening edge at s21 inside the
+ # extended R01 deck. Grade actual tabletop decks to an endpoint plane instead
+ # of inheriting that buried ledge. Keep lip/landing joins and lateral shoulders.
+ for p in profiles:
+  if p['kind'] not in ['tabletop','table_single']:continue
+  a=p['lip_s']+p['landmarks_m']['deck_start'];b=p['lip_s']+p['landmarks_m']['deck_end']
+  ss=np.linspace(a,b,max(50,int((b-a)/.15)));qq=ss%L
+  coords=[(SIZE-np.interp(qq,q[:,3],q[:,1]))/DX,np.interp(qq,q[:,3],q[:,0])/DX]
+  hh=map_coordinates(target,coords,order=1);plane=np.interp(ss,[a,b],[hh[0],hh[-1]])
+  correction=np.interp(stations,ss,plane-hh,left=0,right=0)
+  fade=ease((stations-a)/1.2)*(1-ease((stations-b+1.2)/1.2))
+  side=1-smooth((abs(lateral)-p['racing_width_m']/2)/p['side_taper_m'])
+  target+=correction*fade*side*(distance<widths/2+8.5)
  # Smooth sub-grid projection/quantization artifacts, then relax only steep
  # changed terrain. Full-map base and protected outside nodes remain untouched.
  changed=(gaussian_filter((np.abs(target-base)>1e-6).astype(np.float32),1.5)>.002)&(distance<widths/2+8.5)

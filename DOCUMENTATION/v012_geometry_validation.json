@@ -1,0 +1,287 @@
+{
+  "new_excessive_grade_nodes": 0,
+  "version": "v012",
+  "active_sections": [
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11"
+  ],
+  "native_compilation": false,
+  "in_game_riding": false,
+  "raw_sha256": "d6bc0695eeecd0ea7d2a74a8d8c86529dd8d748e478a94a393a167e0864ddc5f",
+  "height_range_m": [
+    1.6284732818603516,
+    6.385076999664307
+  ],
+  "maximum_raise_m": 3.2945752143859863,
+  "maximum_lower_m": 3.376150131225586,
+  "maximum_changed_grade": 0.7792714834213257,
+  "maximum_racing_grade": 0.776904821395874,
+  "changed_nodes": 335941,
+  "relaxation": {
+    "passes": 15,
+    "max_adjustment_m": 0.8117752075195312
+  },
+  "finite": true,
+  "raw_bytes": 8396802,
+  "raw_png_identical": true,
+  "outer_terrain_max_delta_m": 0.0,
+  "route_unchanged": true,
+  "loop_closure_m": 8.039928421361173e-12,
+  "effective_width_range_m": [
+    7.800000190734863,
+    8.699999809265137
+  ],
+  "actual_obstacle_profiles": [
+    {
+      "id": "R01",
+      "target_type": "TABLETOP",
+      "station_start_m": -2.0,
+      "station_end_m": 75.2,
+      "overall_length_m": 77.2,
+      "maximum_actual_grade": 0.37445109350390027,
+      "height_above_endpoint_chord_m": 2.972388424741664,
+      "deck_length_m": 45.6,
+      "actual_deck_height_spread_m": 0.07067497015953883,
+      "actual_deck_max_grade": 0.02765533043685764
+    },
+    {
+      "id": "R02",
+      "target_type": "TRIPLE",
+      "station_start_m": 128.0,
+      "station_end_m": 168.0,
+      "overall_length_m": 40.0,
+      "maximum_actual_grade": 0.6703512602976716,
+      "height_above_endpoint_chord_m": 2.589550232350141,
+      "encoded_valley_depths_m": [
+        1.9155181364038563,
+        1.9516139386243156
+      ],
+      "distinct_mound_count": 3
+    },
+    {
+      "id": "R03",
+      "target_type": "TABLE_SINGLE",
+      "station_start_m": 232.0,
+      "station_end_m": 267.0,
+      "overall_length_m": 35.0,
+      "maximum_actual_grade": 0.6771224061319074,
+      "height_above_endpoint_chord_m": 2.5953517934245727,
+      "deck_length_m": 7.0,
+      "actual_deck_height_spread_m": 0.0036050679709234146,
+      "actual_deck_max_grade": 0.003493562280695528,
+      "encoded_valley_depths_m": [
+        1.9839641336305434
+      ],
+      "distinct_mound_count": 2
+    },
+    {
+      "id": "R04",
+      "target_type": "NONE",
+      "station_start_m": 322.5,
+      "station_end_m": 352.2,
+      "overall_length_m": 29.69999999999999,
+      "maximum_actual_grade": 0.054504674834149114,
+      "height_above_endpoint_chord_m": 0.05919182644222465,
+      "authored_jump_height_m": 0
+    },
+    {
+      "id": "R05",
+      "target_type": "DOUBLE",
+      "station_start_m": 424.6,
+      "station_end_m": 436.6,
+      "overall_length_m": 12.0,
+      "maximum_actual_grade": 0.4359353609337546,
+      "height_above_endpoint_chord_m": 0.7275846637612715,
+      "encoded_valley_depths_m": [
+        0.5225930883701428
+      ],
+      "distinct_mound_count": 2
+    },
+    {
+      "id": "R06",
+      "target_type": "NONE",
+      "station_start_m": 484.5,
+      "station_end_m": 505.9,
+      "overall_length_m": 21.399999999999977,
+      "maximum_actual_grade": 0.09529339109320745,
+      "height_above_endpoint_chord_m": 0.14801484548092914,
+      "authored_jump_height_m": 0
+    },
+    {
+      "id": "R07",
+      "target_type": "ANT_HILL",
+      "station_start_m": 542.0,
+      "station_end_m": 563.0,
+      "overall_length_m": 21.0,
+      "maximum_actual_grade": 0.5478425704286707,
+      "height_above_endpoint_chord_m": 2.788481700356141,
+      "encoded_major_crest_count": 1,
+      "encoded_crest_station_m": 553.0517097581318
+    },
+    {
+      "id": "R08",
+      "target_type": "NONE",
+      "station_start_m": 605.5,
+      "station_end_m": 631.0,
+      "overall_length_m": 25.5,
+      "maximum_actual_grade": 0.05334388431412407,
+      "height_above_endpoint_chord_m": 0.03479636099969996,
+      "authored_jump_height_m": 0
+    },
+    {
+      "id": "R09",
+      "target_type": "DOUBLE",
+      "station_start_m": 696.2,
+      "station_end_m": 721.2,
+      "overall_length_m": 25.0,
+      "maximum_actual_grade": 0.5677410995571393,
+      "height_above_endpoint_chord_m": 2.3951709227850664,
+      "encoded_valley_depths_m": [
+        1.9441145665827197
+      ],
+      "distinct_mound_count": 2
+    },
+    {
+      "id": "R10",
+      "target_type": "TABLETOP",
+      "station_start_m": 746.0,
+      "station_end_m": 796.0,
+      "overall_length_m": 50.0,
+      "maximum_actual_grade": 0.4281536899260203,
+      "height_above_endpoint_chord_m": 3.289287699727196,
+      "deck_length_m": 17.0,
+      "actual_deck_height_spread_m": 0.011099168340339638,
+      "actual_deck_max_grade": 0.005048788372064905
+    },
+    {
+      "id": "R11",
+      "target_type": "DOUBLE",
+      "station_start_m": 844.0,
+      "station_end_m": 864.0,
+      "overall_length_m": 20.0,
+      "maximum_actual_grade": 0.19122923946173387,
+      "height_above_endpoint_chord_m": 0.4995677815618964,
+      "encoded_valley_depths_m": [
+        0.39795526499035594
+      ],
+      "distinct_mound_count": 2
+    },
+    {
+      "id": "R12",
+      "target_type": "ROLLER_SEQUENCE",
+      "station_start_m": 868.5,
+      "station_end_m": 888.5,
+      "overall_length_m": 20.0,
+      "maximum_actual_grade": 0.4583871862557771,
+      "height_above_endpoint_chord_m": 0.5364913027662559,
+      "encoded_roller_count": 4,
+      "encoded_crest_stations_m": [
+        870.9862385321101,
+        875.9954128440367,
+        881.1130108423687,
+        885.7969140950793
+      ],
+      "encoded_crest_spacing_m": [
+        5.009174311926586,
+        5.11759799833203,
+        4.683903252710593
+      ]
+    },
+    {
+      "id": "R13",
+      "target_type": "NONE",
+      "station_start_m": 943.0,
+      "station_end_m": 969.7,
+      "overall_length_m": 26.700000000000045,
+      "maximum_actual_grade": 0.032638676454354254,
+      "height_above_endpoint_chord_m": 0.02918692162416514,
+      "authored_jump_height_m": 0
+    },
+    {
+      "id": "R14",
+      "target_type": "TRIPLE",
+      "station_start_m": 981.0,
+      "station_end_m": 1016.0,
+      "overall_length_m": 35.0,
+      "maximum_actual_grade": 0.7729521399940751,
+      "height_above_endpoint_chord_m": 3.180905792842175,
+      "encoded_valley_depths_m": [
+        2.131561603689526,
+        2.1291347689904145
+      ],
+      "distinct_mound_count": 3
+    },
+    {
+      "id": "R15",
+      "target_type": "SINGLE",
+      "station_start_m": 1089.5,
+      "station_end_m": 1112.5,
+      "overall_length_m": 23.0,
+      "maximum_actual_grade": 0.16377832635384948,
+      "height_above_endpoint_chord_m": 0.8465934457295954
+    },
+    {
+      "id": "R16",
+      "target_type": "TABLETOP",
+      "station_start_m": 1126.8,
+      "station_end_m": 1173.1,
+      "overall_length_m": 46.299999999999955,
+      "maximum_actual_grade": 0.43277301980035077,
+      "height_above_endpoint_chord_m": 2.702320711924511,
+      "deck_length_m": 21.0,
+      "actual_deck_height_spread_m": 0.06080618745983024,
+      "actual_deck_max_grade": 0.013978426296233692
+    },
+    {
+      "id": "R17",
+      "target_type": "ROLLER_SEQUENCE",
+      "station_start_m": 1287.5,
+      "station_end_m": 1327.5,
+      "overall_length_m": 40.0,
+      "maximum_actual_grade": 0.4095652786497652,
+      "height_above_endpoint_chord_m": 0.5288247558367782,
+      "encoded_roller_count": 8,
+      "encoded_crest_stations_m": [
+        1290.0246038365303,
+        1295.012093411176,
+        1300.037948290242,
+        1305.1021684737282,
+        1309.9361968306923,
+        1314.962051709758,
+        1320.0262718932445,
+        1325.0521267723102
+      ],
+      "encoded_crest_spacing_m": [
+        4.987489574645679,
+        5.025854879065946,
+        5.0642201834862135,
+        4.834028356964154,
+        5.025854879065719,
+        5.064220183486441,
+        5.025854879065719
+      ]
+    },
+    {
+      "id": "R18",
+      "target_type": "INSIDE_ROLLER",
+      "station_start_m": 1352.0,
+      "station_end_m": 1358.0,
+      "overall_length_m": 6.0,
+      "maximum_actual_grade": 0.36158576609946635,
+      "height_above_endpoint_chord_m": 0.5084131984270295,
+      "main_line_authored_jump_max_m": 0.0,
+      "inside_line_authored_jump_max_m": 0.4999999402805132,
+      "inside_offset_m": 3.4
+    }
+  ],
+  "geometry_checks_pass": true
+}
