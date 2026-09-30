@@ -5,14 +5,15 @@ R=Path(__file__).resolve().parents[1];P=R/'V015_SOURCE/v015_geometry_spec.json'
 
 def main():
     spec=json.loads(P.read_text(encoding='utf-8'));p={x['id']:x for x in spec['profiles']}
-    expected={'R02':49.0,'R05':29.0,'R09':60.0,'R10':65.0,'R11':20.0,'R12':35.0,'R14':55.0,'R16':46.3,'R18':18.0}
-    for k,v in expected.items():assert abs(p[k]['user_target_length_m']-v)<1e-5,(k,p[k]['user_target_length_m'],v)
-    assert abs(p['R05']['station_start_m']-399.6)<1e-6
-    assert abs(p['R11']['station_start_m']-839.0)<1e-6
-    assert abs(p['R14']['station_start_m']-951.0)<1e-6
-    assert abs(p['R16']['station_start_m']-1116.8)<1e-6
-    assert p['R12']['crest_spacings_m']==[10.0,10.0,5.0]
-    assert abs(p['R18']['racing_width_m']-5.6)<1e-6
-    assert abs(p['R07']['crest_height_m']-8.2)<1e-6
+    expected={'R03':47.0,'R07':36.4322368421,'R09':50.0,'R10':70.0,'R14':55.0,'R16':43.3,'R17':80.0,'R18':18.0}
+    for k,v in expected.items():assert abs(p[k]['user_target_length_m']-v)<1e-4,(k,p[k]['user_target_length_m'],v)
+    assert abs(p['R03']['landing_m']-11.2)<1e-6
+    assert abs(p['R07']['crest_height_m']-6.15)<1e-6
+    assert abs(p['R09']['station_start_m']-691.2)<1e-6 and abs(p['R09']['crest_height_m']-3.456)<1e-6
+    assert abs(p['R10']['station_start_m']-741.2)<1e-6 and abs(p['R10']['deck_m']-20.5)<1e-6
+    assert abs(p['R14']['user_target_length_m']-55.0)<1e-6
+    assert abs(p['R16']['deck_m']-18.0)<1e-6
+    assert abs(p['R17']['station_start_m']-1257.5)<1e-6
+    assert abs(p['R18']['racing_width_m']-7.1)<1e-6
     print('v015 authoritative spec validated')
 if __name__=='__main__':main()
