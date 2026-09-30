@@ -179,8 +179,8 @@
       "id": "restroom",
       "type": "restroom",
       "xz": [
-        274,
-        112
+        275,
+        112.5
       ],
       "heading": 0
     },
@@ -363,7 +363,7 @@
     }
   ],
   "placement_intent": {
-    "bathroom": "v018: restroom remains at (274,112); rotate to heading 0 so its door wall faces +Z toward the spectator fence.",
+    "bathroom": "v018: restroom kept in the corrected opposite-road cluster at (275,112.5), a ~1 m clearance adjustment from v017, with heading 0 so its door wall faces +Z toward the spectator fence.",
     "office": "Left / negative X of red frontage pickup03 (321,149), viewed from the pit road toward spectator fence (+Z)",
     "precision": "Relational placement from user instruction and videos; metric positions are authored, not surveyed",
     "supporting_adjustment": "Bathroom shade oak to (266,120). Remove the two prior wrong bathroom-driven grass patches.",
