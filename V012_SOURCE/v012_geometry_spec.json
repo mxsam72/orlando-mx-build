@@ -1,0 +1,633 @@
+{
+  "version": "v012",
+  "metric_status": "ALL dimensions are non-surveyed tuning estimates",
+  "active_sections": [
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11"
+  ],
+  "priority_groups": [
+    [
+      "S09"
+    ],
+    [
+      "S07",
+      "S08"
+    ],
+    [
+      "S04",
+      "S05",
+      "S06"
+    ],
+    [
+      "S01",
+      "S02",
+      "S03"
+    ],
+    [
+      "S10",
+      "S11"
+    ]
+  ],
+  "repeat_views": {
+    "S12": [
+      "S01"
+    ],
+    "S13": [
+      "S02",
+      "S03"
+    ],
+    "S14": [
+      "S03",
+      "S04"
+    ]
+  },
+  "profiles": [
+    {
+      "id": "R01",
+      "kind": "tabletop",
+      "target_type": "TABLETOP",
+      "station_start_m": -2.0,
+      "station_end_m": 75.2,
+      "user_target_length_m": 77.2,
+      "face_m": 12.5,
+      "face_length_m": 12.5,
+      "crest_height_m": 2.8,
+      "lip_height_m": 2.8,
+      "landing_m": 18.0,
+      "landing_length_m": 18.0,
+      "lip_s": 10.5,
+      "racing_width_m": 10.8,
+      "side_taper_m": 7.5,
+      "face_progression": 0.5,
+      "lower_face_grade_ratio": 0.6,
+      "lip_transition_m": 1.1,
+      "deck_m": 45.6,
+      "gaps": [],
+      "notes": "Long front tabletop: twice v011 raised-earthwork length (38.6 m); zero-height padding excluded",
+      "gap_length_m": 0,
+      "role": "Long front tabletop: twice v011 raised-earthwork length (38.6 m); zero-height padding excluded",
+      "evidence": "v012 handover supersedes v011 classification"
+    },
+    {
+      "id": "R02",
+      "kind": "triple",
+      "target_type": "TRIPLE",
+      "station_start_m": 128.0,
+      "station_end_m": 168.0,
+      "user_target_length_m": 40.0,
+      "face_m": 8.0,
+      "face_length_m": 8.0,
+      "crest_height_m": 2.6,
+      "lip_height_m": 2.6,
+      "landing_m": 12.5,
+      "landing_length_m": 12.5,
+      "lip_s": 136.0,
+      "racing_width_m": 10.0,
+      "side_taper_m": 7.5,
+      "face_progression": 0.5,
+      "lower_face_grade_ratio": 0.6,
+      "lip_transition_m": 0.8,
+      "deck_m": 0.0,
+      "gaps": [
+        {
+          "span_m": 9,
+          "valley_height_m": 0.3,
+          "landing_crest_height_m": 2.25
+        },
+        {
+          "span_m": 9.7,
+          "valley_height_m": 0.3,
+          "landing_crest_height_m": 2.4
+        }
+      ],
+      "notes": "Big triple: 8 m face + 0.8 lip + 9 / 9.7 gaps + 12.5 landing = 40 m",
+      "gap_length_m": 18.7,
+      "role": "Big triple: 8 m face + 0.8 lip + 9 / 9.7 gaps + 12.5 landing = 40 m",
+      "evidence": "v012 handover supersedes v011 classification"
+    },
+    {
+      "id": "R03",
+      "kind": "table_single",
+      "target_type": "TABLE_SINGLE",
+      "station_start_m": 232.0,
+      "station_end_m": 267.0,
+      "user_target_length_m": 35.0,
+      "face_m": 9.0,
+      "face_length_m": 9.0,
+      "crest_height_m": 2.6,
+      "lip_height_m": 2.6,
+      "landing_m": 9.2,
+      "landing_length_m": 9.2,
+      "lip_s": 241.0,
+      "racing_width_m": 10.0,
+      "side_taper_m": 7.5,
+      "face_progression": 0.5,
+      "lower_face_grade_ratio": 0.6,
+      "lip_transition_m": 0.8,
+      "deck_m": 7.0,
+      "gaps": [
+        {
+          "span_m": 9,
+          "valley_height_m": 0.35,
+          "landing_crest_height_m": 2.3
+        }
+      ],
+      "notes": "Table-single: 9 face + 0.8 lip + 7 deck + 9 gap to separate single + 9.2 landing = 35 m",
+      "gap_length_m": 9,
+      "role": "Table-single: 9 face + 0.8 lip + 7 deck + 9 gap to separate single + 9.2 landing = 35 m",
+      "evidence": "v012 handover supersedes v011 classification"
+    },
+    {
+      "id": "R04",
+      "kind": "none",
+      "target_type": "NONE",
+      "station_start_m": 322.5,
+      "station_end_m": 352.2,
+      "user_target_length_m": null,
+      "face_m": 11.5,
+      "face_length_m": 11.5,
+      "crest_height_m": 0,
+      "lip_height_m": 0,
+      "landing_m": 18.2,
+      "landing_length_m": 18.2,
+      "lip_s": 334.0,
+      "racing_width_m": 10.0,
+      "side_taper_m": 7.5,
+      "face_progression": 0.5,
+      "lower_face_grade_ratio": 0.6,
+      "lip_transition_m": 0.8,
+      "deck_m": 0.0,
+      "gaps": [],
+      "notes": "NO JUMP: remove previous obstacle; retain corner/normal ground",
+      "gap_length_m": 0,
+      "role": "NO JUMP: remove previous obstacle; retain corner/normal ground",
+      "evidence": "v012 handover supersedes v011 classification"
+    },
+    {
+      "id": "R05",
+      "kind": "double",
+      "target_type": "DOUBLE",
+      "station_start_m": 424.6,
+      "station_end_m": 436.6,
+      "user_target_length_m": 12.0,
+      "face_m": 3.2,
+      "face_length_m": 3.2,
+      "crest_height_m": 0.7,
+      "lip_height_m": 0.7,
+      "landing_m": 3.4,
+      "landing_length_m": 3.4,
+      "lip_s": 427.8,
+      "racing_width_m": 10.0,
+      "side_taper_m": 7.5,
+      "face_progression": 0.5,
+      "lower_face_grade_ratio": 0.6,
+      "lip_transition_m": 0.6,
+      "deck_m": 0.0,
+      "gaps": [
+        {
+          "span_m": 4.8,
+          "valley_height_m": 0.07,
+          "landing_crest_height_m": 0.6
+        }
+      ],
+      "notes": "Low 12 m double ending 2 m before T05 arc entry",
+      "gap_length_m": 4.8,
+      "role": "Low 12 m double ending 2 m before T05 arc entry",
+      "evidence": "v012 handover supersedes v011 classification"
+    }
+  ],
+  "berms": [
+    {
+      "id": "T01",
+      "section": "S02",
+      "outer_rise_m": 1.55,
+      "effective_width_m": 8.7,
+      "rut_depth_m": 0.115,
+      "pocket_depth_m": 0.17,
+      "apex_shift_m": -3,
+      "entry_load": 1.05,
+      "exit_load": 0.85,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.6,
+          "apex_out_m": -0.65,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.5,
+          "apex_out_m": 2.8,
+          "exit_out_m": 1.2,
+          "width_m": 0.68,
+          "depth_scale": 1.0
+        }
+      ],
+      "braking_spacing_m": 3.0
+    },
+    {
+      "id": "T02",
+      "section": "S03",
+      "outer_rise_m": 1.14,
+      "effective_width_m": 8.4,
+      "rut_depth_m": 0.085,
+      "pocket_depth_m": 0.07,
+      "apex_shift_m": 1,
+      "entry_load": 0.9,
+      "exit_load": 0.85,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.48,
+          "apex_out_m": -0.5,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.7,
+          "apex_out_m": 2.6599999999999997,
+          "exit_out_m": 1.5,
+          "width_m": 0.68,
+          "depth_scale": 1.0
+        }
+      ],
+      "braking_spacing_m": 3.35
+    },
+    {
+      "id": "T03",
+      "section": "S04",
+      "outer_rise_m": 1.65,
+      "effective_width_m": 8.1,
+      "rut_depth_m": 0.115,
+      "pocket_depth_m": 0.27,
+      "apex_shift_m": -2,
+      "entry_load": 1.0,
+      "exit_load": 1.0,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.36,
+          "apex_out_m": -0.65,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.5,
+          "apex_out_m": 2.5199999999999996,
+          "exit_out_m": 1.2,
+          "width_m": 0.68,
+          "depth_scale": 1.0
+        }
+      ],
+      "braking_spacing_m": 3.7
+    },
+    {
+      "id": "T04",
+      "section": "S04",
+      "outer_rise_m": 1.1,
+      "effective_width_m": 8.6,
+      "rut_depth_m": 0.085,
+      "pocket_depth_m": 0.08,
+      "apex_shift_m": 3,
+      "entry_load": 0.75,
+      "exit_load": 1.0,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.6,
+          "apex_out_m": -0.5,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.7,
+          "apex_out_m": 2.8,
+          "exit_out_m": 1.5,
+          "width_m": 0.68,
+          "depth_scale": 1.0
+        }
+      ],
+      "braking_spacing_m": 4.05
+    },
+    {
+      "id": "T05",
+      "section": "S05",
+      "outer_rise_m": 1.5,
+      "effective_width_m": 8.3,
+      "rut_depth_m": 0.115,
+      "pocket_depth_m": 0.19,
+      "apex_shift_m": 0,
+      "entry_load": 1.0,
+      "exit_load": 0.85,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.48,
+          "apex_out_m": -0.65,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.5,
+          "apex_out_m": 2.6599999999999997,
+          "exit_out_m": 1.2,
+          "width_m": 0.68,
+          "depth_scale": 1.0
+        }
+      ],
+      "braking_spacing_m": 3.0
+    },
+    {
+      "id": "T06",
+      "section": "S05",
+      "outer_rise_m": 1.25,
+      "effective_width_m": 8.2,
+      "rut_depth_m": 0.085,
+      "pocket_depth_m": 0.14,
+      "apex_shift_m": -1,
+      "entry_load": 0.85,
+      "exit_load": 0.75,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.36,
+          "apex_out_m": -0.5,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.7,
+          "apex_out_m": 2.5199999999999996,
+          "exit_out_m": 1.5,
+          "width_m": 0.68,
+          "depth_scale": 1.0
+        }
+      ],
+      "braking_spacing_m": 3.35
+    },
+    {
+      "id": "T07",
+      "section": "S06",
+      "outer_rise_m": 1.35,
+      "effective_width_m": 8.0,
+      "rut_depth_m": 0.085,
+      "pocket_depth_m": 0.15,
+      "apex_shift_m": -2,
+      "entry_load": 0.85,
+      "exit_load": 0.7,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.6,
+          "apex_out_m": -0.65,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.5,
+          "apex_out_m": 2.8,
+          "exit_out_m": 1.2,
+          "width_m": 0.68,
+          "depth_scale": 1.0
+        }
+      ],
+      "braking_spacing_m": 3.7
+    },
+    {
+      "id": "T08",
+      "section": "S07",
+      "outer_rise_m": 1.4,
+      "effective_width_m": 8.0,
+      "rut_depth_m": 0.085,
+      "pocket_depth_m": 0.17,
+      "apex_shift_m": 2,
+      "entry_load": 0.9,
+      "exit_load": 0.9,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.48,
+          "apex_out_m": -0.5,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.7,
+          "apex_out_m": 2.6599999999999997,
+          "exit_out_m": 1.5,
+          "width_m": 0.68,
+          "depth_scale": 1.0
+        }
+      ],
+      "braking_spacing_m": 4.05
+    },
+    {
+      "id": "T09",
+      "section": "S08",
+      "outer_rise_m": 1.85,
+      "effective_width_m": 7.8,
+      "rut_depth_m": 0.115,
+      "pocket_depth_m": 0.29,
+      "apex_shift_m": 1,
+      "entry_load": 1.05,
+      "exit_load": 1.0,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.36,
+          "apex_out_m": -0.65,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.5,
+          "apex_out_m": 2.5199999999999996,
+          "exit_out_m": 1.2,
+          "width_m": 0.68,
+          "depth_scale": 1.0
+        }
+      ],
+      "braking_spacing_m": 3.0
+    },
+    {
+      "id": "T10",
+      "section": "S09",
+      "outer_rise_m": 1.8,
+      "effective_width_m": 7.9,
+      "rut_depth_m": 0.115,
+      "pocket_depth_m": 0.25,
+      "apex_shift_m": 2,
+      "entry_load": 1.0,
+      "exit_load": 0.8,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.6,
+          "apex_out_m": -0.5,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.7,
+          "apex_out_m": 2.8,
+          "exit_out_m": 1.5,
+          "width_m": 0.68,
+          "depth_scale": 1.0
+        }
+      ],
+      "braking_spacing_m": 3.35
+    },
+    {
+      "id": "T11",
+      "section": "S10",
+      "outer_rise_m": 1.5,
+      "effective_width_m": 8.1,
+      "rut_depth_m": 0.085,
+      "pocket_depth_m": 0.18,
+      "apex_shift_m": -1,
+      "entry_load": 1.0,
+      "exit_load": 0.8,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.48,
+          "apex_out_m": -0.65,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.5,
+          "apex_out_m": 2.6599999999999997,
+          "exit_out_m": 1.2,
+          "width_m": 0.68,
+          "depth_scale": 1.0
+        }
+      ],
+      "braking_spacing_m": 3.7
+    },
+    {
+      "id": "T12",
+      "section": "S11",
+      "outer_rise_m": 1.4,
+      "effective_width_m": 8.3,
+      "rut_depth_m": 0.085,
+      "pocket_depth_m": 0.15,
+      "apex_shift_m": 0,
+      "entry_load": 0.9,
+      "exit_load": 0.8,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.36,
+          "apex_out_m": -0.5,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.7,
+          "apex_out_m": 2.5199999999999996,
+          "exit_out_m": 1.5,
+          "width_m": 0.68,
+          "depth_scale": 1.0
+        }
+      ],
+      "braking_spacing_m": 4.05
+    },
+    {
+      "id": "T13",
+      "section": "S11",
+      "outer_rise_m": 1.4,
+      "effective_width_m": 8.4,
+      "rut_depth_m": 0.085,
+      "pocket_depth_m": 0.15,
+      "apex_shift_m": 2,
+      "entry_load": 0.85,
+      "exit_load": 0.85,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.6,
+          "apex_out_m": -0.65,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.5,
+          "apex_out_m": 2.8,
+          "exit_out_m": 1.2,
+          "width_m": 0.68,
+          "depth_scale": 1.0
+        }
+      ],
+      "braking_spacing_m": 3.0
+    },
+    {
+      "id": "T14",
+      "section": "S01",
+      "outer_rise_m": 1.5,
+      "effective_width_m": 8.6,
+      "rut_depth_m": 0.085,
+      "pocket_depth_m": 0.17,
+      "apex_shift_m": -2,
+      "entry_load": 0.95,
+      "exit_load": 0.9,
+      "rut_paths": [
+        {
+          "entry_out_m": -1.48,
+          "apex_out_m": -0.5,
+          "exit_out_m": -1.25,
+          "width_m": 0.6,
+          "depth_scale": 0.8
+        },
+        {
+          "entry_out_m": 1.7,
+          "apex_out_m": 2.6599999999999997,
+          "exit_out_m": 1.5,
+          "width_m": 0.68,
+          "depth_scale": 1.0
+        }
+      ],
+      "braking_spacing_m": 3.35
+    }
+  ],
+  "continuous_relief": {
+    "long_wave_amplitude_m": 0,
+    "short_wave_amplitude_m": 0,
+    "braking_chop_amplitude_m": 0.035
+  },
+  "route_changes": [],
+  "notes": [
+    "No repeated flat-deck template. Profiles use different progressive faces, rounded lips, short crests and long landings.",
+    "T03/T05 local legacy pedestals are removed in favor of supported corner cross-sections.",
+    "S12/S13 requested early in brief share physical sectors S01-S03, so those edits satisfy both observations.",
+    "Horizontal centerline retained on evidence grounds; preferred racing width/radius changes through actual grooves and banks."
+  ],
+  "evidence_map": "V010_SOURCE/review_section_sync.json",
+  "provisional_features": [
+    {
+      "id": "EX1",
+      "station_estimate_m": 184,
+      "enabled": false,
+      "reason": "Separate mound versus raised T02 entry unresolved"
+    },
+    {
+      "id": "EX2",
+      "station_estimate_m": 1040,
+      "enabled": false,
+      "reason": "Post-R14 rise form and station need user confirmation"
+    }
+  ],
+  "authority": "User v012 handover, 2026-09-29",
+  "completed_groups": [
+    "A"
+  ]
+}

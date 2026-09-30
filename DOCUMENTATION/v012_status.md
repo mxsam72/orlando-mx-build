@@ -11,3 +11,5 @@ Checkpoint 01: corrected base and authoritative instructions captured. All R01â€
 Material invariants: palette colors encoded in FBX diffuse/ambient properties, diffuse bitmap connections retained, generated textures staged at root and in `scenery.fbm/` before native import.
 
 Available references: v011 test ride; all five IMG_3591/3592/3594/3595/3597 clips; prior GoPro and section mapping. Metric authoring dimensions use the user's requested approximate lengths, not claimed survey measurements.
+
+Checkpoint 02: R01â€“R05 authored. R01 is 77.2 m, R02 triple 40 m, R03 table-single 35 m, R04 has no obstacle, R05 low double 12 m immediately before T05. Source primitives validated; terrain QA follows after all groups.
