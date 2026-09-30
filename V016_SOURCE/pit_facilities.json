@@ -1,5 +1,5 @@
 {
-  "status": "Video-derived v016 pit placement; dimensions remain unsurveyed authoring estimates",
+  "status": "Video-derived v016 pit placement; dimensions and coordinates remain unsurveyed authoring estimates",
   "references": [
     "IMG_3591.mov",
     "IMG_3592.mov",
@@ -127,8 +127,8 @@
       "id": "restroom",
       "type": "restroom",
       "xz": [
-        360,
-        110
+        288,
+        145
       ],
       "heading": 90
     },
@@ -226,8 +226,8 @@
       "id": "oak_restroom",
       "type": "oak",
       "xz": [
-        366,
-        118
+        284,
+        156
       ],
       "heading": 0,
       "radius": 7.8
@@ -301,11 +301,11 @@
     }
   ],
   "placement_intent": {
-    "bathroom": "v016: restroom moved directly beside/near RV02 in the user-identified right-side RV grass area; authored center (360,110), about 10 m from RV02 center",
+    "bathroom": "v016: relocate restroom to (288,145), close to red pickup_02 at (295,147) and left/west of canopy_01 at (304,149)",
     "office": "Left / negative X of red frontage pickup03 (321,149), viewed from the pit road toward spectator fence (+Z)",
     "precision": "Relational placement from user instruction and videos; metric positions are authored, not surveyed",
-    "supporting_adjustment": "Move bathroom shade oak to (366,118) and convert the surrounding RV02/restroom paddock rectangle to grass, while preserving all authored road corridors as pale compacted road",
-    "grass_area": "v016: entire RV02/restroom area X344-372, Z98-135 is authored as grass except wherever pit roadway masks overlap"
+    "supporting_adjustment": "Move bathroom shade oak to (284,156). Preserve the prior RV02 grass patch and add a separate front restroom/red-truck/canopy grass paddock.",
+    "grass_area": "v016: add grass patch X278-312, Z140-162 covering the restroom/red-truck/canopy frontage; all authored pit road corridors continue to override grass"
   },
   "tree_removal_intent": {
     "description": "Remove baseline tree/scrub objects inside the start/track infield visible left of the rightmost gate, continuing toward the approach before the corner that leads to R09.",
@@ -328,7 +328,23 @@
         135
       ],
       "feather_m": 1.5,
-      "description": "Grass paddock around RV02 and relocated restroom; pit road masks override this patch"
+      "description": "Preserved grass paddock around RV02 from v015; pit road masks override grass"
+    },
+    {
+      "id": "front_restroom_truck_grass",
+      "bounds_xz": [
+        278,
+        140,
+        312,
+        162
+      ],
+      "feather_m": 1.5,
+      "description": "Grass paddock around relocated restroom, red pickup and canopy/office frontage; pit road masks override grass"
     }
-  ]
+  ],
+  "water_removal_intent": {
+    "model": "drainage_water_2",
+    "reason": "User-directed removal of visible water/drainage patch beside R07 ant-hill in v015 test video",
+    "preserve_other_water": true
+  }
 }
