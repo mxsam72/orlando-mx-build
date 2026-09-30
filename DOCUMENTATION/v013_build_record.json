@@ -1,0 +1,30 @@
+{
+  "version": "v013",
+  "branch": "rebuild-v013-jump-refinement",
+  "build_source_commit": "3906fba27accd45f9848ee129b12f32187a01005",
+  "workflow_name": "Build v013 jump refinement",
+  "workflow_run_id": 36666031058,
+  "conclusion": "success",
+  "pkz": {
+    "filename": "OrlandoMX_2026_v013.pkz",
+    "bytes": 139974255,
+    "sha256": "5c0cd44627845bf629d06262e50c9375f973b38f6686666e5f401b7b07f44adb"
+  },
+  "artifacts": {
+    "game_candidate_id": 11076179370,
+    "build_evidence_id": 11076422043,
+    "source_checkpoint_id": 11076084383
+  },
+  "geometry_source_sha256": "394f0462fea1d61867b0cc75038aeee6fa17d2845d3e4a4a860d265a85ba7090",
+  "geometry_checks_pass": true,
+  "native_stages": {
+    "fbx2edf": 0,
+    "terrained_map": 0,
+    "terrained_trh": 0,
+    "tracked_merge": 0
+  },
+  "in_game_riding": false,
+  "first_lap_test": false,
+  "start_reset_test": false,
+  "multiplayer_test": false
+}
