@@ -37,10 +37,15 @@ def raster(meshes,eye,target,span,output,title,size=(1280,800),ground_y=None):
                 shade=.62+.38*max(0,n@light)
                 if bitmap is not None:
                     uv=np.array(mesh['uv'][fi])[[0,k,k+1]];u=w0[mask]*uv[0,0]+w1[mask]*uv[1,0]+w2[mask]*uv[2,0];vvv=w0[mask]*uv[0,1]+w1[mask]*uv[1,1]+w2[mask]*uv[2,1]
+                    # v021 stores readable decals pre-flipped to compensate for
+                    # the native game's horizontal UV handedness. Undo that
+                    # preflip in this CPU preview so the QA image represents the
+                    # expected in-game orientation rather than the raw bitmap.
+                    if mats.get(mat,{}).get('native_u_preflipped'):u=1-u
                     h,w=bitmap.shape[:2];col=bitmap[np.clip(((1-vvv)*(h-1)).astype(int),0,h-1),np.clip((u*(w-1)).astype(int),0,w-1)]*shade
                 else:col=rgb*shade
                 buf[y0:y1+1,x0:x1+1][mask]=np.clip(col,0,255).astype('uint8');db[mask]=z[mask]
-    im=Image.fromarray(buf);d=ImageDraw.Draw(im);d.rectangle((0,0,W,63),fill='#f5f7f8');d.text((22,12),title,fill='#162c39',font=ImageFont.truetype(FONT,21));d.text((22,39),'v021 actual authored meshes / UV textures — source preview; game lighting differs',fill='#425563',font=ImageFont.truetype(FONT,13));im.save(output);print('Rendered',output.name,flush=True)
+    im=Image.fromarray(buf);d=ImageDraw.Draw(im);d.rectangle((0,0,W,63),fill='#f5f7f8');d.text((22,12),title,fill='#162c39',font=ImageFont.truetype(FONT,21));d.text((22,39),'v021 native-handedness preview — readable decals compensated; game lighting differs',fill='#425563',font=ImageFont.truetype(FONT,13));im.save(output);print('Rendered',output.name,flush=True)
 
 def ground_mesh(H,bounds,step=3):
     cfg=read(S/'pit_facilities.json');x0,x1,z0,z1=bounds;out=[]
