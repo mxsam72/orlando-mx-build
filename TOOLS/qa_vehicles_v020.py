@@ -65,7 +65,7 @@ def main():
     assert 'pickup_03' in baseassets and 'pickup_03' not in newassets
     assert set(newassets)==set(baseassets)-{'pickup_03'}
     for key in set(newassets)-{'bithlo_sticker_stop'}:assert newassets[key]==baseassets[key],('unauthorized pit asset change',key)
-    assert newassets['bithlo_sticker_stop']['xz']==[242.0,143.0] and newassets['bithlo_sticker_stop']['heading']==180
+    assert newassets['bithlo_sticker_stop']['xz']==[278.0,142.0] and newassets['bithlo_sticker_stop']['heading']==270
     assert pit['roads']==baselinepit['roads'] and pit['grass_patches']==baselinepit['grass_patches']
     bathroom=oldassets['restroom'];assert bathroom['xz']==[275,112.5] and bathroom['heading']==0;assert 'bithlo_sticker_stop' in oldassets
     assert sha(O/'terrain.raw')==read(S/'v018_invariants.json')['raw_sha256']
@@ -74,3 +74,4 @@ def main():
     for r in records:print(r['asset'],r['passes'],'road',round(r['road_edge_m'],2),'existing',r['existing_asset_nearest'],round(r['existing_asset_m'],2),'paired',round(r['other_new_asset_m'],2))
     assert report['checks_pass'],'Vehicle clearance failure; adjust placement'
 if __name__=='__main__':main()
+

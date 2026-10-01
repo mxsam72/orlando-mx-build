@@ -1,43 +1,37 @@
-# Orlando MX v020 — active asset correction checkpoint
+# Orlando MX v020 — native-build repair checkpoint, 2026-10-01
 
-Base: delivered rebuild-v019 commit 002ab59e00200b5c64ee735bd8769f77d3e95bee; native Actions run 36776256304 succeeded. Work continues separately on rebuild-v020.
+Branch: rebuild-v020 in mxsam72/orlando-mx-build. Base for this repair is c6a2021921e8459809ebb87d10880ec34d01f4ed. Delivered v019 remains untouched at 002ab59e00200b5c64ee735bd8769f77d3e95bee.
 
-## Authorized changes
+## Verified failure cause
 
-- Review supplied 71.94 s game clip `test v019 truck bikes and stop sign.mp4`.
-- Relocate Bithlo sticker sign earlier on the road, left shoulder where pale gravel ends, as marked in `image(9).png`; replace oversized confetti-like geometry with faithful thin aluminum panels and reference artwork.
-- Remove only old generic `pickup_03` at [321,149], heading -15, circled in `image(10).png`.
-- Replace four crude bikes with realistic three-dimensional forms; investigate mxb-mods.com source assets.
-- Improve Premier Power pickup geometry and continuous red/white/blue wrap.
-- Preserve accepted Jordan Cybertruck, Sam King Ranch, Shane van, their placements, track terrain, start/race settings, pit roads and other facilities.
+Actions 36866951534 generated a PKZ, then failed a false texture check. PiBoSo removes .tga from native texture names. Do not restore literal filename searches or simply remove validation.
 
-## Video evidence and current diagnosis
+Native probe run 36824107860 proves that non-power-of-two bitmaps are silently omitted. Supported bitmaps contain an extensionless 100-byte name, dimensions, the MD5 of bottom-up RGBA pixels, and a bounded compressed payload. validate_native_textures_v020.py verifies these records and requires corresponding signatures in the final MAP. Local positive, NPOT-negative and corrupted-digest controls passed.
 
-0–6 s: bathroom approach and proposed sign area. 9–18 s: oversized old sign beside office. 21 s: pickup_03. 24–36 s: four owner assets; 42–57 s: rear/side views. 60–66 s: Premier side/rear and Jordan bike.
+## Included repairs
 
-Graphics visible in v019 software mesh renders are absent in actual game: Premier side wrap is white and bike number/shroud plates are blank. Solid diffuse colors survive. This strongly suggests native texture or UV export failure. Do not treat another successful source render or existing FBX-link check as sufficient verification. Diagnose with small FBX/EDF probes and verify bitmap data in the native output.
+- All owner graphic textures remain power-of-two, with explicit FBX UV and texture-file properties.
+- Four custom bike meshes have fuller engines/frames, suspension, controls, knobby wheels and spokes. This repair adds curved fenders, rounded engine details and open brake rotors. Front plates clear the forks; number/shroud backings sit behind their graphic faces.
+- Premier's wrap follows the bent cab shoulder instead of cutting through it. The red power graphic covers the rear window. Removed the unrelated adjacent van's electrical-company label. The other three accepted vehicle geometries compare exactly against the pre-repair builders.
+- Removed only generic pickup_03, formerly (321,149), heading -15.
+- Replaced the random-colored sign plaques with actual user-reference sticker artwork on four thin physical surfaces. V020_SOURCE/bithlo_sign_reference.jpg is verified through native compilation along with vehicle textures.
+- Sign position is (278,142), heading 270, estimated from the yellow circle at the left shoulder of the main-frontage / office-apron gravel junction. The failed build's (242,143) was an assistant interpretation, not a user-supplied coordinate. Placement remains an authored estimate for the next game review.
+- Terrain, track profiles, start/race files, gravel/grass layouts and other facilities remain protected. Missing protected inputs now fail instead of being silently skipped.
 
-## Reference observations
+## References and limits
 
-- Bithlo sign: slender stickered metal pole, broad silver upper rectangular sign back with mounting rails, central red/white octagon densely covered in racing-number stickers, smaller lower rectangular sticker board. Old random colored raised blocks are incorrect.
-- Premier: squared Chevrolet-style crew cab, dark off-road wheels, black bumpers and steps; white front door, large red power symbol spans rear door and window; blue lightning bed wrap with printed portrait. B&B logo belongs to adjacent van in reference and must not appear on this truck.
-- Jordan: Husqvarna #759, black/white Rockstar, black rims in photo, white guards, FMF exhaust.
-- Premier bike: blue Yamaha 450, #277 as interpreted from supplied photo, Premier Power shrouds, blue rims, gold forks.
-- Sam: Yamaha 250F #373, blue/black, blue rims, black stand.
-- Shane: Yamaha 450F #927, Central Florida Powersports graphic, worn blue seat, silver/black rims in photo.
+The supplied 71.94-second v019 clip was reviewed: old sign at 9–18 s, pickup_03 near 21 s, owner assets at 24–36 and 42–66 s. Blank game graphics despite visible graphics in source renders led to the native texture investigation.
 
-## Recovery and external asset research
+mxb-mods.com led to Jay's Husqvarna release and Yamaha source-model threads, but their MediaFire downloads were unavailable. No community/OEM source bike was imported. These are custom photo-derived static scenery meshes. The official PiBoSo bike template was examined but was not a suitable complete visual model.
 
-Current attachments exist locally in upload; original reference photos recovered in review_v020/references. Do not re-fetch current attachments from Library. Source recovered into orlando_v020 (no local Git checkout); remote branch exists. Use GitHub API commits for checkpoints. All 86 selected source files from delivered v019 have been recovered.
+Mesh previews are software renders of authored geometry, not in-game screenshots. An MX Bikes visual/riding test remains necessary.
 
-mxb-mods.com/2016-husqvarna-model-swap/ credits Jay's 2016 Husqvarna template/blend and links original release forum.mxsimulator.com/viewtopic.php?t=40364. Current OEM additional downloads mostly expose PSD graphics and compiled model swaps, not editable source. Direct HTTP retrieval of the Husky release and Yamaha Model Updates topic 43937 succeeded; HTML is in review_v020. Need inspect download/source permissions and usable model files before deciding whether to import. Do not claim downloaded or reused assets until actually integrated.
+## Resume and delivery
 
-## Pending next steps
+1. Check the newest Actions run on rebuild-v020. Do not use the old failed run or stop after dispatch.
+2. Source, clearances and protected-input checks must pass; a source artifact is saved before native compile.
+3. Native MAP/TRH/PKZ compilation and exact texture verification must pass. Inspect native-failure-data if needed; do not disable the gate.
+4. Download game-candidate, verify SHA, ZIP CRC and PKZ contents; inspect final evidence/previews.
+5. Deliver the actual PKZ, validation and install notes. Update this handover with the successful run/checksum. In-game review remains pending.
 
-1. Diagnose native textures with a minimal Windows FBX2EDF workflow.
-2. Inspect available real bike source models; implement replacements and preserve attribution.
-3. Rebuild sign and Premier wrap, relocate sign, remove pickup_03.
-4. Compare preserved vehicle meshes and terrain/start/race hashes; check all clearances and actual mesh previews.
-5. Compile fresh v020 MAP/TRH/PKZ, validate native bitmap presence and package CRC; deliver test candidate with honest in-game-test status.
-
-This checkpoint contains analysis, not a finished v020 game package. v019 remains the latest delivered build.
+At this checkpoint the native rebuild is pending; no repaired package has yet been delivered.

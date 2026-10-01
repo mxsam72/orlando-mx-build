@@ -15,7 +15,7 @@ def textfit(draw,box,text,color='white',bold=True):
     while draw.textbbox((0,0),text,font=f)[2]>w and f.size>4:f=font(f.size-1,bold)
     bb=draw.textbbox((0,0),text,font=f);draw.text((x+(w-bb[2])/2,y-bb[1]+(h-(bb[3]-bb[1]))/2),text,fill=color,font=f)
 def power(draw,c,r,fill):
-    x,y=c;draw.arc((x-r,y-r,x+r,y+r),35,325,fill=fill,width=max(3,int(r*.28)));draw.line((x,y-r*1.15,x,y),fill=fill,width=max(3,int(r*.26)))
+    x,y=c;draw.arc((x-r,y-r,x+r,y+r),-50,230,fill=fill,width=max(3,int(r*.28)));draw.line((x,y-r*1.15,x,y),fill=fill,width=max(3,int(r*.26)))
 def star(draw,c,r,fill):
     x,y=c;pts=[]
     for i in range(10):
@@ -54,13 +54,13 @@ def build():
         for y in range(0,321,32):pts.append((pts[-1][0]+rng.integers(-34,35),y))
         d.line(pts,fill=(88,164,194),width=2)
     d.polygon([(450,0),(1024,0),(1024,285),(380,285)],fill=(230,231,226));d.rectangle((0,282,1024,320),fill=(22,26,27))
-    d.ellipse((440,-45,750,265),fill=(200,37,52));power(d,(595,108),103,(241,241,235))
+    power(d,(554,141),100,(200,37,52))
     for mirrored in [False,True]:
         im=base.transpose(Image.Transpose.FLIP_LEFT_RIGHT) if mirrored else base.copy();d=ImageDraw.Draw(im)
         def label(box,text,color='white',bold=True):
             x,y,w,h=box;textfit(d,(1024-x-w if mirrored else x,y,w,h),text,color,bold)
         label((760,178,250,35),'premier',(25,28,31));label((760,213,250,35),'power',(25,28,31))
-        label((30,78,360,30),'Premier Power');label((35,119,350,16),'ELECTRICAL SERVICES');label((62,188,150,24),'B & R ELECTRICAL');label((40,293,940,15),'QUALITY & SAFE ELECTRICAL INSTALLATIONS')
+        label((30,78,360,30),'Premier Power');label((35,119,350,16),'ELECTRICAL SERVICES');label((40,293,940,15),'QUALITY & SAFE ELECTRICAL INSTALLATIONS')
         keep('premier_wrap_right' if mirrored else 'premier_wrap',im,(255,255,255))
     im=Image.new('RGB',(512,256),(24,98,148));d=ImageDraw.Draw(im);textfit(d,(20,23,472,80),'premier');textfit(d,(20,99,472,85),'power');textfit(d,(20,200,472,28),'ELECTRICAL SERVICES');keep('premier_tail',im,(255,255,255))
     for name,label,bg,fg in [('ford_badge','FORD',(19,49,84),'white'),('king_ranch','KING RANCH',(171,155,114),(45,45,36)),('four_by_four','4x4',(26,31,30),'white'),('chevy_badge','CHEVROLET',(44,47,47),(210,169,49))]:
@@ -84,6 +84,7 @@ def build():
         else:
             textfit(d,(10,105,492,45),'CENTRAL FLORIDA');textfit(d,(12,169,488,66),'POWERSPORTS');textfit(d,(40,285,430,29),'YAMAHA YZ450F')
         keep(owner+'_shroud',im,(255,255,255))
+    keep('bithlo_photo',Image.open(S/'bithlo_sign_reference.jpg'),(255,255,255))
     save(S/'vehicle_materials.json',textures)
     archive={}
     for p in sorted(dest.glob('*.png')):

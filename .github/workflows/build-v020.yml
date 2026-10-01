@@ -43,6 +43,7 @@ jobs:
             V020_OUTPUT/facility_layout.json
             V020_OUTPUT/facility_meshes.json
             V020_OUTPUT/vehicle_meshes.json
+            V020_OUTPUT/sign_graphic_meshes.json
             V020_OUTPUT/vehicle_catalog.json
             DOCUMENTATION/v020*.json
             DOCUMENTATION/v020_qa/
@@ -73,3 +74,13 @@ jobs:
             DOCUMENTATION/native*validation.json
             DOCUMENTATION/native_build_failure.txt
             DOCUMENTATION/track_code.txt
+      - name: Preserve native texture payloads if validation fails
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: OrlandoMX-v020-native-failure-data
+          retention-days: 30
+          path: |
+            BUILD/v009_work/08_OBJECTS_GAME/scenery.edf
+            12_RELEASE/orlandomx_2026_v020/orlandomx_2026_v020.map
+            V020_OUTPUT/facility_textures/

@@ -29,7 +29,7 @@ def materialize_runtime():
     fm=fm.replace("'gravel':(174,169,153)}",
         "'gravel':(174,169,153),\n"
         "         'sticker_white':(240,239,229),'sticker_black':(24,25,24),'sticker_yellow':(226,201,60),\n"
-        "         'sticker_blue':(45,98,153),'sticker_green':(77,133,73),'sticker_orange':(211,111,48),'sticker_pink':(184,83,123)}")
+        "         'sticker_blue':(45,98,153),'sticker_green':(77,133,73),'sticker_orange':(211,111,48),'sticker_pink':(184,83,123),'bithlo_photo':(220,220,220)}")
     legacy_restroom_side="""            else:
                 for z in np.arange(-2,2.2,.18):s.box([-4.1,.9,z],[.13,1.8,.16],'timber')
                 s.box([-3.5,.9,2.1],[1.3,1.8,.12],'timber')
@@ -42,41 +42,15 @@ def materialize_runtime():
 """)
     marker="        elif typ in ['flagpole','utility']:"
     sign=r'''        elif typ=='sticker_stop_sign':
-            # User-reference Bithlo roadside sign: slender stickered pole,
-            # broad silver upper sign back, central stop octagon, lower sticker board.
-            # Sticker plaques are essentially flush (not the old chunky confetti).
-            s.beam([0,0,0],[0,4.08,0],.045,'alloy',10)
-            s.box([0,3.72,0],[2.72,.46,.045],'alloy')
-            s.box([0,3.72,-.035],[2.43,.055,.045],'alloy')
-            s.box([0,1.52,0],[1.48,1.02,.045],'sticker_white')
-            def octagon(cy,r,z,mat):
-                vv=[[math.cos(math.pi/8+k*math.pi/4)*r,
-                     cy+math.sin(math.pi/8+k*math.pi/4)*r,z] for k in range(8)]
-                s.add(vv,[list(range(8))],mat)
-            octagon(2.62,.75,.026,'sticker_white')
-            octagon(2.62,.685,.031,'red')
-            def plaque(cx,cy,w,h,ang,mat,z):
-                cc=math.cos(ang);ss=math.sin(ang);pts=[]
-                for dx,dy in [(-w/2,-h/2),(w/2,-h/2),(w/2,h/2),(-w/2,h/2)]:
-                    pts.append([cx+dx*cc-dy*ss,cy+dx*ss+dy*cc,z])
-                s.add(pts,[list(range(4))],mat)
-            rng=np.random.default_rng(20020)
-            mats=['sticker_white','sticker_black','sticker_yellow','sticker_blue','sticker_green','sticker_orange','sticker_pink','red']
-            for i in range(72):
-                cx=rng.uniform(-.50,.50);dy=rng.uniform(-.48,.48)
-                if abs(cx)+abs(dy)>.78:cx*=.70;dy*=.70
-                plaque(cx,2.62+dy,rng.uniform(.10,.30),rng.uniform(.07,.16),
-                       rng.uniform(-.45,.45),mats[i%len(mats)],.033+i*1e-7)
-            for i in range(55):
-                plaque(rng.uniform(-.61,.61),1.52+rng.uniform(-.40,.40),
-                       rng.uniform(.10,.27),rng.uniform(.07,.15),
-                       rng.uniform(-.40,.40),mats[(i+2)%len(mats)],.026+i*1e-7)
-            for i,y in enumerate(np.linspace(.28,.95,10)):
-                plaque(0,y,.12,.085,(i%3-1)*.10,mats[(i+1)%len(mats)],.050+i*1e-7)
-            for i in range(12):
-                plaque(rng.uniform(-1.10,1.10),3.72+rng.uniform(-.12,.12),
-                       rng.uniform(.12,.28),rng.uniform(.07,.14),
-                       rng.uniform(-.20,.20),mats[(i+3)%len(mats)],.025+i*1e-7)
+            # Thin metal assembly. Actual reference artwork is UV-mapped later.
+            s.beam([0,0,-.035],[0,3.30,-.035],.029,'alloy',12)
+            s.box([0,3.04,0],[1.47,.47,.018],'alloy')
+            s.box([0,1.465,0],[.84,.67,.018],'alloy')
+            octagon=[[-.205,2.805,.035],[.205,2.805,.035],[.495,2.515,.035],[.495,2.105,.035],[.205,1.815,.035],[-.205,1.815,.035],[-.495,2.105,.035],[-.495,2.515,.035]]
+            vv=octagon+[[x,y,z-.018] for x,y,z in octagon]
+            s.add(vv,[list(range(8)),list(range(15,7,-1))]+[[k,(k+1)%8,(k+1)%8+8,k+8] for k in range(8)],'alloy')
+            for y,w in [(2.88,1.40),(3.20,1.40),(1.23,.78),(1.70,.78)]:
+                s.box([0,y,-.02],[w,.028,.020],'alloy')
 '''
     if marker not in fm:
         raise RuntimeError('facility sign injection marker missing')
@@ -100,7 +74,7 @@ def materialize_runtime():
             road_clear=min(road_clear,float(dist))
     sign_asset=assets['bithlo_sticker_stop']
     qa=dict(start_length_m=float(sa[-1,3]),gate_stalls=cfg['grid_stalls'],grid_outer_stall_span_m=23*cfg['stall_spacing_m'],gate_apron_width_m=cfg['start_width_knots'][0][1],minimum_start_width_m=float(sw.min()),minimum_other_lane_edge_clearance_m=float(clear.min()),self_crossings=cross,merge_station_m=cfg['merge_station_m'],right_turn='T06',right_turn_angle_deg=t6['angle'],distance_before_right_turn_m=t6['arc_start']-cfg['merge_station_m'],bathroom_distance_from_lower_red_truck_m=bathroom_to_truck,bathroom_distance_from_lower_canopy_m=bathroom_to_canopy,bathroom_in_grass_patch=bathroom_in_grass,bathroom_road_edge_clearance_m=road_clear,generic_pickup_03_removed='pickup_03' not in assets,bithlo_sign_xz=sign_asset['xz'],office_view_direction='+Z from pit road toward spectator fence',outside_shoulder_note='Start loop unchanged from v017.',runtime_start_reset_and_timing='Pending in-game test')
-    qa['layout_checks_pass']=bool(clear.min()>.5 and not cross and 0<t6['arc_start']-cfg['merge_station_m']<8 and t6['angle']<0 and bathroom_to_truck<14.5 and bathroom_to_canopy<14.5 and bathroom_in_grass and road_clear>.5 and qa['generic_pickup_03_removed'] and sign_asset['xz']==[242.0,143.0])
+    qa['layout_checks_pass']=bool(clear.min()>.5 and not cross and 0<t6['arc_start']-cfg['merge_station_m']<8 and t6['angle']<0 and bathroom_to_truck<14.5 and bathroom_to_canopy<14.5 and bathroom_in_grass and road_clear>.5 and qa['generic_pickup_03_removed'] and sign_asset['xz']==[278.0,142.0])
 """
     q=q[:start]+rel+q[end:]
     q=q.replace("PALETTE[m['material']]","PALETTE.get(m['material'],(128,128,128))")
@@ -138,17 +112,12 @@ def materialize_runtime():
     oldtry="    try:ns['main']()\n    except Exception as e:"
     newtry="""    try:
         ns['main']()
-        from PIL import Image
-        mats=read(S/'vehicle_materials.json');names=[]
-        for name,info in mats.items():
-            im=Image.open(S/info['file'])
-            if not (im.width&(im.width-1)==0 and im.height&(im.height-1)==0):
-                raise RuntimeError('NPOT texture reached native compile: '+name+str(im.size))
-            names.append(('v020_vehicle_'+name+'.tga').encode())
-        edf=R/'BUILD/v009_work/08_OBJECTS_GAME/scenery.edf';raw=edf.read_bytes()
-        missing=[n.decode() for n in names if raw.find(n)<0]
-        if missing:raise RuntimeError('Compiled EDF missing v020 texture references: '+str(missing))
-        save(R/'DOCUMENTATION/v020_native_texture_validation.json',dict(checks_pass=True,power_of_two=True,texture_count=len(names),edf_bytes=len(raw),missing=[],probe_evidence='Actions 36824107860: 256x256 probe EDF 209988 bytes; 256x320 NPOT probe EDF only 716 bytes'))
+        from validate_native_textures_v020 import verify_files
+        meshes=read(O/'vehicle_meshes.json')+read(O/'sign_graphic_meshes.json');used=sorted({m['material'] for m in meshes})
+        textures=[O/'facility_textures'/('v020_vehicle_'+name+'.tga') for name in used]
+        verify_files(R/'BUILD/v009_work/08_OBJECTS_GAME/scenery.edf',
+                     R/'12_RELEASE'/NAME/(NAME+'.map'),textures,
+                     R/'DOCUMENTATION/v020_native_texture_validation.json')
     except Exception as e:"""
     if oldtry not in bw:raise RuntimeError('native try block marker missing')
     bw=bw.replace(oldtry,newtry)
@@ -171,7 +140,7 @@ def main():
         'v020_common.py','rebuild_v020_geometry.py','qa_v020_geometry.py',
         'build_v020_start_terrain.py','build_v020_race.py','rebind_v020_scenery.py',
         'facility_mesh_v020.py','qa_v020_layout.py','append_facilities_v020.py',
-        'vehicle_textures_v020.py','model_vehicles_v020.py','qa_vehicles_v020.py',
+        'vehicle_textures_v020.py','sign_graphics_v020.py','model_vehicles_v020.py','qa_vehicles_v020.py',
         'append_vehicles_v020.py','prepare_v020_release.py','pit_roads_v020.py',
         'qa_v020_custom.py','logo_v020.py',
         'render_facilities_v020.py','render_v020_layout.py','render_vehicles_v020.py',
@@ -197,3 +166,4 @@ def main():
 
 if __name__=='__main__':
     main()
+

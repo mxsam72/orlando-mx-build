@@ -346,20 +346,20 @@
       "id": "bithlo_sticker_stop",
       "type": "sticker_stop_sign",
       "xz": [
-        242,
-        143
+        278,
+        142
       ],
-      "heading": 180,
+      "heading": 270,
       "reference": "User-marked v020 location: earlier on frontage pit road, left shoulder where pale gravel ends; thin sticker-covered Bithlo sign from supplied reference photos"
     }
   ],
   "placement_intent": {
     "bathroom": "v019: restroom kept in the corrected opposite-road cluster at (275,112.5), a ~1 m clearance adjustment from v017, with heading 0 so its door wall faces +Z toward the spectator fence.",
-    "office": "Left / negative X of red frontage pickup03 (321,149), viewed from the pit road toward spectator fence (+Z)",
+    "office": "Office preserved at (311,149); adjacent generic pickup_03 removed as requested.",
     "precision": "Relational placement from user instruction and videos; metric positions are authored, not surveyed",
     "supporting_adjustment": "Bathroom shade oak to (266,120). Remove the two prior wrong bathroom-driven grass patches.",
     "grass_area": "v019: expand grass across lower and upper parking/pit paddocks; all authored gravel road masks override grass.",
-    "signature_sign": "v020: relocate sticker-covered Bithlo sign from office area to (242,143), on the earlier/west frontage-road shoulder near the pale-gravel transition shown by the user. Coordinates remain an authored estimate from the marked screenshot.",
+    "signature_sign": "v020: sign at (278,142), left shoulder at main-frontage / office-apron gravel junction, facing the approach from the west. Estimate from yellow-circle screenshot, not surveyed coordinates.",
     "removed_generic_pickup": "v020: remove only generic pickup_03 formerly at (321,149), heading -15, as circled by user; preserve other generic pit vehicles."
   },
   "tree_removal_intent": {

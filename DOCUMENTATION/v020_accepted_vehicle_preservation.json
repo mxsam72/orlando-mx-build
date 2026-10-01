@@ -1,0 +1,21 @@
+{
+  "checks_pass": true,
+  "compared_to_commit": "c6a2021921e8459809ebb87d10880ec34d01f4ed",
+  "assets": [
+    {
+      "asset": "truck_jordan",
+      "unchanged": true,
+      "geometry_sha256": "319647ef98a43bc17197c5dc8d5d37be0ce7edaab580a3742fd8a9436847c2c5"
+    },
+    {
+      "asset": "truck_sam",
+      "unchanged": true,
+      "geometry_sha256": "75dcb2e3b612c5c74e4ca887fc00403710b508cf34a3c7afc7c3ebf08c3df3fb"
+    },
+    {
+      "asset": "van_shane",
+      "unchanged": true,
+      "geometry_sha256": "6a6c475c5b13bf2acb4c60fdcf88cc7af77ad6a780c0e5885297db82844b8f53"
+    }
+  ]
+}

@@ -33,7 +33,7 @@ def main():
     toward=fence.mean(0)-np.asarray(bath['xz'],dtype=float); toward/=np.linalg.norm(toward)
     fv=front_vector(bath['heading'])
     checks['bathroom_doors_face_spectator_fence']=float(fv@toward)>.75
-    checks['signature_sign_relocated_to_frontage_shoulder']=sign['xz']==[242.0,143.0]
+    checks['signature_sign_relocated_to_frontage_shoulder']=sign['xz']==[278.0,142.0]
     checks['generic_pickup_03_removed']='pickup_03' not in assets
 
     roads=road_field((768,768)); grass=grass_field((768,768))
@@ -46,9 +46,14 @@ def main():
 
     meshes=read(O/'facility_meshes.json')
     sign_meshes=[m for m in meshes if m['asset']=='bithlo_sticker_stop']
-    checks['signature_sign_mesh_present']=len(sign_meshes)>=8
+    checks['signature_sign_mesh_present']=len(sign_meshes)>=2
     mats=sorted(set(m['material'] for m in sign_meshes))
-    checks['signature_sign_sticker_variety']=len(mats)>=7
+    photo=read(R/'DOCUMENTATION/v020_sign_validation.json')
+    checks['signature_sign_actual_reference_artwork']=photo['photo_projected'] and photo['panels']==4 and any(m['material']=='bithlo_photo' and len(m.get('uv',[]))==len(m['faces']) for m in sign_meshes)
+    checks['signature_sign_thin_reference_proportions']=photo['top_width_m']==1.47 and photo['height_m']==3.30
+    checks['signature_sign_faces_approach']=sign['heading']==270
+    road_clear=min(float(np.linalg.norm(np.asarray(sign['xz'])-(np.asarray(a)+np.clip(np.dot(np.asarray(sign['xz'])-a,np.asarray(b)-a)/np.dot(np.asarray(b)-a,np.asarray(b)-a),0,1)*(np.asarray(b)-a))))-road['width']/2 for road in pit['roads'] for a,b in zip(road['points'][:-1],road['points'][1:]))
+    checks['signature_sign_off_gravel']=road_clear>.5
 
     report={
       'version':'v020','checks':checks,'all_checks_pass':all(checks.values()),
@@ -58,7 +63,7 @@ def main():
       'bathroom_heading_deg':bath['heading'],'bathroom_front_dot_to_fence':float(fv@toward),
       'pit_road_area_m2':road_area,'pit_grass_area_m2':grass_area,'road_mask_components':int(count),
       'sign_asset_xz':sign['xz'],'sign_office_distance_m':float(np.linalg.norm(np.asarray(sign['xz'])-np.asarray(office['xz']))),
-      'sign_mesh_count':len(sign_meshes),'sign_materials':mats,
+      'sign_road_edge_clearance_m':road_clear,'sign_mesh_count':len(sign_meshes),'sign_materials':mats,
       'native_compilation':False,'in_game_riding':False
     }
     save(R/'DOCUMENTATION/v020_user_request_validation.json',report)
@@ -68,3 +73,4 @@ def main():
 
 if __name__=='__main__':
     main()
+

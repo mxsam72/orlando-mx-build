@@ -54,7 +54,8 @@ def main():
                     if kind=='Texture' and not uvset_found:c['children'].append(node('P','UVSet','KString','','','UVMap'))
             objects['children'].append(n)
         connect(ti,mi,'DiffuseColor');connect(vi,ti);checks.append(dict(material=name,material_id=mi,texture_id=ti,video_id=vi,texture=fname,sha256=sha(textures/fname)))
-    meshes=read(O/'vehicle_meshes.json');geoms={};probes=[]
+    vehicle_meshes=read(O/'vehicle_meshes.json');sign_meshes=read(O/'sign_graphic_meshes.json')
+    meshes=vehicle_meshes+sign_meshes;geoms={};probes=[]
     for mesh in meshes:
         gid,mid=new_id(),new_id();g=geometry(gid,mesh);m=copy.deepcopy(template);mv=values(m);setvalues(m,mid,mesh['name'].encode()+b'\x00\x01Model',*mv[2:]);objects['children'] += [g,m];connect(gid,mid);connect(mats[mesh['material']],mid);connect(mid,0);geoms[gid]=mesh
     for a in read(S/'vehicles.json')['assets']:
@@ -72,6 +73,7 @@ def main():
         rgb=next(values(p)[4:7] for p in child(oid[ck['material_id']],'Properties70')['children'] if values(p)[0]==b'DiffuseColor');assert np.allclose(rgb,np.array(materials[ck['material']]['rgb'])/255)
         assert Image.open(textures/ck['texture']).size==(materials[ck['material']]['width'],materials[ck['material']]['height'])
     (O/'scenery.fbx').write_bytes(out);p=read(O/'native_coordinate_probes.json');p['expected_xyz_metres']+=probes;save(O/'native_coordinate_probes.json',p)
-    qa=read(R/'DOCUMENTATION/v020_scenery_validation.json');qa.update(new_materials=qa['new_materials']+len(materials),vehicle_materials=len(materials),vehicle_meshes=len(meshes),vehicle_triangles=sum(len(m['faces']) for m in meshes),vehicle_texture_checks=checks,vehicle_uv_roundtrip_pass=True,preexisting_objects_unchanged=True,pre_vehicle_fbx_sha256=__import__('hashlib').sha256(original).hexdigest(),output_sha256=sha(O/'scenery.fbx'),coordinate_probes=len(p['expected_xyz_metres']));save(R/'DOCUMENTATION/v020_scenery_validation.json',qa)
+    qa=read(R/'DOCUMENTATION/v020_scenery_validation.json');qa.update(new_materials=qa['new_materials']+len(materials),vehicle_materials=len(materials),vehicle_meshes=len(vehicle_meshes),vehicle_triangles=sum(len(m['faces']) for m in vehicle_meshes),sign_graphic_meshes=len(sign_meshes),vehicle_texture_checks=checks,vehicle_uv_roundtrip_pass=True,preexisting_objects_unchanged=True,pre_vehicle_fbx_sha256=__import__('hashlib').sha256(original).hexdigest(),output_sha256=sha(O/'scenery.fbx'),coordinate_probes=len(p['expected_xyz_metres']));save(R/'DOCUMENTATION/v020_scenery_validation.json',qa)
     print('Appended',len(meshes),'vehicle/bike mesh parts; existing scenery retained; UV and texture wiring verified')
 if __name__=='__main__':main()
+

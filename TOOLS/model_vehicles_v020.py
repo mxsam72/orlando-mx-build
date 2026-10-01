@@ -57,6 +57,7 @@ def pickup(owner):
     for side in [-1,1]:
         x=side*(w-.06)
         for z0,z1 in [(-.98,-.30),(-.22,.45)]:
+            if not sam and z0<-.3:continue  # Rear window carries continuous printed wrap.
             m.panel([[x,1.44,z0],[x,1.44,z1+.40 if z1>0 else z1],[x,1.90,z1],[x,1.92,z0]],'glass',side>0)
         # Door seams, handles and separate sculpted mirrors.
         for zz in [-1.04,-.26,.90]:m.beam([side*(w+.054),.79,zz],[side*(w-.038),1.48,zz],.009,'dark',4)
@@ -81,10 +82,19 @@ def pickup(owner):
                     if side>0:uv=[[1-u,v] for u,v in uv]
                     m.add(vs,[tri],material,[uv]);m.add(vs,[list(reversed(tri))],material,[list(reversed(uv))])
             wrap(vs,poly)
-            poly=[[-1.02,1.40],[-.27,1.40],[-.27,1.95],[-1.02,1.93]];vs=[]
-            for zz,yy in poly:
-                sh=np.interp(zz,[-1.11,-.88,.47],[1.77,1.87,1.87]);top=np.interp(zz,[-1.11,-.88,.47],[1.98,2.04,2.02]);wide=w-.06;xx=wide if yy<=sh else wide+((w-.21)-wide)*(yy-sh)/(top-sh);vs.append([side*(xx+.018),yy,zz])
-            wrap(vs,poly)
+            # Tessellate across the cab shoulder: a single flat quad cuts
+            # through this bent body and hides most of the rear-window wrap.
+            zs=np.linspace(-1.02,-.25,14);ys=np.unique(np.r_[np.linspace(1.385,1.95,15),1.40,1.42,1.77,1.87])
+            for z0,z1 in zip(zs[:-1],zs[1:]):
+                for y0,y1 in zip(ys[:-1],ys[1:]):
+                    poly=[[z0,y0],[z1,y0],[z1,y1],[z0,y1]];vs=[]
+                    for zz,yy in poly:
+                        sh,top,wide,roof=[np.interp(zz,[-1.11,-.88,.47],[row[i] for row in [[1.77,1.98,w-.07,w-.21],[1.87,2.04,w-.06,w-.21],[1.87,2.02,w-.08,w-.21]]]) for i in range(4)]
+                        xx=wide if yy<=sh else wide+(roof-wide)*(yy-sh)/(top-sh)
+                        xx+=.022
+                        if yy<1.42:xx=np.interp(yy,[1.385,1.42],[w+.065,xx])
+                        vs.append([side*xx,yy,zz])
+                    wrap(vs,poly)
     # Real bed cavity: floor, raised rails, front bulkhead and tailgate.
     m.box([0,.93,-2.0],[1.80,.10,1.65],'rubber')
     for side in [-1,1]:m.box([side*.95,1.43,-2.0],[.15,.12,1.73],'dark' if not sam else paint)
@@ -161,6 +171,31 @@ def bike(owner):
     exhaust/muffler, cockpit controls and raised textured graphic panels.
     """
     m=MeshBuilder('bike_'+owner)
+    def rotor(x,y,z,r,mat,teeth=False):
+        # Open annulus and six hub arms; solid cylinders hid the wheel spokes.
+        n=60;v=[]
+        for rr in [r*.72,r]:
+            v += [[x,y+(rr*(1.025 if teeth and i%2==0 else 1))*math.sin(i*math.tau/n),z+(rr*(1.025 if teeth and i%2==0 else 1))*math.cos(i*math.tau/n)] for i in range(n)]
+        faces=[]
+        for i in range(n):
+            f=[i,(i+1)%n,(i+1)%n+n,i+n];faces += [f,f[::-1]]
+        m.add(v,faces,mat)
+        for t in np.linspace(0,math.tau,6,endpoint=False):
+            m.beam([x,y+.027*math.sin(t+.3),z+.027*math.cos(t+.3)],[x,y+r*.76*math.sin(t),z+r*.76*math.cos(t)],.008,mat,5)
+    def oval(c,r,mat):
+        n=24;v=[[c[0]+r[0]*math.sin(a)*math.cos(b),c[1]+r[1]*math.cos(a),c[2]+r[2]*math.sin(a)*math.sin(b)] for a in np.linspace(0,math.pi,13) for b in np.linspace(0,math.tau,n,endpoint=False)]
+        m.add(v,[[j*n+i,j*n+(i+1)%n,(j+1)*n+(i+1)%n,(j+1)*n+i] for j in range(12) for i in range(n)],mat)
+    def curved_fender(sections,mat):
+        from scipy.interpolate import PchipInterpolator
+        a=np.asarray(sorted(sections));zz=np.linspace(a[0,0],a[-1,0],22);yy=PchipInterpolator(a[:,0],a[:,1])(zz);ww=PchipInterpolator(a[:,0],a[:,2])(zz)
+        v=[[u*w,y+.025*(1-u*u)-th,z] for th in [0,.014] for z,y,w in zip(zz,yy,ww) for u in np.linspace(-1,1,7)];n=len(zz)*7;f=[]
+        for j in range(len(zz)-1):
+            for i in range(6):
+                k=j*7+i;q=[k,k+7,k+8,k+1];f += [q,[x+n for x in q[::-1]]]
+            for i in [0,6]:k=j*7+i;f.append([k,k+n,k+n+7,k+7])
+        for j in [0,len(zz)-1]:
+            for i in range(6):k=j*7+i;f.append([k,k+1,k+n+1,k+n])
+        m.add(v,f,mat)
     husky=owner=='jordan'
     plastic='husky_white' if husky else 'yamaha_blue'
     rim='wheel_black' if husky else ('rim_blue' if owner in ['premier','sam'] else 'alloy')
@@ -173,9 +208,9 @@ def bike(owner):
     m.wheel(*front,.360,.100,rim,spokes=32,knobs=True)
 
     # Hubs / brake rotors / calipers / rear sprocket.
-    m.beam([-.080,.43,-.74],[-.086,.43,-.74],.154,'steel',32)
-    m.beam([.064,.45,.77],[.070,.45,.77],.122,'steel',32)
-    m.beam([.081,.43,-.74],[.088,.43,-.74],.118,'alloy',30)
+    rotor(-.086,.43,-.74,.140,'steel',True)
+    rotor(.072,.45,.77,.125,'steel')
+    rotor(.088,.43,-.74,.112,'alloy')
     m.box([-.115,.55,.72],[.050,.11,.055],'dark')
     m.box([-.122,.52,-.68],[.052,.10,.060],'dark')
 
@@ -198,9 +233,9 @@ def bike(owner):
     # Engine cases, cylinder/head and cooling fins.
     m.beam([-.135,.57,-.08],[.135,.57,-.08],.175,'engine',28)
     m.beam([-.115,.67,.04],[.115,.67,.04],.145,'engine',24)
-    m.box([0,.80,.12],[.24,.27,.24],'engine')
-    m.box([0,.91,.16],[.22,.10,.22],'alloy')
-    for yy in np.linspace(.76,.94,7):m.box([0,yy,.16],[.27,.012,.24],'steel')
+    oval([0,.77,.10],[.125,.165,.145],'engine')
+    oval([0,.90,.145],[.12,.065,.14],'alloy')
+    for yy in np.linspace(.76,.90,6):m.beam([0,yy,.11],[0,yy+.008,.11],.119,'steel',20)
     # Small clutch/ignition case caps.
     m.beam([.142,.58,-.08],[.150,.58,-.08],.105,'steel',24)
     m.beam([-.142,.58,-.08],[-.150,.58,-.08],.090,'dark',24)
@@ -240,21 +275,23 @@ def bike(owner):
     m.loft([[-.84,.96,1.00,1.035,.12,.10],[-.49,1.00,1.055,1.075,.15,.13],[-.10,1.045,1.085,1.095,.15,.13],[.18,1.05,1.075,1.082,.12,.10]],seat)
 
     # Long rear fender and arched front fender, each with genuine thickness/width.
-    m.loft([[-1.12,.91,.94,.955,.065,.050],[-.88,.96,1.00,1.018,.115,.095],[-.58,.95,.995,1.012,.145,.120],[-.35,.93,.965,.978,.13,.105]],plastic)
-    m.loft([[.43,.94,.975,.990,.125,.105],[.68,1.03,1.065,1.080,.135,.105],[.96,1.055,1.080,1.092,.105,.075],[1.20,1.015,1.030,1.038,.060,.040]],plastic)
+    curved_fender([[-1.12,.955,.065],[-.88,1.018,.115],[-.58,1.012,.145],[-.35,.978,.13]],plastic)
+    curved_fender([[.38,.990,.105],[.64,1.080,.120],[.86,1.092,.105],[1.20,1.038,.060]],plastic)
 
     # 3-D side number plate backing + flush textured face.
     for side in [-1,1]:
         sx=side*.225
-        m.box([side*.195,.86,-.50],[.045,.30,.46],plastic)
+        m.prism([[-.76,.72],[-.27,.75],[-.24,.995],[-.74,1.005]],min(side*.181,side*.188),max(side*.181,side*.188),plastic)
         m.panel([[side*.225,.72,-.76],[side*.225,.75,-.27],[side*.205,.995,-.24],[side*.195,1.005,-.74]],owner+'_number',side>0)
         # Radiator shroud backing and photo-derived graphics.
-        m.box([side*.205,.88,.10],[.045,.34,.42],plastic)
+        m.prism([[-.11,.72],[.30,.75],[.38,1.035],[-.15,1.025]],min(side*.175,side*.183),max(side*.175,side*.183),plastic)
         m.panel([[side*.235,.72,-.11],[side*.245,.75,.30],[side*.218,1.035,.38],[side*.198,1.025,-.15]],owner+'_shroud',side>0)
 
     # Front plate backing plus textured number panel.
-    m.box([0,1.13,.43],[.32,.30,.035],plastic)
-    m.panel([[-.150,.995,.452],[.150,.995,.452],[.145,1.265,.395],[-.145,1.265,.395]],owner+'_number')
+    plate=np.array([[-.150,.995,.537],[.150,.995,.537],[.145,1.265,.480],[-.145,1.265,.480]])
+    vv=np.r_[plate-[0,0,.005],plate-[0,0,.012]]
+    m.add(vv,[[4,5,6,7],[0,4,5,1],[1,5,6,2],[2,6,7,3],[3,7,4,0]],plastic)
+    m.panel(plate.tolist(),owner+'_number')
 
     # Bar, grips, controls, levers and cables.
     m.beam([-.15,1.25,.35],[.15,1.25,.35],.028,'alloy',10)

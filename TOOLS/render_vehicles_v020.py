@@ -65,6 +65,16 @@ def main():
         # Opposite profile checks rear and side graphics as well as the front.
         eye2=center+np.array([10,3,-11])@rot.T
         raster(g+own,eye2,center,10.8,DEST/(owner+'_rear.png'),owner.title()+' / rear and side',size=(1280,800))
+    for a in assets:
+        if not a['id'].startswith('bike'):continue
+        own=[m for m in meshes if m['asset']==a['id']];v=np.concatenate([m['vertices'] for m in own]);center=(v.min(0)+v.max(0))/2
+        t=math.radians(a['heading']);rot=np.array([[math.cos(t),0,math.sin(t)],[0,1,0],[-math.sin(t),0,math.cos(t)]])
+        for side,offset in [('front',[-4,1.6,5]),('side',[5,1,-2])]:
+            raster(own,center+np.array(offset)@rot.T,center,3.3,DEST/(a['id']+'_'+side+'.png'),a['id'].replace('_',' ').title()+' / number plates, plastics and mechanical detail',size=(1280,850))
+    sign=next(a for a in read(S/'pit_facilities.json')['assets'] if a['id']=='bithlo_sticker_stop')
+    own=[m for m in fac if m['asset']==sign['id']];v=np.concatenate([m['vertices'] for m in own]);center=(v.min(0)+v.max(0))/2
+    t=math.radians(sign['heading']);rot=np.array([[math.cos(t),0,math.sin(t)],[0,1,0],[-math.sin(t),0,math.cos(t)]])
+    raster(own,center+np.array([.7,.2,7])@rot.T,center,3.5,DEST/'bithlo_sign_detail.png','Bithlo sign / actual reference stickers on thin metal panels',size=(1100,1200))
     if args.individual_only:return
     g=ground_mesh(H,(223,390,82,188),2)
     views=[('truck_cluster',[356,24,120],[334,4,154],37,'Four owner vehicles / grass parking beside frontage'),('pit_overview',[404,85,55],[308,6,140],190,'Entire pit / existing facilities retained'),('bathroom_trucks',[242,23,89],[304,4,136],100,'Bathroom access and owner parking'),('office_stop_sign',[311,15,126],[323,4,150], 50,'Office, sticker sign and owner parking')]

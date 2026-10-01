@@ -9,7 +9,7 @@ def main():
     for rel,digest in inv['input_sha256'].items():
         if rel.endswith('scenery.fbx'):continue
         new=rel.replace('V018','V020').replace('v018','v020');p=R/new
-        if not p.exists():continue
+        assert p.is_file(),('required protected input missing',new)
         got=sha(p);checks.append(dict(file=new,expected_sha256=digest,sha256=got,unchanged=got==digest))
     failed=[c['file'] for c in checks if not c['unchanged']]
     assert not failed,('protected track input changed',failed)
@@ -25,7 +25,7 @@ def main():
     old={x['id']:x for x in p19['assets']};new={x['id']:x for x in p20['assets']}
     assert set(new)==set(old)-{'pickup_03'}
     for k in set(new)-{'bithlo_sticker_stop'}:assert new[k]==old[k],('unauthorized facility change',k)
-    assert new['bithlo_sticker_stop']['xz']==[242.0,143.0] and new['bithlo_sticker_stop']['heading']==180
+    assert new['bithlo_sticker_stop']['xz']==[278.0,142.0] and new['bithlo_sticker_stop']['heading']==270
 
     # Vehicle placements are preserved; only meshes/textures are intentionally revised.
     v20=read(S/'vehicles.json');v19=read(R/'V019_SOURCE/vehicles.json')
@@ -69,3 +69,4 @@ def main():
         power_of_two_vehicle_textures=True,in_game_riding=False))
     print('v020 protected track inputs and authorized asset-only changes verified')
 if __name__=='__main__':main()
+
