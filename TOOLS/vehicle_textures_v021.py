@@ -21,13 +21,25 @@ def star(draw,c,r,fill):
     for i in range(10):
         a=-math.pi/2+i*math.pi/5;rr=r if i%2==0 else r*.40;pts.append((x+rr*math.cos(a),y+rr*math.sin(a)))
     draw.polygon(pts,fill=fill)
+NATIVE_U_MIRROR_FIX={
+    'premier_wrap','premier_wrap_right','premier_tail',
+    'ford_badge','king_ranch','four_by_four','chevy_badge',
+    'jordan_number','premier_number','sam_number','shane_number',
+    'jordan_shroud','premier_shroud','sam_shroud','shane_shroud'
+}
+
 def build():
     dest=S/'vehicle_textures';dest.mkdir(exist_ok=True);textures={}
     def keep(name,im,color=None):
         im=im.convert('RGB')
-        # PiBoSo fbx2edf silently collapses NPOT textures: the v021 native
-        # regression probe produced ~210 KB EDF for 256x256 but only 716 bytes
-        # for 256x320. Normalize every generated bitmap to power-of-two dimensions.
+        # v020 in-game test proved readable decals are horizontally mirrored
+        # by the native FBX/EDF UV handedness even though source previews look correct.
+        # Pre-flip ONLY text/graphic bitmaps so the compiled game view reads normally.
+        native_u_preflipped=name in NATIVE_U_MIRROR_FIX
+        if native_u_preflipped:
+            im=im.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
+        # PiBoSo fbx2edf silently collapses NPOT textures: the v020 regression
+        # probe produced ~210 KB EDF for 256x256 but only 716 bytes for 256x320.
         def np2(n):
             p=1
             while p<n:p*=2
@@ -36,7 +48,8 @@ def build():
         if im.size!=target:im=im.resize(target,Image.Resampling.LANCZOS)
         buf=io.BytesIO();im.save(buf,format='PNG');p=dest/(name+'.png');p.write_bytes(buf.getvalue())
         assert im.width&(im.width-1)==0 and im.height&(im.height-1)==0
-        textures[name]=dict(file='vehicle_textures/'+p.name,rgb=list(color or np.array(im).mean(axis=(0,1)).astype(int)),width=im.width,height=im.height,sha256=sha(p));return im
+        textures[name]=dict(file='vehicle_textures/'+p.name,rgb=list(color or np.array(im).mean(axis=(0,1)).astype(int)),width=im.width,height=im.height,sha256=sha(p),native_u_preflipped=native_u_preflipped)
+        return im
     rng=np.random.default_rng(19019)
     for name,c in COLORS.items():
         n=128;yy,xx=np.mgrid[:n,:n];noise=rng.normal(0,.8,(n,n))
@@ -84,12 +97,14 @@ def build():
         else:
             textfit(d,(10,105,492,45),'CENTRAL FLORIDA');textfit(d,(12,169,488,66),'POWERSPORTS');textfit(d,(40,285,430,29),'YAMAHA YZ450F')
         keep(owner+'_shroud',im,(255,255,255))
-    keep('bithlo_photo',Image.open(S/'bithlo_sign_reference.jpg'),(255,255,255))
+    keep('bithlo_photo',Image.open(R/'V020_SOURCE/bithlo_sign_reference.jpg'),(255,255,255))
     save(S/'vehicle_materials.json',textures)
     archive={}
     for p in sorted(dest.glob('*.png')):
         raw=p.read_bytes();archive[p.name]=dict(sha256=sha(p),data=base64.b64encode(zlib.compress(raw,9)).decode())
     save(S/'vehicle_textures_packed.json',archive)
     assert all((m['width']&(m['width']-1)==0 and m['height']&(m['height']-1)==0) for m in textures.values())
-    print('Vehicle texture materials:',len(textures),'all power-of-two');return textures
+    assert {k for k,v in textures.items() if v.get('native_u_preflipped')}==NATIVE_U_MIRROR_FIX
+    assert not textures['bithlo_photo'].get('native_u_preflipped')
+    print('Vehicle texture materials:',len(textures),'all power-of-two; native U mirror fixes:',len(NATIVE_U_MIRROR_FIX));return textures
 if __name__=='__main__':build()
