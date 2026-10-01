@@ -61,7 +61,7 @@ def materialize_runtime():
                     pts.append([cx+dx*cc-dy*ss,cy+dx*ss+dy*cc,z])
                 s.add(pts,[list(range(4))],mat)
             rng=np.random.default_rng(20020)
-            mats=['sticker_white','sticker_black','sticker_yellow','sticker_blue','sticker_green','red']
+            mats=['sticker_white','sticker_black','sticker_yellow','sticker_blue','sticker_green','sticker_orange','sticker_pink','red']
             for i in range(72):
                 cx=rng.uniform(-.50,.50);dy=rng.uniform(-.48,.48)
                 if abs(cx)+abs(dy)>.78:cx*=.70;dy*=.70
