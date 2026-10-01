@@ -21,7 +21,7 @@ def main():
         v=values(n);return dict(name=n['name'].decode(),types=n['props'][:1].decode(),values=[str(x)[:400] for x in v],children=[desc(c) for c in n['children']])
     (D/'template.json').write_text(json.dumps([desc(x) for x in [mat,byid[ti],byid[vi]]],indent=2))
     tex=np.zeros((256,256,3),np.uint8);yy,xx=np.mgrid[:256,:256];tex[:,:,0]=xx;tex[:,:,1]=yy;tex[:,:,2]=(xx^yy);Image.fromarray(tex).save(D/'probe.tga');raw=(D/'probe.tga').read_bytes()
-    mesh=dict(name='texture_probe',vertices=[[-100,0,0],[100,0,0],[100,200,0],[-100,200,0]],faces=[[0,1,2],[0,2,3]],uv=[[[0,0],[1,0],[1,1]],[[0,0],[1,1],[0,1]]])
+    mesh=dict(name='texture_probe',vertices=[[-1.0,0.0,0.0],[1.0,0.0,0.0],[1.0,2.0,0.0],[-1.0,2.0,0.0]],faces=[[0,1,2],[0,2,3]],uv=[[[0.0,0.0],[1.0,0.0],[1.0,1.0]],[[0.0,0.0],[1.0,1.0],[0.0,1.0]]])
     tools=R/'BUILD/probe_tools';tools.mkdir(exist_ok=True);versions=json.loads((R/'BUILD/tool_versions.json').read_text());key='ct.zip';ver=versions[key]
     data=urllib.request.urlopen(ver['url'],timeout=60).read();assert hashlib.sha256(data).hexdigest()==ver['sha256'];p=tools/key;p.write_bytes(data)
     with zipfile.ZipFile(p) as z:z.extractall(tools)
