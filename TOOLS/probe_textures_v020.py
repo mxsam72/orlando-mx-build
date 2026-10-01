@@ -11,7 +11,7 @@ R=Path(__file__).resolve().parents[1];D=R/'DOCUMENTATION/v020_texture_probe';D.m
 
 def main():
     subprocess.run(['python',str(R/'TOOLS/materialize_v009_baseline.py')],cwd=R,check=True)
-    base=R/'BUILD/v009_baseline/scenery.fbx';shutil.copy2(base,D/'baseline.fbx')
+    base=R/'BUILD/v009_baseline/scenery.fbx'
     nodes,tail=parse(base.read_bytes());objects=next(n for n in nodes if n['name']==b'Objects');connections=next(n for n in nodes if n['name']==b'Connections');byid={values(n)[0]:n for n in objects['children'] if n['count']}
     mat=next(n for n in byid.values() if n['name']==b'Material' and values(n)[1].split(b'\0')[0] in [b'marker_white',b'white']);mi=values(mat)[0]
     ti=next(values(n)[1] for n in connections['children'] if values(n)[2]==mi and byid.get(values(n)[1],{}).get('name')==b'Texture')
@@ -22,11 +22,12 @@ def main():
     (D/'template.json').write_text(json.dumps([desc(x) for x in [mat,byid[ti],byid[vi]]],indent=2))
     tex=np.zeros((256,256,3),np.uint8);yy,xx=np.mgrid[:256,:256];tex[:,:,0]=xx;tex[:,:,1]=yy;tex[:,:,2]=(xx^yy);Image.fromarray(tex).save(D/'probe.tga');raw=(D/'probe.tga').read_bytes()
     mesh=dict(name='texture_probe',vertices=[[-100,0,0],[100,0,0],[100,200,0],[-100,200,0]],faces=[[0,1,2],[0,2,3]],uv=[[[0,0],[1,0],[1,1]],[[0,0],[1,1],[0,1]]])
-    tools=R/'BUILD/probe_tools';tools.mkdir(exist_ok=True);versions=json.loads((R/'BUILD/tool_versions.json').read_text());key=next(k for k in versions if 'fbx2edf' in k);ver=versions[key]
+    tools=R/'BUILD/probe_tools';tools.mkdir(exist_ok=True);versions=json.loads((R/'BUILD/tool_versions.json').read_text());key='ct.zip';ver=versions[key]
     data=urllib.request.urlopen(ver['url'],timeout=60).read();assert hashlib.sha256(data).hexdigest()==ver['sha256'];p=tools/key;p.write_bytes(data)
     with zipfile.ZipFile(p) as z:z.extractall(tools)
     exe=tools/'fbx2edf/fbx2edf_x64.exe';results=[]
-    for variant in ['legacy','typed_uv','file_properties','all_fixes','diffuse_alias']:
+    for variant in ['legacy','typed_uv','file_properties','all_fixes','diffuse_alias','non_power_of_two']:
+        Image.fromarray(tex).resize((256,320) if variant=='non_power_of_two' else (256,256)).save(D/'probe.tga');raw=(D/'probe.tga').read_bytes()
         nn=copy.deepcopy(nodes);oo=next(n for n in nn if n['name']==b'Objects');cc=next(n for n in nn if n['name']==b'Connections');mm=copy.deepcopy(model)
         setvalues(mm,mid,b'texture_probe\0\1Model','Mesh')
         for p in child(mm,'Properties70')['children']:
