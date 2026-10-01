@@ -33,7 +33,8 @@ def main():
     toward=fence.mean(0)-np.asarray(bath['xz'],dtype=float); toward/=np.linalg.norm(toward)
     fv=front_vector(bath['heading'])
     checks['bathroom_doors_face_spectator_fence']=float(fv@toward)>.75
-    checks['signature_sign_near_office']=float(np.linalg.norm(np.asarray(sign['xz'])-np.asarray(office['xz'])))<10.0
+    checks['signature_sign_relocated_to_frontage_shoulder']=sign['xz']==[242.0,143.0]
+    checks['generic_pickup_03_removed']='pickup_03' not in assets
 
     roads=road_field((768,768)); grass=grass_field((768,768))
     components,count=label(roads>.30)
