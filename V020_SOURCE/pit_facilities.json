@@ -1,0 +1,420 @@
+{
+  "status": "Photo/video-derived v020 pit asset correction; track/pit roads preserved from validated v019",
+  "references": [
+    "IMG_3591.mov",
+    "IMG_3592.mov",
+    "IMG_3594.mov",
+    "IMG_3595.mov",
+    "IMG_3597.mov",
+    "Bithlo bathroom.MOV",
+    "bithlo sign 1.jpg",
+    "bithlo sign 2.jpg",
+    "bithlo sign 3.jpg"
+  ],
+  "unavailable_references": [],
+  "road_width_m": 7,
+  "roads": [
+    {
+      "id": "main_frontage",
+      "width": 7.5,
+      "points": [
+        [
+          233,
+          137
+        ],
+        [
+          270,
+          137
+        ],
+        [
+          310,
+          136
+        ],
+        [
+          359,
+          137
+        ],
+        [
+          382,
+          159
+        ]
+      ]
+    },
+    {
+      "id": "lower_pit",
+      "width": 6.5,
+      "points": [
+        [
+          241,
+          93
+        ],
+        [
+          300,
+          93
+        ],
+        [
+          346,
+          93
+        ],
+        [
+          373,
+          110
+        ],
+        [
+          373,
+          137
+        ]
+      ]
+    },
+    {
+      "id": "west_connector",
+      "width": 5.5,
+      "points": [
+        [
+          241,
+          93
+        ],
+        [
+          230,
+          108
+        ],
+        [
+          233,
+          137
+        ]
+      ]
+    },
+    {
+      "id": "mid_connector",
+      "width": 5.5,
+      "points": [
+        [
+          251,
+          93
+        ],
+        [
+          251,
+          115
+        ],
+        [
+          250,
+          137
+        ]
+      ]
+    },
+    {
+      "id": "east_connector",
+      "width": 5.5,
+      "points": [
+        [
+          342,
+          93
+        ],
+        [
+          342,
+          117
+        ],
+        [
+          344,
+          137
+        ]
+      ]
+    },
+    {
+      "id": "office_apron",
+      "width": 5.5,
+      "points": [
+        [
+          278,
+          137
+        ],
+        [
+          294,
+          143
+        ],
+        [
+          318,
+          145
+        ],
+        [
+          343,
+          137
+        ]
+      ]
+    }
+  ],
+  "fence_opening_station_m": [
+    113,
+    116.6
+  ],
+  "assets": [
+    {
+      "id": "covered_stand",
+      "type": "covered_stand",
+      "xz": [
+        334,
+        165
+      ],
+      "heading": 0
+    },
+    {
+      "id": "bleachers",
+      "type": "bleachers",
+      "xz": [
+        306,
+        162
+      ],
+      "heading": 0
+    },
+    {
+      "id": "office",
+      "type": "office",
+      "xz": [
+        311,
+        149
+      ],
+      "heading": -90
+    },
+    {
+      "id": "restroom",
+      "type": "restroom",
+      "xz": [
+        275,
+        112.5
+      ],
+      "heading": 0
+    },
+    {
+      "id": "concession",
+      "type": "concession",
+      "xz": [
+        280,
+        151
+      ],
+      "heading": 180
+    },
+    {
+      "id": "rv_01",
+      "type": "rv",
+      "xz": [
+        237,
+        108
+      ],
+      "heading": 0
+    },
+    {
+      "id": "rv_02",
+      "type": "rv",
+      "xz": [
+        350,
+        110
+      ],
+      "heading": 0
+    },
+    {
+      "id": "toyhauler_01",
+      "type": "trailer",
+      "xz": [
+        356,
+        151
+      ],
+      "heading": 90
+    },
+    {
+      "id": "pickup_01",
+      "type": "pickup",
+      "xz": [
+        268,
+        101
+      ],
+      "heading": 90
+    },
+    {
+      "id": "pickup_02",
+      "type": "pickup",
+      "xz": [
+        295,
+        147
+      ],
+      "heading": 0
+    },
+    {
+      "id": "trailer_02",
+      "type": "trailer",
+      "xz": [
+        316,
+        101
+      ],
+      "heading": 90
+    },
+    {
+      "id": "canopy_01",
+      "type": "pop_up",
+      "xz": [
+        304,
+        149
+      ],
+      "heading": 0
+    },
+    {
+      "id": "canopy_02",
+      "type": "pop_up",
+      "xz": [
+        282,
+        101
+      ],
+      "heading": 0
+    },
+    {
+      "id": "oak_restroom",
+      "type": "oak",
+      "xz": [
+        266,
+        120
+      ],
+      "heading": 0,
+      "radius": 7.8
+    },
+    {
+      "id": "oak_bleachers",
+      "type": "oak",
+      "xz": [
+        299,
+        157
+      ],
+      "heading": 0,
+      "radius": 7
+    },
+    {
+      "id": "oak_front",
+      "type": "oak",
+      "xz": [
+        347,
+        160
+      ],
+      "heading": 0,
+      "radius": 6.4
+    },
+    {
+      "id": "oak_pits",
+      "type": "oak",
+      "xz": [
+        275,
+        126
+      ],
+      "heading": 0,
+      "radius": 6.8
+    },
+    {
+      "id": "oak_entry",
+      "type": "oak",
+      "xz": [
+        363,
+        99
+      ],
+      "heading": 0,
+      "radius": 7.2
+    },
+    {
+      "id": "front_flag",
+      "type": "flagpole",
+      "xz": [
+        326,
+        171
+      ],
+      "heading": 15
+    },
+    {
+      "id": "light_01",
+      "type": "utility",
+      "xz": [
+        275,
+        167
+      ],
+      "heading": 0
+    },
+    {
+      "id": "light_02",
+      "type": "utility",
+      "xz": [
+        362,
+        171
+      ],
+      "heading": 0
+    },
+    {
+      "id": "bithlo_sticker_stop",
+      "type": "sticker_stop_sign",
+      "xz": [
+        242,
+        143
+      ],
+      "heading": 180,
+      "reference": "User-marked v020 location: earlier on frontage pit road, left shoulder where pale gravel ends; thin sticker-covered Bithlo sign from supplied reference photos"
+    }
+  ],
+  "placement_intent": {
+    "bathroom": "v019: restroom kept in the corrected opposite-road cluster at (275,112.5), a ~1 m clearance adjustment from v017, with heading 0 so its door wall faces +Z toward the spectator fence.",
+    "office": "Left / negative X of red frontage pickup03 (321,149), viewed from the pit road toward spectator fence (+Z)",
+    "precision": "Relational placement from user instruction and videos; metric positions are authored, not surveyed",
+    "supporting_adjustment": "Bathroom shade oak to (266,120). Remove the two prior wrong bathroom-driven grass patches.",
+    "grass_area": "v019: expand grass across lower and upper parking/pit paddocks; all authored gravel road masks override grass.",
+    "signature_sign": "v020: relocate sticker-covered Bithlo sign from office area to (242,143), on the earlier/west frontage-road shoulder near the pale-gravel transition shown by the user. Coordinates remain an authored estimate from the marked screenshot.",
+    "removed_generic_pickup": "v020: remove only generic pickup_03 formerly at (321,149), heading -15, as circled by user; preserve other generic pit vehicles."
+  },
+  "tree_removal_intent": {
+    "description": "Remove baseline tree/scrub objects inside the start/track infield visible left of the rightmost gate, continuing toward the approach before the corner that leads to R09.",
+    "authored_zone_xz": {
+      "min_x": 285,
+      "max_x": 435,
+      "min_z": 180,
+      "max_z": 320
+    },
+    "preserve_facility_trees_below_z": 174,
+    "reference": "trees to remove inside track.png"
+  },
+  "grass_patches": [
+    {
+      "id": "lower_pit_parking_grass",
+      "bounds_xz": [
+        226,
+        99,
+        370,
+        133
+      ],
+      "feather_m": 2,
+      "description": "Expanded lower parking/pit grass from bathroom/RV reference video; gravel roads override."
+    },
+    {
+      "id": "upper_pit_parking_grass",
+      "bounds_xz": [
+        238,
+        142,
+        370,
+        166
+      ],
+      "feather_m": 2,
+      "description": "Expanded grassy parking/paddock between frontage road and spectator-fence facilities; office-apron gravel overrides."
+    }
+  ],
+  "water_removal_intent": {
+    "model": "drainage_water_2",
+    "reason": "User-directed removal of visible water/drainage patch beside R07 ant-hill in v015 test video",
+    "preserve_other_water": true
+  },
+  "main_gravel_road_intent": {
+    "description": "v019: continuous connected gravel loop with strong east-west frontage road, lower pit road, west/mid/east connectors, and a front office apron matching the example pit videos.",
+    "primary_road_ids": [
+      "main_frontage",
+      "lower_pit"
+    ],
+    "connector_ids": [
+      "west_connector",
+      "mid_connector",
+      "east_connector",
+      "office_apron"
+    ],
+    "road_mask_priority_over_grass": true,
+    "dedicated_visual_gravel_layer": true
+  }
+}
