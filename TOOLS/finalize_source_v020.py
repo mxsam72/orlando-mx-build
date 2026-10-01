@@ -29,7 +29,11 @@ def main():
 
     # Vehicle placements are preserved; only meshes/textures are intentionally revised.
     v20=read(S/'vehicles.json');v19=read(R/'V019_SOURCE/vehicles.json')
-    assert json.dumps(v20,sort_keys=True).replace('v020','v019')==json.dumps(v19,sort_keys=True)
+    # Compare all placement/identity data directly while allowing only the
+    # expected version-label change. Avoid brittle whole-JSON string replacement.
+    v20_cmp=dict(v20);v19_cmp=dict(v19)
+    v20_cmp.pop('version',None);v19_cmp.pop('version',None)
+    assert v20_cmp==v19_cmp,('vehicle placement/spec drift',v20_cmp,v19_cmp)
 
     mats=read(S/'vehicle_materials.json')
     for name,m in mats.items():
