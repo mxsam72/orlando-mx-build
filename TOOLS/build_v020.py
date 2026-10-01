@@ -47,7 +47,7 @@ def materialize_runtime():
             # Sticker plaques are essentially flush (not the old chunky confetti).
             s.beam([0,0,0],[0,4.08,0],.045,'alloy',10)
             s.box([0,3.72,0],[2.72,.46,.045],'alloy')
-            s.box([0,3.72,-.035],[2.43,.055,.045],'steel')
+            s.box([0,3.72,-.035],[2.43,.055,.045],'alloy')
             s.box([0,1.52,0],[1.48,1.02,.045],'sticker_white')
             def octagon(cy,r,z,mat):
                 vv=[[math.cos(math.pi/8+k*math.pi/4)*r,
