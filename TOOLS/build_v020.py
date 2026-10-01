@@ -28,8 +28,8 @@ def materialize_runtime():
     fm=fmp.read_text(encoding='utf-8')
     fm=fm.replace("'gravel':(174,169,153)}",
         "'gravel':(174,169,153),\n"
-        "         'sticker_white':(244,244,238),'sticker_black':(22,23,22),'sticker_yellow':(232,214,83),\n"
-        "         'sticker_blue':(50,90,155),'sticker_green':(70,125,72),'sticker_orange':(213,113,55),'sticker_pink':(186,87,128)}")
+        "         'sticker_white':(240,239,229),'sticker_black':(24,25,24),'sticker_yellow':(226,201,60),\n"
+        "         'sticker_blue':(45,98,153),'sticker_green':(77,133,73),'sticker_orange':(211,111,48),'sticker_pink':(184,83,123)}")
     legacy_restroom_side="""            else:
                 for z in np.arange(-2,2.2,.18):s.box([-4.1,.9,z],[.13,1.8,.16],'timber')
                 s.box([-3.5,.9,2.1],[1.3,1.8,.12],'timber')
