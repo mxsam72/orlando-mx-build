@@ -1,0 +1,75 @@
+name: Build v020 corrected bikes textures and Bithlo pits
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v020]
+    paths:
+      - 'V020_SOURCE/**'
+      - 'TOOLS/*v020*.py'
+      - '.github/workflows/build-v020.yml'
+permissions:
+  contents: read
+concurrency:
+  group: orlando-v020-asset-correction-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 60
+    env:
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+      OPENBLAS_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned source dependencies
+        run: python -m pip install -r requirements-v009.txt
+      - name: Generate and validate v020 source checkpoint
+        run: python TOOLS/build_v020.py --source-only
+      - name: Save source checkpoint before native compile
+        uses: actions/upload-artifact@v7
+        with:
+          name: OrlandoMX-v020-source-checkpoint
+          retention-days: 90
+          path: |
+            V020_OUTPUT/terrain.raw
+            V020_OUTPUT/start.tcl
+            V020_OUTPUT/orlandomx_2026_v020.rdf
+            V020_OUTPUT/jump_profiles.json
+            V020_OUTPUT/start_layout_resolved.json
+            V020_OUTPUT/facility_layout.json
+            V020_OUTPUT/facility_meshes.json
+            V020_OUTPUT/vehicle_meshes.json
+            V020_OUTPUT/vehicle_catalog.json
+            DOCUMENTATION/v020*.json
+            DOCUMENTATION/v020_qa/
+      - name: Compile fresh native MAP TRH and PKZ
+        run: python TOOLS/build_windows_v020.py
+      - name: Upload candidate
+        uses: actions/upload-artifact@v7
+        with:
+          name: OrlandoMX-v020-game-candidate
+          retention-days: 90
+          path: |
+            12_RELEASE/OrlandoMX_2026_v020.pkz
+            12_RELEASE/OrlandoMX_2026_v020.pkz.sha256
+            12_RELEASE/OrlandoMX_v020_Validation.json
+            12_RELEASE/Install_v020.txt
+      - name: Preserve diagnostics even on failure
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: OrlandoMX-v020-build-evidence
+          retention-days: 90
+          path: |
+            DOCUMENTATION/v020*.json
+            DOCUMENTATION/v020*.txt
+            DOCUMENTATION/v020*.md
+            DOCUMENTATION/v020_qa/
+            DOCUMENTATION/*.log
+            DOCUMENTATION/native*validation.json
+            DOCUMENTATION/native_build_failure.txt
+            DOCUMENTATION/track_code.txt
