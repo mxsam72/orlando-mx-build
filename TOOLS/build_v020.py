@@ -145,7 +145,7 @@ def materialize_runtime():
             if not (im.width&(im.width-1)==0 and im.height&(im.height-1)==0):
                 raise RuntimeError('NPOT texture reached native compile: '+name+str(im.size))
             names.append(('v020_vehicle_'+name+'.tga').encode())
-        edf=R/'08_OBJECTS_GAME/scenery.edf';raw=edf.read_bytes()
+        edf=R/'BUILD/v009_work/08_OBJECTS_GAME/scenery.edf';raw=edf.read_bytes()
         missing=[n.decode() for n in names if raw.find(n)<0]
         if missing:raise RuntimeError('Compiled EDF missing v020 texture references: '+str(missing))
         save(R/'DOCUMENTATION/v020_native_texture_validation.json',dict(checks_pass=True,power_of_two=True,texture_count=len(names),edf_bytes=len(raw),missing=[],probe_evidence='Actions 36824107860: 256x256 probe EDF 209988 bytes; 256x320 NPOT probe EDF only 716 bytes'))
