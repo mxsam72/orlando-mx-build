@@ -103,6 +103,9 @@ def materialize_runtime():
     qa['layout_checks_pass']=bool(clear.min()>.5 and not cross and 0<t6['arc_start']-cfg['merge_station_m']<8 and t6['angle']<0 and bathroom_to_truck<14.5 and bathroom_to_canopy<14.5 and bathroom_in_grass and road_clear>.5 and qa['generic_pickup_03_removed'] and sign_asset['xz']==[242.0,143.0])
 """
     q=q[:start]+rel+q[end:]
+    q=q.replace("PALETTE[m['material']]","PALETTE.get(m['material'],(128,128,128))")
+    q=q.replace("('office','Office: left of frontage truck',(-63,28)),('pickup_03','Red frontage truck',(6,-27)),","('office','Office',(-63,28)),")
+
     q=q.replace("('restroom','Bathroom beside red truck',(-110,-35)),('pickup_02','Red truck',(8,-22)),('canopy_01','Canopy',(10,16)),('rv_02','Camper / RV',(10,-20))",
                 "('restroom','Bathroom · opposite road',(-95,-38)),('pickup_01','Other red truck',(-62,-22)),('canopy_02','Canopy',(-10,15)),('rv_02','Camper / RV',(10,-20))")
     q=q.replace("('pickup_03','Red frontage truck',(6,-27)),","")
