@@ -105,6 +105,8 @@ def materialize_runtime():
     q=q[:start]+rel+q[end:]
     q=q.replace("('restroom','Bathroom beside red truck',(-110,-35)),('pickup_02','Red truck',(8,-22)),('canopy_01','Canopy',(10,16)),('rv_02','Camper / RV',(10,-20))",
                 "('restroom','Bathroom · opposite road',(-95,-38)),('pickup_01','Other red truck',(-62,-22)),('canopy_02','Canopy',(-10,15)),('rv_02','Camper / RV',(10,-20))")
+    q=q.replace("('pickup_03','Red frontage truck',(6,-27)),","")
+    q=q.replace("Office: left of frontage truck","Office / sign-in")
     (R/'TOOLS/qa_v020_layout.py').write_text(q,encoding='utf-8')
 
     # Preserve the validated v019 connected gravel network.
