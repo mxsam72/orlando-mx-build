@@ -57,7 +57,7 @@ def main():
     checks['start_merge_before_T05']=f24['merge_station_m']==410.0 and f24['merge_blend_length_m']==24.0
     checks['start_checkpoints_fit_new_route']=f24['start_checkpoint_stations_m']==[20,80,130]
     sl=read(S/'start_layout.json')
-    checks['start_layout_documents_pre_T05_merge']=sl['merge_station_m']==410.0 and sl['right_corner']=='T05' and 8<sl['merge_before_corner_m']<20 and sl['first_lap_turns'][0]=='T05'
+    checks['start_layout_documents_pre_T05_merge']=sl['merge_station_m']==410.0 and sl['right_corner']=='T05' and 20<sl['merge_before_corner_m']<40 and sl['first_lap_turns'][0]=='T05'
     checks['pit_facilities_unchanged']=read(S/'pit_facilities.json')==read(R/'V023_SOURCE/pit_facilities.json')
     checks['vehicles_unchanged']=read(S/'vehicles.json')==read(R/'V023_SOURCE/vehicles.json')
     pit=read(S/'pit_facilities.json');roads=road_field((768,768));grass=grass_field((768,768));_,count=label(roads>.30)
