@@ -38,12 +38,22 @@ def fields(H, shape=(N, N)):
     # Constant flat gate bed, then smooth longitudinal elevation interpolation.
     start_h = float(ground(H, np.array([cfg['grid_center_xz']]))[0])
     end_h = float(ground(H, sa[-1:, :2])[0])
-    # Reach the natural merge elevation early and hold it for the final ~45 m.
-    # This removes the prior last-second elevation mismatch while allowing the
-    # main-track centerline to remain completely untouched.
-    settle_station=max(70.0,float(sa[-1,3])-45.0)
-    desired = start_h+(end_h-start_h)*ease((st-28)/max(settle_station-28,1))
-    desired = np.where(st>=settle_station,end_h,desired)
+    # Reach merge elevation early, then blend the final convergence toward the
+    # *existing* main-track elevation at the nearest station. This lets us fully
+    # grade the start corridor through the merge without deforming the normal
+    # lap centerline.
+    settle_station=max(70.0,float(sa[-1,3])-55.0)
+    desired_start = start_h+(end_h-start_h)*ease((st-28)/max(settle_station-28,1))
+    desired_start = np.where(st>=settle_station,end_h,desired_start)
+    main_center_h = ground(H,q[:,:2])
+    nearest_main_h = main_center_h[mi]
+    merge_height_blend = (1-ease((md-.15)/7.5))*local
+    desired = desired_start*(1-merge_height_blend)+nearest_main_h*merge_height_blend
+    # In the final local merge, use the height-matched desired surface instead
+    # of fading grading out at the main-lane shoulder. At md=0 desired equals
+    # the untouched main centerline elevation exactly.
+    merge_corridor = alpha*opening_long*local
+    weight = np.maximum(weight,merge_corridor)
     old_width = 10.5+25.5*(1-ease((old[oi, 3]-12)/43))
     retire = (1-ease((od-old_width/2)/2))*(1-ease((236-pts[:, 0])/2))
     return {k: v.reshape(shape) for k, v in dict(weight=weight, desired=desired, start=core, retire=retire, main_distance=md, main_width=w[mi], start_station=st, start_distance=sd, merge_opening=opening, main_station=main_station).items()}
@@ -68,8 +78,9 @@ def main():
     grid = np.array([[s['x'], s['z']] for s in cfg['grid']]); levels = ground(H, grid)
     delta = abs(H-base); main = f['main_distance']<f['main_width']/2+1
     q,w=route();sa=np.load(O/'route.npz')['start'];along=ground(H,sa[:,:2]);start_slope=np.gradient(along,sa[:,3])
+    worst_i=int(np.argmax(abs(start_slope)))
     protected=main&(f['weight']<=1e-5)
-    qa = dict(raw_sha256=sha(O/'terrain.raw'), gate_height_spread_m=float(np.ptp(levels)), gate_max_grade=float(ground(grades, grid).max()), main_centerline_max_delta_m=float(abs(ground(H,q[:,:2])-ground(base,q[:,:2])).max()), normal_lap_outside_merge_max_delta_m=float(delta[protected].max()), merge_bank_max_lower_m=float(np.maximum(base-H,0)[f['merge_opening']>.1].max()), start_max_grade=float(grades[f['start']>.9].max()), start_centerline_max_grade=float(abs(start_slope).max()), changed_max_grade=float(grades[delta>.001].max()), changed_nodes=int((delta>.001).sum()), retired_start_surface=True, native_compilation=False, in_game_riding=False)
+    qa = dict(raw_sha256=sha(O/'terrain.raw'), gate_height_spread_m=float(np.ptp(levels)), gate_max_grade=float(ground(grades, grid).max()), main_centerline_max_delta_m=float(abs(ground(H,q[:,:2])-ground(base,q[:,:2])).max()), normal_lap_outside_merge_max_delta_m=float(delta[protected].max()), merge_bank_max_lower_m=float(np.maximum(base-H,0)[f['merge_opening']>.1].max()), start_max_grade=float(grades[f['start']>.9].max()), start_centerline_max_grade=float(abs(start_slope).max()), start_centerline_worst_station_m=float(sa[worst_i,3]), start_centerline_worst_grade=float(start_slope[worst_i]), start_centerline_worst_xz=sa[worst_i,:2].tolist(), changed_max_grade=float(grades[delta>.001].max()), changed_nodes=int((delta>.001).sum()), retired_start_surface=True, native_compilation=False, in_game_riding=False)
     qa['start_terrain_checks_pass'] = qa['gate_height_spread_m']<.01 and qa['gate_max_grade']<.02 and qa['main_centerline_max_delta_m']<.001 and qa['normal_lap_outside_merge_max_delta_m']<.001 and qa['changed_max_grade']<.84 and qa['start_centerline_max_grade']<.22
     qa['merge_shoulder_relaxation_passes']=passes
     save(R/'DOCUMENTATION/v024_start_validation.json', qa); print(qa)
