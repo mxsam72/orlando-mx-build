@@ -1,0 +1,86 @@
+name: Build v024 T05 hill T06 flow T13 route refinement
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v024]
+    paths:
+      - 'V024_SOURCE/**'
+      - 'TOOLS/*v024*.py'
+      - '.github/workflows/build-v024.yml'
+permissions:
+  contents: read
+concurrency:
+  group: orlando-v024-flow-refinement-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 60
+    env:
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+      OPENBLAS_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned source dependencies
+        run: python -m pip install -r requirements-v009.txt
+      - name: Generate and validate v024 source checkpoint
+        run: python TOOLS/build_v024.py --source-only
+      - name: Save source checkpoint before native compile
+        uses: actions/upload-artifact@v7
+        with:
+          name: OrlandoMX-v024-source-checkpoint
+          retention-days: 90
+          path: |
+            V024_OUTPUT/terrain.raw
+            V024_OUTPUT/start.tcl
+            V024_OUTPUT/orlandomx_2026_v024.rdf
+            V024_OUTPUT/jump_profiles.json
+            V024_OUTPUT/start_layout_resolved.json
+            V024_OUTPUT/facility_layout.json
+            V024_OUTPUT/facility_meshes.json
+            V024_OUTPUT/vehicle_meshes.json
+            V024_OUTPUT/sign_graphic_meshes.json
+            V024_OUTPUT/vehicle_catalog.json
+            DOCUMENTATION/v024*.json
+            DOCUMENTATION/v024_qa/
+      - name: Compile fresh native MAP TRH and PKZ
+        run: python TOOLS/build_windows_v024.py
+      - name: Upload candidate
+        uses: actions/upload-artifact@v7
+        with:
+          name: OrlandoMX-v024-game-candidate
+          retention-days: 90
+          path: |
+            12_RELEASE/OrlandoMX_2026_v024.pkz
+            12_RELEASE/OrlandoMX_2026_v024.pkz.sha256
+            12_RELEASE/OrlandoMX_v024_Validation.json
+            12_RELEASE/Install_v024.txt
+      - name: Preserve diagnostics even on failure
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: OrlandoMX-v024-build-evidence
+          retention-days: 90
+          path: |
+            DOCUMENTATION/v024*.json
+            DOCUMENTATION/v024*.txt
+            DOCUMENTATION/v024*.md
+            DOCUMENTATION/v024_qa/
+            DOCUMENTATION/*.log
+            DOCUMENTATION/native*validation.json
+            DOCUMENTATION/native_build_failure.txt
+            DOCUMENTATION/track_code.txt
+      - name: Preserve native texture payloads if validation fails
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: OrlandoMX-v024-native-failure-data
+          retention-days: 30
+          path: |
+            BUILD/v009_work/08_OBJECTS_GAME/scenery.edf
+            12_RELEASE/orlandomx_2026_v024/orlandomx_2026_v024.map
+            V024_OUTPUT/facility_textures/
