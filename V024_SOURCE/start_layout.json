@@ -3,9 +3,9 @@
   "authoritative_config": "facilities.json",
   "merge_station_m": 410,
   "right_corner": "T05",
-  "right_corner_start_m": 422.772902664924,
-  "merge_before_corner_m": 12.772902664924,
-  "description": "v024: start loop merges onto the clean straight before T05, leaving the T05 sweeping hill and following T06 right-hander untouched by start-lane grading",
+  "right_corner_start_m": 438.6056578179341,
+  "merge_before_corner_m": 28.605657817934116,
+  "description": "v024 free-ride build: placeholder start route merges onto the clean straight about 28.6 m before T05; racing behavior is intentionally deferred.",
   "survey_status": "User authorized relocation wherever required; precise start merge is authored for clean terrain separation",
   "start_lane_width_m": [
     [
@@ -49,7 +49,7 @@
     "T13",
     "T14"
   ],
-  "reset_runtime_status": "Unverified until TrackEd / in-game start test",
+  "reset_runtime_status": "Deferred by user for v024 free-ride testing",
   "start_checkpoint_stations_m": [
     20,
     80,
