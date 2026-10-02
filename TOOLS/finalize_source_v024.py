@@ -22,7 +22,7 @@ def main():
     assert f24['merge_station_m']==410.0 and f24['merge_blend_length_m']==24.0 and f24['start_checkpoint_stations_m']==[20,80,130]
     sl=read(S/'start_layout.json')
     assert sl['merge_station_m']==410.0 and sl['right_corner']=='T05' and sl['first_lap_turns'][0]=='T05'
-    assert 8<sl['merge_before_corner_m']<20
+    assert 20<sl['merge_before_corner_m']<40
     assert read(S/'vehicles.json')==read(R/'V023_SOURCE/vehicles.json')
     assert read(S/'pit_facilities.json')==read(R/'V023_SOURCE/pit_facilities.json')
 
@@ -64,7 +64,7 @@ def main():
                 geo['geometry_checks_pass'],release['release_source_checks_pass'],scenery['vehicle_uv_roundtrip_pass']])
 
     release.update(version='v024',compared_to='validated v023',
-        start_layout_relocated=True,start_merge_station_m=410.0,start_first_turn='T05',pit_layout_preserved=True,vehicle_placements_preserved=True,
+        start_layout_relocated=True,start_merge_station_m=410.0,start_first_turn='T05',racing_deferred=True,pit_layout_preserved=True,vehicle_placements_preserved=True,
         graphics_fix_preserved=True,bithlo_sign_preserved=True,R07_preserved=True,R10_preserved=True,T09_preserved=True,
         authorized_geometry_changes=['T05 sweeping longitudinal hill and wider left','T06 lower/wider smoother right','T13 local rightward approach fade plus gradual left','route-derived race centerline and masks','start route merge relocated to clean straight before T05'],
         all_jump_profiles_preserved=True,all_other_berms_preserved=True,menu_logo_preserved=True,power_of_two_vehicle_textures=True)
