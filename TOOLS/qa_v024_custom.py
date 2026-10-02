@@ -51,8 +51,13 @@ def main():
     elev=ground(H,pts);chord=np.interp(ss,[ss[0],ss[-1]],[elev[0],elev[-1]])
     checks['T05_encoded_hill_visible']=float(elev[1]-chord[1])>.75
 
-    checks['facilities_unchanged']=read(S/'facilities.json')==read(R/'V023_SOURCE/facilities.json')
-    checks['start_layout_unchanged']=read(S/'start_layout.json')==read(R/'V023_SOURCE/start_layout.json')
+    f24=read(S/'facilities.json');f23=read(R/'V023_SOURCE/facilities.json')
+    allowed_facility={'merge_station_m','merge_blend_length_m','start_checkpoint_stations_m','status'}
+    checks['facilities_only_start_route_changed']=all(f24[k]==f23[k] for k in f23 if k not in allowed_facility)
+    checks['start_merge_before_T05']=f24['merge_station_m']==410.0 and f24['merge_blend_length_m']==24.0
+    checks['start_checkpoints_fit_new_route']=f24['start_checkpoint_stations_m']==[20,80,130]
+    sl=read(S/'start_layout.json')
+    checks['start_layout_documents_pre_T05_merge']=sl['merge_station_m']==410.0 and sl['right_corner']=='T05' and 8<sl['merge_before_corner_m']<20 and sl['first_lap_turns'][0]=='T05'
     checks['pit_facilities_unchanged']=read(S/'pit_facilities.json')==read(R/'V023_SOURCE/pit_facilities.json')
     checks['vehicles_unchanged']=read(S/'vehicles.json')==read(R/'V023_SOURCE/vehicles.json')
     pit=read(S/'pit_facilities.json');roads=road_field((768,768));grass=grass_field((768,768));_,count=label(roads>.30)
@@ -69,7 +74,7 @@ def main():
       T06=dict(v023=bo['T06'],v024=t06),
       T13=dict(v023=bo['T13'],v024=t13,route_adjustment=adj[0],measured_max_right_shift_m=float(-lateral[zone].min())),
       R07_preserved=pn['R07']==po['R07'],R10_preserved=pn['R10']==po['R10'],T09_preserved=bn['T09']==bo['T09'],
-      reference_context='v023 ride footage plus Orlando MX GoPro ~43s/51s reference and user-marked screenshots',
+      reference_context='v023 ride footage plus Orlando MX GoPro ~43s/51s reference and user-marked screenshots; user explicitly authorized relocating the start route wherever required',
       native_compilation=False,in_game_riding=False)
     save(R/'DOCUMENTATION/v024_user_request_validation.json',report)
     print(json.dumps(report,indent=2))
