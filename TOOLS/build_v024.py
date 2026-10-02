@@ -89,6 +89,8 @@ def materialize_runtime():
     q=q.replace("Office: left of frontage truck","Office / sign-in")
     q=q.replace("right_corner_start_m=t6['arc_start'],merge_before_corner_m=t6['arc_start']-cfg['merge_station_m']",
                 "right_corner_start_m=t5['arc_start'],merge_before_corner_m=t5['arc_start']-cfg['merge_station_m']")
+    q=q.replace('Merge s493\\n{qa[\'distance_before_right_turn_m\']:.1f} m before T06',
+                'Merge s410\\n{qa[\'distance_before_next_turn_m\']:.1f} m before T05')
     (R/'TOOLS/qa_v024_layout.py').write_text(q,encoding='utf-8')
 
     # Start now merges before T05, so first-lap checkpoint classification gains
