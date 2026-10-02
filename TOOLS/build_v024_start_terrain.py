@@ -19,7 +19,13 @@ def fields(H, shape=(N, N)):
     # below cuts the outside entry bank where the start must pass through it.
     grade_blend = ease(distance_end/cfg['merge_blend_length_m'])
     main_guard = ease((md-w[mi]/2-1)/3)
-    weight = alpha*grade_blend*main_guard
+    # The old guard turned off grading as soon as the start corridor approached
+    # the main lane, creating a steep "last few metres" kink on the start line.
+    # Keep the main centerline itself untouched, but allow the start centerline
+    # to retain its smooth authored elevation until it is almost merged.
+    center_override = core*ease(md/.45)
+    corridor_guard = np.maximum(main_guard, center_override)
+    weight = alpha*grade_blend*corridor_guard
     dv=pts-q[mi,:2];th=q[mi,2]
     left_offset=-dv[:,0]*np.sin(th)+dv[:,1]*np.cos(th)
     main_station=q[mi,3]+dv[:,0]*np.cos(th)+dv[:,1]*np.sin(th)
