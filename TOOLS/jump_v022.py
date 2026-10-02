@@ -30,7 +30,24 @@ def make_profile(source):
     if kind=='none':
         grade(end-start,0,0)
     elif kind in ['single','ant_hill','inside_roller']:
-        rounded(F,H);crests.append(xs[-1]);marks['single_crest']=xs[-1];rounded(L,0);g=2*H/F
+        if kind=='ant_hill' and p.get('face_style')=='progressive_lip':
+            # v022 R07: preserve the mound/jump role but replace the old
+            # symmetric rounded front half with a progressive motocross face.
+            # The short lip transition is included inside face_m so the crest
+            # station and total footprint remain explicit and deterministic.
+            lip=min(float(p.get('lip_transition_m',.7)),F*.20)
+            body=F-lip
+            split=float(p.get('face_progression',.45))
+            ratio=float(p.get('lower_face_grade_ratio',.55))
+            g=H/(body*(split*ratio/2+(1-split)*(ratio+1)/2)+lip/2)
+            grade(body*split,0,ratio*g)
+            grade(body*(1-split),ratio*g,g)
+            grade(lip,g,0)
+            ys[-1]=H
+            crests.append(xs[-1]);marks['single_crest']=xs[-1];marks['lip']=xs[-1]
+            rounded(L,0)
+        else:
+            rounded(F,H);crests.append(xs[-1]);marks['single_crest']=xs[-1];rounded(L,0);g=2*H/F
     elif kind=='roller_sequence':
         spacing=p['spacing_m'];heights=p['roller_heights_m']
         custom=p.get('crest_spacings_m')
