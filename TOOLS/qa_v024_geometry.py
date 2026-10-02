@@ -44,7 +44,12 @@ def main():
             assert len(peaks)==p['roller_count'],(p['id'],'roller count',crests)
             expected=np.asarray(p.get('crest_spacings_m',[p['spacing_m']]*(len(crests)-1)),dtype=float)
             assert len(expected)==len(crests)-1
-            assert np.max(abs(np.diff(crests)-expected))<max(.65,float(expected.max())*.10),(p['id'],'roller spacing',expected,crests)
+            tolerance=max(.65,float(expected.max())*.10)
+            # v024 intentionally curves the T13 approach/early R17 centerline.
+            # Stations remain stable for compatibility, so physical peak spacing
+            # can vary slightly while the authored 10 m station cadence remains unchanged.
+            if p['id']=='R17':tolerance=max(tolerance,1.25)
+            assert np.max(abs(np.diff(crests)-expected))<tolerance,(p['id'],'roller spacing',expected,crests,tolerance)
             ax.scatter(x[peaks],rel[peaks],c='#cc6336',s=18,zorder=4)
             for i,k in enumerate(peaks,1):ax.annotate(str(i),(x[k],rel[k]),xytext=(0,5),textcoords='offset points',ha='center',fontsize=7)
         if kind=='ant_hill':
@@ -70,6 +75,6 @@ def main():
     fig.suptitle('v024 — actual encoded terrain and independent obstacle construction\nMetric authoring estimates; riding and timing still require an in-game test',fontsize=15);save_plot(fig,dest/'jump_profiles.png',dpi=130);plt.close(fig)
     qa=read(R/'DOCUMENTATION/v024_geometry_validation.json');qa.update(actual_obstacle_profiles=metrics,geometry_checks_pass=bool(qa['finite'] and qa['raw_png_identical'] and qa['maximum_racing_grade']<.84 and qa['outer_terrain_max_delta_m']<.001),native_compilation=False,in_game_riding=False)
     save(R/'DOCUMENTATION/v024_geometry_validation.json',qa);assert qa['geometry_checks_pass']
-    inventory+=['','R07 v024: compact 29 m ant-hill; shorter and modestly steeper than v017 with crest retained at s552.','R10 v024: 74 m tabletop beginning at s739.2; higher crest, shorter/steeper face, and expanded deck.','R11 v024: same 20 m low-lip double with another 5% increase in takeoff and landing crest heights.','All other R01-R18 geometry remains as v017.','No-jump areas retain normal corner banking and ground elevation.']
+    inventory+=['','R07 v024: preserved exactly from accepted v023/v022 geometry.','R10 v024: preserved exactly from accepted v023/v022 booter geometry.','R17 station cadence remains 10 m; local T13 route curvature can produce up to ~1.25 m physical crest-spacing variation at the transition.','All R01-R18 authored profiles are preserved from v023.','v024 terrain-only changes are T05 hill, T06 berm, and local T13 route/berm shaping.']
     (R/'DOCUMENTATION/v024_jump_inventory.md').write_text('\n'.join(inventory)+'\n',encoding='utf-8');print('Encoded profiles passed:',len(metrics))
 if __name__=='__main__':main()
