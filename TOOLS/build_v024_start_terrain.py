@@ -1,4 +1,4 @@
-"""Grade the separate gate apron and loop outside T05 and merge before T06; retain the lap approach."""
+"""Grade the separate gate apron and loop; merge on the clean straight before T05 and retain the normal lap."""
 import numpy as np
 from scipy.spatial import cKDTree
 from scipy.ndimage import gaussian_filter
@@ -23,12 +23,17 @@ def fields(H, shape=(N, N)):
     dv=pts-q[mi,:2];th=q[mi,2]
     left_offset=-dv[:,0]*np.sin(th)+dv[:,1]*np.cos(th)
     main_station=q[mi,3]+dv[:,0]*np.cos(th)+dv[:,1]*np.sin(th)
-    opening_long=ease((st-(sa[-1,3]-28))/6)*(1-ease((st-(sa[-1,3]-5))/4))
-    # T05 is a left turn: negative left-offset is its outside. Keep the native
-    # centerline and inside line intact, and open only the outside shoulder on the final convergence to T06.
-    outside=ease((-left_offset-.4)/.7)
-    local=(main_station>cfg['merge_station_m']-24)&(main_station<cfg['merge_station_m']+3)
-    opening=alpha*opening_long*outside*local
+    opening_long=ease((st-(sa[-1,3]-26))/6)*(1-ease((st-(sa[-1,3]-4))/3))
+    # v024: merge is now on the straight BEFORE T05. Determine which side of
+    # the main lane the start approaches from, then open only that shoulder.
+    probe=sa[np.argmin(abs(sa[:,3]-(sa[-1,3]-12))),:2]
+    pd,pi=mtree.query(probe)
+    pth=q[pi,2];pdv=probe-q[pi,:2]
+    probe_lat=-pdv[0]*np.sin(pth)+pdv[1]*np.cos(pth)
+    approach_sign=1.0 if probe_lat>=0 else -1.0
+    same_side=ease((approach_sign*left_offset-.35)/.75)
+    local=(main_station>cfg['merge_station_m']-20)&(main_station<cfg['merge_station_m']+3)
+    opening=alpha*opening_long*same_side*local
     weight=np.maximum(weight,opening)
     # Constant flat gate bed, then smooth longitudinal elevation interpolation.
     start_h = float(ground(H, np.array([cfg['grid_center_xz']]))[0])
