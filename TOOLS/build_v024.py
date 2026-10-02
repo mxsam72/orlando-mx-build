@@ -60,6 +60,9 @@ def materialize_runtime():
     # Layout QA: preserve v019 start/restroom relationships but explicitly validate
     # the user-authorized pickup removal and relocated sign.
     q=transformed('qa_v016_layout.py')
+    q=q.replace("turns=read(R/'V009_SOURCE/baseline_geometry.json')['turns'];t6=next(t for t in turns if t['id']=='T06')",
+                "turns=read(R/'V009_SOURCE/baseline_geometry.json')['turns'];t5=next(t for t in turns if t['id']=='T05');t6=next(t for t in turns if t['id']=='T06')")
+    q=q.replace("unrelated=(q[:,3]<420)|(q[:,3]>535)","unrelated=(q[:,3]<390)|(q[:,3]>535)")
     start=q.index("    b=np.array(assets['restroom']['xz']")
     end=q.index("    save(R/'DOCUMENTATION/v024_layout_validation.json'",start)
     rel="""    b=np.array(assets['restroom']['xz'],dtype=float);truck=np.array(assets['pickup_01']['xz'],dtype=float);canopy=np.array(assets['canopy_02']['xz'],dtype=float)
@@ -73,8 +76,8 @@ def materialize_runtime():
             d=bb-aa;t=np.clip((b-aa)@d/(d@d),0,1);dist=np.linalg.norm(b-(aa+t*d))-road['width']/2
             road_clear=min(road_clear,float(dist))
     sign_asset=assets['bithlo_sticker_stop']
-    qa=dict(start_length_m=float(sa[-1,3]),gate_stalls=cfg['grid_stalls'],grid_outer_stall_span_m=23*cfg['stall_spacing_m'],gate_apron_width_m=cfg['start_width_knots'][0][1],minimum_start_width_m=float(sw.min()),minimum_other_lane_edge_clearance_m=float(clear.min()),self_crossings=cross,merge_station_m=cfg['merge_station_m'],right_turn='T06',right_turn_angle_deg=t6['angle'],distance_before_right_turn_m=t6['arc_start']-cfg['merge_station_m'],bathroom_distance_from_lower_red_truck_m=bathroom_to_truck,bathroom_distance_from_lower_canopy_m=bathroom_to_canopy,bathroom_in_grass_patch=bathroom_in_grass,bathroom_road_edge_clearance_m=road_clear,generic_pickup_03_removed='pickup_03' not in assets,bithlo_sign_xz=sign_asset['xz'],office_view_direction='+Z from pit road toward spectator fence',outside_shoulder_note='Start loop unchanged from v017.',runtime_start_reset_and_timing='Pending in-game test')
-    qa['layout_checks_pass']=bool(clear.min()>.5 and not cross and 0<t6['arc_start']-cfg['merge_station_m']<8 and t6['angle']<0 and bathroom_to_truck<14.5 and bathroom_to_canopy<14.5 and bathroom_in_grass and road_clear>.5 and qa['generic_pickup_03_removed'] and sign_asset['xz']==[278.0,142.0])
+    qa=dict(start_length_m=float(sa[-1,3]),gate_stalls=cfg['grid_stalls'],grid_outer_stall_span_m=23*cfg['stall_spacing_m'],gate_apron_width_m=cfg['start_width_knots'][0][1],minimum_start_width_m=float(sw.min()),minimum_other_lane_edge_clearance_m=float(clear.min()),self_crossings=cross,merge_station_m=cfg['merge_station_m'],next_turn='T05',next_turn_angle_deg=t5['angle'],distance_before_next_turn_m=t5['arc_start']-cfg['merge_station_m'],bathroom_distance_from_lower_red_truck_m=bathroom_to_truck,bathroom_distance_from_lower_canopy_m=bathroom_to_canopy,bathroom_in_grass_patch=bathroom_in_grass,bathroom_road_edge_clearance_m=road_clear,generic_pickup_03_removed='pickup_03' not in assets,bithlo_sign_xz=sign_asset['xz'],office_view_direction='+Z from pit road toward spectator fence',outside_shoulder_note='v024 start route relocated to merge on the clean straight before T05; T05 hill and T06 remain independent of start-lane grading.',runtime_start_reset_and_timing='Pending in-game test')
+    qa['layout_checks_pass']=bool(clear.min()>.5 and not cross and 8<t5['arc_start']-cfg['merge_station_m']<20 and t5['angle']>0 and bathroom_to_truck<14.5 and bathroom_to_canopy<14.5 and bathroom_in_grass and road_clear>.5 and qa['generic_pickup_03_removed'] and sign_asset['xz']==[278.0,142.0])
 """
     q=q[:start]+rel+q[end:]
     q=q.replace("PALETTE[m['material']]","PALETTE.get(m['material'],(128,128,128))")
@@ -84,7 +87,20 @@ def materialize_runtime():
                 "('restroom','Bathroom · opposite road',(-95,-38)),('pickup_01','Other red truck',(-62,-22)),('canopy_02','Canopy',(-10,15)),('rv_02','Camper / RV',(10,-20))")
     q=q.replace("('pickup_03','Red frontage truck',(6,-27)),","")
     q=q.replace("Office: left of frontage truck","Office / sign-in")
+    q=q.replace("right_corner_start_m=t6['arc_start'],merge_before_corner_m=t6['arc_start']-cfg['merge_station_m']",
+                "right_corner_start_m=t5['arc_start'],merge_before_corner_m=t5['arc_start']-cfg['merge_station_m']")
     (R/'TOOLS/qa_v024_layout.py').write_text(q,encoding='utf-8')
+
+    # Start now merges before T05, so first-lap checkpoint classification gains
+    # T05 and loses one normal-only checkpoint. The runtime builder logic already
+    # derives this from merge_station_m; update only its explicit QA expectation.
+    racep=R/'TOOLS/build_v024_race.py'
+    race=racep.read_text(encoding='utf-8')
+    race=race.replace("first_lap_expected_turns=['T06','T07','T08','T09','T10','T11','T12','T13','T14']",
+                      "first_lap_expected_turns=['T05','T06','T07','T08','T09','T10','T11','T12','T13','T14']")
+    race=race.replace("qa['both_checkpoints']==9 and qa['normal_only_checkpoints']==5",
+                      "qa['both_checkpoints']==10 and qa['normal_only_checkpoints']==4")
+    racep.write_text(race,encoding='utf-8')
 
     # Preserve the validated v019 connected gravel network.
     pr=transformed('pit_roads_v016.py')
