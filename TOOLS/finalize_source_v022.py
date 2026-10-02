@@ -12,7 +12,7 @@ def main():
     # (start/race/material masks/pit textures) must remain byte-identical to the
     # validated chain. Scenery FBX is regenerated from the unchanged v021 assets.
     for rel,digest in inv['input_sha256'].items():
-        if rel.endswith('scenery.fbx') or rel.endswith('terrain.raw'):
+        if rel.endswith('scenery.fbx') or rel.endswith('terrain.raw') or rel.endswith('masks/visual_racing.tga'):
             continue
         new=rel.replace('V018','V022').replace('v018','v022');p=R/new
         assert p.is_file(),('required protected input missing',new)
@@ -77,7 +77,7 @@ def main():
         version='v022',compared_to='validated v021',
         race_layout_preserved=True,start_layout_preserved=True,pit_layout_preserved=True,
         vehicle_placements_preserved=True,graphics_fix_preserved=True,bithlo_sign_preserved=True,
-        authorized_geometry_changes=['R07 turn-exit mound/jump profile','R10 booter tabletop takeoff','T09 deep tree-side left berm'],
+        authorized_geometry_changes=['R07 turn-exit mound/jump profile','R10 booter tabletop takeoff','T09 deep tree-side left berm','terrain-derived visual_racing mask'],
         all_other_profiles_preserved=True,all_other_berms_preserved=True,
         menu_logo_preserved=True,power_of_two_vehicle_textures=True)
     inputfiles=[O/'terrain.raw',O/'scenery.fbx',O/'start.tcl',O/(NAME+'.rdf'),O/'v022_pit_gravel.tga',
