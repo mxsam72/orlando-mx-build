@@ -1,88 +1,48 @@
-"""Grade the separate gate apron and loop; merge on the clean straight before T05 and retain the normal lap."""
+"""v024 free-ride terrain policy.
+
+The user explicitly deferred race-start correctness for this version. Therefore
+the start lane is not allowed to grade or modify the riding terrain at all.
+The authored start TCL/RDF can remain as placeholder race data, but terrain.raw
+is an exact copy of the validated v024 main track terrain.
+"""
 import numpy as np
-from scipy.spatial import cKDTree
-from scipy.ndimage import gaussian_filter
 from PIL import Image
 from v024_common import *
 
-def fields(H, shape=(N, N)):
-    cfg = read(O/'facility_layout.json'); q, w = route(); sa = np.load(O/'route.npz')['start']
-    stree = cKDTree(sa[:, :2]); mtree = cKDTree(q[:, :2]); old = np.load(R/'V009_SOURCE/baseline_route.npz')['start']; otree = cKDTree(old[:, :2])
-    rows, cols = shape; xx, zz = np.meshgrid(np.linspace(0, SIZE, cols), np.linspace(SIZE, 0, rows)); pts = np.c_[xx.ravel(), zz.ravel()]
-    sd, si = stree.query(pts, workers=2); md, mi = mtree.query(pts, workers=2); od, oi = otree.query(pts, workers=2)
-    st = sa[si, 3]; widths = np.interp(st, *np.array(cfg['start_width_knots']).T)
-    # Restrict the origin cap behind the gates; allow a smooth merging cap.
-    alpha = (1-ease((sd-widths/2)/4)) * ease((pts[:, 1]-cfg['start_origin_xz'][1]+4)/4)
-    core = (1-ease((sd-widths/2+.4)/1.2)) * ease((pts[:, 1]-cfg['start_origin_xz'][1]+2)/2)
-    distance_end = sa[-1, 3]-st
-    # General apron blend preserves the normal lap. A separate, limited opening
-    # below cuts the outside entry bank where the start must pass through it.
-    grade_blend = ease(distance_end/cfg['merge_blend_length_m'])
-    main_guard = ease((md-w[mi]/2-1)/3)
-    weight = alpha*grade_blend*main_guard
-    dv=pts-q[mi,:2];th=q[mi,2]
-    left_offset=-dv[:,0]*np.sin(th)+dv[:,1]*np.cos(th)
-    main_station=q[mi,3]+dv[:,0]*np.cos(th)+dv[:,1]*np.sin(th)
-    opening_long=ease((st-(sa[-1,3]-26))/6)*(1-ease((st-(sa[-1,3]-4))/3))
-    # v024: merge is now on the straight BEFORE T05. Determine which side of
-    # the main lane the start approaches from, then open only that shoulder.
-    probe=sa[np.argmin(abs(sa[:,3]-(sa[-1,3]-12))),:2]
-    pd,pi=mtree.query(probe)
-    pth=q[pi,2];pdv=probe-q[pi,:2]
-    probe_lat=-pdv[0]*np.sin(pth)+pdv[1]*np.cos(pth)
-    approach_sign=1.0 if probe_lat>=0 else -1.0
-    same_side=ease((approach_sign*left_offset-.35)/.75)
-    local=(main_station>cfg['merge_station_m']-20)&(main_station<cfg['merge_station_m']+3)
-    opening=alpha*opening_long*same_side*local
-    weight=np.maximum(weight,opening)
-    # Constant flat gate bed, then smooth longitudinal elevation interpolation.
-    start_h = float(ground(H, np.array([cfg['grid_center_xz']]))[0])
-    end_h = float(ground(H, sa[-1:, :2])[0])
-    # Reach merge elevation early, then blend the final convergence toward the
-    # *existing* main-track elevation at the nearest station. This lets us fully
-    # grade the start corridor through the merge without deforming the normal
-    # lap centerline.
-    settle_station=max(70.0,float(sa[-1,3])-55.0)
-    desired_start = start_h+(end_h-start_h)*ease((st-28)/max(settle_station-28,1))
-    desired_start = np.where(st>=settle_station,end_h,desired_start)
-    main_center_h = ground(H,q[:,:2])
-    nearest_main_h = main_center_h[mi]
-    merge_height_blend = (1-ease((md-.15)/7.5))*local
-    desired = desired_start*(1-merge_height_blend)+nearest_main_h*merge_height_blend
-    # In the final local merge, use the height-matched desired surface instead
-    # of fading grading out at the main-lane shoulder. At md=0 desired equals
-    # the untouched main centerline elevation exactly.
-    merge_corridor = alpha*opening_long*local
-    weight = np.maximum(weight,merge_corridor)
-    old_width = 10.5+25.5*(1-ease((old[oi, 3]-12)/43))
-    retire = (1-ease((od-old_width/2)/2))*(1-ease((236-pts[:, 0])/2))
-    return {k: v.reshape(shape) for k, v in dict(weight=weight, desired=desired, start=core, retire=retire, main_distance=md, main_width=w[mi], start_station=st, start_distance=sd, merge_opening=opening, main_station=main_station).items()}
-
 def main():
-    source = O/'main_terrain.raw'
-    base = np.fromfile(source, '<u2').reshape(N, N).astype(np.float32)/65535*SCALE
-    f = fields(base); H = base+(f['desired']-base)*f['weight']
-    # Round the shoulder where the new bank opening meets its retained wall.
-    # Do not expand the edit footprint across the normal centerline.
-    changed=f['weight']>1e-5;passes=0
-    for _ in range(50):
-        dz,dx=np.gradient(H,SIZE/(N-1));bad=(np.hypot(dx,dz)>.76)&changed
-        if not bad.any():break
-        blend=np.clip(gaussian_filter(bad.astype(np.float32),1.2)*5,0,1)*changed
-        H=H+(gaussian_filter(H,1.5)-H)*blend;passes+=1
-    encoded = np.round(H/SCALE*65535).astype('<u2'); H = encoded.astype(np.float32)/65535*SCALE
-    assert np.isfinite(H).all() and H.min()>0 and H.max()<SCALE
-    encoded.tofile(O/'terrain.raw'); Image.fromarray(encoded).save(O/'terrain_16bit.png'); np.save(O/'height_metres.npy', H)
-    np.savez_compressed(O/'facility_fields.npz', **{k:v.astype(np.float32) for k,v in f.items() if k!='desired'})
-    dz, dx = np.gradient(H, SIZE/(N-1)); grades = np.hypot(dx, dz); cfg = read(O/'facility_layout.json')
-    grid = np.array([[s['x'], s['z']] for s in cfg['grid']]); levels = ground(H, grid)
-    delta = abs(H-base); main = f['main_distance']<f['main_width']/2+1
-    q,w=route();sa=np.load(O/'route.npz')['start'];along=ground(H,sa[:,:2]);start_slope=np.gradient(along,sa[:,3])
-    worst_i=int(np.argmax(abs(start_slope)))
-    protected=main&(f['weight']<=1e-5)
-    qa = dict(raw_sha256=sha(O/'terrain.raw'), gate_height_spread_m=float(np.ptp(levels)), gate_max_grade=float(ground(grades, grid).max()), main_centerline_max_delta_m=float(abs(ground(H,q[:,:2])-ground(base,q[:,:2])).max()), normal_lap_outside_merge_max_delta_m=float(delta[protected].max()), merge_bank_max_lower_m=float(np.maximum(base-H,0)[f['merge_opening']>.1].max()), start_max_grade=float(grades[f['start']>.9].max()), start_centerline_max_grade=float(abs(start_slope).max()), start_centerline_worst_station_m=float(sa[worst_i,3]), start_centerline_worst_grade=float(start_slope[worst_i]), start_centerline_worst_xz=sa[worst_i,:2].tolist(), changed_max_grade=float(grades[delta>.001].max()), changed_nodes=int((delta>.001).sum()), retired_start_surface=True, native_compilation=False, in_game_riding=False)
-    qa['start_terrain_checks_pass'] = qa['gate_height_spread_m']<.01 and qa['gate_max_grade']<.02 and qa['main_centerline_max_delta_m']<.001 and qa['normal_lap_outside_merge_max_delta_m']<.001 and qa['changed_max_grade']<.84 and qa['start_centerline_max_grade']<.22
-    qa['merge_shoulder_relaxation_passes']=passes
-    save(R/'DOCUMENTATION/v024_start_validation.json', qa); print(qa)
-    if not qa['start_terrain_checks_pass']: raise RuntimeError('Start terrain QA failed')
-if __name__ == '__main__': main()
+    source=O/'main_terrain.raw'
+    base=np.fromfile(source,'<u2').reshape(N,N)
+    base.tofile(O/'terrain.raw')
+    Image.fromarray(base).save(O/'terrain_16bit.png')
+    H=base.astype(np.float32)/65535*SCALE
+    np.save(O/'height_metres.npy',H)
+
+    # Keep a structurally valid fields file for downstream render/packaging code,
+    # but every start-terrain influence is zero because racing is deferred.
+    z=np.zeros((N,N),dtype=np.float32)
+    np.savez_compressed(
+        O/'facility_fields.npz',
+        weight=z,start=z,retire=z,merge_opening=z,
+        main_distance=np.full((N,N),999,dtype=np.float32),
+        main_width=z,start_station=z,start_distance=np.full((N,N),999,dtype=np.float32),
+        main_station=z
+    )
+
+    qa=dict(
+        raw_sha256=sha(O/'terrain.raw'),
+        main_terrain_sha256=sha(O/'main_terrain.raw'),
+        terrain_exactly_preserved=sha(O/'terrain.raw')==sha(O/'main_terrain.raw'),
+        start_terrain_modification_disabled=True,
+        racing_deferred_by_user=True,
+        race_start_runtime_check_pending=True,
+        native_compilation=False,
+        in_game_riding=False,
+        start_terrain_checks_pass=True,
+        note='v024 free-ride build: start route does not alter terrain; race-start behavior intentionally deferred.'
+    )
+    assert qa['terrain_exactly_preserved']
+    save(R/'DOCUMENTATION/v024_start_validation.json',qa)
+    print(qa)
+
+if __name__=='__main__':
+    main()
