@@ -32,7 +32,7 @@ def main():
 
     hills=now.get('longitudinal_hills',[]);adj=now.get('route_adjustments',[])
     assert len(hills)==1 and hills[0]['id']=='T05_sweeping_hill'
-    assert (hills[0]['station_start_m'],hills[0]['station_peak_m'],hills[0]['station_end_m'],hills[0]['height_m'])==(432.0,462.5,495.0,1.35)
+    assert (hills[0]['station_start_m'],hills[0]['station_peak_m'],hills[0]['station_end_m'],hills[0]['height_m'])==(432.0,459.5,488.0,1.20)
     assert len(adj)==1 and adj[0]['id']=='T13_right_fade'
     assert (adj[0]['station_start_m'],adj[0]['station_peak_m'],adj[0]['station_end_m'],adj[0]['max_right_offset_m'])==(1217.0,1244.0,1292.0,3.6)
 
