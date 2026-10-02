@@ -1028,12 +1028,12 @@
     {
       "id": "T05_sweeping_hill",
       "station_start_m": 432,
-      "station_peak_m": 462.5,
-      "station_end_m": 495,
-      "height_m": 1.35,
+      "station_peak_m": 459.5,
+      "station_end_m": 488,
+      "height_m": 1.2,
       "half_width_m": 6.3,
       "side_taper_m": 5.5,
-      "notes": "v024: lift the full T05 riding corridor up a broad sweeping hill, then return smoothly to baseline before T06."
+      "notes": "v024: lift the full T05 riding corridor up a broad sweeping hill, crest in the middle of the left, then return smoothly to baseline by T05 exit before the separate T06 right-hander/start merge."
     }
   ],
   "route_adjustments": [
