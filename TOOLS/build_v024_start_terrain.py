@@ -19,13 +19,7 @@ def fields(H, shape=(N, N)):
     # below cuts the outside entry bank where the start must pass through it.
     grade_blend = ease(distance_end/cfg['merge_blend_length_m'])
     main_guard = ease((md-w[mi]/2-1)/3)
-    # The old guard turned off grading as soon as the start corridor approached
-    # the main lane, creating a steep "last few metres" kink on the start line.
-    # Keep the main centerline itself untouched, but allow the start centerline
-    # to retain its smooth authored elevation until it is almost merged.
-    center_override = core*ease(md/.45)
-    corridor_guard = np.maximum(main_guard, center_override)
-    weight = alpha*grade_blend*corridor_guard
+    weight = alpha*grade_blend*main_guard
     dv=pts-q[mi,:2];th=q[mi,2]
     left_offset=-dv[:,0]*np.sin(th)+dv[:,1]*np.cos(th)
     main_station=q[mi,3]+dv[:,0]*np.cos(th)+dv[:,1]*np.sin(th)
@@ -44,7 +38,12 @@ def fields(H, shape=(N, N)):
     # Constant flat gate bed, then smooth longitudinal elevation interpolation.
     start_h = float(ground(H, np.array([cfg['grid_center_xz']]))[0])
     end_h = float(ground(H, sa[-1:, :2])[0])
-    desired = start_h+(end_h-start_h)*ease((st-28)/max(sa[-1, 3]-28, 1))
+    # Reach the natural merge elevation early and hold it for the final ~45 m.
+    # This removes the prior last-second elevation mismatch while allowing the
+    # main-track centerline to remain completely untouched.
+    settle_station=max(70.0,float(sa[-1,3])-45.0)
+    desired = start_h+(end_h-start_h)*ease((st-28)/max(settle_station-28,1))
+    desired = np.where(st>=settle_station,end_h,desired)
     old_width = 10.5+25.5*(1-ease((old[oi, 3]-12)/43))
     retire = (1-ease((od-old_width/2)/2))*(1-ease((236-pts[:, 0])/2))
     return {k: v.reshape(shape) for k, v in dict(weight=weight, desired=desired, start=core, retire=retire, main_distance=md, main_width=w[mi], start_station=st, start_distance=sd, merge_opening=opening, main_station=main_station).items()}
