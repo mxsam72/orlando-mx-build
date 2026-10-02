@@ -31,8 +31,32 @@ def ground(H, xz):
     xz = np.asarray(xz)
     return map_coordinates(H, [(SIZE-xz[..., 1])/SIZE*(N-1), xz[..., 0]/SIZE*(N-1)], order=1, mode='nearest')
 def route():
-    d = np.load(R/'V009_SOURCE/baseline_route.npz')
-    return d['q'], d['width']
+    d=np.load(R/'V009_SOURCE/baseline_route.npz')
+    q=d['q'].copy();w=d['width'].copy()
+    spec=read(S/'v024_geometry_spec.json')
+    # v024 local path refinement: create a subtle rightward fade before T13,
+    # then return progressively through the left into the R17 rollers.
+    # Stations stay on the established route coordinate so every authored
+    # obstacle/race reference remains stable; only XZ and heading are adjusted.
+    for adj in spec.get('route_adjustments',[]):
+        a=float(adj['station_start_m']);p=float(adj['station_peak_m']);b=float(adj['station_end_m'])
+        amp=-abs(float(adj['max_right_offset_m']))  # negative = rider-right in Frenet coordinates
+        s=q[:,3]
+        off=np.zeros(len(q),dtype=float)
+        rise=(s>=a)&(s<=p);fall=(s>p)&(s<=b)
+        if rise.any():
+            u=(s[rise]-a)/max(p-a,1e-9);off[rise]=amp*ease(u)
+        if fall.any():
+            u=(s[fall]-p)/max(b-p,1e-9);off[fall]=amp*(1-ease(u))
+        # Use the ORIGINAL heading for the Frenet translation, then derive the
+        # new heading from the shifted route so the centerline actually fades
+        # right before beginning the gradual left.
+        th=q[:,2].copy()
+        q[:,0]+=off*(-np.sin(th))
+        q[:,1]+=off*( np.cos(th))
+    dx=np.gradient(q[:,0],q[:,3],edge_order=2);dz=np.gradient(q[:,1],q[:,3],edge_order=2)
+    q[:,2]=np.unwrap(np.arctan2(dz,dx))
+    return q,w
 def route_point(q, s):
     return np.array([np.interp(s, q[:, 3], q[:, k]) for k in range(3)])
 
@@ -79,7 +103,7 @@ def main():
     O.mkdir(exist_ok=True); cfg = read(S/'facilities.json'); q, w = route()
     sa, segs, theta = start_path(cfg, q)
     write_tcl(O/'start.tcl', sa[0, :2], theta, segs)
-    data = dict(np.load(R/'V009_SOURCE/baseline_route.npz')); data['start'] = sa
+    data = dict(np.load(R/'V009_SOURCE/baseline_route.npz')); data['q']=q; data['width']=w; data['start'] = sa
     np.savez_compressed(O/'route.npz', **data)
     merge = route_point(q, cfg['merge_station_m'])
     err = abs((sa[-1, 2]-merge[2]+np.pi)%(2*np.pi)-np.pi)
