@@ -1,15 +1,15 @@
 {
-  "status": "User-confirmed area/connectivity; metric construction estimates for first ride",
+  "status": "v024: user authorized start-route relocation; merge moved to clean straight before T05 so the IRL T05 hill/T06 geometry can remain unconstrained",
   "grid_center_xz": [
-    416.0,
-    184.0
+    416,
+    184
   ],
-  "grid_angle_deg": 0.0,
+  "grid_angle_deg": 0,
   "grid_stalls": 24,
   "stall_spacing_m": 1.5,
   "start_origin_xz": [
-    416.0,
-    172.0
+    416,
+    172
   ],
   "start_controls_xz": [
     [
@@ -41,8 +41,8 @@
       277
     ]
   ],
-  "merge_station_m": 493.0,
-  "merge_blend_length_m": 22.0,
+  "merge_station_m": 410,
+  "merge_blend_length_m": 24,
   "start_width_knots": [
     [
       0,
@@ -101,11 +101,11 @@
   ],
   "fence_post_spacing_m": 3.2,
   "fence_height_m": 1.35,
-  "finish_station_m": 23.0,
+  "finish_station_m": 23,
   "start_checkpoint_stations_m": [
     20,
-    85,
-    140
+    80,
+    130
   ],
   "native_checkpoint_modes": {
     "normal": 0,
