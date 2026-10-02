@@ -20,7 +20,7 @@ def main():
     checks['T05_wider_sweep']=t05['effective_width_m']>bo['T05']['effective_width_m']
     checks['T05_bank_not_oversteepened']=t05['outer_rise_m']<=bo['T05']['outer_rise_m']+.10
     hills=now.get('longitudinal_hills',[])
-    checks['T05_hill_authored']=len(hills)==1 and hills[0]['id']=='T05_sweeping_hill' and hills[0]['height_m']>=1.25
+    checks['T05_hill_authored']=len(hills)==1 and hills[0]['id']=='T05_sweeping_hill' and abs(float(hills[0]['height_m'])-1.20)<1e-9 and abs(float(hills[0]['station_peak_m'])-459.5)<1e-9 and abs(float(hills[0]['station_end_m'])-488.0)<1e-9
     h=hills[0]
     checks['T05_hill_descends_before_T06']=h['station_end_m']<497.69412320955183
 
