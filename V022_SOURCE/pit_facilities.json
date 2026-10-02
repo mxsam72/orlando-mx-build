@@ -1,5 +1,5 @@
 {
-  "status": "Photo/video-derived v022 pit asset correction; track/pit roads preserved from validated v019",
+  "status": "Photo/video-derived v021 pit asset correction; track/pit roads preserved from validated v019",
   "references": [
     "IMG_3591.mov",
     "IMG_3592.mov",
@@ -350,7 +350,7 @@
         142
       ],
       "heading": 270,
-      "reference": "User-marked v022 location: earlier on frontage pit road, left shoulder where pale gravel ends; thin sticker-covered Bithlo sign from supplied reference photos"
+      "reference": "User-marked v021 location: earlier on frontage pit road, left shoulder where pale gravel ends; thin sticker-covered Bithlo sign from supplied reference photos"
     }
   ],
   "placement_intent": {
@@ -359,8 +359,8 @@
     "precision": "Relational placement from user instruction and videos; metric positions are authored, not surveyed",
     "supporting_adjustment": "Bathroom shade oak to (266,120). Remove the two prior wrong bathroom-driven grass patches.",
     "grass_area": "v019: expand grass across lower and upper parking/pit paddocks; all authored gravel road masks override grass.",
-    "signature_sign": "v022: sign at (278,142), left shoulder at main-frontage / office-apron gravel junction, facing the approach from the west. Estimate from yellow-circle screenshot, not surveyed coordinates.",
-    "removed_generic_pickup": "v022: remove only generic pickup_03 formerly at (321,149), heading -15, as circled by user; preserve other generic pit vehicles."
+    "signature_sign": "v021: sign at (278,142), left shoulder at main-frontage / office-apron gravel junction, facing the approach from the west. Estimate from yellow-circle screenshot, not surveyed coordinates.",
+    "removed_generic_pickup": "v021: remove only generic pickup_03 formerly at (321,149), heading -15, as circled by user; preserve other generic pit vehicles."
   },
   "tree_removal_intent": {
     "description": "Remove baseline tree/scrub objects inside the start/track infield visible left of the rightmost gate, continuing toward the approach before the corner that leads to R09.",
