@@ -1,12 +1,12 @@
 {
-  "version": "v017",
+  "version": "v024",
   "authoritative_config": "facilities.json",
-  "merge_station_m": 493.0,
-  "right_corner": "T06",
-  "right_corner_start_m": 497.694,
-  "merge_before_corner_m": 4.694123209551833,
-  "description": "Loop outside T05; run between T05 outside shoulder and R08 straight; join normal circuit before T06 right corner",
-  "survey_status": "Connectivity from user; precise path is authored",
+  "merge_station_m": 410,
+  "right_corner": "T05",
+  "right_corner_start_m": 422.772902664924,
+  "merge_before_corner_m": 12.772902664924,
+  "description": "v024: start loop merges onto the clean straight before T05, leaving the T05 sweeping hill and following T06 right-hander untouched by start-lane grading",
+  "survey_status": "User authorized relocation wherever required; precise start merge is authored for clean terrain separation",
   "start_lane_width_m": [
     [
       0,
@@ -38,6 +38,7 @@
     ]
   ],
   "first_lap_turns": [
+    "T05",
     "T06",
     "T07",
     "T08",
@@ -48,5 +49,10 @@
     "T13",
     "T14"
   ],
-  "reset_runtime_status": "Unverified until TrackEd / in-game start test"
+  "reset_runtime_status": "Unverified until TrackEd / in-game start test",
+  "start_checkpoint_stations_m": [
+    20,
+    80,
+    130
+  ]
 }
