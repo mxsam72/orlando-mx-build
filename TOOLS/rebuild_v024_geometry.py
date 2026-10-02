@@ -23,10 +23,14 @@ def window(s,a,b,L,fade=14):
  return 1-ease((abs(u)-length/2)/fade)
 from jump_v024 import make_profile, envelope
 from refine_jumps import envelope as legacy_envelope
+from v024_common import route as authored_route
 
 def generate_target(spec,base,q,w,info):
  L=q[-1,3];profiles=[make_profile(p) for p in spec['profiles']]
- old=json.loads((BASE_SRC/'baseline_jump_profiles.json').read_text(encoding='utf-8'));olds=supports(old,q,w);news=supports(profiles,q,w)
+ old=json.loads((BASE_SRC/'baseline_jump_profiles.json').read_text(encoding='utf-8'))
+ # Baseline obstacles must be removed at their ORIGINAL v008b coordinates;
+ # new obstacles follow the locally adjusted v024 route.
+ bd=np.load(BASE_SRC/'baseline_route.npz');olds=supports(old,bd['q'],bd['width']);news=supports(profiles,q,w)
  tree=cKDTree(q[:-1,:2]);axes=np.linspace(0,SIZE,N)
  regs=np.linspace(0,L,round(L/.4)+1);regth=np.unwrap(np.interp(regs,q[:,3],q[:,2]));kk=gaussian_filter1d(np.gradient(regth,regs),3/.4,mode='nearest')
  target=base.copy();stations=np.zeros_like(base);lateral=np.zeros_like(base);distance=np.zeros_like(base);widths=np.zeros_like(base);ewidth=np.zeros_like(base)
@@ -38,7 +42,7 @@ def generate_target(spec,base,q,w,info):
   delta=envelope(pts,news)-legacy_envelope(pts,olds);newjump=envelope(pts,news)
   curvature=np.interp(s,regs,kk);out=-np.sign(curvature)*lat;strength=smooth((abs(curvature)-.009)/.045)
   oldbank=(.95+.20*np.sin(s/95)**2)*strength*smooth((out+.6)/(wi/2+.6))*(1-smooth((out-wi/2)/6))
-  bank=np.zeros_like(s);chop=np.zeros_like(s);legacy_rut=np.zeros_like(s);effective=np.full_like(s,8.6);bankload=np.zeros_like(s)
+  bank=np.zeros_like(s);chop=np.zeros_like(s);legacy_rut=np.zeros_like(s);effective=np.full_like(s,8.6);bankload=np.zeros_like(s);longitudinal=np.zeros_like(s)
   for turn in info['turns']:
    dd=periodic_delta(s,turn['mid'],L);extent=(turn['arc_end']-turn['arc_start'])/2;cfg=lookup[turn['id']];fade=ease((dd+extent+16)/18)*(1-ease((dd-extent+3)/18));out=-np.sign(turn['angle'])*lat;half=cfg['effective_width_m']/2
    # Remove the original v006 corner-groove recipe before authoring paths.
@@ -66,6 +70,15 @@ def generate_target(spec,base,q,w,info):
    if turn['id']=='T02':oldbank+=1.20*np.exp(-(dd/24)**4)*(1-smooth((abs(lat)-wi/2)/7))
    if turn['id']=='T05':oldbank+=.45*np.exp(-((dd-9)/27)**4)*(1-smooth((abs(lat)-wi/2)/7))
    if turn['id']=='T06':oldbank+=.30*np.exp(-(dd/20)**4)*(1-smooth((abs(lat)-wi/2)/7))
+  # v024 T05: the real line climbs a broad sweeping hill through the left,
+  # then descends back to normal ground before the following right-hander.
+  for hill in spec.get('longitudinal_hills',[]):
+   a=float(hill['station_start_m']);p=float(hill['station_peak_m']);b=float(hill['station_end_m'])
+   rise=(s>=a)&(s<=p);fall=(s>p)&(s<=b);profile=np.zeros_like(s)
+   if rise.any():profile[rise]=ease((s[rise]-a)/max(p-a,1e-9))
+   if fall.any():profile[fall]=1-ease((s[fall]-p)/max(b-p,1e-9))
+   side=1-ease((abs(lat)-float(hill['half_width_m']))/float(hill['side_taper_m']))
+   longitudinal+=float(hill['height_m'])*profile*side
   # Core lateral fade ends before neighboring lane bisectors. Jump support uses
   # each obstacle's own local corridor above, preventing nearest-lane cliff cuts.
   core=1-ease((abs(lat)-effective/2+.3)/2.0)
@@ -73,7 +86,7 @@ def generate_target(spec,base,q,w,info):
   wave*=1-ease(newjump/.7);wave*=1-.4*bankload
   seam_guard=ease(np.minimum(s,L-s)/28) # smooth native start/finish join
   grooves=np.zeros_like(s)
-  delta+=bank-oldbank+.045*np.minimum(legacy_rut,1)*corridor+(wave+chop+grooves)*core*seam_guard
+  delta+=bank-oldbank+longitudinal+.045*np.minimum(legacy_rut,1)*corridor+(wave+chop+grooves)*core*seam_guard
   # Retain peripheral map, paddock and non-course scenery terrain exactly.
   # R07 is now a shorter, modestly steeper compact ant-hill. Its
   # large ant-hill needs a wider LOCAL shoulder so the extra height does not
@@ -119,7 +132,7 @@ def generate_target(spec,base,q,w,info):
 def main():
  OUT.mkdir(exist_ok=True);spec=json.loads((SRC/'v024_geometry_spec.json').read_text(encoding='utf-8'));manifest=json.loads((BASE_SRC/'baseline_manifest.json').read_text(encoding='utf-8'));rawpath=R/'BUILD/v009_baseline/terrain.raw'
  assert digest(rawpath)==manifest['terrain_sha256'],'Exact v008b baseline required; run materialize_v024_baseline.py'
- base=np.fromfile(rawpath,dtype='<u2').reshape(N,N).astype(np.float32)/65535*SCALE;d=np.load(BASE_SRC/'baseline_route.npz');q=d['q'];w=d['width'];info=json.loads((BASE_SRC/'baseline_geometry.json').read_text(encoding='utf-8'));L=q[-1,3]
+ base=np.fromfile(rawpath,dtype='<u2').reshape(N,N).astype(np.float32)/65535*SCALE;q,w=authored_route();info=json.loads((BASE_SRC/'baseline_geometry.json').read_text(encoding='utf-8'));L=q[-1,3]
  cache=R/'BUILD/v024_cache';cache.mkdir(exist_ok=True);structural={k:v for k,v in spec.items() if k!='active_sections'}
  key=hashlib.sha256(json.dumps(structural,sort_keys=True).encode()+''.join(inspect.getsource(f) for f in [generate_target,make_profile,envelope,smooth,ease,periodic_delta]).encode()+(R/'TOOLS/refine_jumps.py').read_bytes()+rawpath.read_bytes()).hexdigest();npz=cache/(key+'.npz');meta=cache/(key+'.json')
  if npz.exists():
@@ -150,7 +163,7 @@ def main():
  new_spikes_ridable=int((spike_mask&ridable).sum())
  r07=next(p for p in spec['profiles'] if p['id']=='R07');r07mid=(r07['station_start_m']+r07['station_end_m'])/2;r07half=(r07['station_end_m']-r07['station_start_m'])/2+8
  outer_mask=(fields['distance']>fields['width']/2+9)&~((abs(periodic_delta(fields['station'],r07mid,L))<r07half)&(fields['distance']<fields['width']/2+r07.get('wide_support_extra_m',7.0)+2))
- qa=dict(new_excessive_grade_nodes=new_spikes,new_excessive_grade_nodes_ridable=new_spikes_ridable,version='v024',active_sections=spec['active_sections'],native_compilation=False,in_game_riding=False,raw_sha256=digest(OUT/'main_terrain.raw'),height_range_m=[float(H.min()),float(H.max())],maximum_raise_m=float(delta.max()),maximum_lower_m=float(-delta.min()),maximum_changed_grade=float(grade[changed].max()),maximum_racing_grade=float(grade[racing].max()),changed_nodes=int(changed.sum()),relaxation=fields['relaxation'],finite=bool(np.isfinite(H).all()),raw_bytes=(OUT/'main_terrain.raw').stat().st_size,raw_png_identical=bool(np.array_equal(encoded,np.array(Image.open(OUT/'main_terrain_16bit.png')))),outer_terrain_max_delta_m=float(abs(delta[outer_mask]).max()) if outer_mask.any() else 0.0,route_unchanged=digest(BASE_SRC/'baseline_route.npz')==manifest['route_sha256'],loop_closure_m=float(np.linalg.norm(q[0,:2]-q[-1,:2])),effective_width_range_m=[float(fields['effective_width'][racing].min()),float(fields['effective_width'][racing].max())])
+ qa=dict(new_excessive_grade_nodes=new_spikes,new_excessive_grade_nodes_ridable=new_spikes_ridable,version='v024',active_sections=spec['active_sections'],native_compilation=False,in_game_riding=False,raw_sha256=digest(OUT/'main_terrain.raw'),height_range_m=[float(H.min()),float(H.max())],maximum_raise_m=float(delta.max()),maximum_lower_m=float(-delta.min()),maximum_changed_grade=float(grade[changed].max()),maximum_racing_grade=float(grade[racing].max()),changed_nodes=int(changed.sum()),relaxation=fields['relaxation'],finite=bool(np.isfinite(H).all()),raw_bytes=(OUT/'main_terrain.raw').stat().st_size,raw_png_identical=bool(np.array_equal(encoded,np.array(Image.open(OUT/'main_terrain_16bit.png')))),outer_terrain_max_delta_m=float(abs(delta[outer_mask]).max()) if outer_mask.any() else 0.0,route_unchanged=False,route_adjustment_ids=[x['id'] for x in spec.get('route_adjustments',[])],route_max_right_offset_m=max([abs(float(x['max_right_offset_m'])) for x in spec.get('route_adjustments',[])]+[0.0]),loop_closure_m=float(np.linalg.norm(q[0,:2]-q[-1,:2])),effective_width_range_m=[float(fields['effective_width'][racing].min()),float(fields['effective_width'][racing].max())])
  (R/'DOCUMENTATION/v024_geometry_validation.json').write_text(json.dumps(qa,indent=2)+'\n', encoding='utf-8');print(json.dumps(qa,indent=2),flush=True)
  # Retain compact cache fields for QA; this file is a generated product.
  temporary=OUT/'qa_fields.npz.tmp'
