@@ -1,0 +1,22 @@
+{
+  "version": "v026b",
+  "baseline_commit": "2275efa8e92a4958ea130acd71bc6ea74ed49591",
+  "intent": "Surgical scenery hotfix after in-game v026 test; do not retune geometry or materials.",
+  "target_sector": "R10 -> relocated T09 -> R11",
+  "remove_rules": {
+    "trees": "Remove tree_* FBX objects in the localized sector when trunk/ground anchor clearance to authored track edge is < 5.0 m.",
+    "markers": "Remove SOFTCPLAS_marker_* FBX objects in the localized sector when anchor clearance to authored track edge is < 1.5 m."
+  },
+  "protect": [
+    "v026 terrain.raw exactly",
+    "v026 route geometry and race/reset data",
+    "v026 materials and masks",
+    "start route and starting grid",
+    "pits, facilities, vehicles, stop sign and menu logo",
+    "all scenery outside localized changed sector"
+  ],
+  "evidence": [
+    "test v026 1 lap.mp4",
+    "test v026 tree and track marker in bad place.mp4"
+  ]
+}
