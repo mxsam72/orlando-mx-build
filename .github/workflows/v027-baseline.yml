@@ -61,3 +61,16 @@ jobs:
             DOCUMENTATION/v024*validation.json
             DOCUMENTATION/v024_source_checkpoint.json
             V026_OUTPUT/*validation.json
+      - name: Preserve regeneration source for mismatch inspection
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: OrlandoMX-v027-regenerated-baseline-inspection
+          retention-days: 90
+          path: |
+            V024_OUTPUT/scenery.fbx
+            V024_OUTPUT/facility_meshes.json
+            V024_OUTPUT/vehicle_meshes.json
+            V024_OUTPUT/sign_graphic_meshes.json
+            V024_OUTPUT/native_coordinate_probes.json
+            V024_OUTPUT/facility_textures/
