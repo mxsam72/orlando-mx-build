@@ -1,0 +1,25 @@
+{
+  "version": "v026",
+  "seed": 260026,
+  "tile_size": 1024,
+  "mask_size": 4096,
+  "palette_status": "Art-directed neutral brown/taupe from supplied Orlando photos and the confirmed orange v025 game footage; not calibrated soil albedo.",
+  "palette": {
+    "soil": [128, 115, 103],
+    "prepared": [122, 109, 98],
+    "worked": [113, 100, 90],
+    "sand": [148, 136, 122],
+    "packed": [115, 102, 91],
+    "face": [142, 130, 119],
+    "grass": [82, 94, 63]
+  },
+  "repetitions": {"soil": 171, "prepared": 193, "worked": 157, "sand": 181, "packed": 193, "face": 193},
+  "height_amplitude_m": {"soil": 0.0045, "prepared": 0.0018, "worked": 0.009, "sand": 0.0017, "packed": 0.0012, "face": 0.0015},
+  "specular_alpha": {"soil": 2, "prepared": 2, "worked": 2, "sand": 1, "packed": 2, "face": 2},
+  "packed_max_opacity": 0.52,
+  "low_resolution_diffuse_overlay": false,
+  "source_families": {"soil": "soil", "prepared": "prepared", "worked": "worked", "sand": "sand", "packed": "prepared", "face": "prepared"},
+  "native_supported_features_only": true,
+  "dry_baseline": "Matte, finely granular, no glossy painted ruts",
+  "wet_color_factor_range": [0.80, 0.90]
+}

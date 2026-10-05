@@ -1,0 +1,12 @@
+{
+  "version": "v026",
+  "baseline_commit": "6cadfbb7fb9301b3a24ec5c8ce7b0ee545cd19ec",
+  "metric_status": "Authoring adjustments from user v025 riding feedback; not surveyed real-track dimensions.",
+  "R10_lip_raise_m": 0.45,
+  "T09_forward_translation_m": 20.0,
+  "T09_exit_rejoin_old_station_m": 890.0,
+  "R11_exit_gap_m": 14.0,
+  "T09_entry_lead_m": 5.0,
+  "allowed_changes": ["R10 higher takeoff and raised tabletop deck with same total length and landing length", "T09 translated forward along its incoming tangent with accepted bank height and width retained", "R11 same low-lip profile carried onto the relocated corner exit", "local route, terrain, physical masks and native race/reset references required by that relocation"],
+  "protect": ["All terrain outside the local R10/T09/R11 corridor", "R01-R09 and R12-R18 world geometry", "T05 sweeping hill", "T06 flow", "T13 right-fade", "Pits and scenery", "Start route and starting grid world positions", "Vehicle and stop-sign graphics", "Orlando logo", "Surface material names and thicknesses"]
+}

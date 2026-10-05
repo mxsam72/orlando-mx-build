@@ -1,0 +1,42 @@
+{
+  "soil": {
+    "file": "soil_original.jpg",
+    "sha256": "0160858047e6b8250a94438a02f0f4cdd83094d4e363af204e2b128ecfc99586",
+    "size": [
+      1024,
+      1024
+    ],
+    "origin": "New original built-in imagegen texture; not extracted from another track",
+    "source_preparation": "1024 px color source, JPEG quality 94; runtime materials are lossless TGA"
+  },
+  "prepared": {
+    "file": "prepared_original.jpg",
+    "sha256": "a71a1e4edc246569b984ebb653915e4b2e6a70c8e47e28ce527ef869c9a840f3",
+    "size": [
+      1024,
+      1024
+    ],
+    "origin": "New original built-in imagegen texture; not extracted from another track",
+    "source_preparation": "1024 px color source, JPEG quality 94; runtime materials are lossless TGA"
+  },
+  "worked": {
+    "file": "worked_original.jpg",
+    "sha256": "6c541df3dfc19ce4015fdf5447f3780a4cd0b8b5e1c0680174df7258729b9bbe",
+    "size": [
+      1024,
+      1024
+    ],
+    "origin": "New original built-in imagegen texture; not extracted from another track",
+    "source_preparation": "1024 px color source, JPEG quality 94; runtime materials are lossless TGA"
+  },
+  "sand": {
+    "file": "sand_original.jpg",
+    "sha256": "6f116ab6358bba321fd9c7c9d8f68d812110f2bb8dc2f06a87e242405f0ed35e",
+    "size": [
+      1024,
+      1024
+    ],
+    "origin": "New original built-in imagegen texture; not extracted from another track",
+    "source_preparation": "1024 px color source, JPEG quality 94; runtime materials are lossless TGA"
+  }
+}

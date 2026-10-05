@@ -1,0 +1,52 @@
+name: Build v026 Orlando dirt and R10 flow
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v026]
+    paths: ['V026_SOURCE/**', 'TOOLS/*v026*.py', '.github/workflows/build-v026.yml']
+permissions:
+  contents: read
+concurrency:
+  group: orlando-v026-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 60
+    env:
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+      OPENBLAS_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-v009.txt
+      - name: Build protected source and local revision
+        run: python TOOLS/build_v026.py --source-only
+      - name: Compile new native MAP TRH and PKZ
+        run: python TOOLS/build_windows_v026.py
+      - name: Upload candidate
+        uses: actions/upload-artifact@v7
+        with:
+          name: OrlandoMX-v026-game-candidate
+          retention-days: 90
+          path: |
+            12_RELEASE/OrlandoMX_2026_v026.pkz
+            12_RELEASE/OrlandoMX_2026_v026.pkz.sha256
+            12_RELEASE/OrlandoMX_v026_Validation.json
+            12_RELEASE/Install_v026.txt
+      - name: Preserve evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: OrlandoMX-v026-build-evidence
+          retention-days: 90
+          path: |
+            V026_OUTPUT/*validation.json
+            V026_OUTPUT/compiled_track.hmf
+            DOCUMENTATION/v026*
+            DOCUMENTATION/*validation.json
+            DOCUMENTATION/*.log
+            DOCUMENTATION/native_build_failure.txt
