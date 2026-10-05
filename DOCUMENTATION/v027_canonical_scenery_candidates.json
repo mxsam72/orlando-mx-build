@@ -1,0 +1,494 @@
+{
+  "limits": {
+    "patch_bounds_xz_m": [
+      263.72265625,
+      357.765625,
+      356.78515625,
+      437.9375
+    ],
+    "tree_station_range_m": [
+      813.749976929397,
+      865.7474110171287
+    ],
+    "marker_station_range_m": [
+      803.1942354574876,
+      899.7474110171287
+    ],
+    "tree_riding_half_width_m": 4.4,
+    "rider_headroom_m": 2.4,
+    "marker_track_edge_threshold_m": 0
+  },
+  "candidates": [
+    {
+      "name": "SOFTCPLAS_marker_47",
+      "geometry_id": 629579765,
+      "model_id": 895441159,
+      "anchor_xz_m": [
+        354.6843566894531,
+        362.6739501953125
+      ],
+      "station_m": 735.155084316674,
+      "centerline_distance_m": 5.800642403030846,
+      "track_edge_clearance_m": 0.8006424030308459,
+      "removed": false
+    },
+    {
+      "name": "SOFTCPLAS_marker_49",
+      "geometry_id": 697135548,
+      "model_id": 683456416,
+      "anchor_xz_m": [
+        336.9507141113281,
+        387.5206298828125
+      ],
+      "station_m": 764.9532637408265,
+      "centerline_distance_m": 5.800306804505316,
+      "track_edge_clearance_m": 0.8003068045053157,
+      "removed": false
+    },
+    {
+      "name": "SOFTCPLAS_marker_50",
+      "geometry_id": 969362879,
+      "model_id": 997680876,
+      "anchor_xz_m": [
+        327.80035400390625,
+        380.3910827636719
+      ],
+      "station_m": 764.9532637408265,
+      "centerline_distance_m": 5.800266592422063,
+      "track_edge_clearance_m": 0.8002665924220631,
+      "removed": false
+    },
+    {
+      "name": "SOFTCPLAS_marker_51",
+      "geometry_id": 145572853,
+      "model_id": 589554194,
+      "anchor_xz_m": [
+        317.0384216308594,
+        411.0646057128906
+      ],
+      "station_m": 795.1514187277193,
+      "centerline_distance_m": 6.123916654297047,
+      "track_edge_clearance_m": 0.8000481855784134,
+      "removed": false
+    },
+    {
+      "name": "SOFTCPLAS_marker_52",
+      "geometry_id": 689935766,
+      "model_id": 476059225,
+      "anchor_xz_m": [
+        308.3511047363281,
+        402.43109130859375
+      ],
+      "station_m": 795.1514187277193,
+      "centerline_distance_m": 6.123835596846946,
+      "track_edge_clearance_m": 0.799967128128312,
+      "removed": false
+    },
+    {
+      "name": "SOFTCPLAS_marker_53",
+      "geometry_id": 544571401,
+      "model_id": 572074716,
+      "anchor_xz_m": [
+        283.65380859375,
+        403.34619140625
+      ],
+      "station_m": 860.7474110171287,
+      "centerline_distance_m": 2.3260056671243117,
+      "track_edge_clearance_m": -3.8239294847042853,
+      "removed": true
+    },
+    {
+      "name": "SOFTCPLAS_marker_54",
+      "geometry_id": 901265398,
+      "model_id": 753202462,
+      "anchor_xz_m": [
+        297.4568786621094,
+        403.185546875
+      ],
+      "station_m": 804.5508444521164,
+      "centerline_distance_m": 12.699854333568908,
+      "track_edge_clearance_m": 6.549919181740311,
+      "removed": false
+    },
+    {
+      "name": "SOFTCPLAS_marker_55",
+      "geometry_id": 687282183,
+      "model_id": 640040748,
+      "anchor_xz_m": [
+        301.2087097167969,
+        374.0816650390625
+      ],
+      "station_m": 894.5453460686841,
+      "centerline_distance_m": 3.9831206920886295,
+      "track_edge_clearance_m": -2.1668144597399674,
+      "removed": true
+    },
+    {
+      "name": "SOFTCPLAS_marker_56",
+      "geometry_id": 463751809,
+      "model_id": 623807882,
+      "anchor_xz_m": [
+        310.0867004394531,
+        381.6905822753906
+      ],
+      "station_m": 895.3452971941648,
+      "centerline_distance_m": 7.675985854339832,
+      "track_edge_clearance_m": 1.5260507025112346,
+      "removed": false
+    },
+    {
+      "name": "SOFTCPLAS_marker_62",
+      "geometry_id": 850857047,
+      "model_id": 407779554,
+      "anchor_xz_m": [
+        291.3946228027344,
+        371.88323974609375
+      ],
+      "station_m": 1014.9379904535149,
+      "centerline_distance_m": 6.00590376422313,
+      "track_edge_clearance_m": 0.8005782403439063,
+      "removed": false
+    },
+    {
+      "name": "SOFTCPLAS_marker_63",
+      "geometry_id": 259503481,
+      "model_id": 128255796,
+      "anchor_xz_m": [
+        282.27630615234375,
+        364.0658264160156
+      ],
+      "station_m": 1014.9379904535149,
+      "centerline_distance_m": 6.005982847090791,
+      "track_edge_clearance_m": 0.800657323211567,
+      "removed": false
+    },
+    {
+      "name": "SOFTCPLAS_marker_64",
+      "geometry_id": 98897148,
+      "model_id": 656551816,
+      "anchor_xz_m": [
+        275.648681640625,
+        395.990478515625
+      ],
+      "station_m": 1044.7361698776674,
+      "centerline_distance_m": 6.064471599943714,
+      "track_edge_clearance_m": 0.8002834632372737,
+      "removed": false
+    },
+    {
+      "name": "SOFTCPLAS_marker_65",
+      "geometry_id": 475669578,
+      "model_id": 787275076,
+      "anchor_xz_m": [
+        265.1927490234375,
+        389.8446350097656
+      ],
+      "station_m": 1044.7361698776674,
+      "centerline_distance_m": 6.06447295923855,
+      "track_edge_clearance_m": 0.8002848225321095,
+      "removed": false
+    },
+    {
+      "name": "tree_10",
+      "geometry_id": 20892793,
+      "model_id": 500339959,
+      "anchor_xz_m": [
+        332.37164306640625,
+        424.4250226702009
+      ],
+      "station_m": 793.9514920394984,
+      "centerline_distance_m": 26.41906573183559,
+      "track_edge_clearance_m": 21.13472496768877,
+      "removed": false,
+      "corridor_vertices": 0,
+      "low_intruding_vertices": 0
+    },
+    {
+      "name": "tree_131",
+      "geometry_id": 847129335,
+      "model_id": 770354657,
+      "anchor_xz_m": [
+        347.8703831263951,
+        385.28025163922996
+      ],
+      "station_m": 756.7537647046503,
+      "centerline_distance_m": 13.076972266421834,
+      "track_edge_clearance_m": 8.076972266421834,
+      "removed": false,
+      "corridor_vertices": 0,
+      "low_intruding_vertices": 0
+    },
+    {
+      "name": "tree_149",
+      "geometry_id": 648712391,
+      "model_id": 315661498,
+      "anchor_xz_m": [
+        294.8296639578683,
+        436.4545636858259
+      ],
+      "station_m": 824.7496103705016,
+      "centerline_distance_m": 12.195506354339194,
+      "track_edge_clearance_m": 6.045571202510597,
+      "removed": false,
+      "corridor_vertices": 0,
+      "low_intruding_vertices": 0
+    },
+    {
+      "name": "tree_203",
+      "geometry_id": 826882349,
+      "model_id": 169466698,
+      "anchor_xz_m": [
+        339.3967721121652,
+        413.81588309151783
+      ],
+      "station_m": 782.5521885013998,
+      "centerline_distance_m": 24.452031440096327,
+      "track_edge_clearance_m": 19.436871434346298,
+      "removed": false,
+      "corridor_vertices": 0,
+      "low_intruding_vertices": 0
+    },
+    {
+      "name": "tree_215",
+      "geometry_id": 673820236,
+      "model_id": 636653580,
+      "anchor_xz_m": [
+        274.0115661621094,
+        428.75492204938615
+      ],
+      "station_m": 836.7488772527106,
+      "centerline_distance_m": 6.914515265236311,
+      "track_edge_clearance_m": 0.7645801134077139,
+      "removed": true,
+      "corridor_vertices": 113,
+      "low_intruding_vertices": 15,
+      "minimum_headroom_m": 0.4677522509608334
+    },
+    {
+      "name": "tree_222",
+      "geometry_id": 768388787,
+      "model_id": 562145450,
+      "anchor_xz_m": [
+        276.24300275530135,
+        423.60018920898443
+      ],
+      "station_m": 838.3487795036718,
+      "centerline_distance_m": 1.7423586875895958,
+      "track_edge_clearance_m": -4.407576464239002,
+      "removed": true,
+      "corridor_vertices": 1931,
+      "low_intruding_vertices": 373,
+      "minimum_headroom_m": -1.0624978751887486
+    },
+    {
+      "name": "tree_261",
+      "geometry_id": 525026817,
+      "model_id": 173844304,
+      "anchor_xz_m": [
+        350.72264317103793,
+        408.2401428222656
+      ],
+      "station_m": 772.3528116515221,
+      "centerline_distance_m": 29.44939027959946,
+      "track_edge_clearance_m": 24.44939027959946,
+      "removed": false,
+      "corridor_vertices": 0,
+      "low_intruding_vertices": 0
+    },
+    {
+      "name": "tree_431",
+      "geometry_id": 11942565,
+      "model_id": 950276707,
+      "anchor_xz_m": [
+        317.1640453135731,
+        420.8566409220416
+      ],
+      "station_m": 800.9510643874536,
+      "centerline_distance_m": 13.523196193576027,
+      "track_edge_clearance_m": 7.37326104174743,
+      "removed": false,
+      "corridor_vertices": 0,
+      "low_intruding_vertices": 0
+    },
+    {
+      "name": "tree_457",
+      "geometry_id": 954312167,
+      "model_id": 828405857,
+      "anchor_xz_m": [
+        351.6448974609375,
+        420.4029323032924
+      ],
+      "station_m": 779.5523717808475,
+      "centerline_distance_m": 37.97417396308256,
+      "track_edge_clearance_m": 32.97417396308256,
+      "removed": false,
+      "corridor_vertices": 0,
+      "low_intruding_vertices": 0
+    },
+    {
+      "name": "tree_462",
+      "geometry_id": 365074824,
+      "model_id": 591591624,
+      "anchor_xz_m": [
+        343.2348153250559,
+        398.136971609933
+      ],
+      "station_m": 769.3529949309698,
+      "centerline_distance_m": 17.296016301015804,
+      "track_edge_clearance_m": 12.296016301015804,
+      "removed": false,
+      "corridor_vertices": 0,
+      "low_intruding_vertices": 0
+    },
+    {
+      "name": "tree_505",
+      "geometry_id": 35039636,
+      "model_id": 862604801,
+      "anchor_xz_m": [
+        285.3775303138741,
+        436.18810891589277
+      ],
+      "station_m": 829.349329342015,
+      "centerline_distance_m": 9.82882978209572,
+      "track_edge_clearance_m": 3.6788946302671235,
+      "removed": false,
+      "corridor_vertices": 0,
+      "low_intruding_vertices": 0
+    },
+    {
+      "name": "tree_511",
+      "geometry_id": 396648790,
+      "model_id": 106560988,
+      "anchor_xz_m": [
+        335.13956560407365,
+        408.8689357212612
+      ],
+      "station_m": 781.7522373759192,
+      "centerline_distance_m": 17.97661216907508,
+      "track_edge_clearance_m": 12.967451307788824,
+      "removed": false,
+      "corridor_vertices": 0,
+      "low_intruding_vertices": 0
+    },
+    {
+      "name": "tree_519",
+      "geometry_id": 86683751,
+      "model_id": 644132867,
+      "anchor_xz_m": [
+        352.99872262137285,
+        389.623273577009
+      ],
+      "station_m": 756.9537524860204,
+      "centerline_distance_m": 19.78818048784037,
+      "track_edge_clearance_m": 14.788180487840371,
+      "removed": false,
+      "corridor_vertices": 0,
+      "low_intruding_vertices": 0
+    },
+    {
+      "name": "tree_524",
+      "geometry_id": 632042453,
+      "model_id": 427427633,
+      "anchor_xz_m": [
+        356.7447471343885,
+        407.42194272974353
+      ],
+      "station_m": 768.353056024119,
+      "centerline_distance_m": 33.653220418594145,
+      "track_edge_clearance_m": 28.653220418594145,
+      "removed": false,
+      "corridor_vertices": 0,
+      "low_intruding_vertices": 0
+    },
+    {
+      "name": "tree_530",
+      "geometry_id": 324365765,
+      "model_id": 822140421,
+      "anchor_xz_m": [
+        353.97257777622775,
+        399.9602791922433
+      ],
+      "station_m": 764.353300396716,
+      "centerline_distance_m": 26.87331371729526,
+      "track_edge_clearance_m": 21.87331371729526,
+      "removed": false,
+      "corridor_vertices": 0,
+      "low_intruding_vertices": 0
+    },
+    {
+      "name": "tree_546",
+      "geometry_id": 758590784,
+      "model_id": 680543768,
+      "anchor_xz_m": [
+        306.13050624302457,
+        427.3298557826451
+      ],
+      "station_m": 813.5502946137731,
+      "centerline_distance_m": 11.327721451254774,
+      "track_edge_clearance_m": 5.177786299426177,
+      "removed": false,
+      "corridor_vertices": 0,
+      "low_intruding_vertices": 0
+    }
+  ],
+  "proposed_removals": [
+    {
+      "name": "SOFTCPLAS_marker_53",
+      "geometry_id": 544571401,
+      "model_id": 572074716,
+      "anchor_xz_m": [
+        283.65380859375,
+        403.34619140625
+      ],
+      "station_m": 860.7474110171287,
+      "centerline_distance_m": 2.3260056671243117,
+      "track_edge_clearance_m": -3.8239294847042853,
+      "removed": true
+    },
+    {
+      "name": "SOFTCPLAS_marker_55",
+      "geometry_id": 687282183,
+      "model_id": 640040748,
+      "anchor_xz_m": [
+        301.2087097167969,
+        374.0816650390625
+      ],
+      "station_m": 894.5453460686841,
+      "centerline_distance_m": 3.9831206920886295,
+      "track_edge_clearance_m": -2.1668144597399674,
+      "removed": true
+    },
+    {
+      "name": "tree_215",
+      "geometry_id": 673820236,
+      "model_id": 636653580,
+      "anchor_xz_m": [
+        274.0115661621094,
+        428.75492204938615
+      ],
+      "station_m": 836.7488772527106,
+      "centerline_distance_m": 6.914515265236311,
+      "track_edge_clearance_m": 0.7645801134077139,
+      "removed": true,
+      "corridor_vertices": 113,
+      "low_intruding_vertices": 15,
+      "minimum_headroom_m": 0.4677522509608334
+    },
+    {
+      "name": "tree_222",
+      "geometry_id": 768388787,
+      "model_id": 562145450,
+      "anchor_xz_m": [
+        276.24300275530135,
+        423.60018920898443
+      ],
+      "station_m": 838.3487795036718,
+      "centerline_distance_m": 1.7423586875895958,
+      "track_edge_clearance_m": -4.407576464239002,
+      "removed": true,
+      "corridor_vertices": 1931,
+      "low_intruding_vertices": 373,
+      "minimum_headroom_m": -1.0624978751887486
+    }
+  ]
+}

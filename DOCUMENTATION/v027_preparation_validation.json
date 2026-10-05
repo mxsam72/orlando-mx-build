@@ -1,0 +1,28 @@
+{
+  "version": "v027",
+  "baseline_commit": "2275efa8e92a4958ea130acd71bc6ea74ed49591",
+  "canonical_diagnostic_selection_replay_pass": true,
+  "removed_names": [
+    "SOFTCPLAS_marker_53",
+    "SOFTCPLAS_marker_55",
+    "tree_215",
+    "tree_222"
+  ],
+  "fbx_rewrite_fixture": "Original v006 record structure; final canonical native validation remains pending.",
+  "record_preservation": {
+    "retained_object_records_verified": 2067,
+    "object_records_removed": 8,
+    "retained_object_properties_unchanged": true,
+    "retained_connections_unchanged": true,
+    "global_axes_metadata_unchanged": true,
+    "definition_counts_corrected": true
+  },
+  "release_input_regression_pass": true,
+  "only_identity_text_changed": [
+    "orlandomx_2026_v026.ini"
+  ],
+  "syntax_checks_pass": true,
+  "compiled": false,
+  "in_game_checked": false,
+  "new_v027_prompt_pending": true
+}

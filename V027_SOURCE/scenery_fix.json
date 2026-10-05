@@ -1,0 +1,64 @@
+{
+  "version": "v027",
+  "baseline_commit": "2275efa8e92a4958ea130acd71bc6ea74ed49591",
+  "intent": "Carry the verified v026 tree/marker obstruction correction into v027; remaining v027 scope awaits the new user prompt.",
+  "target_sector": "R10 -> relocated T09 -> R11",
+  "remove_rules": {
+    "trees": "Remove only the coordinate-verified tree meshes with vertices below rider headroom in the T09 riding corridor; the expected set must match exactly.",
+    "markers": "Remove only the coordinate-verified SOFTCPLAS markers with anchors inside the authored track edge between the R10 landing and R11 runout; the expected set must match exactly."
+  },
+  "v026_scenery_sha256": "98dc23a52fc9868a155d47368e10ff5645727033fc98b649cfb9d264cf9cdd90",
+  "patch_margin_m": 2.0,
+  "tree_rider_margin_m": 0.5,
+  "rider_headroom_m": 2.4,
+  "expected_removals": [
+    {
+      "name": "tree_215",
+      "anchor_xz_m": [
+        274.0115661621094,
+        428.75492204938615
+      ],
+      "reason": "Low canopy enters the relocated T09 riding corridor."
+    },
+    {
+      "name": "tree_222",
+      "anchor_xz_m": [
+        276.24300275530135,
+        423.6001892089844
+      ],
+      "reason": "Trunk and canopy occupy the relocated T09."
+    },
+    {
+      "name": "SOFTCPLAS_marker_53",
+      "anchor_xz_m": [
+        283.65380859375,
+        403.34619140625
+      ],
+      "reason": "Anchor lies inside the relocated corner exit."
+    },
+    {
+      "name": "SOFTCPLAS_marker_55",
+      "anchor_xz_m": [
+        301.2087097167969,
+        374.0816650390625
+      ],
+      "reason": "Anchor lies inside the relocated R11 landing/runout."
+    }
+  ],
+  "protect": [
+    "v026 terrain.raw exactly",
+    "v026 route geometry and race/reset data",
+    "v026 materials and masks",
+    "start route and starting grid",
+    "pits, facilities, vehicles, stop sign and menu logo",
+    "all scenery outside localized changed sector"
+  ],
+  "evidence": [
+    "test v026 1 lap.mp4",
+    "test v026 tree and track marker in bad place.mp4"
+  ],
+  "canonical_diagnostic_run": 37375662360,
+  "canonical_diagnostic_commit": "29b30c947b8703aeca1f152bbc88bc0a2894aeca",
+  "canonical_selection_evidence": "DOCUMENTATION/v027_canonical_scenery_candidates.json",
+  "video_frame_interval_s": 5
+}
