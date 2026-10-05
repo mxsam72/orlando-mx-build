@@ -1,0 +1,1162 @@
+{
+  "status": "Compiled with official PiBoSo Windows tools",
+  "compiled": true,
+  "centerline_merged": true,
+  "results": {
+    "edf": {
+      "returncode": 0,
+      "seconds": 33.57,
+      "log": "fbx2edf.log"
+    },
+    "map": {
+      "returncode": 0,
+      "seconds": 205.62,
+      "log": "terrained_map.log"
+    },
+    "trh": {
+      "returncode": 0,
+      "seconds": 1.33,
+      "log": "terrained_trh.log"
+    },
+    "centerline": {
+      "returncode": 0,
+      "seconds": 7.25,
+      "log": "tracked_merge.log"
+    }
+  },
+  "outputs": {
+    "checkleft.tl": {
+      "bytes": 5680,
+      "sha256": "a30296e3151e01ebc210b290ad385221190783003689b90a1555c41082f1a9a7"
+    },
+    "checkright.tl": {
+      "bytes": 5680,
+      "sha256": "a7b855f1c5ff5e905215d70221933d6af983de2cf336066ee4f3edbdcd98685d"
+    },
+    "marshals.cfg": {
+      "bytes": 786,
+      "sha256": "5058391f6b220e36a9ae2f6e48e19f8c6c9265bf2035a432155abe586a41b659"
+    },
+    "maxrace.tl": {
+      "bytes": 5680,
+      "sha256": "da69e0faf2cef806db45adbcbdb1489c1883b70eb3f82c13014d034b9d78e23b"
+    },
+    "minrace.tl": {
+      "bytes": 5680,
+      "sha256": "9ce5f607e8336b9ed73d19d92c8dd8b34f1a3874225271ca1edf9e57f4d166fb"
+    },
+    "orlandomx_2026_v025.amb": {
+      "bytes": 689,
+      "sha256": "8fe9ed4765bd90658e4f601d9c8a1c302ad8d8ed26ac49994a05bbc29b4db21a"
+    },
+    "orlandomx_2026_v025.ini": {
+      "bytes": 325,
+      "sha256": "1f9c130fe2fccb0178ccc3bb6cd4715ee3e23287e32e0de8b482c03fd57d58a7"
+    },
+    "orlandomx_2026_v025.map": {
+      "bytes": 271305442,
+      "sha256": "0897e70aa13c22f636cc6111a35a5561ddd822d018b5fa3718d89e0b8168d1e8"
+    },
+    "orlandomx_2026_v025.rdf": {
+      "bytes": 8380,
+      "sha256": "522cc2a4f0ff142969b01c9fcfdd900dc908d12387fcc5b978fd5d78b85ec6f5"
+    },
+    "orlandomx_2026_v025.tga": {
+      "bytes": 3145772,
+      "sha256": "7902dd97dc15a0384f12c68e63f832ffa23dea6b1a97301ea1b2275e7401bf01"
+    },
+    "orlandomx_2026_v025.trh": {
+      "bytes": 33668250,
+      "sha256": "aeabf9f09c028ac270bb37ac30c64ed135bd549aabd1cc58fc4b7e761303e87a"
+    },
+    "orlandomx_2026_v025.tsc": {
+      "bytes": 2686,
+      "sha256": "40dc38c8142278dbf1724b297ab96d6850747bf473210614df3d3f44d8add9a0"
+    },
+    "orlandomx_2026_v025_map.tga": {
+      "bytes": 3145772,
+      "sha256": "a33d9ea2f7676b50c9bdfd7cac6c84def0f3b36b8c8798718157edc42b40479a"
+    }
+  },
+  "mapview_visual_check": false,
+  "in_game_riding_test": false,
+  "multiplayer_test": false,
+  "game_version_target": "Current MX Bikes authoring workflow; shared start gate introduced in beta15",
+  "version": "v025",
+  "source_commit": "2a0fe57d5ef86217c232fb9cf315e15c44e757ae",
+  "baseline_commit": "d70efa2d1da5cec4ed93182a4efb762028b991b6",
+  "source_checks": true,
+  "geometry_unchanged": true,
+  "physics_unchanged": true,
+  "scenery_unchanged": true,
+  "protected_source": {
+    "terrain.raw": {
+      "baseline_sha256": "4befe79d6820865f4aba34649a5b54ed22472e7a3c1e7f8d3d56f53f3e340d91",
+      "v025_sha256": "4befe79d6820865f4aba34649a5b54ed22472e7a3c1e7f8d3d56f53f3e340d91",
+      "unchanged": true
+    },
+    "scenery.fbx": {
+      "baseline_sha256": "98dc23a52fc9868a155d47368e10ff5645727033fc98b649cfb9d264cf9cdd90",
+      "v025_sha256": "98dc23a52fc9868a155d47368e10ff5645727033fc98b649cfb9d264cf9cdd90",
+      "unchanged": true
+    },
+    "start.tcl": {
+      "baseline_sha256": "b1dcaa07fe6e7a95eb1acfc40af00139ce00850e9df1133b894e3d0c3be2b0df",
+      "v025_sha256": "b1dcaa07fe6e7a95eb1acfc40af00139ce00850e9df1133b894e3d0c3be2b0df",
+      "unchanged": true
+    },
+    "route.npz": {
+      "baseline_sha256": "66ddbb6dc2d489ad9aad48754d8662c036bce1179b749c39dc9b9533a427978b",
+      "v025_sha256": "66ddbb6dc2d489ad9aad48754d8662c036bce1179b749c39dc9b9533a427978b",
+      "unchanged": true
+    },
+    "jump_profiles.json": {
+      "baseline_sha256": "49cbfce346b1f61fc97cdc621b13c49b3e154db67f22e28f23988445a9f1fcde",
+      "v025_sha256": "49cbfce346b1f61fc97cdc621b13c49b3e154db67f22e28f23988445a9f1fcde",
+      "unchanged": true
+    },
+    "native_coordinate_probes.json": {
+      "baseline_sha256": "bcb36b243675327273bc2dbee3f712c5e2d5201f1b7b90daec6528d9fba2dcf9",
+      "v025_sha256": "bcb36b243675327273bc2dbee3f712c5e2d5201f1b7b90daec6528d9fba2dcf9",
+      "unchanged": true
+    },
+    "v024_pit_gravel.tga": {
+      "baseline_sha256": "162ed35bd7b91d2b20cb482d514258556f01dea831deb034b37f3a678bf15ddd",
+      "v025_sha256": "162ed35bd7b91d2b20cb482d514258556f01dea831deb034b37f3a678bf15ddd",
+      "unchanged": true
+    },
+    "masks/grass.tga": {
+      "baseline_sha256": "be5cfa3e40949224edf3c794df3038fe4f71ac4024f09b33c1c14ea99faeb547",
+      "v025_sha256": "be5cfa3e40949224edf3c794df3038fe4f71ac4024f09b33c1c14ea99faeb547",
+      "unchanged": true
+    },
+    "masks/off.tga": {
+      "baseline_sha256": "a3320754320bd4743bb400859cb3d65034354c9e002ffcd6f05be0884896644e",
+      "v025_sha256": "a3320754320bd4743bb400859cb3d65034354c9e002ffcd6f05be0884896644e",
+      "unchanged": true
+    },
+    "masks/pits.tga": {
+      "baseline_sha256": "e41747bfe52545a326f208c8f36e4b9d960f2436924d637b16cc6a54fc6a7228",
+      "v025_sha256": "e41747bfe52545a326f208c8f36e4b9d960f2436924d637b16cc6a54fc6a7228",
+      "unchanged": true
+    },
+    "masks/racing.tga": {
+      "baseline_sha256": "921cd482763ba79c9b0326c5d5df99eea87b676b653cd0c973c611ce8e66792b",
+      "v025_sha256": "921cd482763ba79c9b0326c5d5df99eea87b676b653cd0c973c611ce8e66792b",
+      "unchanged": true
+    },
+    "masks/sand.tga": {
+      "baseline_sha256": "7877ea6021886300364ca435f72b7cc0539aa66fad0a15998ced1c5b2ab59017",
+      "v025_sha256": "7877ea6021886300364ca435f72b7cc0539aa66fad0a15998ced1c5b2ab59017",
+      "unchanged": true
+    },
+    "masks/shoulder.tga": {
+      "baseline_sha256": "2d678c0d00320f2fad26a55e4157b858ac00ac6c56b0d89d892663489acac710",
+      "v025_sha256": "2d678c0d00320f2fad26a55e4157b858ac00ac6c56b0d89d892663489acac710",
+      "unchanged": true
+    },
+    "masks/start.tga": {
+      "baseline_sha256": "d9b75e69e937603c8478aa6382dbbf5d13d9bc37cf2ff56631e630c83b3680f1",
+      "v025_sha256": "d9b75e69e937603c8478aa6382dbbf5d13d9bc37cf2ff56631e630c83b3680f1",
+      "unchanged": true
+    },
+    "masks/v024_pit_roads.tga": {
+      "baseline_sha256": "9556301a61968c603b557420f5f325dbd8a4c1ee3f341340897cb3282f744f70",
+      "v025_sha256": "9556301a61968c603b557420f5f325dbd8a4c1ee3f341340897cb3282f744f70",
+      "unchanged": true
+    },
+    "masks/v024_rv_restroom_grass.tga": {
+      "baseline_sha256": "22b5b5bc14ed0f8c285899a2b306c72394b16d2448d9b2dbfb2e4bcc4ff5056e",
+      "v025_sha256": "22b5b5bc14ed0f8c285899a2b306c72394b16d2448d9b2dbfb2e4bcc4ff5056e",
+      "unchanged": true
+    },
+    "masks/visual_grass.tga": {
+      "baseline_sha256": "4e7039fdd283cec7a3d24f9321f3c8d2855b423c46d1f997a855978b6142572c",
+      "v025_sha256": "4e7039fdd283cec7a3d24f9321f3c8d2855b423c46d1f997a855978b6142572c",
+      "unchanged": true
+    },
+    "masks/visual_racing.tga": {
+      "baseline_sha256": "3224f25d3cc4a588379740409c46d36c76c7e346dd337144b018a6467470afbc",
+      "v025_sha256": "3224f25d3cc4a588379740409c46d36c76c7e346dd337144b018a6467470afbc",
+      "unchanged": true
+    },
+    "masks/visual_worked.tga": {
+      "baseline_sha256": "d1badd1d0af5f4bb4aa14770bd913a00bda697165cb6c3d9815346cca9d19304",
+      "v025_sha256": "d1badd1d0af5f4bb4aa14770bd913a00bda697165cb6c3d9815346cca9d19304",
+      "unchanged": true
+    },
+    "masks/worked.tga": {
+      "baseline_sha256": "30f03434410b1e88c6f08b00f751e00654e8d633d43c1da63983fd44d53ea4c1",
+      "v025_sha256": "30f03434410b1e88c6f08b00f751e00654e8d633d43c1da63983fd44d53ea4c1",
+      "unchanged": true
+    }
+  },
+  "terrain_texture_payloads": [
+    {
+      "texture": "v025_grass.tga",
+      "width": 1024,
+      "height": 1024,
+      "pixel_md5": "aaf52536123fe1bd3d33efbc7fb0a960",
+      "map_signature_offset": 227835842
+    },
+    {
+      "texture": "v025_prepared.tga",
+      "width": 1024,
+      "height": 1024,
+      "pixel_md5": "bec48ad349f1a9e320f86c6e8e38cfd9",
+      "map_signature_offset": 215590716
+    },
+    {
+      "texture": "v025_prepared_n.tga",
+      "width": 1024,
+      "height": 1024,
+      "pixel_md5": "1482c8c9c2b7948fb3e7bee0894ccd63",
+      "map_signature_offset": 217079887
+    },
+    {
+      "texture": "v025_prepared_wet.tga",
+      "width": 1024,
+      "height": 1024,
+      "pixel_md5": "bb15416c60b6a6ddeb9c5433535931c4",
+      "map_signature_offset": 218789816
+    },
+    {
+      "texture": "v025_sand.tga",
+      "width": 1024,
+      "height": 1024,
+      "pixel_md5": "8065244169ff8c5381a4e67153c7e666",
+      "map_signature_offset": 222008738
+    },
+    {
+      "texture": "v025_sand_n.tga",
+      "width": 1024,
+      "height": 1024,
+      "pixel_md5": "d930bb7e9ad021559a0181bf6603ca23",
+      "map_signature_offset": 223329705
+    },
+    {
+      "texture": "v025_sand_wet.tga",
+      "width": 1024,
+      "height": 1024,
+      "pixel_md5": "0deb5fe079bd6ede977ed424c503eecc",
+      "map_signature_offset": 224933339
+    },
+    {
+      "texture": "v025_soil.tga",
+      "width": 1024,
+      "height": 1024,
+      "pixel_md5": "71b3c767f4dcee4d4073f04d40844d71",
+      "map_signature_offset": 208295877
+    },
+    {
+      "texture": "v025_soil_n.tga",
+      "width": 1024,
+      "height": 1024,
+      "pixel_md5": "5e3b5d4c989562714a3f5f2c33e87307",
+      "map_signature_offset": 209801408
+    },
+    {
+      "texture": "v025_soil_wet.tga",
+      "width": 1024,
+      "height": 1024,
+      "pixel_md5": "9181527404aa941fc37d8bb3e156a6ed",
+      "map_signature_offset": 211987206
+    },
+    {
+      "texture": "v025_trackwear.tga",
+      "width": 4096,
+      "height": 4096,
+      "pixel_md5": "324ad99e5bf03464e5da81b644bca3e7",
+      "map_signature_offset": 242337229
+    },
+    {
+      "texture": "v025_trackwear_n.tga",
+      "width": 4096,
+      "height": 4096,
+      "pixel_md5": "1909b42f138a21a05ecc96378511fe73",
+      "map_signature_offset": 253503006
+    },
+    {
+      "texture": "v025_trackwear_wet.tga",
+      "width": 4096,
+      "height": 4096,
+      "pixel_md5": "87c0e7a7b83aa17d56f45d245728a3b3",
+      "map_signature_offset": 253851694
+    },
+    {
+      "texture": "v025_worked.tga",
+      "width": 1024,
+      "height": 1024,
+      "pixel_md5": "eaf977d360d03983e4c74d065b573871",
+      "map_signature_offset": 234208700
+    },
+    {
+      "texture": "v025_worked_n.tga",
+      "width": 1024,
+      "height": 1024,
+      "pixel_md5": "12359215679d7e97e00adeaf0f282ff3",
+      "map_signature_offset": 235742975
+    },
+    {
+      "texture": "v025_worked_wet.tga",
+      "width": 1024,
+      "height": 1024,
+      "pixel_md5": "2d351bcb7688fa2e3875ab67a75c1ec7",
+      "map_signature_offset": 238242432
+    }
+  ],
+  "object_texture_validation": {
+    "checks_pass": true,
+    "power_of_two": true,
+    "texture_count": 40,
+    "edf_bytes": 173137253,
+    "edf_sha256": "9e868d4c5453adfafd423d5e46f26f22678cc7ea04f6eb65470876af289e280b",
+    "map_sha256": "0897e70aa13c22f636cc6111a35a5561ddd822d018b5fa3718d89e0b8168d1e8",
+    "textures": [
+      {
+        "texture": "v024_vehicle_alloy.tga",
+        "native_name": "v024_vehicle_alloy",
+        "width": 128,
+        "height": 128,
+        "pixel_md5": "4a4443be3d2db35e0afaa081fa83c7b1",
+        "record_offset": 167224546,
+        "payload_bytes": 6808,
+        "source_sha256": "d6975c75f59550d31b8c3ac3e8abf1c4c71c5a8f3b6426dd17249330aedc692c",
+        "checks_pass": true,
+        "map_signature_offset": 186981974
+      },
+      {
+        "texture": "v024_vehicle_amber.tga",
+        "native_name": "v024_vehicle_amber",
+        "width": 128,
+        "height": 128,
+        "pixel_md5": "1029b615573aa500255a167d6a93cff5",
+        "record_offset": 167488484,
+        "payload_bytes": 6202,
+        "source_sha256": "f12048c15afde7010a876e6775f92d8eef288ee2fb29856a3df28c4a158b18cb",
+        "checks_pass": true,
+        "map_signature_offset": 187245912
+      },
+      {
+        "texture": "v024_vehicle_bithlo_photo.tga",
+        "native_name": "v024_vehicle_bithlo_photo",
+        "width": 1024,
+        "height": 2048,
+        "pixel_md5": "735ba97d4b62fc48caa8c2a32e1f7f02",
+        "record_offset": 167730771,
+        "payload_bytes": 5406338,
+        "source_sha256": "263cb111304458820043f26ddfa7e5cb2fb7f6eca77131eefd2c4c00197abb51",
+        "checks_pass": true,
+        "map_signature_offset": 187488199
+      },
+      {
+        "texture": "v024_vehicle_black_seat.tga",
+        "native_name": "v024_vehicle_black_seat",
+        "width": 128,
+        "height": 128,
+        "pixel_md5": "899f4d28828fb9cd744f70e057dd124a",
+        "record_offset": 167260112,
+        "payload_bytes": 8247,
+        "source_sha256": "b6815edef183c046180f4676b8326bbb6f699839a3a2425c1c498cb97bbbd40a",
+        "checks_pass": true,
+        "map_signature_offset": 187017540
+      },
+      {
+        "texture": "v024_vehicle_blue_seat.tga",
+        "native_name": "v024_vehicle_blue_seat",
+        "width": 128,
+        "height": 128,
+        "pixel_md5": "28c2bacfe0b5568ed4c0dc49f0a9af79",
+        "record_offset": 167513923,
+        "payload_bytes": 8284,
+        "source_sha256": "931c8ac35315d60118971897df732c9421d4e0326835070072223aa8f5aa8d8f",
+        "checks_pass": true,
+        "map_signature_offset": 187271351
+      },
+      {
+        "texture": "v024_vehicle_chevy_badge.tga",
+        "native_name": "v024_vehicle_chevy_badge",
+        "width": 256,
+        "height": 128,
+        "pixel_md5": "681c130ededaebd42589c35be8de7b74",
+        "record_offset": 167486594,
+        "payload_bytes": 1746,
+        "source_sha256": "30fe57f077cca148a5840c98aee4fbdccc170bc9aba4b7813f001a35deab0036",
+        "checks_pass": true,
+        "map_signature_offset": 187244022
+      },
+      {
+        "texture": "v024_vehicle_cyber_steel.tga",
+        "native_name": "v024_vehicle_cyber_steel",
+        "width": 128,
+        "height": 128,
+        "pixel_md5": "011fd23e74713273ee390fdad9d42f65",
+        "record_offset": 167164833,
+        "payload_bytes": 7535,
+        "source_sha256": "b731f1cccbc8bd5b8638bac659d53871fc72a871814d43c703497874e40fe3ca",
+        "checks_pass": true,
+        "map_signature_offset": 186922261
+      },
+      {
+        "texture": "v024_vehicle_dark.tga",
+        "native_name": "v024_vehicle_dark",
+        "width": 128,
+        "height": 128,
+        "pixel_md5": "9cfdbd28a271f033cc7d2c16065ea5de",
+        "record_offset": 167158508,
+        "payload_bytes": 6181,
+        "source_sha256": "ac1b5050f7b50533693bedd02cab29ef3616c4767fe874a1f019f99b21fbc0f9",
+        "checks_pass": true,
+        "map_signature_offset": 186915936
+      },
+      {
+        "texture": "v024_vehicle_engine.tga",
+        "native_name": "v024_vehicle_engine",
+        "width": 128,
+        "height": 128,
+        "pixel_md5": "01b7f82216e6118e0efe825e468d95d5",
+        "record_offset": 167241055,
+        "payload_bytes": 6210,
+        "source_sha256": "8e28e883f484c3e3b6bb28240d39702b310adcbb21ef18767ee6ab7897de5bf4",
+        "checks_pass": true,
+        "map_signature_offset": 186998483
+      },
+      {
+        "texture": "v024_vehicle_ford_badge.tga",
+        "native_name": "v024_vehicle_ford_badge",
+        "width": 256,
+        "height": 128,
+        "pixel_md5": "b4e48cfac48d7bc417cddcced3fb421c",
+        "record_offset": 167596550,
+        "payload_bytes": 7020,
+        "source_sha256": "b9e5875dbaccb3d853be2704bb715d575fca89438b3d54d68fc456cbfcc6b2fb",
+        "checks_pass": true,
+        "map_signature_offset": 187353978
+      },
+      {
+        "texture": "v024_vehicle_fork_gold.tga",
+        "native_name": "v024_vehicle_fork_gold",
+        "width": 128,
+        "height": 128,
+        "pixel_md5": "759891771780d25e23695fecf371f61b",
+        "record_offset": 167501184,
+        "payload_bytes": 6236,
+        "source_sha256": "5a69ad1300a91b74c46b510ca09547a5115340d532bc9b2a3723348931a84e71",
+        "checks_pass": true,
+        "map_signature_offset": 187258612
+      },
+      {
+        "texture": "v024_vehicle_four_by_four.tga",
+        "native_name": "v024_vehicle_four_by_four",
+        "width": 256,
+        "height": 128,
+        "pixel_md5": "4ba9c0ccf966c295e66d3bfa4836ed44",
+        "record_offset": 167593644,
+        "payload_bytes": 2762,
+        "source_sha256": "67fd48ba2a8c30c409d1907cfe5006830c599a914cec4d95f416ed06b5fadc17",
+        "checks_pass": true,
+        "map_signature_offset": 187351072
+      },
+      {
+        "texture": "v024_vehicle_glass.tga",
+        "native_name": "v024_vehicle_glass",
+        "width": 128,
+        "height": 128,
+        "pixel_md5": "60cf813584f4ab85be29b7f33a64d1a6",
+        "record_offset": 167172512,
+        "payload_bytes": 6780,
+        "source_sha256": "7ed1279d854230dc6de20138c7454f2327bac3806cc84e1f08e414bca537154f",
+        "checks_pass": true,
+        "map_signature_offset": 186929940
+      },
+      {
+        "texture": "v024_vehicle_headlight.tga",
+        "native_name": "v024_vehicle_headlight",
+        "width": 128,
+        "height": 128,
+        "pixel_md5": "f2ea22d3013085ef6118ad911d815c1f",
+        "record_offset": 167195898,
+        "payload_bytes": 6217,
+        "source_sha256": "379d374a910be9fc760ac427197fe90124b438d43a520bdc5a1bac6d7e03196d",
+        "checks_pass": true,
+        "map_signature_offset": 186953326
+      },
+      {
+        "texture": "v024_vehicle_husky_white.tga",
+        "native_name": "v024_vehicle_husky_white",
+        "width": 128,
+        "height": 128,
+        "pixel_md5": "825b7833e894663581c2631b0b23a6a6",
+        "record_offset": 167253771,
+        "payload_bytes": 6197,
+        "source_sha256": "e38c626781fe0533e581ba03de05f359fb8d6f168dee924fc00e7f78b934f49e",
+        "checks_pass": true,
+        "map_signature_offset": 187011199
+      },
+      {
+        "texture": "v024_vehicle_jordan_number.tga",
+        "native_name": "v024_vehicle_jordan_number",
+        "width": 512,
+        "height": 512,
+        "pixel_md5": "2b0f60fda9960ab67bf76b15277e69bc",
+        "record_offset": 167268503,
+        "payload_bytes": 33161,
+        "source_sha256": "ddddc6b1739fb2e6e9c00a936ab9b889f47f473172702106537c70807d75a75a",
+        "checks_pass": true,
+        "map_signature_offset": 187025931
+      },
+      {
+        "texture": "v024_vehicle_jordan_shroud.tga",
+        "native_name": "v024_vehicle_jordan_shroud",
+        "width": 512,
+        "height": 512,
+        "pixel_md5": "2c30feb8daf5457ba785226be8fe148d",
+        "record_offset": 167301808,
+        "payload_bytes": 27543,
+        "source_sha256": "9593c20678c82fb53c006c0c7701e0e2a4059556cdb043e9e09fe92be746bff6",
+        "checks_pass": true,
+        "map_signature_offset": 187059236
+      },
+      {
+        "texture": "v024_vehicle_king_ranch.tga",
+        "native_name": "v024_vehicle_king_ranch",
+        "width": 256,
+        "height": 128,
+        "pixel_md5": "2b2d7d8969aa14d5ea3b9ca5b750b29b",
+        "record_offset": 167587858,
+        "payload_bytes": 5642,
+        "source_sha256": "ef9a0b6e6d6ee050e50560e94e6b9787cf86d981ea670021e9ef30a353be0285",
+        "checks_pass": true,
+        "map_signature_offset": 187345286
+      },
+      {
+        "texture": "v024_vehicle_premier_blue.tga",
+        "native_name": "v024_vehicle_premier_blue",
+        "width": 128,
+        "height": 128,
+        "pixel_md5": "dc50c61d30855241c24c0afe61b64099",
+        "record_offset": 167469796,
+        "payload_bytes": 6200,
+        "source_sha256": "6c7ed2e0a64720a1ceb762b42b53bd85033e4353bdf93586d49e0f46b7bfd2d7",
+        "checks_pass": true,
+        "map_signature_offset": 187227224
+      },
+      {
+        "texture": "v024_vehicle_premier_number.tga",
+        "native_name": "v024_vehicle_premier_number",
+        "width": 512,
+        "height": 512,
+        "pixel_md5": "6db0ee244012395ee923c852d176bc95",
+        "record_offset": 167522351,
+        "payload_bytes": 19030,
+        "source_sha256": "2899b04e4c445139d1062d762fdbab129ce56ec6acb448d1d2446c5aa841377d",
+        "checks_pass": true,
+        "map_signature_offset": 187279779
+      },
+      {
+        "texture": "v024_vehicle_premier_shroud.tga",
+        "native_name": "v024_vehicle_premier_shroud",
+        "width": 512,
+        "height": 512,
+        "pixel_md5": "ccebafdc6bd707a02b97cf5781ad5e21",
+        "record_offset": 167541525,
+        "payload_bytes": 33460,
+        "source_sha256": "86da3c68a679766f8d5462a7e6cac36f9f730cc299a65620673ff1227a029a3a",
+        "checks_pass": true,
+        "map_signature_offset": 187298953
+      },
+      {
+        "texture": "v024_vehicle_premier_tail.tga",
+        "native_name": "v024_vehicle_premier_tail",
+        "width": 512,
+        "height": 256,
+        "pixel_md5": "bc70d10ee48bb3bab856a9f64ab71776",
+        "record_offset": 167476140,
+        "payload_bytes": 10310,
+        "source_sha256": "e64648168f53c4ec50e9e834799bb3cc1a5a8f12f5abeb0d5dd94128ae5ac1bc",
+        "checks_pass": true,
+        "map_signature_offset": 187233568
+      },
+      {
+        "texture": "v024_vehicle_premier_wrap.tga",
+        "native_name": "v024_vehicle_premier_wrap",
+        "width": 1024,
+        "height": 512,
+        "pixel_md5": "60b7cf084098f1360ba21ecacc3e925c",
+        "record_offset": 167329495,
+        "payload_bytes": 69778,
+        "source_sha256": "c21a9c8f742a1648038d1acab8797f8b2823d6c7a4f7ccff0fa83bc83c93a808",
+        "checks_pass": true,
+        "map_signature_offset": 187086923
+      },
+      {
+        "texture": "v024_vehicle_premier_wrap_right.tga",
+        "native_name": "v024_vehicle_premier_wrap_right",
+        "width": 1024,
+        "height": 512,
+        "pixel_md5": "395a3f2cd136d877b3189843b7c3a9f7",
+        "record_offset": 167399417,
+        "payload_bytes": 70235,
+        "source_sha256": "5d65661c7fc6b30e012b851d3c2f42c5667fc1db98c838acddffef0c78d0137b",
+        "checks_pass": true,
+        "map_signature_offset": 187156845
+      },
+      {
+        "texture": "v024_vehicle_red_light.tga",
+        "native_name": "v024_vehicle_red_light",
+        "width": 128,
+        "height": 128,
+        "pixel_md5": "eb54521378363100f4f2fd848de68731",
+        "record_offset": 167202259,
+        "payload_bytes": 6179,
+        "source_sha256": "fb4f4e35d8acd083093f5d480cd3342599cfae43f4967c9136116018230694ab",
+        "checks_pass": true,
+        "map_signature_offset": 186959687
+      },
+      {
+        "texture": "v024_vehicle_rim_blue.tga",
+        "native_name": "v024_vehicle_rim_blue",
+        "width": 128,
+        "height": 128,
+        "pixel_md5": "2a8d3b269be78897661507ce0eedc4b3",
+        "record_offset": 167494830,
+        "payload_bytes": 6210,
+        "source_sha256": "f976a28795380b311edae2fed4ab03fa46122f6c795f690b7d095a888a159346",
+        "checks_pass": true,
+        "map_signature_offset": 187252258
+      },
+      {
+        "texture": "v024_vehicle_rubber.tga",
+        "native_name": "v024_vehicle_rubber",
+        "width": 128,
+        "height": 128,
+        "pixel_md5": "df75b00dcaa4b2b3275e0da82034e5b0",
+        "record_offset": 167179436,
+        "payload_bytes": 9344,
+        "source_sha256": "7c888824f63e6a8c8c3616b21715878de8bf67f6e0dce68ffc814b60a83dc1e3",
+        "checks_pass": true,
+        "map_signature_offset": 186936864
+      },
+      {
+        "texture": "v024_vehicle_sam_number.tga",
+        "native_name": "v024_vehicle_sam_number",
+        "width": 512,
+        "height": 512,
+        "pixel_md5": "418b9c3254088132b61bd3f89f20dce1",
+        "record_offset": 167603714,
+        "payload_bytes": 23344,
+        "source_sha256": "80f449a5619a93d1f346b5471f81c29b7256eafa59d59d3ca678c0b1087bd0cf",
+        "checks_pass": true,
+        "map_signature_offset": 187361142
+      },
+      {
+        "texture": "v024_vehicle_sam_paint.tga",
+        "native_name": "v024_vehicle_sam_paint",
+        "width": 128,
+        "height": 128,
+        "pixel_md5": "e8a1013b6414ea652d36aa65f65f1af0",
+        "record_offset": 167575129,
+        "payload_bytes": 6173,
+        "source_sha256": "fe62398c4b97ecb8260af95ca0a3ea0ac95e674fff53c336415bd5ed302ea059",
+        "checks_pass": true,
+        "map_signature_offset": 187332557
+      },
+      {
+        "texture": "v024_vehicle_sam_shroud.tga",
+        "native_name": "v024_vehicle_sam_shroud",
+        "width": 512,
+        "height": 512,
+        "pixel_md5": "d1c99f52ed808388b0da5cde548b866c",
+        "record_offset": 167627202,
+        "payload_bytes": 24596,
+        "source_sha256": "d24f5f2a1e6338abee1aa97c4c30ecf8c67accfe0f45f71e5a979efa6232546c",
+        "checks_pass": true,
+        "map_signature_offset": 187384630
+      },
+      {
+        "texture": "v024_vehicle_sam_tan.tga",
+        "native_name": "v024_vehicle_sam_tan",
+        "width": 128,
+        "height": 128,
+        "pixel_md5": "9dfdd7ad120c3d85806d9a0d254e334f",
+        "record_offset": 167581446,
+        "payload_bytes": 6268,
+        "source_sha256": "07875bd7b9b07588cb14515331627ae6df3e977069482d51fdf21a12d679afd2",
+        "checks_pass": true,
+        "map_signature_offset": 187338874
+      },
+      {
+        "texture": "v024_vehicle_shane_number.tga",
+        "native_name": "v024_vehicle_shane_number",
+        "width": 512,
+        "height": 512,
+        "pixel_md5": "0f6b5a15b85d0f0daac4287eeae1d3a8",
+        "record_offset": 167658320,
+        "payload_bytes": 30983,
+        "source_sha256": "0342715469c086cea8a40f856abc666905f649b1b90d6a791430aa2abd58ccf4",
+        "checks_pass": true,
+        "map_signature_offset": 187415748
+      },
+      {
+        "texture": "v024_vehicle_shane_shroud.tga",
+        "native_name": "v024_vehicle_shane_shroud",
+        "width": 512,
+        "height": 512,
+        "pixel_md5": "62e4da3a41857bdeeef1443d0ec5b96d",
+        "record_offset": 167689447,
+        "payload_bytes": 41180,
+        "source_sha256": "fe1eda942427de23f965eab9a4b62b055f82480a24a13bf8998edd2a398cade5",
+        "checks_pass": true,
+        "map_signature_offset": 187446875
+      },
+      {
+        "texture": "v024_vehicle_steel.tga",
+        "native_name": "v024_vehicle_steel",
+        "width": 128,
+        "height": 128,
+        "pixel_md5": "91ac10788e4031b36fddcf6aab8be7b4",
+        "record_offset": 167188924,
+        "payload_bytes": 6830,
+        "source_sha256": "e22a85dc51a549adea39842b110c3b39549697f560b971747629d4f07f879b3a",
+        "checks_pass": true,
+        "map_signature_offset": 186946352
+      },
+      {
+        "texture": "v024_vehicle_tire.tga",
+        "native_name": "v024_vehicle_tire",
+        "width": 128,
+        "height": 128,
+        "pixel_md5": "4ed68fa9d6c2552241cdd643b04bd6aa",
+        "record_offset": 167208582,
+        "payload_bytes": 9463,
+        "source_sha256": "911d8d512f466d173b630847ecfc2903ed826a3b711ef9451b6dc18c105beb80",
+        "checks_pass": true,
+        "map_signature_offset": 186966010
+      },
+      {
+        "texture": "v024_vehicle_tread.tga",
+        "native_name": "v024_vehicle_tread",
+        "width": 128,
+        "height": 128,
+        "pixel_md5": "cc6ef4baf2412c5eecbe8a2ce1230cad",
+        "record_offset": 167231498,
+        "payload_bytes": 9413,
+        "source_sha256": "5d9cb06e0a9e16575c2f78906a1f3345665fa09af87eb278d60acefb5861505a",
+        "checks_pass": true,
+        "map_signature_offset": 186988926
+      },
+      {
+        "texture": "v024_vehicle_van_paint.tga",
+        "native_name": "v024_vehicle_van_paint",
+        "width": 128,
+        "height": 128,
+        "pixel_md5": "1b98d12ced03ac6a12b3ec3747596b38",
+        "record_offset": 167651942,
+        "payload_bytes": 6234,
+        "source_sha256": "0495d592756342ef26cb0328f6f875327d0e45ef185398698e7ee65b804decca",
+        "checks_pass": true,
+        "map_signature_offset": 187409370
+      },
+      {
+        "texture": "v024_vehicle_wheel_black.tga",
+        "native_name": "v024_vehicle_wheel_black",
+        "width": 128,
+        "height": 128,
+        "pixel_md5": "18303f7dcf3baf5c44913b81f081a90d",
+        "record_offset": 167218189,
+        "payload_bytes": 6213,
+        "source_sha256": "f29dfeab3f85ab5d31d907af0e7389d22823b57f971c37be02d877e1ec350341",
+        "checks_pass": true,
+        "map_signature_offset": 186975617
+      },
+      {
+        "texture": "v024_vehicle_white.tga",
+        "native_name": "v024_vehicle_white",
+        "width": 128,
+        "height": 128,
+        "pixel_md5": "9c88590c0d8c768b51e9f606041a33c9",
+        "record_offset": 167247409,
+        "payload_bytes": 6218,
+        "source_sha256": "e82ef82a3a2f28cff5d1255951166b2db0584867faaeb933417251db9f256b56",
+        "checks_pass": true,
+        "map_signature_offset": 187004837
+      },
+      {
+        "texture": "v024_vehicle_yamaha_blue.tga",
+        "native_name": "v024_vehicle_yamaha_blue",
+        "width": 128,
+        "height": 128,
+        "pixel_md5": "7ba91a5eb2d539caf1eb2f51211a7da5",
+        "record_offset": 167507564,
+        "payload_bytes": 6215,
+        "source_sha256": "024f29ab31c1e902eb30541c26ec1a8611f0d2aadb175ff185d23d210e79c397",
+        "checks_pass": true,
+        "map_signature_offset": 187264992
+      }
+    ],
+    "missing": [],
+    "method": "Exact dimensions and bottom-up RGBA pixel MD5 in native EDF bitmap records; corresponding bitmap signatures in MAP",
+    "probe_run": 36824107860,
+    "in_game_visual_test": false
+  },
+  "material_validation": {
+    "atlas_size": 4096,
+    "atlas_ground_pixel_m": 0.14652014652014653,
+    "wear_coverage_pixels": 892571,
+    "max_opacity": 0.8399999737739563,
+    "mean_core_opacity": 0.47100919485092163,
+    "primary_secondary_grooves_pixels": 25036,
+    "normal_alpha_range": [
+      2,
+      4
+    ],
+    "physical_masks_modified": false,
+    "geometry_modified": false,
+    "version": "v025",
+    "original_source_sha256": "d413aacc322f554d093be8ed5fd85ae1b9aa95cd15f489076b37820888a7163f",
+    "material_spec_sha256": "ec097b0bf98c65bb04519af7d140011d48c5debf4e404b145eeb9d688c151f4f",
+    "in_game_visual_check": false,
+    "files": {
+      "mask_v025_wear.tga": {
+        "bytes": 67108908,
+        "sha256": "c2fb3b004506b05489ea85b17a00117207fa2def48aff94c5c64d4492a0b213e"
+      },
+      "mask_visual_grass.tga": {
+        "bytes": 16777260,
+        "sha256": "40994cc2efb5c00d05e197d45848be8b628f579766c800ec75f1530a1c1e73bb"
+      },
+      "mask_visual_racing.tga": {
+        "bytes": 16777260,
+        "sha256": "76592f41f496f05ec796ab22370023b547e2a4787ee34f5100d550a801d8839c"
+      },
+      "mask_visual_worked.tga": {
+        "bytes": 16777260,
+        "sha256": "b2dfbb29217639a2c2c776bc2789586dcc0befddd39e8dea57130cf44bc37e52"
+      },
+      "track.hmf": {
+        "bytes": 1101,
+        "sha256": "bba7ba5c146c946a3e1192eb7d5479a54fa878e4ac7d7c2bc9bfcab296e4adf1"
+      },
+      "v025_grass.shd": {
+        "bytes": 83,
+        "sha256": "3c3ec923311d4ddced9593cda8c5c86de35908cbd365797658717b3a9cef0534"
+      },
+      "v025_grass.tga": {
+        "bytes": 3145772,
+        "sha256": "820011dd7b6807cb7a41892d9591936e5a3fb6c818346ed8308162aa33a20253"
+      },
+      "v025_prepared.shd": {
+        "bytes": 90,
+        "sha256": "6b6d0977e26289a9144f9c719082915255c565699aa094311c868d963b712ef7"
+      },
+      "v025_prepared.tga": {
+        "bytes": 3145772,
+        "sha256": "1eb73ac9e28f74c9e0214c7abec21444ee953bd94b032b7e92d105fc4a12df56"
+      },
+      "v025_prepared_n.tga": {
+        "bytes": 4194348,
+        "sha256": "2da8d16f7048bb5bcc73d792190a1cdc54745b29b6b81059700a231b1cacbbde"
+      },
+      "v025_prepared_wet.shd": {
+        "bytes": 90,
+        "sha256": "6b6d0977e26289a9144f9c719082915255c565699aa094311c868d963b712ef7"
+      },
+      "v025_prepared_wet.tga": {
+        "bytes": 3145772,
+        "sha256": "4eedd58b1e40f462e0083b4becb85e873cc1fea52b98eb355e93e1233fd54075"
+      },
+      "v025_sand.shd": {
+        "bytes": 86,
+        "sha256": "d85e2acd3a0e9c689dd68105560a580f2395ad1dfcd68a3fd398a07b8860147d"
+      },
+      "v025_sand.tga": {
+        "bytes": 3145772,
+        "sha256": "3d2b7594048b3145154701b8bb9e8dcfdd599c2b962ab7553bbe986d3a153b06"
+      },
+      "v025_sand_n.tga": {
+        "bytes": 4194348,
+        "sha256": "9c2b1d045956461e9b640636fbfd4c7796d6331e5fea769c1fa060f2a31d2f46"
+      },
+      "v025_sand_wet.shd": {
+        "bytes": 86,
+        "sha256": "d85e2acd3a0e9c689dd68105560a580f2395ad1dfcd68a3fd398a07b8860147d"
+      },
+      "v025_sand_wet.tga": {
+        "bytes": 3145772,
+        "sha256": "f6e01fbbd0b42ab6578749ad1400f4ec3ac28810c7fe3d9535839aff2a3af356"
+      },
+      "v025_soil.shd": {
+        "bytes": 86,
+        "sha256": "9863d82ca80d05fa1d040ff307378be71f51f5e38ddc6e1ac73a34f6c7f45791"
+      },
+      "v025_soil.tga": {
+        "bytes": 3145772,
+        "sha256": "95dfe81eaa01f4e9aedee459ee52b4e4a5b0264978270c749933b6d9b19c807a"
+      },
+      "v025_soil_n.tga": {
+        "bytes": 4194348,
+        "sha256": "4eba161346a069d0eb97af1ad6108ec6631b0a3b81bf488c78ddacf07b6591a7"
+      },
+      "v025_soil_wet.shd": {
+        "bytes": 86,
+        "sha256": "9863d82ca80d05fa1d040ff307378be71f51f5e38ddc6e1ac73a34f6c7f45791"
+      },
+      "v025_soil_wet.tga": {
+        "bytes": 3145772,
+        "sha256": "4546c6c79a4389f60466bcee3e81894d37a49db123e714db16c797022d8dfa67"
+      },
+      "v025_trackwear.shd": {
+        "bytes": 91,
+        "sha256": "b05778a5f55c21f33831571c93e307cfe3e0f77fe140f05ab80b195fe7b22d0a"
+      },
+      "v025_trackwear.tga": {
+        "bytes": 50331692,
+        "sha256": "b2a0e1e55d8e6ede8cd27de35f91dcc03a196ad94b37ce4532118f9c9230cdd2"
+      },
+      "v025_trackwear_n.tga": {
+        "bytes": 67108908,
+        "sha256": "346ed0001554b1ce8b03e3884b1a89a591384dc52168b890918d6e75a71da0f0"
+      },
+      "v025_trackwear_wet.shd": {
+        "bytes": 91,
+        "sha256": "b05778a5f55c21f33831571c93e307cfe3e0f77fe140f05ab80b195fe7b22d0a"
+      },
+      "v025_trackwear_wet.tga": {
+        "bytes": 50331692,
+        "sha256": "6b16399a08e33ba15cb52bce936156605b5dee9347988b2286d483508de85fd5"
+      },
+      "v025_worked.shd": {
+        "bytes": 88,
+        "sha256": "34863d7f700708d6d626d7259d675c5ff9400a33fede90fd2dfd0c52e12f0504"
+      },
+      "v025_worked.tga": {
+        "bytes": 3145772,
+        "sha256": "ef8289119826d989155d48d2c03c4519df25e40173371aa637cc2e217fd14279"
+      },
+      "v025_worked_n.tga": {
+        "bytes": 4194348,
+        "sha256": "9b316bbb832675c65b51e8016a8c25f623aa29e3af7ea3073105c96ad7264eea"
+      },
+      "v025_worked_wet.shd": {
+        "bytes": 88,
+        "sha256": "34863d7f700708d6d626d7259d675c5ff9400a33fede90fd2dfd0c52e12f0504"
+      },
+      "v025_worked_wet.tga": {
+        "bytes": 3145772,
+        "sha256": "f00ccc929413109b6a1d3c4c4624a3eed91dd35040ca251da04bac63a6c2e25f"
+      }
+    }
+  },
+  "staging_validation": {
+    "checks_pass": true,
+    "geometry_exact": true,
+    "physical_hmf_tht_grid_same": true,
+    "tht_sha256": "04aa0b587248caa8fb822c8fa8ed972bd3a919686def52a3639d71fc40cfbc9e",
+    "physical_masks_exact": [
+      "mask_off.tga",
+      "mask_pits.tga",
+      "mask_start.tga",
+      "mask_racing.tga",
+      "mask_sand.tga",
+      "mask_grass.tga"
+    ],
+    "texture_references_resolved": true,
+    "textures": [
+      {
+        "file": "basemap.tga",
+        "width": 2048,
+        "height": 2048,
+        "sha256": "75fc72427f37e57c711c9d73c002d7bdba10e8501ae25e9c0a60c79e08fdc5b1"
+      },
+      {
+        "file": "grass_n.tga",
+        "width": 1024,
+        "height": 1024,
+        "sha256": "4de81532bf419efdc60fee0ca3f377b89168371f6bf858ab4f2e7a773a6cf881"
+      },
+      {
+        "file": "mask_grass.tga",
+        "width": 2048,
+        "height": 2048,
+        "sha256": "be5cfa3e40949224edf3c794df3038fe4f71ac4024f09b33c1c14ea99faeb547"
+      },
+      {
+        "file": "mask_off.tga",
+        "width": 2048,
+        "height": 2048,
+        "sha256": "a3320754320bd4743bb400859cb3d65034354c9e002ffcd6f05be0884896644e"
+      },
+      {
+        "file": "mask_pits.tga",
+        "width": 2048,
+        "height": 2048,
+        "sha256": "e41747bfe52545a326f208c8f36e4b9d960f2436924d637b16cc6a54fc6a7228"
+      },
+      {
+        "file": "mask_racing.tga",
+        "width": 2048,
+        "height": 2048,
+        "sha256": "921cd482763ba79c9b0326c5d5df99eea87b676b653cd0c973c611ce8e66792b"
+      },
+      {
+        "file": "mask_sand.tga",
+        "width": 2048,
+        "height": 2048,
+        "sha256": "7877ea6021886300364ca435f72b7cc0539aa66fad0a15998ced1c5b2ab59017"
+      },
+      {
+        "file": "mask_start.tga",
+        "width": 2048,
+        "height": 2048,
+        "sha256": "d9b75e69e937603c8478aa6382dbbf5d13d9bc37cf2ff56631e630c83b3680f1"
+      },
+      {
+        "file": "mask_v024_pit_roads.tga",
+        "width": 2048,
+        "height": 2048,
+        "sha256": "9556301a61968c603b557420f5f325dbd8a4c1ee3f341340897cb3282f744f70"
+      },
+      {
+        "file": "mask_v025_wear.tga",
+        "width": 4096,
+        "height": 4096,
+        "sha256": "c2fb3b004506b05489ea85b17a00117207fa2def48aff94c5c64d4492a0b213e"
+      },
+      {
+        "file": "mask_visual_grass.tga",
+        "width": 2048,
+        "height": 2048,
+        "sha256": "40994cc2efb5c00d05e197d45848be8b628f579766c800ec75f1530a1c1e73bb"
+      },
+      {
+        "file": "mask_visual_racing.tga",
+        "width": 2048,
+        "height": 2048,
+        "sha256": "76592f41f496f05ec796ab22370023b547e2a4787ee34f5100d550a801d8839c"
+      },
+      {
+        "file": "mask_visual_worked.tga",
+        "width": 2048,
+        "height": 2048,
+        "sha256": "b2dfbb29217639a2c2c776bc2789586dcc0befddd39e8dea57130cf44bc37e52"
+      },
+      {
+        "file": "v024_pit_gravel.tga",
+        "width": 256,
+        "height": 256,
+        "sha256": "162ed35bd7b91d2b20cb482d514258556f01dea831deb034b37f3a678bf15ddd"
+      },
+      {
+        "file": "v025_grass.tga",
+        "width": 1024,
+        "height": 1024,
+        "sha256": "820011dd7b6807cb7a41892d9591936e5a3fb6c818346ed8308162aa33a20253"
+      },
+      {
+        "file": "v025_prepared.tga",
+        "width": 1024,
+        "height": 1024,
+        "sha256": "1eb73ac9e28f74c9e0214c7abec21444ee953bd94b032b7e92d105fc4a12df56"
+      },
+      {
+        "file": "v025_prepared_n.tga",
+        "width": 1024,
+        "height": 1024,
+        "sha256": "2da8d16f7048bb5bcc73d792190a1cdc54745b29b6b81059700a231b1cacbbde"
+      },
+      {
+        "file": "v025_prepared_wet.tga",
+        "width": 1024,
+        "height": 1024,
+        "sha256": "4eedd58b1e40f462e0083b4becb85e873cc1fea52b98eb355e93e1233fd54075"
+      },
+      {
+        "file": "v025_sand.tga",
+        "width": 1024,
+        "height": 1024,
+        "sha256": "3d2b7594048b3145154701b8bb9e8dcfdd599c2b962ab7553bbe986d3a153b06"
+      },
+      {
+        "file": "v025_sand_n.tga",
+        "width": 1024,
+        "height": 1024,
+        "sha256": "9c2b1d045956461e9b640636fbfd4c7796d6331e5fea769c1fa060f2a31d2f46"
+      },
+      {
+        "file": "v025_sand_wet.tga",
+        "width": 1024,
+        "height": 1024,
+        "sha256": "f6e01fbbd0b42ab6578749ad1400f4ec3ac28810c7fe3d9535839aff2a3af356"
+      },
+      {
+        "file": "v025_soil.tga",
+        "width": 1024,
+        "height": 1024,
+        "sha256": "95dfe81eaa01f4e9aedee459ee52b4e4a5b0264978270c749933b6d9b19c807a"
+      },
+      {
+        "file": "v025_soil_n.tga",
+        "width": 1024,
+        "height": 1024,
+        "sha256": "4eba161346a069d0eb97af1ad6108ec6631b0a3b81bf488c78ddacf07b6591a7"
+      },
+      {
+        "file": "v025_soil_wet.tga",
+        "width": 1024,
+        "height": 1024,
+        "sha256": "4546c6c79a4389f60466bcee3e81894d37a49db123e714db16c797022d8dfa67"
+      },
+      {
+        "file": "v025_trackwear.tga",
+        "width": 4096,
+        "height": 4096,
+        "sha256": "b2a0e1e55d8e6ede8cd27de35f91dcc03a196ad94b37ce4532118f9c9230cdd2"
+      },
+      {
+        "file": "v025_trackwear_n.tga",
+        "width": 4096,
+        "height": 4096,
+        "sha256": "346ed0001554b1ce8b03e3884b1a89a591384dc52168b890918d6e75a71da0f0"
+      },
+      {
+        "file": "v025_trackwear_wet.tga",
+        "width": 4096,
+        "height": 4096,
+        "sha256": "6b16399a08e33ba15cb52bce936156605b5dee9347988b2286d483508de85fd5"
+      },
+      {
+        "file": "v025_worked.tga",
+        "width": 1024,
+        "height": 1024,
+        "sha256": "ef8289119826d989155d48d2c03c4519df25e40173371aa637cc2e217fd14279"
+      },
+      {
+        "file": "v025_worked_n.tga",
+        "width": 1024,
+        "height": 1024,
+        "sha256": "9b316bbb832675c65b51e8016a8c25f623aa29e3af7ea3073105c96ad7264eea"
+      },
+      {
+        "file": "v025_worked_wet.tga",
+        "width": 1024,
+        "height": 1024,
+        "sha256": "f00ccc929413109b6a1d3c4c4624a3eed91dd35040ca251da04bac63a6c2e25f"
+      }
+    ],
+    "shadow_supersampling": 2,
+    "light_direction_unchanged": true,
+    "estimated_unique_terrain_RGBA8_MiB": 488.25,
+    "estimated_with_full_mip_chain_MiB": 651.0,
+    "estimate_excludes_scenery_and_driver_overhead": true
+  },
+  "in_game_visual_check": false,
+  "performance_test": false,
+  "pending": [
+    "MX Bikes load test",
+    "Rider and elevated visual inspection",
+    "Full lap visual audit",
+    "FPS/VRAM comparison"
+  ],
+  "pkz_sha256": "54ce4074d62e0da0766561b1514c759f4afedf42876db6a1f8980553ecce4ecc",
+  "pkz_bytes": 121459887
+}

@@ -1,0 +1,21 @@
+{
+  "baseline_commit": "d70efa2d1da5cec4ed93182a4efb762028b991b6",
+  "v025_source_commit": "2a0fe57d5ef86217c232fb9cf315e15c44e757ae",
+  "unchanged_baseline_files": 593,
+  "changed_baseline_files": [],
+  "new_files": [
+    ".github/workflows/audit-v025.yml",
+    ".github/workflows/build-v025.yml",
+    "DOCUMENTATION/v025_material_audit.md",
+    "DOCUMENTATION/v025_visual_brief.md",
+    "TOOLS/audit_v025_baseline.py",
+    "TOOLS/build_v025.py",
+    "TOOLS/build_windows_v025.py",
+    "TOOLS/render_v025_previews.py",
+    "TOOLS/v025_materials.py",
+    "V025_SOURCE/asset_provenance.json",
+    "V025_SOURCE/material_spec.json",
+    "V025_SOURCE/soil_original.jpg"
+  ],
+  "checks_pass": true
+}

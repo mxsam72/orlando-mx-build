@@ -1,0 +1,148 @@
+{
+  "atlas_size": 4096,
+  "atlas_ground_pixel_m": 0.14652014652014653,
+  "wear_coverage_pixels": 892571,
+  "max_opacity": 0.8399999737739563,
+  "mean_core_opacity": 0.47100919485092163,
+  "primary_secondary_grooves_pixels": 25036,
+  "normal_alpha_range": [
+    2,
+    4
+  ],
+  "physical_masks_modified": false,
+  "geometry_modified": false,
+  "version": "v025",
+  "original_source_sha256": "d413aacc322f554d093be8ed5fd85ae1b9aa95cd15f489076b37820888a7163f",
+  "material_spec_sha256": "ec097b0bf98c65bb04519af7d140011d48c5debf4e404b145eeb9d688c151f4f",
+  "in_game_visual_check": false,
+  "files": {
+    "mask_v025_wear.tga": {
+      "bytes": 67108908,
+      "sha256": "c2fb3b004506b05489ea85b17a00117207fa2def48aff94c5c64d4492a0b213e"
+    },
+    "mask_visual_grass.tga": {
+      "bytes": 16777260,
+      "sha256": "40994cc2efb5c00d05e197d45848be8b628f579766c800ec75f1530a1c1e73bb"
+    },
+    "mask_visual_racing.tga": {
+      "bytes": 16777260,
+      "sha256": "76592f41f496f05ec796ab22370023b547e2a4787ee34f5100d550a801d8839c"
+    },
+    "mask_visual_worked.tga": {
+      "bytes": 16777260,
+      "sha256": "b2dfbb29217639a2c2c776bc2789586dcc0befddd39e8dea57130cf44bc37e52"
+    },
+    "track.hmf": {
+      "bytes": 1101,
+      "sha256": "bba7ba5c146c946a3e1192eb7d5479a54fa878e4ac7d7c2bc9bfcab296e4adf1"
+    },
+    "v025_grass.shd": {
+      "bytes": 83,
+      "sha256": "3c3ec923311d4ddced9593cda8c5c86de35908cbd365797658717b3a9cef0534"
+    },
+    "v025_grass.tga": {
+      "bytes": 3145772,
+      "sha256": "820011dd7b6807cb7a41892d9591936e5a3fb6c818346ed8308162aa33a20253"
+    },
+    "v025_prepared.shd": {
+      "bytes": 90,
+      "sha256": "6b6d0977e26289a9144f9c719082915255c565699aa094311c868d963b712ef7"
+    },
+    "v025_prepared.tga": {
+      "bytes": 3145772,
+      "sha256": "1eb73ac9e28f74c9e0214c7abec21444ee953bd94b032b7e92d105fc4a12df56"
+    },
+    "v025_prepared_n.tga": {
+      "bytes": 4194348,
+      "sha256": "2da8d16f7048bb5bcc73d792190a1cdc54745b29b6b81059700a231b1cacbbde"
+    },
+    "v025_prepared_wet.shd": {
+      "bytes": 90,
+      "sha256": "6b6d0977e26289a9144f9c719082915255c565699aa094311c868d963b712ef7"
+    },
+    "v025_prepared_wet.tga": {
+      "bytes": 3145772,
+      "sha256": "4eedd58b1e40f462e0083b4becb85e873cc1fea52b98eb355e93e1233fd54075"
+    },
+    "v025_sand.shd": {
+      "bytes": 86,
+      "sha256": "d85e2acd3a0e9c689dd68105560a580f2395ad1dfcd68a3fd398a07b8860147d"
+    },
+    "v025_sand.tga": {
+      "bytes": 3145772,
+      "sha256": "3d2b7594048b3145154701b8bb9e8dcfdd599c2b962ab7553bbe986d3a153b06"
+    },
+    "v025_sand_n.tga": {
+      "bytes": 4194348,
+      "sha256": "9c2b1d045956461e9b640636fbfd4c7796d6331e5fea769c1fa060f2a31d2f46"
+    },
+    "v025_sand_wet.shd": {
+      "bytes": 86,
+      "sha256": "d85e2acd3a0e9c689dd68105560a580f2395ad1dfcd68a3fd398a07b8860147d"
+    },
+    "v025_sand_wet.tga": {
+      "bytes": 3145772,
+      "sha256": "f6e01fbbd0b42ab6578749ad1400f4ec3ac28810c7fe3d9535839aff2a3af356"
+    },
+    "v025_soil.shd": {
+      "bytes": 86,
+      "sha256": "9863d82ca80d05fa1d040ff307378be71f51f5e38ddc6e1ac73a34f6c7f45791"
+    },
+    "v025_soil.tga": {
+      "bytes": 3145772,
+      "sha256": "95dfe81eaa01f4e9aedee459ee52b4e4a5b0264978270c749933b6d9b19c807a"
+    },
+    "v025_soil_n.tga": {
+      "bytes": 4194348,
+      "sha256": "4eba161346a069d0eb97af1ad6108ec6631b0a3b81bf488c78ddacf07b6591a7"
+    },
+    "v025_soil_wet.shd": {
+      "bytes": 86,
+      "sha256": "9863d82ca80d05fa1d040ff307378be71f51f5e38ddc6e1ac73a34f6c7f45791"
+    },
+    "v025_soil_wet.tga": {
+      "bytes": 3145772,
+      "sha256": "4546c6c79a4389f60466bcee3e81894d37a49db123e714db16c797022d8dfa67"
+    },
+    "v025_trackwear.shd": {
+      "bytes": 91,
+      "sha256": "b05778a5f55c21f33831571c93e307cfe3e0f77fe140f05ab80b195fe7b22d0a"
+    },
+    "v025_trackwear.tga": {
+      "bytes": 50331692,
+      "sha256": "b2a0e1e55d8e6ede8cd27de35f91dcc03a196ad94b37ce4532118f9c9230cdd2"
+    },
+    "v025_trackwear_n.tga": {
+      "bytes": 67108908,
+      "sha256": "346ed0001554b1ce8b03e3884b1a89a591384dc52168b890918d6e75a71da0f0"
+    },
+    "v025_trackwear_wet.shd": {
+      "bytes": 91,
+      "sha256": "b05778a5f55c21f33831571c93e307cfe3e0f77fe140f05ab80b195fe7b22d0a"
+    },
+    "v025_trackwear_wet.tga": {
+      "bytes": 50331692,
+      "sha256": "6b16399a08e33ba15cb52bce936156605b5dee9347988b2286d483508de85fd5"
+    },
+    "v025_worked.shd": {
+      "bytes": 88,
+      "sha256": "34863d7f700708d6d626d7259d675c5ff9400a33fede90fd2dfd0c52e12f0504"
+    },
+    "v025_worked.tga": {
+      "bytes": 3145772,
+      "sha256": "ef8289119826d989155d48d2c03c4519df25e40173371aa637cc2e217fd14279"
+    },
+    "v025_worked_n.tga": {
+      "bytes": 4194348,
+      "sha256": "9b316bbb832675c65b51e8016a8c25f623aa29e3af7ea3073105c96ad7264eea"
+    },
+    "v025_worked_wet.shd": {
+      "bytes": 88,
+      "sha256": "34863d7f700708d6d626d7259d675c5ff9400a33fede90fd2dfd0c52e12f0504"
+    },
+    "v025_worked_wet.tga": {
+      "bytes": 3145772,
+      "sha256": "f00ccc929413109b6a1d3c4c4624a3eed91dd35040ca251da04bac63a6c2e25f"
+    }
+  }
+}

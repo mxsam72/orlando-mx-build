@@ -1,0 +1,127 @@
+{
+  "version": "v025",
+  "source_commit": "2a0fe57d5ef86217c232fb9cf315e15c44e757ae",
+  "baseline_commit": "d70efa2d1da5cec4ed93182a4efb762028b991b6",
+  "source_checks_pass": true,
+  "protected": {
+    "terrain.raw": {
+      "baseline_sha256": "4befe79d6820865f4aba34649a5b54ed22472e7a3c1e7f8d3d56f53f3e340d91",
+      "v025_sha256": "4befe79d6820865f4aba34649a5b54ed22472e7a3c1e7f8d3d56f53f3e340d91",
+      "unchanged": true
+    },
+    "scenery.fbx": {
+      "baseline_sha256": "98dc23a52fc9868a155d47368e10ff5645727033fc98b649cfb9d264cf9cdd90",
+      "v025_sha256": "98dc23a52fc9868a155d47368e10ff5645727033fc98b649cfb9d264cf9cdd90",
+      "unchanged": true
+    },
+    "start.tcl": {
+      "baseline_sha256": "b1dcaa07fe6e7a95eb1acfc40af00139ce00850e9df1133b894e3d0c3be2b0df",
+      "v025_sha256": "b1dcaa07fe6e7a95eb1acfc40af00139ce00850e9df1133b894e3d0c3be2b0df",
+      "unchanged": true
+    },
+    "route.npz": {
+      "baseline_sha256": "66ddbb6dc2d489ad9aad48754d8662c036bce1179b749c39dc9b9533a427978b",
+      "v025_sha256": "66ddbb6dc2d489ad9aad48754d8662c036bce1179b749c39dc9b9533a427978b",
+      "unchanged": true
+    },
+    "jump_profiles.json": {
+      "baseline_sha256": "49cbfce346b1f61fc97cdc621b13c49b3e154db67f22e28f23988445a9f1fcde",
+      "v025_sha256": "49cbfce346b1f61fc97cdc621b13c49b3e154db67f22e28f23988445a9f1fcde",
+      "unchanged": true
+    },
+    "native_coordinate_probes.json": {
+      "baseline_sha256": "bcb36b243675327273bc2dbee3f712c5e2d5201f1b7b90daec6528d9fba2dcf9",
+      "v025_sha256": "bcb36b243675327273bc2dbee3f712c5e2d5201f1b7b90daec6528d9fba2dcf9",
+      "unchanged": true
+    },
+    "v024_pit_gravel.tga": {
+      "baseline_sha256": "162ed35bd7b91d2b20cb482d514258556f01dea831deb034b37f3a678bf15ddd",
+      "v025_sha256": "162ed35bd7b91d2b20cb482d514258556f01dea831deb034b37f3a678bf15ddd",
+      "unchanged": true
+    },
+    "masks/grass.tga": {
+      "baseline_sha256": "be5cfa3e40949224edf3c794df3038fe4f71ac4024f09b33c1c14ea99faeb547",
+      "v025_sha256": "be5cfa3e40949224edf3c794df3038fe4f71ac4024f09b33c1c14ea99faeb547",
+      "unchanged": true
+    },
+    "masks/off.tga": {
+      "baseline_sha256": "a3320754320bd4743bb400859cb3d65034354c9e002ffcd6f05be0884896644e",
+      "v025_sha256": "a3320754320bd4743bb400859cb3d65034354c9e002ffcd6f05be0884896644e",
+      "unchanged": true
+    },
+    "masks/pits.tga": {
+      "baseline_sha256": "e41747bfe52545a326f208c8f36e4b9d960f2436924d637b16cc6a54fc6a7228",
+      "v025_sha256": "e41747bfe52545a326f208c8f36e4b9d960f2436924d637b16cc6a54fc6a7228",
+      "unchanged": true
+    },
+    "masks/racing.tga": {
+      "baseline_sha256": "921cd482763ba79c9b0326c5d5df99eea87b676b653cd0c973c611ce8e66792b",
+      "v025_sha256": "921cd482763ba79c9b0326c5d5df99eea87b676b653cd0c973c611ce8e66792b",
+      "unchanged": true
+    },
+    "masks/sand.tga": {
+      "baseline_sha256": "7877ea6021886300364ca435f72b7cc0539aa66fad0a15998ced1c5b2ab59017",
+      "v025_sha256": "7877ea6021886300364ca435f72b7cc0539aa66fad0a15998ced1c5b2ab59017",
+      "unchanged": true
+    },
+    "masks/shoulder.tga": {
+      "baseline_sha256": "2d678c0d00320f2fad26a55e4157b858ac00ac6c56b0d89d892663489acac710",
+      "v025_sha256": "2d678c0d00320f2fad26a55e4157b858ac00ac6c56b0d89d892663489acac710",
+      "unchanged": true
+    },
+    "masks/start.tga": {
+      "baseline_sha256": "d9b75e69e937603c8478aa6382dbbf5d13d9bc37cf2ff56631e630c83b3680f1",
+      "v025_sha256": "d9b75e69e937603c8478aa6382dbbf5d13d9bc37cf2ff56631e630c83b3680f1",
+      "unchanged": true
+    },
+    "masks/v024_pit_roads.tga": {
+      "baseline_sha256": "9556301a61968c603b557420f5f325dbd8a4c1ee3f341340897cb3282f744f70",
+      "v025_sha256": "9556301a61968c603b557420f5f325dbd8a4c1ee3f341340897cb3282f744f70",
+      "unchanged": true
+    },
+    "masks/v024_rv_restroom_grass.tga": {
+      "baseline_sha256": "22b5b5bc14ed0f8c285899a2b306c72394b16d2448d9b2dbfb2e4bcc4ff5056e",
+      "v025_sha256": "22b5b5bc14ed0f8c285899a2b306c72394b16d2448d9b2dbfb2e4bcc4ff5056e",
+      "unchanged": true
+    },
+    "masks/visual_grass.tga": {
+      "baseline_sha256": "4e7039fdd283cec7a3d24f9321f3c8d2855b423c46d1f997a855978b6142572c",
+      "v025_sha256": "4e7039fdd283cec7a3d24f9321f3c8d2855b423c46d1f997a855978b6142572c",
+      "unchanged": true
+    },
+    "masks/visual_racing.tga": {
+      "baseline_sha256": "3224f25d3cc4a588379740409c46d36c76c7e346dd337144b018a6467470afbc",
+      "v025_sha256": "3224f25d3cc4a588379740409c46d36c76c7e346dd337144b018a6467470afbc",
+      "unchanged": true
+    },
+    "masks/visual_worked.tga": {
+      "baseline_sha256": "d1badd1d0af5f4bb4aa14770bd913a00bda697165cb6c3d9815346cca9d19304",
+      "v025_sha256": "d1badd1d0af5f4bb4aa14770bd913a00bda697165cb6c3d9815346cca9d19304",
+      "unchanged": true
+    },
+    "masks/worked.tga": {
+      "baseline_sha256": "30f03434410b1e88c6f08b00f751e00654e8d633d43c1da63983fd44d53ea4c1",
+      "v025_sha256": "30f03434410b1e88c6f08b00f751e00654e8d633d43c1da63983fd44d53ea4c1",
+      "unchanged": true
+    }
+  },
+  "baseline_release_hashes": {
+    "checkleft.tl": "a30296e3151e01ebc210b290ad385221190783003689b90a1555c41082f1a9a7",
+    "checkright.tl": "a7b855f1c5ff5e905215d70221933d6af983de2cf336066ee4f3edbdcd98685d",
+    "marshals.cfg": "5058391f6b220e36a9ae2f6e48e19f8c6c9265bf2035a432155abe586a41b659",
+    "maxrace.tl": "da69e0faf2cef806db45adbcbdb1489c1883b70eb3f82c13014d034b9d78e23b",
+    "minrace.tl": "9ce5f607e8336b9ed73d19d92c8dd8b34f1a3874225271ca1edf9e57f4d166fb",
+    "orlandomx_2026_v024.amb": "8fe9ed4765bd90658e4f601d9c8a1c302ad8d8ed26ac49994a05bbc29b4db21a",
+    "orlandomx_2026_v024.ini": "8d5fc0f70d7e731aff06e6f3f2d44c8f9b3a7f47fc4debd2560a3931365d3cf9",
+    "orlandomx_2026_v024.rdf": "522cc2a4f0ff142969b01c9fcfdd900dc908d12387fcc5b978fd5d78b85ec6f5",
+    "orlandomx_2026_v024.tga": "7902dd97dc15a0384f12c68e63f832ffa23dea6b1a97301ea1b2275e7401bf01",
+    "orlandomx_2026_v024.tsc": "40dc38c8142278dbf1724b297ab96d6850747bf473210614df3d3f44d8add9a0",
+    "orlandomx_2026_v024_map.tga": "a33d9ea2f7676b50c9bdfd7cac6c84def0f3b36b8c8798718157edc42b40479a"
+  },
+  "geometry_unchanged": true,
+  "physics_unchanged": true,
+  "scenery_unchanged": true,
+  "native_compilation": false,
+  "in_game_riding_test": false,
+  "performance_test": false
+}

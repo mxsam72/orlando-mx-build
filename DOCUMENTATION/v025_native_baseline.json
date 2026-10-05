@@ -1,0 +1,9 @@
+{
+  "baseline_commit": "d70efa2d1da5cec4ed93182a4efb762028b991b6",
+  "baseline_run": 36969075151,
+  "baseline_pkz_sha256": "45d1cf9b3b5c65f4d850abc4b42b44ff3ddcf9848518b5352e7e8c6f13161fa9",
+  "compiled_scenery_edf_sha256": "9e868d4c5453adfafd423d5e46f26f22678cc7ea04f6eb65470876af289e280b",
+  "compiled_scenery_edf_bytes": 173137253,
+  "baseline_trh_sha256": "aeabf9f09c028ac270bb37ac30c64ed135bd549aabd1cc58fc4b7e761303e87a",
+  "provenance": "Accepted v024 native validation from immutable GitHub Actions artifact 11211206000; retrieved and archive/PKZ hashes verified."
+}

@@ -1,0 +1,86 @@
+{
+  "version": "v025",
+  "checks_pass": true,
+  "compiled_source_commit": "2a0fe57d5ef86217c232fb9cf315e15c44e757ae",
+  "baseline_commit": "d70efa2d1da5cec4ed93182a4efb762028b991b6",
+  "protected_native_files": [
+    {
+      "file": "checkleft.tl",
+      "baseline_sha256": "a30296e3151e01ebc210b290ad385221190783003689b90a1555c41082f1a9a7",
+      "v025_sha256": "a30296e3151e01ebc210b290ad385221190783003689b90a1555c41082f1a9a7",
+      "unchanged": true
+    },
+    {
+      "file": "checkright.tl",
+      "baseline_sha256": "a7b855f1c5ff5e905215d70221933d6af983de2cf336066ee4f3edbdcd98685d",
+      "v025_sha256": "a7b855f1c5ff5e905215d70221933d6af983de2cf336066ee4f3edbdcd98685d",
+      "unchanged": true
+    },
+    {
+      "file": "marshals.cfg",
+      "baseline_sha256": "5058391f6b220e36a9ae2f6e48e19f8c6c9265bf2035a432155abe586a41b659",
+      "v025_sha256": "5058391f6b220e36a9ae2f6e48e19f8c6c9265bf2035a432155abe586a41b659",
+      "unchanged": true
+    },
+    {
+      "file": "maxrace.tl",
+      "baseline_sha256": "da69e0faf2cef806db45adbcbdb1489c1883b70eb3f82c13014d034b9d78e23b",
+      "v025_sha256": "da69e0faf2cef806db45adbcbdb1489c1883b70eb3f82c13014d034b9d78e23b",
+      "unchanged": true
+    },
+    {
+      "file": "minrace.tl",
+      "baseline_sha256": "9ce5f607e8336b9ed73d19d92c8dd8b34f1a3874225271ca1edf9e57f4d166fb",
+      "v025_sha256": "9ce5f607e8336b9ed73d19d92c8dd8b34f1a3874225271ca1edf9e57f4d166fb",
+      "unchanged": true
+    },
+    {
+      "file": "orlandomx_2026_v025.amb",
+      "baseline_sha256": "8fe9ed4765bd90658e4f601d9c8a1c302ad8d8ed26ac49994a05bbc29b4db21a",
+      "v025_sha256": "8fe9ed4765bd90658e4f601d9c8a1c302ad8d8ed26ac49994a05bbc29b4db21a",
+      "unchanged": true
+    },
+    {
+      "file": "orlandomx_2026_v025.rdf",
+      "baseline_sha256": "522cc2a4f0ff142969b01c9fcfdd900dc908d12387fcc5b978fd5d78b85ec6f5",
+      "v025_sha256": "522cc2a4f0ff142969b01c9fcfdd900dc908d12387fcc5b978fd5d78b85ec6f5",
+      "unchanged": true
+    },
+    {
+      "file": "orlandomx_2026_v025.tga",
+      "baseline_sha256": "7902dd97dc15a0384f12c68e63f832ffa23dea6b1a97301ea1b2275e7401bf01",
+      "v025_sha256": "7902dd97dc15a0384f12c68e63f832ffa23dea6b1a97301ea1b2275e7401bf01",
+      "unchanged": true
+    },
+    {
+      "file": "orlandomx_2026_v025.trh",
+      "baseline_sha256": "aeabf9f09c028ac270bb37ac30c64ed135bd549aabd1cc58fc4b7e761303e87a",
+      "v025_sha256": "aeabf9f09c028ac270bb37ac30c64ed135bd549aabd1cc58fc4b7e761303e87a",
+      "unchanged": true
+    },
+    {
+      "file": "orlandomx_2026_v025.tsc",
+      "baseline_sha256": "40dc38c8142278dbf1724b297ab96d6850747bf473210614df3d3f44d8add9a0",
+      "v025_sha256": "40dc38c8142278dbf1724b297ab96d6850747bf473210614df3d3f44d8add9a0",
+      "unchanged": true
+    },
+    {
+      "file": "orlandomx_2026_v025_map.tga",
+      "baseline_sha256": "a33d9ea2f7676b50c9bdfd7cac6c84def0f3b36b8c8798718157edc42b40479a",
+      "v025_sha256": "a33d9ea2f7676b50c9bdfd7cac6c84def0f3b36b8c8798718157edc42b40479a",
+      "unchanged": true
+    },
+    {
+      "file": "compiled_scenery.edf",
+      "baseline_sha256": "9e868d4c5453adfafd423d5e46f26f22678cc7ea04f6eb65470876af289e280b",
+      "v025_sha256": "9e868d4c5453adfafd423d5e46f26f22678cc7ea04f6eb65470876af289e280b",
+      "unchanged": true
+    }
+  ],
+  "terrain_texture_payload_count": 16,
+  "object_texture_payload_count": 40,
+  "source_terrain_exact": true,
+  "game_visual_check": false,
+  "game_riding_test": false,
+  "performance_test": false
+}
