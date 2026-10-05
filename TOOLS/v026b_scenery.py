@@ -63,14 +63,20 @@ def main():
     r10=next(p for p in profiles if p['id']=='R10')
     r11=next(p for p in profiles if p['id']=='R11')
 
-    # Restrict cleanup to the sector actually changed in v026.
-    s0=min(float(r10['station_end_m'])-10.0,float(t09['arc_start'])-25.0)
-    s1=max(float(r11['station_end_m'])+15.0,float(t09['arc_end'])+25.0)
+    # Use the actual world-space v026 changed-patch bounds rather than nearest-route
+    # station alone. Nearby parallel lanes can otherwise project a scenery anchor
+    # to the wrong station even though it visibly sits in the relocated corridor.
+    geo=read(O/'geometry_validation.json')
+    x0,z0,x1,z1=map(float,geo['patch_bounds_xz_m'])
+    margin=22.0
+    patch_bounds=[x0-margin,z0-margin,x1+margin,z1+margin]
 
     remove_ids=set()
     removed=[]
     candidates=[]
-    thresholds={'tree_':5.0,'SOFTCPLAS_marker_':1.5}
+    # Conservative clearances: trees must keep canopy/trunk comfortably off the
+    # track; SOFTCPLAS stakes/markers should never occupy the rideable lane.
+    thresholds={'tree_':8.0,'SOFTCPLAS_marker_':3.0}
 
     for name,geom in geometries.items():
         prefix=next((p for p in thresholds if name.startswith(p)),None)
@@ -86,10 +92,13 @@ def main():
         station=float(q[i,3])
         half=float(width[i])/2.0
         edge_clear=float(dist-half)
+        in_patch=(patch_bounds[0] <= anchor[0] <= patch_bounds[2] and
+                  patch_bounds[1] <= anchor[1] <= patch_bounds[3])
         item=dict(name=name,prefix=prefix,anchor_xz_m=[float(anchor[0]),float(anchor[1])],
                   station_m=station,centerline_distance_m=float(dist),
-                  authored_half_width_m=half,track_edge_clearance_m=edge_clear)
-        if s0 <= station <= s1:
+                  authored_half_width_m=half,track_edge_clearance_m=edge_clear,
+                  in_changed_patch_bounds=bool(in_patch))
+        if in_patch:
             candidates.append(item)
             if edge_clear < thresholds[prefix]:
                 gid=values(geom)[0]
@@ -97,6 +106,12 @@ def main():
                 remove_ids.update([gid,mid])
                 item['removed']=True
                 removed.append(item)
+
+    # Persist diagnostics before hard acceptance checks so a failed CI run still
+    # reveals every targeted object's anchor/clearance for the next correction.
+    save(R/'DOCUMENTATION/v026b_scenery_candidates.json',dict(
+        patch_bounds_xz_m=patch_bounds,thresholds_m=thresholds,
+        candidates=candidates,proposed_removals=removed))
 
     removed_trees=[x for x in removed if x['prefix']=='tree_']
     removed_markers=[x for x in removed if x['prefix']=='SOFTCPLAS_marker_']
@@ -167,10 +182,12 @@ def main():
         low=v[v[:,1] < v[:,1].min()+.55]
         anchor=(low if len(low) else v)[:,[0,2]].mean(axis=0)
         dist,i=route_tree.query(anchor);station=float(q[i,3]);edge=float(dist-float(width[i])/2)
-        if s0<=station<=s1:
+        in_patch=(patch_bounds[0] <= anchor[0] <= patch_bounds[2] and
+                  patch_bounds[1] <= anchor[1] <= patch_bounds[3])
+        if in_patch:
             remaining_targeted+=1
             if edge<thresholds[prefix]:
-                remaining_conflicts.append(dict(name=name,station_m=station,track_edge_clearance_m=edge,threshold_m=thresholds[prefix]))
+                remaining_conflicts.append(dict(name=name,station_m=station,anchor_xz_m=[float(anchor[0]),float(anchor[1])],track_edge_clearance_m=edge,threshold_m=thresholds[prefix]))
 
     if remaining_conflicts:
         raise RuntimeError('Targeted scenery conflicts remain: '+repr(remaining_conflicts))
@@ -180,7 +197,7 @@ def main():
         baseline_commit=spec['baseline_commit'],
         source_scenery_sha256=hashlib.sha256(before).hexdigest(),
         output_scenery_sha256=sha(path),
-        localized_station_window_m=[s0,s1],
+        localized_world_patch_bounds_xz_m=patch_bounds,
         tree_clearance_threshold_m=thresholds['tree_'],
         marker_clearance_threshold_m=thresholds['SOFTCPLAS_marker_'],
         removed_tree_count=len(removed_trees),
