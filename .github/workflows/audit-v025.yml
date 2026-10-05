@@ -1,0 +1,38 @@
+name: Audit v024 materials for v025
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v025]
+    paths: ['TOOLS/audit_v025_baseline.py', '.github/workflows/audit-v025.yml']
+permissions:
+  contents: read
+concurrency:
+  group: orlando-v025-audit-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  audit:
+    runs-on: windows-latest
+    timeout-minutes: 45
+    env:
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+      OPENBLAS_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-v009.txt
+      - run: python TOOLS/build_v024.py --source-only
+      - run: python TOOLS/audit_v025_baseline.py
+      - uses: actions/upload-artifact@v7
+        with:
+          name: OrlandoMX-v025-baseline-audit
+          retention-days: 90
+          path: V025_AUDIT/
+      - name: Preserve failure diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: OrlandoMX-v025-audit-failure
+          path: DOCUMENTATION/
