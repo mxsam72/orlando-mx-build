@@ -33,7 +33,7 @@ def copy_release_inputs():
               'minrace.tl','maxrace.tl','checkleft.tl','checkright.tl','marshals.cfg']
     missing=[x for x in required if not (dst/x).is_file()]
     if missing:
-        raise RuntimeError('Missing v026b release source files: '+repr(missing))
+        raise RuntimeError('Missing v027 release source files: '+repr(missing))
     if any('v02727' in p.name.lower() for p in dst.iterdir()):
         raise RuntimeError('Release identity was renamed more than once')
     # Race, reset and marshal data contain no version aliases and stay exact.

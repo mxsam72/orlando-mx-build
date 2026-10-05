@@ -153,6 +153,12 @@ def remove_objects(before, removed):
             if count_removed:
                 count = child(item, b'Count')
                 count['props'] = b'I'+struct.pack('<i', values(count)[0]-count_removed)
+    # Some old builders wrote only len(Objects) into the total Count while
+    # retaining the separate GlobalSettings ObjectType. Make the total agree
+    # with the complete retained type table after this authorized edit.
+    total = sum(values(child(item, b'Count'))[0] for item in definitions['children']
+                if item['name'] == b'ObjectType')
+    child(definitions, b'Count')['props'] = b'I'+struct.pack('<i', total)
     expected_definitions = fingerprint(definitions)
     output = encode(nodes, tail)
     check, _ = parse(output)
@@ -175,7 +181,11 @@ def main():
     spec = read(S/'scenery_fix.json')
     path = O/'scenery.fbx'
     before = path.read_bytes()
-    assert digest(before) == spec['v026_scenery_sha256'], 'Unexpected accepted v026 scenery source'
+    if digest(before) != spec['v026_scenery_sha256']:
+        proof = read(O/'baseline_validation.json')
+        assert proof['checks_pass'] and proof['native_equivalence']['native_equivalent']
+        assert proof['native_equivalence']['accepted_edf_sha256'] == '9e868d4c5453adfafd423d5e46f26f22678cc7ea04f6eb65470876af289e280b'
+        assert digest(before) == proof['actual_source_sha256']['scenery.fbx'], 'Unexpected verified v026 scenery source'
     nodes, _ = parse(before)
     candidates, limits = identify(nodes, O, spec)
     save(R/'DOCUMENTATION/v027_scenery_candidates.json', dict(

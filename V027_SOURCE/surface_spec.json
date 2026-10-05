@@ -1,0 +1,27 @@
+{
+  "version": "v027",
+  "seed": 270027,
+  "tile_size": 1024,
+  "mask_size": 4096,
+  "palette_status": "Art direction from the supplied recent GoPro, not calibrated albedo or surveyed soil composition.",
+  "palette": {
+    "soil": [139, 120, 103], "prepared": [125, 101, 83],
+    "worked": [116, 94, 78], "sand": [161, 147, 130],
+    "packed": [105, 86, 73], "face": [139, 116, 95],
+    "grass": [84, 99, 61], "pits": [171, 159, 141]
+  },
+  "repetitions": {"soil": 171, "prepared": 193, "worked": 157, "sand": 181, "packed": 193, "face": 193, "pits": 171},
+  "height_amplitude_m": {"soil": 0.0045, "prepared": 0.0022, "worked": 0.009, "sand": 0.0017, "packed": 0.0012, "face": 0.0015},
+  "specular_alpha": {"soil": 2, "prepared": 2, "worked": 2, "sand": 1, "packed": 2, "face": 2},
+  "source_families": {"soil": "soil", "prepared": "prepared", "worked": "worked", "sand": "sand", "packed": "prepared", "face": "prepared"},
+  "grooming_angles_degrees": [0, 45, 90, 135],
+  "grooming_height_amplitude_m": 0.004,
+  "corner_additional_channel_depth_m": 0.024,
+  "corner_additional_deposit_height_m": 0.014,
+  "pit_smoothing_max_delta_m": 0.045,
+  "local_damp_default_opacity_max": 0.34,
+  "physical_material_declarations_unchanged": true,
+  "macro_track_route_and_jump_profiles_unchanged": true,
+  "native_supported_features_only": true,
+  "low_resolution_diffuse_overlay": false
+}
