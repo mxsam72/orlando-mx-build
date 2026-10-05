@@ -12,8 +12,16 @@ race/reset/marshal hashes and required release names before compilation.
 
 The later run 37367286425 never received a runner: runner_id was zero and its
 job had no steps. Its job was cancelled after about 15 minutes. There are no
-compiler logs or PKZ artifacts from that attempt. The repair pins windows-2022;
-the underlying reason for that allocation failure is not established.
+compiler logs or PKZ artifacts from that attempt. The underlying reason for
+that allocation failure is not established.
+
+A Windows 2022 diagnostic run (37374759783) received a runner but the protected
+baseline scenery hash check rejected its regeneration before the v026b edit.
+The same Python/package versions produced a different scenery binding hash;
+the input FBX hash was identical. The repair therefore retains windows-latest,
+which supplied Windows Server 2025 / windows-2025-vs2026 for the successful v026
+build. The accepted hash check remains mandatory. The precise cause of that
+cross-image byte difference is not established by these logs.
 
 The attached obstruction clip was sampled at 0, 5, 10, 15, 20, 25, 30 and 35
 seconds, with additional one-second samples from 18 through 32 seconds. The
