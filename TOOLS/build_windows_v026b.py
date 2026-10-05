@@ -92,7 +92,7 @@ def main():
     native.update(version='v026b',source_commit=os.environ.get('GITHUB_SHA','local'),baseline_commit=qa['baseline_commit'],
         source_checks=True,geometry_unchanged=False,physics_unchanged=False,scenery_unchanged=False,scenery_hotfix_validation=qa['scenery'],
         geometry_validation=qa['geometry'],race_validation=qa['race'],physical_material_declarations_unchanged=True,physical_mask_coverage_local_changes=True,
-        protected_source=qa['protected_baseline_sha256'],terrain_texture_payloads=embedded,object_texture_validation=objects,
+        protected_source={'v026_terrain_sha256':qa['v026_terrain_sha256'],'v026_route_sha256':qa['v026_route_sha256']},terrain_texture_payloads=embedded,object_texture_validation=objects,
         material_validation=read(O/'material_validation.json'),staging_validation=read(O/'native_staging_validation.json'),
         in_game_riding_test=False,in_game_visual_check=False,performance_test=False,
         pending=['MX Bikes load test','Rider and elevated visual inspection','Full lap visual audit','FPS/VRAM comparison'])
