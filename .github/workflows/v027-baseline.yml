@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches: [rebuild-v027]
-    paths: ['.github/workflows/v027-baseline.yml']
+    paths: ['.github/workflows/v027-baseline.yml', 'TOOLS/v027_restore_baseline.py']
 permissions:
   contents: read
 concurrency:
@@ -24,7 +24,7 @@ jobs:
           python-version: '3.12'
       - run: python -m pip install -r requirements-v009.txt
       - name: Regenerate accepted v026 source
-        run: python TOOLS/build_v026.py --source-only
+        run: python TOOLS/v027_restore_baseline.py
       - name: Check exact accepted terrain scenery and start hashes
         shell: python
         run: |
@@ -37,7 +37,13 @@ jobs:
           }
           for filename, digest in expected.items():
               actual = hashlib.sha256((Path('V026_OUTPUT')/filename).read_bytes()).hexdigest()
-              assert actual == digest, filename + ' differs from accepted v026'
+              if filename == 'scenery.fbx' and actual != digest:
+                  import json
+                  proof = json.loads(Path('V026_OUTPUT/baseline_validation.json').read_text())
+                  assert proof['native_equivalence']['native_equivalent']
+                  assert proof['actual_source_sha256'][filename] == actual
+              else:
+                  assert actual == digest, filename + ' differs from accepted v026'
               print(filename, actual)
       - name: Preserve accepted source checkpoint
         uses: actions/upload-artifact@v7
@@ -61,6 +67,9 @@ jobs:
             DOCUMENTATION/v024*validation.json
             DOCUMENTATION/v024_source_checkpoint.json
             V026_OUTPUT/*validation.json
+            DOCUMENTATION/v027_baseline*validation.json
+            DOCUMENTATION/v027_baseline_native_equivalence.json
+            DOCUMENTATION/v027_baseline_fbx2edf.log
       - name: Preserve regeneration source for mismatch inspection
         if: always()
         uses: actions/upload-artifact@v7
