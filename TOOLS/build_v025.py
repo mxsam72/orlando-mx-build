@@ -1,6 +1,6 @@
 """Build a separate v025 visual candidate from the exact v024 source pipeline."""
 from pathlib import Path
-import argparse, subprocess, sys, json, shutil, hashlib, os
+import argparse, subprocess, sys, json, shutil, hashlib, os, platform
 
 R=Path(__file__).resolve().parents[1]
 O=R/'V025_OUTPUT';OLD='orlandomx_2026_v024';NAME='orlandomx_2026_v025'
@@ -17,9 +17,17 @@ def main():
     if not args.reuse_baseline:
         subprocess.run([sys.executable,str(R/'TOOLS/build_v024.py'),'--source-only'],cwd=R,check=True)
     old=R/'V024_OUTPUT'
+    O.mkdir(exist_ok=True)
+    # Capture export evidence before enforcing the immutable-baseline gate.
+    # This is diagnostic only: a mismatched FBX is still never compiled.
+    exports={fn:dict(expected_sha256=h,actual_sha256=sha(old/fn),unchanged=sha(old/fn)==h) for fn,h in EXPECTED.items()}
+    np=__import__('numpy')
+    evidence=dict(checks_pass=all(x['unchanged'] for x in exports.values()),
+        exports=exports,python=sys.version,platform=platform.platform(),
+        numpy=np.__version__,numpy_cpu_features=np._core._multiarray_umath.__cpu_features__)
+    (O/'baseline_export_validation.json').write_text(json.dumps(evidence,indent=2)+'\n')
     for fn,h in EXPECTED.items():
         assert sha(old/fn)==h,'v024 regenerated baseline differs: '+fn
-    O.mkdir(exist_ok=True)
     copyfiles=['terrain.raw','scenery.fbx','start.tcl','route.npz','jump_profiles.json','native_coordinate_probes.json','v024_pit_gravel.tga']
     for fn in copyfiles:shutil.copy2(old/fn,O/fn)
     for folder in ['facility_textures','masks']:

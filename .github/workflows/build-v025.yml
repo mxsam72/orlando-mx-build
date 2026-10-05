@@ -62,3 +62,18 @@ jobs:
             DOCUMENTATION/native_build_failure.txt
             V025_OUTPUT/*validation.json
             V025_OUTPUT/compiled_track.hmf
+      - name: Preserve immutable scenery export diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: OrlandoMX-v025-export-diagnostics
+          retention-days: 90
+          path: |
+            V024_OUTPUT/scenery.fbx
+            V024_OUTPUT/facility_meshes.json
+            V024_OUTPUT/vehicle_meshes.json
+            V024_OUTPUT/sign_graphic_meshes.json
+            DOCUMENTATION/v024_source_checkpoint.json
+            DOCUMENTATION/v024_rebind_validation.json
+            DOCUMENTATION/v024_scenery_validation.json
+            V025_OUTPUT/baseline_export_validation.json
