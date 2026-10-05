@@ -1,0 +1,70 @@
+{
+  "version": "v025",
+  "baseline_commit": "d70efa2d1da5cec4ed93182a4efb762028b991b6",
+  "seed": 250025,
+  "atlas_size": 4096,
+  "tile_size": 1024,
+  "palette": {
+    "soil": [
+      146,
+      119,
+      91
+    ],
+    "prepared": [
+      133,
+      103,
+      77
+    ],
+    "worked": [
+      119,
+      90,
+      66
+    ],
+    "sand": [
+      171,
+      147,
+      115
+    ],
+    "packed": [
+      91,
+      69,
+      51
+    ],
+    "edge": [
+      157,
+      128,
+      98
+    ]
+  },
+  "repetitions": {
+    "soil": 151,
+    "prepared": 163,
+    "worked": 137,
+    "sand": 149
+  },
+  "normal_strength": {
+    "soil": 2.4,
+    "prepared": 1.6,
+    "worked": 3.4,
+    "sand": 1.7
+  },
+  "specular_alpha": {
+    "soil": 2,
+    "prepared": 3,
+    "worked": 2,
+    "sand": 1
+  },
+  "atlas_max_opacity": 0.84,
+  "virtual_rut_depth_m": 0.009,
+  "wet_color_factor": 0.76,
+  "prototype_station_range_m": [
+    734,
+    855
+  ],
+  "physics_changes": false,
+  "geometry_changes": false,
+  "source_asset": "soil_original.jpg",
+  "source_asset_origin": "Original soil image generated for this project; not extracted from another track.",
+  "reference_palette_status": "Art-directed from the two supplied Orlando photos; not a calibrated spectral soil measurement.",
+  "source_asset_sha256": "d413aacc322f554d093be8ed5fd85ae1b9aa95cd15f489076b37820888a7163f"
+}

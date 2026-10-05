@@ -1,0 +1,10 @@
+{
+  "asset": "soil_original.jpg",
+  "method": "Built-in imagegen, then project texture processing and JPEG source encoding",
+  "generated_on": "2026-10-05",
+  "purpose": "Original Florida sandy-loam microtexture, with procedural material variants and spatial wear",
+  "third_party_track_assets_extracted": false,
+  "reference_images_role": "Orlando photos guide color and wear; Moriarty screenshots guide fidelity only",
+  "prompt": "Original square seamless game terrain diffuse/albedo texture for Orlando MX in Florida, not a scene render. Orthographic top-down scan-like soil filling the image edge to edge. A four-metre-wide patch of Florida motocross sandy loam, warm earth brown with tan sand and muted clay undertone. Fine sand grains, crumbly 2-20 mm clods, low to moderate contrast, scattered small compacted clods. Dry-to-slightly moist matte finish. Flat diffuse cross-polarized light, no directional cast shadows or light gradients, no perspective. Fine stochastic detail without unique large landmarks; seamless edges. No tire marks, vegetation, large rocks, text, border or watermark. New original photographic asset, not a copy of another track texture.",
+  "calibration": "Artist-guided visual color matching; not a calibrated soil scan"
+}

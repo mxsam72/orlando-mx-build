@@ -1,0 +1,64 @@
+name: Build v025 Orlando material overhaul
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v025]
+    paths: ['V025_SOURCE/**', 'TOOLS/*v025*.py', '.github/workflows/build-v025.yml']
+permissions:
+  contents: read
+concurrency:
+  group: orlando-v025-visuals-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 60
+    env:
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+      OPENBLAS_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-v009.txt
+      - name: Build protected source and original materials
+        run: python TOOLS/build_v025.py --source-only
+      - name: Preserve v025 source checkpoint
+        uses: actions/upload-artifact@v7
+        with:
+          name: OrlandoMX-v025-visual-source-checkpoint
+          retention-days: 90
+          path: |
+            V025_OUTPUT/materials/
+            V025_OUTPUT/material_validation.json
+            V025_OUTPUT/source_validation.json
+            V025_OUTPUT/terrain.raw
+            V025_OUTPUT/route.npz
+            V025_OUTPUT/jump_profiles.json
+      - name: Compile fresh native MAP TRH and PKZ
+        run: python TOOLS/build_windows_v025.py
+      - name: Upload visual candidate
+        uses: actions/upload-artifact@v7
+        with:
+          name: OrlandoMX-v025-game-candidate
+          retention-days: 90
+          path: |
+            12_RELEASE/OrlandoMX_2026_v025.pkz
+            12_RELEASE/OrlandoMX_2026_v025.pkz.sha256
+            12_RELEASE/OrlandoMX_v025_Validation.json
+            12_RELEASE/Install_v025.txt
+      - name: Preserve evidence even on failure
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: OrlandoMX-v025-build-evidence
+          retention-days: 90
+          path: |
+            DOCUMENTATION/v025*
+            DOCUMENTATION/native*validation.json
+            DOCUMENTATION/*.log
+            DOCUMENTATION/native_build_failure.txt
+            V025_OUTPUT/*validation.json
+            V025_OUTPUT/compiled_track.hmf
