@@ -1,0 +1,440 @@
+{
+  "version": "v027",
+  "status": "Evidence-backed recommended scope; implementation and native build pending",
+  "branch": "rebuild-v027",
+  "accepted_baseline_commit": "2275efa8e92a4958ea130acd71bc6ea74ed49591",
+  "prepared_v027_parent_commit": "25a0479dd398e204107f45e745d4df8ac1a9b005",
+  "user_intent": "Compare the supplied recent correct-layout GoPro against the v026 ride, determine dirt/track/corner changes, extend the pits behind the gate, and include the prior v026b obstruction fix in v027.",
+  "video_frame_interval_s": 5,
+  "timestamp_basis": "Seconds from the beginning of the uploaded video files, not the embedded YouTube player clock.",
+  "independent_review": {
+    "frozen_utc": "2026-10-05T22:09:46.042019+00:00",
+    "sha256": "14aa7fae58c999fe490bc5b1ae3ee6b6c4425cc5231266f3c337ca354d317784",
+    "notes_read_before_freeze": false
+  },
+  "source_videos": {
+    "irl": {
+      "file": "Orlando MX 2026 GOPRO HD right layout with starting gate fenced area.mp4",
+      "duration_s": 333.077313,
+      "sha256": "d30bcd12a52dc6b8f25dccd21f1b089b8f61235b46e4c3c259800eb1aef03370"
+    },
+    "v026": {
+      "file": "test v026 1 lap.mp4",
+      "duration_s": 139.370646,
+      "sha256": "14b9ba1ac0759080cfaced56e3efd54dce66168abaf4e43e313c6f14bf707283"
+    }
+  },
+  "reviewed_regular_frames": 95,
+  "reviewed_additional_pit_frames": 26,
+  "tasks": [
+    {
+      "id": "V027-OBS-01",
+      "priority": 0,
+      "title": "Carry the canonical corner obstruction fix",
+      "status": "recommended; not implemented",
+      "proposed_change": "Apply the already prepared v027 scenery correction to accepted v026 before broader geometry/scenery work: remove tree_215, tree_222, SOFTCPLAS_marker_53 and SOFTCPLAS_marker_55. Keep all other objects during this first isolated step.",
+      "evidence": [
+        {
+          "source": "v026",
+          "timestamps_s": [
+            130
+          ]
+        },
+        {
+          "source": "repository",
+          "path": "V027_SOURCE/scenery_fix.json"
+        }
+      ],
+      "geometry_scope": "none",
+      "acceptance": [
+        "Exact object-name/coordinate selection equals the canonical four-object set.",
+        "Retained FBX records/materials/axes remain unchanged in the isolated obstruction pass.",
+        "No trunk, canopy or marker enters the T09/R11 rider corridor in final ride testing."
+      ]
+    },
+    {
+      "id": "V027-PIT-01",
+      "priority": 1,
+      "title": "Extend the shaded pits behind the starting gate",
+      "status": "recommended; not implemented",
+      "proposed_change": "Add the visible preparation/staging area with dark timber rail fencing, appropriate openings, a pale worn sandy ground mask, irregular surviving grass, large shade canopies and a restrained set of bikes/stands/table/vehicle context. Add small fence position plates without inventing their unreadable numbers. Moss and roots are secondary visual details.",
+      "evidence": [
+        {
+          "source": "irl",
+          "timestamps_s": [
+            0,
+            4,
+            6,
+            24,
+            26,
+            44,
+            46,
+            50
+          ]
+        },
+        {
+          "source": "v026",
+          "timestamps_s": [
+            0
+          ]
+        }
+      ],
+      "geometry_scope": "localized facility terrain and scenery",
+      "acceptance": [
+        "Behind-gate preparation space connects to existing pits and the practice lane.",
+        "Ground reads as worn sandy staging space with grass islands rather than uniform lawn.",
+        "Tree shade reads at rider height while trunks, roots and props preserve a clear usable route.",
+        "Earlier office/restroom/stop-sign/vehicle corrections remain consistent."
+      ]
+    },
+    {
+      "id": "V027-PIT-02",
+      "priority": 1,
+      "title": "Reconstruct the complete practice entry corridor",
+      "status": "recommended; not implemented",
+      "proposed_change": "Connect the staging opening to the broad worn apron, curved fence-and-woods lane, constrained metal-barrier chute and existing active-track merge. Add grass shoulders and tire wear, with a local damp-looking low area where supported. Author positions against the existing gate/start route and fixed landmarks; the video establishes topology, not surveyed coordinates.",
+      "evidence": [
+        {
+          "source": "irl",
+          "timestamps_s": [
+            50,
+            54,
+            58,
+            60,
+            64,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78,
+            80
+          ]
+        }
+      ],
+      "geometry_scope": "localized access-lane authoring; exact coordinates pending landmark mapping",
+      "acceptance": [
+        "A continuous ride from staging to the course follows the documented order without cutting through fences.",
+        "Fence openings, barrier feet, trees and new props have usable clearances.",
+        "The entrance remains visually legible through the merge and its soil transitions taper smoothly.",
+        "Starting grid and main race route remain valid; any reset/race boundary change is explicitly documented and revalidated."
+      ]
+    },
+    {
+      "id": "V027-DIRT-01",
+      "priority": 1,
+      "title": "Rebalance prepared dirt and pale shoulders",
+      "status": "recommended; not implemented",
+      "proposed_change": "Use muted warm brown/reddish-cocoa prepared soil, a slightly darker compacted floor where appropriate, lighter loose dry edges and very pale sandy exposed ground. Vary state by section and illumination; keep the default mostly matte and retain fine grain.",
+      "evidence": [
+        {
+          "source": "irl",
+          "timestamps_s": [
+            80,
+            120,
+            185,
+            245,
+            280
+          ]
+        },
+        {
+          "source": "v026",
+          "timestamps_s": [
+            5,
+            60,
+            70,
+            75,
+            115
+          ]
+        }
+      ],
+      "geometry_scope": "none",
+      "acceptance": [
+        "Ridden soil, churned banks, sand shoulders and staging ground are visibly distinct at rider speed.",
+        "The surface avoids global gray/taupe, orange saturation or uniform darkening.",
+        "Compare under a consistent game camera and lighting before final palette adjustment."
+      ]
+    },
+    {
+      "id": "V027-DIRT-02",
+      "priority": 1,
+      "title": "Make grooming and straight-line wear readable",
+      "status": "recommended; not implemented",
+      "proposed_change": "Author longitudinal rake/grooming bands and overlapping tire channels along route tangents. Vary their survival by traffic intensity: preserved off-line, interrupted in packed paths and broken up in churn zones. Extend them naturally up faces and across landings.",
+      "evidence": [
+        {
+          "source": "irl",
+          "timestamps_s": [
+            80,
+            120,
+            185,
+            245,
+            275,
+            280
+          ]
+        },
+        {
+          "source": "v026",
+          "timestamps_s": [
+            5,
+            60,
+            70,
+            115
+          ]
+        }
+      ],
+      "geometry_scope": "none",
+      "acceptance": [
+        "Direction and traffic state read from a riding-height image without a painted continuous dark ribbon.",
+        "Transitions between route segments are smooth and tile repetition is not dominant.",
+        "Grooming, color and normal details agree spatially."
+      ]
+    },
+    {
+      "id": "V027-DIRT-03",
+      "priority": 1,
+      "title": "Develop distinct curved corner lines",
+      "status": "recommended; not implemented",
+      "proposed_change": "Replace generic corner appearance with variable inside, middle and outside paths, compacted rut floors, irregular dividing ridges and displaced outer soil. Bring the lines through braking approach and exit with tapered, fanning transitions. Vary line count and continuity by turn rather than repeating one template.",
+      "evidence": [
+        {
+          "source": "irl",
+          "timestamps_s": [
+            85,
+            125,
+            180,
+            195,
+            200,
+            285,
+            300,
+            315,
+            320
+          ]
+        },
+        {
+          "source": "v026",
+          "timestamps_s": [
+            20,
+            35,
+            50,
+            55,
+            80,
+            90
+          ]
+        }
+      ],
+      "geometry_scope": "selected coarse rut relief only after material prototype",
+      "acceptance": [
+        "Alternate rideable paths remain visible and usable.",
+        "Corner wear connects to approach/exit wear without sharp mask seams.",
+        "Major physical channels, if added, coincide with visible channels and are tested for entry/exit stability."
+      ]
+    },
+    {
+      "id": "V027-DIRT-04",
+      "priority": 1,
+      "title": "Use one surface field across all detail scales",
+      "status": "recommended; not implemented",
+      "proposed_change": "Drive color, compacted/loose material masks, grooming, normal detail and selected height perturbations from shared authored wear data. Put grain, knobby impressions and small clods primarily in texture/normal detail; reserve terrain edits for wider major structures resolvable by the accepted heightfield.",
+      "evidence": [
+        {
+          "source": "irl",
+          "timestamps_s": [
+            85,
+            185,
+            195,
+            245,
+            280,
+            320
+          ]
+        }
+      ],
+      "geometry_scope": "terrain grid is 600 m / 2048 intervals = 0.29296875 m per sample",
+      "acceptance": [
+        "No painted rut lies across a conflicting physical ridge.",
+        "Fine detail remains distinct from the broad wear field.",
+        "Any height change is confined to documented patches and avoids abrupt gradients."
+      ]
+    },
+    {
+      "id": "V027-DIRT-05",
+      "priority": 2,
+      "title": "Add localized damp appearance",
+      "status": "recommended; not implemented",
+      "proposed_change": "Use localized darker and smoother low-spot/entry material states, with restrained highlights where visible. Do not infer traction changes from appearance or restore the previously user-removed drainage_water_2 object as a side effect.",
+      "evidence": [
+        {
+          "source": "irl",
+          "timestamps_s": [
+            74,
+            76,
+            95,
+            135,
+            260
+          ]
+        }
+      ],
+      "geometry_scope": "none",
+      "acceptance": [
+        "Most soil remains matte; moisture is spatially limited.",
+        "Dry shoulders and prepared ground remain readable beside damp patches.",
+        "No global mud/physics change is introduced by the visual treatment."
+      ]
+    },
+    {
+      "id": "V027-EDGE-01",
+      "priority": 1,
+      "title": "Make grass and dirt boundaries organic",
+      "status": "recommended; not implemented",
+      "proposed_change": "Replace straight wedges and hard masks with irregular grass boundaries, sandy buffers, churn notches and feathered transitions. Suppress grass inside the ridden entrance, wheel paths and selected landing corridors; preserve actual infield grass separators.",
+      "evidence": [
+        {
+          "source": "irl",
+          "timestamps_s": [
+            110,
+            130,
+            225,
+            250,
+            290
+          ]
+        },
+        {
+          "source": "v026",
+          "timestamps_s": [
+            30,
+            45,
+            85,
+            120
+          ]
+        }
+      ],
+      "geometry_scope": "none",
+      "acceptance": [
+        "Ground cover supports the riding corridor rather than obscuring it.",
+        "Grass patches have irregular edges and appropriate dry/worn margins.",
+        "The new pit wear does not erase previously verified grassy parking areas indiscriminately."
+      ]
+    },
+    {
+      "id": "V027-GEO-01",
+      "priority": 2,
+      "title": "Refine local corner cuts and outside support",
+      "status": "recommended; not implemented",
+      "proposed_change": "Prototype the corner styles visible at GoPro 1:25, 3:00, 3:15\u20133:20 and 4:45\u20135:20: worn inner cuts, irregular rut separators and asymmetric outside banks. Evaluate apparent riding width after the material pass. Map each physical edit to an identified turn before changing terrain; exact turn-number matching outside the known obstruction sector remains incomplete.",
+      "evidence": [
+        {
+          "source": "irl",
+          "timestamps_s": [
+            85,
+            180,
+            195,
+            200,
+            285,
+            300,
+            315,
+            320
+          ]
+        },
+        {
+          "source": "v026",
+          "timestamps_s": [
+            20,
+            35,
+            50,
+            55,
+            80,
+            90
+          ]
+        }
+      ],
+      "geometry_scope": "localized meso shape; no global route movement recommended",
+      "acceptance": [
+        "Bank support and alternate paths vary by turn rather than sharing a uniform bowl shape.",
+        "The entrance to each physical rut and the exit to the following straight stay smooth.",
+        "No global track-width, radius, berm-height or centerline substitution is made from uncalibrated POV footage."
+      ]
+    },
+    {
+      "id": "V027-GEO-02",
+      "priority": 2,
+      "title": "Audit matched jump faces, shoulders and runouts",
+      "status": "recommended; not implemented",
+      "proposed_change": "Start with the flag/rail-fence/pit-frontage sector (source R01), identified by GoPro 4:35\u20134:40 and v026 1:10\u20131:15. Compare the same approach, crest and landing positions, then refine lateral shoulder and landing-to-flat blends if a mismatch persists. Audit other sharp-looking mounds only after landmark matching; retain the accepted R10 raise and translated T09/R11 macro geometry.",
+      "evidence": [
+        {
+          "source": "irl",
+          "timestamps_s": [
+            105,
+            140,
+            250,
+            275,
+            280,
+            325
+          ]
+        },
+        {
+          "source": "v026",
+          "timestamps_s": [
+            15,
+            25,
+            70,
+            75,
+            105,
+            125
+          ]
+        },
+        {
+          "source": "repository",
+          "path": "V026_OUTPUT/route.npz + V024_SOURCE/pit_facilities.json",
+          "relation": "flag (326,171) is nearest main-route station 26.20 m within R01"
+        }
+      ],
+      "geometry_scope": "candidate local shoulder/crest/runout transitions; macro changes unconfirmed",
+      "acceptance": [
+        "The compared feature and phase on the jump are explicitly matched.",
+        "Local blend changes have documented before/after profiles.",
+        "Jump order, macro length, height and spacing remain the baseline unless separate matched evidence demonstrates a specific discrepancy.",
+        "A single crash is not used as the justification for a geometry change."
+      ]
+    }
+  ],
+  "implementation_order": [
+    "Regenerate and verify the accepted v026 baseline in the previously passing Windows environment.",
+    "Apply the canonical four-object obstruction fix in an isolated pass.",
+    "Map and author the connected behind-gate staging area and practice route.",
+    "Build the shared dirt/wear fields, pit/edge masks and correlated materials.",
+    "Prototype corner rut relief and identified local jump/shoulder transitions; compare before/after.",
+    "Compile official native assets, package with a single v026-to-v027 identity substitution and validate required support files.",
+    "Ride the pits-to-track route and the full circuit; review new footage every 5 seconds and more densely at transitions."
+  ],
+  "source_implementation_targets": [
+    "New V027_SOURCE pit/access spec derived from V024_SOURCE/pit_facilities.json without modifying earlier authored corrections.",
+    "New V027_SOURCE shared wear/material spec and new v027 generators; do not edit historical v025/v026 generators to retrofit the update.",
+    "New local terrain patch spec only for mapped major channels, banks or transition refinements.",
+    "Existing TOOLS/v027_scenery.py and TOOLS/v027_release.py as isolated correction/release helpers."
+  ],
+  "protections": [
+    "Accepted v026 R10 raise, translated T09 and R11 remain the initial macro geometry.",
+    "Existing corrected office, restroom-door orientation, stop sign, menu logo and other pit vehicles remain valid.",
+    "Facility shade trees are retained unless they actually obstruct the new authoring corridor.",
+    "The new dirt/pit scope intentionally permits documented local material/terrain changes after the isolated scenery-only correction.",
+    "Previously removed drainage_water_2 is not automatically restored.",
+    "Starting grid, race/reset boundaries, marshals and support files remain unchanged unless an explicitly documented access/geometry change requires a validated update."
+  ],
+  "unresolved_measurements": [
+    "No surveyed pit/access coordinates, widths or turn radii can be recovered reliably from a single wide-angle rider view.",
+    "Most real turns have not yet been assigned confidently to numbered authoring turns.",
+    "The clips do not establish exact soil composition, moisture content, traction, rut depth, jump height or gap length.",
+    "Lighting and GoPro processing prevent an exact color calibration."
+  ],
+  "acceptance": [
+    "Pits-to-apron-to-fence lane-to-barrier chute-to-track merge is continuous and rideable.",
+    "Active dirt, compacted lines, churned banks, pale shoulders and pit sand are distinct at rider speed.",
+    "Grooming and corner lines follow the route and vary with traffic state.",
+    "Visible wear, normal detail, material state and any terrain channels coincide.",
+    "T09/R11 no longer contains the four canonical obstructions.",
+    "Every intentional geometry/scenery/material change has a bounded source region and before/after evidence.",
+    "Native PKZ filenames and race/reset/marshal support data pass the release checks.",
+    "Actual in-game ride testing, transition review and performance checks are completed before a final game-readiness claim."
+  ]
+}

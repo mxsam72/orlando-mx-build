@@ -1,0 +1,95 @@
+{
+  "independent_findings_frozen_utc": "2026-10-05T22:09:46.042019+00:00",
+  "independent_findings_sha256": "14aa7fae58c999fe490bc5b1ae3ee6b6c4425cc5231266f3c337ca354d317784",
+  "notes_reviewed_after_freeze": true,
+  "notes_comparison_written_utc": "2026-10-05T22:18:05.390375+00:00",
+  "notes_file": "v026 track review of gopro and suggestions for v027.txt",
+  "notes_sha256": "a52616dad84da6756c4c95d238b9e5bd13c6a516018dbc2397944b68e706dff4",
+  "rows": [
+    {
+      "topic": "Current GoPro as primary reference",
+      "assessment": "Agree",
+      "judgment": "The user identifies this as the recent correct layout. Use it when older footage conflicts, while preserving earlier explicit user corrections unless the new evidence clearly changes the same feature.",
+      "independent_ids": [
+        "P01",
+        "P02",
+        "L01"
+      ]
+    },
+    {
+      "topic": "Muted reddish-brown/cocoa riding dirt and pale shoulders",
+      "assessment": "Agree, qualify darkness",
+      "judgment": "Independent frames show this separation. Match a range of prepared soil states; exposure, shade and video processing do not justify making every active patch equally dark or assigning exact RGB from screenshots.",
+      "independent_ids": [
+        "D01",
+        "D04"
+      ]
+    },
+    {
+      "topic": "Prepared/watered practice state",
+      "assessment": "Agree visually, qualify cause and physics",
+      "judgment": "Grooming, dark-looking low spots and standing water are visible. Watering timing, soil composition, rut depth and traction are not measurable from the video. Keep the default mostly matte with localized damp appearance.",
+      "independent_ids": [
+        "D02",
+        "D04",
+        "L01"
+      ]
+    },
+    {
+      "topic": "Route-aligned grooming, variable traffic and multiple lines",
+      "assessment": "Agree",
+      "judgment": "This is the largest surface-readability improvement. Grooming should persist in lightly ridden sections, become interrupted in wheel paths, and give way to irregular curved channels and displaced soil in corners.",
+      "independent_ids": [
+        "D02",
+        "D03"
+      ]
+    },
+    {
+      "topic": "Correlated height, normal, color, wear and material state",
+      "assessment": "Agree",
+      "judgment": "Use one wear field to drive the visible channels and adjacent churn. Fine grooves and clods belong primarily in texture/normal detail; only selected resolvable major channels should affect the coarse terrain grid.",
+      "independent_ids": [
+        "D02",
+        "D03",
+        "G01"
+      ]
+    },
+    {
+      "topic": "Staging fencing, oaks/moss, roots and white position plates",
+      "assessment": "Agree; plates and moss verified after notes",
+      "judgment": "GoPro 0:06 confirms small white fence plates, hanging moss-like foliage and exposed roots around mature trees. Those details were checked after reading the notes and were not used to create the frozen independent findings. Plate numbers are too small for reliable transcription.",
+      "independent_ids": [
+        "P01"
+      ]
+    },
+    {
+      "topic": "Full staging-to-track entrance sequence",
+      "assessment": "Agree, advance to v027 scope",
+      "judgment": "Independent review followed it through 1:20. The user explicitly requests the behind-gate pits now, so reconstruct the complete connecting route within v027 rather than postponing it to an unspecified future update.",
+      "independent_ids": [
+        "P01",
+        "P02"
+      ]
+    },
+    {
+      "topic": "Corner and jump geometry",
+      "assessment": "Add independent refinement priorities",
+      "judgment": "The notes largely describe surface appearance. The videos support auditing local inner cuts, outside banks and face/shoulder/landing blends. They do not establish new jump heights, surveyed widths or a replacement centerline.",
+      "independent_ids": [
+        "G01",
+        "G02",
+        "L01"
+      ]
+    },
+    {
+      "topic": "Sandy loam / scan-like result",
+      "assessment": "Use as visual language",
+      "judgment": "Soil texture can guide art direction, but composition has not been sampled and the reference is not a surveyed scan. Correlated surfaces can improve realism without claiming a scan-derived layout.",
+      "independent_ids": [
+        "D01",
+        "D02",
+        "G02"
+      ]
+    }
+  ]
+}

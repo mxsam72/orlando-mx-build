@@ -1,0 +1,357 @@
+{
+  "title": "v027 independent video findings",
+  "frozen_utc": "2026-10-05T22:09:46.042019+00:00",
+  "external_notes_read_before_freeze": false,
+  "method": "Independently visually reviewed all 95 regular frames sampled every 5 seconds across both videos, plus 26 closer GoPro frames for the pit/entry sequence. The second ChatGPT notes file has not been opened.",
+  "sources": {
+    "irl": {
+      "file": "Orlando MX 2026 GOPRO HD right layout with starting gate fenced area.mp4",
+      "duration_s": 333.077313,
+      "sha256": "d30bcd12a52dc6b8f25dccd21f1b089b8f61235b46e4c3c259800eb1aef03370"
+    },
+    "v026": {
+      "file": "test v026 1 lap.mp4",
+      "duration_s": 139.370646,
+      "sha256": "14b9ba1ac0759080cfaced56e3efd54dce66168abaf4e43e313c6f14bf707283"
+    }
+  },
+  "regular_sample_counts": {
+    "irl": 67,
+    "v026": 28
+  },
+  "additional_pit_samples": 26,
+  "recommended_scope_order": [
+    "Behind-gate pits and complete practice entrance",
+    "Directional dirt, rut and edge treatment",
+    "Localized corner/shoulder/jump-transition refinements",
+    "Carry canonical obstruction removals and validate the full route"
+  ],
+  "findings": [
+    {
+      "id": "P01",
+      "topic": "Behind-gate pits",
+      "confidence": "high",
+      "observed": "The GoPro shows a shaded working paddock with pickups/trailers, parked bikes, stands and a table, dark horizontal timber fences, and heavily worn sandy ground with small surviving grass patches. The v026 start view shows mostly continuous grass beside a pale road and a different fence treatment.",
+      "evidence": [
+        {
+          "source": "irl",
+          "timestamps_s": [
+            0,
+            4,
+            6,
+            24,
+            26,
+            44,
+            46,
+            50
+          ],
+          "relation": "direct observation"
+        },
+        {
+          "source": "v026",
+          "timestamps_s": [
+            0
+          ],
+          "relation": "direct observation"
+        }
+      ],
+      "proposed_update": "Extend the pits behind the starting gate with a connected staging/preparation area, worn sandy parking and riding strips, appropriate fence openings, larger shade canopies, and a small set of contextual paddock props. Preserve clear riding space."
+    },
+    {
+      "id": "P02",
+      "topic": "Practice entrance",
+      "confidence": "high",
+      "observed": "The rider leaves the staging area around 0:50, crosses the worn paddock, follows a lane with timber fence/grass on the left and dense vegetation on the right around 1:00\u20131:10, passes between metal barrier banks around 1:12\u20131:15, and emerges onto the active track by about 1:18\u20131:20. The route continues beyond the first minute.",
+      "evidence": [
+        {
+          "source": "irl",
+          "timestamps_s": [
+            50,
+            54,
+            58,
+            60,
+            64,
+            68,
+            70,
+            72,
+            74,
+            76,
+            78,
+            80
+          ],
+          "relation": "direct observation"
+        }
+      ],
+      "proposed_update": "Build the complete rideable pits-to-practice corridor and merge, including the changes in surface, vegetation, timber fence, barrier openings and grass margins. Map it into the existing authoring coordinates using landmarks; do not derive surveyed dimensions from the camera."
+    },
+    {
+      "id": "D01",
+      "topic": "Dirt palette and zones",
+      "confidence": "high for appearance; medium for exact color",
+      "observed": "The GoPro riding strip reads as warm brown/reddish-brown soil, with lighter sandy shoulders and darker compacted or damp-looking areas. v026 is comparatively uniform and muted across ridden ground, edges and jump faces. Lighting and camera processing prevent exact color calibration.",
+      "evidence": [
+        {
+          "source": "irl",
+          "timestamps_s": [
+            80,
+            120,
+            185,
+            245,
+            280
+          ],
+          "relation": "direct observation"
+        },
+        {
+          "source": "v026",
+          "timestamps_s": [
+            5,
+            60,
+            70,
+            75,
+            115
+          ],
+          "relation": "surface-type comparison; clocks are not aligned"
+        }
+      ],
+      "proposed_update": "Use a restrained warm brown base and localized compacted, churned, dry sand and damp-looking variants, while retaining fine-grain detail. Avoid a uniform dark or orange overlay."
+    },
+    {
+      "id": "D02",
+      "topic": "Straight-line grooming and wear",
+      "confidence": "high",
+      "observed": "Longitudinal grooming grooves and overlapping tire paths repeatedly make the real riding line legible. v026 has fine texture but weak directional structure and weak separation from adjacent dirt.",
+      "evidence": [
+        {
+          "source": "irl",
+          "timestamps_s": [
+            80,
+            120,
+            185,
+            245,
+            275,
+            280
+          ],
+          "relation": "direct observation"
+        },
+        {
+          "source": "v026",
+          "timestamps_s": [
+            5,
+            60,
+            70,
+            115
+          ],
+          "relation": "surface-type comparison"
+        }
+      ],
+      "proposed_update": "Create directional grooming and tire wear along the route, with smoother compacted wheel paths and looser, broken edges. Color, normal, roughness and any height relief should follow the same authored wear field."
+    },
+    {
+      "id": "D03",
+      "topic": "Corner rut lines",
+      "confidence": "high for visible lines; medium for physical depth",
+      "observed": "Real corners contain several curved lines, rutted floors, irregular dividing ridges and churned shoulders; they extend through approaches and exits. Several v026 banks look continuous, smooth and visually interchangeable. The videos do not establish rut depth in metres.",
+      "evidence": [
+        {
+          "source": "irl",
+          "timestamps_s": [
+            85,
+            125,
+            180,
+            195,
+            200,
+            285,
+            300,
+            315,
+            320
+          ],
+          "relation": "direct observation"
+        },
+        {
+          "source": "v026",
+          "timestamps_s": [
+            20,
+            35,
+            50,
+            55,
+            80,
+            90
+          ],
+          "relation": "examples of corner treatment, not asserted one-to-one turn matches"
+        }
+      ],
+      "proposed_update": "Author inside, middle and outside curved wear/rut paths where supported by footage, with tapered entry/exit transitions and modest correlated terrain relief. Vary the bank by corner and keep usable alternate lines."
+    },
+    {
+      "id": "D04",
+      "topic": "Local moisture and churn",
+      "confidence": "high for visible wet-looking patches; low for traction inference",
+      "observed": "There are localized darker low spots, wet-looking tracks and visible standing water near the entry and broad off-line areas. They coexist with dry lighter shoulders. Wet appearance does not prove a particular traction coefficient or deep mud.",
+      "evidence": [
+        {
+          "source": "irl",
+          "timestamps_s": [
+            74,
+            76,
+            95,
+            135,
+            260
+          ],
+          "relation": "direct observation"
+        }
+      ],
+      "proposed_update": "Add restrained localized moisture appearance and soil breakup around the low spots. Do not make the whole circuit muddy or change physics from color alone."
+    },
+    {
+      "id": "D05",
+      "topic": "Grass and riding edges",
+      "confidence": "high",
+      "observed": "Real infield separators have irregular grass boundaries, exposed sandy shoulders and track-cut notches. v026 includes a broad, very regular green wedge and straight-looking grass divisions, plus sparse isolated grass clumps in riding dirt.",
+      "evidence": [
+        {
+          "source": "irl",
+          "timestamps_s": [
+            110,
+            130,
+            225,
+            250,
+            290
+          ],
+          "relation": "direct observation"
+        },
+        {
+          "source": "v026",
+          "timestamps_s": [
+            30,
+            45,
+            85,
+            120
+          ],
+          "relation": "direct observation"
+        }
+      ],
+      "proposed_update": "Break up the grass mask at shoulders, retain sandy buffers, taper grass at junctions, and keep the active wheel paths free of grass. Treat the behind-gate pits as mixed worn ground rather than continuous lawn."
+    },
+    {
+      "id": "G01",
+      "topic": "Corner form and functional width",
+      "confidence": "medium",
+      "observed": "The real banking reads as an asymmetric worn system: cut inside lines, irregular outside support and distinct usable lanes. v026 often reads as a broad smooth brown basin. Part of the apparent width difference comes from absent wear boundaries, camera field of view and riding line.",
+      "evidence": [
+        {
+          "source": "irl",
+          "timestamps_s": [
+            85,
+            180,
+            195,
+            200,
+            235,
+            285,
+            300,
+            320
+          ],
+          "relation": "direct observation"
+        },
+        {
+          "source": "v026",
+          "timestamps_s": [
+            20,
+            35,
+            50,
+            55,
+            80,
+            90
+          ],
+          "relation": "corner-style comparison"
+        }
+      ],
+      "proposed_update": "Prioritize corner-specific wear, localized inner cuts and shoulder/berm transitions. Re-evaluate riding width after the material pass. Do not globally narrow the track, steepen every berm or move the accepted centerline from these videos alone."
+    },
+    {
+      "id": "G02",
+      "topic": "Jump and landing transitions",
+      "confidence": "medium",
+      "observed": "The real jump faces have long scuffed wheel paths and irregular shoulders blending into surrounding ground. Some v026 mounds have clean symmetric faces and angular-looking crests. The shared flag/rail-fence/pit-frontage landmark identifies GoPro 4:35\u20134:40 and v026 1:10\u20131:15 as the same sector, but the shown frames are at different positions on the jump.",
+      "evidence": [
+        {
+          "source": "irl",
+          "timestamps_s": [
+            105,
+            140,
+            250,
+            275,
+            280,
+            325
+          ],
+          "relation": "direct observation"
+        },
+        {
+          "source": "v026",
+          "timestamps_s": [
+            15,
+            25,
+            70,
+            75,
+            105,
+            125
+          ],
+          "relation": "direct observation"
+        }
+      ],
+      "proposed_update": "Inspect matched sectors for face-to-crest, lateral shoulder and landing-to-flat continuity. Apply local blend refinements only where the same feature is identified; preserve the accepted jump locations and macro profiles unless stronger evidence justifies changes."
+    },
+    {
+      "id": "O01",
+      "topic": "Carry the v026b obstruction fix",
+      "confidence": "high for visible obstruction; canonical object identities from prior source audit",
+      "observed": "At v026 2:10 the bike/camera intersects a tree in the moved corner sector. The already prepared v027 source correction selects the two obstructing tree objects and two obstructing markers using canonical accepted-v026 coordinates.",
+      "evidence": [
+        {
+          "source": "v026",
+          "timestamps_s": [
+            130
+          ],
+          "relation": "direct observation"
+        },
+        {
+          "source": "repository",
+          "path": "V027_SOURCE/scenery_fix.json",
+          "relation": "canonical selection; not derived from pixel positions"
+        }
+      ],
+      "proposed_update": "Include the existing coordinate-verified removals for tree_215, tree_222, SOFTCPLAS_marker_53 and SOFTCPLAS_marker_55 before the additional v027 scenery changes. Recheck rider clearance after the complete update."
+    },
+    {
+      "id": "L01",
+      "topic": "Limits on geometry conclusions",
+      "confidence": "high",
+      "observed": "The clips start in different places, riders travel at different speeds and use different lines, v026 includes a crash/reset around 1:50, and the GoPro includes a black/edit interval around 2:45. A v026 crash does not by itself demonstrate a faulty jump.",
+      "evidence": [
+        {
+          "source": "irl",
+          "timestamps_s": [
+            165,
+            170
+          ],
+          "relation": "direct observation"
+        },
+        {
+          "source": "v026",
+          "timestamps_s": [
+            105,
+            110,
+            115
+          ],
+          "relation": "direct observation"
+        }
+      ],
+      "proposed_update": "Match by fixed landmarks and ordered feature sequences instead of elapsed-time offset. Distinguish directly visible surface changes from unconfirmed changes to radii, jump height, spacing and traction. Use matched ride tests to validate any proposed geometry edits."
+    }
+  ],
+  "baseline_protections": [
+    "Accepted v026 R10 raise and translated T09/R11 remain the starting geometry.",
+    "Previously corrected facilities, restroom/office orientation, parking, stop sign and menu logo remain valid unless the new entrance requires a documented local adjustment.",
+    "The scenery-only obstruction fix protects terrain/materials; the new broader v027 scope may intentionally change terrain/materials in separately documented regions.",
+    "No native v027 package or in-game performance claim follows from this video review."
+  ]
+}
