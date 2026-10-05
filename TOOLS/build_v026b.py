@@ -32,25 +32,34 @@ def copy_release_inputs():
         shutil.rmtree(dst)
     dst.mkdir(parents=True)
     text_suffixes={'.rdf','.ini','.amb','.tsc','.cfg','.txt'}
+    renamed=[]
     for p in src.iterdir():
         if not p.is_file():
             continue
-        newname=p.name.replace(BASE_NAME,NAME).replace('v026','v026b').replace('V026','V026B')
+        newname=p.name.replace('v026','v026b').replace('V026','V026B')
         target=dst/newname
+        data=p.read_bytes()
         if p.suffix.lower() in text_suffixes:
-            try:
-                text=p.read_text(encoding='utf-8')
-                text=text.replace(BASE_NAME,NAME).replace('Orlando MX 2026 v026','Orlando MX 2026 v026b').replace('v026','v026b').replace('V026','V026B')
-                target.write_text(text,encoding='utf-8')
-                continue
-            except UnicodeDecodeError:
-                pass
-        shutil.copy2(p,target)
+            # Retag exactly once and preserve original newline/encoding bytes.
+            data=data.replace(b'v026',b'v026b').replace(b'V026',b'V026B')
+        target.write_bytes(data)
+        renamed.append(dict(source=p.name,target=newname,source_sha256=sha(p),
+                            output_sha256=sha(target)))
     required=[NAME+'.rdf',NAME+'.ini',NAME+'.amb',NAME+'.tsc',NAME+'.tga',NAME+'_map.tga',
               'minrace.tl','maxrace.tl','checkleft.tl','checkright.tl','marshals.cfg']
     missing=[x for x in required if not (dst/x).is_file()]
     if missing:
         raise RuntimeError('Missing v026b release source files: '+repr(missing))
+    if any('v026bb' in p.name.lower() for p in dst.iterdir()):
+        raise RuntimeError('Release identity was renamed more than once')
+    # Race, reset and marshal data contain no version aliases and stay exact.
+    protected=[(BASE_NAME+'.rdf',NAME+'.rdf')]+[(x,x) for x in
+               ['minrace.tl','maxrace.tl','checkleft.tl','checkright.tl','marshals.cfg']]
+    for a,b in protected:
+        if sha(src/a)!=sha(dst/b):
+            raise RuntimeError('Protected release race/reset data changed: '+a)
+    return dict(release_inputs_checked=True,race_reset_marshals_exact_v026=True,
+                identity_retagged_once=True,files=renamed)
 
 def main():
     ap=argparse.ArgumentParser()
@@ -64,7 +73,7 @@ def main():
     if O.exists():
         shutil.rmtree(O)
     shutil.copytree(BASE,O)
-    copy_release_inputs()
+    release=copy_release_inputs()
 
     # Snapshot hashes before the scenery-only edit.
     protected_files=['terrain.raw','start.tcl','main.tcl','route.npz','geometry_spec.json','turns.json','jump_profiles.json']
@@ -98,6 +107,7 @@ def main():
         materials=baseqa['materials'],
         race=baseqa['race'],
         scenery=scenery,
+        release=release,
         terrain_sha256=sha(O/'terrain.raw'),
         v026_terrain_sha256=sha(BASE/'terrain.raw'),
         route_sha256=sha(O/'route.npz'),

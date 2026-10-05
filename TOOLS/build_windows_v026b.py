@@ -9,6 +9,10 @@ def read(p):return json.loads(Path(p).read_text())
 def main():
     if os.name!='nt':raise SystemExit('Use the Windows v026b workflow for native compilation.')
     qa=read(O/'source_validation.json');assert qa['source_checks_pass']
+    assert qa['terrain_sha256']==qa['v026_terrain_sha256']
+    assert qa['route_sha256']==qa['v026_route_sha256']
+    assert qa['release']['race_reset_marshals_exact_v026']
+    assert qa['masks_exact_v026'] and qa['materials_exact_v026'] and qa['facility_textures_exact_v026']
     source=(R/'TOOLS/build_windows.py').read_text()
     old="destination=ROOT/'12_RELEASE/OrlandoMX_2026_v007.pkz'";assert source.count(old)==1
     source=source.replace(old,"destination=V026B_REPO/'12_RELEASE/OrlandoMX_2026_v026b.pkz'")
@@ -90,8 +94,8 @@ def main():
     del raw
     native=read(R/'DOCUMENTATION/native_build_validation.json')
     native.update(version='v026b',source_commit=os.environ.get('GITHUB_SHA','local'),baseline_commit=qa['baseline_commit'],
-        source_checks=True,geometry_unchanged=False,physics_unchanged=False,scenery_unchanged=False,scenery_hotfix_validation=qa['scenery'],
-        geometry_validation=qa['geometry'],race_validation=qa['race'],physical_material_declarations_unchanged=True,physical_mask_coverage_local_changes=True,
+        baseline_version='v026',source_checks=True,geometry_unchanged=True,physics_unchanged=True,scenery_unchanged=False,scenery_hotfix_validation=qa['scenery'],
+        geometry_validation=qa['geometry'],race_validation=qa['race'],release_input_validation=qa['release'],physical_material_declarations_unchanged=True,physical_mask_coverage_local_changes=False,
         protected_source={'v026_terrain_sha256':qa['v026_terrain_sha256'],'v026_route_sha256':qa['v026_route_sha256']},terrain_texture_payloads=embedded,object_texture_validation=objects,
         material_validation=read(O/'material_validation.json'),staging_validation=read(O/'native_staging_validation.json'),
         in_game_riding_test=False,in_game_visual_check=False,performance_test=False,
