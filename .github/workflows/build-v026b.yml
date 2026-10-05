@@ -1,0 +1,59 @@
+name: Build v026b Orlando scenery hotfix
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v026b]
+    paths:
+      - 'V026B_SOURCE/**'
+      - 'TOOLS/build_v026b.py'
+      - 'TOOLS/build_windows_v026b.py'
+      - 'TOOLS/v026b_scenery.py'
+      - 'DOCUMENTATION/v026_video_review_for_v026b.md'
+      - '.github/workflows/build-v026b.yml'
+permissions:
+  contents: read
+concurrency:
+  group: orlando-v026b-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 60
+    env:
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+      OPENBLAS_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-v009.txt
+      - name: Build protected v026 source and localized v026b scenery hotfix
+        run: python TOOLS/build_v026b.py --source-only
+      - name: Compile native MAP TRH and PKZ
+        run: python TOOLS/build_windows_v026b.py
+      - name: Upload candidate
+        uses: actions/upload-artifact@v7
+        with:
+          name: OrlandoMX-v026b-game-candidate
+          retention-days: 90
+          path: |
+            12_RELEASE/OrlandoMX_2026_v026b.pkz
+            12_RELEASE/OrlandoMX_2026_v026b.pkz.sha256
+            12_RELEASE/OrlandoMX_v026b_Validation.json
+            12_RELEASE/Install_v026b.txt
+      - name: Preserve evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: OrlandoMX-v026b-build-evidence
+          retention-days: 90
+          path: |
+            V026B_OUTPUT/*validation.json
+            V026B_OUTPUT/compiled_track.hmf
+            DOCUMENTATION/v026b*
+            DOCUMENTATION/v026_video_review_for_v026b.md
+            DOCUMENTATION/*validation.json
+            DOCUMENTATION/*.log
+            DOCUMENTATION/native_build_failure.txt
