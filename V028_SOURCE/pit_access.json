@@ -176,5 +176,15 @@
   "minimum_race_start_fence_edge_clearance_m": 0.15,
   "parking_grass_opacity": 0.9,
   "parking_wear_opacity": 0.3,
-  "fence_clay_edge_gap_m": 0.35
+  "fence_clay_edge_gap_m": 0.35,
+  "entry_sign": {
+    "id": "v028_track_entry_sign",
+    "xz": [
+      432.7,
+      167.3
+    ],
+    "heading": -135,
+    "text": "TRACK ENTRY ONLY",
+    "placement_status": "Pit footage 0:22-0:25 landmark at the approach-side fence corner; coordinates estimated beside accepted start."
+  }
 }

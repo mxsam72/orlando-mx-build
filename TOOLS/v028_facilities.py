@@ -1,11 +1,12 @@
 """Add the behind-gate shaded bay, rails and practice entry to fixed scenery."""
 import copy, math, struct
 from collections import Counter
-from PIL import Image
+from PIL import Image,ImageDraw,ImageFont
 from facility_mesh_v016 import Scene, PALETTE
 from append_facilities_v016 import node, integer, arr, prop, setvalues, geometry
 from v027_scenery import parse, encode, values, child, fingerprint, geometry_records, vertices
 from v028_common import *
+PALETTE['entry_sign']=(235,234,223)
 
 def rails(s,points,name,material='timber',height=1.25):
     path=sample_polyline(points,2.8)
@@ -62,6 +63,12 @@ def meshes(h,cfg):
             edge=half+cfg['fence_clay_edge_gap_m']
             p=np.c_[np.interp(ss,start[:,3],start[:,0])+np.sin(th)*edge,np.interp(ss,start[:,3],start[:,1])-np.cos(th)*edge]
         rails(s,p,name,material)
+    sign=cfg['entry_sign'];s.asset(sign['id'],sign['xz'],sign['heading'])
+    s.box([0,.85,0],[.10,1.7,.10],'timber')
+    # A real native UV-mapped board, not a text overlay on the game image.
+    s.add([[-.36,.80,.06],[.36,.80,.06],[.36,1.80,.06],[-.36,1.80,.06]],[[0,1,2],[0,2,3],[3,2,1],[3,1,0]],'entry_sign')
+    board=s.meshes[(sign['id'],'entry_sign')]
+    board['uv']=[[[0,1],[1,1],[1,0]],[[0,1],[1,0],[0,0]],[[0,0],[1,0],[1,1]],[[0,0],[1,1],[0,1]]]
     parts=list(s.meshes.values())
     vehicle_meshes=read(R/'V024_OUTPUT/vehicle_meshes.json')
     originals={p['id']:p for p in read(R/'V024_SOURCE/vehicles.json')['assets']}
@@ -131,6 +138,17 @@ def append(meshes):
         grain=np.sin(2*np.pi*(xx*7+yy*3))*1.8+np.sin(2*np.pi*(xx*23-yy*11))*1.2
         if name in ['timber','bark']:grain+=np.sin(2*np.pi*xx*31+.25*np.sin(2*np.pi*yy*3))*3
         im=np.uint8(np.rint(np.clip(np.array(rgb)+grain[...,None],0,255)));Image.fromarray(im).save(textures/fname);raw=(textures/fname).read_bytes()
+        if name=='entry_sign':
+            image=Image.new('RGB',(256,256),rgb);draw=ImageDraw.Draw(image)
+            font=None
+            for path in ['/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf','C:/Windows/Fonts/arialbd.ttf']:
+                if Path(path).is_file():font=ImageFont.truetype(path,51);break
+            if font is None:font=ImageFont.load_default(size=51)
+            draw.rectangle([5,5,250,250],outline=(37,40,32),width=4)
+            for y,line in zip([28,101,174],['TRACK','ENTRY','ONLY']):
+                box=draw.textbbox((0,0),line,font=font);width=box[2]-box[0]
+                draw.text(((256-width)/2,y-box[1]),line,font=font,fill=(22,26,21))
+            image.save(textures/fname);raw=(textures/fname).read_bytes()
         for source,nid,kind in [(base_mat,mi,'Material'),(byid[texid],ti,'Texture'),(byid[vidid],vi,'Video')]:
             n=copy.deepcopy(source); old=values(n);setvalues(n,nid,('v028_'+name).encode()+b'\x00\x01'+kind.encode(),*old[2:])
             for c in n['children']:
