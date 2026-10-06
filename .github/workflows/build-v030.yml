@@ -5,13 +5,27 @@ on:
     branches: [rebuild-v030]
     paths: ['V030_SOURCE/**', 'TOOLS/*v030*.py', '.github/workflows/build-v030.yml']
 permissions:
-  contents: read
+  contents: write
   actions: read
 concurrency:
   group: orlando-v030-${{ github.ref }}
   cancel-in-progress: false
 jobs:
+  transfer_preflight:
+    runs-on: windows-latest
+    timeout-minutes: 5
+    outputs:
+      release_id: ${{ steps.transfer.outputs.release_id }}
+    env:
+      PYTHONUTF8: '1'
+      V030_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify private draft asset delivery route
+        id: transfer
+        run: python TOOLS/v030_release_transfer.py preflight
   build:
+    needs: transfer_preflight
     runs-on: windows-latest
     timeout-minutes: 75
     env:
@@ -19,6 +33,8 @@ jobs:
       PYTHONIOENCODING: utf-8
       OPENBLAS_NUM_THREADS: '2'
       V030_CHECKPOINT: BUILD/v030-verified-source
+      V030_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      V030_RELEASE_ID: ${{ needs.transfer_preflight.outputs.release_id }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -53,44 +69,5 @@ jobs:
         run: python TOOLS/build_v030.py --source-only
       - name: Compile fresh native MAP TRH and verified PKZ
         run: python TOOLS/build_windows_v030.py
-      - name: Upload verified game candidate
-        uses: actions/upload-artifact@v7
-        with:
-          name: OrlandoMX-v030-game-candidate
-          retention-days: 90
-          compression-level: 0
-          if-no-files-found: error
-          path: |
-            12_RELEASE/OrlandoMX_2026_v030.pkz
-            12_RELEASE/OrlandoMX_2026_v030.pkz.sha256
-            12_RELEASE/OrlandoMX_v030_Validation.json
-            12_RELEASE/Install_v030.txt
-      - name: Preserve review and native build evidence
-        if: always()
-        uses: actions/upload-artifact@v7
-        with:
-          name: OrlandoMX-v030-build-evidence
-          retention-days: 90
-          path: |
-            V030_OUTPUT/*validation.json
-            V030_OUTPUT/compiled_track.hmf
-            V030_OUTPUT/material_tiles.png
-            V030_OUTPUT/surface_layout.png
-            V030_OUTPUT/pit_and_corner_detail.png
-            V030_OUTPUT/grass_scope_comparison.png
-            V030_OUTPUT/grass_scope_masks.npz
-            DOCUMENTATION/v030*
-            DOCUMENTATION/*validation.json
-            DOCUMENTATION/*.log
-            DOCUMENTATION/native_build_failure.txt
-      - name: Preserve complete v030 source checkpoint for continuation
-        uses: actions/upload-artifact@v7
-        with:
-          name: OrlandoMX-v030-source-checkpoint
-          retention-days: 90
-          path: |
-            V030_OUTPUT/
-            V024_OUTPUT/facility_meshes.json
-            V024_OUTPUT/vehicle_meshes.json
-            V024_OUTPUT/sign_graphic_meshes.json
-            12_RELEASE/orlandomx_2026_v030/
+      - name: Preserve verified PKZ comparison validation and full source privately
+        run: python TOOLS/v030_release_transfer.py deliver
