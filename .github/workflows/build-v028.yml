@@ -1,0 +1,83 @@
+name: Build v028 corrected gate access and riding surfaces
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v028]
+    paths: ['V028_SOURCE/**', 'TOOLS/*v028*.py', '.github/workflows/build-v028.yml']
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: orlando-v028-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 75
+    env:
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+      OPENBLAS_NUM_THREADS: '2'
+      V028_CHECKPOINT: BUILD/v028-verified-source
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-v009.txt
+      - name: Download immutable tested source checkpoint
+        uses: actions/download-artifact@v5
+        with:
+          name: OrlandoMX-v028-v027-source-checkpoint
+          run-id: 37401771946
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: ${{ env.V028_CHECKPOINT }}
+      - name: Verify and restore checkpoint without historical regeneration
+        shell: python
+        run: |
+          from pathlib import Path
+          import os, shutil, json, hashlib
+          checkpoint = Path(os.environ['V028_CHECKPOINT'])
+          source = checkpoint/'V026_OUTPUT'
+          proof = json.loads((source/'baseline_validation.json').read_text())
+          assert proof['checks_pass']
+          for filename, digest in proof['actual_source_sha256'].items():
+              assert hashlib.sha256((source/filename).read_bytes()).hexdigest() == digest
+          tested = checkpoint/'V027_OUTPUT'
+          assert hashlib.sha256((tested/'terrain.raw').read_bytes()).hexdigest() == '8e492abfbae7a6c7ec8c48ff956d28027310c21275b4e3f256d366a60edc0c35'
+          assert json.loads((tested/'source_validation.json').read_text())['source_checks_pass']
+          for folder in ['V026_OUTPUT','V027_OUTPUT','V024_OUTPUT','12_RELEASE']:
+              shutil.copytree(checkpoint/folder, Path(folder), dirs_exist_ok=True)
+      - name: Build source and verify entire practice swept clearance
+        run: python TOOLS/build_v028.py --source-only
+      - name: Compile and verify new native MAP TRH and PKZ
+        run: python TOOLS/build_windows_v028.py
+      - name: Upload verified game test candidate
+        uses: actions/upload-artifact@v7
+        with:
+          name: OrlandoMX-v028-game-candidate
+          retention-days: 90
+          compression-level: 0
+          if-no-files-found: error
+          path: |
+            12_RELEASE/OrlandoMX_2026_v028.pkz
+            12_RELEASE/OrlandoMX_2026_v028.pkz.sha256
+            12_RELEASE/OrlandoMX_v028_Validation.json
+            12_RELEASE/Install_v028.txt
+      - name: Preserve source review and native evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: OrlandoMX-v028-build-evidence
+          retention-days: 90
+          path: |
+            V028_OUTPUT/*validation.json
+            V028_OUTPUT/compiled_track.hmf
+            V028_OUTPUT/material_tiles.png
+            V028_OUTPUT/surface_layout.png
+            V028_OUTPUT/pit_and_corner_detail.png
+            V028_OUTPUT/v028_height_change_region.png
+            DOCUMENTATION/v028*
+            DOCUMENTATION/*validation.json
+            DOCUMENTATION/*.log
+            DOCUMENTATION/native_build_failure.txt

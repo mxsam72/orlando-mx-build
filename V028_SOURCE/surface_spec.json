@@ -1,0 +1,98 @@
+{
+  "version": "v028",
+  "seed": 280028,
+  "tile_size": 1024,
+  "mask_size": 4096,
+  "palette_status": "Moderately darker dirt and stronger route-local wear from GoPro and race footage; not calibrated reflectance or measured rut depths.",
+  "palette": {
+    "soil": [
+      133,
+      116,
+      99
+    ],
+    "prepared": [
+      119,
+      97,
+      80
+    ],
+    "worked": [
+      114,
+      94,
+      79
+    ],
+    "sand": [
+      161,
+      147,
+      130
+    ],
+    "packed": [
+      91,
+      75,
+      64
+    ],
+    "face": [
+      125,
+      104,
+      85
+    ],
+    "grass": [
+      83,
+      103,
+      59
+    ],
+    "pits": [
+      169,
+      158,
+      142
+    ]
+  },
+  "repetitions": {
+    "soil": 171,
+    "prepared": 193,
+    "worked": 157,
+    "sand": 181,
+    "packed": 193,
+    "face": 193,
+    "pits": 171
+  },
+  "height_amplitude_m": {
+    "soil": 0.0045,
+    "prepared": 0.0022,
+    "worked": 0.009,
+    "sand": 0.0017,
+    "packed": 0.0012,
+    "face": 0.0015
+  },
+  "specular_alpha": {
+    "soil": 2,
+    "prepared": 2,
+    "worked": 2,
+    "sand": 1,
+    "packed": 2,
+    "face": 2
+  },
+  "source_families": {
+    "soil": "soil",
+    "prepared": "prepared",
+    "worked": "worked",
+    "sand": "sand",
+    "packed": "prepared",
+    "face": "prepared"
+  },
+  "grooming_angles_degrees": [
+    0,
+    45,
+    90,
+    135
+  ],
+  "grooming_height_amplitude_m": 0.007,
+  "corner_additional_channel_depth_m": 0.036,
+  "corner_additional_deposit_height_m": 0.018,
+  "pit_smoothing_max_delta_m": 0.045,
+  "local_damp_default_opacity_max": 0.34,
+  "physical_material_declarations_unchanged": true,
+  "macro_track_route_and_jump_profiles_unchanged": true,
+  "native_supported_features_only": true,
+  "low_resolution_diffuse_overlay": false,
+  "infield_grass_opacity": 0.94
+}

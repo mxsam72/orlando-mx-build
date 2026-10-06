@@ -1,0 +1,61 @@
+{
+  "version": "v028",
+  "expected_removals": [
+    "tree_414",
+    "tree_474",
+    "tree_500"
+  ],
+  "rider_headroom_m": 3.2,
+  "lateral_margin_m": 0.65,
+  "selection_method": "Dense retained geometry intersects corrected connector/practice swept rider volume; no unrelated objects removed.",
+  "details": [
+    {
+      "name": "tree_414",
+      "geometry_id": 17768173,
+      "model_id": 121327446,
+      "dense_samples": 79634,
+      "conflicts": [
+        {
+          "route": "practice",
+          "intruding_dense_samples": 22797,
+          "minimum_headroom_m": -0.002142093106576759,
+          "minimum_centerline_distance_m": 0.010861094212375135
+        },
+        {
+          "route": "pit_connector",
+          "intruding_dense_samples": 22797,
+          "minimum_headroom_m": -0.002142093106576759,
+          "minimum_centerline_distance_m": 0.007561011768371771
+        }
+      ]
+    },
+    {
+      "name": "tree_474",
+      "geometry_id": 941019201,
+      "model_id": 911423752,
+      "dense_samples": 118433,
+      "conflicts": [
+        {
+          "route": "practice",
+          "intruding_dense_samples": 19112,
+          "minimum_headroom_m": -0.0021118297129154584,
+          "minimum_centerline_distance_m": 0.01716748186495211
+        }
+      ]
+    },
+    {
+      "name": "tree_500",
+      "geometry_id": 107561521,
+      "model_id": 294567893,
+      "dense_samples": 149807,
+      "conflicts": [
+        {
+          "route": "practice",
+          "intruding_dense_samples": 18671,
+          "minimum_headroom_m": -0.0023246837000985288,
+          "minimum_centerline_distance_m": 0.03909582089632916
+        }
+      ]
+    }
+  ]
+}

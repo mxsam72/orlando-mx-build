@@ -1,0 +1,180 @@
+{
+  "version": "v028",
+  "placement_status": "Topology from both pit videos and user-marked clay edge; metric placement is an authoring estimate.",
+  "staging_bounds_xz_m": [
+    390,
+    162.7,
+    431,
+    169.2
+  ],
+  "connector_points_xz_m": [
+    [
+      382,
+      159
+    ],
+    [
+      392,
+      159
+    ],
+    [
+      410,
+      159
+    ],
+    [
+      431,
+      159
+    ],
+    [
+      440,
+      168
+    ]
+  ],
+  "connector_width_m": 6.5,
+  "practice_width_m": 6.5,
+  "practice_start_outer_clearance_m": 5.0,
+  "practice_merge_start_station_m": 122,
+  "practice_offset_fade_start_station_m": 72,
+  "fence_half_offset_m": 4.65,
+  "wood_fence_start_station_range_m": [
+    0,
+    55
+  ],
+  "barrier_start_station_range_m": [
+    59,
+    68
+  ],
+  "oak_assets": [
+    {
+      "id": "v028_staging_oak_west",
+      "xz": [
+        392,
+        166
+      ],
+      "radius": 7.2
+    },
+    {
+      "id": "v028_staging_oak_east",
+      "xz": [
+        428,
+        166
+      ],
+      "radius": 7.3
+    },
+    {
+      "id": "v028_practice_oak_01",
+      "xz": [
+        456,
+        191
+      ],
+      "radius": 8.0
+    },
+    {
+      "id": "v028_practice_oak_02",
+      "xz": [
+        454,
+        216
+      ],
+      "radius": 8.5
+    },
+    {
+      "id": "v028_practice_oak_03",
+      "xz": [
+        442,
+        244
+      ],
+      "radius": 7.0
+    }
+  ],
+  "staging_assets": [
+    {
+      "id": "v028_staging_pickup",
+      "type": "pickup",
+      "xz": [
+        403,
+        165
+      ],
+      "heading": 90
+    },
+    {
+      "id": "v028_staging_trailer",
+      "type": "trailer",
+      "xz": [
+        421,
+        165
+      ],
+      "heading": 90
+    },
+    {
+      "id": "v028_staging_table",
+      "type": "table",
+      "xz": [
+        411,
+        168
+      ],
+      "heading": 0
+    },
+    {
+      "id": "v028_staging_stand_01",
+      "type": "bike_stand",
+      "xz": [
+        408,
+        165
+      ],
+      "heading": 0
+    },
+    {
+      "id": "v028_staging_stand_02",
+      "type": "bike_stand",
+      "xz": [
+        413,
+        165
+      ],
+      "heading": 0
+    }
+  ],
+  "back_rail_points_xz_m": [
+    [
+      390,
+      170.4
+    ],
+    [
+      431,
+      170.4
+    ],
+    [
+      435.35,
+      172
+    ]
+  ],
+  "staging_bikes": [
+    {
+      "id": "v028_staging_bike_01",
+      "reference_asset": "bike_jordan",
+      "xz": [
+        408,
+        165
+      ],
+      "heading": 0,
+      "wheel_lift_m": 0.06
+    },
+    {
+      "id": "v028_staging_bike_02",
+      "reference_asset": "bike_sam",
+      "xz": [
+        413,
+        165
+      ],
+      "heading": 0,
+      "wheel_lift_m": 0.06
+    }
+  ],
+  "damp_practice_start_station_m": 87,
+  "existing_water_removal_preserved": true,
+  "minimum_new_low_mesh_route_edge_clearance_m": 1.0,
+  "minimum_rider_headroom_m": 3.2,
+  "retained_tree_lateral_margin_m": 0.65,
+  "minimum_race_start_fence_edge_clearance_m": 0.15,
+  "parking_grass_opacity": 0.9,
+  "parking_wear_opacity": 0.3,
+  "fence_clay_edge_gap_m": 0.35
+}

@@ -1,0 +1,11 @@
+{
+  "version": "v028",
+  "frame_interval_seconds": 5,
+  "additional_pit_interval_seconds": 1,
+  "source_checkpoint_run": 37401771946,
+  "tested_v027_commit": "dfe6770649ce150356389cb2d78d55964d5358fe",
+  "independent_review": true,
+  "other_instance_notes_used": false,
+  "macro_geometry_changes": "None: camera alignment does not justify metric changes to accepted jumps or corner radii.",
+  "conditions": "Both IRL sources show occasional wet low areas; retain sparse matte damp treatment without restoring the user-removed drainage mesh."
+}
