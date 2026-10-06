@@ -1,0 +1,9 @@
+{
+  "version": "v029",
+  "parent_commit": "d9e5ce03bd597cf5a87632387ec9f371ebe66ea2",
+  "grass_alpha_area_reduction_percent_source": 95.01,
+  "corridor_grass_nonzero_source": 0,
+  "terrain_sha256": "954bb88ab989959257fc481db0caf241bb65bf771d46739f79207a4501c203a7",
+  "review_document": "DOCUMENTATION/v029_changes.md",
+  "in_game_riding": false
+}

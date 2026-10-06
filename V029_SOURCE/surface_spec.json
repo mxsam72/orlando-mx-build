@@ -1,0 +1,86 @@
+{
+  "version": "v029",
+  "seed": 290029,
+  "tile_size": 2048,
+  "palette": {
+    "soil": [
+      134,
+      115,
+      96
+    ],
+    "prepared": [
+      120,
+      101,
+      84
+    ],
+    "worked": [
+      118,
+      96,
+      79
+    ],
+    "sand": [
+      165,
+      149,
+      131
+    ],
+    "packed": [
+      88,
+      74,
+      63
+    ],
+    "face": [
+      123,
+      102,
+      82
+    ],
+    "pits": [
+      159,
+      145,
+      127
+    ]
+  },
+  "repetitions": {
+    "soil": 171,
+    "prepared": 193,
+    "worked": 157,
+    "sand": 181,
+    "packed": 193,
+    "face": 193,
+    "pits": 171
+  },
+  "wet_factor": {
+    "soil": 0.81,
+    "prepared": 0.83,
+    "worked": 0.8,
+    "sand": 0.86,
+    "packed": 0.84,
+    "face": 0.83,
+    "pits": 0.87
+  },
+  "height_amplitude_m": {
+    "soil": 0.003,
+    "prepared": 0.0035,
+    "worked": 0.006,
+    "sand": 0.0012,
+    "packed": 0.0014,
+    "face": 0.003,
+    "pits": 0.0015
+  },
+  "grooming_angles_degrees": [
+    0,
+    45,
+    90,
+    135
+  ],
+  "grooming_height_amplitude_m": 0.009,
+  "grooming_diffuse_contrast": 9.0,
+  "grass_patch_threshold": 0.95,
+  "grass_patch_opacity": 0.7,
+  "grass_edge_erosion_m": 1.7,
+  "maximum_grass_alpha_area_ratio": 0.2,
+  "corridor_bare_margin_m": 2.6,
+  "start_bare_margin_m": 3.0,
+  "riding_bare_margin_m": 3.0,
+  "terrain_entirely_byte_exact_v028": true,
+  "placement_is_authored_estimate": true
+}
