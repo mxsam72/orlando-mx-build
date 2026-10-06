@@ -1,0 +1,57 @@
+name: Private v030 download descriptor
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v030]
+    paths: ['.github/workflows/v030-download-descriptor.yml']
+permissions:
+  contents: write
+jobs:
+  descriptor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      V030_DESCRIPTOR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Store authorized file-transfer metadata privately
+        shell: python
+        run: |
+          import os,json,time,urllib.request,urllib.error,urllib.parse
+          api='https://api.github.com/repos/'+os.environ['GITHUB_REPOSITORY']
+          headers={'Authorization':'Bearer '+os.environ['V030_DESCRIPTOR_TOKEN'],
+                   'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2026-03-10',
+                   'User-Agent':'OrlandoMX-private-file-transfer'}
+          def request(path,data=None):
+              payload=None if data is None else json.dumps(data).encode()
+              h=headers|({'Content-Type':'application/json'} if payload else {})
+              with urllib.request.urlopen(urllib.request.Request(api+path,data=payload,headers=h),timeout=120) as r:return json.load(r)
+          assert request('')['private']
+          release=request('/releases/404955421');assert release['draft']
+          names=['OrlandoMX_2026_v030.pkz','OrlandoMX_v030_Validation.json','Install_v030.txt','OrlandoMX_2026_v030.pkz.sha256','grass_scope_comparison.png']
+          # Wait for the independently running native build to finish uploads.
+          for attempt in range(120):
+              assets=request('/releases/404955421/assets')
+              selected={a['name']:a for a in assets if a['name'] in names and a['state']=='uploaded'}
+              if set(selected)==set(names):break
+              if attempt%6==0:print('Waiting for verified native files:',len(selected),'of',len(names),flush=True)
+              time.sleep(5)
+          else:raise RuntimeError('Verified native files did not become available')
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self,*args,**kwargs):return None
+          records=[]
+          for name in names:
+              asset=selected[name]
+              req=urllib.request.Request(asset['url'],headers=headers|{'Accept':'application/octet-stream'})
+              try:
+                  urllib.request.build_opener(NoRedirect).open(req,timeout=120)
+                  raise RuntimeError('Expected a temporary asset redirect')
+              except urllib.error.HTTPError as e:
+                  if e.code not in (301,302,303,307,308):raise
+                  location=e.headers['Location']
+              assert urllib.parse.urlparse(location).hostname in ['release-assets.githubusercontent.com','objects.githubusercontent.com']
+              records.append(dict(name=name,asset_id=asset['id'],bytes=asset['size'],digest=asset.get('digest'),download_url=location))
+          # The signed file URLs stay out of logs. The authenticated connector
+          # retrieves this private, unreferenced data object by its SHA.
+          descriptor=dict(release_id=404955421,build_run=37499279837,assets=records)
+          blob=request('/git/blobs',dict(content=json.dumps(descriptor),encoding='utf-8'))
+          print('CODEX_V030_DESCRIPTOR_BLOB '+blob['sha'],flush=True)

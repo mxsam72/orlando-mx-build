@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches: [rebuild-v030]
-    paths: ['V030_SOURCE/**', 'TOOLS/*v030*.py', '.github/workflows/build-v030.yml']
+    paths: ['V030_SOURCE/**', 'TOOLS/build_v030.py', 'TOOLS/build_windows_v030.py', 'TOOLS/v030_common.py', 'TOOLS/v030_materials.py', 'TOOLS/v030_surfaces.py', 'TOOLS/v030_sign.py', 'TOOLS/render_v030_previews.py']
 permissions:
   contents: write
   actions: read
