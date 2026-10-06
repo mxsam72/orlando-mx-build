@@ -1,0 +1,194 @@
+{
+  "version": "v030",
+  "seed": 290029,
+  "tile_size": 2048,
+  "palette": {
+    "soil": [
+      134,
+      115,
+      96
+    ],
+    "prepared": [
+      120,
+      101,
+      84
+    ],
+    "worked": [
+      118,
+      96,
+      79
+    ],
+    "sand": [
+      165,
+      149,
+      131
+    ],
+    "packed": [
+      88,
+      74,
+      63
+    ],
+    "face": [
+      123,
+      102,
+      82
+    ],
+    "pits": [
+      159,
+      145,
+      127
+    ]
+  },
+  "repetitions": {
+    "soil": 171,
+    "prepared": 193,
+    "worked": 157,
+    "sand": 181,
+    "packed": 193,
+    "face": 193,
+    "pits": 171
+  },
+  "wet_factor": {
+    "soil": 0.81,
+    "prepared": 0.83,
+    "worked": 0.8,
+    "sand": 0.86,
+    "packed": 0.84,
+    "face": 0.83,
+    "pits": 0.87
+  },
+  "height_amplitude_m": {
+    "soil": 0.003,
+    "prepared": 0.0035,
+    "worked": 0.006,
+    "sand": 0.0012,
+    "packed": 0.0014,
+    "face": 0.003,
+    "pits": 0.0015
+  },
+  "grooming_angles_degrees": [
+    0,
+    45,
+    90,
+    135
+  ],
+  "grooming_height_amplitude_m": 0.009,
+  "grooming_diffuse_contrast": 9.0,
+  "terrain_entirely_byte_exact_v028": true,
+  "placement_is_authored_estimate": true,
+  "grass_baseline": "tested v028",
+  "grass_seed": 300030,
+  "remaining_track_grass_fraction": 0.5,
+  "track_grass_bounds_xz_m": [
+    208,
+    174,
+    467,
+    442
+  ],
+  "pit_grass_protection": {
+    "max_x": 373,
+    "max_z": 174,
+    "source": "Main v024 lower/upper pit parking parcels and spectator-fence boundary"
+  },
+  "circled_polygon_xz_m": [
+    [
+      377.0694,
+      284.6513
+    ],
+    [
+      388.7604,
+      290.9452
+    ],
+    [
+      403.1493,
+      283.7522
+    ],
+    [
+      419.3368,
+      272.9625
+    ],
+    [
+      431.9271,
+      259.4755
+    ],
+    [
+      433.7257,
+      245.9885
+    ],
+    [
+      442.7188,
+      235.1988
+    ],
+    [
+      449.0139,
+      221.7118
+    ],
+    [
+      451.7118,
+      211.8213
+    ],
+    [
+      452.6111,
+      190.2421
+    ],
+    [
+      451.7118,
+      164.1671
+    ],
+    [
+      440.0208,
+      156.0749
+    ],
+    [
+      420.2361,
+      156.0749
+    ],
+    [
+      407.6458,
+      158.7723
+    ],
+    [
+      398.6528,
+      165.0663
+    ],
+    [
+      382.4653,
+      165.9654
+    ],
+    [
+      375.2708,
+      169.562
+    ],
+    [
+      374.3715,
+      179.4524
+    ],
+    [
+      374.3715,
+      240.5937
+    ],
+    [
+      375.2708,
+      276.5591
+    ]
+  ],
+  "circle_padding_m": 1.2,
+  "start_bare_margin_m": 2.2,
+  "corridor_bare_margin_m": 1.6,
+  "spatial_edge_blend_m": 1.3,
+  "delivered_v028_visual_mask_sha256": {
+    "mask_v028_damp.tga": "f7a0c3657731d616aa63379f9697d384a3b016127049df676ba0c7a6792742fa",
+    "mask_v028_face.tga": "332ec3ea836f0480d1d6a408b68368c7df922a5df963e6dd5ddc6927a8cc0bb7",
+    "mask_v028_groom_0.tga": "123b91a7b19a3e1d1d6ac4c800c46efa985f959f29e6772a803a0c4cd1db1b9e",
+    "mask_v028_groom_135.tga": "e8e63b5e0dcc50c4d4c6cb29852aef2e64d8e0b2eb524388793118965252ecc6",
+    "mask_v028_groom_45.tga": "c30d44d152663da0bbbb750fe363d58fccc816b1d12715baec858388a4bdca09",
+    "mask_v028_groom_90.tga": "1b99ab3ad578e2b8050ac93b5489a701bef363efcfb0ff5c2fd7891e6db21d77",
+    "mask_v028_packed.tga": "8fd1182fdbeab704f756bdb62cf9bf3c38e353beddf05bd48b25a2edf36fa16c",
+    "mask_v028_pits.tga": "da6755f6500c10be1f34434a9894ed168ab75017a416c7c1f9d90ece39235c70",
+    "mask_visual_grass.tga": "666705ae7cf5cbe248e7025d65296c562049da28249ed0ebad93095ecaed42f6",
+    "mask_visual_racing.tga": "2a4f52a504ebf0e930cba056c7d4c115a5f17cbd793d6db72266929db7e123d7",
+    "mask_visual_sand.tga": "5d3fcae7e7ecf045f4ea9a2416a7f2baed04eebe9766de216b263103cfdb7e1d",
+    "mask_visual_worked.tga": "7de06a6fe56fc19210e00ac8fa22ec4db1b180779e4d2fcf26ffca27152647ee"
+  },
+  "grass_reduction_method": "Spatially halve each of the original grass patches independently; include native-mask quantization in each target"
+}

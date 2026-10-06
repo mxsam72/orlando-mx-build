@@ -1,0 +1,96 @@
+name: Build v030 preserve pits and halve track grass
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v030]
+    paths: ['V030_SOURCE/**', 'TOOLS/*v030*.py', '.github/workflows/build-v030.yml']
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: orlando-v030-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 75
+    env:
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+      OPENBLAS_NUM_THREADS: '2'
+      V030_CHECKPOINT: BUILD/v030-verified-source
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-v009.txt
+      - name: Restore immutable source checkpoint used for tested v028
+        uses: actions/download-artifact@v5
+        with:
+          name: OrlandoMX-v028-v027-source-checkpoint
+          run-id: 37401771946
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: ${{ env.V030_CHECKPOINT }}
+      - name: Verify accepted checkpoint hashes
+        shell: python
+        run: |
+          from pathlib import Path
+          import os, shutil, json, hashlib
+          checkpoint = Path(os.environ['V030_CHECKPOINT'])
+          source = checkpoint/'V026_OUTPUT'
+          proof = json.loads((source/'baseline_validation.json').read_text())
+          assert proof['checks_pass']
+          for filename, digest in proof['actual_source_sha256'].items():
+              assert hashlib.sha256((source/filename).read_bytes()).hexdigest() == digest
+          tested = checkpoint/'V027_OUTPUT'
+          assert hashlib.sha256((tested/'terrain.raw').read_bytes()).hexdigest() == '8e492abfbae7a6c7ec8c48ff956d28027310c21275b4e3f256d366a60edc0c35'
+          for folder in ['V026_OUTPUT','V027_OUTPUT','V024_OUTPUT','12_RELEASE']:
+              shutil.copytree(checkpoint/folder, Path(folder), dirs_exist_ok=True)
+      - name: Reproduce tested v028 using its unchanged generators
+        run: python TOOLS/build_v028.py --source-only
+      - name: Author v030 and verify unchanged pits grass half course coverage and start exclusion
+        run: python TOOLS/build_v030.py --source-only
+      - name: Compile fresh native MAP TRH and verified PKZ
+        run: python TOOLS/build_windows_v030.py
+      - name: Upload verified game candidate
+        uses: actions/upload-artifact@v7
+        with:
+          name: OrlandoMX-v030-game-candidate
+          retention-days: 90
+          compression-level: 0
+          if-no-files-found: error
+          path: |
+            12_RELEASE/OrlandoMX_2026_v030.pkz
+            12_RELEASE/OrlandoMX_2026_v030.pkz.sha256
+            12_RELEASE/OrlandoMX_v030_Validation.json
+            12_RELEASE/Install_v030.txt
+      - name: Preserve review and native build evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: OrlandoMX-v030-build-evidence
+          retention-days: 90
+          path: |
+            V030_OUTPUT/*validation.json
+            V030_OUTPUT/compiled_track.hmf
+            V030_OUTPUT/material_tiles.png
+            V030_OUTPUT/surface_layout.png
+            V030_OUTPUT/pit_and_corner_detail.png
+            V030_OUTPUT/grass_scope_comparison.png
+            V030_OUTPUT/grass_scope_masks.npz
+            DOCUMENTATION/v030*
+            DOCUMENTATION/*validation.json
+            DOCUMENTATION/*.log
+            DOCUMENTATION/native_build_failure.txt
+      - name: Preserve complete v030 source checkpoint for continuation
+        uses: actions/upload-artifact@v7
+        with:
+          name: OrlandoMX-v030-source-checkpoint
+          retention-days: 90
+          path: |
+            V030_OUTPUT/
+            V024_OUTPUT/facility_meshes.json
+            V024_OUTPUT/vehicle_meshes.json
+            V024_OUTPUT/sign_graphic_meshes.json
+            12_RELEASE/orlandomx_2026_v030/

@@ -1,0 +1,104 @@
+{
+  "version": "v030",
+  "reference": "image(20261006-160053).png",
+  "reference_sha256": "fa834a51858f5ae86ec7225b62d3e76feda84a867d4545bb506a1fbcff9d3987",
+  "request": "Restore v028 pits grass unchanged, clear circled starting area, then reduce remaining track grass spatially by 50 percent",
+  "image_surface_bounds_xz_m": [
+    208,
+    130,
+    467,
+    442
+  ],
+  "image_surface_pixels": [
+    29,
+    35,
+    317,
+    382
+  ],
+  "circle_reference_pixels": [
+    [
+      217,
+      210
+    ],
+    [
+      230,
+      203
+    ],
+    [
+      246,
+      211
+    ],
+    [
+      264,
+      223
+    ],
+    [
+      278,
+      238
+    ],
+    [
+      280,
+      253
+    ],
+    [
+      290,
+      265
+    ],
+    [
+      297,
+      280
+    ],
+    [
+      300,
+      291
+    ],
+    [
+      301,
+      315
+    ],
+    [
+      300,
+      344
+    ],
+    [
+      287,
+      353
+    ],
+    [
+      265,
+      353
+    ],
+    [
+      251,
+      350
+    ],
+    [
+      241,
+      343
+    ],
+    [
+      223,
+      342
+    ],
+    [
+      215,
+      338
+    ],
+    [
+      214,
+      327
+    ],
+    [
+      214,
+      259
+    ],
+    [
+      215,
+      219
+    ]
+  ],
+  "registration": "Matched start clay, approach road and main-loop shapes against immutable v028 source preview; approximate hand-drawn boundary with 1.2 m padding",
+  "retain": "v029 2048-pixel dirt material recipe and corrected entry-board UVs",
+  "in_game_test": false,
+  "grass_reduction_method": "Calibrate a separate 50% spatial reduction for each of the 16 original grass patches, so the outer field does not consume the infield reduction target"
+}
