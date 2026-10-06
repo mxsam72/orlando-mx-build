@@ -55,6 +55,8 @@ def masks(spec):
     prepared=np.maximum(original('visual_racing'),f['prepared'])
     churn=np.maximum(original('visual_worked')*.20,f['churn'])
     grass=np.maximum(original('visual_grass')*(1-f['grass_cut']),np.maximum(f['grass_islands'],f['parking_grass']))
+    protected_native=np.maximum.reduce([np.asarray(Image.open(O/'masks'/f'{name}.tga').getchannel('A')) for name in ['racing','start','shoulder','worked']])>0
+    accepted_native_grass=np.asarray(Image.open(R/'V026_OUTPUT/materials/mask_visual_grass.tga').getchannel('A'),np.float32)/255
     # High-priority legacy pit gravel remains bare where its roads pass.
     gravel=np.asarray(Image.open(O/'masks/v024_pit_roads.tga').getchannel('A').resize((n,n),Image.Resampling.BILINEAR),np.float32)/255
     grass*=1-gravel
@@ -64,6 +66,10 @@ def masks(spec):
     # wherever the new staging apron or access is visibly worn.
     for name,a in [('visual_racing',prepared),('visual_worked',churn),('visual_grass',grass),('visual_sand',sand),('v028_packed',f['packed']),('v028_face',f['face']),('v028_pits',np.maximum(f['pits'],f['access_visual'])*.95),('v028_damp',f['damp'])]:
         small=a if name in ['v028_packed','v028_damp'] else np.asarray(Image.fromarray(a).resize((2048,2048),Image.Resampling.BILINEAR))
+        if name=='visual_grass':
+            small=small.copy()
+            small[protected_native]=np.minimum(small[protected_native],accepted_native_grass[protected_native])
+            assert not np.any((np.uint8(np.rint(small*255))>np.uint8(np.rint(accepted_native_grass*255)))&protected_native),'Added visual grass crosses a protected native-grid margin'
         save_mask(M/f'mask_{name}.tga',small)
     # Blend the two nearest axial directions; masks share the exact route
     # heading used by the wear fields. Packed/loose traffic takes priority.
@@ -78,7 +84,7 @@ def masks(spec):
                 directional_grooming_blend_checks_pass=True,matte_default=True,
                 local_damp_max_opacity=float(f['damp'].max()),standing_water_added=False,
                 all_wear_color_and_normals_finely_tiled=True,low_resolution_diffuse_overlay=False,
-                edge_irregularity_and_pit_wear_shared_with_physical_coverage=True)
+                edge_irregularity_and_pit_wear_shared_with_physical_coverage=True,added_grass_outside_all_protected_native_grid_masks=True)
 
 def layer_blocks(text):
     found=[]

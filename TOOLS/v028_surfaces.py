@@ -145,17 +145,24 @@ def apply_height(f,spec):
 def physics(f):
     def resize(a): return np.asarray(Image.fromarray(a).resize((2048,2048),Image.Resampling.BILINEAR))
     coverage=resize(np.maximum(f['pits'],f['access'])); bay=resize(f['pits']); changed=[]
+    protected=np.maximum.reduce([np.asarray(Image.open(O/'masks'/f'{name}.tga').getchannel('A')) for name in ['racing','start','shoulder','worked']])>0
+    new_grass=resize(np.maximum(f['grass_islands'],f['parking_grass'])).copy()
+    # Clipping before downsampling is insufficient at feathered boundaries.
+    # Enforce protection again on the exact grid consumed by TerrainEd.
+    new_grass[protected]=0
     for name in ['off','pits','grass','sand']:
         p=O/'masks'/f'{name}.tga'; old=np.asarray(Image.open(p).getchannel('A'),np.float32)/255
         if name=='pits':a=np.maximum(old,bay)
-        elif name=='grass':a=np.maximum(old,resize(np.maximum(f['grass_islands'],f['parking_grass'])))*(1-coverage)
+        elif name=='grass':
+            a=np.maximum(old,new_grass)*(1-coverage)
+            assert not np.any((np.uint8(np.rint(a*255))>np.uint8(np.rint(old*255)))&protected),'Grass crosses a protected native-grid margin'
         else:a=old*(1-coverage)
         save_mask(p,a)
         if name!='grass':assert np.array_equal(np.uint8(np.rint(a[coverage==0]*255)),np.uint8(np.rint(old[coverage==0]*255)))
         changed.append(name)
     save(O/'surface_physics_validation.json',dict(checks_pass=True,changed_masks=changed,
          pit_practice_and_protected_off_lane_grass_coverage_only=True,material_declarations_and_thicknesses_exact_v026=True,
-         race_and_start_coverage_masks_exact_v026=True))
+         race_and_start_coverage_masks_exact_v026=True,added_grass_outside_all_protected_native_grid_masks=True))
 
 def main():
     O.mkdir(exist_ok=True); f=fields(read(S/'surface_spec.json'),read(S/'pit_access.json'))
