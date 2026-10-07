@@ -1,0 +1,35 @@
+name: Build v031 scanned soils and readable sign
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v031]
+    paths: ['V031_SOURCE/**', 'TOOLS/build_v031.py', 'TOOLS/build_windows_v031.py', 'TOOLS/v031_*.py', 'TOOLS/download_v031_scans.py', 'TOOLS/render_v031_previews.py', '.github/workflows/build-v031.yml']
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: orlando-v031-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 75
+    env:
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+      OPENBLAS_NUM_THREADS: '2'
+      V031_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-v009.txt
+      - name: Restore immutable tested v030 source
+        run: python TOOLS/v031_release_transfer.py source
+      - name: Author scanned dirt and validate both sign faces and v030 preservation
+        run: python TOOLS/build_v031.py --source-only
+      - name: Compile and verify native MAP TRH textures and PKZ
+        run: python TOOLS/build_windows_v031.py
+      - name: Preserve verified delivery and complete source privately
+        run: python TOOLS/v031_release_transfer.py deliver

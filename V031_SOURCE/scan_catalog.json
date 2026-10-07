@@ -1,0 +1,657 @@
+{
+  "license_page": "https://polyhaven.com/license",
+  "assets": [
+    {
+      "asset": "brown_mud_dry",
+      "name": "Brown Mud Dry",
+      "authors": {
+        "Rob Tuytel": "All"
+      },
+      "dimensions_mm": [
+        1299.996018409729,
+        1299.996018409729
+      ],
+      "source_page": "https://polyhaven.com/a/brown_mud_dry",
+      "license": "CC0-1.0",
+      "files": {
+        "Diffuse": {
+          "size": 9827093,
+          "md5": "a69c3810a12c8a86f54cd24e42fad323",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/brown_mud_dry/brown_mud_dry_diff_2k.png",
+          "file": "brown_mud_dry_Diffuse.png",
+          "sha256": "0d20a4256657755ea98960787ad54830e5dd1ba70a5037d12a30f354e08c0463"
+        },
+        "nor_gl": {
+          "size": 9578253,
+          "md5": "81e6f3b09e98f9f78c6f99e4193df767",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/brown_mud_dry/brown_mud_dry_nor_gl_2k.png",
+          "file": "brown_mud_dry_nor_gl.png",
+          "sha256": "3ad892a618f546cc572eecd1ee28103f8c3a3a2d9d8b9b5667ec32fecdfee0b6"
+        },
+        "Rough": {
+          "size": 7795860,
+          "md5": "8fa40f640e770bbd366260406cde5e10",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/brown_mud_dry/brown_mud_dry_rough_2k.png",
+          "file": "brown_mud_dry_Rough.png",
+          "sha256": "f2026ce7a227def955ac4687a8b18f463a7fb8ada7f1acdb408eab44fc406a2c"
+        },
+        "Displacement": {
+          "size": 8152283,
+          "md5": "1b7de7b312b279652a8955cd2cad2a44",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/brown_mud_dry/brown_mud_dry_disp_2k.png",
+          "file": "brown_mud_dry_Displacement.png",
+          "sha256": "c882cc0da52d76a968158fff376d6685eeeaf1afe38d14a1f3949adb6d01fa56"
+        },
+        "AO": {
+          "size": 3776894,
+          "md5": "48576df650ef845a202ba19ac77903b6",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/brown_mud_dry/brown_mud_dry_ao_2k.png",
+          "file": "brown_mud_dry_AO.png",
+          "sha256": "c6a9f012661806d7455d6d67b58602e3a3e01012cd0e45d8e39ef5bae4ed45da"
+        }
+      }
+    },
+    {
+      "asset": "dirt",
+      "name": "Dirt",
+      "authors": {
+        "Charlotte Baglioni": "All"
+      },
+      "dimensions_mm": [
+        2000,
+        2000
+      ],
+      "source_page": "https://polyhaven.com/a/dirt",
+      "license": "CC0-1.0",
+      "files": {
+        "Diffuse": {
+          "size": 22041709,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/dirt/dirt_diff_2k.png",
+          "md5": "e9dcab81dc501ab2ee3238783af014e7",
+          "file": "dirt_Diffuse.png",
+          "sha256": "f0fee6965209d08fd073067c9c61cefc815fecdede90070b361e3f8c47c87801"
+        },
+        "nor_gl": {
+          "size": 23484882,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/dirt/dirt_nor_gl_2k.png",
+          "md5": "532cc425ffeef26eca43ef638ef4fb9c",
+          "file": "dirt_nor_gl.png",
+          "sha256": "d269f7e4c8f113474735c1d9e346f48272dcb5c2cba72c3976b0181a0867d7aa"
+        },
+        "Rough": {
+          "size": 6297012,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/dirt/dirt_rough_2k.png",
+          "md5": "f65936208f208392005031b131b86de1",
+          "file": "dirt_Rough.png",
+          "sha256": "620354e281625391002fba6e9bcb1123859b434370f7ed6f046f4e8cb107f6f8"
+        },
+        "Displacement": {
+          "size": 6576954,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/dirt/dirt_disp_2k.png",
+          "md5": "416e5cc676af47da6c1561d8f9bcf778",
+          "file": "dirt_Displacement.png",
+          "sha256": "0922d5f74b103921df549c4a1b7441c7023376c1a99714d05710ffd80cc8af97"
+        },
+        "AO": {
+          "size": 7479394,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/dirt/dirt_ao_2k.png",
+          "md5": "f6d463eee514e0f3bd035a982561632f",
+          "file": "dirt_AO.png",
+          "sha256": "993fc312d92005fb38e54a98ddd6a86ac4a3d08e164f02597586ae6a4dd8b64d"
+        }
+      }
+    },
+    {
+      "asset": "farm_soil",
+      "name": "Farm Soil",
+      "authors": {
+        "Amal Kumar": "All"
+      },
+      "dimensions_mm": [
+        1999.9992847442627,
+        2000.000238418579
+      ],
+      "source_page": "https://polyhaven.com/a/farm_soil",
+      "license": "CC0-1.0",
+      "files": {
+        "Diffuse": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/farm_soil/farm_soil_diff_2k.png",
+          "md5": "ffc000a5a1ff2a4d1db637bce652bb79",
+          "size": 24717649,
+          "file": "farm_soil_Diffuse.png",
+          "sha256": "5b2aa6ce68bf82c1ae3b3433eeefc2a4ec6aae441740b6fbc42db16a2e2597b0"
+        },
+        "nor_gl": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/farm_soil/farm_soil_nor_gl_2k.png",
+          "md5": "d4912205df6f83ee88df6d9ce1946636",
+          "size": 28218885,
+          "file": "farm_soil_nor_gl.png",
+          "sha256": "e0db0133bdaa771598a9d066182d8504ce01f12cccf35a03dc6f301a57861a33"
+        },
+        "Rough": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/farm_soil/farm_soil_rough_2k.png",
+          "md5": "8828ed08217b1d88c47c35d97875e0c3",
+          "size": 6387906,
+          "file": "farm_soil_Rough.png",
+          "sha256": "3eb83838d6987855b148a0887147d7369abe82a9f13416af964ed22ec34e9622"
+        },
+        "Displacement": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/farm_soil/farm_soil_disp_2k.png",
+          "md5": "5f860d96769ade1679765dd6d5e7daeb",
+          "size": 6787352,
+          "file": "farm_soil_Displacement.png",
+          "sha256": "206f68da50e3882f47ce0c3ba801d30856caff01d74224e1a726d558c1d37bb2"
+        },
+        "AO": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/farm_soil/farm_soil_ao_2k.png",
+          "md5": "b9caed28238da031928cedcba696b6ba",
+          "size": 6034896,
+          "file": "farm_soil_AO.png",
+          "sha256": "f9ef92e719758dfe7f9680042b4dc8fed9f6f6133bd9cc2759409d0b91acb9dd"
+        }
+      }
+    },
+    {
+      "asset": "dense_sand",
+      "name": "Dense Sand",
+      "authors": {
+        "Dimitrios Savva": "All"
+      },
+      "dimensions_mm": [
+        1800.0000715255737,
+        1800.0000715255737
+      ],
+      "source_page": "https://polyhaven.com/a/dense_sand",
+      "license": "CC0-1.0",
+      "files": {
+        "Diffuse": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/dense_sand/dense_sand_diff_2k.png",
+          "md5": "c6a184966105acfc3ceb03229c296e1c",
+          "size": 21905577,
+          "file": "dense_sand_Diffuse.png",
+          "sha256": "55f0642d377fdf4f466f90a5ed2785803956365bdefba15a15f573f1f9e4df3b"
+        },
+        "nor_gl": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/dense_sand/dense_sand_nor_gl_2k.png",
+          "md5": "0e307f5b3cb050b6e3c6b13c0e7435a7",
+          "size": 22525151,
+          "file": "dense_sand_nor_gl.png",
+          "sha256": "676f3f705157ff9b0eec91d86dad01fd795093f4c0b3e42e8be2b3737fe86659"
+        },
+        "Rough": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/dense_sand/dense_sand_rough_2k.png",
+          "md5": "beb2ea66ecbfb51eeb8d940d9fbb6a34",
+          "size": 6996873,
+          "file": "dense_sand_Rough.png",
+          "sha256": "6c871f04a5e7168d06f6b8c0b6b0ef6aaade86f8e247d769fdd8ef9aa698959a"
+        },
+        "Displacement": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/dense_sand/dense_sand_disp_2k.png",
+          "md5": "2323cf3e28770dc16e34e21b45c1d3db",
+          "size": 6180715,
+          "file": "dense_sand_Displacement.png",
+          "sha256": "4e520fa3163723e2e0bfbd4cb1897a1323202fe9111910986ceeca1f1cea198e"
+        },
+        "AO": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/dense_sand/dense_sand_ao_2k.png",
+          "md5": "b4d8b3bcf05c2b68d247e2f4b4e942e8",
+          "size": 7329315,
+          "file": "dense_sand_AO.png",
+          "sha256": "f5f628b471119991850e963bd50a3ddba9cdb7d724838883add4e6434edced01"
+        }
+      }
+    },
+    {
+      "asset": "red_dirt_mud_01",
+      "name": "Red Dirt Mud 01",
+      "authors": {
+        "Rob Tuytel": "All"
+      },
+      "dimensions_mm": [
+        1500,
+        1500
+      ],
+      "source_page": "https://polyhaven.com/a/red_dirt_mud_01",
+      "license": "CC0-1.0",
+      "files": {
+        "Diffuse": {
+          "size": 8928977,
+          "md5": "7c8cea59edbf8d011128ce6a953e00e2",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/red_dirt_mud_01/red_dirt_mud_01_diff_2k.png",
+          "file": "red_dirt_mud_01_Diffuse.png",
+          "sha256": "70d57f22f37d8a1b782fd50076003de159e316aa75fca37f5769000ec010963f"
+        },
+        "nor_gl": {
+          "size": 7660309,
+          "md5": "f8950f97d9705c19d89914aeeb915cbc",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/red_dirt_mud_01/red_dirt_mud_01_nor_gl_2k.png",
+          "file": "red_dirt_mud_01_nor_gl.png",
+          "sha256": "23af3eb424d782bacb2e15d7fc626f3b98b3914f321662a1d1120ac19931b41d"
+        },
+        "Rough": {
+          "size": 3833255,
+          "md5": "4159fb97aa76b46d491320de048e1a7a",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/red_dirt_mud_01/red_dirt_mud_01_rough_2k.png",
+          "file": "red_dirt_mud_01_Rough.png",
+          "sha256": "8f58e6da7c6a2407ef23b1437f071f8f8b0900728dd485422dd825726042ab84"
+        },
+        "Displacement": {
+          "size": 8018459,
+          "md5": "1794c9a03def211ac1c15bfd275a4914",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/red_dirt_mud_01/red_dirt_mud_01_disp_2k.png",
+          "file": "red_dirt_mud_01_Displacement.png",
+          "sha256": "b988eba9ddd7eac0b513f887f1c0835df2072da7d4df386731c0639ae8c12500"
+        },
+        "AO": {
+          "size": 2817894,
+          "md5": "ac11baac4976807d27a1373b29df7d64",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/red_dirt_mud_01/red_dirt_mud_01_ao_2k.png",
+          "file": "red_dirt_mud_01_AO.png",
+          "sha256": "6a275ad54af300c858ac699f5a95f841d0fa98ab53567b72c3eb26b19fcaf527"
+        }
+      }
+    },
+    {
+      "asset": "red_mud_stones",
+      "name": "Red Mud Stones",
+      "authors": {
+        "Rob Tuytel": "All"
+      },
+      "dimensions_mm": [
+        1500,
+        1500
+      ],
+      "source_page": "https://polyhaven.com/a/red_mud_stones",
+      "license": "CC0-1.0",
+      "files": {
+        "Diffuse": {
+          "size": 8429941,
+          "md5": "0751d40f228e7162631e0158c0392139",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/red_mud_stones/red_mud_stones_diff_2k.png",
+          "file": "red_mud_stones_Diffuse.png",
+          "sha256": "ec3c1ff8c8880e349661f6c3a791f7028a9f487ceb9ff22b01b2dcb9c9ad9826"
+        },
+        "nor_gl": {
+          "size": 9881197,
+          "md5": "53b8b5eb0f5f601f93aa6c54e8b7d6af",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/red_mud_stones/red_mud_stones_nor_gl_2k.png",
+          "file": "red_mud_stones_nor_gl.png",
+          "sha256": "2da4b1fddcfa7aa26b6772c92540394a4f2570f380c673dd140072adc8b52551"
+        },
+        "Rough": {
+          "size": 7220282,
+          "md5": "0c60282363152b7d9fcf285c4f6f000a",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/red_mud_stones/red_mud_stones_rough_2k.png",
+          "file": "red_mud_stones_Rough.png",
+          "sha256": "f0feb3040f460a4cc7bd91ee6bd30376f2a608f9547a020f83ec3cd7d8e4b141"
+        },
+        "Displacement": {
+          "size": 7756142,
+          "md5": "2886752b441ee2f532d3cda9aedbfc9b",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/red_mud_stones/red_mud_stones_disp_2k.png",
+          "file": "red_mud_stones_Displacement.png",
+          "sha256": "37528ca20fbdd45e7e0c4f70c4cd16c42dd20e7adf4787154e2539fddeb2b2a4"
+        },
+        "AO": {
+          "size": 3738975,
+          "md5": "49501f01c726711258c2e26a74913c22",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/red_mud_stones/red_mud_stones_ao_2k.png",
+          "file": "red_mud_stones_AO.png",
+          "sha256": "6eabde2339ec37dece30cc4f212499b4b4fa62bae9a29ab7838db4b500b34e0b"
+        }
+      }
+    },
+    {
+      "asset": "park_dirt",
+      "name": "Park Dirt",
+      "authors": {
+        "Christopher Melani": "All"
+      },
+      "dimensions_mm": [
+        3000,
+        3000
+      ],
+      "source_page": "https://polyhaven.com/a/park_dirt",
+      "license": "CC0-1.0",
+      "files": {
+        "Diffuse": {
+          "size": 23760972,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/park_dirt/park_dirt_diff_2k.png",
+          "md5": "57075c6f5b1f0cfbe8b85b5bd3fd7453",
+          "file": "park_dirt_Diffuse.png",
+          "sha256": "95eae526c56096c2efb1cc443e3e4ea4af4a0790f61301ec209b15eb25779918"
+        },
+        "nor_gl": {
+          "size": 23955301,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/park_dirt/park_dirt_nor_gl_2k.png",
+          "md5": "06c5eca3bddcc93a2088caaa0a792ba9",
+          "file": "park_dirt_nor_gl.png",
+          "sha256": "04b49262879d9803e69257b1c0af0117a766b3f5f37efa60fc5f296953fa5d50"
+        },
+        "Rough": {
+          "size": 10328709,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/park_dirt/park_dirt_rough_2k.png",
+          "md5": "3604efb5346142ce7be01f1048d0c0d5",
+          "file": "park_dirt_Rough.png",
+          "sha256": "8d5ad1784e44e5311c079b96f75d7c546da6c8080e64c220cc2006f29264e17f"
+        },
+        "Displacement": {
+          "size": 7239865,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/park_dirt/park_dirt_disp_2k.png",
+          "md5": "4a420d493a7dfa5e17f9c814e3167c14",
+          "file": "park_dirt_Displacement.png",
+          "sha256": "748c3143a1458d40c375c37254c613a718cf5e4c1eaec00f4eef3171f41c7a83"
+        },
+        "AO": {
+          "size": 8064693,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/park_dirt/park_dirt_ao_2k.png",
+          "md5": "1ad3a82bc89a18d1c1ad880192ebff06",
+          "file": "park_dirt_AO.png",
+          "sha256": "78eb8f0be24f9b388ea0dcd9ac0fd9dded0c83ed05323d23ab99d99e6bb3eaeb"
+        }
+      }
+    },
+    {
+      "asset": "brown_mud_03",
+      "name": "Brown Mud 03",
+      "authors": {
+        "Rob Tuytel": "All"
+      },
+      "dimensions_mm": [
+        1299.996018409729,
+        1299.996018409729
+      ],
+      "source_page": "https://polyhaven.com/a/brown_mud_03",
+      "license": "CC0-1.0",
+      "files": {
+        "Diffuse": {
+          "size": 7265305,
+          "md5": "17715ddf1687eb647dc7e539c2aa10d4",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/brown_mud_03/brown_mud_03_diff_2k.png",
+          "file": "brown_mud_03_Diffuse.png",
+          "sha256": "ae08382a69e1e3186e08fbf53d467d8a4e1ca7b700db2e6981e563e2109d1e16"
+        },
+        "nor_gl": {
+          "size": 8369461,
+          "md5": "1a8a551a6244ce20491aa0f32b1a1023",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/brown_mud_03/brown_mud_03_nor_gl_2k.png",
+          "file": "brown_mud_03_nor_gl.png",
+          "sha256": "bdfbef99813e714883271d1d1a92cd5790e22bd9c8bf54318a4d489cdc60aa3c"
+        },
+        "Rough": {
+          "size": 2990954,
+          "md5": "aedd830eae260a6a7fd1c4c9a53dae24",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/brown_mud_03/brown_mud_03_rough_2k.png",
+          "file": "brown_mud_03_Rough.png",
+          "sha256": "b96143bbc957fd698802a13337b85b3e1accc2af6d2757ad5e263402cabb7bb6"
+        },
+        "Displacement": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/brown_mud_03/brown_mud_03_disp_2k.png",
+          "size": 8370805,
+          "md5": "ef05a5db35177d86b6579d51d67a485f",
+          "file": "brown_mud_03_Displacement.png",
+          "sha256": "fac05fffc977b0b2c522660532aac6cbb541471936caa216e03b409073c6977d"
+        },
+        "AO": {
+          "size": 3234863,
+          "md5": "19ac29378aac1254279474654725e444",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/brown_mud_03/brown_mud_03_ao_2k.png",
+          "file": "brown_mud_03_AO.png",
+          "sha256": "6730b929b937d116185f44ee46b95441978b480dbff34fc6b190826f6d9c0fb0"
+        }
+      }
+    },
+    {
+      "asset": "raked_dirt",
+      "name": "Raked Dirt",
+      "authors": {
+        "Dario Barresi": "Processing",
+        "Dimitrios Savva": "Photography"
+      },
+      "dimensions_mm": [
+        2000,
+        2000
+      ],
+      "source_page": "https://polyhaven.com/a/raked_dirt",
+      "license": "CC0-1.0",
+      "files": {
+        "Diffuse": {
+          "size": 22317129,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/raked_dirt/raked_dirt_diff_2k.png",
+          "md5": "e2039711622bbaaeaa6de630d8b2b35a",
+          "file": "raked_dirt_Diffuse.png",
+          "sha256": "d0a3b1592058f80d8bf1f20e2c0b45d65d0dffb7e498c392a79a4739255439a7"
+        },
+        "nor_gl": {
+          "size": 24095420,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/raked_dirt/raked_dirt_nor_gl_2k.png",
+          "md5": "52e9e5aac1d277445289a6ef55636501",
+          "file": "raked_dirt_nor_gl.png",
+          "sha256": "63d3c8226a3a63acdf31c94ea7e7044c4c350866df14bfafdfc7cd7407673792"
+        },
+        "Rough": {
+          "size": 8997190,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/raked_dirt/raked_dirt_rough_2k.png",
+          "md5": "fef7fc8a065d898aec2b1b0f0a0ddd05",
+          "file": "raked_dirt_Rough.png",
+          "sha256": "c2cd5c7dfb5cfc5e859fca09f2308004b53581623d7e64fd6edde06726894641"
+        },
+        "Displacement": {
+          "size": 6716489,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/raked_dirt/raked_dirt_disp_2k.png",
+          "md5": "ee7a7dd7f66f8d86699f677eb87fea67",
+          "file": "raked_dirt_Displacement.png",
+          "sha256": "c812933e0294393fef26989f32c1af56c7dd5f74fedaa6d9b881432ea5228486"
+        },
+        "AO": {
+          "size": 7831331,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/raked_dirt/raked_dirt_ao_2k.png",
+          "md5": "ac1c63033d1079ddcda1da45d26d0fa2",
+          "file": "raked_dirt_AO.png",
+          "sha256": "3cd3e637835e2f0aee2d495030c79ec5c7143e5f0acbdb91ba58beb0dd6e3407"
+        }
+      }
+    },
+    {
+      "asset": "dry_mud_field_001",
+      "name": "Dry Mud Field 001",
+      "authors": {
+        "Rob Tuytel": "Photography",
+        "Rico Cilliers": "Processing"
+      },
+      "dimensions_mm": [
+        3000,
+        3000.000238418579
+      ],
+      "source_page": "https://polyhaven.com/a/dry_mud_field_001",
+      "license": "CC0-1.0",
+      "files": {
+        "Diffuse": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/dry_mud_field_001/dry_mud_field_001_diff_2k.png",
+          "size": 23357220,
+          "md5": "c8548461a1f58a61706dd46992d12ccd",
+          "file": "dry_mud_field_001_Diffuse.png",
+          "sha256": "c567bbce1c60d8bb55fea80fe7e747e7941c99ba9375b85901939f31d82f76ed"
+        },
+        "nor_gl": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/dry_mud_field_001/dry_mud_field_001_nor_gl_2k.png",
+          "size": 24376386,
+          "md5": "dbd01ebac121adb794be79a93180c802",
+          "file": "dry_mud_field_001_nor_gl.png",
+          "sha256": "dcc1759dfc39abe33d5c0e47d2db1912eb8952f6965770097af255e999da2114"
+        },
+        "Rough": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/dry_mud_field_001/dry_mud_field_001_rough_2k.png",
+          "size": 10227769,
+          "md5": "bd35e6119c04fcd9ce4da5b6b754063a",
+          "file": "dry_mud_field_001_Rough.png",
+          "sha256": "74d90efac32ddb32f0fca08081caceff2ec7f6388f7d47fdf6880248bdc702b2"
+        },
+        "Displacement": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/dry_mud_field_001/dry_mud_field_001_disp_2k.png",
+          "size": 9073514,
+          "md5": "a51398be82fbf28423367d3850379846",
+          "file": "dry_mud_field_001_Displacement.png",
+          "sha256": "35b6d9f07039bf77db8424299df476a6e6ecb207f18307f62474e29a19a2e0c1"
+        },
+        "AO": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/dry_mud_field_001/dry_mud_field_001_ao_2k.png",
+          "size": 7928532,
+          "md5": "90655c33a6b54b9dea410842792ef6a1",
+          "file": "dry_mud_field_001_AO.png",
+          "sha256": "afe1d8083bdd37d07769def9d78d69fe9f31998b650eb4ca0d27378873f8c0dd"
+        }
+      }
+    },
+    {
+      "asset": "brown_mud_02",
+      "name": "Brown Mud 02",
+      "authors": {
+        "Rob Tuytel": "All"
+      },
+      "dimensions_mm": [
+        1299.996018409729,
+        1299.996018409729
+      ],
+      "source_page": "https://polyhaven.com/a/brown_mud_02",
+      "license": "CC0-1.0",
+      "files": {
+        "Diffuse": {
+          "size": 7351489,
+          "md5": "ef770d3bdde5f6356d2bb71f7f52fef7",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/brown_mud_02/brown_mud_02_diff_2k.png",
+          "file": "brown_mud_02_Diffuse.png",
+          "sha256": "a00bad20b2c339bd3d2837b8ae80903c4646876bb4ec0cc960846a97b2d3d737"
+        },
+        "nor_gl": {
+          "size": 8869082,
+          "md5": "04c379fb559dc3920f0ecfa6ce1f3a2c",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/brown_mud_02/brown_mud_02_nor_gl_2k.png",
+          "file": "brown_mud_02_nor_gl.png",
+          "sha256": "78e01270b222a96cc1433c8d4ba2b6fbbe24b296934b45d1ff6aa30cad647888"
+        },
+        "Rough": {
+          "size": 2307264,
+          "md5": "e53629b9f9c912af86524fe20fc0c35a",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/brown_mud_02/brown_mud_02_rough_2k.png",
+          "file": "brown_mud_02_Rough.png",
+          "sha256": "c2c7835ff92171d9141dd7a1884dbf3a00b5d989fe8ae05737ac6d5397c12572"
+        },
+        "Displacement": {
+          "size": 1647509,
+          "md5": "424a01299369299091f1b8193191e58a",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/brown_mud_02/brown_mud_02_disp_2k.png",
+          "file": "brown_mud_02_Displacement.png",
+          "sha256": "c4eae3aba4cb23e967eb3b2c3cbf4cd6dd82830906233dc76c4048884c5fd2d7"
+        },
+        "AO": {
+          "size": 3382853,
+          "md5": "f208872d0c79aab681672e2a187d5b75",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/brown_mud_02/brown_mud_02_ao_2k.png",
+          "file": "brown_mud_02_AO.png",
+          "sha256": "16f6fa689c964651952714aedc88be4c2de3786aa271cb59000edbb3b8b0ffa4"
+        }
+      }
+    },
+    {
+      "asset": "muddy_tracks",
+      "name": "Muddy Tracks",
+      "authors": {
+        "Amal Kumar": "All"
+      },
+      "dimensions_mm": [
+        2250,
+        2250
+      ],
+      "source_page": "https://polyhaven.com/a/muddy_tracks",
+      "license": "CC0-1.0",
+      "files": {
+        "Diffuse": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/muddy_tracks/muddy_tracks_diff_2k.png",
+          "md5": "883ab7955b49cbb9d2c79e62d45be9e1",
+          "size": 24995948,
+          "file": "muddy_tracks_Diffuse.png",
+          "sha256": "20b5e54d2a05320cad5ce23de24ba6ad330872b314875109a94f4c37179d259e"
+        },
+        "nor_gl": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/muddy_tracks/muddy_tracks_nor_gl_2k.png",
+          "md5": "7dad67c79cc10fd840928a7b1d1fd6e4",
+          "size": 27236010,
+          "file": "muddy_tracks_nor_gl.png",
+          "sha256": "db55423f311d2fdfa86b80e7d6e2bbf23c134edfcdd45a4cbdf45788583203f5"
+        },
+        "Rough": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/muddy_tracks/muddy_tracks_rough_2k.png",
+          "md5": "a4a646aea0c2e3f8aa53b000b0b2ac2f",
+          "size": 7652472,
+          "file": "muddy_tracks_Rough.png",
+          "sha256": "e2c6642335720f31d79eb8f85c94db60eaac190dc5504ad5c44ead90b286965f"
+        },
+        "Displacement": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/muddy_tracks/muddy_tracks_disp_2k.png",
+          "md5": "cdaf895bfecfefde4f360e8f521dbd7f",
+          "size": 6686261,
+          "file": "muddy_tracks_Displacement.png",
+          "sha256": "8859fb9a9b84c335dc8d8a8ad9d47a0dcdf753cde91e3b66e242522bca75c033"
+        },
+        "AO": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/muddy_tracks/muddy_tracks_ao_2k.png",
+          "md5": "e5e82409957e82902b459f3a3472e8ae",
+          "size": 5903219,
+          "file": "muddy_tracks_AO.png",
+          "sha256": "beb175dee0fef830902f7862495ccc3b1c25d81792b0cab6b3aeff89d44b61c3"
+        }
+      }
+    },
+    {
+      "asset": "dirt_aerial_02",
+      "name": "Dirt Aerial 02",
+      "authors": {
+        "Rob Tuytel": "All"
+      },
+      "dimensions_mm": [
+        20000,
+        20000
+      ],
+      "source_page": "https://polyhaven.com/a/dirt_aerial_02",
+      "license": "CC0-1.0",
+      "files": {
+        "Diffuse": {
+          "size": 24485283,
+          "md5": "0af2c74eb8a5c3781690150195eccf63",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/dirt_aerial_02/dirt_aerial_02_diff_2k.png",
+          "file": "dirt_aerial_02_Diffuse.png",
+          "sha256": "79bd9d2d802fd0762903d910d6ac2dc68a4cf8c367494db610951018e8a1833d"
+        },
+        "nor_gl": {
+          "size": 23957911,
+          "md5": "680b4f95e8c31709f46a71e20b8e08e7",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/dirt_aerial_02/dirt_aerial_02_nor_gl_2k.png",
+          "file": "dirt_aerial_02_nor_gl.png",
+          "sha256": "615f82d4e1b3ba6653fb8576d477e7dbafb201b4e571fe986fcb7fca9bf18c17"
+        },
+        "Rough": {
+          "size": 8326546,
+          "md5": "2ea204693a991e75a50f57b27190d0e1",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/dirt_aerial_02/dirt_aerial_02_rough_2k.png",
+          "file": "dirt_aerial_02_Rough.png",
+          "sha256": "eede9e4a0e8f89d056106bdfe1a94041d0c7d7ccde55bcdf66e368f60e529d2a"
+        },
+        "Displacement": {
+          "size": 7411135,
+          "md5": "4feeaf4217ab8a6cfd86c1613d32618e",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/dirt_aerial_02/dirt_aerial_02_disp_2k.png",
+          "file": "dirt_aerial_02_Displacement.png",
+          "sha256": "fb20575a0198ddfdea2f7d88fb5c59810d0e867e1fb4d95f0366935fba41c4ef"
+        },
+        "AO": {
+          "size": 9360229,
+          "md5": "a8ec0a1f4adb09dd9807ca8c73f3ba1b",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/dirt_aerial_02/dirt_aerial_02_ao_2k.png",
+          "file": "dirt_aerial_02_AO.png",
+          "sha256": "d6d74a4c7a070d784333b5ac87aa81123256dcd69fdc831233bc0ecde4010d9a"
+        }
+      }
+    }
+  ]
+}

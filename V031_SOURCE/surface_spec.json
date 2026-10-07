@@ -1,0 +1,147 @@
+{
+  "version": "v031",
+  "seed": 313107,
+  "source_version": "v030",
+  "source_commit": "8102002e371a56f771ad8372d20767283cd34228",
+  "source_checkpoint_sha256": "a24f9a37488dc3a817f0b8519e692ec5cce1e8032877e1d7e14c3d829ab383f7",
+  "tile_size": 2048,
+  "macro_size": 4096,
+  "materials": {
+    "soil": {
+      "asset": "dirt",
+      "palette": [
+        108,
+        94,
+        79
+      ],
+      "luminance_gain": 0.78,
+      "normal_strength": 0.48,
+      "wet_factor": 0.79
+    },
+    "prepared": {
+      "asset": "dry_mud_field_001",
+      "palette": [
+        112,
+        96,
+        79
+      ],
+      "luminance_gain": 0.8,
+      "normal_strength": 0.65,
+      "wet_factor": 0.79
+    },
+    "worked": {
+      "asset": "farm_soil",
+      "palette": [
+        102,
+        86,
+        71
+      ],
+      "luminance_gain": 0.9,
+      "normal_strength": 0.72,
+      "wet_factor": 0.79
+    },
+    "sand": {
+      "asset": "dense_sand",
+      "palette": [
+        128,
+        115,
+        96
+      ],
+      "luminance_gain": 0.85,
+      "normal_strength": 0.35,
+      "wet_factor": 0.79
+    },
+    "face": {
+      "asset": "red_mud_stones",
+      "palette": [
+        116,
+        98,
+        80
+      ],
+      "luminance_gain": 0.82,
+      "normal_strength": 0.48,
+      "wet_factor": 0.79
+    },
+    "packed": {
+      "asset": "red_dirt_mud_01",
+      "palette": [
+        108,
+        92,
+        76
+      ],
+      "luminance_gain": 0.78,
+      "normal_strength": 0.38,
+      "wet_factor": 0.79
+    },
+    "pits": {
+      "asset": "park_dirt",
+      "palette": [
+        119,
+        108,
+        92
+      ],
+      "luminance_gain": 0.68,
+      "normal_strength": 0.32,
+      "wet_factor": 0.79
+    },
+    "damp": {
+      "asset": "brown_mud_03",
+      "palette": [
+        86,
+        77,
+        64
+      ],
+      "luminance_gain": 0.7,
+      "normal_strength": 0.68,
+      "wet_factor": 0.79
+    },
+    "groom_0": {
+      "asset": "raked_dirt",
+      "palette": [
+        111,
+        96,
+        81
+      ],
+      "luminance_gain": 0.78,
+      "normal_strength": 0.45,
+      "wet_factor": 0.79,
+      "groove_height_m": 0.0017
+    },
+    "groom_45": {
+      "asset": "brown_mud_dry",
+      "palette": [
+        110,
+        95,
+        79
+      ],
+      "luminance_gain": 0.68,
+      "normal_strength": 0.42,
+      "wet_factor": 0.79,
+      "groove_height_m": 0.0017
+    },
+    "groom_90": {
+      "asset": "brown_mud_02",
+      "palette": [
+        110,
+        94,
+        77
+      ],
+      "luminance_gain": 0.75,
+      "normal_strength": 0.58,
+      "wet_factor": 0.79,
+      "groove_height_m": 0.0017
+    },
+    "groom_135": {
+      "asset": "muddy_tracks",
+      "palette": [
+        109,
+        94,
+        77
+      ],
+      "luminance_gain": 0.72,
+      "normal_strength": 0.48,
+      "wet_factor": 0.79,
+      "groove_height_m": 0.0017
+    }
+  }
+}
