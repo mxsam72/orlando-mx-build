@@ -26,7 +26,9 @@ def sha(p):
 def atomic(p, data):
     p = Path(p); p.parent.mkdir(parents=True, exist_ok=True)
     t = p.with_name(p.name+'.write-tmp')
-    fd = os.open(t, os.O_WRONLY|os.O_CREAT|os.O_TRUNC, 0o600)
+    # Windows defaults to text mode unless O_BINARY is explicit; source FBX
+    # and texture bytes must never undergo CR/LF translation.
+    fd = os.open(t, os.O_WRONLY|os.O_CREAT|os.O_TRUNC|getattr(os, 'O_BINARY', 0), 0o600)
     try:
         view = memoryview(data); done = 0
         while done < len(view):
@@ -35,7 +37,7 @@ def atomic(p, data):
             done += n
         os.fsync(fd)
     finally: os.close(fd)
-    assert t.stat().st_size == len(data)
+    assert t.stat().st_size == len(data), f'Incomplete binary write: {p.name}'
     os.replace(t, p)
 
 def save(p, value):
