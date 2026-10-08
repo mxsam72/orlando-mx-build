@@ -12,7 +12,7 @@ import vtk
 from vtk.util.numpy_support import numpy_to_vtk, numpy_to_vtkIdTypeArray, vtk_to_numpy
 from v027_scenery import parse, values, child, vertices, geometry_records
 from rebind_scenery import array
-from v032_common import layer_blocks
+from v032_common import layer_blocks, atomic
 
 ROOT=Path(__file__).resolve().parents[1]
 SOURCE=ROOT/'V032_OUTPUT'
@@ -31,6 +31,8 @@ def ground(x,z):
     return ans[0] if scalar else ans
 def loc(x,z,above):return [float(x),float(z),float(ground(x,z))+above]
 def font(n,bold=False):return ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans'+('-Bold' if bold else '')+'.ttf',n)
+def save_image(im,path,format,**options):
+    buffer=io.BytesIO();im.save(buffer,format=format,**options);atomic(path,buffer.getvalue())
 
 def vtk_texture(im):
     im=im.convert('RGBA' if 'A' in im.getbands() else 'RGB')
@@ -142,7 +144,10 @@ def find_source(name):
 def terrain_image(box,n=3072):
     key='_'.join(str(round(x,2)) for x in box)+f'_{n}'
     cache=WORK/'terrain_textures'/f'{key}.png';cache.parent.mkdir(exist_ok=True)
-    if cache.exists():return Image.open(cache)
+    if cache.exists():
+        try:
+            im=Image.open(cache);im.load();return im
+        except OSError:cache.unlink()
     X=np.linspace(box[0],box[2],n,dtype=np.float32);Z=np.linspace(box[3],box[1],n,dtype=np.float32)
     result=np.zeros((n,n,3),np.float32)
     for index,_,block in layer_blocks((SOURCE/'compiled_track.hmf').read_text()):
@@ -167,7 +172,7 @@ def terrain_image(box,n=3072):
                 result[row:row+96]=result[row:row+96]*(1-alpha)+sample*alpha
             else:result[row:row+96]=sample
         log(f'  Terrain layer {index}: {name}')
-    im=Image.fromarray(np.uint8(np.clip(np.rint(result),0,255)));im.save(cache)
+    im=Image.fromarray(np.uint8(np.clip(np.rint(result),0,255)));save_image(im,cache,'PNG')
     return im
 
 def terrain_actor(box,n=3072,step=1,cut_box=None):
@@ -218,7 +223,7 @@ def shots():
        ('van_shane','bike_shane',"Shane's Chevy van",'Chevrolet Express and KTM 250F')]):
         veh=next(v for v in vehicles if v['id']==vid);bike=next(v for v in vehicles if v['id']==bid)
         p=(np.array(veh['xz'])+bike['xz'])/2
-        out.append(dict(id=f'{7+i:02}_{vid}',title=title,subtitle=sub,pos=loc(p[0]+5.6,p[1]-7.0,3.2),focus=loc(p[0],p[1],.95),fov=43,box=[310,130,366,179],tex=4096,step=1))
+        out.append(dict(id=f'{7+i:02}_{vid}',title=title,subtitle=sub,pos=loc(p[0]+4.0,p[1]-8.8,3.6),focus=loc(p[0],p[1],.95),fov=31,box=[310,130,366,179],tex=4096,step=1))
     jump_specs=[('11_Triple_R02',['R02'],'The triple','R02 · takeoff and landing',1),('12_Ant_Hill_R07',['R07'],'The ant hill','R07 · steep rise and downhill landing',-1),('13_Big_Double_Tabletop',['R09','R10'],'Double into the big tabletop','R09 / R10 · full jump sequence',1),('14_Triple_R14',['R14'],'Back-section triple','R14 · three-crest rhythm',-1),('15_Rollers_R17',['R17'],'Roller section','R17 · rhythm through the final section',1),('16_Tabletop_R01',['R01'],'Opening tabletop','R01 · first jump section',-1),('18_Double_R05',['R05'],'The small double','R05 · separate takeoff and landing',1)]
     for id,ids,title,sub,side in jump_specs:
         s0=byid[ids[0]]['station_start_m'];s1=byid[ids[-1]]['station_end_m'];p=at((s0+s1)/2)
@@ -265,7 +270,7 @@ def main():
     start=time.time();renderer,window=create_renderer(args.width,args.height)
     actors,bounds=load_scenery()
     for a in actors:renderer.AddActor(a)
-    manifest=[];terrain_cache={};background_cache={};selected=[s for s in shots() if not args.only or s['id'].startswith(args.only)]
+    manifest=[];terrain_cache={};background_cache={};selected=[s for s in shots() if not args.only or s['id'].startswith(tuple(args.only.split(',')))]
     for shot in selected:
         n=min(shot['tex'],1536) if args.draft else shot['tex'];key=tuple(shot['box'])+(n,shot['step'])
         if key not in terrain_cache:terrain_cache[key]=terrain_actor(shot['box'],n,shot['step'])
@@ -276,9 +281,9 @@ def main():
             renderer.AddActor(background_cache[bgkey])
         renderer.AddActor(terrain_cache[key])
         log('Rendering '+shot['id']);im=render_shot(renderer,window,shot,args.width,args.height)
-        file=OUT/'images'/(shot['id']+('_draft' if args.draft else '')+'.jpg');im.save(file,quality=95,subsampling=0,optimize=True)
+        file=OUT/'images'/(shot['id']+('_draft' if args.draft else '')+'.jpg');save_image(im,file,'JPEG',quality=95,subsampling=0,optimize=True)
         # Lossless masters for signs and memorial, preserving the actual art.
-        if not args.draft and shot['id'].startswith(('04_','05_','06_')):im.save(OUT/'images'/(shot['id']+'.png'))
+        if not args.draft and shot['id'].startswith(('04_','05_','06_')):save_image(im,OUT/'images'/(shot['id']+'.png'),'PNG')
         manifest.append({**shot,'filename':file.name,'pixels':[args.width,args.height],'sha256':digest(file),'provenance':'Actual v032 FBX geometry/textures and native terrain source; external renderer; not an MX Bikes game capture.'})
         log(f'  Saved {file.name}, {file.stat().st_size/1e6:.2f} MB, elapsed {time.time()-start:.1f}s')
     assert baseline=={p.name:digest(p) for p in [SOURCE/'scenery.fbx',SOURCE/'terrain.raw',SOURCE/'compiled_track.hmf']},'Track source changed during read-only render'

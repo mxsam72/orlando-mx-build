@@ -1,7 +1,8 @@
 """Assemble the v032 release-post draft and verified source-render gallery."""
 from pathlib import Path
-import hashlib,json,math,zipfile
+import hashlib,io,json,math,zipfile
 from PIL import Image,ImageDraw,ImageFont
+from v032_common import atomic
 
 ROOT=Path(__file__).resolve().parents[2]
 OUT=ROOT/'deliverables-v032-media'
@@ -9,6 +10,8 @@ OUT=ROOT/'deliverables-v032-media'
 def font(size,bold=False):
     return ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans'+('-Bold' if bold else '')+'.ttf',size)
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
+def save_image(im,path,**options):
+    b=io.BytesIO();im.save(b,format='JPEG',**options);atomic(path,b.getvalue())
 
 def main():
     manifest=json.loads((OUT/'manifest.json').read_text())
@@ -16,7 +19,7 @@ def main():
     assert manifest['track_sources_unchanged']
     for s in shots:
         p=OUT/'images'/s['filename'];assert sha(p)==s['sha256']
-        with Image.open(p) as im:assert im.size==(2560,1440)
+        with Image.open(p) as im:im.load();assert im.size==(2560,1440)
     # Cover typography is over the actual overview, with the same provenance.
     cover=Image.open(OUT/'images/01_Track_Overview.jpg').convert('RGBA')
     overlay=Image.new('RGBA',cover.size);d=ImageDraw.Draw(overlay)
@@ -29,7 +32,7 @@ def main():
     note='ACTUAL v032 SOURCE RENDER · NOT AN IN-GAME SCREENSHOT'
     d.text((125,1375),note,font=font(22),fill=(191,197,191,255))
     cover=Image.alpha_composite(cover,overlay).convert('RGB')
-    cover.save(OUT/'00_MXB_Cover.jpg',quality=95,subsampling=0,optimize=True)
+    save_image(cover,OUT/'00_MXB_Cover.jpg',quality=95,subsampling=0,optimize=True)
     cols=3;pad=24;cw=640;ih=360;caption=66;rowgap=18;header=132
     rows=math.ceil(len(shots)/cols);width=pad*2+cols*cw+(cols-1)*pad
     height=header+rows*(ih+caption)+(rows-1)*rowgap+pad
@@ -47,7 +50,7 @@ def main():
         if len(subtitle)>49:subtitle=subtitle[:46]+'...'
         d.text((x+14,y+ih+37),subtitle,font=font(18),fill=(180,193,179))
         captions.append(f'{s["filename"]}\n{s["title"]}. {s["subtitle"]}. Actual v032 source render, not an in-game screenshot.\n')
-    sheet.save(OUT/'OrlandoMX_v032_Gallery_Preview.jpg',quality=93,subsampling=0,optimize=True)
+    save_image(sheet,OUT/'OrlandoMX_v032_Gallery_Preview.jpg',quality=93,subsampling=0,optimize=True)
     (OUT/'Gallery_Captions.txt').write_text('Orlando MX v032 - gallery captions\n\n'+ '\n'.join(captions))
     readme='''Orlando MX v032 - MXB Mods release kit
 
@@ -89,8 +92,13 @@ and the takeoffs/landings before selecting a tested version for the post.
     files=[OUT/'OrlandoMX_v032_MXB_Post.txt',OUT/'MXB_Track_Post_Template.md',OUT/'00_MXB_Cover.jpg',OUT/'OrlandoMX_v032_Gallery_Preview.jpg',OUT/'Gallery_Captions.txt',OUT/'Readme_Release_Kit.txt',OUT/'Render_Provenance.json']
     files+=sorted(p for p in (OUT/'images').iterdir() if p.suffix.lower() in ['.jpg','.png'] and '_draft' not in p.name)
     assert len([p for p in files if p.parent.name=='images'])==21
-    with zipfile.ZipFile(pack,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=6) as z:
+    for p in files:
+        if p.suffix.lower() in ['.jpg','.png']:
+            with Image.open(p) as im:im.load()
+    buffer=io.BytesIO()
+    with zipfile.ZipFile(buffer,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=6) as z:
         for p in files:z.write(p,p.relative_to(OUT))
+    atomic(pack,buffer.getvalue())
     with zipfile.ZipFile(pack) as z:
         assert z.testzip() is None
         assert len(z.namelist())==len(files)
