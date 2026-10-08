@@ -1,0 +1,30 @@
+{
+  "version": "v032",
+  "source_commit": "8102002e371a56f771ad8372d20767283cd34228",
+  "source_version": "v030",
+  "approved_image_sha256": "bb2bd64b56daf6f6b572d0e7c408ee2cbbbe7963c12ee430d699379b73052751",
+  "approved_image_size_px": [
+    1402,
+    1122
+  ],
+  "asset_id": "v032_pup_whatley_memorial",
+  "xz_m": [
+    322,
+    144
+  ],
+  "heading_deg": 0,
+  "image_width_m": 8.0,
+  "image_height_m": 6.40228245363766,
+  "image_lower_edge_above_ground_m": 1.2,
+  "frame_border_m": 0.13,
+  "board_depth_m": 0.2,
+  "texture_size_px": [
+    4096,
+    4096
+  ],
+  "texture_resampling": "Lanczos; exact approved art, no cropping or new content",
+  "two_sided_artwork": true,
+  "placement_intent": "Large memorial on main pit frontage, facing pit road/parking and readable from both sides",
+  "preserve_v030": "All prior terrain, materials, masks, riding geometry, race data, assets and placement; only horizontal entry-sign UV correction and new memorial objects",
+  "dimensions_are_authored": true
+}
