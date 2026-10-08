@@ -1,0 +1,42 @@
+{
+  "version": "v033",
+  "asset_id": "v033_qwikchute_billboard",
+  "xz_m": [
+    277.0,
+    164.6
+  ],
+  "heading_deg": 0,
+  "image_width_m": 6.0,
+  "image_height_m": 4.5,
+  "image_lower_edge_above_ground_m": 1.5,
+  "frame_border_m": 0.12,
+  "board_depth_m": 0.2,
+  "texture_size_px": [
+    2048,
+    2048
+  ],
+  "supplied_image_size_px": [
+    1448,
+    1086
+  ],
+  "supplied_image_sha256": "68c8805d89cb6fea172cdcc35e25481abe6fdf1867f8862c828481ad6e996b67",
+  "two_sided_artwork": true,
+  "placement_reference_sha256": "968f7ebaf7ed31faf0279cc94f3772f9200921b55ba97322bb33227e1be359a6",
+  "placement_circle_center_px": [
+    429.73,
+    262.62
+  ],
+  "reference_render_camera": {
+    "position_game_xz": [
+      336,
+      260
+    ],
+    "height_above_ground_m": 365,
+    "view_up": [
+      1,
+      0,
+      0
+    ],
+    "vertical_fov_deg": 47
+  }
+}

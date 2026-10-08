@@ -1,0 +1,36 @@
+name: Build v033 final memorial and Qwikchute update
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v033]
+    paths: ['V033_SOURCE/**', 'TOOLS/build_v033.py', 'TOOLS/build_windows_v033.py', 'TOOLS/v033_*.py', 'TOOLS/render_v033_sign_checks.py', '.github/workflows/build-v033.yml']
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: orlando-v033-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 75
+    env:
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+      OPENBLAS_NUM_THREADS: '2'
+      V033_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-v009.txt
+      - name: Restore verified v032 source
+        run: python TOOLS/v033_release_transfer.py source
+      - name: Recess memorial supports and append exact supplied Qwikchute logo
+        run: python TOOLS/build_v033.py --source-only
+      - name: Compile and verify native MAP TRH textures and PKZ
+        run: python TOOLS/build_windows_v033.py
+      - name: Preserve verified delivery and complete source privately
+        run: python TOOLS/v033_release_transfer.py deliver
+
