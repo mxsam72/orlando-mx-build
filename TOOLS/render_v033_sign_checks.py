@@ -207,8 +207,8 @@ def terrain_actor(box,n=3072,step=1,cut_box=None):
 def shots():
     return [dict(id='01_Memorial_Front',title='Pup Whatley memorial',subtitle='Front face',pos=loc(322,125,4.6),focus=loc(322,144,3.85),fov=28,box=[240,100,360,195],tex=3072,step=1),
             dict(id='02_Memorial_Back',title='Pup Whatley memorial',subtitle='Back face',pos=loc(322,163,4.6),focus=loc(322,144,3.85),fov=28,box=[240,100,360,195],tex=3072,step=1),
-            dict(id='03_Qwikchute_Pit_Face',title='Qwikchute',subtitle='Pit-side face',pos=loc(277,150.6,3.8),focus=loc(277,164.6,3.65),fov=34,box=[240,100,360,195],tex=3072,step=1),
-            dict(id='04_Qwikchute_Track_Face',title='Qwikchute',subtitle='Behind the spectator fence',pos=loc(277,181.6,3.5),focus=loc(277,164.6,3.65),fov=35,box=[240,100,360,195],tex=3072,step=1),
+            dict(id='03_Qwikchute_Pit_Face',title='Qwikchute',subtitle='Pit-side face',pos=loc(281.5,150.6,3.8),focus=loc(281.5,164.6,3.65),fov=34,box=[240,100,360,195],tex=3072,step=1),
+            dict(id='04_Qwikchute_Track_Face',title='Qwikchute',subtitle='Behind the spectator fence',pos=loc(281.5,181.6,3.5),focus=loc(281.5,164.6,3.65),fov=35,box=[240,100,360,195],tex=3072,step=1),
             dict(id='05_Updated_Layout',title='Billboard placement',subtitle='Marked grass strip',pos=loc(336,260,365),focus=loc(336,260,0),up=[1,0,0],fov=47,box=[0,0,600,600],tex=4096,step=2)]
 
 def create_renderer(width,height):

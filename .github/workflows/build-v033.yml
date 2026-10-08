@@ -9,7 +9,7 @@ permissions:
   actions: read
 concurrency:
   group: orlando-v033-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   build:
     runs-on: windows-latest

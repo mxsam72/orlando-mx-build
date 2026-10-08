@@ -2,7 +2,7 @@
   "version": "v033",
   "asset_id": "v033_qwikchute_billboard",
   "xz_m": [
-    277.0,
+    281.5,
     164.6
   ],
   "heading_deg": 0,
@@ -38,5 +38,6 @@
       0
     ],
     "vertical_fov_deg": 47
-  }
+  },
+  "placement_adjustment": "4.5 m along marked strip to clear existing light_01 pole sightline; still inside yellow mark"
 }
