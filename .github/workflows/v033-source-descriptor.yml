@@ -1,0 +1,41 @@
+name: Restore verified v032 source for v033
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v033]
+    paths: ['.github/workflows/v033-source-descriptor.yml']
+permissions:
+  contents: write
+jobs:
+  descriptor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      V033_TRANSFER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Store authorized source download metadata privately
+        shell: python
+        run: |
+          import os,json,urllib.request,urllib.error,urllib.parse
+          api='https://api.github.com/repos/'+os.environ['GITHUB_REPOSITORY']
+          headers={'Authorization':'Bearer '+os.environ['V033_TRANSFER_TOKEN'],'Accept':'application/vnd.github+json','User-Agent':'OrlandoMX-v033-source-restore'}
+          def request(path,data=None):
+              payload=None if data is None else json.dumps(data).encode()
+              with urllib.request.urlopen(urllib.request.Request(api+path,data=payload,headers=headers|({'Content-Type':'application/json'} if payload else {})),timeout=120) as r:return json.load(r)
+          assert request('')['private']
+          release=request('/releases/407076842');assert release['draft']
+          assets=[a for a in release['assets'] if a['name']=='OrlandoMX-v032-source-checkpoint.zip' and a['state']=='uploaded']
+          assert len(assets)==1
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self,*args,**kwargs):return None
+          asset=assets[0]
+          try:
+              urllib.request.build_opener(NoRedirect).open(urllib.request.Request(asset['url'],headers=headers|{'Accept':'application/octet-stream'}),timeout=120)
+              raise RuntimeError('Expected temporary source download redirect')
+          except urllib.error.HTTPError as e:
+              if e.code not in (301,302,303,307,308):raise
+              location=e.headers['Location']
+          assert urllib.parse.urlparse(location).hostname in ['release-assets.githubusercontent.com','objects.githubusercontent.com']
+          descriptor=dict(release_id=release['id'],assets=[dict(name=asset['name'],asset_id=asset['id'],bytes=asset['size'],digest=asset['digest'],download_url=location)])
+          blob=request('/git/blobs',dict(content=json.dumps(descriptor),encoding='utf-8'))
+          print('CODEX_V033_SOURCE_BLOB '+blob['sha'],flush=True)
