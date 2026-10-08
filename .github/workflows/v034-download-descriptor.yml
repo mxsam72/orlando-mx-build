@@ -1,0 +1,42 @@
+name: Download verified v034 delivery metadata
+on:
+  push:
+    branches: [rebuild-v034]
+    paths: ['.github/workflows/v034-download-descriptor.yml']
+permissions:
+  contents: write
+jobs:
+  descriptor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      V034_TRANSFER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Store private verified native download metadata
+        shell: python
+        run: |
+          import os,json,urllib.request,urllib.error,urllib.parse
+          api='https://api.github.com/repos/'+os.environ['GITHUB_REPOSITORY']
+          headers={'Authorization':'Bearer '+os.environ['V034_TRANSFER_TOKEN'],'Accept':'application/vnd.github+json','User-Agent':'OrlandoMX-v034-private-delivery'}
+          def request(path,data=None):
+              payload=None if data is None else json.dumps(data).encode()
+              with urllib.request.urlopen(urllib.request.Request(api+path,data=payload,headers=headers|({'Content-Type':'application/json'} if payload else {})),timeout=120) as r:return json.load(r)
+          assert request('')['private']
+          release=request('/releases/407343043');assert release['draft']
+          assets=[a for a in release['assets'] if a['state']=='uploaded' and not a['name'].endswith('-source-checkpoint.zip')]
+          assert len(assets)==8
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self,*args,**kwargs):return None
+          records=[]
+          for asset in assets:
+              try:
+                  urllib.request.build_opener(NoRedirect).open(urllib.request.Request(asset['url'],headers=headers|{'Accept':'application/octet-stream'}),timeout=120)
+                  raise RuntimeError('Expected temporary private download redirect')
+              except urllib.error.HTTPError as e:
+                  if e.code not in (301,302,303,307,308):raise
+                  location=e.headers['Location']
+              assert urllib.parse.urlparse(location).hostname in ['release-assets.githubusercontent.com','objects.githubusercontent.com']
+              records.append(dict(name=asset['name'],asset_id=asset['id'],bytes=asset['size'],digest=asset['digest'],download_url=location))
+          descriptor=dict(release_id=release['id'],build_run=37859098793,source_commit='5df7a9c97f30f71def77d4731de8585af4337ab9',assets=records)
+          blob=request('/git/blobs',dict(content=json.dumps(descriptor),encoding='utf-8'))
+          print('CODEX_V034_DELIVERY_BLOB '+blob['sha'],flush=True)
