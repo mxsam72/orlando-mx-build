@@ -1,0 +1,44 @@
+name: Retrieve verified v032 delivery
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v032]
+    paths: ['.github/workflows/v032-download-descriptor.yml']
+permissions:
+  contents: write
+jobs:
+  descriptor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      V032_TRANSFER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Store authorized source download metadata privately
+        shell: python
+        run: |
+          import os,json,urllib.request,urllib.error,urllib.parse
+          api='https://api.github.com/repos/'+os.environ['GITHUB_REPOSITORY']
+          headers={'Authorization':'Bearer '+os.environ['V032_TRANSFER_TOKEN'],'Accept':'application/vnd.github+json','User-Agent':'OrlandoMX-v032-source-restore'}
+          def request(path,data=None):
+              payload=None if data is None else json.dumps(data).encode()
+              with urllib.request.urlopen(urllib.request.Request(api+path,data=payload,headers=headers|({'Content-Type':'application/json'} if payload else {})),timeout=120) as r:return json.load(r)
+          assert request('')['private']
+          release=request('/releases/407076842');assert release['draft']
+          wanted={'OrlandoMX_2026_v032.pkz','OrlandoMX_v032_Validation.json','Install_v032.txt','OrlandoMX_2026_v032.pkz.sha256','memorial_preview.png','memorial_placement.png','sign_projection_check.png'}
+          assets=[a for a in release['assets'] if a['name'] in wanted and a['state']=='uploaded']
+          assert len(assets)==len(wanted)
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self,*args,**kwargs):return None
+          records=[]
+          for asset in assets:
+              try:
+                  urllib.request.build_opener(NoRedirect).open(urllib.request.Request(asset['url'],headers=headers|{'Accept':'application/octet-stream'}),timeout=120)
+                  raise RuntimeError('Expected temporary delivery download redirect')
+              except urllib.error.HTTPError as e:
+                  if e.code not in (301,302,303,307,308):raise
+                  location=e.headers['Location']
+              assert urllib.parse.urlparse(location).hostname in ['release-assets.githubusercontent.com','objects.githubusercontent.com']
+              records.append(dict(name=asset['name'],asset_id=asset['id'],bytes=asset['size'],digest=asset['digest'],download_url=location))
+          descriptor=dict(release_id=release['id'],build_run=37812702260,source_commit='831e07f2a6b2fd09315d71f991e3a0248d91f3e7',assets=records)
+          blob=request('/git/blobs',dict(content=json.dumps(descriptor),encoding='utf-8'))
+          print('CODEX_V032_DOWNLOAD_BLOB '+blob['sha'],flush=True)
