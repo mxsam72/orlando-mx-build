@@ -142,7 +142,9 @@ def find_source(name):
     raise FileNotFoundError(name)
 
 def terrain_image(box,n=3072):
-    key=SOURCE.name+'_'+'_'.join(str(round(x,2)) for x in box)+f'_{n}'
+    maskproof=SOURCE/'holeshot_mask_validation.json'
+    sig=digest(maskproof)[:12] if maskproof.exists() else digest(SOURCE/'terrain.raw')[:12]
+    key=SOURCE.name+'_'+sig+'_'+'_'.join(str(round(x,2)) for x in box)+f'_{n}'
     cache=WORK/'terrain_textures'/f'{key}.png';cache.parent.mkdir(exist_ok=True)
     if cache.exists():
         try:

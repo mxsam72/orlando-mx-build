@@ -71,6 +71,9 @@ def terrain(old,w,q,nw,sa):
  qa['checks_pass']=qa['outside_patch_changed_samples']==0 and qa['unrelated_main_riding_and_jump_support_changed_samples']==0 and qa['start_apron_grade_max']<.35 and qa['merge_apron_grade_max']<1.0
  save(O/'holeshot_terrain_validation.json',qa);print('terrain',qa,flush=True);return qa
 
+def key_skip(p,folder):
+ return 'rv_restroom' in p.name or 'pit_roads' in p.name or (folder=='masks' and p.stem=='pits')
+
 def masks(old,w,q,nw,sa):
  summaries=[]
  for n in [2048,4096]:
@@ -82,15 +85,15 @@ def masks(old,w,q,nw,sa):
     with Image.open(p) as im:
      if im.size!=(n,n):continue
      # Pit/grass patches and jump-face texture stay byte exact unless local alpha actually changes.
-     if any(x in p.name for x in ['pit','rv_restroom']):continue
+     if key_skip(p,folder):continue
      im.load();arr=np.array(im.convert('RGBA'));allalpha=arr[:,:,3].ravel().astype(float);alpha=allalpha[f['flatidx']];orig=alpha.copy();key=p.stem.removeprefix('mask_');source=map_coordinates(allalpha.reshape(n,n),[(600-f['src'][:,1])/600*(n-1),f['src'][:,0]/600*(n-1)],order=1,mode='nearest')
      background=0
      if key=='off':background=255
      if key=='visual_grass':background=170 # Existing v030 grass palette, not a new color tile.
      # Physical grass remains the accepted off-track material policy.
      val=alpha*(1-f['retire'])+background*f['retire'];val=val*(1-f['newweight'])+source*f['newweight']
-     if key in ['racing','shoulder','visual_racing','start','v032_packed','v032_groom_90','visual_worked','worked','off','grass','visual_grass','sand','visual_sand','v032_groom_0','v032_groom_45','v032_groom_135','v032_damp','v032_face']:
-      target={'racing':255,'shoulder':255,'visual_racing':250,'start':255,'v032_packed':150,'v032_groom_90':190,'visual_worked':51,'worked':0,'off':0,'grass':0,'visual_grass':0,'sand':0,'visual_sand':0,'v032_groom_0':0,'v032_groom_45':0,'v032_groom_135':0,'v032_damp':0,'v032_face':0}[key]
+     if key in ['racing','shoulder','visual_racing','start','v032_packed','v032_groom_90','visual_worked','worked','off','grass','visual_grass','sand','visual_sand','v032_groom_0','v032_groom_45','v032_groom_135','v032_damp','v032_face','v032_pits']:
+      target={'racing':255,'shoulder':255,'visual_racing':250,'start':255,'v032_packed':0,'v032_groom_90':0,'visual_worked':2,'worked':0,'off':0,'grass':0,'visual_grass':0,'sand':0,'visual_sand':0,'v032_groom_0':0,'v032_groom_45':0,'v032_groom_135':0,'v032_damp':0,'v032_face':0,'v032_pits':0}[key]
       amount=start.copy()
       # Keep material/rut identity on the main track at the intentional merge.
       if key!='start':amount[keep_main]=0

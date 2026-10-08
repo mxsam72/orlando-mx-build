@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches: [rebuild-v034]
-    paths: ['V034_SOURCE/**', 'TOOLS/build_v034.py', 'TOOLS/build_windows_v034.py', 'TOOLS/v034_*.py', 'TOOLS/render_v034_sign_checks.py', '.github/workflows/build-v034.yml']
+    paths: ['V034_SOURCE/**', 'TOOLS/build_v034.py', 'TOOLS/build_windows_v034.py', 'TOOLS/v034_*.py', 'TOOLS/render_v034_holeshot.py', 'TOOLS/verify_v034_source.py', '.github/workflows/build-v034.yml']
 permissions:
   contents: write
   actions: read
@@ -35,5 +35,6 @@ jobs:
         run: python TOOLS/build_windows_v034.py
       - name: Preserve verified delivery and complete source privately
         run: python TOOLS/v034_release_transfer.py deliver
+
 
 
