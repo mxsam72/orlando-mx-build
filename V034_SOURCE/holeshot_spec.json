@@ -1,0 +1,76 @@
+{
+  "version": "v034",
+  "baseline": "v033",
+  "corner_translation_xz_m": [
+    18,
+    0
+  ],
+  "main_connector_old_station_bounds_m": [
+    428.7,
+    497.0
+  ],
+  "connector_tangent_scale": 1.0,
+  "merge_old_main_station_m": 460.0,
+  "start_controls_xz": [
+    [
+      416,
+      230
+    ],
+    [
+      416,
+      247
+    ],
+    [
+      410,
+      260
+    ],
+    [
+      401,
+      264
+    ],
+    [
+      392,
+      264
+    ]
+  ],
+  "start_width_knots": [
+    [
+      0,
+      38
+    ],
+    [
+      52,
+      38
+    ],
+    [
+      80,
+      32
+    ],
+    [
+      103,
+      24
+    ],
+    [
+      116,
+      18
+    ],
+    [
+      130,
+      13.5
+    ],
+    [
+      150,
+      13.5
+    ]
+  ],
+  "start_checkpoint_stations_m": [
+    20,
+    80,
+    115
+  ],
+  "protected_main_halfwidth_m": 4.5,
+  "reason": "Provide a longer broad holeshot approach and separate the start from T05. Preserve the T05 arc and banks by translation, all jumps and all other corners; rebuild only the local connectors and start route.",
+  "reference_screenshot": "upload/image(1).png",
+  "reference_video": "upload/20261008-2243-46.8113524.mp4",
+  "in_game_test": false
+}
