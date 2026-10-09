@@ -1,0 +1,43 @@
+name: Retrieve verified v037 game package
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v037]
+    paths: ['.github/workflows/v037-download-descriptor.yml']
+permissions:
+  contents: write
+jobs:
+  descriptor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      V037_TRANSFER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Store authorized verified package metadata privately
+        shell: python
+        run: |
+          import os,json,urllib.request,urllib.error,urllib.parse
+          api='https://api.github.com/repos/'+os.environ['GITHUB_REPOSITORY']
+          headers={'Authorization':'Bearer '+os.environ['V037_TRANSFER_TOKEN'],'Accept':'application/vnd.github+json','User-Agent':'OrlandoMX-v037-verified-delivery'}
+          def request(path,data=None):
+              payload=None if data is None else json.dumps(data).encode()
+              with urllib.request.urlopen(urllib.request.Request(api+path,data=payload,headers=headers|({'Content-Type':'application/json'} if payload else {})),timeout=120) as r:return json.load(r)
+          assert request('')['private'];release=request('/releases/407584547');assert release['draft'] and release['target_commitish']=='c2f0065f3c3aced5ac33272d7cd65587b9800635'
+          names=['OrlandoMX_2026_v037.pkz','OrlandoMX_v037_Validation.json','Install_v037.txt','OrlandoMX_2026_v037.pkz.sha256','oval_surface_validation.json','oval_vehicle_validation.json','oval_scenery_validation.json','oval_independent_validation.json']
+          available={a['name']:a for a in release['assets'] if a['state']=='uploaded'};assert all(n in available for n in names)
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self,*args,**kwargs):return None
+          records=[]
+          for name in names:
+              asset=available[name]
+              try:
+                  urllib.request.build_opener(NoRedirect).open(urllib.request.Request(asset['url'],headers=headers|{'Accept':'application/octet-stream'}),timeout=120)
+                  raise RuntimeError('Expected temporary download redirect')
+              except urllib.error.HTTPError as e:
+                  if e.code not in (301,302,303,307,308):raise
+                  location=e.headers['Location']
+              assert urllib.parse.urlparse(location).hostname in ['release-assets.githubusercontent.com','objects.githubusercontent.com']
+              assert asset['digest'].startswith('sha256:')
+              records.append(dict(name=name,asset_id=asset['id'],bytes=asset['size'],digest=asset['digest'],download_url=location))
+          descriptor=dict(release_id=release['id'],build_run=37891205965,source_commit='c2f0065f3c3aced5ac33272d7cd65587b9800635',assets=records)
+          blob=request('/git/blobs',dict(content=json.dumps(descriptor),encoding='utf-8'));print('CODEX_V037_DELIVERY_BLOB '+blob['sha'],flush=True)
