@@ -1,0 +1,51 @@
+name: Build v039 sign readability and flicker correction
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v039]
+    paths: ['V039_SOURCE/**', 'TOOLS/build_v039.py', 'TOOLS/build_windows_v039.py', 'TOOLS/v039_*.py', 'TOOLS/verify_v039_source.py', '.github/workflows/build-v039.yml']
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: orlando-v039-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 75
+    env:
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+      OPENBLAS_NUM_THREADS: '2'
+      V039_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-v009.txt shapely==2.1.2
+      - name: Restore immutable user-tested v038 native source
+        run: python TOOLS/v039_release_transfer.py source
+      - name: Correct text UVs and remove Qwikchute black backboards
+        run: python TOOLS/build_v039.py
+      - name: Verify native camera handedness and exact track preservation
+        run: python TOOLS/verify_v039_source.py
+      - name: Compile native MAP TRH and check no backboards remain
+        run: python TOOLS/build_windows_v039.py
+      - name: Save verified PKZ and validation download artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: OrlandoMX-v039-verified-download
+          compression-level: 0
+          retention-days: 30
+          path: |
+            12_RELEASE/OrlandoMX_2026_v039.pkz
+            12_RELEASE/OrlandoMX_v039_Validation.json
+            12_RELEASE/Install_v039.txt
+            12_RELEASE/OrlandoMX_2026_v039.pkz.sha256
+      - name: Preserve verified PKZ and full source privately
+        run: python TOOLS/v039_release_transfer.py deliver
+      - name: Preserve private diagnostics if verification fails
+        if: failure()
+        run: python TOOLS/v039_release_transfer.py diagnostic
