@@ -3,9 +3,24 @@ import os,re,shutil,struct,subprocess,sys,zipfile
 import numpy as np
 from PIL import Image
 from v041_common import *
-from v027_scenery import parse,geometry_records,vertices
+from v027_scenery import parse,geometry_records,vertices,values
 from build_windows_v037 import probe
 from validate_native_textures_v024 import bitmap_signature,verify_files
+
+def active_diffuse_textures(nodes):
+    objects={values(n)[0]:n for n in next(n for n in nodes if n['name']==b'Objects')['children']}
+    models={mid for g,mid in geometry_records(nodes).values()}
+    links=[values(n) for n in next(n for n in nodes if n['name']==b'Connections')['children']]
+    materials={v[1] for v in links if v[2] in models and objects.get(v[1],{}).get('name')==b'Material'}
+    active=set()
+    for link in links:
+        if link[2] not in materials or objects.get(link[1],{}).get('name')!=b'Texture':continue
+        if link[0]==b'OP' and link[3]!=b'DiffuseColor':continue
+        for n in objects[link[1]]['children']:
+            if n['name'] not in [b'FileName',b'Filename',b'RelativeFilename']:continue
+            value=values(n)[0];value=value.decode() if isinstance(value,bytes) else str(value)
+            active.add(value.replace('\\','/').split('/')[-1])
+    return active
 
 def main():
     if os.name!='nt':raise SystemExit('Native v041 compilation requires Windows.')
@@ -64,8 +79,18 @@ def main():
     textures += sorted((O/'facility_textures').glob('v041_*.tga'))
     meshes=read(R/'V024_OUTPUT/vehicle_meshes.json')+read(R/'V024_OUTPUT/sign_graphic_meshes.json')
     textures += [O/'facility_textures'/('v024_vehicle_'+n+'.tga') for n in sorted({m['material'] for m in meshes})]
+    scene_nodes=parse((O/'scenery.fbx').read_bytes())[0]
+    active=active_diffuse_textures(scene_nodes)
+    unused=sorted({p.name for p in textures if p.name not in active})
+    # v028_red belonged only to the generic staging pickup removed in v041.
+    # PiBoSo correctly prunes its unused native bitmap. Every requested sign,
+    # display and new texture is still mandatory and verified byte for byte.
+    assert unused==['v028_red.tga'],('Unexpected unused required artwork',unused)
+    textures=[p for p in textures if p.name in active]
     objects=verify_files(W/'08_OBJECTS_GAME/scenery.edf',DEST/(NAME+'.map'),textures,R/'DOCUMENTATION/v041_native_object_texture_validation.json')
-    rec=geometry_records(parse((O/'scenery.fbx').read_bytes())[0]);trh=(DEST/(NAME+'.trh')).read_bytes();physical=[]
+    objects['unused_removed_pickup_texture_refs']=unused
+    save(R/'DOCUMENTATION/v041_native_object_texture_validation.json',objects)
+    rec=geometry_records(scene_nodes);trh=(DEST/(NAME+'.trh')).read_bytes();physical=[]
     for name in ['TRKASPH_v037_oval_surface','WLLCONC_v037_oval_wall_white','WLLCONC_v037_oval_wall_green_cap','TRKASPH_v041_oval_wall_gap_fill','WLLCONC_v041_grandstand_decks']:
         v=vertices(rec[name][0]);checks=[]
         for p in v[np.linspace(0,len(v)-1,12,dtype=int)]:
