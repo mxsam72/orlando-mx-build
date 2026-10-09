@@ -1,0 +1,37 @@
+name: Build v042 corrected American flag and additional pit Cybertrucks
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v042]
+    paths: ['V042_SOURCE/**', 'TOOLS/build_v042.py', 'TOOLS/build_windows_v042.py', 'TOOLS/v042_*.py', 'TOOLS/verify_v042_source.py', '.github/workflows/build-v042.yml']
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: orlando-v042-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 90
+    env:
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+      OPENBLAS_NUM_THREADS: '2'
+      V042_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-v009.txt shapely==2.1.2
+      - name: Restore delivered v041 and read its actual native validation
+        run: python TOOLS/v042_release_transfer.py source
+      - name: Correct American flag UVs and add pink orange yellow pit Cybertrucks
+        run: python TOOLS/build_v042.py
+      - name: Independently verify native flag orientation parking and exact preservation
+        run: python TOOLS/verify_v042_source.py
+      - name: Compile and validate native MAP TRH with official Windows tools
+        run: python TOOLS/build_windows_v042.py
+      - name: Save verified PKZ checksums validation and complete source privately
+        run: python TOOLS/v042_release_transfer.py deliver

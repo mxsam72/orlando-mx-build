@@ -1,0 +1,70 @@
+{
+  "version": "v042",
+  "baseline_version": "v041",
+  "baseline_release_id": 408279561,
+  "baseline_source_commit": "f52483021b07ab918b45ce35bef8b082be3c1417",
+  "baseline_checkpoint_bytes": 1859754307,
+  "baseline_checkpoint_sha256": "0946b6947e0a9721a15ed10b6f5a568a1069773b8aff927638f97122076b2f43",
+  "baseline_validation_sha256": "043cb4769d1298cbffc9161499bad58adfe3ea3dea1b9f6b3b5f402d8245c21c",
+  "baseline_pkz_bytes": 426853542,
+  "baseline_pkz_sha256": "cbe744503b3e557a0cd9e91e273740f7dcc3f4c57ba19b511d35f5f1770a2642",
+  "baseline_scenery_sha256": "f0bc4c096aede46b2f7cbccd24353f0247117606d8fe78b5b63dcbd1ffd93fd4",
+  "baseline_terrain_sha256": "f6ce21f9b1a0ff4ca3a822d92dcba5904eeea860cd95952bd4ba44ac9cb5c4b9",
+  "maximum_pkz_bytes": 499999999,
+  "flag_geometry": "front_flag_red",
+  "horizontal_flag_uv_flip_only": true,
+  "new_truck_color_order": [
+    "pink",
+    "orange",
+    "yellow"
+  ],
+  "truck_paint_rgb": {
+    "pink": [
+      240,
+      90,
+      162
+    ],
+    "orange": [
+      245,
+      133,
+      28
+    ],
+    "yellow": [
+      239,
+      206,
+      38
+    ]
+  },
+  "new_trucks": [
+    {
+      "number": 4,
+      "color": "pink",
+      "center_xz_m": [
+        305,
+        103
+      ],
+      "heading_degrees": 0
+    },
+    {
+      "number": 5,
+      "color": "orange",
+      "center_xz_m": [
+        295,
+        127
+      ],
+      "heading_degrees": 90
+    },
+    {
+      "number": 6,
+      "color": "yellow",
+      "center_xz_m": [
+        353,
+        125
+      ],
+      "heading_degrees": -90
+    }
+  ],
+  "minimum_obstacle_clearance_m": 1.5,
+  "minimum_route_clearance_m": 1.5,
+  "maximum_wheel_ground_gap_m": 0.12
+}
