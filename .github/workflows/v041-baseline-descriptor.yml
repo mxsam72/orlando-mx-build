@@ -1,0 +1,43 @@
+name: Restore v040 source download metadata
+on:
+  push:
+    branches: [rebuild-v041]
+    paths: ['.github/workflows/v041-baseline-descriptor.yml']
+permissions:
+  contents: write
+jobs:
+  descriptor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Resolve immutable private v040 checkpoint and validation
+        shell: python
+        env:
+          V041_READ_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          import os,json,urllib.request,urllib.error,urllib.parse
+          api='https://api.github.com/repos/'+os.environ['GITHUB_REPOSITORY']
+          headers={'Authorization':'Bearer '+os.environ['V041_READ_TOKEN'],'Accept':'application/vnd.github+json','User-Agent':'OrlandoMX-v041-baseline'}
+          def request(path,data=None):
+              payload=None if data is None else json.dumps(data).encode()
+              with urllib.request.urlopen(urllib.request.Request(api+path,data=payload,headers=headers|({'Content-Type':'application/json'} if payload else {})),timeout=120) as r:return json.load(r)
+          assert request('')['private']
+          release=request('/releases/407935700');assert release['draft']
+          expected={"OrlandoMX-v040-source-checkpoint.zip":[1432425377,"c8a1967625b3be58dcd7dbd24aca2d253610f6e4e7f45eaa68cc3c3d15a6d513"],"OrlandoMX_v040_Validation.json":[213961,"b303512fa4d0f3377f413d74837da685d81890e4d6c1af45ee4fdf84aaaf3a8f"]}
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self,*args,**kwargs):return None
+          records=[]
+          for name,(size,digest) in expected.items():
+              matches=[a for a in release['assets'] if a['name']==name];assert len(matches)==1
+              a=matches[0];assert a['size']==size and a['digest']=='sha256:'+digest
+              try:
+                  urllib.request.build_opener(NoRedirect).open(urllib.request.Request(a['url'],headers=headers|{'Accept':'application/octet-stream'}),timeout=120)
+                  raise RuntimeError('Expected temporary private-file redirect')
+              except urllib.error.HTTPError as e:
+                  if e.code not in (301,302,303,307,308):raise
+                  location=e.headers['Location']
+              assert urllib.parse.urlparse(location).hostname in ('release-assets.githubusercontent.com','objects.githubusercontent.com')
+              records.append(dict(name=name,bytes=size,sha256=digest,download_url=location))
+          data=dict(release_id=release['id'],source_commit=release['target_commitish'],files=records)
+          b=request('/git/blobs',dict(content=json.dumps(data),encoding='utf-8'))
+          print('CODEX_V041_BASELINE_BLOB '+b['sha'],flush=True)
