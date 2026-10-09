@@ -1,7 +1,8 @@
 """Assemble comparisons from matched, actual source renders."""
-import hashlib, json
+import hashlib, json, io
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
+from v036_common import atomic
 
 ROOT=Path(__file__).resolve().parents[2]
 R=ROOT/'deliverables-v036-renders'
@@ -63,7 +64,9 @@ def main():
             dr.text((pad,y+ih+14),label,font=font(30,True),fill=(245,244,239))
             dr.text((pad+690,y+ih+15),caption,font=font(27),fill=(190,200,202))
         dr.text((pad,H-64),'Matched views of actual track source. External renders; not MX Bikes screenshots. In-game testing is pending.',font=font(27),fill=(171,182,184))
-        p=D/('OrlandoMX_v036_'+stem+'_Comparison.png');board.save(p)
+        p=D/('OrlandoMX_v036_'+stem+'_Comparison.png')
+        buffer=io.BytesIO();board.save(buffer,format='PNG');atomic(p,buffer.getvalue())
+        with Image.open(p) as exported:exported.load();assert exported.size==(W,H)
         boards.append(dict(file=p.name,pixels=[W,H],sha256=sha(p),views=[x[0] for x in rows]))
     source_inputs={}
     for version,manifest in [('v035',before),('v036',after)]:
