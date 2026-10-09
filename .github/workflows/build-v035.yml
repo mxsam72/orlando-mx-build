@@ -1,0 +1,37 @@
+name: Build v035 from tested v033 with original corner
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v035]
+    paths: ['V035_SOURCE/**', 'TOOLS/build_v035.py', 'TOOLS/build_windows_v035.py', 'TOOLS/v035_*.py', 'TOOLS/render_v035_holeshot.py', 'TOOLS/verify_v035_source.py', '.github/workflows/build-v035.yml']
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: orlando-v035-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 75
+    env:
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+      OPENBLAS_NUM_THREADS: '2'
+      V035_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-v009.txt
+      - name: Restore immutable tested v033 source and native inputs
+        run: python TOOLS/v035_release_transfer.py source
+      - name: Build start and practice only with main terrain protected
+        run: python TOOLS/build_v035.py
+      - name: Verify complete main corner jumps masks race stalls and dense scenery
+        run: python TOOLS/verify_v035_source.py
+      - name: Compile and verify native MAP TRH textures and PKZ
+        run: python TOOLS/build_windows_v035.py
+      - name: Preserve verified delivery and complete source privately
+        run: python TOOLS/v035_release_transfer.py deliver
