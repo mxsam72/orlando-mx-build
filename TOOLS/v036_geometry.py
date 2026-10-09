@@ -95,7 +95,11 @@ def terrain(old,q,warp):
     oldroller=gaussian_filter(envelope(pts,supports([p for p in before if p['id']=='R17'],old,w)).reshape(H.shape),.65);newroller=gaussian_filter(envelope(pts,supports([p for p in after if p['id']=='R17'],q,w)).reshape(H.shape),.65)
     floor=H-oldroller;target=floor.copy();box=(xx>185)&(xx<275)&(zz>184)&(zz<329);patch=pts[box.ravel()];src,res=warp.inverse(patch);moved=np.linalg.norm(src-patch,axis=1)>1e-7;sample=map_coordinates(floor,[(600-src[:,1])/600*2048,src[:,0]/600*2048],order=1,mode='nearest');v=target[box];v[moved]=sample[moved];target[box]=v;target+=newroller
     otherd=warp.other_tree.query(pts,workers=2)[0];protect=ease((otherd-warp.other_halfwidth-3.2)/3).reshape(H.shape);target=H+(target-H)*protect
-    grow=gaussian_filter(envelope(pts,supports([p for p in before if p['id'] in ['R11','R12']],old,w)).reshape(H.shape),.65)*.3;added=gaussian_filter(envelope(pts,supports([p for p in after if p['id']=='R11_ENTRY'],q,w)).reshape(H.shape),.65);target+=grow+added
+    grow=gaussian_filter(envelope(pts,supports([p for p in before if p['id'] in ['R11','R12']],old,w)).reshape(H.shape),.65)*.3;added=gaussian_filter(envelope(pts,supports([p for p in after if p['id']=='R11_ENTRY'],q,w)).reshape(H.shape),.65)
+    rhythm_other=old[(old[:,3]<808)|(old[:,3]>982)]
+    rhythm_distance=cKDTree(rhythm_other[:,:2]).query(pts,workers=2)[0]
+    rhythm_guard=ease((rhythm_distance-float(w.max()/2)-2.6)/3.5).reshape(H.shape)
+    target+=(grow+added)*rhythm_guard
     allowed=abs(target-H)>1e-8;encoded=raw.copy();encoded[allowed]=np.rint(np.clip(target[allowed]/18*65535,0,65535)).astype('<u2');atomic(O/'terrain.raw',encoded.tobytes());image_file(Image.fromarray(encoded),O/'terrain_16bit.png');b=io.BytesIO();np.save(b,encoded.astype(np.float32)/65535*18);atomic(O/'height_metres.npy',b.getvalue());image_file(Image.fromarray(np.uint8(allowed)*255),O/'v036_height_change_region.png')
     changed=encoded!=raw;gy,gx=np.gradient(encoded/65535*18,600/2048);grade=np.hypot(gx,gy);d,i,st,lat=projection(q,pts);riding=(d<5.7)&changed.ravel();maximum=float(grade.ravel()[riding].max());assert maximum<.88,maximum
     od,oi,os,ol=projection(old,pts);t05=(os>=428.5)&(os<=505)&(od<13);assert not changed.ravel()[t05].any();assert not changed.ravel()[(os<740)&(od<np.interp(os,old[:,3],w)/2+3)].any()
