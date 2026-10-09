@@ -1,0 +1,37 @@
+name: Build v041 road gap repair grandstands trucks and crocodile
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v041]
+    paths: ['V041_SOURCE/**', 'TOOLS/build_v041.py', 'TOOLS/build_windows_v041.py', 'TOOLS/v041_*.py', 'TOOLS/verify_v041_source.py', '.github/workflows/build-v041.yml']
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: orlando-v041-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 90
+    env:
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+      OPENBLAS_NUM_THREADS: '2'
+      V041_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-v009.txt shapely==2.1.2
+      - name: Restore pinned delivered v040 and read its native validation
+        run: python TOOLS/v041_release_transfer.py source
+      - name: Fill road gaps and add stadium seating pit Cybertrucks and crocodile
+        run: python TOOLS/build_v041.py
+      - name: Independently verify geometry artwork physics scope and orientation
+        run: python TOOLS/verify_v041_source.py
+      - name: Compile and validate native MAP TRH with official Windows tools
+        run: python TOOLS/build_windows_v041.py
+      - name: Preserve verified playable build checksums validation and full source privately
+        run: python TOOLS/v041_release_transfer.py deliver

@@ -1,0 +1,115 @@
+{
+  "version": "v041",
+  "baseline_version": "v040",
+  "baseline_release_id": 407935700,
+  "baseline_source_commit": "e3c4230687315bd6a4a65470f9115cfe77258c73",
+  "baseline_checkpoint_bytes": 1432425377,
+  "baseline_checkpoint_sha256": "c8a1967625b3be58dcd7dbd24aca2d253610f6e4e7f45eaa68cc3c3d15a6d513",
+  "baseline_validation_sha256": "b303512fa4d0f3377f413d74837da685d81890e4d6c1af45ee4fdf84aaaf3a8f",
+  "baseline_pkz_bytes": 423059249,
+  "baseline_pkz_sha256": "4445618bed4971feed86e92f542b311f952acd187a74c09b884a6d36f1ff7c9b",
+  "baseline_scenery_sha256": "9aa0630f824237ce5f61579137e68c2d05835a7c13996c10f45d7b066f5c1ebe",
+  "baseline_terrain_sha256": "f6ce21f9b1a0ff4ca3a822d92dcba5904eeea860cd95952bd4ba44ac9cb5c4b9",
+  "maximum_pkz_bytes": 499999999,
+  "gap_fill_outer_radius_m": 55.8,
+  "generic_pickups": [
+    "pickup_01",
+    "pickup_02",
+    "v028_staging_pickup"
+  ],
+  "replacement_color_order": [
+    "blue",
+    "purple",
+    "green",
+    "pink",
+    "orange",
+    "yellow"
+  ],
+  "truck_paint_rgb": {
+    "blue": [
+      29,
+      94,
+      220
+    ],
+    "purple": [
+      136,
+      59,
+      200
+    ],
+    "green": [
+      46,
+      172,
+      76
+    ],
+    "pink": [
+      240,
+      90,
+      162
+    ],
+    "orange": [
+      245,
+      133,
+      28
+    ],
+    "yellow": [
+      239,
+      206,
+      38
+    ]
+  },
+  "seating": {
+    "front_x_m": 592.25,
+    "rows": 10,
+    "row_pitch_m": 0.62,
+    "row_rise_m": 0.38,
+    "front_floor_above_ground_m": 0.45,
+    "sections_z_m": [
+      [
+        308,
+        327
+      ],
+      [
+        330,
+        349
+      ],
+      [
+        352,
+        371
+      ]
+    ],
+    "stairs_z_m": [
+      [
+        327.7,
+        329.3
+      ],
+      [
+        349.7,
+        351.3
+      ]
+    ],
+    "faces_course_native_direction": [
+      -1,
+      0,
+      0
+    ]
+  },
+  "crocodile": {
+    "source_image": "crocodile-cutout.png",
+    "length_m": 12.0,
+    "water_mesh": "drainage_water_0",
+    "center_xz_m": [
+      265.6319302978882,
+      364.71002197265625
+    ],
+    "front_back_separation_m": 0.45,
+    "feet_below_water_m": 0.2,
+    "opaque_silhouette_mesh": true,
+    "photorealistic_generated_asset": true,
+    "generated_with": "Built-in image-generation tool",
+    "prompt": "Photorealistic full side-profile adult crocodile, snout facing left, detailed natural olive-brown scales and teeth, entire animal visible, soft daylight, transparent background; oversized twelve-metre pond Easter egg, no text, logos or cartoon styling."
+  },
+  "references": [
+    "image(20261009-180640).png",
+    "image(20261009-181449).png"
+  ]
+}
