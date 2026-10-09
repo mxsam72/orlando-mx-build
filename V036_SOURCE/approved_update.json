@@ -1,0 +1,55 @@
+{
+  "version": "v036",
+  "baseline_version": "v035",
+  "baseline_commit": "a385832620885e366fe1615fd99e6191f69543ac",
+  "baseline_terrain_sha256": "5205e417fc5fde84b6f2051000a540b16ba6041367832bff8c3d440d58945061",
+  "baseline_scenery_sha256": "1881cc72a9d47cc9783f066852b02b12c40ac53e78e3857c7717423d5856ca4e",
+  "approved": true,
+  "height_factor": 1.3,
+  "height_increase_percent": 30,
+  "jump_ids": [
+    "R11",
+    "R12"
+  ],
+  "new_single": {
+    "id": "R11_ENTRY",
+    "kind": "single",
+    "station_start_m": 863.2474110171287,
+    "station_end_m": 872.2474110171287,
+    "crest_height_m": 0.75,
+    "face_m": 4.5,
+    "landing_m": 4.5,
+    "racing_width_m": 10,
+    "side_taper_m": 7.5
+  },
+  "roller_shift": {
+    "start_station_m": 1276,
+    "full_right_station_m": 1302,
+    "hold_right_until_station_m": 1355,
+    "rejoin_station_m": 1390,
+    "max_right_offset_m": 4.8,
+    "full_lateral_halfwidth_m": 9,
+    "fade_outer_halfwidth_m": 25
+  },
+  "soil": {
+    "race_alpha": 248,
+    "packed_line_max_alpha": 18,
+    "merge_start_station_m": 449,
+    "merge_full_station_m": 460,
+    "merge_fade_start_station_m": 478,
+    "merge_end_station_m": 489
+  },
+  "protected": [
+    "v030 RGB/wet/normal tiles",
+    "38 m start apron and native start line",
+    "24 gate stalls and 24 pits",
+    "T05 double-to-ant-hill corner terrain",
+    "R10 tabletop and T09 corner terrain",
+    "R18 final inside roller",
+    "fixed Pup memorial and support setback",
+    "Qwikchute billboard",
+    "entry sign and four pit vehicle displays"
+  ],
+  "publish": false,
+  "dimensions_status": "4.8 m shift is an authoring choice; video pixels are not calibrated measurements."
+}
