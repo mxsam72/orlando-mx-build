@@ -1,0 +1,40 @@
+name: Build v038 parking signs and compact textures
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v038]
+    paths: ['V038_SOURCE/**', 'TOOLS/build_v038.py', 'TOOLS/build_windows_v038.py', 'TOOLS/v038_*.py', 'TOOLS/verify_v038_source.py', '.github/workflows/build-v038.yml']
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: orlando-v038-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 75
+    env:
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+      OPENBLAS_NUM_THREADS: '2'
+      V038_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-v009.txt shapely==2.1.2
+      - name: Restore immutable user-tested v037 native source
+        run: python TOOLS/v038_release_transfer.py source
+      - name: Park repaint and sign the oval without changing the road
+        run: python TOOLS/build_v038.py
+      - name: Verify truck parking sign readability and exact oval preservation
+        run: python TOOLS/verify_v038_source.py
+      - name: Compile native MAP TRH verify textures and enforce under 500 MB
+        run: python TOOLS/build_windows_v038.py
+      - name: Preserve verified PKZ validation and complete source privately
+        run: python TOOLS/v038_release_transfer.py deliver
+      - name: Preserve private diagnostics if verification fails
+        if: failure()
+        run: python TOOLS/v038_release_transfer.py diagnostic
