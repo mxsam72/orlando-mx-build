@@ -1,0 +1,31 @@
+{
+  "version": "v040",
+  "baseline_release_id": 407858209,
+  "baseline_source_commit": "d3b4ff10bc91a3b14ba7bcec92750faba796661d",
+  "baseline_checkpoint_bytes": 843301025,
+  "baseline_checkpoint_sha256": "f46e9424f70239f3caec1a0531ee4f994d773db23e985faad89889f685f2a172",
+  "baseline_scenery_sha256": "ecb051869a8c1de56d1a2ba79430edb94f66050d6e567580cc1a7be136d9ef59",
+  "baseline_terrain_sha256": "11e75a8097ebf37d0152a136b38952f61261b86f071bcfddc2562a1b1b06aba8",
+  "maximum_pkz_bytes": 499999999,
+  "memorial_image_half_depth_m": 0.4,
+  "decal_clearance_addition_m": 0.045,
+  "entrance_anchor_xz_m": [469.0, 340.0],
+  "entrance_raise_m": 1.0,
+  "freestyle": {
+    "axis_x_m": 535.0,
+    "direction_positive_z": true,
+    "takeoff_profile_z_height_slope": [[296.0,0.0,0.0],[312.5,2.9,0.45],[320.5,8.5,1.05]],
+    "takeoff_back_end_z_m": 325.7,
+    "landing_nose_z_m": 354.3,
+    "landing_crest_z_m": 364.5,
+    "landing_height_m": 7.8,
+    "landing_end_z_m": 405.5,
+    "flat_half_width_m": 3.8,
+    "footprint_half_width_m": 11.0,
+    "grass_boundary_guard_m": 0.75,
+    "lip_to_landing_crest_m": 44.0
+  },
+  "reference_files": ["test v039 flag and PUP sign flickering and bathroom and other assets.mp4", "image(9).png", "image(10).png"],
+  "user_confirmed_qwikchute_v039_fix": true,
+  "in_game_test_required": true
+}
