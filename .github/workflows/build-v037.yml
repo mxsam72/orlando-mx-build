@@ -1,0 +1,37 @@
+name: Build v037 oval from tested v036
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v037]
+    paths: ['V037_SOURCE/**', 'TOOLS/build_v037.py', 'TOOLS/build_windows_v037.py', 'TOOLS/v037_*.py', 'TOOLS/verify_v037_source.py', '.github/workflows/build-v037.yml']
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: orlando-v037-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 75
+    env:
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+      OPENBLAS_NUM_THREADS: '2'
+      V037_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-v009.txt shapely==2.1.2
+      - name: Restore immutable user-tested v036 source and native inputs
+        run: python TOOLS/v037_release_transfer.py source
+      - name: Build paved oval crossover boundary and two Cybertrucks
+        run: python TOOLS/build_v037.py
+      - name: Verify MX preservation road clearance and vehicle placement
+        run: python TOOLS/verify_v037_source.py
+      - name: Compile and verify native visual and physical MAP TRH and PKZ
+        run: python TOOLS/build_windows_v037.py
+      - name: Preserve verified delivery and complete source privately
+        run: python TOOLS/v037_release_transfer.py deliver

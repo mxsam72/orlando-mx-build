@@ -1,0 +1,27 @@
+{
+  "version": "v037",
+  "baseline_version": "v036",
+  "baseline_native_commit": "00b6d460451b02aa1aedb19b7c6b4b894b460357",
+  "baseline_code_commit": "fd80ab4e3675436e4e65b7d4a4c1b9e344831612",
+  "intent": "Paved car oval with two grass infields and a paved central crossover in the empty field east of the trees. Two static Cybertruck displays on the course. Preserve all tested v036 MX assets and riding terrain.",
+  "centre_xz_m": [535.0, 340.0],
+  "outer_radius_m": 55.0,
+  "half_straight_m": 35.0,
+  "infield_centres_local_z_m": [-43.0, 43.0],
+  "infield_radii_xz_m": [35.0, 30.0],
+  "surface_mesh_spacing_m": 1.1,
+  "surface_above_heightmap_m": 0.12,
+  "maximum_curve_camber_m": 0.55,
+  "entry_apron_bounds_local_xz_m": [-69.0, -6.0, -54.0, 6.0],
+  "wall_radius_m": 55.6,
+  "wall_height_m": 0.88,
+  "wall_thickness_m": 0.32,
+  "wall_entry_half_width_m": 7.0,
+  "vehicle_reference": "truck_jordan",
+  "vehicles": [
+    {"id": "v037_oval_cybertruck_01", "xz_m": [489.0, 325.0], "heading_degrees": -90.0},
+    {"id": "v037_oval_cybertruck_02", "xz_m": [567.5269119345812, 407.5269119345812], "heading_degrees": 135.0}
+  ],
+  "references": ["image(20261009-050034).png", "image(20261009-050121).png", "image(20261009-050206).png", "image(20261009-050251).png", "20261009-0457-58.3698093.mp4"],
+  "physics": "TRKASPH native scene surface; WLLCONC concrete boundary; unchanged native heightmap and MX material masks. Cybertrucks are static scenery, not moving or drivable vehicles."
+}
