@@ -1,0 +1,37 @@
+name: Build v043 flag reverse face and Sam Ford at figure-eight billboard
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v043]
+    paths: ['V043_SOURCE/**', 'TOOLS/build_v043.py', 'TOOLS/build_windows_v043.py', 'TOOLS/v043_*.py', 'TOOLS/verify_v043_source.py', '.github/workflows/build-v043.yml']
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: orlando-v043-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 90
+    env:
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+      OPENBLAS_NUM_THREADS: '2'
+      V043_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-v009.txt shapely==2.1.2
+      - name: Restore delivered v042 and read its actual native validation
+        run: python TOOLS/v043_release_transfer.py source
+      - name: Repair track-facing flag at hoist and place Sam Ford by figure-eight billboard
+        run: python TOOLS/build_v043.py
+      - name: Independently verify both flag hoists Ford parking and exact preservation
+        run: python TOOLS/verify_v043_source.py
+      - name: Compile and validate native MAP TRH with official Windows tools
+        run: python TOOLS/build_windows_v043.py
+      - name: Save verified PKZ checksums validation and complete source privately
+        run: python TOOLS/v043_release_transfer.py deliver

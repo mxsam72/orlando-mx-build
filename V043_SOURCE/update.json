@@ -1,0 +1,31 @@
+{
+  "version": "v043",
+  "baseline_version": "v042",
+  "baseline_release_id": 408329509,
+  "baseline_source_commit": "98d799dd455b968b5b0c5665c9fea123579347cb",
+  "baseline_checkpoint_bytes": 1449475471,
+  "baseline_checkpoint_sha256": "0cda7d3ed5d5c6550f9f1f908cc4657ce458302fef76959a25f6af4c061b4447",
+  "baseline_validation_sha256": "fd48ade4a8f3b821759f877024a59f4d3530669975c68f00189a07ee20bb5cdb",
+  "baseline_pkz_bytes": 428250803,
+  "baseline_pkz_sha256": "0b67a8ad1bfb4bcda24f248a545fb869c7f142f0b33ddaad4b6c4bdaa4177459",
+  "baseline_scenery_sha256": "063ea35c255749e1d66a7d36d4ac07e99815f861de00f71c4248bf93d9d08ef6",
+  "baseline_terrain_sha256": "f6ce21f9b1a0ff4ca3a822d92dcba5904eeea860cd95952bd4ba44ac9cb5c4b9",
+  "maximum_pkz_bytes": 499999999,
+  "flag_geometry": "front_flag_red",
+  "flag_pole_geometry": "front_flag_alloy",
+  "flag_track_face_indices": [2, 3],
+  "keep_pit_facing_flag_uvs_exact": true,
+  "flag_stars_at_hoist_both_sides": true,
+  "ford": {
+    "source_prefix": "truck_sam_",
+    "group": "v043_oval_sam_ford",
+    "billboard_prefix": "v038_oval_qwikchute_billboard_",
+    "center_xz_m": [470, 400],
+    "heading_degrees": 0,
+    "expected_parts": 14
+  },
+  "minimum_obstacle_clearance_m": 1.5,
+  "minimum_route_clearance_m": 1.5,
+  "minimum_grass_mask_alpha": 96,
+  "maximum_wheel_ground_gap_m": 0.12
+}
