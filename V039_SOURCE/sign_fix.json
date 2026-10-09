@@ -2,7 +2,6 @@
   "version": "v039",
   "baseline_version": "user-tested v038",
   "baseline_source_commit": "ee3afaf977be0f17450e742a8b3fb2e1b631972d",
-  "baseline_scenery_sha256": "6dc63c255038b9c79b4db9e2e8cf9c983187d58493f1fec3a6f9213742d0aa42",
   "baseline_pkz_bytes": 423045038,
   "maximum_pkz_bytes": 499999999,
   "speed_world_id": "v038_orlando_speed_world_entrance",
@@ -24,5 +23,7 @@
   ],
   "intent": "Fix the backwards Orlando Speed World lettering on both sides and remove the Qwikchute black-panel depth conflict. Apply the same backing correction to both Qwikchute billboards. Preserve all textures, sign locations, road, riding geometry and red/black grass parking.",
   "reference_video": "20261009-0806-29.0093150.mp4",
-  "reference_sha256": "b8b4353594aa680b93ab986043975c8ecdf1f28d9e4a4fe781c5cafc82b9e258"
+  "reference_sha256": "b8b4353594aa680b93ab986043975c8ecdf1f28d9e4a4fe781c5cafc82b9e258",
+  "local_regenerated_baseline_scenery_sha256": "6dc63c255038b9c79b4db9e2e8cf9c983187d58493f1fec3a6f9213742d0aa42",
+  "baseline_checkpoint_sha256": "e3c09bf5e6e742686e93f4add25e4ec3693ee637cc482e869deb36fe43e7bf2e"
 }

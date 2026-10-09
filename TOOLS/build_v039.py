@@ -66,7 +66,12 @@ def release():
     copy_exact(BASE/'orlandomx_2026_v038.rdf',O/(NAME+'.rdf'));copy_exact(O/(NAME+'.rdf'),dest/(NAME+'.rdf'))
 
 def main():
-    cfg=read(S/'sign_fix.json');assert sha(BASE/'scenery.fbx')==cfg['baseline_scenery_sha256']
+    cfg=read(S/'sign_fix.json');baseline=read(BASE/'source_validation.json')
+    # The pinned whole-checkpoint digest in the restore step authenticates the
+    # Windows source. Linux regeneration of v038 can differ in floating-point
+    # FBX array encoding; the user-tested native checkpoint is authoritative.
+    assert baseline['version']=='v038' and baseline['source_checks_pass']
+    assert sha(BASE/'scenery.fbx')==baseline['scenery_sha256']
     if O.exists():shutil.rmtree(O)
     shutil.copytree(BASE,O)
     original=(BASE/'scenery.fbx').read_bytes();nodes,tail=parse(original);assert encode(nodes,tail)==original
@@ -88,7 +93,7 @@ def main():
     qs=[]
     for name in ['v033_qwikchute_billboard_frame','v033_qwikchute_billboard_concrete','v033_qwikchute_billboard_logo']:qs.extend(vertices(rec[name][0]).tolist())
     oldqw=read(BASE/'qwikchute_native_probes.json');oldqw['expected_xyz_metres']=qs;save(O/'qwikchute_native_probes.json',oldqw)
-    scene=dict(checks_pass=True,modified_geometry_ids=changed,modified_geometry_names=names,changed_object_count=5,new_objects=0,new_textures=0,new_materials=0,all_other_object_records_byte_exact=True,all_connections_and_model_transforms_byte_exact=True,all_texture_pixels_byte_exact=True,speed_world_horizontal_uv_flipped_on_both_faces=True,qwikchute=qw)
+    scene=dict(checks_pass=True,baseline_scenery_sha256=baseline['scenery_sha256'],baseline_checkpoint_sha256=cfg['baseline_checkpoint_sha256'],modified_geometry_ids=changed,modified_geometry_names=names,changed_object_count=5,new_objects=0,new_textures=0,new_materials=0,all_other_object_records_byte_exact=True,all_connections_and_model_transforms_byte_exact=True,all_texture_pixels_byte_exact=True,speed_world_horizontal_uv_flipped_on_both_faces=True,qwikchute=qw)
     save(O/'v039_sign_validation.json',scene)
     qa=read(BASE/'source_validation.json');qa.update(version='v039',baseline_version='user-tested v038',baseline_commit=cfg['baseline_source_commit'],source_checks_pass=True,terrain_sha256=sha(O/'terrain.raw'),scenery_sha256=sha(O/'scenery.fbx'),v039_sign_fix=scene,native_compilation=False)
     save(O/'source_validation.json',qa);save(O/'v039_layout.json',cfg);release()

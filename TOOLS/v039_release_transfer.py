@@ -19,7 +19,9 @@ def source():
     release=api('/releases/407667173');assert release['draft']
     assets=[a for a in release['assets'] if a['name']=='OrlandoMX-v038-source-checkpoint.zip']
     assert len(assets)==1;asset=assets[0]
+    cfg=json.loads((ROOT/'V039_SOURCE/sign_fix.json').read_text())
     assert asset['size']==843560247 and asset['digest']=='sha256:e3c09bf5e6e742686e93f4add25e4ec3693ee637cc482e869deb36fe43e7bf2e'
+    assert asset['digest'].removeprefix('sha256:')==cfg['baseline_checkpoint_sha256']
     try:
         urllib.request.build_opener(NoRedirect).open(urllib.request.Request(asset['url'],headers=HEADERS|{'Accept':'application/octet-stream'}),timeout=120)
         raise RuntimeError('Expected private source redirect')
