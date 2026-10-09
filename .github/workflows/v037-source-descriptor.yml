@@ -1,0 +1,55 @@
+name: Retrieve exact compiled v037 files for render verification
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v037]
+    paths: ['.github/workflows/v037-source-descriptor.yml']
+permissions:
+  contents: write
+jobs:
+  descriptor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      V037_TRANSFER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Store authorized native delivery and source metadata privately
+        shell: python
+        run: |
+          import os,json,time,urllib.request,urllib.error,urllib.parse
+          api='https://api.github.com/repos/'+os.environ['GITHUB_REPOSITORY']
+          headers={'Authorization':'Bearer '+os.environ['V037_TRANSFER_TOKEN'],'Accept':'application/vnd.github+json','User-Agent':'OrlandoMX-v037-verified-source'}
+          def request(path,data=None):
+              payload=None if data is None else json.dumps(data).encode()
+              with urllib.request.urlopen(urllib.request.Request(api+path,data=payload,headers=headers|({'Content-Type':'application/json'} if payload else {})),timeout=120) as r:return json.load(r)
+          assert request('')['private']
+          names=['OrlandoMX_2026_v037.pkz','OrlandoMX_v037_Validation.json','Install_v037.txt','OrlandoMX_2026_v037.pkz.sha256','oval_surface_validation.json','oval_vehicle_validation.json','oval_scenery_validation.json','oval_independent_validation.json']
+          for attempt in range(300):
+              releases=request('/releases?per_page=40');matches=[r for r in releases if r['tag_name']=='v037-private-build-37889577055']
+              if len(matches)==1:
+                  release=matches[0];assert release['draft']
+                  available={a['name']:a for a in release['assets'] if a['state']=='uploaded'}
+                  if all(n in available for n in names):break
+              time.sleep(5)
+          else:raise RuntimeError('Verified v037 files were not available before the descriptor deadline')
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self,*args,**kwargs):return None
+          def record(asset):
+              try:
+                  urllib.request.build_opener(NoRedirect).open(urllib.request.Request(asset['url'],headers=headers|{'Accept':'application/octet-stream'}),timeout=120)
+                  raise RuntimeError('Expected temporary download redirect')
+              except urllib.error.HTTPError as e:
+                  if e.code not in (301,302,303,307,308):raise
+                  location=e.headers['Location']
+              assert urllib.parse.urlparse(location).hostname in ['release-assets.githubusercontent.com','objects.githubusercontent.com']
+              assert asset['digest'].startswith('sha256:')
+              return dict(name=asset['name'],asset_id=asset['id'],bytes=asset['size'],digest=asset['digest'],download_url=location)
+          delivery=dict(release_id=release['id'],build_run=37889577055,source_commit='505f3a17b4b1d0dddc03446cee8f31ed87faab75',assets=[record(available[n]) for n in names])
+          blob=request('/git/blobs',dict(content=json.dumps(delivery),encoding='utf-8'));print('CODEX_V037_DELIVERY_BLOB '+blob['sha'],flush=True)
+          for attempt in range(180):
+              release=request('/releases/'+str(release['id']));assets=[a for a in release['assets'] if a['name']=='OrlandoMX-v037-source-checkpoint.zip' and a['state']=='uploaded']
+              if len(assets)==1:break
+              time.sleep(5)
+          else:raise RuntimeError('Complete v037 source checkpoint was not available before the descriptor deadline')
+          source=dict(release_id=release['id'],assets=[record(assets[0])])
+          blob=request('/git/blobs',dict(content=json.dumps(source),encoding='utf-8'));print('CODEX_V037_SOURCE_BLOB '+blob['sha'],flush=True)
