@@ -207,7 +207,10 @@ def freestyle(cfg,nodes):
     height=np.zeros_like(xx);a=(zz>=p[0,0])&(zz<=p[-1,0]);height[a]=rise(zz[a])
     a=(zz>p[-1,0])&(zz<f['takeoff_back_end_z_m']);t=(zz[a]-p[-1,0])/(f['takeoff_back_end_z_m']-p[-1,0]);height[a]=p[-1,1]*(1-t*t*(3-2*t))
     a=(zz>=f['landing_nose_z_m'])&(zz<f['landing_crest_z_m']);t=(zz[a]-f['landing_nose_z_m'])/(f['landing_crest_z_m']-f['landing_nose_z_m']);height[a]=f['landing_height_m']*(t*t*(3-2*t))
-    a=(zz>=f['landing_crest_z_m'])&(zz<=f['landing_end_z_m']);t=(zz[a]-f['landing_crest_z_m'])/(f['landing_end_z_m']-f['landing_crest_z_m']);height[a]=f['landing_height_m']*(1-t)**1.35
+    land=np.asarray(f['landing_profile_z_height_slope']);fall=CubicHermiteSpline(land[:,0],land[:,1],land[:,2])
+    sample=np.linspace(land[0,0],land[-1,0],1000)
+    assert fall(sample).min()>-1e-8 and fall.derivative()(sample).max()<1e-8
+    a=(zz>=f['landing_crest_z_m'])&(zz<=f['landing_end_z_m']);height[a]=fall(zz[a])
     dx=np.abs(xx-f['axis_x_m']);t=np.clip((dx-f['flat_half_width_m'])/(f['footprint_half_width_m']-f['flat_half_width_m']),0,1)
     cross=1-t*t*(3-2*t);height*=cross
     rec=geometry_records(nodes);road=rec['TRKASPH_v037_oval_surface'][0];rv=vertices(road);rf=np.asarray(faces(road));union=shapely.union_all(shapely.polygons(rv[rf][:,:,[0,2]]))
@@ -309,7 +312,8 @@ def main():
     jump=freestyle(cfg,newnodes)
     scene=dict(checks_pass=True,changed_object_ids=changed_ids,removed_object_ids=removed_ids,new_object_ids=[i for i in after if i not in before],modified_geometry_names=changed_names,removed_geometry_names=removed_names,culling_models=culled,memorial=dict(backing_box_faces_removed=6,image_support_minimum_depth_clearance_m=.23,three_support_poles_retained=True,original_artwork_uv_unchanged=True),flag=flag,bathroom=bath,decals=decals,entrance_translation_xyz_m=delta.tolist(),entrance_raise_m=cfg['entrance_raise_m'],entrance_uv_unchanged=True,probe_refresh=refresh,game_visual_confirmation_pending=True)
     save(O/'v040_asset_validation.json',scene)
-    qa=copy.deepcopy(baseqa);qa.update(version='v040',baseline_version='user-delivered v039',baseline_commit=cfg['baseline_source_commit'],source_checks_pass=False,terrain_sha256=sha(O/'terrain.raw'),scenery_sha256=sha(O/'scenery.fbx'),v040_asset_repairs=scene,v040_freestyle=jump,native_compilation=False,in_game_riding_test=False)
+    import os
+    qa=copy.deepcopy(baseqa);qa.update(version='v040',source_commit=os.environ.get('GITHUB_SHA','local'),baseline_version='user-delivered v039',baseline_commit=cfg['baseline_source_commit'],source_checks_pass=False,terrain_sha256=sha(O/'terrain.raw'),scenery_sha256=sha(O/'scenery.fbx'),v040_asset_repairs=scene,v040_freestyle=jump,native_compilation=False,in_game_riding_test=False)
     # Inherited validation records describe prior versions; only the v040
     # independent/native reports represent verification of this final source.
     save(O/'source_validation.json',qa);save(O/'v040_layout.json',cfg);release()

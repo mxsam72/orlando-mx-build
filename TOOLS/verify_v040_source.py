@@ -111,6 +111,11 @@ def main():
     holes=shapely.union_all([Polygon(h).buffer(-cfg['freestyle']['grass_boundary_guard_m']) for h in roadpoly.interiors])
     assert shapely.contains_xy(holes,xx[changed],zz[changed]).all()
     assert np.array_equal(oldraw[xx<500],newraw[xx<500])
+    # Check the sampled RAW heightfield's catch slope and smooth runout.
+    zsamples=np.linspace(366,373,100);x=cfg['freestyle']['axis_x_m']
+    y=map_coordinates(newraw/65535*18,[((600-zsamples)/600*2048),np.full(100,x/600*2048)],order=1)
+    slope=np.gradient(y,zsamples);catch=float(np.degrees(np.arctan(-slope.min())))
+    assert 30<catch<45,catch
     assert np.array_equal(oldraw[shapely.contains_xy(roadpoly,xx,zz)],newraw[shapely.contains_xy(roadpoly,xx,zz)])
     for name in changed_masks:
         a=np.array(Image.open(BASE/'masks'/name));b=np.array(Image.open(O/'masks'/name));h,w=a.shape[:2]
@@ -123,7 +128,7 @@ def main():
         for f in faces(g):
             assert all(0<=i<len(v) for i in f)
             q=v[f];assert np.linalg.norm(np.cross(q[1]-q[0],q[2]-q[0]))>1e-10,name
-    independent=dict(checks_pass=True,preserved_geometry_records=len(preserved),unchanged_original_texture_files=len(textures),exact_MX_race_and_route_files=exact,road_markings_surface_and_walls_exact=True,MX_heightmap_and_masks_outside_grass_islands_exact=True,qwikchute_v039_graphics_and_frames_exact=True,speed_world_corrected_uvs_exact=True,entrance_headroom_m=entrance_headroom,entrance_posts_clear_of_pavement=True,memorial_image_support_minimum_clearance_m=gap,flag_faces_outward_and_separated=True,repaired_decals_have_no_coincident_duplicate_triangles=True,optimized_texture_resolutions_preserved=True,in_game_visual_check=False,in_game_riding_test=False)
+    independent=dict(checks_pass=True,preserved_geometry_records=len(preserved),unchanged_original_texture_files=len(textures),exact_MX_race_and_route_files=exact,road_markings_surface_and_walls_exact=True,MX_heightmap_and_masks_outside_grass_islands_exact=True,qwikchute_v039_graphics_and_frames_exact=True,speed_world_corrected_uvs_exact=True,entrance_headroom_m=entrance_headroom,entrance_posts_clear_of_pavement=True,memorial_image_support_minimum_clearance_m=gap,flag_faces_outward_and_separated=True,repaired_decals_have_no_coincident_duplicate_triangles=True,landing_catch_slope_degrees=catch,optimized_texture_resolutions_preserved=True,in_game_visual_check=False,in_game_riding_test=False)
     save(O/'v040_independent_validation.json',independent)
     qa=read(O/'source_validation.json');qa['source_checks_pass']=True;save(O/'source_validation.json',qa)
     print('Independent v040 source checks passed:',len(preserved),'geometry records preserved; all original textures unchanged.',flush=True)

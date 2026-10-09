@@ -20,7 +20,8 @@ culling. Original vehicle/sign UVs and texture files are retained.
 The freestyle double points along native game +Z at X=535 m, from the
 right/south grass island to the left/north island in image(10).png. Launch lip
 Z=320.5 m, rise 8.5 m; landing crest Z=364.5 m, rise 7.8 m. Lip-to-crest
-distance is 44 m. Actual heightfield and dirt/grass masks contain the mounds;
+distance is 44 m. The landing has a steep catch face and long smooth runout.
+Actual heightfield and dirt/grass masks contain the mounds;
 these are physical terrain, not floating display-only objects. Edits stay in
 the two grass holes with a 0.75 m boundary guard.
 
