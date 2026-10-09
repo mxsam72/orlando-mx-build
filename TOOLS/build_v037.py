@@ -3,7 +3,7 @@ import copy, math, shutil
 import numpy as np
 from PIL import Image, ImageDraw
 from scipy.ndimage import gaussian_filter
-from scipy.spatial import Delaunay
+from scipy.spatial import Delaunay, cKDTree
 import shapely
 from shapely.geometry import LineString, Polygon, box
 from v037_common import *
@@ -153,14 +153,31 @@ def release():
     rdf=O/(NAME+'.rdf');copy_exact(BASE/'orlandomx_2026_v036.rdf',rdf);copy_exact(rdf,dest/rdf.name)
     for name in ['minrace.tl','maxrace.tl','checkleft.tl','checkright.tl']:copy_exact(BASE/name,dest/name)
 
+def refresh_native_probes():
+    # Three inherited v028 coordinates refer to scenery superseded before the
+    # tested v036 baseline. Replace them with vertices of the current named
+    # practice fences. Keep every still-valid baseline probe and the full count.
+    rec=geometry_records(parse((BASE/'scenery.fbx').read_bytes())[0])
+    points=np.concatenate([vertices(g) for g,mid in rec.values()]);tree=cKDTree(points)
+    old=read(BASE/'native_coordinate_probes.json')['expected_xyz_metres'];dist,ii=tree.query(old);bad=np.flatnonzero(dist>.00001)
+    assert len(bad)==3,(len(bad),'Unexpected baseline probe drift')
+    names=['v028_practice_wood_left_timber','v028_practice_barrier_left_alloy','v028_practice_barrier_right_alloy']
+    current=list(old);changes=[]
+    for index,name in zip(bad,names):
+        g=rec[name][0];raw=array(child(g,b'PolygonVertexIndex'));first=int(raw[0]);first=-first-1 if first<0 else first;point=vertices(g)[first].tolist()
+        current[int(index)]=point;changes.append(dict(row=int(index),obsolete_xyz_m=old[int(index)],obsolete_distance_to_current_source_m=float(dist[index]),replacement_current_model=name,replacement_xyz_m=point))
+    assert len(current)==len(old);assert np.max(tree.query(current)[0])<.00001
+    probes=current+read(O/'oval_native_probes.json')['expected_xyz_metres']
+    save(O/'native_coordinate_probes.json',dict(expected_xyz_metres=probes))
+    save(O/'baseline_probe_refresh_validation.json',dict(checks_pass=True,retained_baseline_probes=len(old)-3,refreshed_baseline_probes=3,baseline_probe_count_preserved=len(old),all_baseline_probes_match_current_source_vertices=True,changes=changes))
+
 def main():
     cfg=read(S/'oval.json');assert len(cfg['vehicles'])==2
     if O.exists():shutil.rmtree(O)
     shutil.copytree(BASE,O);textures(cfg);h=height_field();road,poly,holes=surface(h,cfg);bind_road_mesh(road['vertices'])
     meshes=[road]+walls(h,cfg);clones=trucks(h,cfg,poly);scene=append(meshes,clones,PALETTE)
     save(O/'oval_layout.json',cfg);release()
-    probes=read(BASE/'native_coordinate_probes.json')['expected_xyz_metres']+read(O/'oval_native_probes.json')['expected_xyz_metres']
-    save(O/'native_coordinate_probes.json',dict(expected_xyz_metres=probes))
+    refresh_native_probes()
     old=read(BASE/'source_validation.json');qa=dict(old)
     qa.update(version='v037',baseline_version='v036',baseline_commit=cfg['baseline_native_commit'],baseline_code_commit=cfg['baseline_code_commit'],source_checks_pass=True,terrain_sha256=sha(O/'terrain.raw'),scenery_sha256=sha(O/'scenery.fbx'),tested_MX_heightmap_byte_exact=True,tested_MX_masks_byte_exact=True,tested_MX_routes_race_and_reset_byte_exact=True,oval_surface=read(O/'oval_surface_validation.json'),oval_vehicles=read(O/'oval_vehicle_validation.json'),oval_scenery=scene,native_compilation=False)
     save(O/'source_validation.json',qa)

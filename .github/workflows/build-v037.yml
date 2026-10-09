@@ -35,3 +35,6 @@ jobs:
         run: python TOOLS/build_windows_v037.py
       - name: Preserve verified delivery and complete source privately
         run: python TOOLS/v037_release_transfer.py deliver
+      - name: Preserve private diagnostics if verification fails
+        if: failure()
+        run: python TOOLS/v037_release_transfer.py diagnostic

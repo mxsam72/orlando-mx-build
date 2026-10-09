@@ -6,6 +6,7 @@ on:
     paths: ['.github/workflows/v037-source-descriptor.yml']
 permissions:
   contents: write
+  actions: write
 jobs:
   descriptor:
     runs-on: ubuntu-latest
@@ -21,11 +22,18 @@ jobs:
           headers={'Authorization':'Bearer '+os.environ['V037_TRANSFER_TOKEN'],'Accept':'application/vnd.github+json','User-Agent':'OrlandoMX-v037-verified-source'}
           def request(path,data=None):
               payload=None if data is None else json.dumps(data).encode()
-              with urllib.request.urlopen(urllib.request.Request(api+path,data=payload,headers=headers|({'Content-Type':'application/json'} if payload else {})),timeout=120) as r:return json.load(r)
+              with urllib.request.urlopen(urllib.request.Request(api+path,data=payload,headers=headers|({'Content-Type':'application/json'} if payload else {})),timeout=120) as r:
+                  body=r.read();return json.loads(body) if body else None
           assert request('')['private']
+          # Stop the descriptor waiting for the earlier rejected build.
+          obsolete=request('/actions/runs/37890525260')
+          if obsolete['status'] in ['queued','in_progress'] and obsolete['head_sha']=='1fbb8b183791cad8c0e010293508252f41280878':
+              try:request('/actions/runs/37890525260/cancel',{})
+              except urllib.error.HTTPError as e:
+                  if e.code!=409:raise
           names=['OrlandoMX_2026_v037.pkz','OrlandoMX_v037_Validation.json','Install_v037.txt','OrlandoMX_2026_v037.pkz.sha256','oval_surface_validation.json','oval_vehicle_validation.json','oval_scenery_validation.json','oval_independent_validation.json']
           for attempt in range(300):
-              releases=request('/releases?per_page=40');matches=[r for r in releases if r['tag_name']=='v037-private-build-37889577055']
+              releases=request('/releases?per_page=40');matches=[r for r in releases if r['tag_name'].startswith('v037-private-build-') and r['target_commitish']==os.environ['GITHUB_SHA']]
               if len(matches)==1:
                   release=matches[0];assert release['draft']
                   available={a['name']:a for a in release['assets'] if a['state']=='uploaded'}
@@ -44,7 +52,7 @@ jobs:
               assert urllib.parse.urlparse(location).hostname in ['release-assets.githubusercontent.com','objects.githubusercontent.com']
               assert asset['digest'].startswith('sha256:')
               return dict(name=asset['name'],asset_id=asset['id'],bytes=asset['size'],digest=asset['digest'],download_url=location)
-          delivery=dict(release_id=release['id'],build_run=37889577055,source_commit='505f3a17b4b1d0dddc03446cee8f31ed87faab75',assets=[record(available[n]) for n in names])
+          delivery=dict(release_id=release['id'],build_run=int(release['tag_name'].rsplit('-',1)[1]),source_commit=release['target_commitish'],assets=[record(available[n]) for n in names])
           blob=request('/git/blobs',dict(content=json.dumps(delivery),encoding='utf-8'));print('CODEX_V037_DELIVERY_BLOB '+blob['sha'],flush=True)
           for attempt in range(180):
               release=request('/releases/'+str(release['id']));assets=[a for a in release['assets'] if a['name']=='OrlandoMX-v037-source-checkpoint.zip' and a['state']=='uploaded']

@@ -91,7 +91,7 @@ def main():
     for suffix in ['.amb','.tsc','.tga','.rdf','_map.tga']:
         assert sha(DEST/(NAME+suffix))==sha(baseline/('orlandomx_2026_v036'+suffix)),suffix
     for fn in ['minrace.tl','maxrace.tl','checkleft.tl','checkright.tl','marshals.cfg']:assert sha(DEST/fn)==sha(baseline/fn)
-    save(O/'oval_native_coordinate_validation.json',dict(checks_pass=True,MAP_probes=probes,physical_TRH_meshes=physical,tolerance_m=.0001))
+    save(O/'oval_native_coordinate_validation.json',dict(checks_pass=True,MAP_probes=probes,physical_TRH_meshes=physical,tolerance_m=.0001,baseline_probe_refresh=read(O/'baseline_probe_refresh_validation.json')))
     native=read(R/'DOCUMENTATION/native_build_validation.json')
     native.update(version='v037',source_commit=os.environ.get('GITHUB_SHA','local'),baseline_commit=qa['baseline_commit'],baseline_version='user-tested v036',source_checks=True,source_validation=qa,independent_source_checks=independent,staging_validation=read(O/'native_staging_validation.json'),terrain_texture_payloads=embedded,object_texture_validation=objects,native_coordinate_validation=read(O/'oval_native_coordinate_validation.json'),MX_heightmap_route_soils_race_gates_pits_and_reset_byte_exact=True,existing_signs_and_pit_vehicles_preserved=True,asphalt_surface_in_physical_TRH=True,concrete_wall_in_physical_TRH=True,static_oval_cybertrucks=2,pkz_sha256=sha(pkz),pkz_bytes=pkz.stat().st_size,in_game_riding_test=False,in_game_visual_check=False,performance_test=False,pending=['MX Bikes v037 load and oval riding test','Oval entrance and crossover check','Cybertruck and boundary collision check','FPS comparison'])
     save(R/'DOCUMENTATION/v037_native_validation.json',native);save(R/'12_RELEASE/OrlandoMX_v037_Validation.json',native)

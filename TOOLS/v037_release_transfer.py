@@ -84,8 +84,31 @@ def deliver():
     print('CODEX_V037_DELIVERY_BLOB '+blob['sha'],flush=True)
     print('Verified v037 package, previews and complete source preserved privately.',flush=True)
 
+def diagnostic():
+    assert api('')['private']
+    run=os.environ['GITHUB_RUN_ID'];sha=os.environ['GITHUB_SHA']
+    release=api('/releases',dict(tag_name='v037-diagnostic-'+run,target_commitish=sha,name='v037 private diagnostics; not an approved delivery',draft=True,prerelease=False,make_latest='false',body='Internal recovery checkpoint after a failed build verification. Do not distribute as a release.'))
+    path=ROOT/'OrlandoMX-v037-diagnostics.zip'
+    with zipfile.ZipFile(path,'w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:
+        for folder in ('V037_OUTPUT','DOCUMENTATION','12_RELEASE/orlandomx_2026_v037'):
+            for p in sorted((ROOT/folder).rglob('*')):
+                if p.is_file():z.write(p,p.relative_to(ROOT).as_posix())
+        p=ROOT/'12_RELEASE/OrlandoMX_2026_v037.pkz'
+        if p.is_file():z.write(p,p.relative_to(ROOT).as_posix())
+    asset=upload(release,path)
+    try:
+        urllib.request.build_opener(NoRedirect).open(urllib.request.Request(asset['url'],headers=HEADERS|{'Accept':'application/octet-stream'}),timeout=120)
+        raise RuntimeError('Expected temporary diagnostic redirect')
+    except urllib.error.HTTPError as e:
+        if e.code not in (301,302,303,307,308):raise
+        location=e.headers['Location']
+    assert urllib.parse.urlparse(location).hostname in ('release-assets.githubusercontent.com','objects.githubusercontent.com')
+    descriptor=dict(release_id=release['id'],assets=[dict(name=asset['name'],asset_id=asset['id'],bytes=asset['size'],digest=asset['digest'],download_url=location)])
+    blob=api('/git/blobs',dict(content=json.dumps(descriptor),encoding='utf-8'));print('CODEX_V037_DIAGNOSTIC_BLOB '+blob['sha'],flush=True)
+    print('Unapproved native diagnostic checkpoint preserved privately.',flush=True)
+
 if __name__=='__main__':
-    {'source':source,'deliver':deliver}[sys.argv[1]]()
+    {'source':source,'deliver':deliver,'diagnostic':diagnostic}[sys.argv[1]]()
 
 
 
