@@ -1,7 +1,7 @@
 """Save reproducible source and verified native outputs to private GitHub assets."""
 import urllib.request,urllib.parse,sys,zipfile,os
 from v044_common import *
-from v044_source import api,HEADERS,blob
+from v044_source import api,HEADERS,blob,API
 
 def checkpoint():
     dest=R/'BUILD/OrlandoMX-v044-source-checkpoint.zip'
@@ -36,10 +36,22 @@ def upload(release,p):
     assert a['state']=='uploaded' and a['size']==p.stat().st_size and a['digest']=='sha256:'+sha(p)
     print('Verified private asset saved:',p.name,a['size'],flush=True);return a
 
+def hold():
+    assert api('')['private']
+    commit=os.environ['GITHUB_SHA'];run=os.environ['GITHUB_RUN_ID']
+    rel=api('/releases',dict(tag_name='v044-private-build-'+run,target_commitish=commit,name='Orlando MX v044 editable source — native compilation pending',draft=True,prerelease=False,make_latest='false',body='Authenticated dry-weather visual source passed independent preservation checks. Native playable PKZ compilation is pending. This private checkpoint preserves editable assets without GitHub Actions artifact storage.'))
+    for p in [R/'BUILD/OrlandoMX-v044-source-checkpoint.zip',R/'BUILD/v044_checkpoint_descriptor.json']:upload(rel,p)
+    with open(os.environ['GITHUB_ENV'],'a',encoding='utf-8') as env:env.write('V044_SOURCE_RELEASE_ID='+str(rel['id'])+'\n')
+    print('CODEX_V044_SOURCE_RELEASE_ID',rel['id'],flush=True)
+
+
 def deliver():
     assert api('')['private'];qa=read(R/'12_RELEASE/OrlandoMX_v044_Validation.json');assert qa['compiled'] and qa['source_checks'] and qa['native_trh_identical_to_v043']
     commit=os.environ['GITHUB_SHA'];run=os.environ['GITHUB_RUN_ID'];assert qa['source_commit']==commit
-    rel=api('/releases',dict(tag_name='v044-private-build-'+run,target_commitish=commit,name='Orlando MX v044 standard-weather realism',draft=True,prerelease=False,make_latest='false',body='Standard-weather visual upgrade on the authenticated delivered v043. Continuous 8K route-following grooming/wheel-path diffuse and normal maps; photographic dirt, bark, timber and concrete; scan-derived near-view trees and botanical Bermuda grass; native alpha-tested foliage; improved clear daylight and higher-quality compiled shadows. Accepted MX heightfield, race inputs and complete native collision TRH remain byte-identical to v043. All signs, flag faces, personalized vehicles, seating and road-gap repairs preserved. No package size cap. Official Windows source/native/texture/archive validation passed. User in-game visual, riding and performance confirmation pending. Source commit '+commit+'.'))
+    rel=api('/releases/'+os.environ['V044_SOURCE_RELEASE_ID']);assert rel['draft'] and rel['target_commitish']==commit
+    payload=dict(name='Orlando MX v044 standard-weather realism',body='Standard-weather visual upgrade on the authenticated delivered v043. Continuous 8K route-following grooming/wheel-path diffuse and normal maps; photographic dirt, bark, timber and concrete; scan-derived near-view trees and botanical Bermuda grass; native alpha-tested foliage; improved clear daylight and higher-quality compiled shadows. Accepted MX heightfield, race inputs and complete native collision TRH remain byte-identical to v043. All signs, flag faces, personalized vehicles, seating and road-gap repairs preserved. No package size cap. Official Windows source/native/texture/archive validation passed. User in-game visual, riding and performance confirmation pending. Source commit '+commit+'.')
+    req=urllib.request.Request(API+'/releases/'+str(rel['id']),data=json.dumps(payload).encode(),method='PATCH',headers=HEADERS|{'Content-Type':'application/json'})
+    with urllib.request.urlopen(req,timeout=150) as response:rel=json.load(response)
     paths=[R/'12_RELEASE'/n for n in ['OrlandoMX_2026_v044.pkz','OrlandoMX_2026_v044.pkz.sha256','OrlandoMX_v044_Validation.json','Install_v044.txt']]
     paths += [O/'v044_source_validation.json',O/'v044_surface_validation.json',O/'v044_scenery_validation.json',O/'v044_asset_provenance.json',R/'BUILD/v044_checkpoint_descriptor.json']
     cp=R/'BUILD/OrlandoMX-v044-source-checkpoint.zip'
@@ -49,9 +61,14 @@ def deliver():
             while b:=stream.read(1900000000):p=cp.with_suffix('.zip.part'+str(j));atomic(p,b);paths.append(p);j+=1
     else:paths.append(cp)
     checks=R/'12_RELEASE/OrlandoMX_v044_SHA256SUMS.txt';atomic(checks,(''.join(sha(p)+'  '+p.name+'\n' for p in paths)).encode());paths.append(checks)
-    assets=[upload(rel,p) for p in paths]
+    existing={a['name']:a for a in api('/releases/'+str(rel['id']))['assets']}
+    assets=[]
+    for p in paths:
+        if p.name in existing:
+            a=existing[p.name];assert a['size']==p.stat().st_size and a['digest']=='sha256:'+sha(p);assets.append(a)
+        else:assets.append(upload(rel,p))
     descriptor=dict(release_id=rel['id'],release_url=rel['html_url'],source_commit=commit,build_run=int(run),pkz_bytes=qa['pkz_bytes'],pkz_sha256=qa['pkz_sha256'],assets=[dict(name=a['name'],id=a['id'],bytes=a['size'],digest=a['digest'],url=a['browser_download_url']) for a in assets])
     print('CODEX_V044_DELIVERY_BLOB '+blob(json.dumps(descriptor)),flush=True)
     assert api('/releases/'+str(rel['id']))['draft']
     print('Complete playable v044 PKZ and editable checkpoint saved privately.',flush=True)
-if __name__=='__main__':{'checkpoint':checkpoint,'restore':restore,'deliver':deliver}[sys.argv[1]]()
+if __name__=='__main__':{'checkpoint':checkpoint,'restore':restore,'hold':hold,'deliver':deliver}[sys.argv[1]]()
