@@ -24,3 +24,18 @@ jobs:
         run: python TOOLS/v044_audit.py
       - name: Inspect official photographic material and plant sources
         run: python TOOLS/v044_asset_probe.py
+      - name: Inspect GLTF model topology for import
+        shell: python
+        run: |
+          import urllib.request,json,os
+          from pathlib import Path
+          import sys
+          sys.path.insert(0,'TOOLS')
+          from v044_source import blob
+          meta=json.loads(Path('DOCUMENTATION/v044_asset_options.json').read_text())
+          for asset in ['tree_small_02','grass_bermuda_01']:
+              url=meta[asset]['gltf']['1k']['gltf']['url']
+              req=urllib.request.Request(url,headers={'User-Agent':'OrlandoMX'})
+              with urllib.request.urlopen(req) as response: doc=json.load(response)
+              print('CODEX_'+asset+'_GLTF_BLOB '+blob(json.dumps(doc)),flush=True)
+              print(asset,doc.get('nodes'),[(m.get('name'),[(p.get('material'),doc['accessors'][p['attributes']['POSITION']]['count'],doc['accessors'][p['indices']]['count']) for p in m['primitives']]) for m in doc['meshes']],flush=True)
