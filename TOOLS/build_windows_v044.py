@@ -7,6 +7,28 @@ from validate_native_textures_v024 import bitmap_signature,verify_files
 from build_windows_v043 import active_diffuse_textures
 from v027_scenery import parse,geometry_records,vertices
 
+
+def scene_texture_paths(stage):
+    """Resolve the exact external textures available to the native FBX importer."""
+    nodes=parse((O/'scenery.fbx').read_bytes())[0]
+    active=active_diffuse_textures(nodes)
+    paths=[];missing=[]
+    for name in sorted(active):
+        if Path(name).name!=name:
+            raise RuntimeError('Unsafe scenery texture reference: '+name)
+        candidates=[F/name,stage/'scenery.fbm'/name,stage/name]
+        path=next((p for p in candidates if p.is_file()),None)
+        if path is None:
+            missing.append(name);continue
+        if (F/name).is_file():
+            assert (stage/name).is_file() and sha(stage/name)==sha(path),name
+            assert (stage/'scenery.fbm'/name).is_file() and sha(stage/'scenery.fbm'/name)==sha(path),name
+        bitmap_signature(path)
+        paths.append(path)
+    if missing:
+        raise RuntimeError('Missing active scenery textures in authored and native staging folders: '+', '.join(missing))
+    return paths
+
 def main():
     assert os.name=='nt','Use the official Windows workflow'
     subprocess.run([sys.executable,str(R/'TOOLS/materialize_v009_baseline.py')],cwd=R,check=True)
@@ -42,7 +64,9 @@ def main():
         assert sha(P/'terrain.raw')==qa['terrain_sha256'] and sha(P/'scenery.fbx')==qa['scenery_sha256']
         for fn in ['track.hmf','track.tht']:
             for name in re.findall(r'(?m)^\s*(?:map|mask|data)\s*=\s*(\S+)',(P/fn).read_text()):assert (P/name).exists(),name
-        save(O/'v044_staging_validation.json',dict(checks_pass=True,physical_declarations_exact=True,shadow_supersampling=4,shadowmap_scale=.1,terrain_self_shadowing=True,all_texture_references_resolved=True))
+        resolved=scene_texture_paths(P)
+        save(O/'v044_staging_validation.json',dict(checks_pass=True,physical_declarations_exact=True,shadow_supersampling=4,shadowmap_scale=.1,terrain_self_shadowing=True,all_texture_references_resolved=True,active_scenery_textures=[dict(file=p.name,source=p.relative_to(R).as_posix(),sha256=sha(p)) for p in resolved]))
+        print('All active scenery textures resolved before native compilation:',len(resolved),flush=True)
     ns['stage']=stage;ns['main']()
     raw=(DEST/(NAME+'.map')).read_bytes();coords=[]
     points=read(O/'v044_native_probes.json')['expected_xyz_metres']
@@ -60,8 +84,7 @@ def main():
         p=P/name
         w,h,d=bitmap_signature(p);offset=raw.find(struct.pack('<2I',w,h)+d);assert offset>=0,('Native terrain payload missing',name);signatures.append(dict(texture=name,size=[w,h],pixel_md5=d.hex(),map_signature_offset=offset))
     del raw
-    scene=parse((O/'scenery.fbx').read_bytes())[0];active=active_diffuse_textures(scene);textures=[F/name for name in sorted(active) if (F/name).exists()]
-    assert all((F/name).exists() for name in active),active
+    textures=scene_texture_paths(P)
     objects=verify_files(W/'08_OBJECTS_GAME/scenery.edf',DEST/(NAME+'.map'),textures,R/'DOCUMENTATION/v044_native_object_texture_validation.json')
     # Vegetation is purely visual. Any actual collision change rejects delivery.
     trh_exact=sha(DEST/(NAME+'.trh'))==sha(baseline/'orlandomx_2026_v043.trh');assert trh_exact,'Native physical track differs from delivered v043'
