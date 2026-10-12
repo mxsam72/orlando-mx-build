@@ -1,0 +1,36 @@
+name: Render v044 actual-source previews
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v044]
+    paths: ['TOOLS/render_v044_previews.py', 'TOOLS/render_v044_runner.py', '.github/workflows/render-v044.yml']
+permissions:
+  contents: write
+concurrency:
+  group: orlando-v044-preview
+  cancel-in-progress: false
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      PYTHONUNBUFFERED: '1'
+      OPENBLAS_NUM_THREADS: '2'
+      OMP_NUM_THREADS: '2'
+      LIBGL_ALWAYS_SOFTWARE: '1'
+      MEDIA_VTK_WINDOW: vtkOSOpenGLRenderWindow
+      MEDIA_SSAO: '1'
+      TRACK_SOURCE_FOLDER: V044_OUTPUT
+      V044_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install read-only preview renderer
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y libosmesa6 libgl1-mesa-dri
+          python -m pip install numpy scipy pillow vtk
+      - name: Restore exact saved source and render preview views
+        run: python TOOLS/render_v044_runner.py
