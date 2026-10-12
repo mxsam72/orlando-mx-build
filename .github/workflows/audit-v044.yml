@@ -22,3 +22,5 @@ jobs:
         run: python TOOLS/v044_source.py
       - name: Inspect material layers vegetation and environment without editing
         run: python TOOLS/v044_audit.py
+      - name: Inspect official photographic material and plant sources
+        run: python TOOLS/v044_asset_probe.py
