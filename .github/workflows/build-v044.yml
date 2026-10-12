@@ -13,7 +13,7 @@ concurrency:
 jobs:
   build:
     runs-on: windows-latest
-    timeout-minutes: 180
+    timeout-minutes: 360
     env:
       PYTHONUTF8: '1'
       PYTHONIOENCODING: utf-8
@@ -26,15 +26,16 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install -r requirements-v009.txt fast-simplification==0.1.13
-      - name: Authenticate delivered v043 source and actual native validation
-        run: python TOOLS/v044_source.py
-      - name: Author continuous dirt botanical vegetation and photographic object materials
-        run: python TOOLS/build_v044.py
-      - name: Save complete editable checkpoint with exact baseline
-        run: python TOOLS/v044_release_transfer.py checkpoint
+      - name: Restore authenticated saved v044 visuals without reauthoring
+        run: python TOOLS/v044_release_transfer.py resume
+      - name: Independently recheck preserved track and scenery
+        run: python TOOLS/verify_v044_source.py
       - name: Preserve source in private release assets without Actions artifact storage
         run: python TOOLS/v044_release_transfer.py hold
       - name: Compile official native graphics collision and centerline
         run: python TOOLS/build_windows_v044.py
       - name: Deliver verified PKZ checksums and source through private GitHub release
         run: python TOOLS/v044_release_transfer.py deliver
+      - name: Preserve native failure diagnostics
+        if: failure()
+        run: python TOOLS/v044_release_transfer.py diagnostics

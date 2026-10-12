@@ -1,5 +1,5 @@
 """Official Windows compilation, exact physical preservation and bitmap payload checks."""
-import os,re,shutil,struct,subprocess,sys,zipfile
+import os,re,shutil,struct,subprocess,sys,zipfile,time,threading,queue
 from PIL import Image
 from v044_common import *
 from build_windows_v037 import probe
@@ -29,6 +29,49 @@ def scene_texture_paths(stage):
         raise RuntimeError('Missing active scenery textures in authored and native staging folders: '+', '.join(missing))
     return paths
 
+
+def run_native(exe,args,label,timeout=1800):
+    """Retain native output and report progress while enforcing a generous limit."""
+    print('Running',label,'with timeout',timeout,'seconds',flush=True)
+    started=time.monotonic();command=[str(exe),*map(str,args)]
+    log_path=R/'DOCUMENTATION'/(label+'.log');log_path.parent.mkdir(parents=True,exist_ok=True)
+    process=subprocess.Popen(command,cwd=R/'BUILD/v044_stage',stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True,errors='replace',bufsize=1)
+    lines=queue.Queue();tail='';reported_error=False;last_status=started
+    def capture():
+        try:
+            for line in process.stdout:lines.put(line)
+        finally:lines.put(None)
+    reader=threading.Thread(target=capture,daemon=True);reader.start()
+    try:
+        with log_path.open('w',encoding='utf-8') as output:
+            while True:
+                now=time.monotonic()
+                if now-started>=timeout:
+                    process.kill();process.wait();reader.join(timeout=5)
+                    while not lines.empty():
+                        line=lines.get_nowait()
+                        if line is not None:output.write(line);tail=(tail+line)[-5000:]
+                    output.flush();print(tail,flush=True)
+                    raise subprocess.TimeoutExpired(command,timeout,output=tail)
+                try:line=lines.get(timeout=min(1,max(.01,timeout-(now-started))))
+                except queue.Empty:line=''
+                if line is None:break
+                if line:
+                    output.write(line);output.flush();tail=(tail+line)[-5000:]
+                    reported_error=reported_error or 'ERROR:' in line.upper()
+                if now-last_status>=60:
+                    print(label+': '+str(int((now-started)//60))+' minutes elapsed; compiler active',flush=True);last_status=now
+            remaining=max(.01,timeout-(time.monotonic()-started))
+            code=process.wait(timeout=remaining)
+        print(tail,flush=True)
+        if code:raise RuntimeError(label+' returned '+str(code)+'; see '+str(log_path))
+        if reported_error:raise RuntimeError(label+' reported an error; see '+str(log_path))
+        return dict(returncode=code,seconds=round(time.monotonic()-started,2),log=label+'.log')
+    finally:
+        if process.poll() is None:process.kill();process.wait()
+        reader.join(timeout=5)
+        process.stdout.close()
+
 def main():
     assert os.name=='nt','Use the official Windows workflow'
     subprocess.run([sys.executable,str(R/'TOOLS/materialize_v009_baseline.py')],cwd=R,check=True)
@@ -40,7 +83,7 @@ def main():
     ini=DEST/(NAME+'.ini');ini.write_text(ini.read_text().replace('v043','v044').replace('v042','v044'))
     amb=DEST/(NAME+'.amb');text=amb.read_text();text=text.replace('red = 0.48\n green = 0.53\n blue = 0.6','red = 0.44\n green = 0.49\n blue = 0.56').replace('red = 1.0\n green = 0.95\n blue = 0.82','red = 1.0\n green = 0.97\n blue = 0.90').replace('density = 0.00045','density = 0.00030');amb.write_text(text)
     source=(R/'TOOLS/build_windows.py').read_text();old="destination=ROOT/'12_RELEASE/OrlandoMX_2026_v007.pkz'";assert source.count(old)==1
-    source=source.replace(old,"destination=V044_REPO/'12_RELEASE/OrlandoMX_2026_v044.pkz'").replace("ROOT/'BUILD/native_coordinate_probes.json'","V044_REPO/'V044_OUTPUT/native_coordinate_probes.json'").replace('compresslevel=6','compresslevel=9').replace("'terrained_map',2400","'terrained_map',4800").replace("'fbx2edf',900","'fbx2edf',2400")
+    source=source.replace(old,"destination=V044_REPO/'12_RELEASE/OrlandoMX_2026_v044.pkz'").replace("ROOT/'BUILD/native_coordinate_probes.json'","V044_REPO/'V044_OUTPUT/native_coordinate_probes.json'").replace('compresslevel=6','compresslevel=9').replace("'terrained_map',2400","'terrained_map',7200").replace("'fbx2edf',900","'fbx2edf',7200")
     ns={'__name__':'v044_native','__file__':__file__,'V044_REPO':R};exec(compile(source,str(R/'TOOLS/build_windows.py'),'exec'),ns,ns)
     ns.update(ROOT=W,NAME=NAME,LOG=R/'DOCUMENTATION',STAGE=P,OUT=DEST);original=ns['stage']
     def stage():
@@ -67,7 +110,9 @@ def main():
         resolved=scene_texture_paths(P)
         save(O/'v044_staging_validation.json',dict(checks_pass=True,physical_declarations_exact=True,shadow_supersampling=4,shadowmap_scale=.1,terrain_self_shadowing=True,all_texture_references_resolved=True,active_scenery_textures=[dict(file=p.name,source=p.relative_to(R).as_posix(),sha256=sha(p)) for p in resolved]))
         print('All active scenery textures resolved before native compilation:',len(resolved),flush=True)
-    ns['stage']=stage;ns['main']()
+    ns['stage']=stage;ns['run']=run_native;ns['main']()
+    from v044_release_transfer import save_native_checkpoint
+    save_native_checkpoint()
     raw=(DEST/(NAME+'.map')).read_bytes();coords=[]
     points=read(O/'v044_native_probes.json')['expected_xyz_metres']
     # Three probes per authored vegetation batch and scan part; plus legacy flag, Ford and gap repairs.
