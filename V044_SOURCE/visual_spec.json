@@ -1,0 +1,21 @@
+{
+  "version": "v044",
+  "baseline_version": "v043",
+  "baseline_release_id": 408378163,
+  "baseline_source_commit": "cbf724958b118365a040e149c98322fea389d74f",
+  "baseline_checkpoint_bytes": 1451713231,
+  "baseline_checkpoint_sha256": "333f4435435d2bc285740d387b9cc1715ffcafe3642657e6b4a767f5721436a9",
+  "baseline_validation_sha256": "2b5e223562b2c553adf8ed183b8cbeef8e7610d67f9a82cf9a8c5abf65ae3017",
+  "baseline_pkz_bytes": 428771612,
+  "baseline_pkz_sha256": "06b33c01a5ca3eb135f33caa6212121471242dbeeb0c1251be19b56f1b25d31c",
+  "weather_focus": "standard dry weather",
+  "package_size_cap_removed_by_user": true,
+  "preserve_riding_heightfield_and_physics": true,
+  "preserve_accepted_color_character": true,
+  "preserve_road_and_all_personalized_assets": true,
+  "seed": 440044,
+  "shadow_supersampling": 4,
+  "riding_corridor_margin_m": 1.5,
+  "minimum_overhead_clearance_m": 4.5,
+  "new_visual_geometry_is_noncollidable": true
+}
