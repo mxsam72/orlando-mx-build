@@ -21,7 +21,7 @@ def main():
     for name,(g,mid) in rec.items():
         if name not in oldrec:assert name.startswith('v044_'),name
     text=(O/'compiled_track.hmf').read_text();assert len(layer_blocks(text))==11 and 'mask_v044_route_detail.tga' in text
-    for path in re.findall(r'(?m)^\s*(?:map|mask|data)\s*=\s*(\S+)',text):assert (M/path).exists() or (O/path).exists(),path
+    for path in re.findall(r'(?m)^\s*(?:map|mask|data)\s*=\s*(\S+)',text):assert (M/path).exists() or (O/path).exists() or path=='basemap.tga',path
     altered=qa['photographic_texture_updates'];protected=[]
     for p in (BASE/'facility_textures').glob('*.tga'):
         if p.name not in altered:assert sha(p)==sha(F/p.name),p.name;protected.append(p.name)

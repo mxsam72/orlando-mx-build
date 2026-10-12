@@ -41,6 +41,20 @@ def import_tree():
         no=mat['normalTexture'];normal=Image.open(path.parent/doc['images'][doc['textures'][no['index']]['source']]['uri']).convert('RGBA');normal.putalpha(Image.new('L',normal.size,2));image_file(normal,F/(fname+'_n.tga'))
         (F/(fname+'.shd')).write_text('bump\n{\n map = '+fname+'_n.tga\n}\nspecular\n{\n shininess = 8\n}\n')
         cross=np.cross(vv[ff[:,1]]-vv[ff[:,0]],vv[ff[:,2]]-vv[ff[:,0]]);ok=np.linalg.norm(cross,axis=1)>1e-10;ff=ff[ok]
+        if mi==1 and len(ff)>75000:
+            # Disconnected botanical leaf pieces have an irreducible triangle floor.
+            # Keep complete components distributed across the crown, never isolated face fragments.
+            from scipy.sparse import coo_matrix
+            from scipy.sparse.csgraph import connected_components
+            edges=np.concatenate([ff[:,[0,1]],ff[:,[1,2]],ff[:,[2,0]]])
+            graph=coo_matrix((np.ones(len(edges),np.uint8),(edges[:,0],edges[:,1])),shape=(len(vv),len(vv))).tocsr()
+            count,labels=connected_components(graph,directed=False)
+            face_labels=labels[ff[:,0]];counts=np.bincount(face_labels,minlength=count)
+            ids=np.flatnonzero(counts);random=np.random.default_rng(440011);random.shuffle(ids)
+            chosen=ids[np.cumsum(counts[ids])<=75000]
+            ff=ff[np.isin(face_labels,chosen)]
+            used=np.unique(ff);lookup=np.full(len(vv),-1,np.int32);lookup[used]=np.arange(len(used));ff=lookup[ff];vv=vv[used];uu=uu[used];nn=nn[used]
+            print('Whole leaf-component budget:',len(ff),'triangles',flush=True)
         parts.append(dict(v=vv,f=ff,uv=uu,norm=nn,material=fname))
         print('Scan tree part',mi,'original',len(f),'native candidate',len(ff),flush=True)
     # Scan ground origin derives from its low trunk, not the canopy center.

@@ -57,7 +57,7 @@ def main():
         shd=M/(name[:-4]+'.shd')
         if shd.exists():names.update(re.findall(r'(?m)^\s*map\s*=\s*(\S+)',shd.read_text()))
     for name in sorted(names):
-        p=M/name if (M/name).exists() else O/name
+        p=P/name
         w,h,d=bitmap_signature(p);offset=raw.find(struct.pack('<2I',w,h)+d);assert offset>=0,('Native terrain payload missing',name);signatures.append(dict(texture=name,size=[w,h],pixel_md5=d.hex(),map_signature_offset=offset))
     del raw
     scene=parse((O/'scenery.fbx').read_bytes())[0];active=active_diffuse_textures(scene);textures=[F/name for name in sorted(active) if (F/name).exists()]
