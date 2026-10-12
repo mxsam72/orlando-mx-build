@@ -37,6 +37,9 @@ def main():
     coverage=np.clip(coverage,0,1)
     rgb=np.empty((n,n,3),np.uint8);height=np.empty((n,n),np.float32)
     base=np.asarray(Image.open(M/'v032_prepared.tga').convert('RGB'),np.float32)
+    # Low-pass the tiled photograph to the atlas world texel size. Underlying tiled
+    # prepared soil retains the millimetre-scale grain; the atlas carries broad wear.
+    base=gaussian_filter(base,sigma=(24,24,0),mode='wrap')
     x=(np.arange(n,dtype=np.float32)+.5)*dx
     count=0
     for y0 in range(0,n,64):
@@ -75,7 +78,7 @@ def main():
         normal[y0:y0+end-begin,:,:3]=np.uint8(np.rint(np.stack([nx/den,ny/den,1/den],2)*127.5+127.5))
     image_file(Image.fromarray(normal),M/'v044_route_detail_n.tga')
     (M/'v044_route_detail.shd').write_text('bump\n{\n map = v044_route_detail_n.tga\n repetitions = 1\n}\nspecular\n{\n shininess = 8\n}\n')
-    mask('mask_v044_route_detail.tga',coverage*.88)
+    mask('mask_v044_route_detail.tga',coverage*.68)
     # Clear dry surface: retain prepared/packed/worked dry families, remove small damp overlay.
     text=(O/'compiled_track.hmf').read_text()
     from v028_materials import layer_blocks
