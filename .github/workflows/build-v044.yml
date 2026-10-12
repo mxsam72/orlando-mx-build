@@ -1,0 +1,68 @@
+name: Build v044 standard-weather advanced realism
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v044]
+    paths: ['V044_SOURCE/**', 'TOOLS/build_v044.py', 'TOOLS/build_windows_v044.py', 'TOOLS/v044_*.py', 'TOOLS/verify_v044_source.py', '.github/workflows/build-v044.yml']
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: orlando-v044-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  author:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      PYTHONUNBUFFERED: '1'
+      V044_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      OPENBLAS_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-v009.txt fast-simplification==0.1.13
+      - name: Authenticate delivered v043 source and actual native validation
+        run: python TOOLS/v044_source.py
+      - name: Author continuous dirt botanical vegetation and photographic object materials
+        run: python TOOLS/build_v044.py
+      - name: Save complete editable checkpoint with exact baseline
+        run: python TOOLS/v044_release_transfer.py checkpoint
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v044-authored-source
+          path: |
+            BUILD/OrlandoMX-v044-source-checkpoint.zip
+            BUILD/v044_checkpoint_descriptor.json
+          compression-level: 0
+          retention-days: 7
+  compile:
+    needs: author
+    runs-on: windows-latest
+    timeout-minutes: 120
+    env:
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+      PYTHONUNBUFFERED: '1'
+      OPENBLAS_NUM_THREADS: '2'
+      V044_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-v009.txt
+      - uses: actions/download-artifact@v4
+        with:
+          name: v044-authored-source
+          path: BUILD
+      - name: Restore authenticated authored source
+        run: python TOOLS/v044_release_transfer.py restore
+      - name: Independently recheck source preservation on Windows
+        run: python TOOLS/verify_v044_source.py
+      - name: Compile official native graphics collision and centerline
+        run: python TOOLS/build_windows_v044.py
+      - name: Deliver verified PKZ checksums and source through private GitHub release
+        run: python TOOLS/v044_release_transfer.py deliver
