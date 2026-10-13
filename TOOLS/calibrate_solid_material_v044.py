@@ -31,7 +31,7 @@ def main():
     with zipfile.ZipFile(archive) as zipped:zipped.extractall(tools)
     exe = tools/'fbx2edf/fbx2edf_x64.exe'
     report = {'official_tools_sha256':version['sha256'],'cases':[]}
-    mesh=dict(name='material_probe',vertices=[[100,0,100],[102,0,100],[102,2,100],[100,2,100]],faces=[[0,1,2],[0,2,3]],uv=[[[0,0],[1,0],[1,1]],[[0,0],[1,1],[0,1]]])
+    mesh=dict(name='material_probe',vertices=[[100.,0.,100.],[102.,0.,100.],[102.,2.,100.],[100.,2.,100.]],faces=[[0,1,2],[0,2,3]],uv=[[[0.,0.],[1.,0.],[1.,1.]],[[0.,0.],[1.,1.],[0.,1.]]])
     for variant in ['legacy_constant','modern_constant','modern_pattern','solid_colour_control','solid_colour_changed_control']:
         image = Image.new('RGB',(16,16),(82,58,40))
         if variant=='modern_pattern':image.putpixel((0,0),(83,58,40))
