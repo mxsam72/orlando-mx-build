@@ -1,0 +1,19 @@
+{
+  "version": "v047",
+  "baseline_version": "v046",
+  "approved_prototype_release_id": 412025003,
+  "approved_prototype_commit": "8ffbf24f6f51c631aa47c510e7f56088226d4fbe",
+  "approved_mix": {"A": 0.85, "B": 0.15},
+  "placement_seed": 47008515,
+  "near_view_distance_m": 55.0,
+  "middle_view_distance_m": 110.0,
+  "middle_view_retention_fraction": 0.60,
+  "far_view_retention_fraction": 0.30,
+  "minimum_retained_distant_spacing_m": 9.0,
+  "minimum_low_branch_track_margin_m": 1.5,
+  "rider_headroom_m": 4.5,
+  "vertical_scale_range": [0.78, 1.18],
+  "horizontal_scale_range": [0.80, 1.14],
+  "root_embed_m": 0.03,
+  "scope": "Replace all old generic, facility and scan trees with the approved A/B meshes. Keep all near-course trees and reduce distant density to control download size and rendering load. Preserve every non-tree FBX record, native collision, all v046 dirt payloads, race data and lighting."
+}

@@ -1,0 +1,43 @@
+name: Build v047 approved realistic tree replacement
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v047]
+    paths: ['V047_SOURCE/**', 'TOOLS/*v047*.py', '.github/workflows/build-v047.yml']
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: orlando-v047-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 240
+    env:
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+      PYTHONUNBUFFERED: '1'
+      OPENBLAS_NUM_THREADS: '2'
+      V047_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-v009.txt
+      - name: Restore authenticated v046 and the approved final tree prototypes
+        run: python TOOLS/v047_transfer.py restore
+      - name: Replace all old trees with 85 percent A and 15 percent B
+        run: python TOOLS/v047_scenery.py
+      - name: Inspect distant thinning and placements
+        run: python TOOLS/v047_previews.py
+      - name: Preserve validated source checkpoint before native compilation
+        run: python TOOLS/v047_transfer.py checkpoint
+      - name: Compile new native scenery and terrain while retaining v046 collision
+        run: python TOOLS/build_windows_v047.py
+      - name: Publish verified playable v047
+        run: python TOOLS/v047_transfer.py deliver
+      - name: Preserve failure diagnostics
+        if: failure()
+        run: python TOOLS/v047_transfer.py diagnostics
