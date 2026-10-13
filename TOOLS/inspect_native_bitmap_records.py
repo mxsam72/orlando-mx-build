@@ -73,8 +73,16 @@ def texture_paths():
     paths = []
     for record in manifest['active_scenery_textures']:
         name = record['file']
-        candidates = [F / name, root / name, R / record['source']]
+        candidates = [F / name, root / name, R / 'BUILD/v009_work/04_TEXTURES' / name,
+                      R / 'BUILD/v009_work/05_NORMALS' / name, R / record['source']]
         path = next((p for p in candidates if p.is_file() and sha(p) == record['sha256']), None)
+        if path is None:
+            candidates += [p for p in (R / 'BUILD/v009_work').rglob(name) if p.is_file()]
+            path = next((p for p in candidates if p.is_file() and sha(p) == record['sha256']), None)
+        if path is None:
+            print('SOURCE_TEXTURE_RESOLUTION ' + json.dumps(dict(texture=name, expected_sha256=record['sha256'],
+                  candidates=[dict(path=p.relative_to(R).as_posix(), sha256=sha(p), bitmap_signature=[*bitmap_signature(p)[:2], bitmap_signature(p)[2].hex()])
+                              for p in candidates if p.is_file()])), flush=True)
         assert path is not None, ('Staged texture cannot be reproduced exactly', name, candidates)
         paths.append(path)
     return paths
