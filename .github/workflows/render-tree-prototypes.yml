@@ -1,0 +1,46 @@
+name: Render realistic tree prototypes for approval
+on:
+  workflow_dispatch:
+  push:
+    branches: [tree-prototypes-v047]
+    paths: ['TREE_PROTOTYPES/**', '.github/workflows/render-tree-prototypes.yml']
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: orlando-tree-prototypes-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      PYTHONUNBUFFERED: '1'
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install render preparation libraries
+        run: python -m pip install Pillow==12.3.0 numpy==2.3.5
+      - name: Install headless rendering and video dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y libxi6 libxfixes3 libxrender1 libxxf86vm1 libxkbcommon0 libsm6 libgl1 ffmpeg
+      - name: Authenticate foliage sources photographic materials and official Blender
+        run: python TREE_PROTOTYPES/prepare_tree_assets.py
+      - name: Build actual meshes and render model comparisons
+        run: TREE_PROTOTYPES/blender-4.5.3-linux-x64/blender --background --python TREE_PROTOTYPES/build_tree_prototypes.py
+      - name: Package and validate prototype review assets
+        run: python TREE_PROTOTYPES/package_tree_previews.py
+      - name: Publish prototype review only
+        run: python TREE_PROTOTYPES/publish_tree_previews.py
+      - name: Preserve review renders as a workflow artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Orlando-tree-prototype-review
+          path: TREE_PROTOTYPES/output/
+          if-no-files-found: ignore
+          retention-days: 30
