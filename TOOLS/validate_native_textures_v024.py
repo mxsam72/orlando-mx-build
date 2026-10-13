@@ -61,9 +61,9 @@ def verify_files(edf,mapfile,textures,report,legacy_materials=None):
             assert hashlib.sha256(Path(texture).read_bytes()).hexdigest()==legacy['source_sha256']
             rows=[]
             for material in legacy['materials']:
-                # Controlled official exports demonstrate diffuse RGB followed
-                # by ambient RGB as six consecutive float32 material values.
-                signature=struct.pack('<6f',*(material['diffuse_rgb']+material['ambient_rgb']))
+                # Actual EDF material headers and official color controls store
+                # the diffuse RGB twice; FBX ambient RGB is not copied here.
+                signature=struct.pack('<6f',*(material['diffuse_rgb']*2))
                 edf_pos=eb.find(signature);map_pos=mb.find(signature)
                 if edf_pos<0 or map_pos<0:
                     diff=struct.pack('<3f',*material['diffuse_rgb']);amb=struct.pack('<3f',*material['ambient_rgb'])
@@ -75,7 +75,7 @@ def verify_files(edf,mapfile,textures,report,legacy_materials=None):
                           ambient_context_hex=eb[max(0,ap-32):ap+96].hex() if ap>=0 else None,
                           edf_first_8192_hex=eb[:8192].hex())),flush=True)
                     raise RuntimeError('Missing legacy native material colors: '+Path(texture).name)
-                rows.append(dict(material,edf_colour_signature_offset=edf_pos,map_colour_signature_offset=map_pos))
+                rows.append(dict(material,edf_colour_signature_offset=edf_pos,map_colour_signature_offset=map_pos,native_colour_layout='diffuse RGB repeated twice as float32'))
             checks.append(dict(texture=Path(texture).name,representation='legacy_uniform_diffuse_material',
                                width=w,height=h,pixel_md5=digest.hex(),source_sha256=legacy['source_sha256'],
                                bitmap_payload_required=False,constant_source_image_verified=True,
@@ -91,7 +91,7 @@ def verify_files(edf,mapfile,textures,report,legacy_materials=None):
                 textures=checks,missing=[],shared_bitmap_alias_count=sum(r.get('shared_bitmap_alias',False) for r in checks),
                 native_bitmap_texture_count=sum(r.get('representation')!='legacy_uniform_diffuse_material' for r in checks),
                 legacy_uniform_material_texture_count=sum(r.get('representation')=='legacy_uniform_diffuse_material' for r in checks),
-                method='Exact dimensions and bottom-up RGBA pixel MD5 in bounded native EDF bitmap records; corresponding bitmap signatures in MAP. Identical-pixel aliases require another fully verified named bitmap record. Authenticated unchanged legacy uniform-color images require exact source diffuse-plus-ambient material RGB values in both EDF and MAP, calibrated with official exporter controls.',
+                method='Exact dimensions and bottom-up RGBA pixel MD5 in bounded native EDF bitmap records; corresponding bitmap signatures in MAP. Identical-pixel aliases require another fully verified named bitmap record. Authenticated unchanged legacy uniform-color images require exact source diffuse RGB values in both repeated native material-color fields in EDF and MAP, calibrated with official exporter controls and actual EDF material headers.',
                 probe_run=36824107860,in_game_visual_test=False)
     Path(report).write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
     print('Verified actual native bitmap payloads in EDF and MAP:',len(checks),flush=True)

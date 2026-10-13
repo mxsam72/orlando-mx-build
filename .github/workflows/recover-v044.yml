@@ -37,4 +37,4 @@ jobs:
         if: failure()
         run: python TOOLS/v044_release_transfer.py diagnostics
 
-# Inspect exact native material fields on unexpected color representation.
+# Native diffuse RGB fields calibrated against the actual material table.
