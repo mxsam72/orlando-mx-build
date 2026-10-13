@@ -1,0 +1,43 @@
+name: Build v045 finish tabletop and triple dirt sample
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v045]
+    paths: ['V045_SOURCE/**', 'TOOLS/*v045*.py', '.github/workflows/build-v045.yml']
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: orlando-v045-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 180
+    env:
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+      PYTHONUNBUFFERED: '1'
+      OPENBLAS_NUM_THREADS: '2'
+      V045_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-v009.txt
+      - name: Restore checksum-authenticated delivered v044 source and native scenery
+        run: python TOOLS/v045_transfer.py restore
+      - name: Author dirt-only finish tabletop through triple sample
+        run: python TOOLS/v045_surface.py
+      - name: Inspect source material and exact section boundaries
+        run: python TOOLS/v045_previews.py
+      - name: Save the editable dirt sample before native compilation
+        run: python TOOLS/v045_transfer.py checkpoint
+      - name: Compile only terrain graphics and validate retained collision scenery and race files
+        run: python TOOLS/build_windows_v045.py
+      - name: Publish verified v045 PKZ and source checkpoint
+        run: python TOOLS/v045_transfer.py deliver
+      - name: Preserve failure diagnostics
+        if: failure()
+        run: python TOOLS/v045_transfer.py diagnostics

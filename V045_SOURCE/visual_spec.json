@@ -1,0 +1,55 @@
+{
+  "version": "v045",
+  "baseline_release_id": 411058375,
+  "baseline_tag": "untagged-281f90b2ce09d3a57800",
+  "baseline_terrain_sha256": "f6ce21f9b1a0ff4ca3a822d92dcba5904eeea860cd95952bd4ba44ac9cb5c4b9",
+  "section_features": [
+    "R01",
+    "R02"
+  ],
+  "station_start_m": -12.0,
+  "station_end_m": 193.0,
+  "end_feather_m": 10.0,
+  "shoulder_m": 3.3,
+  "side_feather_m": 1.7,
+  "assets": [
+    {
+      "file": "farm_soil/Diffuse.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/farm_soil/farm_soil_diff_4k.jpg",
+      "md5": "27ce16baca84d4ba49db66bf2e887d35",
+      "size": 10943024
+    },
+    {
+      "file": "farm_soil/nor_gl.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/farm_soil/farm_soil_nor_gl_4k.jpg",
+      "md5": "5b16028795a5e86e512e593fe66aa5f2",
+      "size": 21099265
+    },
+    {
+      "file": "farm_soil/Rough.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/farm_soil/farm_soil_rough_4k.jpg",
+      "md5": "4b6a6ef8e997eb22867ed861b509d9d0",
+      "size": 4061376
+    },
+    {
+      "file": "dirt/Diffuse.jpg",
+      "size": 12098794,
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/dirt/dirt_diff_4k.jpg",
+      "md5": "4acf5dfa053d382b7e2ece3c684e7c48"
+    },
+    {
+      "file": "dirt/nor_gl.jpg",
+      "size": 18081467,
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/dirt/dirt_nor_gl_4k.jpg",
+      "md5": "a32fcefb8fa105fe09dfd33a74337b5c"
+    },
+    {
+      "file": "dirt/Rough.jpg",
+      "size": 3565704,
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/dirt/dirt_rough_4k.jpg",
+      "md5": "be7b47facc517c4e63a2f18a7b105e60"
+    }
+  ],
+  "scope": "Dirt presentation only; preserve delivered v044 scenery, weather, physical terrain, race data and all personalized assets.",
+  "visual_validation": "Authoring previews are not in-game validation; final appearance is pending user ride test."
+}
