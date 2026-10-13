@@ -59,13 +59,15 @@ def stage():
         name=p.name.replace('orlandomx_2026_v044',NAME);shutil.copy2(p,DEST/name)
     ini=DEST/(NAME+'.ini');ini.write_text(ini.read_text().replace('v044','v045'))
     assert sha(DEST/(NAME+'.trh'))==sha(game/'orlandomx_2026_v044.trh')
-    versions=json.loads((R/'BUILD/tool_versions.json').read_text());version=versions['ct.zip']
-    tools=R/'BUILD/v045_native_tools';tools.mkdir(parents=True,exist_ok=True);archive=tools/'ct.zip'
-    with urllib.request.urlopen(version['url'],timeout=120) as src,archive.open('wb') as out:shutil.copyfileobj(src,out)
-    assert sha(archive)==version['sha256'] and archive.stat().st_size==version['bytes']
-    with zipfile.ZipFile(archive) as z:
-        for name in z.namelist():assert not Path(name).is_absolute() and '..' not in Path(name).parts
-        z.extractall(tools)
+    versions=json.loads((R/'BUILD/tool_versions.json').read_text())
+    tools=R/'BUILD/v045_native_tools';tools.mkdir(parents=True,exist_ok=True)
+    for name,version in versions.items():
+        archive=tools/name
+        with urllib.request.urlopen(version['url'],timeout=120) as src,archive.open('wb') as out:shutil.copyfileobj(src,out)
+        assert sha(archive)==version['sha256'] and archive.stat().st_size==version['bytes']
+        with zipfile.ZipFile(archive) as z:
+            for entry in z.namelist():assert not Path(entry).is_absolute() and '..' not in Path(entry).parts
+            z.extractall(tools)
     exe=tools/'terrained/terrained.exe';assert exe.is_file()
     return qa,baseline,exe
 

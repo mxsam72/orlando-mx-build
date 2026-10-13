@@ -101,6 +101,35 @@ def checkpoint():
     with open(os.environ['GITHUB_ENV'],'a',encoding='utf-8') as e:e.write('V045_RELEASE_ID='+str(rel['id'])+'\n')
     print('CODEX_V045_RELEASE_ID',rel['id'],flush=True)
 
+def resume_sample():
+    identity();rel=api('/releases/411270095')
+    assert rel['draft'] and rel['tag_name']=='v045-finish-dirt-38346039884'
+    asset=next(a for a in rel['assets'] if a['name']=='OrlandoMX-v045-dirt-source-checkpoint.zip')
+    assert asset['size']==362743168 and asset['digest']=='sha256:5028cc4c05034404f52bd02e95ffa4097ad6933bf3c5496957270159416e4611'
+    class AssetRedirect(urllib.request.HTTPRedirectHandler):
+        def redirect_request(self,req,fp,code,msg,headers,newurl):
+            redirected=super().redirect_request(req,fp,code,msg,headers,newurl)
+            if redirected is not None:redirected.remove_header('Authorization')
+            return redirected
+    p=R/'BUILD/OrlandoMX-v045-dirt-source-checkpoint.zip'
+    request=urllib.request.Request(asset['url'],headers=HEADERS|{'Accept':'application/octet-stream'})
+    with urllib.request.build_opener(AssetRedirect()).open(request,timeout=300) as src,p.open('wb') as out:shutil.copyfileobj(src,out,4*1024*1024)
+    assert p.stat().st_size==asset['size'] and sha(p)==asset['digest'].removeprefix('sha256:')
+    with zipfile.ZipFile(p) as z:
+        for name in ['V045_SOURCE/visual_spec.json','TOOLS/v045_surface.py','TOOLS/v045_previews.py']:
+            assert z.read(name).replace(b'\r\n',b'\n')==(R/name).read_bytes().replace(b'\r\n',b'\n'),('Authoring source changed; saved sample must not bypass it',name)
+        for i in z.infolist():
+            safe_name(i.filename)
+            if not i.is_dir() and i.filename.startswith('V045_OUTPUT/'):extract(z,i,R/i.filename)
+    qa=json.loads((O/'v045_surface_validation.json').read_text());assert qa['checks_pass'] and qa['atlas_changed_pixels_outside_section']==0
+    for name,entry in qa['new_files'].items():assert sha(O/name)==entry['sha256'],name
+    for name,digest in qa['baseline_files'].items():assert sha(BASE/name)==digest,name
+    qa['saved_authoring_source_commit']='68bee9a4ece4b79178c9c04b1d4eaf192dedd837'
+    qa['saved_authoring_checkpoint_sha256']=asset['digest'].removeprefix('sha256:');save_json(O/'v045_surface_validation.json',qa)
+    api('/releases/'+str(rel['id']),dict(target_commitish=os.environ['GITHUB_SHA']),method='PATCH')
+    with open(os.environ['GITHUB_ENV'],'a',encoding='utf-8') as e:e.write('V045_RELEASE_ID='+str(rel['id'])+'\n')
+    print('Exact saved v045 dirt sample restored; authoring regeneration and source upload skipped.',flush=True)
+
 def preserve_native():
     rel=api('/releases/'+os.environ['V045_RELEASE_ID']);assert rel['draft']
     for name in ['OrlandoMX_2026_v045.pkz','OrlandoMX_2026_v045.pkz.sha256']:
@@ -120,10 +149,10 @@ def diagnostics():
     rid=os.environ.get('V045_RELEASE_ID')
     if not rid:return
     rel=api('/releases/'+rid);assert rel['draft']
-    p=R/'BUILD/v045_failure_diagnostics.zip'
+    p=R/'BUILD'/('v045_failure_diagnostics-'+os.environ['GITHUB_RUN_ID']+'.zip')
     with zipfile.ZipFile(p,'w',zipfile.ZIP_DEFLATED) as z:
         for f in list((R/'DOCUMENTATION').glob('*v045*'))+list(O.glob('*.json')):
             if f.is_file():z.write(f,f.relative_to(R).as_posix())
     upload(rel,p)
 
-if __name__=='__main__':{'restore':restore,'checkpoint':checkpoint,'deliver':deliver,'diagnostics':diagnostics}[sys.argv[1]]()
+if __name__=='__main__':{'restore':restore,'checkpoint':checkpoint,'resume':resume_sample,'deliver':deliver,'diagnostics':diagnostics}[sys.argv[1]]()
