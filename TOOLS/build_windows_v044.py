@@ -7,6 +7,8 @@ from validate_native_textures_v024 import bitmap_signature,verify_files
 from build_windows_v043 import active_diffuse_textures
 from v027_scenery import parse,geometry_records,vertices
 from scene_texture_bindings_v044 import actual_diffuse_bindings
+from native_coordinate_scan_v044 import scan_points
+from legacy_color_validation_v044 import legacy_materials
 
 
 def scene_texture_paths(stage):
@@ -121,13 +123,17 @@ def validate_native_outputs(stage, object_textures=None, native_source_commit=No
     """Run the same final checks against compiled or authenticated recovered outputs."""
     qa=read(O/'v044_source_validation.json');assert qa['checks_pass']
     W=R/'BUILD/v009_work';P=Path(stage);DEST=R/'12_RELEASE'/NAME;baseline=R/'12_RELEASE/orlandomx_2026_v043'
+    textures=scene_texture_paths(P) if object_textures is None else list(object_textures)
+    legacy=legacy_materials(O/'scenery.fbx',textures)
+    objects=verify_files(W/'08_OBJECTS_GAME/scenery.edf',DEST/(NAME+'.map'),textures,R/'DOCUMENTATION/v044_native_object_texture_validation.json',legacy_materials=legacy)
+    print('Object bitmap preflight passed; checking native geometry and terrain next.',flush=True)
     raw=(DEST/(NAME+'.map')).read_bytes();coords=[]
     points=read(O/'v044_native_probes.json')['expected_xyz_metres']
     # Three probes per authored vegetation batch and scan part; plus legacy flag, Ford and gap repairs.
     for fn in ['v043_native_probes.json','v042_native_probes.json','v041_native_probes.json','qwikchute_native_probes.json','holeshot_native_probes.json']:
         if (O/fn).exists():points+=read(O/fn)['expected_xyz_metres']
-    for p in points:
-        e=probe(raw,p);assert e is not None,('Missing native new geometry',p);coords.append(dict(expected_xyz_m=p,error_m=e))
+    for p,e in zip(points,scan_points(raw,points)):
+        assert e is not None,('Missing native new geometry',p);coords.append(dict(expected_xyz_m=p,error_m=e))
     signatures=[]
     text=(O/'compiled_track.hmf').read_text();names=set(re.findall(r'(?m)^\s*map\s*=\s*(\S+)',text))
     for name in list(names):
@@ -137,8 +143,6 @@ def validate_native_outputs(stage, object_textures=None, native_source_commit=No
         p=P/name
         w,h,d=bitmap_signature(p);offset=raw.find(struct.pack('<2I',w,h)+d);assert offset>=0,('Native terrain payload missing',name);signatures.append(dict(texture=name,size=[w,h],pixel_md5=d.hex(),map_signature_offset=offset))
     del raw
-    textures=scene_texture_paths(P) if object_textures is None else list(object_textures)
-    objects=verify_files(W/'08_OBJECTS_GAME/scenery.edf',DEST/(NAME+'.map'),textures,R/'DOCUMENTATION/v044_native_object_texture_validation.json')
     # Vegetation is purely visual. Any actual collision change rejects delivery.
     trh_exact=sha(DEST/(NAME+'.trh'))==sha(baseline/'orlandomx_2026_v043.trh');assert trh_exact,'Native physical track differs from delivered v043'
     for suffix in ['.tsc','.tga','.rdf','_map.tga']:assert sha(DEST/(NAME+suffix))==sha(baseline/('orlandomx_2026_v043'+suffix))

@@ -35,7 +35,7 @@ def texture_record(raw,path):
         pos=raw.find(key,pos+1)
     raise RuntimeError('Missing or mismatched native bitmap payload '+path.name+': '+str(candidates))
 
-def verify_files(edf,mapfile,textures,report):
+def verify_files(edf,mapfile,textures,report,legacy_materials=None):
     edf=Path(edf);mapfile=Path(mapfile);eb=edf.read_bytes();mb=mapfile.read_bytes()
     if eb[:4]!=b'EDF\0' or mb[:2]!=b'MP':raise RuntimeError('Unexpected EDF/MAP format')
     checks=[];pending=[]
@@ -54,15 +54,35 @@ def verify_files(edf,mapfile,textures,report):
     # including its bounded payload and exact corresponding MAP signature.
     for texture,error in pending:
         w,h,digest=bitmap_signature(texture)
-        shared=next((r for r in checks if (r['width'],r['height'],r['pixel_md5'])==(w,h,digest.hex())),None)
-        if shared is None:raise error
+        shared=next((r for r in checks if r.get('pixel_md5')==digest.hex() and (r['width'],r['height'])==(w,h) and r.get('representation')!='legacy_uniform_diffuse_material'),None)
+        if shared is None:
+            legacy=(legacy_materials or {}).get(Path(texture).name)
+            if legacy is None:raise error
+            assert hashlib.sha256(Path(texture).read_bytes()).hexdigest()==legacy['source_sha256']
+            rows=[]
+            for material in legacy['materials']:
+                # Controlled official exports demonstrate diffuse RGB followed
+                # by ambient RGB as six consecutive float32 material values.
+                signature=struct.pack('<6f',*(material['diffuse_rgb']+material['ambient_rgb']))
+                edf_pos=eb.find(signature);map_pos=mb.find(signature)
+                if edf_pos<0 or map_pos<0:raise RuntimeError('Missing legacy native material colors: '+Path(texture).name)
+                rows.append(dict(material,edf_colour_signature_offset=edf_pos,map_colour_signature_offset=map_pos))
+            checks.append(dict(texture=Path(texture).name,representation='legacy_uniform_diffuse_material',
+                               width=w,height=h,pixel_md5=digest.hex(),source_sha256=legacy['source_sha256'],
+                               bitmap_payload_required=False,constant_source_image_verified=True,
+                               constant_pixel_rgba=legacy['constant_pixel_rgba'],native_material_colors=rows,
+                               official_colour_probe_run=legacy['official_colour_probe_run'],checks_pass=True))
+            continue
         row=dict(shared)
         row.update(texture=Path(texture).name,source_sha256=hashlib.sha256(Path(texture).read_bytes()).hexdigest(),
                    shared_bitmap_alias=True,shared_bitmap_texture=shared['texture'])
         checks.append(row)
     result=dict(checks_pass=True,power_of_two=True,texture_count=len(checks),edf_bytes=len(eb),
                 edf_sha256=hashlib.sha256(eb).hexdigest(),map_sha256=hashlib.sha256(mb).hexdigest(),
-                textures=checks,missing=[],shared_bitmap_alias_count=sum(r.get('shared_bitmap_alias',False) for r in checks),method='Exact dimensions and bottom-up RGBA pixel MD5 in bounded native EDF bitmap records; corresponding bitmap signatures in MAP. Identical-pixel aliases require another fully verified named bitmap record.',
+                textures=checks,missing=[],shared_bitmap_alias_count=sum(r.get('shared_bitmap_alias',False) for r in checks),
+                native_bitmap_texture_count=sum(r.get('representation')!='legacy_uniform_diffuse_material' for r in checks),
+                legacy_uniform_material_texture_count=sum(r.get('representation')=='legacy_uniform_diffuse_material' for r in checks),
+                method='Exact dimensions and bottom-up RGBA pixel MD5 in bounded native EDF bitmap records; corresponding bitmap signatures in MAP. Identical-pixel aliases require another fully verified named bitmap record. Authenticated unchanged legacy uniform-color images require exact source diffuse-plus-ambient material RGB values in both EDF and MAP, calibrated with official exporter controls.',
                 probe_run=36824107860,in_game_visual_test=False)
     Path(report).write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
     print('Verified actual native bitmap payloads in EDF and MAP:',len(checks),flush=True)

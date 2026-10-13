@@ -1,5 +1,5 @@
 """Regression checks for exact-pixel aliases and conflicting FBX source hints."""
-import json, struct, tempfile, unittest
+import hashlib, json, struct, tempfile, unittest
 from pathlib import Path
 from PIL import Image
 from validate_native_textures_v024 import bitmap_signature, verify_files
@@ -80,6 +80,28 @@ class NativeTextureRegression(unittest.TestCase):
     def test_conflicting_media_name_cannot_silently_drop_texture(self):
         with self.assertRaises(AssertionError):
             actual_diffuse_bindings(binding_fixture('bark.tga'))
+
+    def test_authenticated_legacy_colors_require_edf_and_map_values(self):
+        diffuse=[.23,.2,.15];ambient=[.05,.05,.05]
+        colors=struct.pack('<6f',*(diffuse+ambient))
+        self.edf.write_bytes(b'EDF\0'+colors)
+        self.map.write_bytes(b'MP'+colors)
+        legacy={self.original.name:dict(source_sha256=hashlib.sha256(self.original.read_bytes()).hexdigest(),
+                constant_pixel_rgba=[112,65,21,255],materials=[dict(diffuse_rgb=diffuse,ambient_rgb=ambient)],official_colour_probe_run=38331283031)}
+        result=verify_files(self.edf,self.map,[self.original],self.root/'colors.json',legacy_materials=legacy)
+        self.assertEqual(result['legacy_uniform_material_texture_count'],1)
+        self.map.write_bytes(b'MP'+struct.pack('<6f',.24,.2,.15,.05,.05,.05))
+        with self.assertRaises(RuntimeError):
+            verify_files(self.edf,self.map,[self.original],self.root/'colors.json',legacy_materials=legacy)
+
+    def test_changed_legacy_source_is_rejected(self):
+        diffuse=[.23,.2,.15];ambient=[.05,.05,.05]
+        colors=struct.pack('<6f',*(diffuse+ambient))
+        self.edf.write_bytes(b'EDF\0'+colors);self.map.write_bytes(b'MP'+colors)
+        legacy={self.original.name:dict(source_sha256='0'*64,constant_pixel_rgba=[112,65,21,255],
+                materials=[dict(diffuse_rgb=diffuse,ambient_rgb=ambient)],official_colour_probe_run=38331283031)}
+        with self.assertRaises(AssertionError):
+            verify_files(self.edf,self.map,[self.original],self.root/'colors.json',legacy_materials=legacy)
 
 if __name__ == '__main__':
     unittest.main()
