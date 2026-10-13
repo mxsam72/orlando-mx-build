@@ -92,10 +92,16 @@ def main():
                     row['content_decode_error'] = str(error)
             video_rows.append(row)
         row = dict(texture_id=texture_id, texture_fields=fields,
+                   texture_properties={values(p)[0].decode():[v.decode() if isinstance(v,bytes) else v for v in values(p)[4:]]
+                                       for props in texture['children'] if props['name']==b'Properties70'
+                                       for p in props['children'] if values(p)[0] in [b'UVSet',b'FileName',b'Filename',b'Path']},
                    native_diagnostics={name: dict(edf_signature_offset=native[name]['edf_signature_offset'], map_signature_offset=native[name]['map_signature_offset'], source_pixel_md5=native[name]['pixel_md5']) for name in names if name in native},
                    material_links=[dict(type=link[0].decode(), property=link[3].decode() if len(link)>3 else None,
                                         material_id=link[2], material_name=values(objects[link[2]])[1].split(b'\0')[0].decode(),
-                                        assigned_polygons=used_faces[link[2]], model_samples=material_model_samples[link[2]]) for link in related],
+                                        assigned_polygons=used_faces[link[2]], model_samples=material_model_samples[link[2]],
+                                        material_properties={values(p)[0].decode():list(values(p)[4:])
+                                        for props in objects[link[2]]['children'] if props['name']==b'Properties70'
+                                        for p in props['children'] if values(p)[0] in [b'DiffuseColor',b'AmbientColor',b'Diffuse',b'DiffuseFactor',b'TransparencyFactor',b'Opacity']}) for link in related],
                    embedded_videos=video_rows)
         records.append(row)
         print('SOURCE_BITMAP_BINDING ' + json.dumps(row), flush=True)
