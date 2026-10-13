@@ -1,0 +1,22 @@
+{
+  "version": "v048",
+  "feature": "R01 finish tabletop benchmark",
+  "baseline_commit": "39f366c178d8729d29ae0dd7b0b5b365599a688f",
+  "station_start_m": -3.0,
+  "station_end_m": 55.5,
+  "end_feather_m": 3.0,
+  "core_station_range_m": [0.0, 51.4666666667],
+  "face_station_range_m": [0.0, 12.5],
+  "deck_station_range_m": [12.5, 33.4666666667],
+  "landing_station_range_m": [33.4666666667, 51.4666666667],
+  "racing_half_width_m": 5.4,
+  "bank_outer_half_width_m": 10.6,
+  "bank_feather_m": 2.4,
+  "visual_layer_thickness_m": 4.0,
+  "physical_finite_layer_depth_budget_m": 0.31,
+  "baseline_terrain_sha256": "f6ce21f9b1a0ff4ca3a822d92dcba5904eeea860cd95952bd4ba44ac9cb5c4b9",
+  "seed": 480137,
+  "scope": "One tabletop only, including its existing sloped banks and short approach/exit blend. R02 triple and R03 table-single are unchanged.",
+  "method": "Matched colour and tangent normals from a deterministic virtual-relief field; no height-field or collision changes. Reuse existing 8K macro atlases and 4K photographic soil; add one 2K periodic clod colour/normal pair for millimetre close-up detail. Two scoped visual layers retain 4 m cosmetic depths. Preserve all existing HMF layers and shaders.",
+  "reference": "Thunder Hollow MX screenshots: irregular furrows, clods, compact crests, churned landings and lighter pushed-up side banks. Screenshots do not establish that author's implementation."
+}

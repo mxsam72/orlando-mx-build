@@ -1,0 +1,65 @@
+name: Build v048 finish tabletop dirt benchmark
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v048]
+    paths: ['V048_SOURCE/**', 'TOOLS/*v048*.py', '.github/workflows/build-v048.yml']
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: orlando-v048-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 210
+    env:
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+      PYTHONUNBUFFERED: '1'
+      OPENBLAS_NUM_THREADS: '2'
+      V048_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-v009.txt
+      - name: Check native bitmap and coordinate validators
+        run: python -m unittest discover -s TOOLS -p "test_*v04[47].py"
+      - name: Restore authenticated v047 scenery and collision with v046 dirt
+        run: python TOOLS/v048_transfer.py restore
+      - name: Author distinct finish tabletop face crest landing and banks
+        run: python TOOLS/v048_surface.py
+      - name: Render matched actual-source comparisons
+        run: python TOOLS/v048_previews.py
+      - name: Save source comparisons before the native compiler starts
+        uses: actions/upload-artifact@v4
+        with:
+          name: v048-source-comparisons
+          path: |
+            BUILD/v048_authoring_renders/comparison_*.jpg
+            BUILD/v048_authoring_renders/manifest.json
+            V048_OUTPUT/v048_surface_validation.json
+      - name: Preserve verified source before native compilation
+        run: python TOOLS/v048_transfer.py checkpoint
+      - name: Compile terrain graphics with exact delivered v047 trees and collision
+        run: python TOOLS/build_windows_v048.py
+      - name: Publish verified playable v048
+        run: python TOOLS/v048_transfer.py deliver
+      - name: Preserve failure diagnostics
+        if: failure()
+        run: python TOOLS/v048_transfer.py diagnostics
+      - name: Save comparison and validation artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v048-validation-and-source-comparisons
+          path: |
+            BUILD/v048_authoring_renders/*.jpg
+            BUILD/v048_authoring_renders/manifest.json
+            V048_OUTPUT/v048_surface_validation.json
+            DOCUMENTATION/terrained_v048.log
+            12_RELEASE/OrlandoMX_v048_Validation.json
+          if-no-files-found: warn
