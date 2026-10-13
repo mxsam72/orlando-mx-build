@@ -1,7 +1,7 @@
-"""Save reproducible source and verified native outputs to private GitHub assets."""
+"""Save source checkpoints and verified native outputs to unpublished GitHub releases."""
 import urllib.request,urllib.parse,sys,zipfile,os
 from v044_common import *
-from v044_source import api,HEADERS,blob,API,download
+from v044_source import api,HEADERS,blob,API,download,verify_repository
 
 def checkpoint():
     dest=R/'BUILD/OrlandoMX-v044-source-checkpoint.zip'
@@ -32,7 +32,8 @@ def restore():
 def resume_saved_source():
     """Restore the authenticated v044 checkpoint without regenerating visuals."""
     release=api('/releases/410990934')
-    assert api('')['private'] and release['draft']
+    verify_repository()
+    assert release['draft']
     assert release['target_commitish']=='b093ba4fa965202e5c88b6f315167e321c4960f7'
     assets={a['name']:a for a in release['assets']}
     source=assets['OrlandoMX-v044-source-checkpoint.zip']
@@ -51,7 +52,8 @@ def resume_saved_source():
 def save_native_checkpoint():
     """Preserve costly compiled outputs before extended validation can fail."""
     release=api('/releases/'+os.environ['V044_SOURCE_RELEASE_ID'])
-    assert api('')['private'] and release['draft']
+    verify_repository()
+    assert release['draft']
     assert release['target_commitish']==os.environ['GITHUB_SHA']
     qa=read(R/'DOCUMENTATION/native_build_validation.json')
     assert qa['compiled'] and qa['centerline_merged']
@@ -73,7 +75,7 @@ def save_diagnostics():
     release_id=os.environ.get('V044_SOURCE_RELEASE_ID')
     if not release_id:
         print('No source release was created; failure evidence remains in workflow logs.',flush=True);return
-    release=api('/releases/'+release_id);assert api('')['private'] and release['draft']
+    release=api('/releases/'+release_id);verify_repository();assert release['draft']
     path=R/'BUILD'/('v044-native-diagnostics-'+os.environ['GITHUB_RUN_ID']+'.zip')
     candidates=list((R/'DOCUMENTATION').glob('*.log'))+list((R/'DOCUMENTATION').glob('*failure*.txt'))
     candidates += [O/'v044_staging_validation.json',R/'BUILD/v044_stage/map_params.ini',R/'BUILD/v044_stage/edf_params.ini',R/'BUILD/v044_stage/trh_params.ini']
@@ -92,7 +94,7 @@ def upload(release,p):
     print('Verified private asset saved:',p.name,a['size'],flush=True);return a
 
 def hold():
-    assert api('')['private']
+    verify_repository()
     commit=os.environ['GITHUB_SHA'];run=os.environ['GITHUB_RUN_ID']
     rel=api('/releases',dict(tag_name='v044-private-build-'+run,target_commitish=commit,name='Orlando MX v044 editable source — native compilation pending',draft=True,prerelease=False,make_latest='false',body='Authenticated dry-weather visual source passed independent preservation checks. Native playable PKZ compilation is pending. This private checkpoint preserves editable assets without GitHub Actions artifact storage.'))
     for p in [R/'BUILD/OrlandoMX-v044-source-checkpoint.zip',R/'BUILD/v044_checkpoint_descriptor.json']:upload(rel,p)
@@ -101,7 +103,7 @@ def hold():
 
 
 def deliver():
-    assert api('')['private'];qa=read(R/'12_RELEASE/OrlandoMX_v044_Validation.json');assert qa['compiled'] and qa['source_checks'] and qa['native_trh_identical_to_v043']
+    verify_repository();qa=read(R/'12_RELEASE/OrlandoMX_v044_Validation.json');assert qa['compiled'] and qa['source_checks'] and qa['native_trh_identical_to_v043']
     commit=os.environ['GITHUB_SHA'];run=os.environ['GITHUB_RUN_ID'];native_commit=qa['source_commit']
     recovery=qa.get('native_checkpoint_recovery')
     if recovery:

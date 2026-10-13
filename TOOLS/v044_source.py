@@ -7,6 +7,12 @@ def api(path,data=None):
     body=None if data is None else json.dumps(data).encode()
     headers=HEADERS|({'Content-Type':'application/json'} if body else {})
     with urllib.request.urlopen(urllib.request.Request(API+path,data=body,headers=headers),timeout=180) as r:return json.load(r)
+def verify_repository():
+    """Require the exact repository and the public visibility approved by its owner."""
+    repository=api('')
+    assert repository['id']==1368050549 and repository['full_name']=='mxsam72/orlando-mx-build', 'Unexpected repository identity'
+    assert repository['visibility']=='public' and repository['private'] is False, 'Repository must match the approved public visibility'
+    return repository
 def download(asset,path):
     path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)
     req=urllib.request.Request(asset['url'],headers=HEADERS|{'Accept':'application/octet-stream'})
@@ -16,7 +22,7 @@ def download(asset,path):
     assert count==asset['size'] and h.hexdigest()==asset['digest'].removeprefix('sha256:')
 def blob(text):return api('/git/blobs',{'content':text,'encoding':'utf-8'})['sha']
 def main():
-    cfg=read(S/'visual_spec.json');assert api('')['private']
+    cfg=read(S/'visual_spec.json');verify_repository()
     rel=api('/releases/'+str(cfg['baseline_release_id']))
     assert rel['draft'] and rel['target_commitish']==cfg['baseline_source_commit']
     assets={a['name']:a for a in rel['assets']}

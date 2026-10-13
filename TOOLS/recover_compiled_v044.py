@@ -1,4 +1,5 @@
 """Validate and deliver the authenticated existing v044 compilation."""
+# Recovery supports the exact repository after its owner-authorized public conversion.
 import os, re, shutil
 from v044_common import R, O, M, NAME, read, save, sha
 from inspect_native_bitmap_records import restore_candidate, texture_paths, NATIVE_COMMIT, PKZ_SHA256, RELEASE_ID

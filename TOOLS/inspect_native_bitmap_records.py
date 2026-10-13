@@ -2,7 +2,7 @@
 import json, mmap, shutil, struct, subprocess, sys, zipfile
 from pathlib import Path
 from v044_common import R, O, F, NAME, read, save, sha, atomic
-from v044_source import api, download, blob
+from v044_source import api, download, blob, verify_repository
 from v044_release_transfer import restore
 from validate_native_textures_v024 import bitmap_signature, texture_record
 
@@ -16,7 +16,8 @@ PKZ_SHA256 = '899fb2e574fc1e0063dc001f6e2be96076b82e7d793a929f28b42fe42d3f59b0'
 def restore_source():
     """Authenticate Windows text with platform line endings normalized for comparison."""
     release = api('/releases/' + str(RELEASE_ID))
-    assert api('')['private'] and release['draft'] and release['target_commitish'] == NATIVE_COMMIT
+    verify_repository()
+    assert release['draft'] and release['target_commitish'] == NATIVE_COMMIT
     assets = {a['name']: a for a in release['assets']}
     source = assets['OrlandoMX-v044-source-checkpoint.zip']
     descriptor = assets['v044_checkpoint_descriptor.json']
@@ -34,7 +35,8 @@ def restore_source():
 
 def restore_candidate():
     release = api('/releases/' + str(RELEASE_ID))
-    assert api('')['private'] and release['draft']
+    verify_repository()
+    assert release['draft']
     assert release['target_commitish'] == NATIVE_COMMIT
     asset = next(a for a in release['assets'] if a['name'] == CANDIDATE_NAME)
     assert asset['size'] == CANDIDATE_BYTES
