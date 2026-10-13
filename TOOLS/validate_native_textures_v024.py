@@ -65,7 +65,16 @@ def verify_files(edf,mapfile,textures,report,legacy_materials=None):
                 # by ambient RGB as six consecutive float32 material values.
                 signature=struct.pack('<6f',*(material['diffuse_rgb']+material['ambient_rgb']))
                 edf_pos=eb.find(signature);map_pos=mb.find(signature)
-                if edf_pos<0 or map_pos<0:raise RuntimeError('Missing legacy native material colors: '+Path(texture).name)
+                if edf_pos<0 or map_pos<0:
+                    diff=struct.pack('<3f',*material['diffuse_rgb']);amb=struct.pack('<3f',*material['ambient_rgb'])
+                    dp=eb.find(diff);ap=eb.find(amb)
+                    print('LEGACY_NATIVE_COLOR_DIAGNOSTIC '+json.dumps(dict(texture=Path(texture).name,material=material,
+                          edf_diffuse_offset=dp,edf_ambient_offset=ap,map_diffuse_offset=mb.find(diff),map_ambient_offset=mb.find(amb),
+                          reversed_pair_edf_offset=eb.find(amb+diff),reversed_pair_map_offset=mb.find(amb+diff),
+                          diffuse_context_hex=eb[max(0,dp-32):dp+96].hex() if dp>=0 else None,
+                          ambient_context_hex=eb[max(0,ap-32):ap+96].hex() if ap>=0 else None,
+                          edf_first_8192_hex=eb[:8192].hex())),flush=True)
+                    raise RuntimeError('Missing legacy native material colors: '+Path(texture).name)
                 rows.append(dict(material,edf_colour_signature_offset=edf_pos,map_colour_signature_offset=map_pos))
             checks.append(dict(texture=Path(texture).name,representation='legacy_uniform_diffuse_material',
                                width=w,height=h,pixel_md5=digest.hex(),source_sha256=legacy['source_sha256'],

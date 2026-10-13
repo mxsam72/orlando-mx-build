@@ -36,3 +36,5 @@ jobs:
       - name: Preserve validation failure diagnostics
         if: failure()
         run: python TOOLS/v044_release_transfer.py diagnostics
+
+# Inspect exact native material fields on unexpected color representation.
