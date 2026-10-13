@@ -1,0 +1,36 @@
+name: Validate and deliver saved v044 PKZ without recompiling
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v044]
+    paths: ['TOOLS/recover_compiled_v044.py', '.github/workflows/recover-v044.yml']
+permissions:
+  contents: write
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      PYTHONUNBUFFERED: '1'
+      OPENBLAS_NUM_THREADS: '2'
+      V044_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      V044_SOURCE_RELEASE_ID: '411058375'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-v009.txt
+      - name: Check bitmap alias and FBX binding regressions
+        run: python TOOLS/test_native_texture_aliases_v044.py
+      - name: Authenticate and restore saved authored assets
+        run: python -c "import sys; sys.path.insert(0, 'TOOLS'); from inspect_native_bitmap_records import restore_source; restore_source()"
+      - name: Independently recheck accepted track and scenery
+        run: python TOOLS/verify_v044_source.py
+      - name: Restore original staged legacy textures
+        run: python TOOLS/materialize_v009_baseline.py
+      - name: Validate native outputs and upload verified unchanged PKZ
+        run: python TOOLS/recover_compiled_v044.py
+      - name: Preserve validation failure diagnostics
+        if: failure()
+        run: python TOOLS/v044_release_transfer.py diagnostics

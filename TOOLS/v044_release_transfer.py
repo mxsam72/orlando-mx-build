@@ -102,9 +102,15 @@ def hold():
 
 def deliver():
     assert api('')['private'];qa=read(R/'12_RELEASE/OrlandoMX_v044_Validation.json');assert qa['compiled'] and qa['source_checks'] and qa['native_trh_identical_to_v043']
-    commit=os.environ['GITHUB_SHA'];run=os.environ['GITHUB_RUN_ID'];assert qa['source_commit']==commit
-    rel=api('/releases/'+os.environ['V044_SOURCE_RELEASE_ID']);assert rel['draft'] and rel['target_commitish']==commit
-    payload=dict(name='Orlando MX v044 standard-weather realism',body='Standard-weather visual upgrade on the authenticated delivered v043. Continuous 8K route-following grooming/wheel-path diffuse and normal maps; photographic dirt, bark, timber and concrete; scan-derived near-view trees and botanical Bermuda grass; native alpha-tested foliage; improved clear daylight and higher-quality compiled shadows. Accepted MX heightfield, race inputs and complete native collision TRH remain byte-identical to v043. All signs, flag faces, personalized vehicles, seating and road-gap repairs preserved. No package size cap. Official Windows source/native/texture/archive validation passed. User in-game visual, riding and performance confirmation pending. Source commit '+commit+'.')
+    commit=os.environ['GITHUB_SHA'];run=os.environ['GITHUB_RUN_ID'];native_commit=qa['source_commit']
+    recovery=qa.get('native_checkpoint_recovery')
+    if recovery:
+        assert recovery['checks_pass'] and recovery['pkz_unchanged'] and not recovery['native_files_recompiled']
+        assert recovery['source_release_id']==int(os.environ['V044_SOURCE_RELEASE_ID'])
+        assert recovery['native_source_commit']==native_commit and recovery['validation_commit']==qa['validation_commit']==commit
+    else:assert native_commit==commit
+    rel=api('/releases/'+os.environ['V044_SOURCE_RELEASE_ID']);assert rel['draft'] and rel['target_commitish']==native_commit
+    payload=dict(name='Orlando MX v044 standard-weather realism',body='Standard-weather visual upgrade on the authenticated delivered v043. Continuous 8K route-following grooming/wheel-path diffuse and normal maps; photographic dirt, bark, timber and concrete; scan-derived near-view trees and botanical Bermuda grass; native alpha-tested foliage; improved clear daylight and higher-quality compiled shadows. Accepted MX heightfield, race inputs and complete native collision TRH remain byte-identical to v043. All signs, flag faces, personalized vehicles, seating and road-gap repairs preserved. No package size cap. Official Windows source/native/texture/archive validation passed. User in-game visual, riding and performance confirmation pending. Native source commit '+native_commit+'. Validation commit '+commit+'.')
     req=urllib.request.Request(API+'/releases/'+str(rel['id']),data=json.dumps(payload).encode(),method='PATCH',headers=HEADERS|{'Content-Type':'application/json'})
     with urllib.request.urlopen(req,timeout=150) as response:rel=json.load(response)
     paths=[R/'12_RELEASE'/n for n in ['OrlandoMX_2026_v044.pkz','OrlandoMX_2026_v044.pkz.sha256','OrlandoMX_v044_Validation.json','Install_v044.txt']]
@@ -122,7 +128,7 @@ def deliver():
         if p.name in existing:
             a=existing[p.name];assert a['size']==p.stat().st_size and a['digest']=='sha256:'+sha(p);assets.append(a)
         else:assets.append(upload(rel,p))
-    descriptor=dict(release_id=rel['id'],release_url=rel['html_url'],source_commit=commit,build_run=int(run),pkz_bytes=qa['pkz_bytes'],pkz_sha256=qa['pkz_sha256'],assets=[dict(name=a['name'],id=a['id'],bytes=a['size'],digest=a['digest'],url=a['browser_download_url']) for a in assets])
+    descriptor=dict(release_id=rel['id'],release_url=rel['html_url'],source_commit=native_commit,validation_commit=commit,build_run=int(run),pkz_bytes=qa['pkz_bytes'],pkz_sha256=qa['pkz_sha256'],assets=[dict(name=a['name'],id=a['id'],bytes=a['size'],digest=a['digest'],url=a['browser_download_url']) for a in assets])
     print('CODEX_V044_DELIVERY_BLOB '+blob(json.dumps(descriptor)),flush=True)
     assert api('/releases/'+str(rel['id']))['draft']
     print('Complete playable v044 PKZ and editable checkpoint saved privately.',flush=True)

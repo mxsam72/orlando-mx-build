@@ -38,19 +38,33 @@ def texture_record(raw,path):
 def verify_files(edf,mapfile,textures,report):
     edf=Path(edf);mapfile=Path(mapfile);eb=edf.read_bytes();mb=mapfile.read_bytes()
     if eb[:4]!=b'EDF\0' or mb[:2]!=b'MP':raise RuntimeError('Unexpected EDF/MAP format')
-    checks=[]
+    checks=[];pending=[]
     for texture in textures:
-        row=texture_record(eb,texture)
+        try:row=texture_record(eb,texture)
+        except RuntimeError as error:
+            pending.append((texture,error));continue
         # MAP embeds the same decoded-pixel digest and dimensions; its record
         # layout need not be assumed identical to standalone EDF.
         signature=struct.pack('<2I',row['width'],row['height'])+bytes.fromhex(row['pixel_md5'])
         pos=mb.find(signature)
         if pos<0:raise RuntimeError('EDF bitmap missing from compiled MAP: '+row['texture'])
         row['map_signature_offset']=pos;checks.append(row)
+    # PiBoSo stores identical decoded bitmaps once, under one of their names.
+    # An alias is accepted only through another fully checked named record,
+    # including its bounded payload and exact corresponding MAP signature.
+    for texture,error in pending:
+        w,h,digest=bitmap_signature(texture)
+        shared=next((r for r in checks if (r['width'],r['height'],r['pixel_md5'])==(w,h,digest.hex())),None)
+        if shared is None:raise error
+        row=dict(shared)
+        row.update(texture=Path(texture).name,source_sha256=hashlib.sha256(Path(texture).read_bytes()).hexdigest(),
+                   shared_bitmap_alias=True,shared_bitmap_texture=shared['texture'])
+        checks.append(row)
     result=dict(checks_pass=True,power_of_two=True,texture_count=len(checks),edf_bytes=len(eb),
                 edf_sha256=hashlib.sha256(eb).hexdigest(),map_sha256=hashlib.sha256(mb).hexdigest(),
-                textures=checks,missing=[],method='Exact dimensions and bottom-up RGBA pixel MD5 in native EDF bitmap records; corresponding bitmap signatures in MAP',
+                textures=checks,missing=[],shared_bitmap_alias_count=sum(r.get('shared_bitmap_alias',False) for r in checks),method='Exact dimensions and bottom-up RGBA pixel MD5 in bounded native EDF bitmap records; corresponding bitmap signatures in MAP. Identical-pixel aliases require another fully verified named bitmap record.',
                 probe_run=36824107860,in_game_visual_test=False)
     Path(report).write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
     print('Verified actual native bitmap payloads in EDF and MAP:',len(checks),flush=True)
     return result
+

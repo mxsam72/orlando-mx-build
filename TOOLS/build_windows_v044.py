@@ -6,12 +6,14 @@ from build_windows_v037 import probe
 from validate_native_textures_v024 import bitmap_signature,verify_files
 from build_windows_v043 import active_diffuse_textures
 from v027_scenery import parse,geometry_records,vertices
+from scene_texture_bindings_v044 import actual_diffuse_bindings
 
 
 def scene_texture_paths(stage):
     """Resolve the exact external textures available to the native FBX importer."""
     nodes=parse((O/'scenery.fbx').read_bytes())[0]
-    active=active_diffuse_textures(nodes)
+    bindings=actual_diffuse_bindings(nodes)
+    active=set(bindings['actual_diffuse_textures'])
     paths=[];missing=[]
     for name in sorted(active):
         if Path(name).name!=name:
@@ -113,6 +115,12 @@ def main():
     ns['stage']=stage;ns['run']=run_native;ns['main']()
     from v044_release_transfer import save_native_checkpoint
     save_native_checkpoint()
+    validate_native_outputs(P)
+
+def validate_native_outputs(stage, object_textures=None, native_source_commit=None):
+    """Run the same final checks against compiled or authenticated recovered outputs."""
+    qa=read(O/'v044_source_validation.json');assert qa['checks_pass']
+    W=R/'BUILD/v009_work';P=Path(stage);DEST=R/'12_RELEASE'/NAME;baseline=R/'12_RELEASE/orlandomx_2026_v043'
     raw=(DEST/(NAME+'.map')).read_bytes();coords=[]
     points=read(O/'v044_native_probes.json')['expected_xyz_metres']
     # Three probes per authored vegetation batch and scan part; plus legacy flag, Ford and gap repairs.
@@ -129,7 +137,7 @@ def main():
         p=P/name
         w,h,d=bitmap_signature(p);offset=raw.find(struct.pack('<2I',w,h)+d);assert offset>=0,('Native terrain payload missing',name);signatures.append(dict(texture=name,size=[w,h],pixel_md5=d.hex(),map_signature_offset=offset))
     del raw
-    textures=scene_texture_paths(P)
+    textures=scene_texture_paths(P) if object_textures is None else list(object_textures)
     objects=verify_files(W/'08_OBJECTS_GAME/scenery.edf',DEST/(NAME+'.map'),textures,R/'DOCUMENTATION/v044_native_object_texture_validation.json')
     # Vegetation is purely visual. Any actual collision change rejects delivery.
     trh_exact=sha(DEST/(NAME+'.trh'))==sha(baseline/'orlandomx_2026_v043.trh');assert trh_exact,'Native physical track differs from delivered v043'
@@ -138,7 +146,7 @@ def main():
     pkz=R/'12_RELEASE/OrlandoMX_2026_v044.pkz'
     with zipfile.ZipFile(pkz) as z:assert z.testzip() is None and len(z.namelist())==13 and all(n.startswith(NAME+'/') for n in z.namelist())
     native=read(R/'DOCUMENTATION/native_build_validation.json')
-    native.update(version='v044',source_commit=os.environ['GITHUB_SHA'],baseline_version='v043',source_checks=True,source_validation=qa,surface_validation=read(O/'v044_surface_validation.json'),scenery_validation=read(O/'v044_scenery_validation.json'),staging_validation=read(O/'v044_staging_validation.json'),terrain_texture_payloads=signatures,object_texture_validation=objects,native_coordinate_validation=dict(checks_pass=True,MAP_probes=coords),native_trh_identical_to_v043=trh_exact,MX_layout_jumps_race_data_and_physics_exact=True,personalized_assets_and_road_gap_repairs_preserved=True,weather_focus='standard dry weather',package_size_cap_removed=True,pkz_bytes=pkz.stat().st_size,pkz_sha256=sha(pkz),in_game_visual_check=False,in_game_riding_test=False,performance_test=False,pending=['User MX Bikes load and standard-weather riding comparison','Check new foliage in motion and grass density','Confirm normal relief and overall daylight appearance','Measure frame rate and load time'])
+    native.update(version='v044',source_commit=native_source_commit or os.environ['GITHUB_SHA'],validation_commit=os.environ['GITHUB_SHA'],baseline_version='v043',source_checks=True,source_validation=qa,surface_validation=read(O/'v044_surface_validation.json'),scenery_validation=read(O/'v044_scenery_validation.json'),staging_validation=read(O/'v044_staging_validation.json'),terrain_texture_payloads=signatures,object_texture_validation=objects,native_coordinate_validation=dict(checks_pass=True,MAP_probes=coords),native_trh_identical_to_v043=trh_exact,MX_layout_jumps_race_data_and_physics_exact=True,personalized_assets_and_road_gap_repairs_preserved=True,weather_focus='standard dry weather',package_size_cap_removed=True,pkz_bytes=pkz.stat().st_size,pkz_sha256=sha(pkz),in_game_visual_check=False,in_game_riding_test=False,performance_test=False,pending=['User MX Bikes load and standard-weather riding comparison','Check new foliage in motion and grass density','Confirm normal relief and overall daylight appearance','Measure frame rate and load time'])
     save(R/'12_RELEASE/OrlandoMX_v044_Validation.json',native)
     notes='''Orlando MX 2026 v044 — Standard Weather Realism
 

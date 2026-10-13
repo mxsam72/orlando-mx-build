@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches: [rebuild-v044]
-    paths: ['V044_SOURCE/**', 'TOOLS/build_v044.py', 'TOOLS/build_windows_v044.py', 'TOOLS/v044_*.py', 'TOOLS/verify_v044_source.py', '.github/workflows/build-v044.yml']
+    paths: ['V044_SOURCE/**', 'TOOLS/build_v044.py', 'TOOLS/build_windows_v044.py', 'TOOLS/v044_*.py', 'TOOLS/scene_texture_bindings_v044.py', 'TOOLS/verify_v044_source.py', '.github/workflows/build-v044.yml']
 permissions:
   contents: write
   actions: read
@@ -12,6 +12,7 @@ concurrency:
   cancel-in-progress: true
 jobs:
   build:
+    if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[native-recovery]') }}
     runs-on: windows-latest
     timeout-minutes: 360
     env:
