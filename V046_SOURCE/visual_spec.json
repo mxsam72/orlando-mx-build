@@ -1,0 +1,218 @@
+{
+  "version": "v046",
+  "baseline_release_id": 411058375,
+  "baseline_tag": "untagged-281f90b2ce09d3a57800",
+  "baseline_terrain_sha256": "f6ce21f9b1a0ff4ca3a822d92dcba5904eeea860cd95952bd4ba44ac9cb5c4b9",
+  "section_features": [
+    "R01",
+    "R02",
+    "R03",
+    "R04",
+    "R05",
+    "R06",
+    "R07",
+    "R08",
+    "R09",
+    "R10",
+    "R11",
+    "R12",
+    "R13",
+    "R14",
+    "R15",
+    "R16",
+    "R17",
+    "R18",
+    "R11_ENTRY"
+  ],
+  "station_start_m": 0.0,
+  "station_end_m": 1466.2626730878414,
+  "end_feather_m": 10.0,
+  "shoulder_m": 3.3,
+  "side_feather_m": 1.7,
+  "assets": [
+    {
+      "file": "farm_soil/Diffuse.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/farm_soil/farm_soil_diff_4k.jpg",
+      "md5": "27ce16baca84d4ba49db66bf2e887d35",
+      "size": 10943024
+    },
+    {
+      "file": "farm_soil/nor_gl.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/farm_soil/farm_soil_nor_gl_4k.jpg",
+      "md5": "5b16028795a5e86e512e593fe66aa5f2",
+      "size": 21099265
+    },
+    {
+      "file": "farm_soil/Rough.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/farm_soil/farm_soil_rough_4k.jpg",
+      "md5": "4b6a6ef8e997eb22867ed861b509d9d0",
+      "size": 4061376
+    },
+    {
+      "file": "dirt/Diffuse.jpg",
+      "size": 12098794,
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/dirt/dirt_diff_4k.jpg",
+      "md5": "4acf5dfa053d382b7e2ece3c684e7c48"
+    },
+    {
+      "file": "dirt/nor_gl.jpg",
+      "size": 18081467,
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/dirt/dirt_nor_gl_4k.jpg",
+      "md5": "a32fcefb8fa105fe09dfd33a74337b5c"
+    },
+    {
+      "file": "dirt/Rough.jpg",
+      "size": 3565704,
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/dirt/dirt_rough_4k.jpg",
+      "md5": "be7b47facc517c4e63a2f18a7b105e60"
+    }
+  ],
+  "scope": "Whole riding circuit: retain exact accepted v045 photographic dirt; correct visual layer wear across the whole track. Retain scenery, lighting, race data, physical terrain and rut physics.",
+  "visual_validation": "Native/source verification is not a ridden deformation test. User confirmation after several passes remains pending.",
+  "accepted_material_release_id": 411270095,
+  "accepted_material_tag": "untagged-7321ac758a26e6678cac",
+  "accepted_material_archive_sha256": "5028cc4c05034404f52bd02e95ffa4097ad6933bf3c5496957270159416e4611",
+  "visual_layer_thickness_m": 4.0,
+  "physical_finite_layer_depth_budget_m": 0.31,
+  "feature_ranges_m": {
+    "R01": [
+      0.0,
+      51.4666666667
+    ],
+    "R02": [
+      127.99923942485324,
+      176.99923942485324
+    ],
+    "R03": [
+      231.99902429431742,
+      278.99902429431745
+    ],
+    "R04": [
+      322.49730976328067,
+      352.19730976328066
+    ],
+    "R05": [
+      399.59716515986526,
+      428.59716515986526
+    ],
+    "R06": [
+      484.49623050652883,
+      505.8962305065288
+    ],
+    "R07": [
+      538.9955412455654,
+      565.9955412455654
+    ],
+    "R08": [
+      605.4949891173732,
+      630.9949891173732
+    ],
+    "R09": [
+      691.1942412723309,
+      741.1942412723309
+    ],
+    "R10": [
+      743.1942354574876,
+      813.1942354574876
+    ],
+    "R11": [
+      874.7474110171287,
+      894.7474110171287
+    ],
+    "R12": [
+      899.8140355300866,
+      934.8140355300866
+    ],
+    "R13": [
+      982.6644493143313,
+      990.6644493143313
+    ],
+    "R14": [
+      990.6644492572811,
+      1045.6644492572811
+    ],
+    "R15": [
+      1129.1636902823993,
+      1152.1636902823993
+    ],
+    "R16": [
+      1156.4636873924023,
+      1199.7636873924023
+    ],
+    "R17": [
+      1305.377644440556,
+      1385.377644440556
+    ],
+    "R18": [
+      1402.3973293373365,
+      1420.3973293373365
+    ],
+    "R11_ENTRY": [
+      863.2474110171287,
+      872.2474110171287
+    ]
+  },
+  "packed_feature_ranges_m": [
+    [
+      0,
+      50
+    ],
+    [
+      128,
+      177
+    ],
+    [
+      231.99902429431742,
+      278.99902429431745
+    ],
+    [
+      399.59716515986526,
+      428.59716515986526
+    ],
+    [
+      538.9955412455654,
+      565.9955412455654
+    ],
+    [
+      691.1942412723309,
+      741.1942412723309
+    ],
+    [
+      743.1942354574876,
+      813.1942354574876
+    ],
+    [
+      874.7474110171287,
+      894.7474110171287
+    ],
+    [
+      899.8140355300866,
+      934.8140355300866
+    ],
+    [
+      990.6644492572811,
+      1045.6644492572811
+    ],
+    [
+      1129.1636902823993,
+      1152.1636902823993
+    ],
+    [
+      1156.4636873924023,
+      1199.7636873924023
+    ],
+    [
+      1305.377644440556,
+      1385.377644440556
+    ],
+    [
+      1402.3973293373365,
+      1420.3973293373365
+    ],
+    [
+      863.2474110171287,
+      872.2474110171287
+    ]
+  ],
+  "full_route": true
+}

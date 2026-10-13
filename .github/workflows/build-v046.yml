@@ -1,0 +1,43 @@
+name: Build v046 persistent dirt across the whole track
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v046]
+    paths: ['V046_SOURCE/**', 'TOOLS/*v046*.py', '.github/workflows/build-v046.yml']
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: orlando-v046-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 180
+    env:
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+      PYTHONUNBUFFERED: '1'
+      OPENBLAS_NUM_THREADS: '2'
+      V046_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-v009.txt
+      - name: Restore authenticated native baseline and accepted v045 dirt
+        run: python TOOLS/v046_transfer.py restore
+      - name: Extend the accepted dirt to the whole circuit and validate visual depths
+        run: python TOOLS/v046_surface.py
+      - name: Preserve authenticated authoring checkpoint before native compilation
+        run: python TOOLS/v046_transfer.py checkpoint
+      - name: Inspect source materials and whole-track coverage
+        run: python TOOLS/v046_previews.py
+      - name: Compile terrain graphics and validate retained collision scenery and race files
+        run: python TOOLS/build_windows_v046.py
+      - name: Publish verified v046 PKZ and validation
+        run: python TOOLS/v046_transfer.py deliver
+      - name: Preserve failure diagnostics
+        if: failure()
+        run: python TOOLS/v046_transfer.py diagnostics
