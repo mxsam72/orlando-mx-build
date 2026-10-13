@@ -3,7 +3,7 @@ import json, mmap, shutil, struct, subprocess, sys, zipfile
 from pathlib import Path
 from v044_common import R, O, F, NAME, read, save, sha, atomic
 from v044_source import api, download, blob
-from v044_release_transfer import resume_saved_source
+from v044_release_transfer import restore
 from validate_native_textures_v024 import bitmap_signature, texture_record
 
 RELEASE_ID = 411058375
@@ -12,6 +12,25 @@ CANDIDATE_BYTES = 843801281
 CANDIDATE_SHA256 = 'd67e66e3f233a8148dffa3ba1ca25ef08f05c4f535de3529bda9c700c527d37b'
 NATIVE_COMMIT = 'ded4ea2bbe08bdbabe11f3436560b1df8a921744'
 PKZ_SHA256 = '899fb2e574fc1e0063dc001f6e2be96076b82e7d793a929f28b42fe42d3f59b0'
+
+def restore_source():
+    """Authenticate Windows text with platform line endings normalized for comparison."""
+    release = api('/releases/' + str(RELEASE_ID))
+    assert api('')['private'] and release['draft'] and release['target_commitish'] == NATIVE_COMMIT
+    assets = {a['name']: a for a in release['assets']}
+    source = assets['OrlandoMX-v044-source-checkpoint.zip']
+    descriptor = assets['v044_checkpoint_descriptor.json']
+    assert source['size'] == 1599713927
+    assert source['digest'] == 'sha256:1c45844424b0f8e9384a9344f0563b6f108e5003f699c71430dc499166bff881'
+    assert descriptor['digest'] == 'sha256:38b29297ea5bd495a3299419da1f44a7ebf381e28a76d2e95e5a6bf6b891ca83'
+    download(descriptor, R / 'BUILD/v044_checkpoint_descriptor.json')
+    checkpoint = R / 'BUILD/OrlandoMX-v044-source-checkpoint.zip'
+    download(source, checkpoint)
+    with zipfile.ZipFile(checkpoint) as archive:
+        for name in ['V044_SOURCE/visual_spec.json', 'TOOLS/build_v044.py', 'TOOLS/v044_assets.py', 'TOOLS/v044_scenery.py', 'TOOLS/v044_surface_detail.py']:
+            assert archive.read(name).replace(b'\r\n', b'\n') == (R / name).read_bytes().replace(b'\r\n', b'\n'), ('Authored source changed', name)
+    restore()
+    print('Authored source authenticated with Windows/Linux text line endings normalized.', flush=True)
 
 def restore_candidate():
     release = api('/releases/' + str(RELEASE_ID))
@@ -61,7 +80,7 @@ def texture_paths():
     return paths
 
 def inspect():
-    resume_saved_source()
+    restore_source()
     subprocess.run([sys.executable, str(R / 'TOOLS/materialize_v009_baseline.py')], cwd=R, check=True)
     restore_candidate()
     paths = texture_paths()
