@@ -1,0 +1,23 @@
+name: Inspect real v044 material connections and embedded bitmaps
+on:
+  push:
+    branches: [rebuild-v044]
+    paths: ['TOOLS/audit_saved_texture_bindings.py', '.github/workflows/audit-v044-bindings.yml']
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PYTHONUNBUFFERED: '1'
+      V044_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      OPENBLAS_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-v009.txt
+      - name: Audit actual material assignments and embedded source pixels
+        run: python TOOLS/audit_saved_texture_bindings.py
