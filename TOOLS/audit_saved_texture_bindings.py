@@ -84,6 +84,9 @@ def main():
                     with Image.open(io.BytesIO(content)) as image:
                         rgba = image.convert('RGBA')
                         row['size'] = list(rgba.size)
+                        row['channel_extrema'] = list(rgba.getextrema())
+                        row['first_pixel_rgba'] = list(rgba.getpixel((0,0)))
+                        row['constant_pixels'] = all(lo == hi for lo,hi in rgba.getextrema())
                         row['pixel_md5'] = hashlib.md5(rgba.transpose(Image.Transpose.FLIP_TOP_BOTTOM).tobytes()).hexdigest()
                 except Exception as error:
                     row['content_decode_error'] = str(error)

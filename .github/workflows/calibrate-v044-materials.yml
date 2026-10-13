@@ -1,0 +1,23 @@
+name: Calibrate constant materials and legacy texture bindings
+on:
+  push:
+    branches: [rebuild-v044]
+    paths: ['TOOLS/calibrate_solid_material_v044.py', '.github/workflows/calibrate-v044-materials.yml']
+permissions:
+  contents: write
+jobs:
+  export-probes:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    env:
+      PYTHONUNBUFFERED: '1'
+      V044_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      OPENBLAS_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-v009.txt
+      - name: Export controlled constant patterned and material-color probes
+        run: python TOOLS/calibrate_solid_material_v044.py
