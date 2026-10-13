@@ -68,15 +68,19 @@ class Mesh:
         points=[a-side*width/2,a+side*width/2,b+side*width/2,b-side*width/2,(a+b)/2+up*.055*width]
         x=(tile%2)*.5;y=(tile//2)*.5;pad=.005
         uvs=[(x+pad,y+pad),(x+.5-pad,y+pad),(x+.5-pad,y+.5-pad),(x+pad,y+.5-pad),(x+.25,y+.25)]
-        radial=(c-Vector(center)).normalized();normal=(up*.60+radial*.65).normalized()
+        radial=(c-Vector(center)).normalized();normal=(up*.80+radial*.35).normalized()
         # Explicit front and back geometry is retained in the exported FBX.
         for sign in [1,-1]:
             start=len(self.v);self.v.extend(tuple(p) for p in points);self.norm.extend([tuple(normal*sign)]*5)
             for i,j in [(0,1),(1,2),(2,3),(3,0)]:
-                ids=[start+i,start+j,start+4];uv=[uvs[i],uvs[j],uvs[4]]
+                ids=[start+j,start+i,start+4];uv=[uvs[j],uvs[i],uvs[4]]
                 if sign<0:ids.reverse();uv.reverse()
                 self.face(ids,uv)
     def object(self,name,mat):
+        if mat.name.startswith('CK_'):
+            for face in self.f:
+                a,b,c=[Vector(self.v[i]) for i in face[:3]]
+                assert (b-a).cross(c-a).normalized().dot(Vector(self.norm[face[0]]))>.10,'Foliage shading normal faces through its own surface'
         me=bpy.data.meshes.new(name+'_mesh');me.from_pydata(self.v,[],self.f);me.update();me.materials.append(mat)
         layer=me.uv_layers.new(name='UVMap')
         for polygon,uv in zip(me.polygons,self.uv):
@@ -181,15 +185,15 @@ bpy.ops.object.light_add(type='SUN',location=(8,-10,16));sun=bpy.context.object;
 sun.rotation_euler=(Vector((0,0,0))-sun.location).to_track_quat('-Z','Y').to_euler()
 bpy.ops.object.camera_add();camera=bpy.context.object;scene.camera=camera;camera.data.lens=46
 
-def render(name,location,target,size=(1400,1100),samples=40):
+def render(name,location,target,size=(1100,864),samples=16):
     camera.location=location;camera.rotation_euler=(Vector(target)-camera.location).to_track_quat('-Z','Y').to_euler()
-    scene.render.resolution_x=size[0];scene.render.resolution_y=size[1];scene.cycles.samples=samples
+    scene.render.resolution_x=size[0];scene.render.resolution_y=size[1];scene.cycles.samples=min(samples,16)
     scene.render.filepath=str(O/(name+'.png'));print('RENDER',name,flush=True);bpy.ops.render.render(write_still=True)
 
 for key in ['OLD','A','B']:
     show(key);render(key+'_front',(16,-21,7.2),(0,0,5.4))
-    if key!='OLD':render(key+'_detail',(5.8,-7.5,5.8),(0,0,5.6),(1400,1000),48)
-    if key!='OLD':render(key+'_side',(-17,-18,6.5),(0,0,5.0),(1100,1100),32)
+    if key!='OLD':render(key+'_detail',(5.8,-7.5,5.8),(0,0,5.6),(1100,786),16)
+    if key!='OLD':render(key+'_side',(-17,-18,6.5),(0,0,5.0),(900,900),16)
 
 # Bike-height woodland comparison: three varied instances, using the same assets.
 single=groups.copy();context=[]
@@ -202,17 +206,17 @@ for key in ['A','B']:
         for original in groups[key]:
             ob=original.copy();ob.data=original.data;ob.name='CONTEXT_'+key+str(i)+original.name;scene.collection.objects.link(ob)
             ob.hide_render=False;ob.hide_set(False);ob.location=(x,y,0);ob.scale=(scale,scale,scale);ob.rotation_euler.z=angle
-    render(key+'_woodline',(0,-20,1.75),(0,2.0,4.6),(1800,1000),40)
+    render(key+'_woodline',(0,-20,1.75),(0,2.0,4.6),(1440,800),16)
 for ob in list(scene.objects):
     if ob.name.startswith('CONTEXT_'):bpy.data.objects.remove(ob,do_unlink=True)
 
 # A short orbit uses the exact meshes and textures shown in the still renders.
 for key in ['A','B']:
     show(key)
-    for i in range(16):
-        a=math.tau*i/16;render(key+'_orbit_'+str(i).zfill(3),(24*math.sin(a),-24*math.cos(a),6.8),(0,0,5.2),(640,480),8)
+    for i in range(12):
+        a=math.tau*i/12;render(key+'_orbit_'+str(i).zfill(3),(24*math.sin(a),-24*math.cos(a),6.8),(0,0,5.2),(640,480),4)
 
 show('A');bpy.ops.file.pack_all();bpy.ops.wm.save_as_mainfile(filepath=str(O/'Orlando_Tree_Prototypes.blend'))
-report=dict(review_only=True,track_modified=False,in_game_test=False,renderer='Blender 4.5.3 Cycles CPU',foliage_source='Generated botanical texture atlases',foliage_alpha_test=.45,styles={'A':'Airy pine','B':'Dense evergreen woodland'},models=stats,pending=['User style selection','Native MX Bikes material, motion, scale and performance validation before replacement'])
+report=dict(review_only=True,track_modified=False,in_game_test=False,renderer='Blender 4.5.3 Cycles CPU',foliage_source='Generated botanical texture atlases',foliage_alpha_test=.45,foliage_normals_align_with_front_and_back_faces=True,styles={'A':'Airy pine','B':'Dense evergreen woodland'},models=stats,pending=['User style selection','Native MX Bikes material, motion, scale and performance validation before replacement'])
 (O/'prototype_validation.json').write_text(json.dumps(report,indent=2)+'\n')
 print('TREE_PROTOTYPES_COMPLETE',json.dumps(stats),flush=True)

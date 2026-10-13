@@ -1,7 +1,7 @@
 """Label real model renders and preserve all reproducible prototype assets."""
 import json,zipfile,hashlib,subprocess
 from pathlib import Path
-from PIL import Image,ImageDraw,ImageFont
+from PIL import Image,ImageDraw,ImageFont,ImageOps
 R=Path(__file__).resolve().parent;O=R/'output'
 def font(n):return ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',n)
 panels=[('OLD','Current generic geometry'),('A','A  |  Airy pine'),('B','B  |  Dense woodland')]
@@ -12,15 +12,15 @@ for i,(key,title) in enumerate(panels):
     im=Image.open(O/(key+'_front.png')).convert('RGB').resize((700,550),Image.Resampling.LANCZOS);sheet.paste(im,(i*700,120))
     d.text((i*700+28,688),title,font=font(26),fill='#202723')
     if key!='OLD':
-        im=Image.open(O/(key+'_detail.png')).convert('RGB').resize((700,280),Image.Resampling.LANCZOS);sheet.paste(im,(i*700,740))
+        im=ImageOps.fit(Image.open(O/(key+'_detail.png')).convert('RGB'),(700,280),Image.Resampling.LANCZOS);sheet.paste(im,(i*700,740))
     else:
         d.text((32,760),'Reconstructed from the current\ngeneric tree builder.\nSolid crown volumes and\nflat foliage colors.',font=font(24),fill='#505752',spacing=15)
 sheet.save(O/'Orlando_Tree_Comparison.png')
-woodline=Image.new('RGB',(1800,1240),'#f1f1ec');d=ImageDraw.Draw(woodline)
+woodline=Image.new('RGB',(1440,1760),'#f1f1ec');d=ImageDraw.Draw(woodline)
 d.text((32,20),'BIKE-HEIGHT VIEW  |  ACTUAL 3D PROTOTYPES',font=font(30),fill='#202723')
 for i,key in enumerate(['A','B']):
-    image=Image.open(O/(key+'_woodline.png')).convert('RGB').resize((1800,540),Image.Resampling.LANCZOS);woodline.paste(image,(0,100+i*570))
-    d.text((24,108+i*570),panels[i+1][1],font=font(28),fill='white',stroke_width=2,stroke_fill='#202723')
+    image=Image.open(O/(key+'_woodline.png')).convert('RGB').resize((1440,800),Image.Resampling.LANCZOS);woodline.paste(image,(0,100+i*840))
+    d.text((24,108+i*840),panels[i+1][1],font=font(28),fill='white',stroke_width=2,stroke_fill='#202723')
 woodline.save(O/'Orlando_Tree_Woodline_Comparison.png')
 for key in ['A','B']:
     subprocess.run(['ffmpeg','-y','-loglevel','error','-framerate','8','-i',str(O/(key+'_orbit_%03d.png')),'-vf','scale=640:480','-c:v','libx264','-pix_fmt','yuv420p',str(O/('Tree_'+key+'_Turntable.mp4'))],check=True)
