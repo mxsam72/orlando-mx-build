@@ -1,0 +1,36 @@
+name: Verify and publish saved v047 without recompiling
+on:
+  workflow_dispatch:
+  push:
+    branches: [recover-v047]
+    paths: ['TOOLS/recover_v047.py', 'TOOLS/validate_native_textures_v024.py', 'TOOLS/build_windows_v047.py', 'TOOLS/v047_transfer.py', '.github/workflows/recover-v047.yml']
+permissions:
+  contents: write
+concurrency:
+  group: orlando-v047-recovery
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      PYTHONUNBUFFERED: '1'
+      OPENBLAS_NUM_THREADS: '2'
+      V047_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      V047_RELEASE_ID: '412053683'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-v009.txt
+      - name: Run bitmap alias and coordinate scanner regressions
+        run: |
+          python TOOLS/test_native_texture_aliases_v044.py
+          python TOOLS/test_native_coordinate_scan_v044.py
+          python TOOLS/test_normal_records_v047.py
+      - name: Authenticate checkpoints and recheck every native bitmap and geometry probe
+        run: python TOOLS/recover_v047.py
+      - name: Preserve verification diagnostics
+        if: failure()
+        run: python TOOLS/v047_transfer.py diagnostics

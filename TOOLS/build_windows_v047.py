@@ -120,7 +120,8 @@ def package():
 
 def validate(q,baseline,textures,native,pkz):
     mappath=DEST/(NAME+'.map');legacy=legacy_materials(P/'scenery.fbx',textures)
-    objects=verify_files(P/'scenery.edf',mappath,textures,LOG/'v047_native_object_texture_validation.json',legacy_materials=legacy)
+    normals=[p for p in textures if p.name not in q['active_diffuse_textures']]
+    objects=verify_files(P/'scenery.edf',mappath,textures,LOG/'v047_native_object_texture_validation.json',legacy_materials=legacy,normal_maps=normals)
     assert all(any(t['texture']==name and t['checks_pass'] for t in objects['textures']) for name in ['CK_TREE_v047_pine.tga','CK_TREE_v047_woodland.tga','pine_bark.tga','pine_bark_n.tga'])
     signatures=[];coords=[];probes=read(O/'v047_native_probes.json');points=probes['retained_geometry']+probes['new_trees']
     with mappath.open('rb') as stream,mmap.mmap(stream.fileno(),0,access=mmap.ACCESS_READ) as raw:

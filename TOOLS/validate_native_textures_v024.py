@@ -19,28 +19,34 @@ def bitmap_signature(path):
     digest=hashlib.md5(im.transpose(Image.Transpose.FLIP_TOP_BOTTOM).tobytes()).digest()
     return w,h,digest
 
-def texture_record(raw,path):
+def texture_record(raw,path,normal_map=False):
     path=Path(path);w,h,digest=bitmap_signature(path);name=path.stem.encode('ascii')
     if len(name)>=100:raise ValueError('Native texture name exceeds known record size')
     key=name+bytes(100-len(name));pos=raw.find(key);candidates=[]
+    # Native bump-map records omit the four-byte field preceding diffuse
+    # dimensions. The named record, exact source pixel digest and bounded
+    # payload are still required; a filename/digest search alone is insufficient.
+    dimension_offset=100 if normal_map else 104
+    header_bytes=dimension_offset+40
     while pos>=0:
-        if pos+144<=len(raw):
-            width,height=struct.unpack_from('<2I',raw,pos+104)
-            got=raw[pos+112:pos+128];payload=struct.unpack_from('<I',raw,pos+132)[0]
-            if (width,height)==(w,h) and got==digest and payload>0 and pos+144+payload<=len(raw):
+        if pos+header_bytes<=len(raw):
+            width,height=struct.unpack_from('<2I',raw,pos+dimension_offset)
+            got=raw[pos+dimension_offset+8:pos+dimension_offset+24];payload=struct.unpack_from('<I',raw,pos+dimension_offset+28)[0]
+            if (width,height)==(w,h) and got==digest and payload>0 and pos+header_bytes+payload<=len(raw):
                 return dict(texture=path.name,native_name=path.stem,width=w,height=h,
                             pixel_md5=digest.hex(),record_offset=pos,payload_bytes=payload,
+                            native_record_kind='normal_map' if normal_map else 'diffuse',native_header_bytes=header_bytes,
                             source_sha256=hashlib.sha256(path.read_bytes()).hexdigest(),checks_pass=True)
             candidates.append(dict(offset=pos,width=width,height=height,md5=got.hex(),payload_bytes=payload))
         pos=raw.find(key,pos+1)
     raise RuntimeError('Missing or mismatched native bitmap payload '+path.name+': '+str(candidates))
 
-def verify_files(edf,mapfile,textures,report,legacy_materials=None):
+def verify_files(edf,mapfile,textures,report,legacy_materials=None,normal_maps=None):
     edf=Path(edf);mapfile=Path(mapfile);eb=edf.read_bytes();mb=mapfile.read_bytes()
     if eb[:4]!=b'EDF\0' or mb[:2]!=b'MP':raise RuntimeError('Unexpected EDF/MAP format')
-    checks=[];pending=[]
+    checks=[];pending=[];normal_maps={Path(p).name for p in (normal_maps or [])}
     for texture in textures:
-        try:row=texture_record(eb,texture)
+        try:row=texture_record(eb,texture,normal_map=Path(texture).name in normal_maps)
         except RuntimeError as error:
             pending.append((texture,error));continue
         # MAP embeds the same decoded-pixel digest and dimensions; its record

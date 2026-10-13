@@ -116,7 +116,8 @@ def deliver():
     assert qa['compiled'] and qa['source_checks'] and qa['native_trh_identical_to_v046'] and qa['v046_dirt_preserved_exact']
     assert qa['object_texture_validation']['checks_pass'] and qa['native_coordinate_validation']['checks_pass']
     q=qa['tree_validation'];assert q['checks_pass'] and q['all_near_trees_preserved'] and q['foliage_face_normal_alignment_pass']
-    rel=api('/releases/'+os.environ['V047_RELEASE_ID']);assert rel['draft'] and rel['target_commitish']==os.environ['GITHUB_SHA']
+    rel=api('/releases/'+os.environ['V047_RELEASE_ID']);assert rel['draft'] and rel['target_commitish']==qa['source_commit']
+    assert qa.get('validation_commit',qa['source_commit'])==os.environ['GITHUB_SHA']
     for p in [R/'12_RELEASE/OrlandoMX_v047_Validation.json',R/'12_RELEASE/Install_v047.txt',O/'v047_scenery_validation.json',O/'v047_staging_validation.json',O/'v047_tree_placement_preview.png']:upload(rel,p)
     styles=q['style_counts'];body=f'''Replaced all 369 old generic, scan and facility trees. Retained {q['tree_count_after']} approved realistic trees: {styles['A']} A airy pines and {styles['B']} B dense woodland trees (85/15 rounded). All near-course and facility placements remain; reduced distant density controls file size and rendering load. Sizes and yaw vary. Approved foliage pixels, per-corner UVs, front/back geometry and custom normals are preserved. Native color-key transparency and tree shading are configured.
 
