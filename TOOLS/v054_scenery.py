@@ -17,12 +17,12 @@ def main():
   match=re.match(r'(v047_tree_[AB]_\d+)_',name);key=match[1] if match else name;groups.setdefault(key,[]).append((name,g,mid))
  changes=[];changed=set();probes=[];bounds=[]
  def near(p):return ((p[:,0]>185)&(p[:,0]<445)&(p[:,1]>225)&(p[:,1]<392))|((p[:,0]>185)&(p[:,0]<272)&(p[:,1]>184)&(p[:,1]<333))
- def clearance(v):
+ def clearance(v,ground_grass=False):
   xz=v[:,[0,2]];d,i=layout.newtree.query(xz,workers=2);labels=layout.old_s[i];width=layout.width[i]
   md=layout.active(labels)&(d<width/2+1.2)
   bd,bi,bs,bl=projection(layout.start,xz);bw=np.interp(bs,*np.asarray(layout.knots).T)
   start=(bs>56)&(bs<layout.start[-1,3]+1)&(bd<bw/2+1.2)
-  low=v[:,1]-ground(newh,xz)<2.7
+  low=np.ones(len(v),bool) if ground_grass else v[:,1]-ground(newh,xz)<2.7
   return near(xz)&low&(md|start)
  for key,parts in groups.items():
   verts=[vertices(g) for _,g,_ in parts];vv=np.concatenate(verts);low=vv[vv[:,1]<vv[:,1].min()+.17];anchor=low[:,[0,2]].mean(0)
@@ -40,7 +40,7 @@ def main():
     ns=57+(float(s[0])-57)/(layout.oldstart[-1,3]-57)*(layout.start[-1,3]-57);p=np.array([np.interp(ns,layout.start[:,3],layout.start[:,k]) for k in range(3)])
     target=p[:2]+np.array([-np.sin(p[2]),np.cos(p[2])])*float(lat[0]);delta[[0,2]]=target-anchor;yaw=float(p[2]-layout.oldstart[i[0],2]);reason.append('Follow changed start-side barrier')
   trial=vv.copy();trial[:,[0,2]]+=delta[[0,2]]
-  if foliage and clearance(trial).any():
+  if foliage and clearance(trial,key.startswith('SKIDS_v052_grass')).any():
    # Preserve complete grass batches and tree prototypes: translate them as
    # rigid groups, retaining UVs, vertex count, density and matte materials.
    selected=None
@@ -48,7 +48,7 @@ def main():
     for angle in np.linspace(0,2*np.pi,24,endpoint=False):
      shift=np.array([np.cos(angle),np.sin(angle)])*radius;candidate=vv.copy();candidate[:,[0,2]]+=shift
      candidate[:,1]+=ground(newh,(anchor+shift)[None])[0]-ground(oldh,anchor[None])[0]
-     if not clearance(candidate).any():selected=shift;break
+     if not clearance(candidate,key.startswith('SKIDS_v052_grass')).any():selected=shift;break
     if selected is not None:break
    assert selected is not None,('Cannot clear vegetation from new track',key)
    delta[[0,2]]=selected;reason.append('Clear vegetation from new riding corridor')
@@ -75,6 +75,7 @@ def main():
      normal=array(child(layer,b'Normals')).reshape(-1,3)*[1,1,-1];normal=normal@rot.T;child(layer,b'Normals')['props']=encoded_array(normal*[1,1,-1])
    if grass:
     new[:,[0,2]]+=delta[[0,2]];new[:,1]+=grass_adjustment
+    assert not clearance(new,True).any(),('Grass remains on changed riding surface',name)
    else:new+=delta
    child(g,b'Vertices')['props']=encoded_array(new*[100,100,-100]);changed.add(values(g)[0]);probes.extend(dict(geometry=name,expected_xyz_m=new[j].tolist()) for j in sorted(set([0,len(new)//2,len(new)-1])))
   changes.append(dict(group=key,objects=[p[0] for p in parts],translation_xyz_m=delta.tolist(),rotation_y_rad=yaw,reason=reason))
