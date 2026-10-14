@@ -1,0 +1,14 @@
+{
+  "version": "v053",
+  "seed": 530137,
+  "baseline_terrain_sha256": "f6ce21f9b1a0ff4ca3a822d92dcba5904eeea860cd95952bd4ba44ac9cb5c4b9",
+  "normal_specular_alpha": 2,
+  "maximum_pkz_growth_percent": 5,
+  "maximum_pkz_bytes": 964987509,
+  "baseline_v050_pkz_bytes": 919035723,
+  "required_grass_clumps": 4546,
+  "scope": "Dirt on the approved MX riding corridor. The dirt footprint may be reduced at irregular edges but never expanded. Exact v052 scenery, grass, tree foliage, trial masks, collision, facilities and roads retained.",
+  "dirt": "Finer route-aligned grooming; small periodic variations and interruptions; corner-only curved tyre fragments; broken landing compaction; irregular inner edge mixing. All relief is visual normal-map detail.",
+  "palette": "Existing photographic soil, slightly warmer by RGB [3,-2,-1], with restrained fine-grain contrast. Exact photographic normal maps and matte alpha 2. More fine photograph contribution beneath the macro atlas.",
+  "optimization": "Same 14 layers, existing image dimensions, texture names and shader bindings. No new texture allocation, layer or scenery mesh. Preserve the three v051 isolated layer experiments exactly."
+}
