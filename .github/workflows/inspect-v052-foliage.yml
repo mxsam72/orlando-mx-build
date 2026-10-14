@@ -1,0 +1,23 @@
+name: Inspect v052 reported white tree foliage
+on:
+  push:
+    branches: [inspect-v052-foliage]
+    paths: ['TOOLS/inspect_v052_foliage.py', '.github/workflows/inspect-v052-foliage.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pillow numpy
+      - run: python TOOLS/inspect_v052_foliage.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v052-foliage-source-inspection
+          path: BUILD/v052_foliage_inspection/*
