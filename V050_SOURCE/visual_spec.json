@@ -1,0 +1,14 @@
+{
+  "version": "v050",
+  "seed": 500137,
+  "baseline_terrain_sha256": "f6ce21f9b1a0ff4ca3a822d92dcba5904eeea860cd95952bd4ba44ac9cb5c4b9",
+  "normal_specular_alpha": 2,
+  "baseline_v049_pkz_bytes": 918476444,
+  "maximum_pkz_growth_percent": 5.0,
+  "maximum_pkz_bytes": 964400266,
+  "scope": "All of the existing MX riding corridor, all jumps, both roller sections and connecting corners; road circuits and physical terrain unchanged.",
+  "dirt": "Extend the v049 slope-aware furrows, clods, compact crests and churned landings using existing atlases. Remove the two global compaction lanes from packed mask and macro albedo; no continuous authored tyre-line paths.",
+  "palette": "Exact accepted photographic loose/packed colour and normal tiles, with the accepted earthy palette and matte alpha 2. Macro dirt uses subtle irregular mottling rather than line-based colour.",
+  "optimization": "The existing 14 terrain layers, 4 m visual depths, tile sizes and single shared 8K atlas pair; no new terrain layers or atlas allocations.",
+  "grass": "Replace every legacy scrub panel and old botanical grass mesh with double-sided photographic Bermuda blade geometry. Small spatial batches, natural height variation, no grass shadow casting; all accepted trees and other scenery exact."
+}
