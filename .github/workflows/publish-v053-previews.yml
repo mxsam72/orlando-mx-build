@@ -1,0 +1,17 @@
+name: Publish reviewed v053 comparison images
+on:
+  push:
+    branches: [preview-v053]
+    paths: ['TOOLS/publish_v053_previews.py', '.github/workflows/publish-v053-previews.yml']
+permissions:
+  contents: write
+  actions: read
+jobs:
+  previews:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 TOOLS/publish_v053_previews.py
