@@ -1,0 +1,19 @@
+{
+  "version": "v049",
+  "station_start_m": -3.0,
+  "station_end_m": 190.0,
+  "end_feather_m": 4.0,
+  "features": ["R01", "R02"],
+  "seed": 490137,
+  "normal_specular_alpha": 2,
+  "baseline_terrain_sha256": "f6ce21f9b1a0ff4ca3a822d92dcba5904eeea860cd95952bd4ba44ac9cb5c4b9",
+  "baseline_v047_pkz_bytes": 917973744,
+  "baseline_v048_pkz_bytes": 1086826029,
+  "max_pkz_growth_vs_v047_percent": 5.0,
+  "minimum_pkz_reduction_vs_v048_percent": 10.0,
+  "scope": "Finish tabletop, connecting turn/straight, complete triple R02 and its exit. R03 table-single and the remaining circuit retain the accepted dirt.",
+  "palette": "Every accepted v046 colour texture, including the complete macro colour atlas, remains byte-identical. No recolouring, warming, dark wash or new clod colour tile.",
+  "shading": "Retain accepted shaders and normal-map specular alpha 2/255. Remove the v048 RGB clod normal with implicit alpha 255/255.",
+  "optimization": "Return to the exact 14-layer v046 HMF. Patch the existing macro normal atlas and wear mask; no added layers, masks, textures, resolutions or per-section atlas allocation.",
+  "physical": "Exact delivered v047 scenery, collision, race/reset payloads, lighting and deformation physics. All three existing 4 m visual depths retained."
+}
