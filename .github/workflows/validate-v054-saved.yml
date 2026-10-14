@@ -31,7 +31,7 @@ jobs:
         run: python TOOLS/v054_inputs.py restore
       - name: Recover the exact reviewed A B C source
         run: python TOOLS/v054_transfer.py restore_checkpoint
-      - name: Verify saved official outputs with complete native texture checks
+      - name: Verify preserved official outputs with complete native texture checks
         run: python TOOLS/resume_v054_native.py
       - name: Publish verified v054 download
         run: python TOOLS/v054_transfer.py deliver
