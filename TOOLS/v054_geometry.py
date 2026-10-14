@@ -168,7 +168,7 @@ def terrain(layout,before,after):
  raw=np.fromfile(BASE/'terrain.raw','<u2').reshape(2049,2049);h=raw.astype(float)/65535*18;w=layout.width
  selected={'R09','R17'};axis=np.linspace(0,600,2049);zz,xx=np.meshgrid(600-axis,axis,indexing='ij');pts=np.c_[xx.ravel(),zz.ravel()]
  oldjump=gaussian_filter(envelope(pts,supports([p for p in before if p['id'] in selected],layout.old,w)).reshape(h.shape),.65)
- floor=h-oldjump;background=gaussian_filter(floor,30);target=h.copy();allowed=np.zeros(h.shape,bool)
+ floor=h-oldjump;roller_floor=gaussian_filter(floor,10);background=gaussian_filter(floor,30);target=h.copy();allowed=np.zeros(h.shape,bool)
  start=layout.start;begin=58.;end=float(start[-1,3]);p0=route_point(start,begin);p1=start[-1];h0=ground(h,p0[None,:2])[0];h1=ground(h,p1[None,:2])[0]
  slope=lambda p:float((ground(h,(p[:2]+.4*unit(np.array([p[2]]))[0])[None])[0]-ground(h,(p[:2]-.4*unit(np.array([p[2]]))[0])[None])[0])/.8)
  # Follow the existing corner's riding elevation through the merge apron.
@@ -178,11 +178,14 @@ def terrain(layout,before,after):
  hp=np.c_[np.interp(hs,start[:,3],start[:,0]),np.interp(hs,start[:,3],start[:,1])]
  indices=cKDTree(ring[:,:2]).query(hp)[1];values=ground(h,ring[indices,:2]);values[0]=h0;values[-1]=h1
  startheight=PchipInterpolator(hs,values)
- for box in BOXES:
+ for box_index,box in enumerate(BOXES):
   rr,cc,p=raster_points(2049,box);f=layout.fields(p);v=target[np.ix_(rr,cc)].ravel().copy()
   erase=np.maximum(f['old'],f['retired_start'])*(1-f['new'])*(1-f['start'])
   bg=ground(background,p);v=v*(1-erase)+bg*erase
-  sample=ground(floor,f['src']);v=v*(1-f['new'])+sample*f['new']
+  # Retired roller imprints in the older base must not survive alongside the
+  # rebuilt eight crests. Smooth only C's underlying floor, before adding the
+  # exact existing roller profiles on the broader curve.
+  sample=ground(roller_floor if box_index==1 else floor,f['src']);v=v*(1-f['new'])+sample*f['new']
   desired=startheight(np.clip(f['start_station'],begin,end))+.025*(f['start_lateral']/np.maximum(f['start_width']/2,1))**2
   v=v*(1-f['start'])+desired*f['start']
   active=np.maximum.reduce([f['old'],f['new'],f['start'],f['retired_start']])>0
