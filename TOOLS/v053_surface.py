@@ -51,13 +51,16 @@ class Circuit(PreviousCircuit):
         # supplied by the existing 4K photographs and their exact normal maps.
         relief=(clod-.12)*(.0025+.0045*bank+.002*landing)+(n0-.5)*.0007
         grooming=np.zeros_like(s); strength=(.68+.36*straight+.22*face+.10*landing-.27*crest)*(1-bank*.72)
+        # Matched rider-height previews need clearer fine grooves on flat
+        # straights, without giving up the recovered photographic grain.
+        groom_gain=1+.28*straight*(1-.55*face)*(1-.45*landing)
         for c,w,d,seed in self.grooves:
             center=c+.013*np.sin(phase*29+seed)+.009*np.sin(phase*57+seed*2)
             width=w*(.85+.30*n2)
             activity=.48+.52*self.local(a,l,2,seed*7)
             g=np.exp(-((l-center)/width)**2)*activity
             rim=np.exp(-((l-center-width*1.45)/(width*.78))**2)*activity
-            relief+=(-g+rim*.24)*d*strength
+            relief+=(-g+rim*.24)*d*strength*groom_gain
             grooming=np.maximum(grooming,g*strength)
         # Curved tracks follow the local route coordinate frame. They are only
         # active in corners and are broken rather than full-circuit colour lanes.
@@ -193,6 +196,7 @@ def verify(sample):
         local_corner_tyre_samples=int(np.count_nonzero(f['corner_tyres']>.15)),landing_compaction_samples=int(np.count_nonzero(f['landing_impact']>.3)),
         corner_tyre_marks_absent_outside_corners=True,maximum_packed_offset_mean_difference=float(np.ptp(means)),
         approximate_grooming_spacing_m=.28,grooming_half_width_m=[.049,.072],grooming_virtual_depth_m=[.015,.025],
+        flat_straight_fine_grooming_gain=1.28,
         physical_terrain_modified=False)
     return pixels,features,comparison
 
