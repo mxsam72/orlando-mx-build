@@ -1,0 +1,25 @@
+name: Inspect v052 geometry for v054 A B C
+on:
+  push:
+    branches: [rebuild-v054]
+    paths: ['TOOLS/v054_inputs.py', '.github/workflows/inspect-v054.yml']
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      V052_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-v009.txt
+      - run: python TOOLS/v054_inputs.py inspect
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v054-authoring-inputs
+          path: BUILD/v054_authoring_inputs/*
