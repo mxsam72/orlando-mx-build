@@ -1,0 +1,49 @@
+name: Compile and deliver reviewed v054 A B C
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v054]
+    paths: ['.github/workflows/build-v054-native.yml']
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: orlando-v054-native
+  cancel-in-progress: false
+jobs:
+  native:
+    runs-on: windows-latest
+    timeout-minutes: 180
+    env:
+      V052_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      V054_SOURCE_RELEASE_ID: '412990475'
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+      PYTHONUNBUFFERED: '1'
+      OPENBLAS_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-v009.txt
+      - name: Restore authenticated delivered v052 inputs
+        run: python TOOLS/v054_inputs.py restore
+      - name: Recover the exact reviewed v054 source
+        run: python TOOLS/v054_transfer.py restore_checkpoint
+      - name: Compile scenery collision racing lines and terrain graphics
+        run: python TOOLS/build_windows_v054.py
+      - name: Publish verified v054 download
+        run: python TOOLS/v054_transfer.py deliver
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v054-native-validation
+          path: |
+            V054_OUTPUT/*validation.json
+            V054_OUTPUT/native_*.json
+            DOCUMENTATION/*v054*.log
+            DOCUMENTATION/*v054*.json
+            12_RELEASE/OrlandoMX_v054_Validation.json
+            BUILD/v054_delivery.json
+            BUILD/v054_recovery.json
