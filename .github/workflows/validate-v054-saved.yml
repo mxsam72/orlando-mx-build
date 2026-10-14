@@ -1,0 +1,50 @@
+name: Validate and deliver saved v054 native build
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v054]
+    paths: ['.github/workflows/validate-v054-saved.yml']
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: orlando-v054-native
+  cancel-in-progress: false
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      V052_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      V054_SOURCE_RELEASE_ID: '412990475'
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+      PYTHONUNBUFFERED: '1'
+      OPENBLAS_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-v009.txt
+      - name: Restore authenticated v052 baseline inputs
+        run: python TOOLS/v054_inputs.py restore
+      - name: Recover the exact reviewed A B C source
+        run: python TOOLS/v054_transfer.py restore_checkpoint
+      - name: Verify saved official outputs with complete native texture checks
+        run: python TOOLS/resume_v054_native.py
+      - name: Publish verified v054 download
+        run: python TOOLS/v054_transfer.py deliver
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v054-final-validation
+          path: |
+            V054_OUTPUT/*validation.json
+            V054_OUTPUT/native_*.json
+            DOCUMENTATION/*v054*.log
+            DOCUMENTATION/*v054*.json
+            12_RELEASE/OrlandoMX_v054_Validation.json
+            BUILD/v054_delivery.json
+            BUILD/v054_recovery.json
+            BUILD/v054_native_reuse.json
