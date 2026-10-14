@@ -1,0 +1,32 @@
+{
+  "version": "v052",
+  "source_release": "https://github.com/mxsam72/orlando-mx-build/releases/tag/v052-natural-dirt-grass-38537630164",
+  "source_pkz_sha256": "6a874fefa8bce42044e976a3e32e8d3c25c869b82e01e437c23901e3436d3a64",
+  "pixel_edits": false,
+  "images": [
+    {
+      "source": "orlandomx_2026_v052_map.tga",
+      "source_sha256": "bc3e95652260e355cc8ea28d31ce00451b26a5ca569a437b8863c5636854e9ab",
+      "file": "OrlandoMX_v052_Track_Info_Aerial.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "png_sha256": "4ec69505de4cb65f984fa9548cda0f2e6684d6ba38adaf67974e25be0a321b54",
+      "decoded_pixels_identical": true
+    },
+    {
+      "source": "orlandomx_2026_v052.tga",
+      "source_sha256": "7902dd97dc15a0384f12c68e63f832ffa23dea6b1a97301ea1b2275e7401bf01",
+      "file": "OrlandoMX_v052_Loading_Image.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "png_sha256": "2efc07e3356612244e10f64b2e3c789fd1b21128ae4f6495fd7c84af259da51e",
+      "decoded_pixels_identical": true
+    }
+  ]
+}

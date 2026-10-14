@@ -1,0 +1,22 @@
+[info]
+name=Orlando MX 2026 v052
+short_name=Orlando MX
+length=1466m
+altitude=20
+
+[race]
+defaulteventlaps=5
+reflaptime=136
+
+[ui]
+pic=orlandomx_2026_v052.tga
+pic_info=orlandomx_2026_v052_map.tga
+author=Sir Strange / Codex
+location=Orlando, Florida
+
+[weather]
+cloud_prob=0.25
+rainy_prob=0.1
+
+[data]
+code=2
