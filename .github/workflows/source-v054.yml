@@ -1,0 +1,48 @@
+name: Author and review v054 A B C geometry
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v054]
+    paths: ['TOOLS/v054_geometry.py','TOOLS/v054_surfaces.py','TOOLS/v054_scenery.py','TOOLS/v054_verify.py','TOOLS/v054_previews.py','.github/workflows/source-v054.yml']
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: orlando-v054-source
+  cancel-in-progress: true
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      V052_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      PYTHONUNBUFFERED: '1'
+      OPENBLAS_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-v009.txt
+      - name: Restore delivered v052 source and scenery
+        run: python TOOLS/v054_transfer.py source
+      - name: Author the A and C corners and new B start entry
+        run: python TOOLS/v054_geometry.py
+      - name: Move v052 dirt masks and atlas with the changed paths
+        run: python TOOLS/v054_surfaces.py
+      - name: Clear and ground-bind affected trackside objects
+        run: python TOOLS/v054_scenery.py
+      - name: Independently check heights profiles gates pits and race sequence
+        run: python TOOLS/v054_verify.py
+      - name: Render matched A B C source views
+        run: python TOOLS/v054_previews.py
+      - name: Preserve checked source and publish browser previews
+        run: python TOOLS/v054_transfer.py checkpoint
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v054-source-review
+          path: |
+            BUILD/v054_review/*
+            V054_OUTPUT/*validation.json
+            V054_OUTPUT/layout.json
