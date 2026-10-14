@@ -104,11 +104,12 @@ def deliver():
     assert q['surface_validation']['pixels_changed_outside_corridor']==0 and q['surface_validation']['normal_specular_channel_identical']
     assert q['grass_validation']['all_non_grass_records_exact'] and q['grass_validation']['grass_mesh_front_back_normals_verified'] and q['grass_validation']['all_grass_no_shadow_native_prefix']
     assert q['object_texture_validation']['checks_pass'] and q['native_coordinate_validation']['checks_pass'] and q['package_size_budget_passed']
+    assert q['grass_native_colour_validation']['baked_green_RGB_verified_by_exact_native_bitmap_digest']
     rel=api('/releases/'+os.environ['V051_RELEASE_ID']);assert rel['draft'] and rel['target_commitish']==q['source_commit']
     for f in [R/'12_RELEASE/OrlandoMX_v051_Validation.json',R/'12_RELEASE/Install_v051.txt',O/'v051_surface_validation.json',O/'v051_scenery_validation.json',O/'v051_staging_validation.json',O/'v051_layer_trials.json',O/'v051_verge_validation.json']:upload(rel,f)
     if (R/'BUILD/v051_review').exists():
         for f in sorted((R/'BUILD/v051_review').glob('*.jpg')):upload(rel,f)
-    g=q['grass_validation'];body=f'''Grass revised from v050: {g['grass_clumps']:,} photographic Bermuda clumps ({g['clump_count_vs_v050_ratio']:.2f} times v050) with 1.38 times blade width, natural 17–40 cm heights, green material tint, and transparent-edge RGB extrusion. Opaque photographic RGB and all alpha pixels remain exact to the scan. Mip colour checks remain green. Uses the existing terrain grass layer for green verge ground cover, excluding the riding corridor, roads and paddock. Double-sided normals and visual-only no-shadow prefixes retained.
+    g=q['grass_validation'];body=f'''Grass revised from v050: {g['grass_clumps']:,} photographic Bermuda clumps ({g['clump_count_vs_v050_ratio']:.2f} times v050) with 1.38 times blade width, natural 17–40 cm heights, green colour baked into the photographic bitmap, and transparent-edge RGB extrusion. All alpha pixels and the scanned blade shapes remain exact; RGB receives the intended green multiplier. Mip colour checks remain green. Uses the existing terrain grass layer for green verge ground cover, excluding the riding corridor, roads and paddock. Double-sided normals and visual-only no-shadow prefixes retained.
 
 Predominantly forward/back tractor grooming on the straightaways and jump faces: lower cross-grain clods, straighter furrows, less wandering scuffs, no transverse bank comb. Approved photographic soil colours and matte specular alpha retained, with no paired bright racing lanes.
 

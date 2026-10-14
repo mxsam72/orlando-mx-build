@@ -92,7 +92,6 @@ def validate(dirt,grass,baseline,textures,normals,native,pkz):
     signatures=[];probes=read(O/'v051_native_probes.json');points=probes['retained_geometry']+probes['new_grass']
     with mappath.open('rb') as stream,mmap.mmap(stream.fileno(),0,access=mmap.ACCESS_READ) as raw:
         assert raw[:2]==b'MP'
-        assert raw.find(struct.pack('<6f',*(grass['photographic_material_tint_rgb']*2)))>=0,'Grass material tint absent from native MAP'
         for row in baseline['terrain_texture_payloads']:
             if row['texture'] in OVERRIDES:continue
             offset=raw.find(struct.pack('<2I',*row['size'])+bytes.fromhex(row['pixel_md5']))
@@ -118,6 +117,7 @@ def validate(dirt,grass,baseline,textures,normals,native,pkz):
         source_commit=os.environ['GITHUB_SHA'],build_run=int(os.environ['GITHUB_RUN_ID']),native_compile=native,
         surface_validation=dirt,grass_validation=grass,object_texture_validation=objects,terrain_texture_payloads=signatures,
         legacy_layer_trials=read(O/'v051_layer_trials.json'),grass_ground_validation=read(O/'v051_verge_validation.json'),
+        grass_native_colour_validation=read(O/'v051_scenery_native_preflight.json'),
         native_coordinate_validation=dict(checks_pass=True,retained_probes=len(probes['retained_geometry']),grass_probes=len(probes['new_grass']),max_error_m=max(errors)),
         native_trh_identical_to_v050=True,race_reset_and_lighting_identical_to_v050=True,all_approved_trees_exact=True,
         retained_game_files=retained,scenery_edf_sha256=sha(edf),map_sha256=sha(mappath),map_bytes=mappath.stat().st_size,
@@ -132,7 +132,7 @@ Copy OrlandoMX_2026_v051.pkz into Documents\\PiBoSo\\MX Bikes\\mods\\tracks\\mot
 
 Straightaways, jump faces and shoulders use predominantly longitudinal tractor grooming, with reduced diagonal scuffs and across-track comb patterns. Removes the two continuous pale compaction bands from the mask and colour atlas. Dirt remains the approved photographic loose/packed palette with specular alpha 2/255 and 4 m cosmetic depths. Uses the same 14 layers and shared atlas pair.
 
-Rebuilds the grass at approximately four times v050 density, with green material tint, corrected transparent texture edges and green ground coverage in the existing grass layer. Uses {grass['grass_clumps']} photographic Bermuda clumps in {grass['grass_batches']} small spatial batches. Natural 17–40 cm blades, front/back triangles and verified normals, alpha-tested transparency and softer native foliage shading. Grass is visual-only and excluded from shadow casting to remove detached rectangular card shadows. All approved A/B trees, signs, vehicles, facilities, road circuits, collision, race/reset files and lighting are exact.
+Rebuilds the grass at approximately four times v050 density, with green photographic colour, corrected transparent texture edges and green ground coverage in the existing grass layer. Uses {grass['grass_clumps']} photographic Bermuda clumps in {grass['grass_batches']} small spatial batches. Natural 17–40 cm blades, front/back triangles and verified normals, alpha-tested transparency and softer native foliage shading. Grass is visual-only and excluded from shadow casting to remove detached rectangular card shadows. All approved A/B trees, signs, vehicles, facilities, road circuits, collision, race/reset files and lighting are exact.
 
 Isolated layer tests: A at R03 table-single removes only old prepared-soil layer2; B at R10 big tabletop removes only old packed-soil layer8; C at R17 eight rollers removes only old jump-face layer9. All other sections retain these layers. Same 14 global layers; bitmap allocations stay required elsewhere, so this is a local visual test before any global removal.
 
@@ -157,9 +157,10 @@ def main():
     # terrain compiler, so an importer colour issue cannot waste a full build.
     with (P/'scenery.edf').open('rb') as f,mmap.mmap(f.fileno(),0,access=mmap.ACCESS_READ) as raw:
         bitmap=texture_record(raw,P/TEXTURE)
-        tint_offset=raw.find(struct.pack('<6f',*(grass['photographic_material_tint_rgb']*2)))
-        assert tint_offset>=0,'Grass green material tint absent from native EDF'
-    save(O/'v051_scenery_native_preflight.json',dict(checks_pass=True,photographic_bitmap=bitmap,green_material_signature_offset=tint_offset))
+        assert grass['photographic_colour_multiplier_baked']==[.78,1.38,.78]
+        assert all(m['green_dominant'] for m in grass['distance_mip_colour_validation'])
+    save(O/'v051_scenery_native_preflight.json',dict(checks_pass=True,photographic_bitmap=bitmap,
+        baked_green_RGB_verified_by_exact_native_bitmap_digest=True,external_material_tint_required=False))
     native['terrain']=run_native(terrainexe,['track.hmf',DEST/(NAME+'.map'),'map_params.ini'],'terrained_v051',timeout=9000)
     assert 'Map File Write' in (LOG/'terrained_v051.log').read_text() and (DEST/(NAME+'.map')).is_file()
     pkz=package();preserve_native();validate(dirt,grass,baseline,textures,normals,native,pkz)

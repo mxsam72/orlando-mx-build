@@ -21,7 +21,8 @@ from scene_texture_bindings_v044 import actual_diffuse_bindings
 
 F=O/'facility_textures'; SOURCE=R/'V047_OUTPUT/scenery.fbx'
 TEXTURE='CK_CONSTS_v051_bermuda.tga'
-TINT=[.78,1.38,.78]
+COLOUR_MULTIPLIER=[.78,1.38,.78]
+TINT=[1.,1.,1.]
 def is_grass(name):return name.startswith(('scrub_','v044_bermuda_patch_'))
 
 def main():
@@ -72,6 +73,9 @@ def main():
     nearest=distance_transform_edt(~seeds,return_distances=False,return_indices=True)
     rgba[:,:,:3][~edge]=rgba[:,:,:3][nearest[0][~edge],nearest[1][~edge]]
     assert np.array_equal(rgba[:,:,3],source_rgba[:,:,3]) and np.array_equal(rgba[:,:,:3][edge],source_rgba[:,:,:3][edge])
+    # Bake the intended shader multiplier into the native bitmap. FBX2EDF's
+    # textured material output did not preserve the expected external tint.
+    rgba[:,:,:3]=np.uint8(np.rint(np.clip(rgba[:,:,:3].astype(np.float32)*np.array(COLOUR_MULTIPLIER),0,255)))
     Image.fromarray(rgba).save(F/TEXTURE,format='TGA');raw=(F/TEXTURE).read_bytes()
     im=Image.open(F/TEXTURE); alpha=np.asarray(im.getchannel('A'))
     assert im.mode=='RGBA' and im.size==(1024,1024) and alpha.min()==0 and alpha.max()==255
@@ -154,7 +158,13 @@ def main():
         if d['name']==b'ObjectType':
             typ=values(d)[0]; child(d,b'Count')['props']=b'I'+struct.pack('<i',counts[typ]); total+=counts[typ]
     child(defs,b'Count')['props']=b'I'+struct.pack('<i',total)
-    output=O/'scenery.fbx'; output.write_bytes(encode_linear(nodes,tail)); got,_=parse(output.read_bytes())
+    output=O/'scenery.fbx'; encoded=encode_linear(nodes,tail);temp=output.with_suffix('.fbx.tmp')
+    import hashlib
+    with temp.open('wb') as stream:
+        for start in range(0,len(encoded),4*1024*1024):
+            block=memoryview(encoded)[start:start+4*1024*1024];assert stream.write(block)==len(block)
+    assert temp.stat().st_size==len(encoded) and sha(temp)==hashlib.sha256(encoded).hexdigest()
+    got,_=parse(temp.read_bytes());temp.replace(output)
     after={values(n)[0]:fingerprint(n) for n in next(n for n in got if n['name']==b'Objects')['children']}
     assert all(after[i]==f for i,f in before.items() if i not in removed)
     gotrec=geometry_records(got); retained=[]; trees=0
@@ -178,7 +188,9 @@ def main():
         approved_tree_mix=baseline_qa['style_counts'],replaced_scrub=replaced,reconstructed_existing_grass_clusters=len(centers),
         grass_clumps=len(blades),grass_batches=len(groups),grass_triangles=newtri,grass_height_m=[.17,.40],grass_mesh_front_back_normals_verified=True,
         clump_count_vs_v050_ratio=len(blades)/4546,new_verge_clumps=new_field_clumps,blade_width_multiplier=1.38,
-        photographic_material_tint_rgb=TINT,transparent_rgb_edge_extruded=True,photo_opaque_rgb_unchanged=True,photo_alpha_unchanged=True,
+        photographic_material_tint_rgb=TINT,photographic_colour_multiplier_baked=COLOUR_MULTIPLIER,
+        colour_method='Intended green colour multiplier baked into photographic RGB; native material stays white',
+        transparent_rgb_edge_extruded=True,photo_opaque_rgb_unchanged=False,photo_alpha_unchanged=True,
         distance_mip_colour_validation=mips,
         grass_names=new_names,all_grass_no_shadow_native_prefix=True,all_grass_visual_only=True,small_spatial_batch_m=12,
         photographic_texture_file=TEXTURE,photographic_texture_sha256=sha(F/TEXTURE),photographic_source_sha256=sha(source_texture),photographic_texture_pixels_identical_to_CC0_scan=False,
