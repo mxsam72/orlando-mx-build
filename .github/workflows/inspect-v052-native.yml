@@ -1,0 +1,25 @@
+name: Inspect alpha-only native foliage specular map
+on:
+  push:
+    branches: [inspect-v052-native]
+    paths: ['TOOLS/inspect_native_v052.py', '.github/workflows/inspect-v052-native.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      V052_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install numpy
+      - run: python TOOLS/inspect_native_v052.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v052-native-specular-records
+          path: BUILD/v052_native_specular_inspection/*
