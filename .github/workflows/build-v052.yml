@@ -9,7 +9,7 @@ permissions:
   actions: read
 concurrency:
   group: orlando-v052-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   build:
     runs-on: windows-latest
@@ -38,6 +38,14 @@ jobs:
         run: python TOOLS/v052_foliage.py
       - name: Render actual terrain and grass source for visual QA
         run: python TOOLS/v052_previews.py
+      - name: Expose source views and validation for visual review
+        uses: actions/upload-artifact@v4
+        with:
+          name: v052-source-review
+          path: |
+            BUILD/v052_review/*.jpg
+            BUILD/v052_review/*.json
+            V052_OUTPUT/*.json
       - name: Preserve verified authoring source before compilation
         run: python TOOLS/v052_transfer.py checkpoint
       - name: Compile new grass scenery and complete terrain graphics
