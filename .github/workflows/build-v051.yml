@@ -1,0 +1,59 @@
+name: Build v051 whole-track natural dirt and photographic grass
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v051]
+    paths: ['V051_SOURCE/**', 'TOOLS/*v051*.py', '.github/workflows/build-v051.yml']
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: orlando-v051-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 210
+    env:
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+      PYTHONUNBUFFERED: '1'
+      OPENBLAS_NUM_THREADS: '2'
+      V051_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-v009.txt
+      - name: Check native bitmap and coordinate validators
+        run: python -m unittest discover -s TOOLS -p "test_*v04[47].py"
+      - name: Restore authenticated scenery, collision, soil and photographic grass
+        run: python TOOLS/v051_transfer.py restore
+      - name: Extend matte detail around the full circuit and remove paired colour lanes
+        run: python TOOLS/v051_surface.py
+      - name: Replace all grass panels and verify two-sided photographic grass
+        run: python TOOLS/v051_scenery.py
+      - name: Render actual terrain and grass source for visual QA
+        run: python TOOLS/v051_previews.py
+      - name: Preserve verified authoring source before compilation
+        run: python TOOLS/v051_transfer.py checkpoint
+      - name: Compile new grass scenery and complete terrain graphics
+        run: python TOOLS/build_windows_v051.py
+      - name: Publish verified playable v051 within the size budget
+        run: python TOOLS/v051_transfer.py deliver
+      - name: Preserve failure diagnostics
+        if: failure()
+        run: python TOOLS/v051_transfer.py diagnostics
+      - name: Save validation and comparison artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v051-validation-and-previews
+          path: |
+            V051_OUTPUT/*.json
+            DOCUMENTATION/*v051*.log
+            DOCUMENTATION/*v051*.json
+            12_RELEASE/OrlandoMX_v051_Validation.json
+            BUILD/v051_review/*.jpg
+          if-no-files-found: warn

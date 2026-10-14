@@ -1,0 +1,14 @@
+{
+  "version": "v051",
+  "seed": 510137,
+  "baseline_terrain_sha256": "f6ce21f9b1a0ff4ca3a822d92dcba5904eeea860cd95952bd4ba44ac9cb5c4b9",
+  "normal_specular_alpha": 2,
+  "maximum_pkz_growth_percent": 5.0,
+  "maximum_pkz_bytes": 964987509,
+  "scope": "All of the existing MX riding corridor, all jumps, both roller sections and connecting corners; road circuits and physical terrain unchanged.",
+  "dirt": "Predominantly longitudinal tractor grooming on all straightaways and jump faces. No diagonal scuff paths or cross-track bank comb pattern; accepted photo soil palette retained.",
+  "palette": "Exact accepted photographic loose/packed colour and normal tiles, with the accepted earthy palette and matte alpha 2. Macro dirt uses subtle irregular mottling rather than line-based colour.",
+  "optimization": "One historic-layer mask removal each at R03, R10 and R17. Every trial scoped separately; no global layer removal. Same 14 layers and shared atlas pair; measure actual archive change.",
+  "grass": "Denser photographic blades with green material tint and alpha edge bleed, plus green verge ground coverage in the existing grass layer. Visual-only, no shadow casting, approved trees and non-grass scenery exact.",
+  "baseline_v050_pkz_bytes": 919035723
+}
