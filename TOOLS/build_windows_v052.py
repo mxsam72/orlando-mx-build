@@ -5,6 +5,7 @@ from v052_surface import R,BASE,DIRT,O,M,SPEC,sha,save,OVERRIDES
 from v052_scenery import F,TEXTURE
 from v052_coverage import baseline_mask
 from v052_foliage import LEAVES,MATTE,SHADER
+from native_specular_v052 import specular_records
 from v047_common import read
 from v027_scenery import parse,values,child
 from scene_texture_bindings_v044 import actual_diffuse_bindings
@@ -68,7 +69,8 @@ def stage():
         shader=P/(Path(name).stem+'.shd')
         if shader.is_file():
             for m in re.findall(r'(?m)^\s*map\s*=\s*(\S+)',shader.read_text()):
-                assert Path(m).name==m and (P/m).is_file(),(name,m);names.add(m);normal_maps.append(m)
+                assert Path(m).name==m and (P/m).is_file(),(name,m);names.add(m)
+                if m!=MATTE:normal_maps.append(m)
             shutil.copy2(shader,fbm/shader.name)
     for name in names:
         bitmap_signature(P/name)
@@ -96,8 +98,15 @@ def package():
 
 def validate(dirt,grass,baseline,textures,normals,native,pkz):
     edf=P/'scenery.edf';mappath=DEST/(NAME+'.map')
-    objects=verify_files(edf,mappath,textures,LOG/'v052_native_object_texture_validation.json',
+    objects=verify_files(edf,mappath,[p for p in textures if p.name!=MATTE],LOG/'v052_native_object_texture_validation.json',
         legacy_materials=legacy_materials(P/'scenery.fbx',textures),normal_maps=[P/n for n in normals])
+    with edf.open('rb') as stream,mmap.mmap(stream.fileno(),0,access=mmap.ACCESS_READ) as raw:edf_spec=specular_records(raw,P/MATTE,minimum_records=2)
+    with mappath.open('rb') as stream,mmap.mmap(stream.fileno(),0,access=mmap.ACCESS_READ) as raw:map_spec=specular_records(raw,P/MATTE)
+    objects['textures'].append(dict(texture=MATTE,width=edf_spec['width'],height=edf_spec['height'],native_record_kind='alpha_only_specular_map',
+        alpha_pixel_md5=edf_spec['alpha_pixel_md5'],edf_records=edf_spec['records'],map_records=map_spec['records'],checks_pass=True,source_sha256=sha(P/MATTE)))
+    objects['texture_count']+=1;objects['native_bitmap_texture_count']+=1
+    objects['method']+=' Alpha-only specular records use exact bottom-up source alpha MD5 plus bounded raw-deflate payload decoding in both EDF and MAP, calibrated in run 38536643719.'
+    save(LOG/'v052_native_object_texture_validation.json',objects)
     assert any(t['texture']==TEXTURE and t['checks_pass'] and t.get('native_record_kind')=='diffuse' for t in objects['textures'])
     signatures=[];probes=read(O/'v052_native_probes.json');points=probes['retained_geometry']+probes['new_grass']
     with mappath.open('rb') as stream,mmap.mmap(stream.fileno(),0,access=mmap.ACCESS_READ) as raw:
@@ -159,9 +168,16 @@ def main():
     # Reused run helper derives its working directory from the v047 module.
     import build_windows_v047 as native_helper
     native_helper.P=P
-    for p in [P/'scenery.edf',DEST/(NAME+'.map')]:
-        if p.exists():p.unlink()
-    native=dict(scenery=run_native(edfexe,[P/'scenery.fbx',P/'scenery.edf',P/'edf_params.ini','-q'],'fbx2edf_v052',timeout=7200))
+    mappath=DEST/(NAME+'.map')
+    if mappath.exists():mappath.unlink()
+    if os.environ.get('V052_REUSE_SCENERY')=='1':
+        recovered=read(R/'BUILD/v052_recovery.json')
+        assert recovered['checks_pass'] and sha(P/'scenery.edf')==recovered['saved_edf_sha256'] and sha(P/'scenery.fbx')==recovered['saved_source_scene_sha256']
+        native=dict(scenery=dict(restored_successful_official_export=True,source_release=recovered['original_source_release'],
+            source_commit=recovered['original_source_commit'],edf_sha256=sha(P/'scenery.edf'),export_log_sha256=sha(LOG/'fbx2edf_v052.log')))
+    else:
+        if (P/'scenery.edf').exists():(P/'scenery.edf').unlink()
+        native=dict(scenery=run_native(edfexe,[P/'scenery.fbx',P/'scenery.edf',P/'edf_params.ini','-q'],'fbx2edf_v052',timeout=7200))
     assert (P/'scenery.edf').is_file()
     with (P/'scenery.edf').open('rb') as f:assert f.read(4)==b'EDF\0'
     from v052_transfer import preserve_edf,preserve_native
@@ -170,7 +186,7 @@ def main():
     # terrain compiler, so an importer colour issue cannot waste a full build.
     with (P/'scenery.edf').open('rb') as f,mmap.mmap(f.fileno(),0,access=mmap.ACCESS_READ) as raw:
         bitmap=texture_record(raw,P/TEXTURE)
-        matte_record=texture_record(raw,P/MATTE,normal_map=True)
+        matte_record=specular_records(raw,P/MATTE,minimum_records=2)
         from PIL import Image
         assert Image.open(P/MATTE).getchannel('A').getextrema()==(0,0)
         foliage=read(O/'v052_foliage_validation.json');foliage['native_zero_specular_bitmap']=matte_record

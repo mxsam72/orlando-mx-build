@@ -92,8 +92,13 @@ def checkpoint():
     print('CODEX_V052_RELEASE_ID',rel['id'],flush=True)
 def preserve_edf():
     p=R/'BUILD/OrlandoMX-v052-native-scenery.zip'
-    with zipfile.ZipFile(p,'w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:
-        z.write(R/'BUILD/v052_stage/scenery.edf','scenery.edf');z.write(R/'DOCUMENTATION/fbx2edf_v052.log','fbx2edf_v052.log')
+    if os.environ.get('V052_REUSE_SCENERY')=='1':
+        recovered=json.loads((R/'BUILD/v052_recovery.json').read_text())
+        assert sha(p)==recovered['pinned_saved_assets'][p.name][1]
+        assert sha(R/'BUILD/v052_stage/scenery.edf')==recovered['saved_edf_sha256']
+    else:
+        with zipfile.ZipFile(p,'w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:
+            z.write(R/'BUILD/v052_stage/scenery.edf','scenery.edf');z.write(R/'DOCUMENTATION/fbx2edf_v052.log','fbx2edf_v052.log')
     upload(api('/releases/'+os.environ['V052_RELEASE_ID']),p)
 def preserve_native():
     rel=api('/releases/'+os.environ['V052_RELEASE_ID']);assert rel['draft']
