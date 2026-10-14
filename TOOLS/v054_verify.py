@@ -25,6 +25,8 @@ def positions(q,rows):
 def main():
  l=Layout();old=l.old;new=l.q;raw=np.fromfile(BASE/'terrain.raw','<u2').reshape(2049,2049);out=np.fromfile(O/'terrain.raw','<u2').reshape(2049,2049);h=out/65535*18
  untouched=~l.active(old[:,3]);assert np.array_equal(old[untouched,:2],new[untouched,:2]);assert np.array_equal(np.load(O/'route.npz')['width'],l.width)
+ if (O/'road_guard.npy').is_file():
+  guard=np.load(O/'road_guard.npy');assert np.array_equal(raw[guard],out[guard]),'Terrain under existing road courses changed'
  assert np.array_equal(raw[1500:1850,1300:1500],out[1500:1850,1300:1500]),'Pit area changed'
  profiles=read(BASE/'jump_profiles.json');updated={p['id']:p for p in read(O/'jump_profiles.json')};checks=[]
  for p in profiles:
