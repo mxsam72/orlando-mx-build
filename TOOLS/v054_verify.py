@@ -2,6 +2,8 @@
 import math,re
 import numpy as np
 from scipy.spatial import cKDTree
+from scipy.ndimage import gaussian_filter1d
+from scipy.signal import find_peaks
 from v054_geometry import R,BASE,O,DEST,NAME,A,C,Layout,ground,read,save,sha,projection,parse_tcl,route_point
 from reference_route import sample_native
 
@@ -36,7 +38,17 @@ def main():
   assert np.allclose(ground(raw/65535*18,points),ground(h,points),rtol=0,atol=.0003),('Unrelated jump riding line changed',p['id'])
   checks.append(p['id'])
  p17=updated['R17'];assert len(p17['crest_offsets_m'])==8 and np.allclose(np.diff(p17['crest_offsets_m']),10)
- old_curve=abs(np.gradient(old[:,2],old[:,3]));new_curve=abs(np.gradient(new[:,2],new[:,3]));region=(old[:,3]>1290)&(old[:,3]<1335)
+ ss=np.arange(p17['station_start_m']-8,p17['station_end_m']+8,.1)
+ pp=np.c_[np.interp(ss,new[:,3],new[:,0]),np.interp(ss,new[:,3],new[:,1])]
+ physical=ground(h,pp);residual=physical-gaussian_filter1d(physical,50)
+ peaks,properties=find_peaks(residual,prominence=.12,distance=70)
+ relative=ss[peaks]-p17['station_start_m'];inside=(relative>-1)&(relative<82);relative=relative[inside]
+ assert len(relative)==8,('Wrong number of physical roller crests',relative)
+ expected=p17['face_m']+np.asarray(p17['crest_offsets_m']);assert np.max(abs(relative-expected))<1.0,(relative,expected)
+ def curvature(q):
+  heading=np.unwrap(np.arctan2(np.gradient(q[:,1],q[:,3]),np.gradient(q[:,0],q[:,3])))
+  return abs(np.gradient(gaussian_filter1d(heading,3/np.median(np.diff(q[:,3]))),q[:,3]))
+ old_curve=curvature(old);new_curve=curvature(new);region=(old[:,3]>1290)&(old[:,3]<1335)
  before=float(old_curve[region].max());after=float(new_curve[region].max());assert after<before*.8,(before,after)
  oldnative=native(BASE/'main.tcl');newnative=native(O/'main.tcl');start=native(O/'start.tcl')
  end=start[-1];d,i=cKDTree(newnative[:,:2]).query(end[:2]);assert d<.15
@@ -53,6 +65,6 @@ def main():
   if line==0 and mode==2:assert station>=newnative[i,3]-2
  for suffix in ['.amb','.tsc','.tga']:
   assert sha(DEST/(NAME+suffix))==sha(R/'BUILD/v054_baseline_game'/('orlandomx_2026_v052'+suffix))
- save(O/'independent_validation.json',dict(checks_pass=True,baseline='v052',unrelated_route_world_positions_exact=True,unrelated_jump_riding_lines_checked=checks,all_jump_profile_arrays_and_lengths_exact=True,R17_roller_count=8,R17_crest_spacing_m=10,roller_entry_peak_curvature_before=before,roller_entry_peak_curvature_after=after,start_native_merge_distance_m=float(d),start_native_merge_angle_error_rad=float(angle),gate_and_pit_world_coordinate_checks=world,first_lap_checkpoint_order_passed=True,sector_one_after_start_merge=True,lighting_cameras_and_logo_exact=True,in_game_riding_test=False))
+ save(O/'independent_validation.json',dict(checks_pass=True,baseline='v052',unrelated_route_world_positions_exact=True,unrelated_jump_riding_lines_checked=checks,all_jump_profile_arrays_and_lengths_exact=True,R17_roller_count=8,R17_crest_spacing_m=10,measured_physical_R17_crest_count=len(relative),measured_physical_R17_crest_offsets_from_start_m=relative.tolist(),roller_entry_peak_curvature_before=before,roller_entry_peak_curvature_after=after,start_native_merge_distance_m=float(d),start_native_merge_angle_error_rad=float(angle),gate_and_pit_world_coordinate_checks=world,first_lap_checkpoint_order_passed=True,sector_one_after_start_merge=True,lighting_cameras_and_logo_exact=True,in_game_riding_test=False))
  print('V054_INDEPENDENT_CHECKS_PASSED',before,after,flush=True)
 if __name__=='__main__':main()
