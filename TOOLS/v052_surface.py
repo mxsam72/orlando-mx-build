@@ -176,7 +176,12 @@ def compare_previous(sample):
     ss,ll=np.meshgrid(stations,offsets);xx=np.interp(ss,sample.q[:,3],sample.q[:,0]);zz=np.interp(ss,sample.q[:,3],sample.q[:,1])
     tx=np.interp(ss,sample.q[:,3],sample.v[:,0]);tz=np.interp(ss,sample.q[:,3],sample.v[:,1])
     x=xx-ll*tz;z=zz+ll*tx;before=previous.fields(x,z);after=sample.fields(x,z)
-    weight=after['straight_strength'];corners=weight<1e-6;straights=weight>.95
+    weight=after['straight_strength'];corners=weight==0;straights=weight>.95
+    save(O/'v052_grooming_comparison_diagnostic.json',dict(
+        fully_curved_samples=int(corners.sum()),straight_samples=int(straights.sum()),
+        transition_samples=int(np.count_nonzero((weight>0)&(weight<=.95))),
+        corner_max_relief_difference_m=float(np.max(np.abs(after['relief'][corners]-before['relief'][corners]))),
+        corner_max_blend_difference=float(np.max(np.abs(after['wear_alpha'][corners]-before['wear_alpha'][corners])))))
     assert np.count_nonzero(straights)>1000 and np.count_nonzero(corners)>1000
     for key in ['color','packed','scope']:
         assert np.array_equal(before[key],after[key]),(key,'unexpected change from v051')
@@ -195,9 +200,10 @@ def compare_previous(sample):
 
 def main():
     M.mkdir(parents=True,exist_ok=True); sample=Circuit(); assert sha(BASE/'terrain.raw')==sample.spec['baseline_terrain_sha256']
+    comparison=compare_previous(sample)
     baseline={p.relative_to(DIRT).as_posix():sha(p) for p in DIRT.rglob('*') if p.is_file()}
     shutil.copy2(DIRT/'compiled_track.hmf',O/'compiled_track.hmf'); assert 'num_layers = 14' in (O/'compiled_track.hmf').read_text()
-    counts=author(sample); scope,features,lanes=verify(sample);comparison=compare_previous(sample)
+    counts=author(sample); scope,features,lanes=verify(sample)
     from v052_coverage import author as coverage_author
     coverage_author(sample,M)
     assert all(sha(DIRT/n)==d for n,d in baseline.items()); assert sha(O/'compiled_track.hmf')==sha(DIRT/'compiled_track.hmf')
