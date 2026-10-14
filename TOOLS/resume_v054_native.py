@@ -18,9 +18,9 @@ PINS={
  'native_compile_results.json':(515,'edff02ad04b5c4b05471f043f21977432537aa28eedf9a6aa9cc9697dc0ec6b9'),
 }
 
-def download(url,p,pin):
+def download(url,p,pin,accept='application/octet-stream'):
  p.parent.mkdir(parents=True,exist_ok=True)
- req=urllib.request.Request(url,headers=HEADERS|{'Accept':'application/octet-stream'})
+ req=urllib.request.Request(url,headers=HEADERS|{'Accept':accept})
  with urllib.request.build_opener(NoAuthRedirect).open(req,timeout=300) as src,p.open('wb') as dst:shutil.copyfileobj(src,dst,4*1024*1024)
  assert p.stat().st_size==pin[0] and sha(p)==pin[1],('Saved build pin mismatch',p.name)
  print('Recovered exact saved native asset',p.name,p.stat().st_size,flush=True)
@@ -36,7 +36,7 @@ def main():
   paths[name]=download(a['url'],dest,pin)
  artifact=api('/actions/artifacts/'+str(ARTIFACT));assert not artifact['expired'] and artifact['workflow_run']['id']==COMPILE_RUN
  assert artifact['size_in_bytes']==ARTIFACT_PIN[0] and artifact['digest']=='sha256:'+ARTIFACT_PIN[1]
- diagnostic=download(artifact['archive_download_url'],R/'BUILD/v054_saved_native_validation.zip',ARTIFACT_PIN)
+ diagnostic=download(artifact['archive_download_url'],R/'BUILD/v054_saved_native_validation.zip',ARTIFACT_PIN,accept='application/vnd.github+json')
  required={f'DOCUMENTATION/{n}.log' for n in ['fbx2edf_v054','terrained_trh_v054','tracked_merge_v054','terrained_map_v054']}|{'V054_OUTPUT/native_scenery_preflight.json'}
  with zipfile.ZipFile(diagnostic) as z:
   assert z.testzip() is None and required<=set(z.namelist())
