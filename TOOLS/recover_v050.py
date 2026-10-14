@@ -6,7 +6,7 @@ Authenticate that report, recheck the exact final MAP, terrain bitmap records,
 all retained/new geometry probes and every riding payload. Mask authoring is
 verified at source/staging; no unsupported mask bitmap format is asserted.
 """
-import mmap,os,shutil,struct,urllib.request,zipfile
+import hashlib,mmap,os,shutil,struct,urllib.request,zipfile
 from pathlib import Path
 from v050_surface import R,O,sha,save
 from v050_transfer import api,identity,upload,deliver,safe,extract
@@ -83,7 +83,9 @@ def main():
   name=row['file'].replace('orlandomx_2026_v047',NAME)
   assert sha(dest/name)==row['sha256'],name
   retained.append(dict(file=name,sha256=row['sha256']))
- assert sha(dest/(NAME+'.ini'))=='dd8b6ea206b5d600342fd53cb9745ba2665814c0f4e45631576917b1dd4bba80'
+ # Native Windows packaging uses CRLF; compare unchanged INI content with
+ # universal newlines rather than platform-specific text encoding.
+ assert hashlib.sha256((dest/(NAME+'.ini')).read_text().encode()).hexdigest()=='dd8b6ea206b5d600342fd53cb9745ba2665814c0f4e45631576917b1dd4bba80'
  objects=read(R/'DOCUMENTATION/v050_native_object_texture_validation.json')
  assert objects['checks_pass'] and objects['texture_count']==91 and objects['missing']==[]
  mappath=dest/(NAME+'.map');assert sha(mappath)==objects['map_sha256']=='37cc397d682c8f5540b9930c42e1d86a85370945a37b7bdfced96aa3c108ac34'
