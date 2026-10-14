@@ -80,10 +80,19 @@ def package():
 
 def validate(textures,normals,native,pkz):
  edf=P/'scenery.edf';mappath=DEST/(NAME+'.map');trh=DEST/(NAME+'.trh')
- objects=verify_files(edf,mappath,textures,LOG/'v054_native_object_texture_validation.json',legacy_materials=legacy_materials(P/'scenery.fbx',textures),normal_maps=normals)
- assert objects['checks_pass'];signatures=[];probes=read(O/'native_probes.json');points=probes['retained_geometry']+probes['changed_geometry']
+ objects=verify_files(edf,mappath,[p for p in textures if p.name!=MATTE],LOG/'v054_native_object_texture_validation.json',legacy_materials=legacy_materials(P/'scenery.fbx',textures),normal_maps=normals)
+ with edf.open('rb') as stream,mmap.mmap(stream.fileno(),0,access=mmap.ACCESS_READ) as raw:edf_spec=specular_records(raw,P/MATTE,minimum_records=2)
+ with mappath.open('rb') as stream,mmap.mmap(stream.fileno(),0,access=mmap.ACCESS_READ) as raw:map_spec=specular_records(raw,P/MATTE)
+ objects['textures'].append(dict(texture=MATTE,width=edf_spec['width'],height=edf_spec['height'],native_record_kind='alpha_only_specular_map',alpha_pixel_md5=edf_spec['alpha_pixel_md5'],edf_records=edf_spec['records'],map_records=map_spec['records'],checks_pass=True,source_sha256=sha(P/MATTE)))
+ objects['texture_count']+=1;objects['native_bitmap_texture_count']+=1
+ objects['method']+=' Alpha-only specular records use exact source alpha MD5 and bounded raw-deflate decoding in both EDF and MAP, as in v052.'
+ save(LOG/'v054_native_object_texture_validation.json',objects)
+ assert objects['checks_pass'];signatures=[];retained_tiles=[];baseline=read(R/'BUILD/v048_inputs/v052_validation.json');probes=read(O/'native_probes.json');points=probes['retained_geometry']+probes['changed_geometry']
  with mappath.open('rb') as stream,mmap.mmap(stream.fileno(),0,access=mmap.ACCESS_READ) as raw:
   assert raw[:2]==b'MP'
+  for row in baseline['terrain_texture_payloads']:
+   if row['texture'] in ['v044_route_detail.tga','v044_route_detail_n.tga']:continue
+   offset=raw.find(struct.pack('<2I',*row['size'])+bytes.fromhex(row['pixel_md5']));assert offset>=0,('Retained v052 terrain bitmap changed/missing',row['texture']);retained_tiles.append(dict(row,v054_map_signature_offset=offset))
   for name in ['v044_route_detail.tga','v044_route_detail_n.tga']:
    w,h,d=bitmap_signature(P/name);offset=raw.find(struct.pack('<2I',w,h)+d);assert offset>=0,('Missing transported native atlas',name);signatures.append(dict(file=name,size=[w,h],source_sha256=sha(P/name),pixel_md5=d.hex(),native_offset=offset))
   errors=scan_points(raw,[p['expected_xyz_m'] for p in points]);assert all(e is not None for e in errors),[p for p,e in zip(points,errors) if e is None][:10]
@@ -91,11 +100,13 @@ def validate(textures,normals,native,pkz):
   grass=texture_record(raw,P/TEXTURE);foliage=specular_records(raw,P/MATTE,minimum_records=2)
  assert sha(trh)!='a5abd307bd50580ad512fd163d899b05dd61d3ad239bbc5626f2427516d44be9'
  assert sha(trh)!=native['unmerged_trh_sha256'],'TrackEd did not merge the changed centreline'
- baseline=read(R/'BUILD/v048_inputs/v052_validation.json');growth=(pkz.stat().st_size/baseline['pkz_bytes']-1)*100;assert growth<=5 and pkz.stat().st_size<=964987509
+ growth=(pkz.stat().st_size/baseline['pkz_bytes']-1)*100;assert growth<=5 and pkz.stat().st_size<=964987509
  for suffix in ['.amb','.tsc','.tga']:assert sha(DEST/(NAME+suffix))==sha(R/'BUILD/v054_baseline_game'/('orlandomx_2026_v052'+suffix))
  source={n:read(O/(n+'.json')) for n in ['terrain_validation','surface_validation','scenery_validation','race_validation','independent_validation','native_route_validation','native_staging_validation']}
  recovery=read(R/'BUILD/v054_recovery.json')
  report=dict(version='v054',baseline='v052',compiled=True,source_checks=True,centerline_merged=True,native_collision_updated=True,source_validation=source,source_commit=recovery['descriptor']['source_commit'],native_build_commit=os.environ['GITHUB_SHA'],native_build_run=int(os.environ['GITHUB_RUN_ID']),reviewed_source_recovered_exact=True,native_compile=native,native_object_textures=objects,terrain_atlas_signatures=signatures,native_vegetation_bitmap=grass,native_matte_foliage=foliage,native_coordinate_validation=dict(checks_pass=True,retained_probes=len(probes['retained_geometry']),changed_probes=len(probes['changed_geometry']),max_error_m=max(errors)),map_sha256=sha(mappath),trh_sha256=sha(trh),pkz_bytes=pkz.stat().st_size,pkz_sha256=sha(pkz),package_integrity_passed=True,package_size_budget_passed=True,package_growth_percent=growth,original_soil_photographs_and_colour_exact=True,in_game_riding_test=False,in_game_visual_check=False,performance_test=False,pending=['MX Bikes load and gate-drop/first-lap timing','Start bank opening and A/C corner riding','Eight rollers, reset lines and FPS'])
+ report.update(native_build_commit=os.environ.get('V054_NATIVE_COMPILE_COMMIT',os.environ['GITHUB_SHA']),native_build_run=int(os.environ.get('V054_NATIVE_COMPILE_RUN',os.environ['GITHUB_RUN_ID'])),native_validation_commit=os.environ['GITHUB_SHA'],native_validation_run=int(os.environ['GITHUB_RUN_ID']),retained_terrain_texture_payloads=retained_tiles,native_matte_foliage_MAP=map_spec)
+ if (R/'BUILD/v054_native_reuse.json').is_file():report['saved_native_outputs_reused_exact']=read(R/'BUILD/v054_native_reuse.json')
  save(R/'12_RELEASE/OrlandoMX_v054_Validation.json',report)
  (R/'12_RELEASE/Install_v054.txt').write_text('Orlando MX 2026 v054\n\nCopy OrlandoMX_2026_v054.pkz into Documents\\PiBoSo\\MX Bikes\\mods\\tracks\\motocross\\. Select v054 and reset the track. Keep v052 for comparison.\n\nA/B/C revision from the user\'s annotated v052 map. A extends the approach/return and moves the corner outward. B reroutes the start into the new space with a smooth bank opening and later merge. C broadens the sweep into the eight rollers. Native race/start lines, checkpoints, sectors, reset references and UI map follow the new paths. Starting gates and pit stall world positions are preserved.\n\nv052 soil palette, photographic tiles, normal tiles, matte tree/grass materials, scenery outside the revised paths, road courses, existing signs and pit displays remain. R09 retains its 50 m jump profile; R17 retains eight rollers and 10 m crest spacing.\n\nSource grade/geometry/race/scenery checks, matched source previews, official MAP/TRH compilation, native centreline merge, bitmap/coordinate and archive checks passed. Final in-game load, starts, timing, resets, riding and FPS require a ride test.\n',encoding='utf-8')
  print('V054_NATIVE_PACKAGE_VALIDATED',pkz.stat().st_size,sha(pkz),flush=True)
