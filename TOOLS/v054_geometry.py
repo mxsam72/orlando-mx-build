@@ -9,7 +9,7 @@ from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw
 from scipy.interpolate import CubicSpline, CubicHermiteSpline, PchipInterpolator
-from scipy.ndimage import gaussian_filter, map_coordinates
+from scipy.ndimage import gaussian_filter, map_coordinates, binary_dilation
 from scipy.spatial import cKDTree
 from v048_surface import R, BASE, sha, save, smooth
 from v024_common import route_point, project
@@ -30,6 +30,23 @@ def raster_points(n,box):
  ax=np.arange(n,dtype=float)/max(1,n-1)*600
  cc=np.flatnonzero((ax>=box[0])&(ax<=box[2]));rr=np.flatnonzero((600-ax>=box[1])&(600-ax<=box[3]))
  zz,xx=np.meshgrid(600-ax[rr],ax[cc],indexing='ij');return rr,cc,np.c_[xx.ravel(),zz.ravel()]
+
+def road_guard():
+ """Keep the existing native asphalt/concrete courses and ground intact."""
+ if not (PREV/'scenery.fbx').is_file():return
+ from v027_scenery import parse,geometry_records,vertices,child,fingerprint
+ from rebind_scenery import array
+ nodes,_=parse((PREV/'scenery.fbx').read_bytes());im=Image.new('L',(2049,2049));draw=ImageDraw.Draw(im);records=[]
+ for name,(g,mid) in geometry_records(nodes).items():
+  if not name.startswith(('TRKASPH','TRKCONC')):continue
+  v=vertices(g);indices=array(child(g,b'PolygonVertexIndex'));face=[]
+  for index in indices:
+   index=int(index);face.append(index if index>=0 else -index-1)
+   if index<0:
+    p=v[face][:,[0,2]];draw.polygon([tuple(t) for t in np.c_[p[:,0]/600*2048,(600-p[:,1])/600*2048]],fill=255);face=[]
+  records.append(dict(object=name,geometry_fingerprint=fingerprint(g)))
+ mask=binary_dilation(np.asarray(im)>0,iterations=3);np.save(O/'road_guard.npy',mask)
+ save(O/'road_guard_validation.json',dict(checks_pass=True,road_geometry_records=records,protected_height_samples=int(mask.sum()),baseline_scenery_sha256=sha(PREV/'scenery.fbx')))
 
 def curve(points,start_angle,end_angle,spacing=.08):
  pp=np.asarray(points,float);knots=np.r_[0,np.cumsum(np.linalg.norm(np.diff(pp,axis=0),axis=1))]
@@ -55,6 +72,7 @@ class Layout:
    out=dict(np.load(O/'route.npz'));self.q=out['q'];self.start=out['start'];self.knots=read(O/'layout.json')['start_width_knots'];self.old_s=out['v054_old_station']
   self.oldtree=cKDTree(self.old[:,:2]);self.newtree=cKDTree(self.q[:,:2]);self.starttree=cKDTree(self.start[:,:2]);self.oldstarttree=cKDTree(self.oldstart[:,:2])
   self.oldknots=np.array(read(BASE/'holeshot_layout.json')['start_width_knots'])
+  self.roads=np.load(O/'road_guard.npy') if (O/'road_guard.npy').is_file() else None
 
  def build(self):
   q=self.old.copy();changes=[]
@@ -126,6 +144,9 @@ class Layout:
   protected_half=np.where(self.active(os),-.1,protected_half)
   bw*=smooth((od-protected_half)/2.5)
   retired*=smooth((od-self.width[oi]/2-1)/3)
+  if self.roads is not None:
+   fixed=map_coordinates(self.roads.astype(np.uint8),[(600-pts[:,1])/600*2048,pts[:,0]/600*2048],order=0,mode='nearest')>0
+   neww[fixed]=0;oldw[fixed]=0;bw[fixed]=0;retired[fixed]=0;protected|=fixed
   return dict(src=src,rotation=rotation,new=neww,old=oldw,station=s,lateral=lat,start=bw,retired_start=retired,start_station=ss,start_lateral=sl,start_width=sw,protected=protected,old_main_station=os,old_main_distance=od)
 
 def native_routes(layout):
@@ -258,6 +279,6 @@ def race(layout,old,new,changes):
  save(O/'race_validation.json',dict(checks_pass=True,gate_grid_world_positions_preserved=True,pit_stall_world_positions_preserved=True,starting_line_origin_preserved=True,first_lap_bypassed_checkpoint_made_normal_lap_only=True,first_sector_after_new_start_merge=True,start_checkpoint_stations_m=checkpoints,native_reset_stations_remapped=True,native_length_m=float(new[-1,3]),race_references=records,in_game_test=False))
 
 def main():
- O.mkdir(parents=True,exist_ok=True);layout=Layout(generate=True);old,new,changes=native_routes(layout);before,after=profiles(layout);terrain(layout,before,after);race(layout,old,new,changes)
+ O.mkdir(parents=True,exist_ok=True);road_guard();layout=Layout(generate=True);old,new,changes=native_routes(layout);before,after=profiles(layout);terrain(layout,before,after);race(layout,old,new,changes)
  print('V054_GEOMETRY_AND_RACE_READY',flush=True)
 if __name__=='__main__':main()
