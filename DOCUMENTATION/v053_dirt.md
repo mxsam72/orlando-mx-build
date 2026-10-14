@@ -1,4 +1,14 @@
-# v053 dirt refinement
+# v053 cancelled; v052 remains the approved baseline
+
+On 2026-10-14, after viewing the matched source comparisons, the user cancelled v053 and chose v052's existing dirt colour and appearance.
+
+Future track updates must start from the delivered v052 package and source checkpoint. Do not carry forward v053's warmer palette, grain balance, grooming or local wear changes unless the user requests them again. The earlier proposal below is historical and is not an approved build specification.
+
+The v053 build workflow has been replaced with a cancellation-only workflow in the existing `orlando-v053` concurrency group. It performs no compilation, packaging or publication. The experimental source and previews are preserved for reference.
+
+[Approved v052 download](https://github.com/mxsam72/orlando-mx-build/releases/download/v052-natural-dirt-grass-38537630164/OrlandoMX_2026_v052.pkz)
+
+## Historical experiment (cancelled)
 
 The latest rider video (20261014-1337-19.4778337.mp4) shows soft route-scale dirt detail, olive mottling, weak distinction between compacted and loose soil, regular edges and little local tyre wear. v052's high atlas blend suppresses the fine 4K photographic soil underneath. The source photographs already contain grains and small clods.
 
