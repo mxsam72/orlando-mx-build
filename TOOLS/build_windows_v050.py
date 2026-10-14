@@ -93,7 +93,10 @@ def validate(dirt,grass,baseline,textures,normals,native,pkz):
             if row['texture'] in OVERRIDES:continue
             offset=raw.find(struct.pack('<2I',*row['size'])+bytes.fromhex(row['pixel_md5']))
             assert offset>=0,('Missing retained terrain bitmap',row['texture']);signatures.append(dict(row,map_signature_offset=offset))
-        for name in OVERRIDES:
+        # TerrainEd bakes masks into terrain weights, rather than emitting a
+        # named RGBA bitmap record. Stage/source checks verify their exact
+        # alpha data and HMF bindings; only atlas bitmaps use this signature.
+        for name in [n for n in OVERRIDES if not n.startswith('mask_')]:
             w,h,d=bitmap_signature(P/name);offset=raw.find(struct.pack('<2I',w,h)+d)
             assert offset>=0,('Missing whole-track authored terrain bitmap',name)
             signatures.append(dict(texture=name,size=[w,h],pixel_md5=d.hex(),source_sha256=sha(P/name),map_signature_offset=offset))
