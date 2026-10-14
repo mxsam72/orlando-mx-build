@@ -1,22 +1,32 @@
-# Orlando MX v054 A/B/C update — native build in progress
+# Orlando MX v054 A/B/C update — published and verified
 
-User approved an A/B/C sketch over the delivered v052 track-info map. v053 dirt changes were cancelled. All work here starts from v052 commit 109bf8469e09d9653898f975c906729e1ca53530 and its delivered source/PKZ pins.
+Download: https://github.com/mxsam72/orlando-mx-build/releases/download/v054-start-corners-38605191325/OrlandoMX_2026_v054.pkz
 
-- A extends the approach/return and moves the outside corner east by roughly 25 m, following the drawing.
-- B preserves the gate origin and 24 gate positions, creates an approximately 178 m start lane through the new gap, and merges farther along the main corner at old authored station 500 m. The bank opening uses a smooth elevation profile. Sector 1 moves after this merge, and the bypassed T05 checkpoint becomes normal-lap-only.
-- C broadens the roller entry curve. R17 retains eight roller profiles, their heights, and 10 m authored spacing. A local smoothing of the transported underlying C floor removes residual historical roller impressions; an independent RAW-height check observes eight crests.
-- Static v052 soil photographs, colour tiles, tiled normals and shaders remain byte exact. Only old/new corridor masks and the directional atlas move. Same 14 layers.
-- All road/asphalt/concrete geometry and practice barriers stay exact. A rasterized road guard protects 139,879 terrain samples. Nearby necessary vegetation moves without increasing counts; disconnected grass blades bind individually to the edited terrain.
-- 24 gates and 24 pit stalls retain world coordinates. Unrelated jump riding lines, lighting, cameras and logo are verified exact. The native main/start lines and reset stations follow the revisions. The UI map is updated.
+Release: https://github.com/mxsam72/orlando-mx-build/releases/tag/v054-start-corners-38605191325
 
-The final source run is 38605191325, source commit 03b21cb68c34366ddc0f8a8a63995f9b31abc528. All authoring, material, scenery, race and independent checks passed. Matched A/B/C/source merge previews were downloaded, checksum checked and visually reviewed. They are source renders, not game screenshots.
+v052 is the accepted baseline (commit 109bf8469e09d9653898f975c906729e1ca53530). The cancelled v053 palette changes are excluded. v054 implements the user's annotated A/B/C drawing:
 
-Reviewed source is held in draft release ID 412990475, tag v054-start-corners-38605191325. Source checkpoint: OrlandoMX-v054-source-checkpoint.zip, 427895975 bytes. The metadata is authoritative in the release/checkpoint descriptor. Browser previews: https://github.com/mxsam72/orlando-mx-build/blob/rebuild-v054/PREVIEWS/v054/README.md
+- A extends the approach/return and moves the outside corner east by roughly 25 m, making room for the revised start.
+- B preserves the origin and all 24 gate positions, runs through the new gap, and merges farther along the existing main corner at old authored station 500 m. The bank opening has a smooth elevation transition. Sector one follows this merge; the bypassed T05 checkpoint is normal-lap-only.
+- C broadens the entry sweep into R17. Eight roller profiles, original heights and 10 m authored spacing remain. The underlying transported floor is smoothed locally to remove historical impressions; independent height checks detect eight crests.
 
-The Windows workflow .github/workflows/build-v054-native.yml restores baseline inputs, restores the exact reviewed output (without overwriting revised compiler/validator code), compiles FBX2EDF, checks zero-intensity foliage and exact scenery coordinates, compiles TRH and merges both TCL lines with TrackEd, then compiles MAP. It checks native object/terrain bitmaps and coordinates, changed collision, archive CRC/root/count and the existing 5% size budget before publishing.
+Static v052 soil photographs, colour/wet tiles, tiled normals and shaders remain exact. Only affected corridor masks and directional atlas pixels move. There are still 14 terrain layers. All road/asphalt/concrete geometry and practice barriers remain exact; 139,879 protected RAW samples are unchanged. Necessary nearby scenery moves without changing vegetation counts. Disconnected grass blades remain individually ground-bound. Gate and pit world positions, unrelated jump riding lines, lighting, cameras and logo are checked exact. Race, reset, marshal references and track-info map follow the updated route.
 
-Native EDF is preserved in the draft release before the slow MAP stage. PKZ and native compile results are preserved in that draft before final validation, allowing recovery if a validator requires correction. Publication is gated on checks. Actual in-game appearance, first-lap timing, resets, riding and FPS still require the user ride test.
+Reviewed source: commit 03b21cb68c34366ddc0f8a8a63995f9b31abc528, successful source run 38605191325. Source checkpoint is preserved in release 412990475, tag v054-start-corners-38605191325. Matched A/B/C previews were checksum checked and visually reviewed: https://github.com/mxsam72/orlando-mx-build/blob/rebuild-v054/PREVIEWS/v054/README.md . These are source renders, not game screenshots.
 
-Active native run: 38607699127, started 2026-10-14 17:33:48 UTC from compiler commit 76696afc917cbb8ade40e391c69ad2b2248cc7fc. Job 116002715793. Scenery export completed and was preserved at 17:40:19 UTC as OrlandoMX-v054-native-scenery.zip (228,735,136 bytes, SHA256 50e3d6ac7a96b9988f5c9cf23ccb3c72fdd7cabe9841fbd4af00b67a74e8e8ed). At 17:56 UTC the native compilation step remains active; no final PKZ or validation report has been uploaded yet. Monitor https://github.com/mxsam72/orlando-mx-build/actions/runs/38607699127. The final intended release is https://github.com/mxsam72/orlando-mx-build/releases/tag/v054-start-corners-38605191325, but do not give its download until verified publication.
+Official native exports completed in run 38607699127 from compiler commit 76696afc917cbb8ade40e391c69ad2b2248cc7fc. FBX2EDF: 252.45 s; TerrainEd TRH: 5.73 s; TrackEd merge: 38.70 s; TerrainEd MAP: 2428.02 s. All four returned zero. Its final general texture checker incorrectly treated the alpha-only specular map as a colour bitmap. The binaries were saved before that check. The corrected validator uses the established v052 bounded alpha-stream decoder for this bitmap in both EDF and MAP and verifies the retained terrain tiles directly in MAP.
 
-New implementation files: TOOLS/v054_inputs.py, v054_geometry.py, v054_surfaces.py, v054_scenery.py, v054_verify.py, v054_previews.py, v054_transfer.py and build_windows_v054.py. All are saved in GitHub rebuild-v054. The original drawing is in V054_SOURCE/markup_reference.json. Current local source-review images/reports are in /workspace/scratch/95df4730d04f/review_v054_final_source.
+Successful final validation/publication: run 38617424749, commit ac9e41f4d71c6e10052b61c8a63ae50a262d228a. TOOLS/resume_v054_native.py recovered checksum-pinned native outputs without changing them, verified the diagnostic archive, all 11 non-native package members against reviewed source, and the 13-entry package root/CRC. It then ran the complete corrected native checks and published the reviewed source release.
+
+Final verification:
+
+- 3,501 native scenery probes (3,309 retained, 192 changed), max error 0.000043987234 m; EDF preflight and MAP checks passed.
+- 92 object colour/normal/specular texture checks, including decoded zero-alpha foliage records in EDF and MAP.
+- 29 retained v052 terrain bitmap signatures plus the two revised route atlases verified in MAP.
+- New collision differs from both delivered v052 and the unmerged TRH; official main/start merge completed.
+- All source, road, scenery, gate/pit, jump/roller, race-reference, archive and size-budget checks passed.
+- PKZ: 920,767,498 bytes (+0.181829% from v052), SHA256 3d3324a29d488ddb49ae53454cc948cfb7a673ca308dbd8518410a03cb773e21.
+- Final report: OrlandoMX_v054_Validation.json, 142,952 bytes, SHA256 9c485385b2fdfb373b5e9d2a2e2ced9ab1ec48154a2c8f3023f49b7b4ec16fd7.
+- Published asset sizes and SHA256 digests match the final report. Final validation artifact 11920378370 (166,198 bytes, SHA256 04f9401a5632aee2ac0dc62a120cd425b8cbf5e71aae8fdb7972223c611f8980) was downloaded and checksum checked.
+
+Actual MX Bikes load, gate-drop/first-lap timing, resets, riding and FPS still require the user's in-game test. No in-game visual/riding/performance pass is claimed. Install_v054.txt, the PKZ checksum, source checkpoint, saved native scenery, previews and final validation report are available in the published release.
