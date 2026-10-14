@@ -1,0 +1,17 @@
+{
+  "version": "v052",
+  "seed": 510137,
+  "baseline_terrain_sha256": "f6ce21f9b1a0ff4ca3a822d92dcba5904eeea860cd95952bd4ba44ac9cb5c4b9",
+  "normal_specular_alpha": 2,
+  "maximum_pkz_growth_percent": 5,
+  "maximum_pkz_bytes": 964987509,
+  "scope": "v051 riding corridor and native collision retained; extra grooming only in straight portions, fading through curvature transitions.",
+  "dirt": "30% stronger route-aligned virtual furrows and 25% lower clod relief on straights. At most +0.08 normal-atlas blend. v051 colours, compaction and fully curved section relief stay exact.",
+  "palette": "Exact accepted photographic loose/packed colour and normal tiles, with the accepted earthy palette and matte alpha 2. Macro dirt uses subtle irregular mottling rather than line-based colour.",
+  "optimization": "Retain the exact three v051 local layer-trial masks. No new trials and no global allocation changes.",
+  "grass": "Restore the exact pre-v051 ground grass mask and v050 deterministic 4546-clump recipe, original blade width and footprints. No added field anchors. Keep v051 green bitmap and transparent-edge padding; all non-grass records exact.",
+  "baseline_v050_pkz_bytes": 919035723,
+  "prior_v051_grass_clumps": 18000,
+  "required_grass_clumps": 4546,
+  "trees": "Approved tree geometry, placement and green diffuse photos exact. Both foliage shaders use a shared zero-alpha specular map to suppress white glare; verify source and native bitmap."
+}
