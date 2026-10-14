@@ -1,0 +1,134 @@
+name: Extract v052 aerial for starting-path markup
+on:
+  push:
+    branches: [preview-v052-start]
+    paths: ['.github/workflows/extract-v052-info.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  aerial:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pillow
+      - name: Extract and publish exact delivered v052 images
+        shell: bash
+        run: |
+          python - <<'PY'
+          import base64, hashlib, io, json, os, shutil, urllib.request, zipfile
+          from pathlib import Path
+          from PIL import Image
+          
+          REPO = "mxsam72/orlando-mx-build"
+          API = "https://api.github.com/repos/" + REPO
+          BRANCH = "preview-v052-start"
+          TAG = "v052-natural-dirt-grass-38537630164"
+          PACKAGE = "OrlandoMX_2026_v052.pkz"
+          PACKAGE_BYTES = 919096312
+          PACKAGE_SHA = "6a874fefa8bce42044e976a3e32e8d3c25c869b82e01e437c23901e3436d3a64"
+          ROOT = "orlandomx_2026_v052/"
+          HEADERS = {"Authorization": "Bearer " + os.environ["GITHUB_TOKEN"], "Accept": "application/vnd.github+json", "User-Agent": "OrlandoMX-v052-info-extraction"}
+          OUT = Path("PREVIEWS/v052-start")
+          OUT.mkdir(parents=True, exist_ok=True)
+          
+          def api(path, data=None, method=None):
+              body = None if data is None else json.dumps(data).encode()
+              req = urllib.request.Request(API + path, data=body, method=method, headers=HEADERS | ({"Content-Type": "application/json"} if body else {}))
+              with urllib.request.urlopen(req, timeout=120) as response:
+                  return json.load(response)
+          
+          class NoAuthRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self, req, fp, code, msg, headers, newurl):
+                  target = super().redirect_request(req, fp, code, msg, headers, newurl)
+                  if target is not None:
+                      target.remove_header("Authorization")
+                      target.remove_header("Accept")
+                  return target
+          
+          release = api("/releases/tags/" + TAG)
+          assert not release["draft"] and release["target_commitish"] == "109bf8469e09d9653898f975c906729e1ca53530"
+          asset = next(a for a in release["assets"] if a["name"] == PACKAGE)
+          assert asset["size"] == PACKAGE_BYTES and asset["digest"] == "sha256:" + PACKAGE_SHA
+          package = Path(os.environ["RUNNER_TEMP"]) / PACKAGE
+          request = urllib.request.Request(asset["url"], headers=HEADERS | {"Accept": "application/octet-stream"})
+          with urllib.request.build_opener(NoAuthRedirect).open(request, timeout=300) as response, package.open("wb") as target:
+              shutil.copyfileobj(response, target, 8 * 1024 * 1024)
+          assert package.stat().st_size == PACKAGE_BYTES
+          digest = hashlib.sha256()
+          with package.open("rb") as stream:
+              for block in iter(lambda: stream.read(8 * 1024 * 1024), b""):
+                  digest.update(block)
+          assert digest.hexdigest() == PACKAGE_SHA
+          
+          manifest = {"version": "v052", "source_release": release["html_url"], "source_pkz_sha256": PACKAGE_SHA, "pixel_edits": False, "images": []}
+          images = [
+              ("orlandomx_2026_v052_map.tga", "OrlandoMX_v052_Track_Info_Aerial.png", "bc3e95652260e355cc8ea28d31ce00451b26a5ca569a437b8863c5636854e9ab"),
+              ("orlandomx_2026_v052.tga", "OrlandoMX_v052_Loading_Image.png", "7902dd97dc15a0384f12c68e63f832ffa23dea6b1a97301ea1b2275e7401bf01"),
+          ]
+          with zipfile.ZipFile(package) as archive:
+              assert len(archive.infolist()) == 13
+              for source, target, expected in images:
+                  data = archive.read(ROOT + source)
+                  assert hashlib.sha256(data).hexdigest() == expected, source
+                  image = Image.open(io.BytesIO(data))
+                  image.load()
+                  image.save(OUT / target)
+                  restored = Image.open(OUT / target)
+                  restored.load()
+                  assert restored.mode == image.mode and restored.size == image.size and restored.tobytes() == image.tobytes()
+                  manifest["images"].append({"source": source, "source_sha256": expected, "file": target, "dimensions": list(image.size), "mode": image.mode, "png_sha256": hashlib.sha256((OUT / target).read_bytes()).hexdigest(), "decoded_pixels_identical": True})
+              config = archive.read(ROOT + "orlandomx_2026_v052.ini").decode("utf-8")
+              (OUT / "track_info_config.txt").write_text(config, encoding="utf-8")
+          package.unlink()
+          (OUT / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
+          readme = """# Orlando MX v052 - aerial image for start-path markup
+          
+          This is the exact track-info map image packaged in delivered v052, converted losslessly from TGA to PNG. No image pixels or track geometry have been changed. The existing map artwork may use an earlier aerial reference; it has not been newly rendered.
+          
+          Draw your new starting path on this image. Use arrows to show direction and mark where it joins the main circuit. If you want to change the width, draw both edges.
+          
+          ## Track-info aerial
+          
+          ![v052 track-info aerial](OrlandoMX_v052_Track_Info_Aerial.png)
+          
+          [Open or download the full-resolution aerial](OrlandoMX_v052_Track_Info_Aerial.png)
+          
+          ## Existing loading image
+          
+          ![v052 loading image](OrlandoMX_v052_Loading_Image.png)
+          
+          [Approved v052 package](https://github.com/mxsam72/orlando-mx-build/releases/download/v052-natural-dirt-grass-38537630164/OrlandoMX_2026_v052.pkz)
+          
+          These images are for marking up the next start-path revision. v052 remains the approved baseline. v053's dirt changes were cancelled.
+          """
+          (OUT / "README.md").write_text(readme)
+          head = api("/git/ref/heads/" + BRANCH)["object"]["sha"]
+          assert head == os.environ["GITHUB_SHA"]
+          base = api("/git/commits/" + head)
+          entries = []
+          for file in sorted(OUT.iterdir()):
+              data = file.read_bytes()
+              blob = api("/git/blobs", {"content": base64.b64encode(data).decode(), "encoding": "base64"})
+              entries.append({"path": file.as_posix(), "mode": "100644", "type": "blob", "sha": blob["sha"]})
+          tree = api("/git/trees", {"base_tree": base["tree"]["sha"], "tree": entries})
+          commit = api("/git/commits", {"message": "Publish exact v052 track-info aerial for start-path markup", "tree": tree["sha"], "parents": [head]})
+          assert api("/git/ref/heads/" + BRANCH)["object"]["sha"] == head
+          api("/git/refs/heads/" + BRANCH, {"sha": commit["sha"], "force": False}, "PATCH")
+          url = "https://github.com/" + REPO + "/blob/" + BRANCH + "/PREVIEWS/v052-start/README.md"
+          print("V052_START_MARKUP_PAGE", url)
+          print(json.dumps(manifest, indent=2))
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as summary:
+              summary.write("[View v052 aerial for start-path markup](" + url + ")\n")
+          
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v052-start-path-images
+          path: PREVIEWS/v052-start/*
