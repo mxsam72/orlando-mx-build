@@ -1,63 +1,26 @@
-name: Build v053 finer dirt and local wear
+name: v053 cancelled - keep v052
 on:
   workflow_dispatch:
   push:
     branches: [rebuild-v053]
-    paths: ['TOOLS/*v053*.py', 'V053_SOURCE/**', '.github/workflows/build-v053.yml', 'DOCUMENTATION/v053_dirt.md']
+    paths: ['.github/workflows/build-v053.yml']
 permissions:
-  contents: write
-  actions: read
+  contents: read
+# Use the existing build group so this run stops the active v053 compiler.
 concurrency:
   group: orlando-v053
   cancel-in-progress: true
 jobs:
-  build:
-    runs-on: windows-latest
-    timeout-minutes: 180
-    env:
-      PYTHONUTF8: '1'
-      PYTHONIOENCODING: utf-8
-      PYTHONUNBUFFERED: '1'
-      OPENBLAS_NUM_THREADS: '2'
-      V052_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  record-cancellation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - run: python -m pip install -r requirements-v009.txt
-      - run: python -m unittest discover -s TOOLS -p "test_*v04[47].py"
-      - run: python -m unittest discover -s TOOLS -p "test_*v052.py"
-      - name: Restore delivered v052 scene and approved soil sources
-        run: python TOOLS/v053_inputs.py
-      - name: Author finer soil, longitudinal grooming and local wear
-        run: python TOOLS/v053_surface.py
-      - name: Render matched rider-height source comparisons
-        run: python TOOLS/v053_previews.py
-      - uses: actions/upload-artifact@v4
-        with:
-          name: v053-source-review
-          path: |
-            BUILD/v053_review/*
-            V053_OUTPUT/v053_surface_validation.json
-            BUILD/v053_recovery.json
-      - name: Preserve checked source checkpoint
-        run: python TOOLS/v053_transfer.py checkpoint
-      - name: Compile terrain and verify native package
-        run: python TOOLS/build_windows_v053.py
-      - name: Publish verified v053 download
-        run: python TOOLS/v053_transfer.py deliver
-      - name: Preserve failure diagnostics
-        if: failure()
-        run: python TOOLS/v053_transfer.py diagnostics
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: v053-native-validation
-          path: |
-            V053_OUTPUT/v053_*.json
-            DOCUMENTATION/*v053*.log
-            DOCUMENTATION/*v053*.json
-            12_RELEASE/OrlandoMX_v053_Validation.json
-            BUILD/v053_delivery.json
-            BUILD/v053_recovery.json
+      - name: Record the user's decision to retain v052
+        shell: bash
+        run: |
+          cat >> "$GITHUB_STEP_SUMMARY" <<'EOF'
+          v053 was cancelled at the user's request on 2026-10-14 after reviewing the comparisons.
+          v052 remains the approved baseline, including its original dirt colour and appearance.
+          This workflow performs no compilation, packaging or publication.
+          [Download v052](https://github.com/mxsam72/orlando-mx-build/releases/download/v052-natural-dirt-grass-38537630164/OrlandoMX_2026_v052.pkz)
+          EOF
