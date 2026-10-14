@@ -13,6 +13,7 @@ from native_specular_v052 import specular_records
 from build_windows_v047 import run_native,native_tools
 from v052_foliage import MATTE
 from v052_scenery import TEXTURE
+from v052_transfer import api,upload
 
 P=R/'BUILD/v054_stage';LOG=R/'DOCUMENTATION'
 def stage():
@@ -64,6 +65,10 @@ def stage():
  return [P/n for n in sorted(names)],[P/n for n in sorted(set(normals))]
 
 def package():
+ for p in [DEST/'code.txt',P/'code.txt']:
+  if p.is_file():
+   shutil.copy2(p,LOG/'v054_track_code.txt')
+   if p.parent==DEST:p.unlink()
  pkz=R/'12_RELEASE/OrlandoMX_2026_v054.pkz';temp=pkz.with_suffix('.pkz.tmp')
  with zipfile.ZipFile(temp,'w',zipfile.ZIP_DEFLATED,compresslevel=9) as z:
   for p in sorted(DEST.iterdir()):
@@ -102,7 +107,18 @@ def main():
  helper.P=P;helper.LOG=LOG
  native={'scenery':run_native(edfexe,['scenery.fbx','scenery.edf','edf_params.ini','-q'],'fbx2edf_v054',7200)}
  assert (P/'scenery.edf').read_bytes()[:4]==b'EDF\0'
- with (P/'scenery.edf').open('rb') as stream,mmap.mmap(stream.fileno(),0,access=mmap.ACCESS_READ) as raw:specular_records(raw,P/MATTE,minimum_records=2);texture_record(raw,P/TEXTURE)
+ # Preserve the official scenery export and check source coordinates before
+ # the slower MAP stage. A validator correction can resume from these files.
+ rel=api('/releases/'+os.environ['V054_RELEASE_ID']);assert rel['draft']
+ scene_archive=R/'BUILD/OrlandoMX-v054-native-scenery.zip'
+ with zipfile.ZipFile(scene_archive,'w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:z.write(P/'scenery.edf','scenery.edf');z.write(LOG/'fbx2edf_v054.log','fbx2edf_v054.log')
+ upload(rel,scene_archive)
+ points=read(O/'native_probes.json');points=points['retained_geometry']+points['changed_geometry']
+ with (P/'scenery.edf').open('rb') as stream,mmap.mmap(stream.fileno(),0,access=mmap.ACCESS_READ) as raw:
+  specular_records(raw,P/MATTE,minimum_records=2);texture_record(raw,P/TEXTURE)
+  errors=scan_points(raw,[p['expected_xyz_m'] for p in points])
+  save(O/'native_scenery_preflight.json',dict(checks_pass=all(e is not None for e in errors),probe_count=len(points),missing=[p for p,e in zip(points,errors) if e is None]))
+  assert all(e is not None for e in errors),('Scenery source coordinates missing from official EDF',[p for p,e in zip(points,errors) if e is None][:8])
  trh=DEST/(NAME+'.trh');mappath=DEST/(NAME+'.map')
  for p in [trh,mappath]:p.unlink(missing_ok=True)
  native['collision']=run_native(terrainexe,['track.tht',trh,'trh_params.ini'],'terrained_trh_v054',7200)
@@ -111,5 +127,7 @@ def main():
  assert sha(trh)!=native['unmerged_trh_sha256']
  native['terrain']=run_native(terrainexe,['track.hmf',mappath,'map_params.ini'],'terrained_map_v054',9000)
  assert 'Map File Write' in (LOG/'terrained_map_v054.log').read_text() and mappath.is_file()
- pkz=package();validate(textures,normals,native,pkz)
+ save(O/'native_compile_results.json',native);pkz=package()
+ for p in [pkz,pkz.with_suffix('.pkz.sha256'),O/'native_compile_results.json']:upload(rel,p)
+ validate(textures,normals,native,pkz)
 if __name__=='__main__':main()
