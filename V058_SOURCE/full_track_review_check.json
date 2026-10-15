@@ -1,0 +1,181 @@
+{
+  "checks_pass": true,
+  "photo_count": 38,
+  "all_14_corners_visibly_covered": [
+    {
+      "corner": "T01",
+      "photo": 4,
+      "subsampled_visible_dirt_pixels": 75804,
+      "geometry_exact_v056": true
+    },
+    {
+      "corner": "T02",
+      "photo": 6,
+      "subsampled_visible_dirt_pixels": 99075,
+      "geometry_exact_v056": true
+    },
+    {
+      "corner": "T03",
+      "photo": 9,
+      "subsampled_visible_dirt_pixels": 123148,
+      "geometry_exact_v056": true
+    },
+    {
+      "corner": "T04",
+      "photo": 11,
+      "subsampled_visible_dirt_pixels": 100440,
+      "geometry_exact_v056": true
+    },
+    {
+      "corner": "T05",
+      "photo": 13,
+      "subsampled_visible_dirt_pixels": 81215,
+      "geometry_exact_v056": true
+    },
+    {
+      "corner": "T06",
+      "photo": 14,
+      "subsampled_visible_dirt_pixels": 91822,
+      "geometry_exact_v056": true
+    },
+    {
+      "corner": "T07",
+      "photo": 16,
+      "subsampled_visible_dirt_pixels": 79252,
+      "geometry_exact_v056": true
+    },
+    {
+      "corner": "T08",
+      "photo": 18,
+      "subsampled_visible_dirt_pixels": 91113,
+      "geometry_exact_v056": true
+    },
+    {
+      "corner": "T09",
+      "photo": 21,
+      "subsampled_visible_dirt_pixels": 99275,
+      "geometry_exact_v056": true
+    },
+    {
+      "corner": "T10",
+      "photo": 24,
+      "subsampled_visible_dirt_pixels": 132918,
+      "geometry_exact_v056": true
+    },
+    {
+      "corner": "T11",
+      "photo": 27,
+      "subsampled_visible_dirt_pixels": 92002,
+      "geometry_exact_v056": true
+    },
+    {
+      "corner": "T12",
+      "photo": 30,
+      "subsampled_visible_dirt_pixels": 112436,
+      "geometry_exact_v056": true
+    },
+    {
+      "corner": "T13",
+      "photo": 31,
+      "subsampled_visible_dirt_pixels": 75409,
+      "geometry_exact_v056": true
+    },
+    {
+      "corner": "T14",
+      "photo": 35,
+      "subsampled_visible_dirt_pixels": 89666,
+      "geometry_exact_v056": true
+    }
+  ],
+  "all_15_jump_groups_visibly_covered": [
+    {
+      "feature": "R01",
+      "photo": 1,
+      "subsampled_visible_dirt_pixels": 93168
+    },
+    {
+      "feature": "R02",
+      "photo": 5,
+      "subsampled_visible_dirt_pixels": 59813
+    },
+    {
+      "feature": "R03",
+      "photo": 7,
+      "subsampled_visible_dirt_pixels": 84117
+    },
+    {
+      "feature": "R05",
+      "photo": 12,
+      "subsampled_visible_dirt_pixels": 50507
+    },
+    {
+      "feature": "R07",
+      "photo": 15,
+      "subsampled_visible_dirt_pixels": 84517
+    },
+    {
+      "feature": "R09",
+      "photo": 19,
+      "subsampled_visible_dirt_pixels": 83407
+    },
+    {
+      "feature": "R10",
+      "photo": 20,
+      "subsampled_visible_dirt_pixels": 92346
+    },
+    {
+      "feature": "R11",
+      "photo": 22,
+      "subsampled_visible_dirt_pixels": 17017
+    },
+    {
+      "feature": "R12",
+      "photo": 23,
+      "subsampled_visible_dirt_pixels": 98953
+    },
+    {
+      "feature": "R14",
+      "photo": 25,
+      "subsampled_visible_dirt_pixels": 84941
+    },
+    {
+      "feature": "R15",
+      "photo": 28,
+      "subsampled_visible_dirt_pixels": 57913
+    },
+    {
+      "feature": "R16",
+      "photo": 29,
+      "subsampled_visible_dirt_pixels": 90257
+    },
+    {
+      "feature": "R17",
+      "photo": 32,
+      "subsampled_visible_dirt_pixels": 82260
+    },
+    {
+      "feature": "R18",
+      "photo": 34,
+      "subsampled_visible_dirt_pixels": 87988
+    },
+    {
+      "feature": "R11_ENTRY",
+      "photo": 22,
+      "subsampled_visible_dirt_pixels": 66865
+    }
+  ],
+  "approved_trial_match": {
+    "camera": "R02 triple",
+    "mean_absolute_RGB_delta_8bit": 0.12418436379928316,
+    "fraction_pixels_max_channel_delta_under_4": 0.9939811827956989,
+    "note": "JPEG source previews; small edge, mask quantisation and JPEG differences are expected."
+  },
+  "terrain_exact_tested_v056": true,
+  "approved_v057_scenery_byte_exact": true,
+  "final_compilation_started": false,
+  "archive": {
+    "file": "Orlando_v058_Full_Track_Photos.zip",
+    "sha256": "de517e7cd353be6a70ee09444e157fd366bd19abff9b8572c440274f80837174",
+    "bytes": 27528981
+  }
+}

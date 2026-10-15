@@ -10,9 +10,13 @@ Existing colour slots now use the 4K C scan at 3m repeats; the existing macro-no
 
 The latest user instruction is to render photos around the whole course and wait for approval **before final compilation**. Do not start a native build in response to the earlier approval of the small C+B trial. No v058 native workflow has been launched.
 
-`TOOLS/v058_full_review.py` reads the actual production HMF, shaders, masks, photo mipmaps and accepted terrain. It creates 38 numbered perspective views, a camera-location map, five contact sheets and a ZIP of full-resolution photos. These are terrain/material source previews, not MX Bikes captures. Scenery is omitted so the soil can be inspected. Approved scenery remains saved and unchanged.
+`TOOLS/v058_full_review.py` reads the actual production HMF, shaders, masks, photo mipmaps and accepted terrain. The review is complete: 38 numbered perspective views, a camera-location map, five contact sheets and a ZIP of full-resolution photos. These are terrain/material source previews, not MX Bikes captures. Scenery is omitted so the soil can be inspected. Approved scenery remains saved and unchanged.
 
 The renderer checkpoints each completed photo by camera, input hashes and image hash. It uses top-down over-composition to avoid sampling fully occluded layers; this affects preview time only. It preserves per-pixel perspective mip selection and directional texture footprints. The accepted trial controls are not overwritten.
+
+`TOOLS/v058_full_review_check.py` passed. It verifies visible dirt from all 14 corners and all 15 jump groups in their dedicated views, exact approved terrain and scenery, production shader repeats, every individual photo hash and the complete ZIP. The R02 production view differs from the approved hybrid preview by only 0.124 mean RGB levels on the 0–255 scale; 99.4% of pixels differ by fewer than four levels in every channel. Small boundary feather, 8-bit mask and JPEG differences are expected.
+
+The photo images were rendered from source checkpoint `e72d68cef0acb8640e20871ddf90438e13c268ea`. Subsequent review changes make ray-cache writes safe between processes, verify large scenery copies and ZIPs before atomic publication, separate two overlapping map labels, and remove empty contact-sheet space. These changes do not alter the photo material or geometry. The completed archive digest and full camera evidence are recorded in `full_track_review.json` and `full_track_review_check.json`.
 
 ## Reproduce locally
 

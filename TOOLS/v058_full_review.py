@@ -4,7 +4,7 @@ These are terrain/material source renders, not game captures. Approved scenery
 is preserved separately and deliberately omitted so dirt remains easy to judge.
 No model-generated imagery or substitute dirt geometry is used.
 """
-import gc,hashlib,json,re,sys,time,zipfile
+import gc,hashlib,json,os,re,sys,time,zipfile
 from pathlib import Path
 import numpy as np
 from PIL import Image,ImageDraw
@@ -165,7 +165,8 @@ def package(c,rows):
  for v in VIEWS:
   route=route_for(c,v['path']);e=render.location(route,v['eye_s'],v['eye_l'],v['eye_h']);t=render.location(route,v['target_s'],v['target_l'],v['target_h'])
   ax.annotate('',xy=t[:2],xytext=e[:2],arrowprops=dict(arrowstyle='->',color='#317887',lw=1.4,alpha=.8))
-  ax.annotate(v['id'],e[:2],xytext=(0,0),textcoords='offset points',ha='center',va='center',fontsize=8.5,fontweight='bold',color='white',bbox=dict(boxstyle='circle,pad=.2',fc='#1d5561',ec='white',lw=.7))
+  offset=(0,22) if v['id']=='36' else (12,-5) if v['id']=='03' else (0,0)
+  ax.annotate(v['id'],e[:2],xytext=offset,textcoords='offset points',ha='center',va='center',fontsize=8.5,fontweight='bold',color='white',bbox=dict(boxstyle='circle,pad=.2',fc='#1d5561',ec='white',lw=.7))
  ax.set_aspect('equal');ax.set_xticks([]);ax.set_yticks([])
  for spine in ax.spines.values():spine.set_visible(False)
  ax.set_title('Orlando MX — full-course photo locations\n38 views • approved C loam + B jump-face grooves',fontsize=19,pad=20)
@@ -173,7 +174,7 @@ def package(c,rows):
  fig.tight_layout();fig.savefig(OUT/'Orlando_v058_Photo_Locations.jpg',dpi=180);plt.close(fig)
  sheets=[]
  for page,start in enumerate(range(0,len(rows),8),1):
-  batch=rows[start:start+8];tw,th=1000,625;sheet=Image.new('RGB',(tw*2,th*4+100),(22,25,29));d=ImageDraw.Draw(sheet)
+  batch=rows[start:start+8];tw,th=1000,625;sheet=Image.new('RGB',(tw*2,th*((len(batch)+1)//2)+100),(22,25,29));d=ImageDraw.Draw(sheet)
   d.text((22,12),f'Orlando MX | Full-track C+B | Photo sheet {page} / 5',font=font(31),fill='white')
   d.text((22,57),'Actual terrain and material source previews. Full-resolution photos are included in the ZIP.',font=font(20),fill=(199,211,219))
   for i,row in enumerate(batch):
@@ -187,8 +188,12 @@ def package(c,rows):
  save(OUT/'Review_Manifest.json',manifest)
  (OUT/'Read_Me.txt').write_text('Orlando MX v058 — full-track C+B review\n\n38 photos cover all 14 corners, jump groups, straights, start lane and merge.\nThe numbered map shows every camera. Photo sheets provide an overview; individual JPEGs are 1600 x 1000.\n\nThese are actual terrain/material source renders, not MX Bikes captures. Scenery is omitted to keep the dirt visible. The approved van, sign and truck changes are retained unchanged in source.\n\nFinal compilation is on hold for approval of this review. Actual in-game lighting, texture filtering, RAM/VRAM use and FPS remain to be checked after compilation.\n',encoding='utf-8')
  archive=R/'BUILD/Orlando_v058_Full_Track_Photos.zip'
- with zipfile.ZipFile(archive,'w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:
+ temporary=CACHE/f'Full_Track_Photos_{os.getpid()}.tmp.zip'
+ with zipfile.ZipFile(temporary,'w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:
   for name in [r['file'] for r in rows]+sheets+[manifest['map'],'Review_Manifest.json','Read_Me.txt']:z.write(OUT/name,name)
+ with temporary.open('rb') as f:os.fsync(f.fileno())
+ with zipfile.ZipFile(temporary) as z:assert z.testzip() is None
+ expected=sha(temporary);temporary.replace(archive);os.utime(archive,None);assert sha(archive)==expected
  save(R/'V058_SOURCE/full_track_review.json',dict(manifest,archive=dict(file=archive.name,sha256=sha(archive),bytes=archive.stat().st_size)))
  print('V058_FULL_TRACK_REVIEW_READY',len(rows),'photos',archive,flush=True)
 

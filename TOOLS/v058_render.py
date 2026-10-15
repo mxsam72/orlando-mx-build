@@ -7,6 +7,7 @@ The dry diffuse/normal/specular-alpha model is approximate, not the game.
 import gc
 import json
 import math
+import os
 import re
 import sys
 import zipfile
@@ -173,7 +174,9 @@ def trace(section,view):
     # texture derivatives. Their colours are replaced by the same sky later.
     far=eye+rays*160;x=np.where(hit,x,far[:,:,0]);z=np.where(hit,z,far[:,:,1])
     result=dict(x=x.ravel(),z=z.ravel(),ground=p[:,:,2].ravel(),hit=hit.ravel(),eye=eye,target=target,**footprint(x,z))
-    temporary=filename.with_suffix('.tmp.npz')
+    # Independent review workers may reach the same camera. Never share the
+    # temporary pathname: each complete, equivalent cache replaces atomically.
+    temporary=filename.with_suffix('.'+str(os.getpid())+'.tmp.npz')
     np.savez_compressed(temporary,width=WIDTH,height=HEIGHT,**result);temporary.replace(filename)
     print('Traced',view['id'],int(hit.sum()),'terrain pixels',flush=True)
     return result

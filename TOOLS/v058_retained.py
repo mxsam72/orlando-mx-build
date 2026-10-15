@@ -1,7 +1,16 @@
 """Retain the exact tested track and the approved saved scenery."""
-import json,shutil
+import json,os,shutil
 from v058_inputs import R,PREV,O,M,NAME,DEST,sha,save
 from v057_vehicle_review import mesh_digest
+
+def copy_exact(src,dest):
+ """Publish a complete verified source copy; interrupted writes stay temporary."""
+ temp=dest.with_name(dest.name+'.copying')
+ with src.open('rb') as inp,temp.open('wb') as out:
+  shutil.copyfileobj(inp,out,4*1024*1024);out.flush();os.fsync(out.fileno())
+ assert temp.stat().st_size==src.stat().st_size and sha(temp)==sha(src)
+ shutil.copystat(src,temp);temp.replace(dest);os.utime(dest,None)
+ assert sha(dest)==sha(src)
 
 def main():
  O.mkdir(exist_ok=True);M.mkdir(exist_ok=True);DEST.mkdir(parents=True,exist_ok=True)
@@ -18,7 +27,7 @@ def main():
  assert mesh_digest(approved/'scenery.fbx')==expected
  assert q['sign']['serialized_uv_forward_and_upright_both_faces'] and q['sign']['no_coplanar_faces']
  assert 2.95<q['sign']['clearance_to_van_nose_m']<3.05
- for name in ['scenery.fbx','native_probes.json','vehicle_meshes.json']:shutil.copy2(approved/name,O/name)
+ for name in ['scenery.fbx','native_probes.json','vehicle_meshes.json']:copy_exact(approved/name,O/name)
  shutil.copytree(approved/'facility_textures',O/'facility_textures',dirs_exist_ok=True)
  assert sha(O/'scenery.fbx')==q['scenery_sha256']
  save(O/'scenery_validation.json',dict(q,approved_v057_preserved=True,approved_v057_mesh_digest=expected,
