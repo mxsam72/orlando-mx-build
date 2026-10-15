@@ -1,0 +1,76 @@
+{
+  "version": "v056",
+  "release_id": 413330986,
+  "release_url": "https://github.com/mxsam72/orlando-mx-build/releases/tag/v056-restored-corners-38665837940",
+  "download_url": "https://github.com/mxsam72/orlando-mx-build/releases/download/v056-restored-corners-38665837940/OrlandoMX_2026_v056.pkz",
+  "source_commit": "c02a8cac8a7ef142969d246fee17fe08340257be",
+  "native_build_run": 38665837940,
+  "native_build_job": 116197481413,
+  "native_build_conclusion": "success",
+  "pkz_bytes": 920759900,
+  "pkz_sha256": "8f491a00c274ba60c82225782983033c8b16df1a094761d9678a4cfc3ed63c25",
+  "published_asset_digest_matches_successful_native_build": true,
+  "native_checks": {
+    "all_14_corner_grids_exact_v054": true,
+    "full_width_per_corner_m": 28,
+    "entire_MAP_and_TRH_heights_equal_emitted_RAW": true,
+    "samples_per_native_grid": 4198401,
+    "source_terrain_sha256": "ab99df42094ef29015f117babeffe555e814fc7f86cf836c60625b760868289f",
+    "only_local_landing_raw_samples_changed": 840,
+    "native_bitmaps_scenery_race_archive_checks": "passed in Windows build"
+  },
+  "surface": {
+    "all_18_boundary_and_material_masks_exact_v054": true,
+    "full_resolution_racing_maps_restored": true,
+    "only_base_soil_dry_wet_tint_rgb": [
+      -6,
+      -4,
+      -4
+    ],
+    "layers": 14,
+    "unique_active_image_payloads_before": 48,
+    "unique_active_image_payloads_after": 48,
+    "estimated_RGBA8_base_bytes_before": 1380188160,
+    "estimated_RGBA8_base_bytes_after": 1380188160,
+    "existing_pixel_aliases_broken": false
+  },
+  "validation_report": {
+    "bytes": 126754,
+    "sha256": "e0a0e9f63e743e090c6226e784c3a50535f657d6cb1549faf1c4d68f8ef3ba25",
+    "url": "https://github.com/mxsam72/orlando-mx-build/releases/download/v056-restored-corners-38665837940/OrlandoMX_v056_Validation.json"
+  },
+  "extra_local_full_download_check": "Incomplete: local command runner stopped responding. Published asset digest independently matched the successful native build log; no separate local CRC/ground-grid success is claimed.",
+  "in_game_visual_check": false,
+  "in_game_riding_test": false,
+  "process_memory_or_FPS_measurement": false,
+  "asset_pins": {
+    "native_compile_results.json": {
+      "bytes": 585,
+      "sha256": "bca8ada8413af92c0021845a308133abc866e93465ab5ef3e601bc6d4fd22330"
+    },
+    "OrlandoMX-v056-native-scenery.zip": {
+      "bytes": 228735026,
+      "sha256": "1a02e3a70f5488cc230975541fb31b94047415f2537ea57021f0d16a9b10c27f"
+    },
+    "OrlandoMX-v056-source-checkpoint.zip": {
+      "bytes": 283975905,
+      "sha256": "2341678f44193466ee81a1e37cadf61c881a6f1dccd9222a7d4494caf330f4cd"
+    },
+    "OrlandoMX_2026_v056.pkz": {
+      "bytes": 920759900,
+      "sha256": "8f491a00c274ba60c82225782983033c8b16df1a094761d9678a4cfc3ed63c25"
+    },
+    "OrlandoMX_2026_v056.pkz.sha256": {
+      "bytes": 91,
+      "sha256": "5fc90dd6fcdfa6f0ac1c03a5e795c07981831122b8a104eb1db18d2bba18db77"
+    },
+    "OrlandoMX_v056_Validation.json": {
+      "bytes": 126754,
+      "sha256": "e0a0e9f63e743e090c6226e784c3a50535f657d6cb1549faf1c4d68f8ef3ba25"
+    },
+    "v056_checkpoint_descriptor.json": {
+      "bytes": 604,
+      "sha256": "04553eed1c994dec91cc182c7ea55ffe73d0f1ac2afd5f8cc58ff1e4546a4e16"
+    }
+  }
+}

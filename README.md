@@ -1,4 +1,4 @@
-> **v055 was rejected in game.** Its landing patch cut part of T03/T12 and the shoulder blend hid track boundaries. The `rebuild-v056` correction restores the accepted v054 banks, masks and full-resolution dirt, with a narrowly scoped landing crown correction. Native validation/publication status: see the [v056 workflow](https://github.com/mxsam72/orlando-mx-build/actions/workflows/build-v056.yml).
+> **v056 is available:** [download the corrected PKZ](https://github.com/mxsam72/orlando-mx-build/releases/download/v056-restored-corners-38665837940/OrlandoMX_2026_v056.pkz). Restores all 14 v054 corner grids, original track boundaries and full-resolution dirt. Native compilation, complete MAP/TRH height checks, texture/scenery and archive gates passed. [Verification and limitations](DOCUMENTATION/v056_verified_delivery.md). v055 is rejected and superseded. In-game riding and appearance remain pending.
 
 # Orlando MX 2026 v006
 
