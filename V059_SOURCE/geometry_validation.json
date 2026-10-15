@@ -1,0 +1,171 @@
+{
+  "checks_pass": true,
+  "version": "v059",
+  "source_terrain_sha256": "ab99df42094ef29015f117babeffe555e814fc7f86cf836c60625b760868289f",
+  "terrain_sha256": "0ca6058685d0f610dafe6d2e710f5dd901038b7cc470508c20e8b20299947689",
+  "changed_raw_samples": 29547,
+  "geometry_edits_only_inside_scope": true,
+  "road_terrain_exact": true,
+  "corner_smoothing": [
+    {
+      "corner": "T03",
+      "station_m": [
+        272.5182251361792,
+        307.76691594787724
+      ],
+      "maximum_cross_grade_before": 1.2260736990503962,
+      "maximum_cross_grade_after": 0.8009522081711218,
+      "cross_curvature_rms_before": 0.263421054285433,
+      "cross_curvature_rms_after": 0.11570618903036065,
+      "maximum_height_edit_m": 0.4613927767853996
+    },
+    {
+      "corner": "T09",
+      "station_m": [
+        862.0042233129188,
+        904.0008191638958
+      ],
+      "maximum_cross_grade_before": 1.0647863673452562,
+      "maximum_cross_grade_after": 0.7470554165066123,
+      "cross_curvature_rms_before": 0.28623108989952184,
+      "cross_curvature_rms_after": 0.12430192226823265,
+      "maximum_height_edit_m": 0.49870088484592934
+    }
+  ],
+  "unrelated_jump_crests_exact": [
+    {
+      "feature": "R01",
+      "crest_stations_m": [
+        13.6
+      ],
+      "crest_heights_exact": true
+    },
+    {
+      "feature": "R02",
+      "crest_stations_m": [
+        136.79825837204046,
+        154.79825837204046,
+        164.49825837204045
+      ],
+      "crest_heights_exact": true
+    },
+    {
+      "feature": "R03",
+      "crest_stations_m": [
+        241.7976264033719,
+        267.7976264033719
+      ],
+      "crest_heights_exact": true
+    },
+    {
+      "feature": "R05",
+      "crest_stations_m": [
+        407.1919855367066,
+        421.79198553670665
+      ],
+      "crest_heights_exact": true
+    },
+    {
+      "feature": "R07",
+      "crest_stations_m": [
+        551.9879188100783
+      ],
+      "crest_heights_exact": true
+    },
+    {
+      "feature": "R09",
+      "crest_stations_m": [
+        746.675443002633,
+        769.987443002633
+      ],
+      "crest_heights_exact": true
+    },
+    {
+      "feature": "R10",
+      "crest_stations_m": [
+        800.8484966811092
+      ],
+      "crest_heights_exact": true
+    },
+    {
+      "feature": "R12",
+      "crest_stations_m": [
+        948.0674400635679,
+        958.0674400635679,
+        968.0674400635679,
+        973.0674400635679
+      ],
+      "crest_heights_exact": true
+    },
+    {
+      "feature": "R14",
+      "crest_stations_m": [
+        1046.9158231989886,
+        1061.4158231989886,
+        1075.9158231989886
+      ],
+      "crest_heights_exact": true
+    },
+    {
+      "feature": "R15",
+      "crest_stations_m": [
+        1182.914102007447
+      ],
+      "crest_heights_exact": true
+    },
+    {
+      "feature": "R16",
+      "crest_stations_m": [
+        1211.0140926330369
+      ],
+      "crest_heights_exact": true
+    },
+    {
+      "feature": "R17",
+      "crest_stations_m": [
+        1354.4368952263824,
+        1364.4368952263824,
+        1374.4368952263824,
+        1384.4368952263824,
+        1394.4368952263824,
+        1404.4368952263824,
+        1414.4368952263824,
+        1424.4368952263824
+      ],
+      "crest_heights_exact": true
+    },
+    {
+      "feature": "R18",
+      "crest_stations_m": [
+        1457.7883624716972
+      ],
+      "crest_heights_exact": true
+    },
+    {
+      "feature": "R11_ENTRY",
+      "crest_stations_m": [
+        911.000818490227
+      ],
+      "crest_heights_exact": true
+    }
+  ],
+  "moved_pair": {
+    "feature": "R11",
+    "shift_forward_m": 9.899999999999999,
+    "old_crest_stations_m": [
+      923.1008163012681,
+      933.0008163012681
+    ],
+    "new_crest_stations_m": [
+      933.0008163012681,
+      942.900816301268
+    ],
+    "crest_spacing_m": 9.899999999999999,
+    "first_new_crest_at_old_second_crest": true,
+    "profile_arrays_exact": true
+  },
+  "route_and_start_byte_exact": true,
+  "approved_van_sign_trucks_byte_exact": true,
+  "scenery_sha256": "59bb830b43402baa98260b67a0c4c01147c6bc5d3ec7dc4dd67e122fd20e8604",
+  "final_compilation_started": false
+}

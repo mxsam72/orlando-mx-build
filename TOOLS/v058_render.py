@@ -146,14 +146,15 @@ def footprint(x,z):
 
 def trace(section,view):
     filename=CACHE/(view['id']+'_hits.npz')
-    eye=location(section,view['eye_s'],view['eye_l'],view['eye_h'])
-    target=location(section,view['target_s'],view['target_l'],view['target_h'])
+    eye=np.asarray(view['eye_xzy_m'],np.float32) if 'eye_xzy_m' in view else location(section,view['eye_s'],view['eye_l'],view['eye_h'])
+    target=np.asarray(view['target_xzy_m'],np.float32) if 'target_xzy_m' in view else location(section,view['target_s'],view['target_l'],view['target_h'])
     if filename.exists():
         try:
             with np.load(filename) as cache:data=dict(cache)
             assert int(data['width'])==WIDTH and int(data['height'])==HEIGHT
+            assert 'fov' in data and float(data['fov'])==view['fov']
             assert np.allclose(data['eye'],eye) and np.allclose(data['target'],target)
-            return {k:v for k,v in data.items() if k not in ['width','height']}
+            return {k:v for k,v in data.items() if k not in ['width','height','fov']}
         except (OSError,ValueError,AssertionError,zipfile.BadZipFile,EOFError):
             print('Rebuilding invalid ray cache',view['id'],flush=True)
     sy,sx=np.mgrid[:HEIGHT,:WIDTH].astype(np.float32)
@@ -177,7 +178,7 @@ def trace(section,view):
     # Independent review workers may reach the same camera. Never share the
     # temporary pathname: each complete, equivalent cache replaces atomically.
     temporary=filename.with_suffix('.'+str(os.getpid())+'.tmp.npz')
-    np.savez_compressed(temporary,width=WIDTH,height=HEIGHT,**result);temporary.replace(filename)
+    np.savez_compressed(temporary,width=WIDTH,height=HEIGHT,fov=view['fov'],**result);temporary.replace(filename)
     print('Traced',view['id'],int(hit.sum()),'terrain pixels',flush=True)
     return result
 

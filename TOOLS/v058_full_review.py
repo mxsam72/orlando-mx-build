@@ -16,6 +16,7 @@ from v049_previews import font
 
 OUT=R/'BUILD/v058_full_review';CACHE=R/'BUILD/v058_full_cache'
 W,H=1600,1000
+VERSION='v058';REVIEW_TITLE='Full-track C+B';SOURCE_DIR=R/'V058_SOURCE'
 
 def view(number,title,eye,target,h=1.8,th=.55,l=0.,tl=0.,group='Main course',path='main',fov=64.):
  return dict(id=f'{number:02d}',title=title,eye_s=float(eye),target_s=float(target),eye_h=float(h),target_h=float(th),eye_l=float(l),target_l=float(tl),fov=fov,group=group,path=path)
@@ -141,8 +142,8 @@ def render_one(c,m,v,key):
  rgb,n,stats=m.composite(ctx);im=shade(ctx,rgb,n,ids)
  draw=ImageDraw.Draw(im);draw.rectangle((0,0,W,68),fill=(22,25,29))
  draw.text((16,8),v['id']+'  '+v['title'],font=font(25),fill='white')
- draw.text((16,39),'Full-track C+B | Terrain/material preview; scenery omitted | Not an in-game capture',font=font(17),fill=(199,211,219))
- path=OUT/('Orlando_v058_'+v['id']+'.jpg');im.save(path,quality=96,subsampling=0)
+ draw.text((16,39),REVIEW_TITLE+' | Terrain/material preview; scenery omitted | Not an in-game capture',font=font(17),fill=(199,211,219))
+ path=OUT/(f'Orlando_{VERSION}_'+v['id']+'.jpg');im.save(path,quality=96,subsampling=0)
  eye=data['eye'];target=data['target'];delta=target[:2]-eye[:2];distance=np.linalg.norm(delta);direction=delta/distance
  positions=np.stack([ctx['x'],ctx['z']],1)-eye[:2]
  near=np.sum(positions*direction,axis=1)
@@ -169,33 +170,33 @@ def package(c,rows):
   ax.annotate(v['id'],e[:2],xytext=offset,textcoords='offset points',ha='center',va='center',fontsize=8.5,fontweight='bold',color='white',bbox=dict(boxstyle='circle,pad=.2',fc='#1d5561',ec='white',lw=.7))
  ax.set_aspect('equal');ax.set_xticks([]);ax.set_yticks([])
  for spine in ax.spines.values():spine.set_visible(False)
- ax.set_title('Orlando MX — full-course photo locations\n38 views • approved C loam + B jump-face grooves',fontsize=19,pad=20)
+ ax.set_title('Orlando MX — full-course photo locations\n38 views • '+REVIEW_TITLE,fontsize=19,pad=20)
  ax.text(.5,-.02,'Numbers match the individual photos and the contact sheets. Arrows show viewing direction.',transform=ax.transAxes,ha='center',fontsize=10,color='#4e514f')
- fig.tight_layout();fig.savefig(OUT/'Orlando_v058_Photo_Locations.jpg',dpi=180);plt.close(fig)
+ fig.tight_layout();fig.savefig(OUT/f'Orlando_{VERSION}_Photo_Locations.jpg',dpi=180);plt.close(fig)
  sheets=[]
  for page,start in enumerate(range(0,len(rows),8),1):
   batch=rows[start:start+8];tw,th=1000,625;sheet=Image.new('RGB',(tw*2,th*((len(batch)+1)//2)+100),(22,25,29));d=ImageDraw.Draw(sheet)
-  d.text((22,12),f'Orlando MX | Full-track C+B | Photo sheet {page} / 5',font=font(31),fill='white')
+  d.text((22,12),f'Orlando MX | {REVIEW_TITLE} | Photo sheet {page} / 5',font=font(27),fill='white')
   d.text((22,57),'Actual terrain and material source previews. Full-resolution photos are included in the ZIP.',font=font(20),fill=(199,211,219))
   for i,row in enumerate(batch):
    im=Image.open(OUT/row['file']);im=im.resize((tw,th),Image.Resampling.LANCZOS);sheet.paste(im,((i%2)*tw,100+(i//2)*th))
-  path=OUT/f'Orlando_v058_Photo_Sheet_{page}.jpg';sheet.save(path,quality=96,subsampling=0);sheets.append(path.name)
- manifest=dict(checks_pass=True,version='v058',approved_method='C+B',source_only=True,in_game_captures=False,scenery_omitted=True,
+  path=OUT/f'Orlando_{VERSION}_Photo_Sheet_{page}.jpg';sheet.save(path,quality=96,subsampling=0);sheets.append(path.name)
+ manifest=dict(checks_pass=True,version=VERSION,approved_method=REVIEW_TITLE,source_only=True,in_game_captures=False,scenery_omitted=True,
   final_compilation_started=False,photo_count=len(rows),all_14_corners_have_dedicated_views=True,
   all_jump_groups_have_views=True,start_straight_and_merge_have_views=True,resolution=[W,H],
   terrain_sha256=sha(O/'terrain.raw'),scenery_sha256=sha(O/'scenery.fbx'),hmf_sha256=sha(O/'compiled_track.hmf'),
-  source_validation_sha256=sha(O/'surface_validation.json'),map='Orlando_v058_Photo_Locations.jpg',sheets=sheets,renders=rows)
+  source_validation_sha256=sha(O/'surface_validation.json'),map=f'Orlando_{VERSION}_Photo_Locations.jpg',sheets=sheets,renders=rows)
  save(OUT/'Review_Manifest.json',manifest)
- (OUT/'Read_Me.txt').write_text('Orlando MX v058 — full-track C+B review\n\n38 photos cover all 14 corners, jump groups, straights, start lane and merge.\nThe numbered map shows every camera. Photo sheets provide an overview; individual JPEGs are 1600 x 1000.\n\nThese are actual terrain/material source renders, not MX Bikes captures. Scenery is omitted to keep the dirt visible. The approved van, sign and truck changes are retained unchanged in source.\n\nFinal compilation is on hold for approval of this review. Actual in-game lighting, texture filtering, RAM/VRAM use and FPS remain to be checked after compilation.\n',encoding='utf-8')
- archive=R/'BUILD/Orlando_v058_Full_Track_Photos.zip'
+ (OUT/'Read_Me.txt').write_text(f'Orlando MX {VERSION} — {REVIEW_TITLE}\n\n38 photos cover all 14 corners, jump groups, straights, start lane and merge.\nThe numbered map shows every camera. Photo sheets provide an overview; individual JPEGs are 1600 x 1000.\n\nThese are actual terrain/material source renders, not MX Bikes captures. Scenery is omitted to keep the dirt visible. The approved van, sign and truck changes are retained unchanged in source.\n\nFinal compilation is on hold for approval of this review. Actual in-game lighting, texture filtering, RAM/VRAM use and FPS remain to be checked after compilation.\n',encoding='utf-8')
+ archive=R/f'BUILD/Orlando_{VERSION}_Full_Track_Photos.zip'
  temporary=CACHE/f'Full_Track_Photos_{os.getpid()}.tmp.zip'
  with zipfile.ZipFile(temporary,'w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:
   for name in [r['file'] for r in rows]+sheets+[manifest['map'],'Review_Manifest.json','Read_Me.txt']:z.write(OUT/name,name)
  with temporary.open('rb') as f:os.fsync(f.fileno())
  with zipfile.ZipFile(temporary) as z:assert z.testzip() is None
  expected=sha(temporary);temporary.replace(archive);os.utime(archive,None);assert sha(archive)==expected
- save(R/'V058_SOURCE/full_track_review.json',dict(manifest,archive=dict(file=archive.name,sha256=sha(archive),bytes=archive.stat().st_size)))
- print('V058_FULL_TRACK_REVIEW_READY',len(rows),'photos',archive,flush=True)
+ save(SOURCE_DIR/'full_track_review.json',dict(manifest,archive=dict(file=archive.name,sha256=sha(archive),bytes=archive.stat().st_size)))
+ print(VERSION.upper()+'_FULL_TRACK_REVIEW_READY',len(rows),'photos',archive,flush=True)
 
 def main():
  OUT.mkdir(exist_ok=True,parents=True);CACHE.mkdir(exist_ok=True,parents=True);render.CACHE=CACHE;render.WIDTH=W;render.HEIGHT=H
