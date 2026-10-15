@@ -13,6 +13,9 @@
   "source_allocation_before_bytes": 1447297024,
   "source_allocation_after_bytes": 1447297024,
   "approved_vehicles_sign_exact": true,
+  "authenticated_scenery_sha256": "59bb830b43402baa98260b67a0c4c01147c6bc5d3ec7dc4dd67e122fd20e8604",
+  "final_scenery_sha256": "e1bfd96e01614213ed1b7e8863864dbec7bf652d436ded67ceb2bf6db7a503b5",
+  "only_three_markers_differ_from_authenticated_scenery": true,
   "final_compilation_authorized": true,
   "in_game_verified": false
 }

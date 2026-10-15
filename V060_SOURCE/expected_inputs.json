@@ -1,6 +1,5 @@
 {
   "terrain": "0ca6058685d0f610dafe6d2e710f5dd901038b7cc470508c20e8b20299947689",
-  "scenery": "e1bfd96e01614213ed1b7e8863864dbec7bf652d436ded67ceb2bf6db7a503b5",
   "hmf": "99829038ec7adeecd2566ae75e9cae06e34dfdaa4c99f13ff06ab27574a4b13b",
   "main_route": "421db4e38c22229b873fd93750ac1364dd519b1c7b416f065e562a0335db5e85",
   "start_route": "d7cfaa7732d3d76a836814938a894d0cd4b0022ab88bca9255c2359107fe2e4c",
@@ -54,5 +53,15 @@
     "v045_loose_n.tga": "0bbef17bacb7af58ef1ab693d43c7531ec5a9adbef35eef77917c5ec1fc03d21",
     "v045_packed.tga": "f9b6690cb1b9d32bb8f13b9843883ca581b542da11be7e9dc77804205c2f5a09",
     "v045_packed_n.tga": "b3d45a29d4f270b249323ba2b8b8a23225c6d547bc378d3f741d7e6aa567d64d"
+  },
+  "scenery_provenance": {
+    "approved_source_commit": "8903065aca3301fd0eed0522738f370eb69743ca",
+    "source_archive_sha256": "0d5132bc2988ceef2acdaf72abcc2ff83817109e349a59755a87c7acf8a72169",
+    "descriptor_sha256": "583431f7d8a176a7b8e8b3d9c20e3d5b91508bed188614506d3723bcbf60775e",
+    "allowed_changes": [
+      "SOFTCPLAS_marker_18",
+      "SOFTCPLAS_marker_56",
+      "SOFTCPLAS_marker_79"
+    ]
   }
 }

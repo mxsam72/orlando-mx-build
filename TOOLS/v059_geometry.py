@@ -4,7 +4,7 @@ import numpy as np
 from PIL import Image
 from scipy.ndimage import gaussian_filter,map_coordinates
 from scipy.signal import find_peaks
-from v058_inputs import R,sha,save
+from v058_inputs import R,sha,save,approved_scenery_sha
 from v058_surface import Circuit as PreviousCircuit
 from v056_geometry import cross_points,corner_regions
 from v054_geometry import raster_points,projection,smooth,ground
@@ -20,7 +20,9 @@ def retain():
  # Immutable approved scenery can share storage; no rewrite or duplicated mesh.
  if not (O/'scenery.fbx').exists() or sha(O/'scenery.fbx')!=sha(PREV/'scenery.fbx'):
   temp=O/'scenery_input_link.fbx';temp.unlink(missing_ok=True);os.link(PREV/'scenery.fbx',temp);temp.replace(O/'scenery.fbx')
- assert sha(O/'scenery.fbx')==sha(PREV/'scenery.fbx')=='59bb830b43402baa98260b67a0c4c01147c6bc5d3ec7dc4dd67e122fd20e8604'
+ expected=approved_scenery_sha();actual=sha(O/'scenery.fbx')
+ assert actual==sha(PREV/'scenery.fbx')==expected,dict(actual=actual,expected_authenticated=expected)
+ assert json.loads((PREV/'scenery_validation.json').read_text())['scenery_sha256']==expected
  shutil.copytree(PREV/'facility_textures',O/'facility_textures',dirs_exist_ok=True)
 
 def main():

@@ -12,6 +12,18 @@ PINS={
  'v057_checkpoint_descriptor.json':(642582035,616,'583431f7d8a176a7b8e8b3d9c20e3d5b91508bed188614506d3723bcbf60775e'),
  'OrlandoMX-v057-native-scenery.zip':(642593580,229447666,'c2f0a27e90d92989080145c6131677bec77131563e7c529b6ce717f4dc4e8c43')}
 
+def approved_scenery_sha():
+ """Use the authenticated saved build, rather than a local preview's FBX hash."""
+ import json
+ proof=R/'BUILD/v058_input_validation.json'
+ if proof.is_file():
+  q=json.loads(proof.read_text());assert q['checks_pass']
+  assert {k:tuple(v) for k,v in q['pinned_saved_assets'].items()}==PINS
+  assert q['approved_source_commit']=='8903065aca3301fd0eed0522738f370eb69743ca'
+  return q['scenery_source_sha256']
+ # Offline preview fixture; the final build always executes restore first.
+ return '59bb830b43402baa98260b67a0c4c01147c6bc5d3ec7dc4dd67e122fd20e8604'
+
 class NoRedirect(urllib.request.HTTPRedirectHandler):
  def redirect_request(self,*args):return None
 
@@ -49,6 +61,7 @@ def restore():
  descriptor=json.loads((folder/'v057_checkpoint_descriptor.json').read_text())
  assert descriptor['source_commit']=='8903065aca3301fd0eed0522738f370eb69743ca' and descriptor['checked_source']
  assert sha(R/'V057_OUTPUT/scenery.fbx')==descriptor['scenery_sha256']
+ print('Authenticated saved scenery SHA256',descriptor['scenery_sha256'],flush=True)
  SAVED.mkdir(parents=True,exist_ok=True)
  with zipfile.ZipFile(folder/'OrlandoMX-v057-native-scenery.zip') as z:
   assert z.testzip() is None and set(z.namelist())=={'scenery.edf','fbx2edf_v057.log'}

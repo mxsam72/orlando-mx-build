@@ -11,6 +11,9 @@ def release():
 
 def checkpoint():
  identity()
+ recovered=read(R/'BUILD/v058_input_validation.json');assert recovered['checks_pass']
+ assert recovered['scenery_source_sha256']==read(O/'scenery_validation.json')['baseline_sha256']
+ assert recovered['approved_source_commit']=='8903065aca3301fd0eed0522738f370eb69743ca'
  for name in ['terrain_validation','surface_validation','scenery_validation','race_validation','precompile_validation']:
   assert read(O/(name+'.json'))['checks_pass']
  archive=R/'BUILD/OrlandoMX-v060-source-checkpoint.zip';temporary=archive.with_suffix('.zip.writing')
@@ -29,7 +32,8 @@ def checkpoint():
  descriptor=R/'BUILD/v060_checkpoint_descriptor.json'
  save(descriptor,dict(version='v060',source_commit=os.environ['GITHUB_SHA'],source_run=int(os.environ['GITHUB_RUN_ID']),
   file=archive.name,bytes=archive.stat().st_size,sha256=sha(archive),terrain_sha256=sha(O/'terrain.raw'),
-  scenery_sha256=sha(O/'scenery.fbx'),surface_validation_sha256=sha(O/'surface_validation.json'),checked_source=True))
+  scenery_sha256=sha(O/'scenery.fbx'),authenticated_baseline_scenery_sha256=recovered['scenery_source_sha256'],
+  surface_validation_sha256=sha(O/'surface_validation.json'),checked_source=True))
  rel=api('/releases',dict(tag_name='v060-dense-grooming-'+os.environ['GITHUB_RUN_ID'],target_commitish=os.environ['GITHUB_SHA'],
   name='Orlando MX v060 — tighter grooming; native build pending',
   body='Approved C+B dirt with denser added grooming in all existing areas. Irregular gaps capped at 0.3m, unchanged texture allocation. v059 bank smoothing and jump-pair move retained, along with the approved Express, sign and Cybertruck changes. Native compilation pending.',

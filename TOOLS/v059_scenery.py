@@ -6,11 +6,12 @@ from v054_previews import Terrain
 from v027_scenery import parse,geometry_records,vertices,child,values,fingerprint
 from v056_geometry import encode
 from rebind_scenery import encoded_array
+from v058_inputs import approved_scenery_sha
 
 NAMES={'SOFTCPLAS_marker_18','SOFTCPLAS_marker_56','SOFTCPLAS_marker_79'}
 
 def main():
- src=PREV/'scenery.fbx';pin=sha(src);assert pin=='59bb830b43402baa98260b67a0c4c01147c6bc5d3ec7dc4dd67e122fd20e8604'
+ src=PREV/'scenery.fbx';pin=sha(src);assert pin==approved_scenery_sha(),dict(actual=pin,expected_authenticated=approved_scenery_sha())
  data=src.read_bytes();nodes,tail=parse(data);del data
  objects=next(n for n in nodes if n['name']==b'Objects');original={values(n)[0]:fingerprint(n) for n in objects['children']};metadata={n['name']:fingerprint(n) for n in nodes if n['name']!=b'Objects'}
  old=Terrain(PREV/'terrain.raw');new=Terrain(O/'terrain.raw');records=geometry_records(nodes);changes=[];ids=set();shifts={}
