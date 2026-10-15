@@ -26,7 +26,8 @@ def checkpoint():
   for p in sorted((R/'TOOLS').glob('*v060*.py')):z.write(p,p.relative_to(R).as_posix())
   for name in ['v054_input_validation.json','v057_input_validation.json','v058_input_validation.json']:
    p=R/'BUILD'/name;z.write(p,p.relative_to(R).as_posix())
- with temporary.open('rb') as f:os.fsync(f.fileno())
+ # Windows FlushFileBuffers requires a writable handle, even after ZIP close.
+ with temporary.open('r+b') as f:os.fsync(f.fileno())
  with zipfile.ZipFile(temporary) as z:assert z.testzip() is None
  temporary.replace(archive)
  descriptor=R/'BUILD/v060_checkpoint_descriptor.json'
