@@ -1,0 +1,134 @@
+{
+  "checks_pass": true,
+  "individual_views": 16,
+  "method_sheets": 3,
+  "all_method_grids": 4,
+  "all_cameras_matched": true,
+  "all_image_hashes_match": true,
+  "all_dimensions_checked": true,
+  "material_changes_outside_section": 0,
+  "B_normal_samples_exact_v056": true,
+  "terrain_and_approved_scenery_hashes_match": true,
+  "native_build_started": false,
+  "estimated_memory_only": true,
+  "photographic_source": "existing checksum-pinned v056 assets",
+  "author_script_sha256": "dcda8ca9a5c6ed2b74069dae573dccd02694520bb6d5f1e73ec74acf4344e0cd",
+  "renderer_script_sha256": "234a6b43a8c2b66224f6b69e878d2ac4243e7346eba12c6ff7869ee2e9d278d4",
+  "images": [
+    {
+      "file": "A_01_tabletop.jpg",
+      "sha256": "36079e17df08975c08d86ec1047d7c7354a79601d04648aef446b18483a5dbf6",
+      "bytes": 364064
+    },
+    {
+      "file": "A_02_flat.jpg",
+      "sha256": "c02c32ab840c5c020a146df33780cbc862586ad19e9073353dd8b6d90f375bee",
+      "bytes": 389147
+    },
+    {
+      "file": "A_03_triple.jpg",
+      "sha256": "9a7980575bdb7ec2ae8404bdfd57c5f53b95d77b006d92cf1804302e5b349cb1",
+      "bytes": 382801
+    },
+    {
+      "file": "A_04_close.jpg",
+      "sha256": "fa8abcd54c36bf42b8d2f1966dfd4be85c5a4af353d06e8e843635a771e00c78",
+      "bytes": 538441
+    },
+    {
+      "file": "All_Methods_01_tabletop.jpg",
+      "sha256": "8a06f3f1312284716300032fa0dc3d3c5c438722839a487db1cadd8a714e12f0",
+      "bytes": 1318941
+    },
+    {
+      "file": "All_Methods_02_flat.jpg",
+      "sha256": "798c37ca5171c01293e6870f77d6ff7ccb5fdc5c4236ef8190624b4fd713001c",
+      "bytes": 1477152
+    },
+    {
+      "file": "All_Methods_03_triple.jpg",
+      "sha256": "dcb0810f817712152a883bb21919ee32e84b6e3d6622b5f046a5da2ba0f54861",
+      "bytes": 1474152
+    },
+    {
+      "file": "All_Methods_04_close.jpg",
+      "sha256": "6f74f5601706790046933837a3537b775505e1a9e8990a20345c32c77b2f1264",
+      "bytes": 1945271
+    },
+    {
+      "file": "B_01_tabletop.jpg",
+      "sha256": "4e336ff32b29c0dff5d2d533e34a29083fdd879c11980cb9b91dfaf0b811e967",
+      "bytes": 410393
+    },
+    {
+      "file": "B_02_flat.jpg",
+      "sha256": "c4ef91ffa4d80bc1b62628e0f9a9a0e49b911e67372e0a8adbe302612d383d1e",
+      "bytes": 444958
+    },
+    {
+      "file": "B_03_triple.jpg",
+      "sha256": "bf37e3ecd62e0a4d5ced09f3bef44d0209fb97b611740a9e4fc5e6b234bfc2b7",
+      "bytes": 448970
+    },
+    {
+      "file": "B_04_close.jpg",
+      "sha256": "b585aa87c19f1583fb345fcac94c60dc0e81ace315c9a9db3c361ff1a32dd89f",
+      "bytes": 595185
+    },
+    {
+      "file": "C_01_tabletop.jpg",
+      "sha256": "725bc8a5c959266f39bae9f23cf122663573ef4a0ff54ecd827f15eefa03fce6",
+      "bytes": 464822
+    },
+    {
+      "file": "C_02_flat.jpg",
+      "sha256": "616f6b8cd65eb972d50078fa25f7d4046cc7b8a5abed23eff3f7c31c6bc481a0",
+      "bytes": 495552
+    },
+    {
+      "file": "C_03_triple.jpg",
+      "sha256": "7193bda8bfc8b8409f8c3ef34e16bd4c7d4588e00af8377589f1efef7ac3d9b1",
+      "bytes": 495310
+    },
+    {
+      "file": "C_04_close.jpg",
+      "sha256": "9993b654eecca969133a7e5cede50e813b7e37a305684308ff6bc08156251127",
+      "bytes": 653125
+    },
+    {
+      "file": "Orlando_Dirt_Method_A_4Views.jpg",
+      "sha256": "48ffb26c4f179af571acc88085de5499033e6b0397f1436fb330e63380256ee6",
+      "bytes": 2428449
+    },
+    {
+      "file": "Orlando_Dirt_Method_B_4Views.jpg",
+      "sha256": "8e400afbc770cf42a1a47776bd5e263de6827cb7d571789fdc0e6adc66ab3670",
+      "bytes": 2629173
+    },
+    {
+      "file": "Orlando_Dirt_Method_C_4Views.jpg",
+      "sha256": "fcf88f117f9fad5a0491f47bca313251393117e10544cfcb9a3cf2f52acd10e0",
+      "bytes": 2821597
+    },
+    {
+      "file": "v056_01_tabletop.jpg",
+      "sha256": "dc0a03620f2cff4aad574a4b68f2e17cdb0612c986b53016fa40a7231b34a0e9",
+      "bytes": 172567
+    },
+    {
+      "file": "v056_02_flat.jpg",
+      "sha256": "c4e556133d0d5b239c94f7d504408c1e6aedd350acaf9ece31c242f2d1a29b8b",
+      "bytes": 248376
+    },
+    {
+      "file": "v056_03_triple.jpg",
+      "sha256": "02cd97c62401fe79564d3aef8afe3ba9ec508bc9b3f07625d1e06c3bd8ee1159",
+      "bytes": 248588
+    },
+    {
+      "file": "v056_04_close.jpg",
+      "sha256": "aca96802f9c92a5deca386290f106cce9500ca28c55284225b838f1e04af8ae4",
+      "bytes": 299554
+    }
+  ]
+}

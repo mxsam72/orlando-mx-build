@@ -62,3 +62,7 @@ BUILD/OrlandoMX-v056-*.zip
 # v057 generated products; reproducible source and reference reviews are tracked.
 BUILD/v057_*
 BUILD/OrlandoMX-v057-*.zip
+
+# v058 source-material trials: generated textures, ray caches and review images.
+BUILD/v058_*
+BUILD/Orlando_Dirt_Trials_v058.zip

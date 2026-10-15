@@ -1,0 +1,75 @@
+{
+  "version": "v058 material trials only",
+  "baseline": "v056 dirt and terrain",
+  "approved_scenery_source_commit": "8903065aca3301fd0eed0522738f370eb69743ca",
+  "approved_scenery_sha256": "59bb830b43402baa98260b67a0c4c01147c6bc5d3ec7dc4dd67e122fd20e8604",
+  "terrain_sha256": "ab99df42094ef29015f117babeffe555e814fc7f86cf836c60625b760868289f",
+  "section": {
+    "start_station_m": 0.0,
+    "end_station_m": 210.0,
+    "feather_m": 7.0,
+    "photographic_boundary_mask_retained": true,
+    "contains": [
+      "R01 finish tabletop",
+      "connecting turn and flat",
+      "R02 triple"
+    ]
+  },
+  "methods": {
+    "v056": {
+      "title": "v056 reference",
+      "summary": "Original photographs and original high-opacity colour/normal atlas."
+    },
+    "A": {
+      "title": "A - Original scan, 25% overlay",
+      "summary": "Only the existing overlay mask is reduced. Original 4K photo colours, photo normals, and v056 groove atlas remain unchanged.",
+      "cap": 0.24705882352941178
+    },
+    "B": {
+      "title": "B - Photo colour + v056 grooves",
+      "summary": "Replace coarse overlay colour with the original 2m scanned soil. Keep the original v056 macro normal and overlay opacity.",
+      "tile_m": 2.0
+    },
+    "C": {
+      "title": "C - Loamy scan + broken cultivation",
+      "summary": "3m clod scale, restrained normal-derived cavity shading, original scanned fine normals, and new broken lengthwise furrows. Matte surface; no diagonal tread stamps.",
+      "tile_m": 3.0,
+      "cap": 0.55
+    }
+  },
+  "all_terrain_geometry_unchanged": true,
+  "scenery_preserved_but_omitted_in_dirt_renders": true,
+  "all_candidate_differences_zero_outside_section": true,
+  "macro_changed_pixels": 706563,
+  "audit": {
+    "section_centerline_overlay_percentiles": [
+      74.90196228027344,
+      75.68627595901489,
+      80.34112453460693,
+      86.66666746139526,
+      89.80920314788818
+    ],
+    "macro_texel_m": 0.0732421875,
+    "photo_texel_m": 0.00048828125,
+    "macro_to_photo_linear_spacing_ratio": 150.0,
+    "previous_preview_problem": "Fixed, large-world composite raster and mip selected before projection blurred near-camera detail.",
+    "v057_control_problem": "Changed photo normals and macro relief at the same time as reducing overlay opacity.",
+    "shader_repeat_caution": "Photo shader repetitions=0 was interpreted as inheritance by the old source preview. Native semantics are not proven; proposed full-version shaders will use explicit repeats."
+  },
+  "production_integration": {
+    "native_build_started": false,
+    "approved_method": null,
+    "source_trials_are_not_a_compiled_test_package": true,
+    "A": {
+      "terrain_layers": 14,
+      "extra_image_bytes": 0
+    },
+    "B_C": {
+      "strategy": "Full-version design replaces existing 8K macro colour slot with a 4K photographic colour map; normal atlas remains 8K with independent 1x repeat. Integrate lower layer3 at matching colour repeats after selection.",
+      "estimated_colour_slot_rgba8_base_bytes_saved": 201326592,
+      "caveat": "Local render scope uses a sampler override; an isolated native test would require an extra masked pass. Full-track integration and native allocation validation are pending user selection."
+    }
+  },
+  "native_game_appearance_verified": false,
+  "performance_test": false
+}
