@@ -1,5 +1,6 @@
 """Match shoulders, reveal photographic soil, retain directional grooming, reduce allocations."""
 import re
+import shutil
 from pathlib import Path
 
 import numpy as np
@@ -90,6 +91,11 @@ def main():
         out[:, :, :3] = np.uint8(np.rint(np.clip(rgb * 127.5 + 127.5, 0, 255)))
         out[:, :, 3] = 2
         tga(out, M / nn)
+        # Keep the existing shader beside each replacement photograph so the
+        # source renderer and native staging resolve the same normal map.
+        shader = baseline(name).with_suffix('.shd')
+        shutil.copy2(shader, M / shader.name)
+        assert sha(M / shader.name) == sha(shader)
     target = photo_means['loose'] * .70 + photo_means['packed'] * .30
     # Correct the older pale/ruddy soil below and beside the photographic skin.
     # Dry means match the racing blend; each wet/dry brightness ratio is retained.
@@ -136,7 +142,7 @@ def main():
     tga(out, M / name)
     del out
     mask_report = masks()
-    (O / 'compiled_track.hmf').write_text((PREV / 'compiled_track.hmf').read_text())
+    shutil.copy2(PREV / 'compiled_track.hmf', O / 'compiled_track.hmf')
     assert sha(O / 'compiled_track.hmf') == sha(PREV / 'compiled_track.hmf')
     # Inventory every unique active terrain colour/normal/mask, including frames.
     hmf = (O / 'compiled_track.hmf').read_text()
@@ -156,7 +162,7 @@ def main():
                          sha256=sha(source(name)), changed=sha(source(name)) != sha(baseline(name))))
     assert after_rgba < before_rgba
     assert {x['file'] for x in texture_rows} == names
-    for p in sorted(M.iterdir()):
+    for p in sorted(M.glob('*.tga')):
         reports.append(dict(file=p.name, bytes=p.stat().st_size, sha256=sha(p), size=list(Image.open(p).size)))
     photo_delta = float(np.linalg.norm(target - mean_color(baseline('v032_soil.tga'))))
     new_delta = float(np.linalg.norm(target - mean_color(M / 'v032_soil.tga')))
@@ -170,6 +176,7 @@ def main():
          route_oriented_grooming_retained=True, normal_specular_alpha=2,
          legacy_colour_texture_size=[1024, 1024], photographic_tile_size=[2048, 2048],
          active_terrain_inventory=texture_rows, changed_images=reports,
+         retained_shaders=[dict(file=p.name, sha256=sha(p)) for p in sorted(M.glob('*.shd'))],
          rgba8_base_level_bytes_before=before_rgba, rgba8_base_level_bytes_after=after_rgba,
          rgba8_base_level_bytes_saved=before_rgba-after_rgba,
          estimated_rgba8_full_mip_bytes_saved=(before_rgba-after_rgba)*4//3,
