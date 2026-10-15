@@ -1,0 +1,14 @@
+{
+  "version": "v055",
+  "baseline": "delivered v054 (rebuild-v054 at 029fe56)",
+  "requests": [
+    "Match shoulder dirt much closer to the racing surface",
+    "Improve racing dirt aesthetics without increasing memory",
+    "Remove uneven hump on the table-single landing"
+  ],
+  "palette": "Preserve the accepted v052/v054 racing photographic mean hue; match old shoulder families to that blend and feather photographic coverage across bare margins.",
+  "detail": "Expose photographic grain/clods by halving the macro overlay, soften tiled micro-normal relief, retain 8K lengthwise grooming normals with compensated strength.",
+  "geometry": "Only level the inherited lateral rise on R03's landing/runout with smooth longitudinal/lateral joins; preserve the table/single, centre profile, all unrelated RAW samples and race/start geometry.",
+  "memory": "No new layers/textures. Photo tiles 4096 to 2048; macro colour 8192 to 4096; selected legacy dirt 2048 to 1024. Native PKZ must not exceed 920767498 bytes.",
+  "verification": "Source height/palette/allocation/race/scenery checks; matched source previews; official Windows native compile, native bitmap/coordinate/collision/centreline and archive checks. Game visuals/riding/FPS require user testing."
+}

@@ -45,3 +45,12 @@ BUILD/v010_cache/
 BUILD/v010_stage/
 .venv-v010/
 DOCUMENTATION/v010_qa/
+
+# Generated v055 source/materials, recovery caches and native staging.
+V*_OUTPUT/
+BUILD/v048_inputs/
+BUILD/v054_*
+BUILD/v055_*
+BUILD/OrlandoMX-v055-*.zip
+BUILD/dirt_tile_contact.jpg
+BUILD/v044_assets/

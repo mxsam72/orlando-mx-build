@@ -1,0 +1,55 @@
+name: Build and deliver v055 matched dirt and level table-single
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v055]
+    paths: ['.github/workflows/build-v055.yml', 'TOOLS/*v055*.py', 'V055_SOURCE/**']
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: orlando-v055-native
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 180
+    env:
+      V052_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+      PYTHONUNBUFFERED: '1'
+      OPENBLAS_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-v009.txt
+      - name: Recover exact delivered v054 inputs
+        run: python TOOLS/v055_inputs.py restore
+      - name: Repair table-single landing and bind local object bases
+        run: python TOOLS/v055_geometry.py
+      - name: Match shoulders improve photographic detail and reduce allocations
+        run: python TOOLS/v055_surface.py
+      - name: Render matched source views and independent landing sections
+        run: python TOOLS/v055_previews.py
+      - name: Preserve checked source checkpoint
+        run: python TOOLS/v055_transfer.py checkpoint
+      - name: Compile validate and preserve official native outputs
+        run: python TOOLS/build_windows_v055.py
+      - name: Publish verified PKZ and checksums
+        run: python TOOLS/v055_transfer.py deliver
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v055-validation-and-review
+          path: |
+            V055_OUTPUT/*validation.json
+            V055_OUTPUT/native_compile_results.json
+            BUILD/v055_review/*
+            DOCUMENTATION/*v055*.log
+            DOCUMENTATION/*v055*.json
+            12_RELEASE/OrlandoMX_v055_Validation.json
+            BUILD/v055_delivery.json
+            BUILD/v055_checkpoint_descriptor.json
