@@ -1,0 +1,346 @@
+{
+  "baseline": "delivered v054 MAP/TRH, all 4198401 heights verified equal source",
+  "rejected": "delivered v055 MAP/TRH, all 4198401 visual/collision heights verified equal",
+  "v055_corner_comparison": [
+    {
+      "corner": "T01",
+      "station_m": [
+        79.46834912760372,
+        116.98465699366295
+      ],
+      "lateral_width_m": 28,
+      "sampled_points": 26649,
+      "protected_raw_samples": 13371,
+      "raw_grid_exact": true,
+      "max_height_difference_m": 0.0
+    },
+    {
+      "corner": "T02",
+      "station_m": [
+        196.47979177225648,
+        224.22967854544996
+      ],
+      "lateral_width_m": 28,
+      "sampled_points": 19740,
+      "protected_raw_samples": 9998,
+      "raw_grid_exact": true,
+      "max_height_difference_m": 0.0
+    },
+    {
+      "corner": "T03",
+      "station_m": [
+        272.5182251361792,
+        307.76691594787724
+      ],
+      "lateral_width_m": 28,
+      "sampled_points": 24957,
+      "protected_raw_samples": 12080,
+      "raw_grid_exact": false,
+      "max_height_difference_m": 1.84262123379083
+    },
+    {
+      "corner": "T04",
+      "station_m": [
+        345.20292906941006,
+        371.76301203195897
+      ],
+      "lateral_width_m": 28,
+      "sampled_points": 18894,
+      "protected_raw_samples": 9610,
+      "raw_grid_exact": true,
+      "max_height_difference_m": 0.0
+    },
+    {
+      "corner": "T05",
+      "station_m": [
+        438.5970362018892,
+        487.0846191483219
+      ],
+      "lateral_width_m": 28,
+      "sampled_points": 34263,
+      "protected_raw_samples": 17133,
+      "raw_grid_exact": true,
+      "max_height_difference_m": 0.0
+    },
+    {
+      "corner": "T06",
+      "station_m": [
+        497.6836343693145,
+        523.7580747386648
+      ],
+      "lateral_width_m": 28,
+      "sampled_points": 18471,
+      "protected_raw_samples": 9381,
+      "raw_grid_exact": true,
+      "max_height_difference_m": 0.0
+    },
+    {
+      "corner": "T07",
+      "station_m": [
+        564.4508239818944,
+        609.8560453109951
+      ],
+      "lateral_width_m": 28,
+      "sampled_points": 32148,
+      "protected_raw_samples": 16012,
+      "raw_grid_exact": true,
+      "max_height_difference_m": 0.0
+    },
+    {
+      "corner": "T08",
+      "station_m": [
+        663.9419783767385,
+        710.8635894401642
+      ],
+      "lateral_width_m": 28,
+      "sampled_points": 33276,
+      "protected_raw_samples": 16544,
+      "raw_grid_exact": true,
+      "max_height_difference_m": 0.0
+    },
+    {
+      "corner": "T09",
+      "station_m": [
+        862.0042233129188,
+        904.0008191638958
+      ],
+      "lateral_width_m": 28,
+      "sampled_points": 29751,
+      "protected_raw_samples": 14869,
+      "raw_grid_exact": true,
+      "max_height_difference_m": 0.0
+    },
+    {
+      "corner": "T10",
+      "station_m": [
+        981.9425814462702,
+        1019.5939705066297
+      ],
+      "lateral_width_m": 28,
+      "sampled_points": 26649,
+      "protected_raw_samples": 13288,
+      "raw_grid_exact": true,
+      "max_height_difference_m": 0.0
+    },
+    {
+      "corner": "T11",
+      "station_m": [
+        1139.8740560724768,
+        1175.2832603182846
+      ],
+      "lateral_width_m": 28,
+      "sampled_points": 25098,
+      "protected_raw_samples": 12450,
+      "raw_grid_exact": true,
+      "max_height_difference_m": 0.0
+    },
+    {
+      "corner": "T12",
+      "station_m": [
+        1259.338479816009,
+        1296.5572656206093
+      ],
+      "lateral_width_m": 28,
+      "sampled_points": 26367,
+      "protected_raw_samples": 13196,
+      "raw_grid_exact": false,
+      "max_height_difference_m": 0.16710122205968858
+    },
+    {
+      "corner": "T13",
+      "station_m": [
+        1326.8285160718594,
+        1375.2335410131607
+      ],
+      "lateral_width_m": 28,
+      "sampled_points": 34263,
+      "protected_raw_samples": 17090,
+      "raw_grid_exact": true,
+      "max_height_difference_m": 0.0
+    },
+    {
+      "corner": "T14",
+      "station_m": [
+        1443.9705818037103,
+        1489.4940743907634
+      ],
+      "lateral_width_m": 28,
+      "sampled_points": 32289,
+      "protected_raw_samples": 16022,
+      "raw_grid_exact": true,
+      "max_height_difference_m": 0.0
+    }
+  ],
+  "v056_source_corner_comparison": [
+    {
+      "corner": "T01",
+      "station_m": [
+        79.46834912760372,
+        116.98465699366295
+      ],
+      "lateral_width_m": 28,
+      "sampled_points": 26649,
+      "protected_raw_samples": 13371,
+      "raw_grid_exact": true,
+      "max_height_difference_m": 0.0
+    },
+    {
+      "corner": "T02",
+      "station_m": [
+        196.47979177225648,
+        224.22967854544996
+      ],
+      "lateral_width_m": 28,
+      "sampled_points": 19740,
+      "protected_raw_samples": 9998,
+      "raw_grid_exact": true,
+      "max_height_difference_m": 0.0
+    },
+    {
+      "corner": "T03",
+      "station_m": [
+        272.5182251361792,
+        307.76691594787724
+      ],
+      "lateral_width_m": 28,
+      "sampled_points": 24957,
+      "protected_raw_samples": 12080,
+      "raw_grid_exact": true,
+      "max_height_difference_m": 0.0
+    },
+    {
+      "corner": "T04",
+      "station_m": [
+        345.20292906941006,
+        371.76301203195897
+      ],
+      "lateral_width_m": 28,
+      "sampled_points": 18894,
+      "protected_raw_samples": 9610,
+      "raw_grid_exact": true,
+      "max_height_difference_m": 0.0
+    },
+    {
+      "corner": "T05",
+      "station_m": [
+        438.5970362018892,
+        487.0846191483219
+      ],
+      "lateral_width_m": 28,
+      "sampled_points": 34263,
+      "protected_raw_samples": 17133,
+      "raw_grid_exact": true,
+      "max_height_difference_m": 0.0
+    },
+    {
+      "corner": "T06",
+      "station_m": [
+        497.6836343693145,
+        523.7580747386648
+      ],
+      "lateral_width_m": 28,
+      "sampled_points": 18471,
+      "protected_raw_samples": 9381,
+      "raw_grid_exact": true,
+      "max_height_difference_m": 0.0
+    },
+    {
+      "corner": "T07",
+      "station_m": [
+        564.4508239818944,
+        609.8560453109951
+      ],
+      "lateral_width_m": 28,
+      "sampled_points": 32148,
+      "protected_raw_samples": 16012,
+      "raw_grid_exact": true,
+      "max_height_difference_m": 0.0
+    },
+    {
+      "corner": "T08",
+      "station_m": [
+        663.9419783767385,
+        710.8635894401642
+      ],
+      "lateral_width_m": 28,
+      "sampled_points": 33276,
+      "protected_raw_samples": 16544,
+      "raw_grid_exact": true,
+      "max_height_difference_m": 0.0
+    },
+    {
+      "corner": "T09",
+      "station_m": [
+        862.0042233129188,
+        904.0008191638958
+      ],
+      "lateral_width_m": 28,
+      "sampled_points": 29751,
+      "protected_raw_samples": 14869,
+      "raw_grid_exact": true,
+      "max_height_difference_m": 0.0
+    },
+    {
+      "corner": "T10",
+      "station_m": [
+        981.9425814462702,
+        1019.5939705066297
+      ],
+      "lateral_width_m": 28,
+      "sampled_points": 26649,
+      "protected_raw_samples": 13288,
+      "raw_grid_exact": true,
+      "max_height_difference_m": 0.0
+    },
+    {
+      "corner": "T11",
+      "station_m": [
+        1139.8740560724768,
+        1175.2832603182846
+      ],
+      "lateral_width_m": 28,
+      "sampled_points": 25098,
+      "protected_raw_samples": 12450,
+      "raw_grid_exact": true,
+      "max_height_difference_m": 0.0
+    },
+    {
+      "corner": "T12",
+      "station_m": [
+        1259.338479816009,
+        1296.5572656206093
+      ],
+      "lateral_width_m": 28,
+      "sampled_points": 26367,
+      "protected_raw_samples": 13196,
+      "raw_grid_exact": true,
+      "max_height_difference_m": 0.0
+    },
+    {
+      "corner": "T13",
+      "station_m": [
+        1326.8285160718594,
+        1375.2335410131607
+      ],
+      "lateral_width_m": 28,
+      "sampled_points": 34263,
+      "protected_raw_samples": 17090,
+      "raw_grid_exact": true,
+      "max_height_difference_m": 0.0
+    },
+    {
+      "corner": "T14",
+      "station_m": [
+        1443.9705818037103,
+        1489.4940743907634
+      ],
+      "lateral_width_m": 28,
+      "sampled_points": 32289,
+      "protected_raw_samples": 16022,
+      "raw_grid_exact": true,
+      "max_height_difference_m": 0.0
+    }
+  ],
+  "v056_only_local_landing_samples_changed": 840,
+  "native_v056_checks": "required before publication"
+}

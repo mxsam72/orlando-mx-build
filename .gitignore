@@ -54,3 +54,7 @@ BUILD/v055_*
 BUILD/OrlandoMX-v055-*.zip
 BUILD/dirt_tile_contact.jpg
 BUILD/v044_assets/
+
+# v056 generated review, audit and native checkpoints.
+BUILD/v056_*
+BUILD/OrlandoMX-v056-*.zip

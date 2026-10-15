@@ -1,0 +1,55 @@
+name: Build and deliver v056 restored corner banks and clear track edges
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v056]
+    paths: ['.github/workflows/build-v056.yml', 'TOOLS/*v056*.py', 'V056_SOURCE/**']
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: orlando-v056-native
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 180
+    env:
+      V052_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+      PYTHONUNBUFFERED: '1'
+      OPENBLAS_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-v009.txt
+      - name: Recover exact delivered v054 inputs
+        run: python TOOLS/v056_inputs.py restore
+      - name: Restore every corner and constrain landing crown repair
+        run: python TOOLS/v056_geometry.py
+      - name: Restore full-resolution dirt and exact track boundaries
+        run: python TOOLS/v056_surface.py
+      - name: Review all 14 corners and matched track edges
+        run: python TOOLS/v056_previews.py
+      - name: Preserve checked source checkpoint
+        run: python TOOLS/v056_transfer.py checkpoint
+      - name: Compile validate and preserve official native outputs
+        run: python TOOLS/build_windows_v056.py
+      - name: Publish verified PKZ and checksums
+        run: python TOOLS/v056_transfer.py deliver
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v056-validation-and-review
+          path: |
+            V056_OUTPUT/*validation.json
+            V056_OUTPUT/native_compile_results.json
+            BUILD/v056_review/*
+            DOCUMENTATION/*v056*.log
+            DOCUMENTATION/*v056*.json
+            12_RELEASE/OrlandoMX_v056_Validation.json
+            BUILD/v056_delivery.json
+            BUILD/v056_checkpoint_descriptor.json

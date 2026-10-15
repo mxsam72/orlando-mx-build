@@ -1,0 +1,12 @@
+{
+  "version": "v056",
+  "baseline": "delivered v054, accepted before v055",
+  "regression": "v055 broad landing repair cut T03 and part of T12; expanded photo mask and uniform legacy soil hid the track boundary",
+  "corner_protection": "all 14 turns, 28m cross width, dense sample grid plus raw bilinear support exact v054",
+  "landing_scope_station_m": [261.8, 272.0],
+  "landing": "shave right-side crown before T03; preserve single centre profile, original turn bank and all unrelated jumps",
+  "surface": "exact v054 boundaries, full-resolution photographic maps, original normals and wear. Only base soil dry/wet tinted RGB -6/-4/-4",
+  "allocation_budget": "14 layers; same unique active texture dimensions as v054; no added texture allocations",
+  "native_checks": "full decoded MAP/TRH grids exact source; all corner raw grids exact baseline; bitmap/scenery/race and archive gates",
+  "game_test": "pending user ride"
+}
