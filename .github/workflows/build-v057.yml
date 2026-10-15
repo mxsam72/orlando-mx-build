@@ -1,0 +1,59 @@
+name: Build and deliver v057 loamy dirt and Chevrolet Express
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v057]
+    paths: ['.github/workflows/build-v057.yml', 'TOOLS/*v057*.py', 'V057_SOURCE/**']
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: orlando-v057-native
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 180
+    env:
+      V052_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+      PYTHONUNBUFFERED: '1'
+      OPENBLAS_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-v009.txt
+      - name: Recover exact user-tested v056 and its source stack
+        run: python TOOLS/v057_inputs.py restore
+      - name: Preserve all tested terrain corners landing and race files
+        run: python TOOLS/v057_track.py
+      - name: Rebuild Express add readable cardboard and alternate truck colors
+        run: python TOOLS/v057_scenery.py
+      - name: Cap overlay at 25 percent and author current-route loam
+        run: python TOOLS/v057_surface.py
+      - name: Verify reviewed Express meshes and both sign faces
+        run: python TOOLS/v057_vehicle_review.py verify
+      - name: Review matched dirt views and material boundaries
+        run: python TOOLS/v057_previews.py
+      - name: Preserve checked source checkpoint
+        run: python TOOLS/v057_transfer.py checkpoint
+      - name: FINAL NATIVE COMPILATION automatic validation and preservation
+        run: python TOOLS/build_windows_v057.py
+      - name: Publish verified PKZ and checksums
+        run: python TOOLS/v057_transfer.py deliver
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v057-validation-and-review
+          path: |
+            V057_OUTPUT/*validation.json
+            V057_OUTPUT/native_compile_results.json
+            BUILD/v057_review/*
+            DOCUMENTATION/*v057*.log
+            DOCUMENTATION/*v057*.json
+            12_RELEASE/OrlandoMX_v057_Validation.json
+            BUILD/v057_delivery.json
+            BUILD/v057_checkpoint_descriptor.json

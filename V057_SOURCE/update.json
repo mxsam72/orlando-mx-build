@@ -1,0 +1,115 @@
+{
+  "version": "v057",
+  "baseline": "user-tested delivered v056",
+  "baseline_release_tag": "v056-restored-corners-38665837940",
+  "baseline_source_head": "63419ca58e453eb6d3cc933feb64b2bfa8a94ba8",
+  "baseline_terrain_sha256": "ab99df42094ef29015f117babeffe555e814fc7f86cf836c60625b760868289f",
+  "requested_overlay_cap_percent": 25.0,
+  "implemented_max_alpha_u8": 63,
+  "actual_max_percent": 24.705882352941178,
+  "retain_every_terrain_sample_corner_landing_and_race_file": true,
+  "retain_all_track_boundary_masks": true,
+  "retain_4K_photographic_dirt_colours": true,
+  "normal_maps": "4K photograph-derived small-clod normals; isotropic wrapped bandpass, matte alpha 2",
+  "macro_loam": "Existing 8K colour/normal pair; current v056 route station/lateral coordinates, broken lengthwise cultivation, extra loose clods on flats, no diagonal stamps",
+  "cybertrucks": [
+    {
+      "object": "v042_pit_cybertruck_06_yellow",
+      "colour": "black",
+      "material_id": 998747693,
+      "old_material_id": 998750817,
+      "geometry_exact": true
+    },
+    {
+      "object": "v042_pit_cybertruck_04_pink",
+      "colour": "silver",
+      "material_id": 998742110,
+      "old_material_id": 998750811,
+      "geometry_exact": true
+    },
+    {
+      "object": "v041_pit_cybertruck_01_blue",
+      "colour": "black",
+      "material_id": 998747693,
+      "old_material_id": 998749716,
+      "geometry_exact": true
+    },
+    {
+      "object": "v042_pit_cybertruck_05_orange",
+      "colour": "silver",
+      "material_id": 998742110,
+      "old_material_id": 998750814,
+      "geometry_exact": true
+    },
+    {
+      "object": "v041_pit_cybertruck_02_purple",
+      "colour": "black",
+      "material_id": 998747693,
+      "old_material_id": 998749722,
+      "geometry_exact": true
+    }
+  ],
+  "van": [
+    5.692,
+    2.014,
+    2.138
+  ],
+  "van_wheelbase_m": 3.429,
+  "van_reference_files": [
+    "IMG_4018.jpg",
+    "IMG_4022.jpg"
+  ],
+  "gm_dimension_reference": "https://www.gmupfitter.com/wp-content/uploads/2022/12/2023-Express-Van-Cargo.pdf",
+  "sign": {
+    "center_xz_m": [
+      343.1850590505964,
+      147.94922768954845
+    ],
+    "board_dimensions_m": [
+      2.0,
+      1.0,
+      0.04
+    ],
+    "clearance_to_van_nose_m": 2.980000000000004,
+    "ground_y_m": 2.903678629093547,
+    "both_faces_readable": true,
+    "no_coplanar_faces": true,
+    "serialized_uv_forward_and_upright_both_faces": true,
+    "texture": "v057_cardboard.tga",
+    "texture_sha256": "8d2c4c35834c8301b4ebe08f011a219e483b48edb881c90cc658e5e8f46c77cc",
+    "texture_size": [
+      1024,
+      256
+    ],
+    "shared_matte_specular": true
+  },
+  "sign_asset": {
+    "file": "assets/free_candy_cardboard.jpg",
+    "sha256": "17d5cb0d927b53d8bbf8cdf3ccfa48590dbba44919bdba652d57ae8edb59b89b",
+    "origin": "image_gen.imagegen",
+    "text": "FREE CANDY",
+    "production_tga_size": [
+      1024,
+      256
+    ],
+    "printed_board_size_m": [
+      2,
+      1
+    ],
+    "note": "Source resampled for native texture conversion; artwork is full front face without mirrored variants."
+  },
+  "source_terrain_allocation_bytes_before": 1648623616,
+  "source_terrain_allocation_bytes_after": 1648623616,
+  "object_texture_bytes_saved": 262144,
+  "estimated_added_source_geometry_bytes": 140976,
+  "estimated_net_source_allocation_bytes_saved": 121168,
+  "memory_note": "Estimate from unique active source images and conservative source geometry, not measured process RAM/VRAM. Terrain baseline recomputed from complete shader bindings, including the pre-existing 8K atlas normal absent from v056 inventory.",
+  "reviewed_source_mesh_digests": {
+    "v056": "ab96f8ef52f0009a4a9b0e65b16354e39cb9eeb0b190daab06c982c27e4e5e16",
+    "v057": "7e76f219c8b2615481c6c08724a3553ee640db04f4db7aab3a39d81d5f7288de"
+  },
+  "express_review_archive_sha256": "b1d5463288e31706573094748f284351550129fa85a5fd055075329d0ffb2f8f",
+  "final_build_instruction": "At final native compilation start, alert user and stop assistant polling. CI continues independent validation and publishes only on complete pass.",
+  "in_game_visual_check": false,
+  "performance_test": false
+}
