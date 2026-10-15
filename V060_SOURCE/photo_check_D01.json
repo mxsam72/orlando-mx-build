@@ -1,0 +1,159 @@
+{
+  "key": "4c985b4389514a11b9d75a86545a5ad128c8ed1b42eff9db20bc8897741172eb8d2645b8960160918ec621a2dbaa47dbcd9203ce806d388fc815d45db96fbb90",
+  "file": "Orlando_v060_D01.jpg",
+  "sha256": "783495c4f38e1e94ef58a38eaa60725c2b5652050f269404a1072d8849f428fa",
+  "view": {
+    "id": "D01",
+    "title": "Corner 01 / perpendicular marks close-up",
+    "eye_s": 97.0,
+    "target_s": 101.0,
+    "eye_h": 0.75,
+    "target_h": 0.03,
+    "eye_l": 0.3,
+    "target_l": 0.3,
+    "fov": 59.0,
+    "path": "main",
+    "eye_xzy_m": [
+      382.7735900878906,
+      210.91714477539062,
+      3.6493494510650635
+    ],
+    "target_xzy_m": [
+      380.8438415527344,
+      214.29161071777344,
+      2.9562413692474365
+    ]
+  },
+  "eye_xzy_m": [
+    382.7735900878906,
+    210.91714477539062,
+    3.6493494510650635
+  ],
+  "target_xzy_m": [
+    380.8438415527344,
+    214.29161071777344,
+    2.9562413692474365
+  ],
+  "terrain_pixels": 1305578,
+  "photographic_pixels": 1297167,
+  "layers": [
+    {
+      "layer": 13,
+      "sampled_pixels": 1305403,
+      "colour": "v044_route_detail.tga",
+      "colour_repeats": 200.0,
+      "normal": "v044_route_detail_n.tga",
+      "normal_repeats": 1.0
+    },
+    {
+      "layer": 12,
+      "sampled_pixels": 1305361,
+      "colour": "v045_packed.tga",
+      "colour_repeats": 300.0,
+      "normal": "v045_packed_n.tga",
+      "normal_repeats": 300.0
+    },
+    {
+      "layer": 11,
+      "sampled_pixels": 1305372,
+      "colour": "v045_loose.tga",
+      "colour_repeats": 200.0,
+      "normal": "v045_loose_n.tga",
+      "normal_repeats": 200.0
+    },
+    {
+      "layer": 10,
+      "sampled_pixels": 0,
+      "colour": "v024_pit_gravel.tga",
+      "colour_repeats": 95.0,
+      "normal": null,
+      "normal_repeats": 1.0
+    },
+    {
+      "layer": 9,
+      "sampled_pixels": 0,
+      "colour": "v032_face.tga",
+      "colour_repeats": 193.0,
+      "normal": "v032_face_n.tga",
+      "normal_repeats": 193.0
+    },
+    {
+      "layer": 8,
+      "sampled_pixels": 0,
+      "colour": "v032_packed.tga",
+      "colour_repeats": 193.0,
+      "normal": "v032_packed_n.tga",
+      "normal_repeats": 193.0
+    },
+    {
+      "layer": 7,
+      "sampled_pixels": 0,
+      "colour": "v032_pits.tga",
+      "colour_repeats": 171.0,
+      "normal": "v032_pits_n.tga",
+      "normal_repeats": 171.0
+    },
+    {
+      "layer": 6,
+      "sampled_pixels": 10,
+      "colour": "v032_worked.tga",
+      "colour_repeats": 157.0,
+      "normal": "v032_worked_n.tga",
+      "normal_repeats": 157.0
+    },
+    {
+      "layer": 5,
+      "sampled_pixels": 0,
+      "colour": "v032_grass.tga",
+      "colour_repeats": 82.0,
+      "normal": "grass_n.tga",
+      "normal_repeats": 82.0
+    },
+    {
+      "layer": 4,
+      "sampled_pixels": 180,
+      "colour": "v032_sand.tga",
+      "colour_repeats": 181.0,
+      "normal": "v032_sand_n.tga",
+      "normal_repeats": 181.0
+    },
+    {
+      "layer": 3,
+      "sampled_pixels": 0,
+      "colour": "v044_route_detail.tga",
+      "colour_repeats": 200.0,
+      "normal": "v044_route_detail_n.tga",
+      "normal_repeats": 1.0
+    },
+    {
+      "layer": 2,
+      "sampled_pixels": 2578,
+      "colour": "v032_prepared.tga",
+      "colour_repeats": 193.0,
+      "normal": "v032_prepared_n.tga",
+      "normal_repeats": 193.0
+    },
+    {
+      "layer": 1,
+      "sampled_pixels": 2587,
+      "colour": "v032_soil.tga",
+      "colour_repeats": 171.0,
+      "normal": "v032_soil_n.tga",
+      "normal_repeats": 171.0
+    },
+    {
+      "layer": 0,
+      "sampled_pixels": 0,
+      "colour": "basemap.tga",
+      "colour_repeats": 1.0,
+      "normal": null,
+      "normal_repeats": 1.0
+    }
+  ],
+  "seconds": 19.11,
+  "matched_world_cameras": true,
+  "comparison": "Orlando_v060_Compare_D01.jpg",
+  "comparison_sha256": "01c571c26db6e4a081efd203fa5011c454343b659c85cf423b9f11438e361635",
+  "source_only": true,
+  "in_game_capture": false
+}

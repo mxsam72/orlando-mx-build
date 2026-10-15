@@ -100,9 +100,9 @@ def controls():
  text=(PREV/'compiled_track.hmf').read_text()
  for index,block in list(layers(text)):
   if index in [3,11,13]:text=text.replace(block,re.sub(r'repetitions\s*=\s*[\d.]+','repetitions = 200',block,count=1))
- (O/'compiled_track.hmf').write_text(text)
+ (O/'compiled_track.hmf').write_text(text,newline='\n')
  for name,normal,reps,shine in [('v045_loose','v045_loose_n.tga',200,7),('v045_packed','v045_packed_n.tga',300,7),('v044_route_detail','v044_route_detail_n.tga',1,8)]:
-  (M/(name+'.shd')).write_text('bump\n{\n map = '+normal+'\n repetitions = '+str(reps)+'\n}\nspecular\n{\n shininess = '+str(shine)+'\n}\n')
+  (M/(name+'.shd')).write_text('bump\n{\n map = '+normal+'\n repetitions = '+str(reps)+'\n}\nspecular\n{\n shininess = '+str(shine)+'\n}\n',newline='\n')
 
 def inventory(resolver):
  text=(O/'compiled_track.hmf').read_text()+(R/'BUILD/v054_track.tht').read_text()

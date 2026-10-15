@@ -1,0 +1,18 @@
+{
+  "checks_pass": true,
+  "version": "v060",
+  "density_regions": 18,
+  "perpendicular_regions": 16,
+  "full_width_faces": 2,
+  "maximum_spacing_m": 0.2795127686059915,
+  "every_added_pass_denser": true,
+  "changed_macro_pixels": 1907204,
+  "changes_outside_existing_grooming_envelopes": 0,
+  "all_colour_maps_fine_normals_masks_and_alpha_exact": true,
+  "terrain_geometry_scenery_and_routes_exact_v059": true,
+  "source_allocation_before_bytes": 1447297024,
+  "source_allocation_after_bytes": 1447297024,
+  "approved_vehicles_sign_exact": true,
+  "final_compilation_authorized": true,
+  "in_game_verified": false
+}

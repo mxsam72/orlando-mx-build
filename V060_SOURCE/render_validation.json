@@ -1,0 +1,36 @@
+{
+  "checks_pass": true,
+  "source_only": true,
+  "in_game_captures": false,
+  "scenery_omitted": true,
+  "comparisons": [
+    {
+      "id": "D01",
+      "mean_RGB_difference": 1.4694230556488037,
+      "matched_camera": true,
+      "image_sha256": "783495c4f38e1e94ef58a38eaa60725c2b5652050f269404a1072d8849f428fa",
+      "comparison_sha256": "01c571c26db6e4a081efd203fa5011c454343b659c85cf423b9f11438e361635"
+    },
+    {
+      "id": "D02",
+      "mean_RGB_difference": 1.8259176015853882,
+      "matched_camera": true,
+      "image_sha256": "4ea12e5515d8ff01ba986d3e62ed69c57788cee748ad03a018af287896c79ed9",
+      "comparison_sha256": "a9d5649981262675a1525f11b519640ef9a03aa8d5197cbd3255f15e0f969cff"
+    },
+    {
+      "id": "D03",
+      "mean_RGB_difference": 0.8203520774841309,
+      "matched_camera": true,
+      "image_sha256": "f5428f96a6ef875905dbee727a6820a0bdd69383c58d69f120a34bf1d38505a0",
+      "comparison_sha256": "8f4fad1e9dc01582bf9a92eacd9086acfa11ef96f2f88a728a0eecf33106f3ac"
+    },
+    {
+      "id": "D04",
+      "mean_RGB_difference": 0.9667171835899353,
+      "matched_camera": true,
+      "image_sha256": "cdab22bf85bd1bc9515b2357be26e1967995bf2c46ef082825e78d39155a412d",
+      "comparison_sha256": "5525128a17e27173f8bd1523b6a717ae2840204c62c09d92f0f32c6b29647a5c"
+    }
+  ]
+}

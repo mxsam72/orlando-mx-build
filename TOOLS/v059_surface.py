@@ -22,20 +22,20 @@ class Circuit(BaseCircuit):
   byid={p['id']:p for p in self.profiles};r14=byid['R14']
   self.cross_regions=self.corners+[('R04',self.corners[2][2],self.corners[3][1]),('R14_FACE',r14['station_start_m'],r14['lip_s']+1.2)]
   self.full_faces=[(n,byid[n]['station_start_m'],byid[n]['lip_s']+1.2) for n in ['R03','R07']]
-  rng=np.random.default_rng(590151);self.cross_centres=[];self.cross_width=[];self.cross_depth=[];self.spacing=[]
+  rng=np.random.default_rng(590151);self.cross_centres=[];self.cross_width=[];self.cross_depth=[];self.cross_labels=[];self.spacing=[]
   for name,lo,hi in self.cross_regions:
    ss=np.arange(lo-1,hi+1.01,.05);lat=np.linspace(-9,9,37);sg,lg=np.meshgrid(ss,lat);pp=cross_points(self.q,sg,lg);hh=self.terrain.ground(pp[:,:,0],pp[:,:,1]);xyz=np.dstack([pp,hh])
    metric=np.linalg.norm(np.gradient(xyz,.05,axis=1),axis=2).max(0);metric=maximum_filter1d(metric,31,mode='nearest')
    centers=[];position=lo-.5
    while position<hi+.5:
-    factor=float(np.interp(position,ss,metric));centers.append(position);self.cross_width.append(rng.uniform(.045,.067)/max(factor,1));self.cross_depth.append(rng.uniform(.028,.042))
+    factor=float(np.interp(position,ss,metric));centers.append(position);self.cross_width.append(rng.uniform(.045,.067)/max(factor,1));self.cross_depth.append(rng.uniform(.028,.042));self.cross_labels.append(name)
     position+=rng.uniform(.30,.46)/max(factor,1)
    self.cross_centres.extend(centers)
    # Direct 3D checks at every line, across the full authored 18m corridor.
    sg,lg=np.meshgrid(np.array(centers),lat);p=cross_points(self.q,sg,lg);hh=self.terrain.ground(p[:,:,0],p[:,:,1]);xyz=np.dstack([p,hh]);gaps=np.linalg.norm(np.diff(xyz,axis=1),axis=2)
    assert gaps.max()<=.5,(name,float(gaps.max()))
    self.spacing.append(dict(section=name,station_m=[lo,hi],line_count=len(centers),maximum_3d_spacing_m=float(gaps.max()),minimum_3d_spacing_m=float(gaps.min()),lateral_validation_m=[-9,9]))
-  order=np.argsort(self.cross_centres);self.cross_centres=np.asarray(self.cross_centres)[order];self.cross_width=np.asarray(self.cross_width)[order];self.cross_depth=np.asarray(self.cross_depth)[order]
+  order=np.argsort(self.cross_centres);self.cross_centres=np.asarray(self.cross_centres)[order];self.cross_width=np.asarray(self.cross_width)[order];self.cross_depth=np.asarray(self.cross_depth)[order];self.cross_labels=np.asarray(self.cross_labels)[order]
   self.tines=np.r_[-8.7,-8.7+np.cumsum(rng.uniform(.27,.43,60))];self.tines=self.tines[self.tines<8.8]
  def weights(self,x,z):
   ss,ll=self.coords(x,z);cross=np.zeros_like(ss);long=np.zeros_like(ss)
