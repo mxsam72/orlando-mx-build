@@ -1,0 +1,1009 @@
+{
+  "checks_pass": true,
+  "version": "v061 preview 1",
+  "baseline_release": "v060-dense-grooming-38699998845",
+  "roller": {
+    "version": "v061 preview attempt 1",
+    "baseline": "published v060",
+    "intent": "One low rounded takeoff outside the south speedway wall, aligned with the existing large double; land on the unchanged asphalt.",
+    "axis_x_m": 535.0,
+    "direction_xz": [
+      0.0,
+      1.0
+    ],
+    "profile_z_m": [
+      220.0,
+      228.0,
+      235.0,
+      244.1,
+      246.2,
+      248.85
+    ],
+    "profile_rise_m": [
+      0.0,
+      0.08,
+      0.6,
+      1.732,
+      1.9,
+      0.0
+    ],
+    "profile_slope": [
+      0.0,
+      0.03,
+      0.12,
+      0.16,
+      0.0,
+      0.0
+    ],
+    "profile_curvature": [
+      0.0,
+      0.006,
+      0.01,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "flat_half_width_m": 4.5,
+    "shoulder_half_width_m": 7.5,
+    "review_speed_mph": [
+      30,
+      35,
+      40,
+      45,
+      50
+    ],
+    "clearance_model": "Approximate point-contact ballistics at the stated takeoff speed; no MX Bikes suspension, throttle, tyre or rider simulation. Requires a riding test after approval.",
+    "extra_landing_geometry": false,
+    "final_compilation_authorized": false
+  },
+  "maximum_height_added_m": 1.8998397802700846,
+  "maximum_face_angle_degrees": 9.090276920822326,
+  "changed_height_samples": 4751,
+  "terrain_changes_outside_roller": 0,
+  "changed_height_bounds_xz_m": [
+    527.63671875,
+    221.19140625,
+    542.28515625,
+    248.73046875
+  ],
+  "terrain_sha256": "860350c4c733e5d26939e9e2f40204679ecef302d6e07889f78a849afc8a8fa2",
+  "baseline_terrain_sha256": "0ca6058685d0f610dafe6d2e710f5dd901038b7cc470508c20e8b20299947689",
+  "wall_road_all_scenery_exact": true,
+  "road_heightfield_samples_exact": true,
+  "big_speedway_double_and_all_MX_heights_exact": true,
+  "retained_source_files": [
+    {
+      "file": "scenery.fbx",
+      "sha256": "40d8e6ddeacfa0d0c3c9fad454abd2f83acee633fb367e31c8530d8dbafa6e99"
+    },
+    {
+      "file": "route.npz",
+      "sha256": "a84053aec4c4ba71e947c37e6f9dfba4058e981c6085448419ff1bf14bfde34a"
+    },
+    {
+      "file": "layout.json",
+      "sha256": "17e38c9d14b656fd904899004cc03c2f5c66440938770ea96470dc00ac68b24d"
+    },
+    {
+      "file": "jump_profiles.json",
+      "sha256": "8eae9b62e9a3f05eb8de36f91b1fd120573a713574d07ff1a74d91b8c4c3b8b0"
+    },
+    {
+      "file": "main.tcl",
+      "sha256": "421db4e38c22229b873fd93750ac1364dd519b1c7b416f065e562a0335db5e85"
+    },
+    {
+      "file": "start.tcl",
+      "sha256": "d7cfaa7732d3d76a836814938a894d0cd4b0022ab88bca9255c2359107fe2e4c"
+    },
+    {
+      "file": "compiled_track.hmf",
+      "sha256": "99829038ec7adeecd2566ae75e9cae06e34dfdaa4c99f13ff06ab27574a4b13b"
+    },
+    {
+      "file": "native_probes.json",
+      "sha256": "3978ee839add58c5b97ffc7d37d9fefd8f4598362cf51c452f3aedc6db6f304c"
+    },
+    {
+      "file": "vehicle_meshes.json",
+      "sha256": "2d7aba69e7cbc3b81b4a1efcd1321bcad4ee49933d03d3291ba5fee102de369c"
+    },
+    {
+      "file": "scenery_validation.json",
+      "sha256": "fbc948ac43290c3fee60b64eaae485b98aca40bf544acde4d6cd2934fb11390e"
+    }
+  ],
+  "existing_14_layers_exact": true,
+  "added_texture_slots": 0,
+  "added_material_layers": 0,
+  "texture_allocation_bytes": 1447297024,
+  "active_terrain_inventory": [
+    {
+      "file": "basemap.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 16777216,
+      "sha256": "75fc72427f37e57c711c9d73c002d7bdba10e8501ae25e9c0a60c79e08fdc5b1"
+    },
+    {
+      "file": "grass_n.tga",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 4194304,
+      "sha256": "4de81532bf419efdc60fee0ca3f377b89168371f6bf858ab4f2e7a773a6cf881"
+    },
+    {
+      "file": "mask_grass.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "8e8fed492a9a5d78b42fa39a1239311ccdc082d6a68da4b5235a9cf9ddb994d5"
+    },
+    {
+      "file": "mask_off.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "71fb105b35ff60e71e788e76fa8b442f0230b086879317412f76587480fc3f2d"
+    },
+    {
+      "file": "mask_pits.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "8b61429919597f60290f22125edf96f0b0fae6d87728007dc59951399f66147f"
+    },
+    {
+      "file": "mask_racing.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "7a9fec7981793972820dcbec3912121fc3cd87e5d2d389c37a2d27ca90b4d941"
+    },
+    {
+      "file": "mask_sand.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "bb261a702d9782373ce5d7298727b8be1197fbe120203ae66f62b65c9a0d9e92"
+    },
+    {
+      "file": "mask_start.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "95aa1699b4955be48ce1171d52baa4dacf0a1e113543839da52f9b0156f7faa1"
+    },
+    {
+      "file": "mask_v024_pit_roads.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "9556301a61968c603b557420f5f325dbd8a4c1ee3f341340897cb3282f744f70"
+    },
+    {
+      "file": "mask_v032_face.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "a3cb8e83b0458c1db04271662be142f2560459ca75f0a7195be8eb79ccfe4904"
+    },
+    {
+      "file": "mask_v032_packed.tga",
+      "size": [
+        4096,
+        4096
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 67108864,
+      "sha256": "999d7a43aff380a64b5abd93ae554a3c2a9ab7165f06dd7549df49b3bab03879"
+    },
+    {
+      "file": "mask_v032_pits.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "87c542928b0bd35b1b4243c6b6489c2f796f86cf48081c6d0b02a424440d1bf3"
+    },
+    {
+      "file": "mask_v044_route_detail.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "308a2fc581020289a98d2766c82ab92aef4caa611d5459fbf6577d15ada70a38"
+    },
+    {
+      "file": "mask_v046_packed.tga",
+      "size": [
+        4096,
+        4096
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 67108864,
+      "sha256": "67bf11f72b01259ef7553dbf56043904f2b8b8e7e44a0f5ff7e11fc40573d4fb"
+    },
+    {
+      "file": "mask_v046_section.tga",
+      "size": [
+        4096,
+        4096
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 67108864,
+      "sha256": "3d66a46728363b6a311562b12eac86bf0ac44322eb193608b746b722688b7459"
+    },
+    {
+      "file": "mask_v046_wear.tga",
+      "size": [
+        4096,
+        4096
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 67108864,
+      "sha256": "a248e10f30c62d49ffadae4425e0f6e2e85b69ebf327fd5d7a5378e61b43233b"
+    },
+    {
+      "file": "mask_visual_grass.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "85e9573fc8fae84abadc1b4192c9fda888197e42ede40ebda77285bbb6981308"
+    },
+    {
+      "file": "mask_visual_racing.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "41a9ba59fd7c64235a3efee648897f4b1350a4e6dc3de4b6c0c6abdc9cf0f1bf"
+    },
+    {
+      "file": "mask_visual_sand.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "1bdb64199b30d15ad536e76d37691ee52d56404bb22e635baee460b46d8650c7"
+    },
+    {
+      "file": "mask_visual_worked.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "253f5386a7ed069f13db3c6e38699a5997977860709ebf95b85596dd3a63c9f6"
+    },
+    {
+      "file": "v024_pit_gravel.tga",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 262144,
+      "sha256": "162ed35bd7b91d2b20cb482d514258556f01dea831deb034b37f3a678bf15ddd"
+    },
+    {
+      "file": "v032_face.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 16777216,
+      "sha256": "cc7be7c49934f03d03790666bdec32532ddb10bfc76e7a798c3bee1e8945480e"
+    },
+    {
+      "file": "v032_face_n.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "46134bcd1305a56cee2f21ac28ff1b637c2f26f22c61808de6672016c19f1cf6"
+    },
+    {
+      "file": "v032_face_wet.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 16777216,
+      "sha256": "62d356226047b5ef71deb3736ee787d17444a8abd0e91b972390369e66c55551"
+    },
+    {
+      "file": "v032_grass.tga",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 4194304,
+      "sha256": "dbd2f911716204c6ab7d4f92781fddacfd2ad9ad1afa41e6ec17c07df9265cfd"
+    },
+    {
+      "file": "v032_packed.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 16777216,
+      "sha256": "2cde91e9ace70ea12b8c06fbc00b563cc83a11dc62fdfd4cdb2821c6eadcee36"
+    },
+    {
+      "file": "v032_packed_n.tga",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 4194304,
+      "sha256": "3648913fa12e16ca2552b4ca9ba3765ea1e1bcbc222046ce9fd101a4feefd9b6"
+    },
+    {
+      "file": "v032_packed_wet.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 16777216,
+      "sha256": "47bd351cc5c6f189c8221ec9b4dc6aabade3d1b38b28bf87b7d5ffa5990c408f"
+    },
+    {
+      "file": "v032_pits.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 16777216,
+      "sha256": "7eb2bb7e62526d7477fd09d3ea05df1a596a89b4db71d8a88a86daa64d41e5b1"
+    },
+    {
+      "file": "v032_pits_n.tga",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 4194304,
+      "sha256": "2e3e48437f7ba21ddc4bfd5c69ee81f00b5f31f457c36f5accb0c8e2ca713d66"
+    },
+    {
+      "file": "v032_pits_wet.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 16777216,
+      "sha256": "24b0cf75b14183db8f3c997d2f05c5a304f7efd054451a8fddc7672173acde5a"
+    },
+    {
+      "file": "v032_prepared.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 16777216,
+      "sha256": "792541f73817215e53b9af659a7a7c2d67dc1646e48f869c2aa0a71095fdc8f0"
+    },
+    {
+      "file": "v032_prepared_n.tga",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 4194304,
+      "sha256": "8559530dbf0e0b5663724912f7c12b9010fb08e25b2d0fa77049298f3731d957"
+    },
+    {
+      "file": "v032_prepared_wet.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 16777216,
+      "sha256": "56482aaffd05c3cef749d770e32a59bff9052f92098000c75dba299c14ddb3a2"
+    },
+    {
+      "file": "v032_sand.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 16777216,
+      "sha256": "314c5a0d3de1174bd5f725dbccb4d45fb51e869a7edf831f5f30c2461ad18e61"
+    },
+    {
+      "file": "v032_sand_n.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "94b1374abbd6132f5861ec6ba63a9d068ec989b26909f857617ae041ffe1a467"
+    },
+    {
+      "file": "v032_sand_wet.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 16777216,
+      "sha256": "d33f7c74c8f3e028f4897f5306d7352b3b9fbbdb7a32da66b5b4e385e87a6624"
+    },
+    {
+      "file": "v032_soil.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 16777216,
+      "sha256": "603820594388e9bc88e3787cc3f0d67285a1e259a03047fa683fce35ef25cd57"
+    },
+    {
+      "file": "v032_soil_n.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "92f85a43fefd3aa88be292dd61870ef141ad9137bc1da653e5b9c3a6b9593896"
+    },
+    {
+      "file": "v032_soil_wet.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 16777216,
+      "sha256": "5391319cb56c4e7ddd082d17a76c3f19965c0143196baafcc5f904f99e0d0865"
+    },
+    {
+      "file": "v032_worked.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 16777216,
+      "sha256": "5356db5781f7e103fffe76938479a22442c4b83991a8fc164379638e097930f0"
+    },
+    {
+      "file": "v032_worked_n.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "ec4a2cd20b8aa831189a56d7f4f3e2869d90da3aa26664b8cbcb8baa692b8480"
+    },
+    {
+      "file": "v032_worked_wet.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 16777216,
+      "sha256": "7c043659aee89bbcae1e9e2641b41839dbeb635900fcacb272ddb76bd8304ea6"
+    },
+    {
+      "file": "v044_route_detail.tga",
+      "size": [
+        4096,
+        4096
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 67108864,
+      "sha256": "1b04368a8847916d209ad71fb23886939c8c0bf631a0a9a5d44b4daa8b554cf7"
+    },
+    {
+      "file": "v044_route_detail_n.tga",
+      "size": [
+        8192,
+        8192
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 268435456,
+      "sha256": "18aa7a0e5e878aa5420065c45b8c3b9b9d16acdfd3b34f2958b8ddb0abb7544b"
+    },
+    {
+      "file": "v045_loose.tga",
+      "size": [
+        4096,
+        4096
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 67108864,
+      "sha256": "1b04368a8847916d209ad71fb23886939c8c0bf631a0a9a5d44b4daa8b554cf7"
+    },
+    {
+      "file": "v045_loose_n.tga",
+      "size": [
+        4096,
+        4096
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 67108864,
+      "sha256": "0bbef17bacb7af58ef1ab693d43c7531ec5a9adbef35eef77917c5ec1fc03d21"
+    },
+    {
+      "file": "v045_packed.tga",
+      "size": [
+        4096,
+        4096
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 67108864,
+      "sha256": "f9b6690cb1b9d32bb8f13b9843883ca581b542da11be7e9dc77804205c2f5a09"
+    },
+    {
+      "file": "v045_packed_n.tga",
+      "size": [
+        4096,
+        4096
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 67108864,
+      "sha256": "b3d45a29d4f270b249323ba2b8b8a23225c6d547bc378d3f741d7e6aa567d64d"
+    }
+  ],
+  "mask_changes": [
+    {
+      "file": "mask_v046_section.tga",
+      "baseline_sha256": "3dabd16c611e2589efa653dee9b8a3566b4e349a638457f3f4223554ea97e0cd",
+      "sha256": "3d66a46728363b6a311562b12eac86bf0ac44322eb193608b746b722688b7459",
+      "size": [
+        4096,
+        4096
+      ],
+      "changed_pixels": 16457,
+      "changes_outside_roller": 0
+    },
+    {
+      "file": "mask_v046_wear.tga",
+      "baseline_sha256": "a7ca00dfd53dfbdbb103330a6707c859ed07f525d74f14fcfe9318ee498783da",
+      "sha256": "a248e10f30c62d49ffadae4425e0f6e2e85b69ebf327fd5d7a5378e61b43233b",
+      "size": [
+        4096,
+        4096
+      ],
+      "changed_pixels": 16181,
+      "changes_outside_roller": 0
+    },
+    {
+      "file": "mask_grass.tga",
+      "baseline_sha256": "319e5af469f79ee3c27e66fa24dc090aa109b15b766bdd5a39cceb4300faca86",
+      "sha256": "8e8fed492a9a5d78b42fa39a1239311ccdc082d6a68da4b5235a9cf9ddb994d5",
+      "size": [
+        2048,
+        2048
+      ],
+      "changed_pixels": 4084,
+      "changes_outside_roller": 0
+    }
+  ],
+  "macro_change": {
+    "file": "v044_route_detail_n.tga",
+    "baseline_sha256": "fd8406b532f32dba8e93e1cbd7126c6f70ea0ef5876cca762aa443073ac28650",
+    "sha256": "18aa7a0e5e878aa5420065c45b8c3b9b9d16acdfd3b34f2958b8ddb0abb7544b",
+    "size": [
+      8192,
+      8192
+    ],
+    "changed_pixels": 58599,
+    "changes_outside_roller": 0,
+    "specular_alpha_exact": true
+  },
+  "approximate_trajectory_checks": [
+    {
+      "takeoff_speed_mph": 30,
+      "lateral_m": -4.5,
+      "launch_xyz_m": [
+        530.5,
+        4.7049323284980265,
+        244.3999999999778
+      ],
+      "angle_degrees": 8.594468214536668,
+      "wall_z_m": [
+        249.39209249908112,
+        249.75419536377115
+      ],
+      "wall_top_y_m": 4.461955033784919,
+      "estimated_minimum_wall_clearance_m": 0.25254272534284006,
+      "estimated_landing_xyz_m": [
+        530.5,
+        3.5454199193107057,
+        254.1249999999778
+      ],
+      "estimated_peak_above_local_grass_m": 1.9838146333712436,
+      "estimated_landing_on_original_asphalt": true
+    },
+    {
+      "takeoff_speed_mph": 35,
+      "lateral_m": -4.5,
+      "launch_xyz_m": [
+        530.5,
+        4.691109136000224,
+        244.3099999999779
+      ],
+      "angle_degrees": 8.839825496404183,
+      "wall_z_m": [
+        249.39209249908112,
+        249.75419536377115
+      ],
+      "wall_top_y_m": 4.461955033784919,
+      "estimated_minimum_wall_clearance_m": 0.46762111485282887,
+      "estimated_landing_xyz_m": [
+        530.5,
+        3.470352195373879,
+        256.70999999997787
+      ],
+      "estimated_peak_above_local_grass_m": 2.0599422456461913,
+      "estimated_landing_on_original_asphalt": true
+    },
+    {
+      "takeoff_speed_mph": 40,
+      "lateral_m": -4.5,
+      "launch_xyz_m": [
+        530.5,
+        4.683285389536526,
+        244.25999999997794
+      ],
+      "angle_degrees": 8.942459323846023,
+      "wall_z_m": [
+        249.39209249908112,
+        249.75419536377115
+      ],
+      "wall_top_y_m": 4.461955033784919,
+      "estimated_minimum_wall_clearance_m": 0.6113476276421235,
+      "estimated_landing_xyz_m": [
+        530.5,
+        3.3586669525813444,
+        259.73499999997796
+      ],
+      "estimated_peak_above_local_grass_m": 2.151236606160036,
+      "estimated_landing_on_original_asphalt": true
+    },
+    {
+      "takeoff_speed_mph": 45,
+      "lateral_m": -4.5,
+      "launch_xyz_m": [
+        530.5,
+        4.677759583300682,
+        244.22499999997797
+      ],
+      "angle_degrees": 8.999014408692565,
+      "wall_z_m": [
+        249.39209249908112,
+        249.75419536377115
+      ],
+      "wall_top_y_m": 4.461955033784919,
+      "estimated_minimum_wall_clearance_m": 0.7023806350560742,
+      "estimated_landing_xyz_m": [
+        530.5,
+        3.2258163602485608,
+        263.149999999978
+      ],
+      "estimated_peak_above_local_grass_m": 2.2565801521823707,
+      "estimated_landing_on_original_asphalt": true
+    },
+    {
+      "takeoff_speed_mph": 50,
+      "lateral_m": -4.5,
+      "launch_xyz_m": [
+        530.5,
+        4.673792918658625,
+        244.199999999978
+      ],
+      "angle_degrees": 9.031391496380907,
+      "wall_z_m": [
+        249.39209249908112,
+        249.75419536377115
+      ],
+      "wall_top_y_m": 4.461955033784919,
+      "estimated_minimum_wall_clearance_m": 0.7657527677170766,
+      "estimated_landing_xyz_m": [
+        530.5,
+        3.1042511550603065,
+        266.874999999978
+      ],
+      "estimated_peak_above_local_grass_m": 2.375441816739449,
+      "estimated_landing_on_original_asphalt": true
+    },
+    {
+      "takeoff_speed_mph": 30,
+      "lateral_m": 0.0,
+      "launch_xyz_m": [
+        535.0,
+        4.694796490243663,
+        244.3999999999778
+      ],
+      "angle_degrees": 8.594468214536668,
+      "wall_z_m": [
+        249.2406740658208,
+        249.56067406582076
+      ],
+      "wall_top_y_m": 4.450926805356153,
+      "estimated_minimum_wall_clearance_m": 0.280947237758415,
+      "estimated_landing_xyz_m": [
+        535.0,
+        3.527845779939355,
+        254.1249999999778
+      ],
+      "estimated_peak_above_local_grass_m": 1.9838146333712436,
+      "estimated_landing_on_original_asphalt": true
+    },
+    {
+      "takeoff_speed_mph": 35,
+      "lateral_m": 0.0,
+      "launch_xyz_m": [
+        535.0,
+        4.680986911234832,
+        244.3099999999779
+      ],
+      "angle_degrees": 8.839825496404183,
+      "wall_z_m": [
+        249.2406740658208,
+        249.56067406582076
+      ],
+      "wall_top_y_m": 4.450926805356153,
+      "estimated_minimum_wall_clearance_m": 0.4809017798259658,
+      "estimated_landing_xyz_m": [
+        535.0,
+        3.448957999521351,
+        256.7349999999779
+      ],
+      "estimated_peak_above_local_grass_m": 2.0599422456461913,
+      "estimated_landing_on_original_asphalt": true
+    },
+    {
+      "takeoff_speed_mph": 40,
+      "lateral_m": 0.0,
+      "launch_xyz_m": [
+        535.0,
+        4.673163164771134,
+        244.25999999997794
+      ],
+      "angle_degrees": 8.942459323846023,
+      "wall_z_m": [
+        249.2406740658208,
+        249.56067406582076
+      ],
+      "wall_top_y_m": 4.450926805356153,
+      "estimated_minimum_wall_clearance_m": 0.6146414341301734,
+      "estimated_landing_xyz_m": [
+        535.0,
+        3.3340548114348545,
+        259.7849999999779
+      ],
+      "estimated_peak_above_local_grass_m": 2.151236606160036,
+      "estimated_landing_on_original_asphalt": true
+    },
+    {
+      "takeoff_speed_mph": 45,
+      "lateral_m": 0.0,
+      "launch_xyz_m": [
+        535.0,
+        4.6676373585352895,
+        244.22499999997797
+      ],
+      "angle_degrees": 8.999014408692565,
+      "wall_z_m": [
+        249.2406740658208,
+        249.56067406582076
+      ],
+      "wall_top_y_m": 4.450926805356153,
+      "estimated_minimum_wall_clearance_m": 0.6984638098720453,
+      "estimated_landing_xyz_m": [
+        535.0,
+        3.20025246638304,
+        263.199999999978
+      ],
+      "estimated_peak_above_local_grass_m": 2.2565801521823707,
+      "estimated_landing_on_original_asphalt": true
+    },
+    {
+      "takeoff_speed_mph": 50,
+      "lateral_m": 0.0,
+      "launch_xyz_m": [
+        535.0,
+        4.663670693893232,
+        244.199999999978
+      ],
+      "angle_degrees": 9.031391496380907,
+      "wall_z_m": [
+        249.2406740658208,
+        249.56067406582076
+      ],
+      "wall_top_y_m": 4.450926805356153,
+      "estimated_minimum_wall_clearance_m": 0.7581874162698856,
+      "estimated_landing_xyz_m": [
+        535.0,
+        3.080478850670947,
+        266.924999999978
+      ],
+      "estimated_peak_above_local_grass_m": 2.375441816739449,
+      "estimated_landing_on_original_asphalt": true
+    },
+    {
+      "takeoff_speed_mph": 30,
+      "lateral_m": 4.5,
+      "launch_xyz_m": [
+        539.5,
+        4.68351335909237,
+        244.3999999999778
+      ],
+      "angle_degrees": 8.594468214536668,
+      "wall_z_m": [
+        249.39209249908112,
+        249.75419536377115
+      ],
+      "wall_top_y_m": 4.43878524347673,
+      "estimated_minimum_wall_clearance_m": 0.25429354624537304,
+      "estimated_landing_xyz_m": [
+        539.5,
+        3.519126284946931,
+        254.1249999999778
+      ],
+      "estimated_peak_above_local_grass_m": 1.9838146333712436,
+      "estimated_landing_on_original_asphalt": true
+    },
+    {
+      "takeoff_speed_mph": 35,
+      "lateral_m": 4.5,
+      "launch_xyz_m": [
+        539.5,
+        4.669715776360348,
+        244.3099999999779
+      ],
+      "angle_degrees": 8.839825496404183,
+      "wall_z_m": [
+        249.39209249908112,
+        249.75419536377115
+      ],
+      "wall_top_y_m": 4.43878524347673,
+      "estimated_minimum_wall_clearance_m": 0.4693975455211419,
+      "estimated_landing_xyz_m": [
+        539.5,
+        3.441998305092148,
+        256.7349999999779
+      ],
+      "estimated_peak_above_local_grass_m": 2.0599422456461913,
+      "estimated_landing_on_original_asphalt": true
+    },
+    {
+      "takeoff_speed_mph": 40,
+      "lateral_m": 4.5,
+      "launch_xyz_m": [
+        539.5,
+        4.661915155249515,
+        244.25999999997794
+      ],
+      "angle_degrees": 8.942459323846023,
+      "wall_z_m": [
+        249.39209249908112,
+        249.75419536377115
+      ],
+      "wall_top_y_m": 4.43878524347673,
+      "estimated_minimum_wall_clearance_m": 0.6131471836633011,
+      "estimated_landing_xyz_m": [
+        539.5,
+        3.3290740651423443,
+        259.75999999997794
+      ],
+      "estimated_peak_above_local_grass_m": 2.151236606160036,
+      "estimated_landing_on_original_asphalt": true
+    },
+    {
+      "takeoff_speed_mph": 45,
+      "lateral_m": 4.5,
+      "launch_xyz_m": [
+        539.5,
+        4.656405536760675,
+        244.22499999997797
+      ],
+      "angle_degrees": 8.999014408692565,
+      "wall_z_m": [
+        249.39209249908112,
+        249.75419536377115
+      ],
+      "wall_top_y_m": 4.43878524347673,
+      "estimated_minimum_wall_clearance_m": 0.704196378824256,
+      "estimated_landing_xyz_m": [
+        539.5,
+        3.193926885798401,
+        263.199999999978
+      ],
+      "estimated_peak_above_local_grass_m": 2.2565801521823707,
+      "estimated_landing_on_original_asphalt": true
+    },
+    {
+      "takeoff_speed_mph": 50,
+      "lateral_m": 4.5,
+      "launch_xyz_m": [
+        539.5,
+        4.6524504347950515,
+        244.199999999978
+      ],
+      "angle_degrees": 9.031391496380907,
+      "wall_z_m": [
+        249.39209249908112,
+        249.75419536377115
+      ],
+      "wall_top_y_m": 4.43878524347673,
+      "estimated_minimum_wall_clearance_m": 0.7675800741616925,
+      "estimated_landing_xyz_m": [
+        539.5,
+        3.071627844552964,
+        266.924999999978
+      ],
+      "estimated_peak_above_local_grass_m": 2.375441816739449,
+      "estimated_landing_on_original_asphalt": true
+    }
+  ],
+  "clearance_model_note": "Approximate point-contact ballistics at the stated takeoff speed; no MX Bikes suspension, throttle, tyre or rider simulation. Requires a riding test after approval.",
+  "final_compilation_started": false,
+  "in_game_riding_test": false
+}

@@ -1,0 +1,18 @@
+{
+  "checks_pass": true,
+  "version": "v061 preview 1",
+  "baseline_release": "v060-dense-grooming-38699998845",
+  "maximum_height_added_m": 1.8998397802700846,
+  "maximum_face_angle_degrees": 9.090276920822326,
+  "changed_height_samples": 4751,
+  "terrain_changes_outside_roller": 0,
+  "wall_road_all_scenery_exact": true,
+  "big_speedway_double_and_all_MX_heights_exact": true,
+  "added_texture_slots": 0,
+  "added_material_layers": 0,
+  "texture_allocation_bytes": 1447297024,
+  "final_compilation_started": false,
+  "in_game_riding_test": false,
+  "minimum_estimated_wall_clearance_m": 0.25254272534284006,
+  "model_path_count": 15
+}
