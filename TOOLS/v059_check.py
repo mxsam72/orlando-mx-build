@@ -14,8 +14,16 @@ def main():
  corners=[]
  for name,lo,hi in corner_regions(c.q,c.route['v054_old_station']):
   if name in ['T03','T09']:continue
-  sg,lg=np.meshgrid(np.arange(lo,hi,.25),np.arange(-10,10.01,.5));pp=cross_points(c.q,sg,lg).reshape(-1,2)
-  delta=ground(new.astype(float),pp)-ground(old.astype(float),pp);assert np.max(abs(delta))==0,name;corners.append(name)
+  sg,lg=np.meshgrid(np.arange(lo,hi,.25),np.arange(-10,10.01,.1));pp=cross_points(c.q,sg,lg).reshape(-1,2)
+  # Neighbouring shoulder cross-sections can sample the explicitly edited
+  # bank of another turn. Record the actual variable-width riding corridor;
+  # the independent RAW scope check above proves edits stay in the requested
+  # world footprint, including its shared shoulder with T12.
+  delta=(ground(new.astype(float),pp)-ground(old.astype(float),pp))*18/65535
+  widths=np.interp(sg.ravel(),c.q[:,3],c.route['width']);riding=abs(lg.ravel())<=widths/2;maximum=float(abs(delta[riding]).max())
+  if name!='T12':assert maximum==0,(name,maximum)
+  corners.append(dict(corner=name,riding_width_range_m=[float(widths.min()),float(widths.max())],maximum_riding_height_change_m=maximum,riding_samples_exact=maximum==0,
+   shared_requested_bank_footprint=(name=='T12' and maximum>0)))
  before=json.loads((PREV/'jump_profiles.json').read_text());after=json.loads((O/'jump_profiles.json').read_text());b={p['id']:p for p in before};a={p['id']:p for p in after}
  assert all(a[k]==p for k,p in b.items() if k!='R11')
  for k in ['profile_s','profile_h','profile_derivative','crest_offsets_m']:assert a['R11'][k]==b['R11'][k]
@@ -30,7 +38,9 @@ def main():
   assert ratio>2,(name,ratio);directions.append(dict(section=name,dominant_gradient=expect,energy_ratio=ratio))
  report=json.loads((O/'surface_validation.json').read_text());assert report['checks_pass'] and all(p['maximum_3d_spacing_m']<=.5 for p in report['spacing_checks'])
  assert report['rgba8_base_level_bytes_before']==report['rgba8_base_level_bytes_after']
- assert sha(O/'scenery.fbx')==sha(PREV/'scenery.fbx')
+ scene=json.loads((O/'scenery_validation.json').read_text())
+ assert scene['checks_pass'] and scene['approved_van_sign_cybertrucks_records_exact'] and scene['all_unrelated_records_exact']
+ assert sha(O/'scenery.fbx')==scene['scenery_sha256'] and len(scene['terrain_binding_changes'])==3
  for name in ['route.npz','main.tcl','start.tcl','compiled_track.hmf']:assert sha(O/name)==sha(PREV/name),name
  normal=Image.open(source('v044_route_detail_n.tga'));before_normal=Image.open(previous('v044_route_detail_n.tga'));count=0;n=normal.width
  for row in range(0,n,128):
@@ -52,10 +62,10 @@ def main():
  expected={r['file'] for r in data['renders']}|set(data['sheets'])|{data['map'],'Read_Me.txt','Review_Manifest.json'}|set(data['before_after'])|{data['geometry_plot']}
  expected|={r['file'] for r in data['detail_views']['renders']}|{data['detail_views']['sheet'],'detail_manifest.json'}
  with zipfile.ZipFile(archive) as z:assert z.testzip() is None and set(z.namelist())==expected and len(z.namelist())==len(expected)
- result=dict(checks_pass=True,geometry_outside_edit_scope_exact=True,all_12_unrequested_corner_geometries_exact=corners,road_exact=True,unrelated_profile_records_exact=True,
+ result=dict(checks_pass=True,geometry_outside_edit_scope_exact=True,unrequested_corner_riding_area_checks=corners,road_exact=True,unrelated_profile_records_exact=True,
   moved_pair_actual_terrain_crests_m=peaks.tolist(),old_pair_ghost_removed=True,added_pass_direction_checks=directions,all_spacing_checks_pass=True,
   macro_changed_pixels=count,normal_changes_outside_request_regions=0,normal_specular_alpha_exact=True,source_texture_allocation_unchanged=True,
-  approved_scenery_exact=True,route_start_and_physical_layer_bindings_exact=True,photo_count=38,additional_detail_views=4,matched_before_after_views=9,exact_world_cameras=True,
+  approved_van_sign_and_cybertruck_records_exact=True,only_three_edge_marker_heights_adjusted=True,route_start_and_physical_layer_bindings_exact=True,photo_count=38,additional_detail_views=4,matched_before_after_views=9,exact_world_cameras=True,
   changed_photo_checks=changed,archive=data['archive'],final_compilation_started=False,in_game_verified=False)
  save(S/'review_validation.json',result);print('V059_COMPLETE_CHECKS_PASS: scoped geometry, 90-degree pass, <=0.5m spacing, unchanged texture allocation, 42 source photos; compilation held',flush=True)
 

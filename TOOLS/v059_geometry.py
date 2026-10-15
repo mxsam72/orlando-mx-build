@@ -18,7 +18,8 @@ def retain():
  for name in ['route.npz','layout.json','main.tcl','start.tcl','compiled_track.hmf','native_probes.json','vehicle_meshes.json','scenery_validation.json']:
   shutil.copy2(PREV/name,O/name);assert sha(PREV/name)==sha(O/name)
  # Immutable approved scenery can share storage; no rewrite or duplicated mesh.
- if not (O/'scenery.fbx').exists():os.link(PREV/'scenery.fbx',O/'scenery.fbx')
+ if not (O/'scenery.fbx').exists() or sha(O/'scenery.fbx')!=sha(PREV/'scenery.fbx'):
+  temp=O/'scenery_input_link.fbx';temp.unlink(missing_ok=True);os.link(PREV/'scenery.fbx',temp);temp.replace(O/'scenery.fbx')
  assert sha(O/'scenery.fbx')==sha(PREV/'scenery.fbx')=='59bb830b43402baa98260b67a0c4c01147c6bc5d3ec7dc4dd67e122fd20e8604'
  shutil.copytree(PREV/'facility_textures',O/'facility_textures',dirs_exist_ok=True)
 

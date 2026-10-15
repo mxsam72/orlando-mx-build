@@ -1,0 +1,202 @@
+{
+  "checks_pass": true,
+  "geometry_outside_edit_scope_exact": true,
+  "unrequested_corner_riding_area_checks": [
+    {
+      "corner": "T01",
+      "riding_width_range_m": [
+        11.778172165755972,
+        12.999887247831083
+      ],
+      "maximum_riding_height_change_m": 0.0,
+      "riding_samples_exact": true,
+      "shared_requested_bank_footprint": false
+    },
+    {
+      "corner": "T02",
+      "riding_width_range_m": [
+        12.10453138347138,
+        12.7999493732415
+      ],
+      "maximum_riding_height_change_m": 0.0,
+      "riding_samples_exact": true,
+      "shared_requested_bank_footprint": false
+    },
+    {
+      "corner": "T04",
+      "riding_width_range_m": [
+        12.503785961492266,
+        12.599992239654066
+      ],
+      "maximum_riding_height_change_m": 0.0,
+      "riding_samples_exact": true,
+      "shared_requested_bank_footprint": false
+    },
+    {
+      "corner": "T05",
+      "riding_width_range_m": [
+        13.023064980381562,
+        13.499999559983157
+      ],
+      "maximum_riding_height_change_m": 0.0,
+      "riding_samples_exact": true,
+      "shared_requested_bank_footprint": false
+    },
+    {
+      "corner": "T06",
+      "riding_width_range_m": [
+        12.160252776636147,
+        13.008861124515226
+      ],
+      "maximum_riding_height_change_m": 0.0,
+      "riding_samples_exact": true,
+      "shared_requested_bank_footprint": false
+    },
+    {
+      "corner": "T07",
+      "riding_width_range_m": [
+        12.061711387783937,
+        12.399994100239992
+      ],
+      "maximum_riding_height_change_m": 0.0,
+      "riding_samples_exact": true,
+      "shared_requested_bank_footprint": false
+    },
+    {
+      "corner": "T08",
+      "riding_width_range_m": [
+        11.283687072968908,
+        11.990008391224459
+      ],
+      "maximum_riding_height_change_m": 0.0,
+      "riding_samples_exact": true,
+      "shared_requested_bank_footprint": false
+    },
+    {
+      "corner": "T10",
+      "riding_width_range_m": [
+        11.142160421748915,
+        12.299870303657194
+      ],
+      "maximum_riding_height_change_m": 0.0,
+      "riding_samples_exact": true,
+      "shared_requested_bank_footprint": false
+    },
+    {
+      "corner": "T11",
+      "riding_width_range_m": [
+        11.535317582151075,
+        11.999988734887737
+      ],
+      "maximum_riding_height_change_m": 0.0,
+      "riding_samples_exact": true,
+      "shared_requested_bank_footprint": false
+    },
+    {
+      "corner": "T12",
+      "riding_width_range_m": [
+        12.107374928653556,
+        12.499999123753812
+      ],
+      "maximum_riding_height_change_m": 0.0036679248356728898,
+      "riding_samples_exact": false,
+      "shared_requested_bank_footprint": true
+    },
+    {
+      "corner": "T13",
+      "riding_width_range_m": [
+        11.790420114143368,
+        12.341078709272066
+      ],
+      "maximum_riding_height_change_m": 0.0,
+      "riding_samples_exact": true,
+      "shared_requested_bank_footprint": false
+    },
+    {
+      "corner": "T14",
+      "riding_width_range_m": [
+        11.537955898759009,
+        11.999999979079298
+      ],
+      "maximum_riding_height_change_m": 0.0,
+      "riding_samples_exact": true,
+      "shared_requested_bank_footprint": false
+    }
+  ],
+  "road_exact": true,
+  "unrelated_profile_records_exact": true,
+  "moved_pair_actual_terrain_crests_m": [
+    932.9999999999845,
+    942.9499999999755
+  ],
+  "old_pair_ghost_removed": true,
+  "added_pass_direction_checks": [
+    {
+      "section": "R04",
+      "dominant_gradient": "along",
+      "energy_ratio": 364344.78353959357
+    },
+    {
+      "section": "R03",
+      "dominant_gradient": "across",
+      "energy_ratio": 5498.653251395081
+    }
+  ],
+  "all_spacing_checks_pass": true,
+  "macro_changed_pixels": 2077424,
+  "normal_changes_outside_request_regions": 0,
+  "normal_specular_alpha_exact": true,
+  "source_texture_allocation_unchanged": true,
+  "approved_van_sign_and_cybertruck_records_exact": true,
+  "only_three_edge_marker_heights_adjusted": true,
+  "route_start_and_physical_layer_bindings_exact": true,
+  "photo_count": 38,
+  "additional_detail_views": 4,
+  "matched_before_after_views": 9,
+  "exact_world_cameras": true,
+  "changed_photo_checks": [
+    {
+      "photo": "04",
+      "mean_RGB_difference": 0.7716306003584229
+    },
+    {
+      "photo": "07",
+      "mean_RGB_difference": 0.5621308243727599
+    },
+    {
+      "photo": "08",
+      "mean_RGB_difference": 0.7385120967741935
+    },
+    {
+      "photo": "09",
+      "mean_RGB_difference": 5.0880203853046595
+    },
+    {
+      "photo": "10",
+      "mean_RGB_difference": 1.2473808243727598
+    },
+    {
+      "photo": "15",
+      "mean_RGB_difference": 0.6266050627240143
+    },
+    {
+      "photo": "21",
+      "mean_RGB_difference": 3.5058214605734768
+    },
+    {
+      "photo": "22",
+      "mean_RGB_difference": 0.6368649193548387
+    },
+    {
+      "photo": "25",
+      "mean_RGB_difference": 0.6287977150537635
+    }
+  ],
+  "archive": {
+    "file": "Orlando_v059_Full_Track_Photos.zip",
+    "sha256": "9a0b3566d00e6cc3d4917fb009b439bb1cd54a119e8ff7d6f635fc9717fa7d4d",
+    "bytes": 42332718
+  },
+  "final_compilation_started": false,
+  "in_game_verified": false
+}

@@ -1,0 +1,1380 @@
+{
+  "checks_pass": true,
+  "scenery_unchanged": false,
+  "scenery_sha256": "e1bfd96e01614213ed1b7e8863864dbec7bf652d436ded67ceb2bf6db7a503b5",
+  "baseline_sha256": "59bb830b43402baa98260b67a0c4c01147c6bc5d3ec7dc4dd67e122fd20e8604",
+  "all_unrelated_records_exact": true,
+  "all_unrelated_connections_exact": true,
+  "all_physical_scene_geometry_exact": false,
+  "cybertrucks": [
+    {
+      "object": "v042_pit_cybertruck_06_yellow",
+      "colour": "black",
+      "material_id": 998747693,
+      "old_material_id": 998750817,
+      "geometry_exact": true
+    },
+    {
+      "object": "v042_pit_cybertruck_04_pink",
+      "colour": "silver",
+      "material_id": 998742110,
+      "old_material_id": 998750811,
+      "geometry_exact": true
+    },
+    {
+      "object": "v041_pit_cybertruck_01_blue",
+      "colour": "black",
+      "material_id": 998747693,
+      "old_material_id": 998749716,
+      "geometry_exact": true
+    },
+    {
+      "object": "v042_pit_cybertruck_05_orange",
+      "colour": "silver",
+      "material_id": 998742110,
+      "old_material_id": 998750814,
+      "geometry_exact": true
+    },
+    {
+      "object": "v041_pit_cybertruck_02_purple",
+      "colour": "black",
+      "material_id": 998747693,
+      "old_material_id": 998749722,
+      "geometry_exact": true
+    }
+  ],
+  "unmarked_cybertrucks_exact": true,
+  "express_reference_photos": [
+    "IMG_4018.jpg",
+    "IMG_4022.jpg"
+  ],
+  "express_dimensions_m": [
+    5.692,
+    2.014,
+    2.138
+  ],
+  "express_wheelbase_m": 3.429,
+  "express_geometry": [
+    {
+      "name": "van_shane_dark",
+      "vertices": 1910,
+      "triangles": 3180
+    },
+    {
+      "name": "van_shane_van_paint",
+      "vertices": 1848,
+      "triangles": 3264
+    },
+    {
+      "name": "van_shane_glass",
+      "vertices": 28,
+      "triangles": 36
+    },
+    {
+      "name": "van_shane_steel",
+      "vertices": 3088,
+      "triangles": 5064
+    },
+    {
+      "name": "van_shane_red_light",
+      "vertices": 24,
+      "triangles": 36
+    },
+    {
+      "name": "van_shane_headlight",
+      "vertices": 48,
+      "triangles": 72
+    },
+    {
+      "name": "van_shane_alloy",
+      "vertices": 840,
+      "triangles": 1420
+    },
+    {
+      "name": "van_shane_chevy_badge",
+      "vertices": 12,
+      "triangles": 10
+    },
+    {
+      "name": "van_shane_amber",
+      "vertices": 32,
+      "triangles": 48
+    },
+    {
+      "name": "van_shane_tire",
+      "vertices": 1024,
+      "triangles": 2048
+    },
+    {
+      "name": "van_shane_tread",
+      "vertices": 2048,
+      "triangles": 3072
+    }
+  ],
+  "sign": {
+    "center_xz_m": [
+      343.1850590505964,
+      147.94922768954845
+    ],
+    "board_dimensions_m": [
+      2.0,
+      1.0,
+      0.04
+    ],
+    "clearance_to_van_nose_m": 2.980000000000004,
+    "ground_y_m": 2.903678629093547,
+    "both_faces_readable": true,
+    "no_coplanar_faces": true,
+    "serialized_uv_forward_and_upright_both_faces": true,
+    "texture": "v057_cardboard.tga",
+    "texture_sha256": "8d2c4c35834c8301b4ebe08f011a219e483b48edb881c90cc658e5e8f46c77cc",
+    "texture_size": [
+      1024,
+      256
+    ],
+    "shared_matte_specular": true
+  },
+  "removed_unused_paint_records": [
+    998749716,
+    998749717,
+    998749718,
+    998749722,
+    998749723,
+    998749724,
+    998750811,
+    998750812,
+    998750813,
+    998750814,
+    998750815,
+    998750816,
+    998750817,
+    998750818,
+    998750819
+  ],
+  "object_rgba8_base_bytes_before": 279647232,
+  "object_rgba8_base_bytes_after": 279385088,
+  "object_texture_bytes_saved": 262144,
+  "conservative_added_source_geometry_bytes": 140976,
+  "estimated_source_allocation_bytes_saved": 121168,
+  "object_texture_inventory_before": {
+    "CK_CONSTS_v052_bermuda.tga": {
+      "size": [
+        1024,
+        1024
+      ],
+      "rgba8_bytes": 4194304
+    },
+    "CK_TREE_v047_pine.tga": {
+      "size": [
+        2048,
+        2048
+      ],
+      "rgba8_bytes": 16777216
+    },
+    "CK_TREE_v047_woodland.tga": {
+      "size": [
+        2048,
+        2048
+      ],
+      "rgba8_bytes": 16777216
+    },
+    "marker_white.tga": {
+      "size": [
+        64,
+        64
+      ],
+      "rgba8_bytes": 16384
+    },
+    "metal.tga": {
+      "size": [
+        64,
+        64
+      ],
+      "rgba8_bytes": 16384
+    },
+    "pine_bark.tga": {
+      "size": [
+        2048,
+        2048
+      ],
+      "rgba8_bytes": 16777216
+    },
+    "v024_alloy.tga": {
+      "size": [
+        16,
+        16
+      ],
+      "rgba8_bytes": 1024
+    },
+    "v024_glass.tga": {
+      "size": [
+        16,
+        16
+      ],
+      "rgba8_bytes": 1024
+    },
+    "v024_gravel.tga": {
+      "size": [
+        16,
+        16
+      ],
+      "rgba8_bytes": 1024
+    },
+    "v024_navy.tga": {
+      "size": [
+        16,
+        16
+      ],
+      "rgba8_bytes": 1024
+    },
+    "v024_red.tga": {
+      "size": [
+        16,
+        16
+      ],
+      "rgba8_bytes": 1024
+    },
+    "v024_roof.tga": {
+      "size": [
+        16,
+        16
+      ],
+      "rgba8_bytes": 1024
+    },
+    "v024_rubber.tga": {
+      "size": [
+        16,
+        16
+      ],
+      "rgba8_bytes": 1024
+    },
+    "v024_siding.tga": {
+      "size": [
+        16,
+        16
+      ],
+      "rgba8_bytes": 1024
+    },
+    "v024_timber.tga": {
+      "size": [
+        1024,
+        1024
+      ],
+      "rgba8_bytes": 4194304
+    },
+    "v024_trim.tga": {
+      "size": [
+        16,
+        16
+      ],
+      "rgba8_bytes": 1024
+    },
+    "v024_vehicle_alloy.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_amber.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_bithlo_photo.tga": {
+      "size": [
+        1024,
+        2048
+      ],
+      "rgba8_bytes": 8388608
+    },
+    "v024_vehicle_black_seat.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_blue_seat.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_chevy_badge.tga": {
+      "size": [
+        256,
+        128
+      ],
+      "rgba8_bytes": 131072
+    },
+    "v024_vehicle_cyber_steel.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_dark.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_engine.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_ford_badge.tga": {
+      "size": [
+        256,
+        128
+      ],
+      "rgba8_bytes": 131072
+    },
+    "v024_vehicle_fork_gold.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_four_by_four.tga": {
+      "size": [
+        256,
+        128
+      ],
+      "rgba8_bytes": 131072
+    },
+    "v024_vehicle_glass.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_headlight.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_husky_white.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_jordan_number.tga": {
+      "size": [
+        512,
+        512
+      ],
+      "rgba8_bytes": 1048576
+    },
+    "v024_vehicle_jordan_shroud.tga": {
+      "size": [
+        512,
+        512
+      ],
+      "rgba8_bytes": 1048576
+    },
+    "v024_vehicle_king_ranch.tga": {
+      "size": [
+        256,
+        128
+      ],
+      "rgba8_bytes": 131072
+    },
+    "v024_vehicle_premier_blue.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_premier_number.tga": {
+      "size": [
+        512,
+        512
+      ],
+      "rgba8_bytes": 1048576
+    },
+    "v024_vehicle_premier_shroud.tga": {
+      "size": [
+        512,
+        512
+      ],
+      "rgba8_bytes": 1048576
+    },
+    "v024_vehicle_premier_tail.tga": {
+      "size": [
+        512,
+        256
+      ],
+      "rgba8_bytes": 524288
+    },
+    "v024_vehicle_premier_wrap.tga": {
+      "size": [
+        1024,
+        512
+      ],
+      "rgba8_bytes": 2097152
+    },
+    "v024_vehicle_premier_wrap_right.tga": {
+      "size": [
+        1024,
+        512
+      ],
+      "rgba8_bytes": 2097152
+    },
+    "v024_vehicle_red_light.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_rim_blue.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_rubber.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_sam_number.tga": {
+      "size": [
+        512,
+        512
+      ],
+      "rgba8_bytes": 1048576
+    },
+    "v024_vehicle_sam_paint.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_sam_shroud.tga": {
+      "size": [
+        512,
+        512
+      ],
+      "rgba8_bytes": 1048576
+    },
+    "v024_vehicle_sam_tan.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_shane_number.tga": {
+      "size": [
+        512,
+        512
+      ],
+      "rgba8_bytes": 1048576
+    },
+    "v024_vehicle_shane_shroud.tga": {
+      "size": [
+        512,
+        512
+      ],
+      "rgba8_bytes": 1048576
+    },
+    "v024_vehicle_steel.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_tire.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_tread.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_van_paint.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_wheel_black.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_white.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_yamaha_blue.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v028_alloy.tga": {
+      "size": [
+        256,
+        256
+      ],
+      "rgba8_bytes": 262144
+    },
+    "v028_entry_sign.tga": {
+      "size": [
+        256,
+        256
+      ],
+      "rgba8_bytes": 262144
+    },
+    "v028_glass.tga": {
+      "size": [
+        256,
+        256
+      ],
+      "rgba8_bytes": 262144
+    },
+    "v028_navy.tga": {
+      "size": [
+        256,
+        256
+      ],
+      "rgba8_bytes": 262144
+    },
+    "v028_rubber.tga": {
+      "size": [
+        256,
+        256
+      ],
+      "rgba8_bytes": 262144
+    },
+    "v028_timber.tga": {
+      "size": [
+        1024,
+        1024
+      ],
+      "rgba8_bytes": 4194304
+    },
+    "v028_trim.tga": {
+      "size": [
+        256,
+        256
+      ],
+      "rgba8_bytes": 262144
+    },
+    "v032_memorial_concrete.tga": {
+      "size": [
+        32,
+        32
+      ],
+      "rgba8_bytes": 4096
+    },
+    "v032_memorial_frame.tga": {
+      "size": [
+        32,
+        32
+      ],
+      "rgba8_bytes": 4096
+    },
+    "v032_pup_whatley_memorial.tga": {
+      "size": [
+        4096,
+        4096
+      ],
+      "rgba8_bytes": 67108864
+    },
+    "v033_qwikchute_concrete.tga": {
+      "size": [
+        1024,
+        1024
+      ],
+      "rgba8_bytes": 4194304
+    },
+    "v033_qwikchute_frame.tga": {
+      "size": [
+        32,
+        32
+      ],
+      "rgba8_bytes": 4096
+    },
+    "v033_qwikchute_logo.tga": {
+      "size": [
+        2048,
+        2048
+      ],
+      "rgba8_bytes": 16777216
+    },
+    "v037_asphalt.tga": {
+      "size": [
+        4096,
+        4096
+      ],
+      "rgba8_bytes": 67108864
+    },
+    "v037_wallgreen.tga": {
+      "size": [
+        256,
+        256
+      ],
+      "rgba8_bytes": 262144
+    },
+    "v037_wallwhite.tga": {
+      "size": [
+        256,
+        256
+      ],
+      "rgba8_bytes": 262144
+    },
+    "v038_cybertruck_black.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v038_cybertruck_red.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v038_orlando_speed_world.tga": {
+      "size": [
+        4096,
+        1024
+      ],
+      "rgba8_bytes": 16777216
+    },
+    "v040_american_flag.tga": {
+      "size": [
+        2048,
+        1024
+      ],
+      "rgba8_bytes": 8388608
+    },
+    "v041_crocodile_photo.tga": {
+      "size": [
+        2048,
+        1024
+      ],
+      "rgba8_bytes": 8388608
+    },
+    "v041_cybertruck_blue.tga": {
+      "size": [
+        256,
+        256
+      ],
+      "rgba8_bytes": 262144
+    },
+    "v041_cybertruck_green.tga": {
+      "size": [
+        256,
+        256
+      ],
+      "rgba8_bytes": 262144
+    },
+    "v041_cybertruck_purple.tga": {
+      "size": [
+        256,
+        256
+      ],
+      "rgba8_bytes": 262144
+    },
+    "v041_seating_dark.tga": {
+      "size": [
+        256,
+        256
+      ],
+      "rgba8_bytes": 262144
+    },
+    "v041_seating_silver.tga": {
+      "size": [
+        256,
+        256
+      ],
+      "rgba8_bytes": 262144
+    },
+    "v042_cybertruck_orange.tga": {
+      "size": [
+        256,
+        256
+      ],
+      "rgba8_bytes": 262144
+    },
+    "v042_cybertruck_pink.tga": {
+      "size": [
+        256,
+        256
+      ],
+      "rgba8_bytes": 262144
+    },
+    "v042_cybertruck_yellow.tga": {
+      "size": [
+        256,
+        256
+      ],
+      "rgba8_bytes": 262144
+    },
+    "water.tga": {
+      "size": [
+        64,
+        64
+      ],
+      "rgba8_bytes": 16384
+    }
+  },
+  "object_texture_inventory_after": {
+    "CK_CONSTS_v052_bermuda.tga": {
+      "size": [
+        1024,
+        1024
+      ],
+      "rgba8_bytes": 4194304
+    },
+    "CK_TREE_v047_pine.tga": {
+      "size": [
+        2048,
+        2048
+      ],
+      "rgba8_bytes": 16777216
+    },
+    "CK_TREE_v047_woodland.tga": {
+      "size": [
+        2048,
+        2048
+      ],
+      "rgba8_bytes": 16777216
+    },
+    "marker_white.tga": {
+      "size": [
+        64,
+        64
+      ],
+      "rgba8_bytes": 16384
+    },
+    "metal.tga": {
+      "size": [
+        64,
+        64
+      ],
+      "rgba8_bytes": 16384
+    },
+    "pine_bark.tga": {
+      "size": [
+        2048,
+        2048
+      ],
+      "rgba8_bytes": 16777216
+    },
+    "v024_alloy.tga": {
+      "size": [
+        16,
+        16
+      ],
+      "rgba8_bytes": 1024
+    },
+    "v024_glass.tga": {
+      "size": [
+        16,
+        16
+      ],
+      "rgba8_bytes": 1024
+    },
+    "v024_gravel.tga": {
+      "size": [
+        16,
+        16
+      ],
+      "rgba8_bytes": 1024
+    },
+    "v024_navy.tga": {
+      "size": [
+        16,
+        16
+      ],
+      "rgba8_bytes": 1024
+    },
+    "v024_red.tga": {
+      "size": [
+        16,
+        16
+      ],
+      "rgba8_bytes": 1024
+    },
+    "v024_roof.tga": {
+      "size": [
+        16,
+        16
+      ],
+      "rgba8_bytes": 1024
+    },
+    "v024_rubber.tga": {
+      "size": [
+        16,
+        16
+      ],
+      "rgba8_bytes": 1024
+    },
+    "v024_siding.tga": {
+      "size": [
+        16,
+        16
+      ],
+      "rgba8_bytes": 1024
+    },
+    "v024_timber.tga": {
+      "size": [
+        1024,
+        1024
+      ],
+      "rgba8_bytes": 4194304
+    },
+    "v024_trim.tga": {
+      "size": [
+        16,
+        16
+      ],
+      "rgba8_bytes": 1024
+    },
+    "v024_vehicle_alloy.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_amber.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_bithlo_photo.tga": {
+      "size": [
+        1024,
+        2048
+      ],
+      "rgba8_bytes": 8388608
+    },
+    "v024_vehicle_black_seat.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_blue_seat.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_chevy_badge.tga": {
+      "size": [
+        256,
+        128
+      ],
+      "rgba8_bytes": 131072
+    },
+    "v024_vehicle_cyber_steel.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_dark.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_engine.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_ford_badge.tga": {
+      "size": [
+        256,
+        128
+      ],
+      "rgba8_bytes": 131072
+    },
+    "v024_vehicle_fork_gold.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_four_by_four.tga": {
+      "size": [
+        256,
+        128
+      ],
+      "rgba8_bytes": 131072
+    },
+    "v024_vehicle_glass.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_headlight.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_husky_white.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_jordan_number.tga": {
+      "size": [
+        512,
+        512
+      ],
+      "rgba8_bytes": 1048576
+    },
+    "v024_vehicle_jordan_shroud.tga": {
+      "size": [
+        512,
+        512
+      ],
+      "rgba8_bytes": 1048576
+    },
+    "v024_vehicle_king_ranch.tga": {
+      "size": [
+        256,
+        128
+      ],
+      "rgba8_bytes": 131072
+    },
+    "v024_vehicle_premier_blue.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_premier_number.tga": {
+      "size": [
+        512,
+        512
+      ],
+      "rgba8_bytes": 1048576
+    },
+    "v024_vehicle_premier_shroud.tga": {
+      "size": [
+        512,
+        512
+      ],
+      "rgba8_bytes": 1048576
+    },
+    "v024_vehicle_premier_tail.tga": {
+      "size": [
+        512,
+        256
+      ],
+      "rgba8_bytes": 524288
+    },
+    "v024_vehicle_premier_wrap.tga": {
+      "size": [
+        1024,
+        512
+      ],
+      "rgba8_bytes": 2097152
+    },
+    "v024_vehicle_premier_wrap_right.tga": {
+      "size": [
+        1024,
+        512
+      ],
+      "rgba8_bytes": 2097152
+    },
+    "v024_vehicle_red_light.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_rim_blue.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_rubber.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_sam_number.tga": {
+      "size": [
+        512,
+        512
+      ],
+      "rgba8_bytes": 1048576
+    },
+    "v024_vehicle_sam_paint.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_sam_shroud.tga": {
+      "size": [
+        512,
+        512
+      ],
+      "rgba8_bytes": 1048576
+    },
+    "v024_vehicle_sam_tan.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_shane_number.tga": {
+      "size": [
+        512,
+        512
+      ],
+      "rgba8_bytes": 1048576
+    },
+    "v024_vehicle_shane_shroud.tga": {
+      "size": [
+        512,
+        512
+      ],
+      "rgba8_bytes": 1048576
+    },
+    "v024_vehicle_steel.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_tire.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_tread.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_van_paint.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_wheel_black.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_white.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v024_vehicle_yamaha_blue.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v028_alloy.tga": {
+      "size": [
+        256,
+        256
+      ],
+      "rgba8_bytes": 262144
+    },
+    "v028_entry_sign.tga": {
+      "size": [
+        256,
+        256
+      ],
+      "rgba8_bytes": 262144
+    },
+    "v028_glass.tga": {
+      "size": [
+        256,
+        256
+      ],
+      "rgba8_bytes": 262144
+    },
+    "v028_navy.tga": {
+      "size": [
+        256,
+        256
+      ],
+      "rgba8_bytes": 262144
+    },
+    "v028_rubber.tga": {
+      "size": [
+        256,
+        256
+      ],
+      "rgba8_bytes": 262144
+    },
+    "v028_timber.tga": {
+      "size": [
+        1024,
+        1024
+      ],
+      "rgba8_bytes": 4194304
+    },
+    "v028_trim.tga": {
+      "size": [
+        256,
+        256
+      ],
+      "rgba8_bytes": 262144
+    },
+    "v032_memorial_concrete.tga": {
+      "size": [
+        32,
+        32
+      ],
+      "rgba8_bytes": 4096
+    },
+    "v032_memorial_frame.tga": {
+      "size": [
+        32,
+        32
+      ],
+      "rgba8_bytes": 4096
+    },
+    "v032_pup_whatley_memorial.tga": {
+      "size": [
+        4096,
+        4096
+      ],
+      "rgba8_bytes": 67108864
+    },
+    "v033_qwikchute_concrete.tga": {
+      "size": [
+        1024,
+        1024
+      ],
+      "rgba8_bytes": 4194304
+    },
+    "v033_qwikchute_frame.tga": {
+      "size": [
+        32,
+        32
+      ],
+      "rgba8_bytes": 4096
+    },
+    "v033_qwikchute_logo.tga": {
+      "size": [
+        2048,
+        2048
+      ],
+      "rgba8_bytes": 16777216
+    },
+    "v037_asphalt.tga": {
+      "size": [
+        4096,
+        4096
+      ],
+      "rgba8_bytes": 67108864
+    },
+    "v037_wallgreen.tga": {
+      "size": [
+        256,
+        256
+      ],
+      "rgba8_bytes": 262144
+    },
+    "v037_wallwhite.tga": {
+      "size": [
+        256,
+        256
+      ],
+      "rgba8_bytes": 262144
+    },
+    "v038_cybertruck_black.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v038_cybertruck_red.tga": {
+      "size": [
+        128,
+        128
+      ],
+      "rgba8_bytes": 65536
+    },
+    "v038_orlando_speed_world.tga": {
+      "size": [
+        4096,
+        1024
+      ],
+      "rgba8_bytes": 16777216
+    },
+    "v040_american_flag.tga": {
+      "size": [
+        2048,
+        1024
+      ],
+      "rgba8_bytes": 8388608
+    },
+    "v041_crocodile_photo.tga": {
+      "size": [
+        2048,
+        1024
+      ],
+      "rgba8_bytes": 8388608
+    },
+    "v041_cybertruck_green.tga": {
+      "size": [
+        256,
+        256
+      ],
+      "rgba8_bytes": 262144
+    },
+    "v041_seating_dark.tga": {
+      "size": [
+        256,
+        256
+      ],
+      "rgba8_bytes": 262144
+    },
+    "v041_seating_silver.tga": {
+      "size": [
+        256,
+        256
+      ],
+      "rgba8_bytes": 262144
+    },
+    "v057_cardboard.tga": {
+      "size": [
+        1024,
+        256
+      ],
+      "rgba8_bytes": 1048576
+    },
+    "water.tga": {
+      "size": [
+        64,
+        64
+      ],
+      "rgba8_bytes": 16384
+    }
+  },
+  "in_game_visual_check": false,
+  "performance_test": false,
+  "approved_v057_preserved": false,
+  "approved_v057_mesh_digest": "7e76f219c8b2615481c6c08724a3553ee640db04f4db7aab3a39d81d5f7288de",
+  "approved_sign_placement_preserved": true,
+  "approved_cybertruck_colours_preserved": true,
+  "approved_van_sign_cybertrucks_records_exact": true,
+  "all_road_vehicle_and_unrelated_physics_exact": true,
+  "all_connections_materials_textures_exact": true,
+  "terrain_binding_changes": [
+    {
+      "object": "SOFTCPLAS_marker_18",
+      "vertical_shift_m": -0.12864470481872559,
+      "anchor_xz_m": [
+        238.71522521972656,
+        292.4007873535156
+      ],
+      "original_ground_clearance_retained": true
+    },
+    {
+      "object": "SOFTCPLAS_marker_56",
+      "vertical_shift_m": 0.05388760566711426,
+      "anchor_xz_m": [
+        310.0867004394531,
+        381.6905822753906
+      ],
+      "original_ground_clearance_retained": true
+    },
+    {
+      "object": "SOFTCPLAS_marker_79",
+      "vertical_shift_m": 0.10407137870788574,
+      "anchor_xz_m": [
+        252.4414520263672,
+        303.896240234375
+      ],
+      "original_ground_clearance_retained": true
+    }
+  ],
+  "requires_new_native_scenery_compile": true,
+  "reuse_saved_v057_edf": false,
+  "final_compilation_started": false
+}
