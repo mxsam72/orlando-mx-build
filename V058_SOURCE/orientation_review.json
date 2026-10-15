@@ -1,0 +1,41 @@
+{
+  "checks_pass": true,
+  "scenery_sha256": "59bb830b43402baa98260b67a0c4c01147c6bc5d3ec7dc4dd67e122fd20e8604",
+  "scenery_unchanged": true,
+  "sign_position_approved": true,
+  "sign_native_uv_contract": "same serialized polygon projection as v032 readable entry sign and v033 billboard",
+  "sign_triangle_checks": [
+    {
+      "triangle": 0,
+      "native_projection_matches_existing_readable_sign_contract": true,
+      "maximum_uv_error": 2.842170943040401e-14
+    },
+    {
+      "triangle": 1,
+      "native_projection_matches_existing_readable_sign_contract": true,
+      "maximum_uv_error": 2.842170943040401e-14
+    },
+    {
+      "triangle": 2,
+      "native_projection_matches_existing_readable_sign_contract": true,
+      "maximum_uv_error": 2.842170943040401e-14
+    },
+    {
+      "triangle": 3,
+      "native_projection_matches_existing_readable_sign_contract": true,
+      "maximum_uv_error": 2.842170943040401e-14
+    }
+  ],
+  "sign_texture_sha256": "8d2c4c35834c8301b4ebe08f011a219e483b48edb881c90cc658e5e8f46c77cc",
+  "legacy_vehicle_numbers_and_logos_already_preflipped_for_game": true,
+  "previous_placement_preview_omitted_legacy_u_compensation": true,
+  "correction": "Apply 1-U only to the documented legacy preflipped vehicle art in the CPU placement preview. No source vehicle or sign texture/UV change.",
+  "native_game_sign_appearance_verified": false,
+  "new_native_build_started": false,
+  "images": [
+    {
+      "file": "Sign_Front_Back_Orientation_Check.jpg",
+      "sha256": "6036b037d7a3f8f4aba76b6b56ad002cc7d5578097c6615fbb6c1011a31e6ae4"
+    }
+  ]
+}

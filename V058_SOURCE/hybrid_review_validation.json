@@ -1,0 +1,112 @@
+{
+  "checks_pass": true,
+  "matched_material_views": 12,
+  "comparison_rows": 4,
+  "complete_four_view_sheet": true,
+  "original_B_and_C_controls_exact": true,
+  "flat_and_deck_material_exact_C": true,
+  "approved_terrain_and_scenery_exact": true,
+  "legacy_preview_orientation_corrected": true,
+  "sign_native_projection_contract_checked": true,
+  "native_game_sign_appearance_verified": false,
+  "full_build_started": false,
+  "adds_material_images": false,
+  "adds_terrain_layers": false,
+  "images": [
+    {
+      "file": "B_01_tabletop.jpg",
+      "sha256": "4e336ff32b29c0dff5d2d533e34a29083fdd879c11980cb9b91dfaf0b811e967",
+      "bytes": 410393
+    },
+    {
+      "file": "C_01_tabletop.jpg",
+      "sha256": "725bc8a5c959266f39bae9f23cf122663573ef4a0ff54ecd827f15eefa03fce6",
+      "bytes": 464822
+    },
+    {
+      "file": "H_01_tabletop.jpg",
+      "sha256": "d5c5da1428305347c26879e6a87eb1e2ca8d729b94733e66f622b2174c99a83e",
+      "bytes": 476098
+    },
+    {
+      "file": "B_02_flat.jpg",
+      "sha256": "c4ef91ffa4d80bc1b62628e0f9a9a0e49b911e67372e0a8adbe302612d383d1e",
+      "bytes": 444958
+    },
+    {
+      "file": "C_02_flat.jpg",
+      "sha256": "616f6b8cd65eb972d50078fa25f7d4046cc7b8a5abed23eff3f7c31c6bc481a0",
+      "bytes": 495552
+    },
+    {
+      "file": "H_02_flat.jpg",
+      "sha256": "758324836f54e0b11ed4028f7c36fc0e21eb791f6712ea10177ffff5fa87ae90",
+      "bytes": 497463
+    },
+    {
+      "file": "B_03_triple.jpg",
+      "sha256": "bf37e3ecd62e0a4d5ced09f3bef44d0209fb97b611740a9e4fc5e6b234bfc2b7",
+      "bytes": 448970
+    },
+    {
+      "file": "C_03_triple.jpg",
+      "sha256": "7193bda8bfc8b8409f8c3ef34e16bd4c7d4588e00af8377589f1efef7ac3d9b1",
+      "bytes": 495310
+    },
+    {
+      "file": "H_03_triple.jpg",
+      "sha256": "0d26fecc7f30b7bd94a2cd1d4724c6eb275bc781b81acc9b468f35c26dbfde36",
+      "bytes": 503735
+    },
+    {
+      "file": "B_04_close.jpg",
+      "sha256": "b585aa87c19f1583fb345fcac94c60dc0e81ace315c9a9db3c361ff1a32dd89f",
+      "bytes": 595185
+    },
+    {
+      "file": "C_04_close.jpg",
+      "sha256": "9993b654eecca969133a7e5cede50e813b7e37a305684308ff6bc08156251127",
+      "bytes": 653125
+    },
+    {
+      "file": "H_04_close.jpg",
+      "sha256": "306bd2f2fbc18f7aacc29de6476568b6e3f161b7b15facbf786998a25a4b209d",
+      "bytes": 654800
+    },
+    {
+      "file": "Hybrid_Comparison_01_tabletop.jpg",
+      "sha256": "cb9bace6d87916ac05a9873c9605a35a961263dbd8ab5eb303d509b6a4bf005d",
+      "bytes": 1352393
+    },
+    {
+      "file": "Hybrid_Comparison_02_flat.jpg",
+      "sha256": "2cc99c7759765687a3acd79426745afb4fcc2315cb71745121876f4e0ad8e8e0",
+      "bytes": 1441452
+    },
+    {
+      "file": "Hybrid_Comparison_03_triple.jpg",
+      "sha256": "15285061a9d92ecbea49e26a8a9045a847284a0fae0c534b2c326e721c32013c",
+      "bytes": 1450154
+    },
+    {
+      "file": "Hybrid_Comparison_04_close.jpg",
+      "sha256": "4d131b396e924e2feefe99f48a28bc71e57a5f8595acce3948e7cbcbb2efecb2",
+      "bytes": 1906618
+    },
+    {
+      "file": "Orlando_Dirt_C_With_B_Jump_Grooves_4Views.jpg",
+      "sha256": "c8340c045bced462391ae26a06567d6476f1043c3753425ca53f105a8d0e1895",
+      "bytes": 6407260
+    },
+    {
+      "file": "Van_Sign_Current_Placement.jpg",
+      "sha256": "18e94960d74a717ba0a268feb4409bccf49b0913788ef39fe5ad0da24499bb01",
+      "bytes": 1140519
+    },
+    {
+      "file": "Sign_Front_Back_Orientation_Check.jpg",
+      "sha256": "6036b037d7a3f8f4aba76b6b56ad002cc7d5578097c6615fbb6c1011a31e6ae4",
+      "bytes": 632348
+    }
+  ]
+}

@@ -9,6 +9,7 @@ import json
 import math
 import re
 import sys
+import zipfile
 from collections import OrderedDict
 from pathlib import Path
 import numpy as np
@@ -147,8 +148,13 @@ def trace(section,view):
     eye=location(section,view['eye_s'],view['eye_l'],view['eye_h'])
     target=location(section,view['target_s'],view['target_l'],view['target_h'])
     if filename.exists():
-        data=dict(np.load(filename));assert int(data['width'])==WIDTH and int(data['height'])==HEIGHT
-        return {k:v for k,v in data.items() if k not in ['width','height']}
+        try:
+            with np.load(filename) as cache:data=dict(cache)
+            assert int(data['width'])==WIDTH and int(data['height'])==HEIGHT
+            assert np.allclose(data['eye'],eye) and np.allclose(data['target'],target)
+            return {k:v for k,v in data.items() if k not in ['width','height']}
+        except (OSError,ValueError,AssertionError,zipfile.BadZipFile,EOFError):
+            print('Rebuilding invalid ray cache',view['id'],flush=True)
     sy,sx=np.mgrid[:HEIGHT,:WIDTH].astype(np.float32)
     forward=target-eye;forward/=np.linalg.norm(forward)
     right=np.cross(forward,[0,0,1]);right/=np.linalg.norm(right);up=np.cross(right,forward)
@@ -167,7 +173,8 @@ def trace(section,view):
     # texture derivatives. Their colours are replaced by the same sky later.
     far=eye+rays*160;x=np.where(hit,x,far[:,:,0]);z=np.where(hit,z,far[:,:,1])
     result=dict(x=x.ravel(),z=z.ravel(),ground=p[:,:,2].ravel(),hit=hit.ravel(),eye=eye,target=target,**footprint(x,z))
-    np.savez_compressed(filename,width=WIDTH,height=HEIGHT,**result)
+    temporary=filename.with_suffix('.tmp.npz')
+    np.savez_compressed(temporary,width=WIDTH,height=HEIGHT,**result);temporary.replace(filename)
     print('Traced',view['id'],int(hit.sum()),'terrain pixels',flush=True)
     return result
 
@@ -197,7 +204,7 @@ def shade(section,ctx,rgb,raw_normal):
     return Image.fromarray(result.reshape(HEIGHT,WIDTH,3))
 
 
-def render_view(section,materials,view):
+def render_view(section,materials,view,extra_candidates=None):
     OUT.mkdir(parents=True,exist_ok=True)
     ctx=context(section,trace(section,view));prefix_rgb=np.zeros((WIDTH*HEIGHT,3),np.float32);prefix_n=np.empty((WIDTH*HEIGHT,4),np.float32);prefix_n[:]=[127.5,127.5,255,0]
     for index,block in materials.blocks:
@@ -218,6 +225,8 @@ def render_view(section,materials,view):
     cbase_n=blend(blend(prefix_n,cn,ca),n12,a12*.70)
     strength=.55/(232/255)
     candidates['C']=(blend(cbase_rgb,crgb,a13*strength),blend(cbase_n,cmacro,a13*strength))
+    if extra_candidates is not None:
+        candidates.update(extra_candidates(section,ctx,crgb,cbase_rgb,cbase_n,cmacro,n13,a13))
     rows=[];scope=ctx['scope'];valid_scope=scope>.98
     assert np.count_nonzero(valid_scope)>WIDTH*HEIGHT*.04,('Camera misses test section',view['id'])
     for method,(rgb,n) in candidates.items():

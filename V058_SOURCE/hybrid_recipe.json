@@ -1,0 +1,473 @@
+{
+  "checks_pass": true,
+  "source_only": true,
+  "native_build_started": false,
+  "scenery_placement_unchanged": true,
+  "terrain_sha256": "ab99df42094ef29015f117babeffe555e814fc7f86cf836c60625b760868289f",
+  "scenery_sha256": "59bb830b43402baa98260b67a0c4c01147c6bc5d3ec7dc4dd67e122fd20e8604",
+  "hybrid": "C photographic loam plus B macro groove normals on sloped jump faces",
+  "photographic_colour_tile_exact_C": "1b04368a8847916d209ad71fb23886939c8c0bf631a0a9a5d44b4daa8b554cf7",
+  "photo_size_m": 3.0,
+  "cavity_shading_exact_C": true,
+  "fine_normal_source": "original scanned loose normal, 3m repeats",
+  "flat_and_deck_treatment_exact_C": true,
+  "face_weight": "smooth(abs(along-route grade) from 0.06 to 0.19), only within reviewed jump feature envelopes",
+  "jump_envelopes_station_m": [
+    [
+      0.0,
+      51.5
+    ],
+    [
+      128.0,
+      177.0
+    ]
+  ],
+  "macro_normal": "blend C to original B/v056 by face weight",
+  "alpha": "blend C 55% cap toward original B strength by face weight",
+  "colour_note": "Same C photo and cavity texture. Increased face opacity reduces packed-layer colour contribution only on the enhanced faces.",
+  "adds_terrain_images": false,
+  "adds_terrain_layers": false,
+  "native_integration_pending": true,
+  "native_game_appearance_verified": false,
+  "game_memory_measured": false,
+  "face_checks": [
+    {
+      "terrain_pixels": 746476,
+      "enhanced_face_pixels": 728039,
+      "flat_pixels_exact_C": true,
+      "flat_pixel_count": 18437,
+      "maximum_face_weight": 1.0,
+      "photo_sha256": "1b04368a8847916d209ad71fb23886939c8c0bf631a0a9a5d44b4daa8b554cf7",
+      "view": "01_tabletop"
+    },
+    {
+      "terrain_pixels": 914286,
+      "enhanced_face_pixels": 0,
+      "flat_pixels_exact_C": true,
+      "flat_pixel_count": 914286,
+      "maximum_face_weight": 0.0,
+      "photo_sha256": "1b04368a8847916d209ad71fb23886939c8c0bf631a0a9a5d44b4daa8b554cf7",
+      "view": "02_flat"
+    },
+    {
+      "terrain_pixels": 863637,
+      "enhanced_face_pixels": 425067,
+      "flat_pixels_exact_C": true,
+      "flat_pixel_count": 438570,
+      "maximum_face_weight": 1.0,
+      "photo_sha256": "1b04368a8847916d209ad71fb23886939c8c0bf631a0a9a5d44b4daa8b554cf7",
+      "view": "03_triple"
+    },
+    {
+      "terrain_pixels": 1259683,
+      "enhanced_face_pixels": 0,
+      "flat_pixels_exact_C": true,
+      "flat_pixel_count": 1259683,
+      "maximum_face_weight": 0.0,
+      "photo_sha256": "1b04368a8847916d209ad71fb23886939c8c0bf631a0a9a5d44b4daa8b554cf7",
+      "view": "04_close"
+    }
+  ],
+  "renders": [
+    {
+      "method": "v056",
+      "view": "01_tabletop",
+      "file": "v056_01_tabletop.jpg",
+      "sha256": "dc0a03620f2cff4aad574a4b68f2e17cdb0612c986b53016fa40a7231b34a0e9",
+      "eye_xzy_m": [
+        304.84075927734375,
+        184.90855407714844,
+        6.001609802246094
+      ],
+      "target_xzy_m": [
+        330.7736511230469,
+        186.6453094482422,
+        6.255619525909424
+      ],
+      "pixels_in_full_strength_section": 745563,
+      "changes_outside_section": 0,
+      "mean_abs_colour_difference_to_v056": 0.0,
+      "mean_abs_normal_difference_to_v056": 0.0
+    },
+    {
+      "method": "A",
+      "view": "01_tabletop",
+      "file": "A_01_tabletop.jpg",
+      "sha256": "36079e17df08975c08d86ec1047d7c7354a79601d04648aef446b18483a5dbf6",
+      "eye_xzy_m": [
+        304.84075927734375,
+        184.90855407714844,
+        6.001609802246094
+      ],
+      "target_xzy_m": [
+        330.7736511230469,
+        186.6453094482422,
+        6.255619525909424
+      ],
+      "pixels_in_full_strength_section": 745563,
+      "changes_outside_section": 0,
+      "mean_abs_colour_difference_to_v056": 2.7827301698346782,
+      "mean_abs_normal_difference_to_v056": 10.67706034120086
+    },
+    {
+      "method": "B",
+      "view": "01_tabletop",
+      "file": "B_01_tabletop.jpg",
+      "sha256": "4e336ff32b29c0dff5d2d533e34a29083fdd879c11980cb9b91dfaf0b811e967",
+      "eye_xzy_m": [
+        304.84075927734375,
+        184.90855407714844,
+        6.001609802246094
+      ],
+      "target_xzy_m": [
+        330.7736511230469,
+        186.6453094482422,
+        6.255619525909424
+      ],
+      "pixels_in_full_strength_section": 745563,
+      "changes_outside_section": 0,
+      "mean_abs_colour_difference_to_v056": 5.86421589837832,
+      "mean_abs_normal_difference_to_v056": 0.0
+    },
+    {
+      "method": "C",
+      "view": "01_tabletop",
+      "file": "C_01_tabletop.jpg",
+      "sha256": "725bc8a5c959266f39bae9f23cf122663573ef4a0ff54ecd827f15eefa03fce6",
+      "eye_xzy_m": [
+        304.84075927734375,
+        184.90855407714844,
+        6.001609802246094
+      ],
+      "target_xzy_m": [
+        330.7736511230469,
+        186.6453094482422,
+        6.255619525909424
+      ],
+      "pixels_in_full_strength_section": 745563,
+      "changes_outside_section": 0,
+      "mean_abs_colour_difference_to_v056": 8.399803151676327,
+      "mean_abs_normal_difference_to_v056": 10.934690537399206
+    },
+    {
+      "method": "H",
+      "view": "01_tabletop",
+      "file": "H_01_tabletop.jpg",
+      "sha256": "d5c5da1428305347c26879e6a87eb1e2ca8d729b94733e66f622b2174c99a83e",
+      "eye_xzy_m": [
+        304.84075927734375,
+        184.90855407714844,
+        6.001609802246094
+      ],
+      "target_xzy_m": [
+        330.7736511230469,
+        186.6453094482422,
+        6.255619525909424
+      ],
+      "pixels_in_full_strength_section": 745563,
+      "changes_outside_section": 0,
+      "mean_abs_colour_difference_to_v056": 9.291537078421259,
+      "mean_abs_normal_difference_to_v056": 2.3546114065780954
+    },
+    {
+      "method": "v056",
+      "view": "02_flat",
+      "file": "v056_02_flat.jpg",
+      "sha256": "c4e556133d0d5b239c94f7d504408c1e6aedd350acaf9ece31c242f2d1a29b8b",
+      "eye_xzy_m": [
+        356.5814208984375,
+        188.626708984375,
+        4.760256290435791
+      ],
+      "target_xzy_m": [
+        376.0539855957031,
+        196.23731994628906,
+        3.384239673614502
+      ],
+      "pixels_in_full_strength_section": 851931,
+      "changes_outside_section": 0,
+      "mean_abs_colour_difference_to_v056": 0.0,
+      "mean_abs_normal_difference_to_v056": 0.0
+    },
+    {
+      "method": "A",
+      "view": "02_flat",
+      "file": "A_02_flat.jpg",
+      "sha256": "c02c32ab840c5c020a146df33780cbc862586ad19e9073353dd8b6d90f375bee",
+      "eye_xzy_m": [
+        356.5814208984375,
+        188.626708984375,
+        4.760256290435791
+      ],
+      "target_xzy_m": [
+        376.0539855957031,
+        196.23731994628906,
+        3.384239673614502
+      ],
+      "pixels_in_full_strength_section": 851931,
+      "changes_outside_section": 0,
+      "mean_abs_colour_difference_to_v056": 2.2946994246927384,
+      "mean_abs_normal_difference_to_v056": 7.871880076626451
+    },
+    {
+      "method": "B",
+      "view": "02_flat",
+      "file": "B_02_flat.jpg",
+      "sha256": "c4ef91ffa4d80bc1b62628e0f9a9a0e49b911e67372e0a8adbe302612d383d1e",
+      "eye_xzy_m": [
+        356.5814208984375,
+        188.626708984375,
+        4.760256290435791
+      ],
+      "target_xzy_m": [
+        376.0539855957031,
+        196.23731994628906,
+        3.384239673614502
+      ],
+      "pixels_in_full_strength_section": 851931,
+      "changes_outside_section": 0,
+      "mean_abs_colour_difference_to_v056": 4.111234750391048,
+      "mean_abs_normal_difference_to_v056": 0.0
+    },
+    {
+      "method": "C",
+      "view": "02_flat",
+      "file": "C_02_flat.jpg",
+      "sha256": "616f6b8cd65eb972d50078fa25f7d4046cc7b8a5abed23eff3f7c31c6bc481a0",
+      "eye_xzy_m": [
+        356.5814208984375,
+        188.626708984375,
+        4.760256290435791
+      ],
+      "target_xzy_m": [
+        376.0539855957031,
+        196.23731994628906,
+        3.384239673614502
+      ],
+      "pixels_in_full_strength_section": 851931,
+      "changes_outside_section": 0,
+      "mean_abs_colour_difference_to_v056": 6.335741065018884,
+      "mean_abs_normal_difference_to_v056": 8.516699657773625
+    },
+    {
+      "method": "H",
+      "view": "02_flat",
+      "file": "H_02_flat.jpg",
+      "sha256": "758324836f54e0b11ed4028f7c36fc0e21eb791f6712ea10177ffff5fa87ae90",
+      "eye_xzy_m": [
+        356.5814208984375,
+        188.626708984375,
+        4.760256290435791
+      ],
+      "target_xzy_m": [
+        376.0539855957031,
+        196.23731994628906,
+        3.384239673614502
+      ],
+      "pixels_in_full_strength_section": 851931,
+      "changes_outside_section": 0,
+      "mean_abs_colour_difference_to_v056": 6.335741065018884,
+      "mean_abs_normal_difference_to_v056": 8.516699657773625
+    },
+    {
+      "method": "v056",
+      "view": "03_triple",
+      "file": "v056_03_triple.jpg",
+      "sha256": "02cd97c62401fe79564d3aef8afe3ba9ec508bc9b3f07625d1e06c3bd8ee1159",
+      "eye_xzy_m": [
+        364.4328918457031,
+        222.91294860839844,
+        4.793875217437744
+      ],
+      "target_xzy_m": [
+        342.6131286621094,
+        221.92051696777344,
+        4.749661922454834
+      ],
+      "pixels_in_full_strength_section": 821467,
+      "changes_outside_section": 0,
+      "mean_abs_colour_difference_to_v056": 0.0,
+      "mean_abs_normal_difference_to_v056": 0.0
+    },
+    {
+      "method": "A",
+      "view": "03_triple",
+      "file": "A_03_triple.jpg",
+      "sha256": "9a7980575bdb7ec2ae8404bdfd57c5f53b95d77b006d92cf1804302e5b349cb1",
+      "eye_xzy_m": [
+        364.4328918457031,
+        222.91294860839844,
+        4.793875217437744
+      ],
+      "target_xzy_m": [
+        342.6131286621094,
+        221.92051696777344,
+        4.749661922454834
+      ],
+      "pixels_in_full_strength_section": 821467,
+      "changes_outside_section": 0,
+      "mean_abs_colour_difference_to_v056": 2.2652472989491415,
+      "mean_abs_normal_difference_to_v056": 7.532231342040943
+    },
+    {
+      "method": "B",
+      "view": "03_triple",
+      "file": "B_03_triple.jpg",
+      "sha256": "bf37e3ecd62e0a4d5ced09f3bef44d0209fb97b611740a9e4fc5e6b234bfc2b7",
+      "eye_xzy_m": [
+        364.4328918457031,
+        222.91294860839844,
+        4.793875217437744
+      ],
+      "target_xzy_m": [
+        342.6131286621094,
+        221.92051696777344,
+        4.749661922454834
+      ],
+      "pixels_in_full_strength_section": 821467,
+      "changes_outside_section": 0,
+      "mean_abs_colour_difference_to_v056": 3.9707861797265167,
+      "mean_abs_normal_difference_to_v056": 0.0
+    },
+    {
+      "method": "C",
+      "view": "03_triple",
+      "file": "C_03_triple.jpg",
+      "sha256": "7193bda8bfc8b8409f8c3ef34e16bd4c7d4588e00af8377589f1efef7ac3d9b1",
+      "eye_xzy_m": [
+        364.4328918457031,
+        222.91294860839844,
+        4.793875217437744
+      ],
+      "target_xzy_m": [
+        342.6131286621094,
+        221.92051696777344,
+        4.749661922454834
+      ],
+      "pixels_in_full_strength_section": 821467,
+      "changes_outside_section": 0,
+      "mean_abs_colour_difference_to_v056": 6.292471159496622,
+      "mean_abs_normal_difference_to_v056": 8.525968893635838
+    },
+    {
+      "method": "H",
+      "view": "03_triple",
+      "file": "H_03_triple.jpg",
+      "sha256": "0d26fecc7f30b7bd94a2cd1d4724c6eb275bc781b81acc9b468f35c26dbfde36",
+      "eye_xzy_m": [
+        364.4328918457031,
+        222.91294860839844,
+        4.793875217437744
+      ],
+      "target_xzy_m": [
+        342.6131286621094,
+        221.92051696777344,
+        4.749661922454834
+      ],
+      "pixels_in_full_strength_section": 821467,
+      "changes_outside_section": 0,
+      "mean_abs_colour_difference_to_v056": 6.519985117662111,
+      "mean_abs_normal_difference_to_v056": 5.8055146050046655
+    },
+    {
+      "method": "v056",
+      "view": "04_close",
+      "file": "v056_04_close.jpg",
+      "sha256": "aca96802f9c92a5deca386290f106cce9500ca28c55284225b838f1e04af8ae4",
+      "eye_xzy_m": [
+        354.00433349609375,
+        190.98828125,
+        3.5920004844665527
+      ],
+      "target_xzy_m": [
+        356.9786682128906,
+        191.63006591796875,
+        3.0326006412506104
+      ],
+      "pixels_in_full_strength_section": 1246162,
+      "changes_outside_section": 0,
+      "mean_abs_colour_difference_to_v056": 0.0,
+      "mean_abs_normal_difference_to_v056": 0.0
+    },
+    {
+      "method": "A",
+      "view": "04_close",
+      "file": "A_04_close.jpg",
+      "sha256": "fa8abcd54c36bf42b8d2f1966dfd4be85c5a4af353d06e8e843635a771e00c78",
+      "eye_xzy_m": [
+        354.00433349609375,
+        190.98828125,
+        3.5920004844665527
+      ],
+      "target_xzy_m": [
+        356.9786682128906,
+        191.63006591796875,
+        3.0326006412506104
+      ],
+      "pixels_in_full_strength_section": 1246162,
+      "changes_outside_section": 0,
+      "mean_abs_colour_difference_to_v056": 2.8449578512540152,
+      "mean_abs_normal_difference_to_v056": 9.980984861261508
+    },
+    {
+      "method": "B",
+      "view": "04_close",
+      "file": "B_04_close.jpg",
+      "sha256": "b585aa87c19f1583fb345fcac94c60dc0e81ace315c9a9db3c361ff1a32dd89f",
+      "eye_xzy_m": [
+        354.00433349609375,
+        190.98828125,
+        3.5920004844665527
+      ],
+      "target_xzy_m": [
+        356.9786682128906,
+        191.63006591796875,
+        3.0326006412506104
+      ],
+      "pixels_in_full_strength_section": 1246162,
+      "changes_outside_section": 0,
+      "mean_abs_colour_difference_to_v056": 5.796720057644731,
+      "mean_abs_normal_difference_to_v056": 0.0
+    },
+    {
+      "method": "C",
+      "view": "04_close",
+      "file": "C_04_close.jpg",
+      "sha256": "9993b654eecca969133a7e5cede50e813b7e37a305684308ff6bc08156251127",
+      "eye_xzy_m": [
+        354.00433349609375,
+        190.98828125,
+        3.5920004844665527
+      ],
+      "target_xzy_m": [
+        356.9786682128906,
+        191.63006591796875,
+        3.0326006412506104
+      ],
+      "pixels_in_full_strength_section": 1246162,
+      "changes_outside_section": 0,
+      "mean_abs_colour_difference_to_v056": 8.315284980575992,
+      "mean_abs_normal_difference_to_v056": 11.244156512296716
+    },
+    {
+      "method": "H",
+      "view": "04_close",
+      "file": "H_04_close.jpg",
+      "sha256": "306bd2f2fbc18f7aacc29de6476568b6e3f161b7b15facbf786998a25a4b209d",
+      "eye_xzy_m": [
+        354.00433349609375,
+        190.98828125,
+        3.5920004844665527
+      ],
+      "target_xzy_m": [
+        356.9786682128906,
+        191.63006591796875,
+        3.0326006412506104
+      ],
+      "pixels_in_full_strength_section": 1246162,
+      "changes_outside_section": 0,
+      "mean_abs_colour_difference_to_v056": 8.315284980575992,
+      "mean_abs_normal_difference_to_v056": 11.244156512296716
+    }
+  ]
+}
