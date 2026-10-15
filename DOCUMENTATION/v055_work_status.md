@@ -16,3 +16,11 @@ Local source height/palette/allocation checks and a complete native staging pref
 The official Windows workflow must compile FBX2EDF, TerrainEd collision, TrackEd line merge and TerrainEd graphics; then verify native texture signatures, object coordinates, matte foliage, retained race files and the 13-entry PKZ. Publication is gated on these checks and a package no larger than v054's 920,767,498 bytes. Source and native checkpoints are saved before publication for recovery.
 
 Actual game load, first-lap timing, R03 riding, appearance and FPS still require the user's game test. This document does not claim a completed native build until the release section is added.
+
+## Native build in progress
+
+Code commit: `2417e74b57ad59945a63a0ab057ade29a60c9d82`.
+
+Run: https://github.com/mxsam72/orlando-mx-build/actions/runs/38658838015
+
+The Windows run has passed delivered-input recovery, terrain/scenery/race repair, material palette/allocation checks and matched source renders. The source checkpoint has been preserved. Official native compilation and final package validation/publication are running. The compiled download is not yet verified or public.
