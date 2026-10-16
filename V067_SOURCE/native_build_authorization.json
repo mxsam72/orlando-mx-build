@@ -1,0 +1,13 @@
+{
+  "version": "v067",
+  "native_compilation_authorized": true,
+  "authorization": "User reviewed the six v067 screenshots and requested the full native MX Bikes compilation in this conversation",
+  "baseline": "rebuild-v066",
+  "reference_preview_run_id": 38954524092,
+  "retain_track_layout": true,
+  "retain_geometry": true,
+  "retain_scenery": true,
+  "only_changed_material_maps": 6,
+  "daylight_target": "approximately 11 a.m. Florida sunshine",
+  "output": "OrlandoMX_2026_v067.pkz"
+}
