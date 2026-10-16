@@ -1,3 +1,4 @@
+# Rebuild after cross-platform LF normalization of v067 lighting and map params.
 name: Native v067 build - approved dirt and 11am daylight
 
 on:
