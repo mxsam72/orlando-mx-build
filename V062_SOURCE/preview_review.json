@@ -1,0 +1,4318 @@
+{
+  "version": "v062 three dirt trials",
+  "source_only": true,
+  "in_game_captures": false,
+  "scenery_omitted": true,
+  "final_compilation_started": false,
+  "wall_roller_preserved": true,
+  "terrain_sha256": "860350c4c733e5d26939e9e2f40204679ecef302d6e07889f78a849afc8a8fa2",
+  "scenery_sha256": "40d8e6ddeacfa0d0c3c9fad454abd2f83acee633fb367e31c8530d8dbafa6e99",
+  "trial_validation_sha256": "0a5577e1a0edb705acc199217ccb239a70c361d989c2cd7cef55990b373996ce",
+  "resolution": [
+    1600,
+    1000
+  ],
+  "designs": {
+    "A": {
+      "title": "A - Deep tilled loam",
+      "description": "Heavy, irregular clods through corners; short broken cultivation on faces. No crosswise tractor comb.",
+      "wear": 0.66
+    },
+    "B": {
+      "title": "B - Flowing cultivation",
+      "description": "Irregularly spaced curved grooves follow the riding line through corners and lengthwise up jump faces.",
+      "wear": 0.66
+    },
+    "C": {
+      "title": "C - Ridden loam",
+      "description": "Broken wheel ruts through mixed loose loam, with churned shoulders and stronger shape cues at distance.",
+      "wear": 0.62
+    }
+  },
+  "renders": [
+    {
+      "key": "0a5577e1a0edb705acc199217ccb239a70c361d989c2cd7cef55990b373996cef8396562560cfce6ddcd8243dc4697ebb0fe4a1deccb0d812edc95fab9c91349573ab7de0b4107b3b5817b5aa1a89a000e9e9bf30762e8087f6770722c7aa884",
+      "file": "Orlando_v062_REF_01.jpg",
+      "method": "REF",
+      "original_light": false,
+      "view": {
+        "id": "01",
+        "title": "Corner 01 / approaching the turn",
+        "eye_s": 68.0,
+        "target_s": 98.0,
+        "eye_h": 1.85,
+        "target_h": 0.35,
+        "eye_l": 0.0,
+        "target_l": 0.0,
+        "fov": 66.0
+      },
+      "sha256": "d649fbff2bed2a82c2256a7e8790df4de968b567e40574b7c5589ff239f4657c",
+      "eye_xzy_m": [
+        366.1679382324219,
+        191.43048095703125,
+        4.941479682922363
+      ],
+      "target_xzy_m": [
+        382.671142578125,
+        211.95184326171875,
+        3.3353629112243652
+      ],
+      "seconds": 26.06,
+      "terrain_pixels": 897828,
+      "medium_distance_albedo_luma_std": 5.375316866399032,
+      "medium_distance_pixels": 233013,
+      "layers": [
+        {
+          "layer": 13,
+          "sampled_pixels": 850033,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 12,
+          "sampled_pixels": 848657,
+          "colour": "v045_packed.tga",
+          "colour_repeats": 300.0,
+          "normal": "v045_packed_n.tga",
+          "normal_repeats": 300.0
+        },
+        {
+          "layer": 11,
+          "sampled_pixels": 851697,
+          "colour": "v045_loose.tga",
+          "colour_repeats": 200.0,
+          "normal": "v045_loose_n.tga",
+          "normal_repeats": 200.0
+        },
+        {
+          "layer": 10,
+          "sampled_pixels": 0,
+          "colour": "v024_pit_gravel.tga",
+          "colour_repeats": 95.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 9,
+          "sampled_pixels": 0,
+          "colour": "v032_face.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_face_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 8,
+          "sampled_pixels": 500,
+          "colour": "v032_packed.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_packed_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 7,
+          "sampled_pixels": 63,
+          "colour": "v032_pits.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_pits_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 6,
+          "sampled_pixels": 31644,
+          "colour": "v032_worked.tga",
+          "colour_repeats": 157.0,
+          "normal": "v032_worked_n.tga",
+          "normal_repeats": 157.0
+        },
+        {
+          "layer": 5,
+          "sampled_pixels": 6418,
+          "colour": "v032_grass.tga",
+          "colour_repeats": 82.0,
+          "normal": "grass_n.tga",
+          "normal_repeats": 82.0
+        },
+        {
+          "layer": 4,
+          "sampled_pixels": 3117,
+          "colour": "v032_sand.tga",
+          "colour_repeats": 181.0,
+          "normal": "v032_sand_n.tga",
+          "normal_repeats": 181.0
+        },
+        {
+          "layer": 3,
+          "sampled_pixels": 0,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 2,
+          "sampled_pixels": 65464,
+          "colour": "v032_prepared.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_prepared_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 1,
+          "sampled_pixels": 93215,
+          "colour": "v032_soil.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_soil_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 0,
+          "sampled_pixels": 0,
+          "colour": "basemap.tga",
+          "colour_repeats": 1.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        }
+      ]
+    },
+    {
+      "key": "0a5577e1a0edb705acc199217ccb239a70c361d989c2cd7cef55990b373996cef8396562560cfce6ddcd8243dc4697ebb0fe4a1deccb0d812edc95fab9c91349573ab7de0b4107b3b5817b5aa1a89a000e9e9bf30762e8087f6770722c7aa884",
+      "file": "Orlando_v062_REF_02.jpg",
+      "method": "REF",
+      "original_light": false,
+      "view": {
+        "id": "02",
+        "title": "Corner 01 / full berm and riding line",
+        "eye_s": 78.0,
+        "target_s": 103.0,
+        "eye_h": 6.0,
+        "target_h": 0.35,
+        "eye_l": -9.0,
+        "target_l": 0.0,
+        "fov": 64.0
+      },
+      "sha256": "60a99f21bc575935fa597fd3c07d25b96165c88046c62acc1bbb0be605edba11",
+      "eye_xzy_m": [
+        379.4185791015625,
+        187.8158721923828,
+        9.053193092346191
+      ],
+      "target_xzy_m": [
+        379.7173156738281,
+        215.9459991455078,
+        3.370154619216919
+      ],
+      "seconds": 22.65,
+      "terrain_pixels": 1137243,
+      "medium_distance_albedo_luma_std": 6.377887575978784,
+      "medium_distance_pixels": 636147,
+      "layers": [
+        {
+          "layer": 13,
+          "sampled_pixels": 941783,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 12,
+          "sampled_pixels": 938869,
+          "colour": "v045_packed.tga",
+          "colour_repeats": 300.0,
+          "normal": "v045_packed_n.tga",
+          "normal_repeats": 300.0
+        },
+        {
+          "layer": 11,
+          "sampled_pixels": 964792,
+          "colour": "v045_loose.tga",
+          "colour_repeats": 200.0,
+          "normal": "v045_loose_n.tga",
+          "normal_repeats": 200.0
+        },
+        {
+          "layer": 10,
+          "sampled_pixels": 0,
+          "colour": "v024_pit_gravel.tga",
+          "colour_repeats": 95.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 9,
+          "sampled_pixels": 1572,
+          "colour": "v032_face.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_face_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 8,
+          "sampled_pixels": 2502,
+          "colour": "v032_packed.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_packed_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 7,
+          "sampled_pixels": 1593,
+          "colour": "v032_pits.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_pits_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 6,
+          "sampled_pixels": 75249,
+          "colour": "v032_worked.tga",
+          "colour_repeats": 157.0,
+          "normal": "v032_worked_n.tga",
+          "normal_repeats": 157.0
+        },
+        {
+          "layer": 5,
+          "sampled_pixels": 77375,
+          "colour": "v032_grass.tga",
+          "colour_repeats": 82.0,
+          "normal": "grass_n.tga",
+          "normal_repeats": 82.0
+        },
+        {
+          "layer": 4,
+          "sampled_pixels": 8129,
+          "colour": "v032_sand.tga",
+          "colour_repeats": 181.0,
+          "normal": "v032_sand_n.tga",
+          "normal_repeats": 181.0
+        },
+        {
+          "layer": 3,
+          "sampled_pixels": 3028,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 2,
+          "sampled_pixels": 142159,
+          "colour": "v032_prepared.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_prepared_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 1,
+          "sampled_pixels": 262070,
+          "colour": "v032_soil.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_soil_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 0,
+          "sampled_pixels": 0,
+          "colour": "basemap.tga",
+          "colour_repeats": 1.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        }
+      ]
+    },
+    {
+      "key": "0a5577e1a0edb705acc199217ccb239a70c361d989c2cd7cef55990b373996cef8396562560cfce6ddcd8243dc4697ebb0fe4a1deccb0d812edc95fab9c91349573ab7de0b4107b3b5817b5aa1a89a000e9e9bf30762e8087f6770722c7aa884",
+      "file": "Orlando_v062_REF_03.jpg",
+      "method": "REF",
+      "original_light": false,
+      "view": {
+        "id": "03",
+        "title": "R03 table-single / takeoff face",
+        "eye_s": 226.0,
+        "target_s": 249.0,
+        "eye_h": 1.8,
+        "target_h": 0.55,
+        "eye_l": 0.0,
+        "target_l": 0.0,
+        "fov": 64.0
+      },
+      "sha256": "b18db7143a03fa97f98778c98ab5c110e4e54aaf727a19718359a2cc8d7efb48",
+      "eye_xzy_m": [
+        264.1531066894531,
+        236.23707580566406,
+        4.650883197784424
+      ],
+      "target_xzy_m": [
+        254.39645385742188,
+        256.9368896484375,
+        5.98274040222168
+      ],
+      "seconds": 18.08,
+      "terrain_pixels": 742107,
+      "medium_distance_albedo_luma_std": 7.146358694210396,
+      "medium_distance_pixels": 212187,
+      "layers": [
+        {
+          "layer": 13,
+          "sampled_pixels": 739361,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 12,
+          "sampled_pixels": 739272,
+          "colour": "v045_packed.tga",
+          "colour_repeats": 300.0,
+          "normal": "v045_packed_n.tga",
+          "normal_repeats": 300.0
+        },
+        {
+          "layer": 11,
+          "sampled_pixels": 739361,
+          "colour": "v045_loose.tga",
+          "colour_repeats": 200.0,
+          "normal": "v045_loose_n.tga",
+          "normal_repeats": 200.0
+        },
+        {
+          "layer": 10,
+          "sampled_pixels": 0,
+          "colour": "v024_pit_gravel.tga",
+          "colour_repeats": 95.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 9,
+          "sampled_pixels": 0,
+          "colour": "v032_face.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_face_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 8,
+          "sampled_pixels": 28,
+          "colour": "v032_packed.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_packed_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 7,
+          "sampled_pixels": 0,
+          "colour": "v032_pits.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_pits_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 6,
+          "sampled_pixels": 11656,
+          "colour": "v032_worked.tga",
+          "colour_repeats": 157.0,
+          "normal": "v032_worked_n.tga",
+          "normal_repeats": 157.0
+        },
+        {
+          "layer": 5,
+          "sampled_pixels": 1123,
+          "colour": "v032_grass.tga",
+          "colour_repeats": 82.0,
+          "normal": "grass_n.tga",
+          "normal_repeats": 82.0
+        },
+        {
+          "layer": 4,
+          "sampled_pixels": 1891,
+          "colour": "v032_sand.tga",
+          "colour_repeats": 181.0,
+          "normal": "v032_sand_n.tga",
+          "normal_repeats": 181.0
+        },
+        {
+          "layer": 3,
+          "sampled_pixels": 80,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 2,
+          "sampled_pixels": 20828,
+          "colour": "v032_prepared.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_prepared_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 1,
+          "sampled_pixels": 22888,
+          "colour": "v032_soil.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_soil_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 0,
+          "sampled_pixels": 0,
+          "colour": "basemap.tga",
+          "colour_repeats": 1.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        }
+      ]
+    },
+    {
+      "key": "0a5577e1a0edb705acc199217ccb239a70c361d989c2cd7cef55990b373996cef8396562560cfce6ddcd8243dc4697ebb0fe4a1deccb0d812edc95fab9c91349573ab7de0b4107b3b5817b5aa1a89a000e9e9bf30762e8087f6770722c7aa884",
+      "file": "Orlando_v062_REF_04.jpg",
+      "method": "REF",
+      "original_light": false,
+      "view": {
+        "id": "04",
+        "title": "Corner 03 / landing exit into the turn",
+        "eye_s": 270.0,
+        "target_s": 294.0,
+        "eye_h": 1.85,
+        "target_h": 0.35,
+        "eye_l": 0.0,
+        "target_l": 0.0,
+        "fov": 65.0
+      },
+      "sha256": "c379d5085e2ab4ef335791f811ea879348016b523aa4f0898a7578d564bf3351",
+      "eye_xzy_m": [
+        247.16517639160156,
+        276.6110534667969,
+        6.592228412628174
+      ],
+      "target_xzy_m": [
+        251.43130493164062,
+        295.87493896484375,
+        3.4664549827575684
+      ],
+      "seconds": 11.86,
+      "terrain_pixels": 1101689,
+      "medium_distance_albedo_luma_std": 6.278184862989377,
+      "medium_distance_pixels": 461859,
+      "layers": [
+        {
+          "layer": 13,
+          "sampled_pixels": 1020026,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 12,
+          "sampled_pixels": 1019248,
+          "colour": "v045_packed.tga",
+          "colour_repeats": 300.0,
+          "normal": "v045_packed_n.tga",
+          "normal_repeats": 300.0
+        },
+        {
+          "layer": 11,
+          "sampled_pixels": 1020024,
+          "colour": "v045_loose.tga",
+          "colour_repeats": 200.0,
+          "normal": "v045_loose_n.tga",
+          "normal_repeats": 200.0
+        },
+        {
+          "layer": 10,
+          "sampled_pixels": 0,
+          "colour": "v024_pit_gravel.tga",
+          "colour_repeats": 95.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 9,
+          "sampled_pixels": 0,
+          "colour": "v032_face.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_face_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 8,
+          "sampled_pixels": 0,
+          "colour": "v032_packed.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_packed_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 7,
+          "sampled_pixels": 0,
+          "colour": "v032_pits.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_pits_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 6,
+          "sampled_pixels": 23438,
+          "colour": "v032_worked.tga",
+          "colour_repeats": 157.0,
+          "normal": "v032_worked_n.tga",
+          "normal_repeats": 157.0
+        },
+        {
+          "layer": 5,
+          "sampled_pixels": 723,
+          "colour": "v032_grass.tga",
+          "colour_repeats": 82.0,
+          "normal": "grass_n.tga",
+          "normal_repeats": 82.0
+        },
+        {
+          "layer": 4,
+          "sampled_pixels": 4713,
+          "colour": "v032_sand.tga",
+          "colour_repeats": 181.0,
+          "normal": "v032_sand_n.tga",
+          "normal_repeats": 181.0
+        },
+        {
+          "layer": 3,
+          "sampled_pixels": 0,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 2,
+          "sampled_pixels": 51892,
+          "colour": "v032_prepared.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_prepared_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 1,
+          "sampled_pixels": 120612,
+          "colour": "v032_soil.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_soil_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 0,
+          "sampled_pixels": 0,
+          "colour": "basemap.tga",
+          "colour_repeats": 1.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        }
+      ]
+    },
+    {
+      "key": "0a5577e1a0edb705acc199217ccb239a70c361d989c2cd7cef55990b373996cef8396562560cfce6ddcd8243dc4697ebb0fe4a1deccb0d812edc95fab9c91349573ab7de0b4107b3b5817b5aa1a89a000e9e9bf30762e8087f6770722c7aa884",
+      "file": "Orlando_v062_REF_05.jpg",
+      "method": "REF",
+      "original_light": false,
+      "view": {
+        "id": "05",
+        "title": "Corner 03 / full width and boundary",
+        "eye_s": 276.0,
+        "target_s": 301.0,
+        "eye_h": 6.0,
+        "target_h": 0.35,
+        "eye_l": -9.0,
+        "target_l": 0.0,
+        "eye_xzy_m": [
+          230.0,
+          269.0,
+          19.0
+        ],
+        "target_xzy_m": [
+          250.0,
+          289.0,
+          3.5
+        ],
+        "fov": 64.0
+      },
+      "sha256": "b028bd881d67fb06e1d9c1126c947ad3f99ea6724c123d3264d5a54df078f364",
+      "eye_xzy_m": [
+        230.0,
+        269.0,
+        19.0
+      ],
+      "target_xzy_m": [
+        250.0,
+        289.0,
+        3.5
+      ],
+      "seconds": 25.06,
+      "terrain_pixels": 1600000,
+      "medium_distance_albedo_luma_std": 5.798730925576282,
+      "medium_distance_pixels": 826440,
+      "layers": [
+        {
+          "layer": 13,
+          "sampled_pixels": 1207852,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 12,
+          "sampled_pixels": 1202493,
+          "colour": "v045_packed.tga",
+          "colour_repeats": 300.0,
+          "normal": "v045_packed_n.tga",
+          "normal_repeats": 300.0
+        },
+        {
+          "layer": 11,
+          "sampled_pixels": 1206950,
+          "colour": "v045_loose.tga",
+          "colour_repeats": 200.0,
+          "normal": "v045_loose_n.tga",
+          "normal_repeats": 200.0
+        },
+        {
+          "layer": 10,
+          "sampled_pixels": 0,
+          "colour": "v024_pit_gravel.tga",
+          "colour_repeats": 95.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 9,
+          "sampled_pixels": 0,
+          "colour": "v032_face.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_face_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 8,
+          "sampled_pixels": 1167,
+          "colour": "v032_packed.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_packed_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 7,
+          "sampled_pixels": 0,
+          "colour": "v032_pits.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_pits_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 6,
+          "sampled_pixels": 116262,
+          "colour": "v032_worked.tga",
+          "colour_repeats": 157.0,
+          "normal": "v032_worked_n.tga",
+          "normal_repeats": 157.0
+        },
+        {
+          "layer": 5,
+          "sampled_pixels": 0,
+          "colour": "v032_grass.tga",
+          "colour_repeats": 82.0,
+          "normal": "grass_n.tga",
+          "normal_repeats": 82.0
+        },
+        {
+          "layer": 4,
+          "sampled_pixels": 26773,
+          "colour": "v032_sand.tga",
+          "colour_repeats": 181.0,
+          "normal": "v032_sand_n.tga",
+          "normal_repeats": 181.0
+        },
+        {
+          "layer": 3,
+          "sampled_pixels": 2469,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 2,
+          "sampled_pixels": 268811,
+          "colour": "v032_prepared.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_prepared_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 1,
+          "sampled_pixels": 582304,
+          "colour": "v032_soil.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_soil_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 0,
+          "sampled_pixels": 0,
+          "colour": "basemap.tga",
+          "colour_repeats": 1.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        }
+      ]
+    },
+    {
+      "key": "0a5577e1a0edb705acc199217ccb239a70c361d989c2cd7cef55990b373996cef8396562560cfce6ddcd8243dc4697ebb0fe4a1deccb0d812edc95fab9c91349573ab7de0b4107b3b5817b5aa1a89a000e9e9bf30762e8087f6770722c7aa884",
+      "file": "Orlando_v062_REF_06.jpg",
+      "method": "REF",
+      "original_light": false,
+      "view": {
+        "id": "06",
+        "title": "R04 / flatter riding surface and face",
+        "eye_s": 316.0,
+        "target_s": 341.0,
+        "eye_h": 1.85,
+        "target_h": 0.35,
+        "eye_l": 0.0,
+        "target_l": 0.0,
+        "fov": 64.0
+      },
+      "sha256": "d308f1c30fffbb0bffe31a6f481257e17546c39b634d325c69d1d9e3cd982105",
+      "eye_xzy_m": [
+        265.7679748535156,
+        279.54248046875,
+        4.747391700744629
+      ],
+      "target_xzy_m": [
+        277.6184387207031,
+        257.5365905761719,
+        3.2022714614868164
+      ],
+      "seconds": 26.28,
+      "terrain_pixels": 925949,
+      "medium_distance_albedo_luma_std": 4.8222098096867985,
+      "medium_distance_pixels": 207979,
+      "layers": [
+        {
+          "layer": 13,
+          "sampled_pixels": 885732,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 12,
+          "sampled_pixels": 884196,
+          "colour": "v045_packed.tga",
+          "colour_repeats": 300.0,
+          "normal": "v045_packed_n.tga",
+          "normal_repeats": 300.0
+        },
+        {
+          "layer": 11,
+          "sampled_pixels": 885504,
+          "colour": "v045_loose.tga",
+          "colour_repeats": 200.0,
+          "normal": "v045_loose_n.tga",
+          "normal_repeats": 200.0
+        },
+        {
+          "layer": 10,
+          "sampled_pixels": 801,
+          "colour": "v024_pit_gravel.tga",
+          "colour_repeats": 95.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 9,
+          "sampled_pixels": 0,
+          "colour": "v032_face.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_face_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 8,
+          "sampled_pixels": 0,
+          "colour": "v032_packed.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_packed_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 7,
+          "sampled_pixels": 0,
+          "colour": "v032_pits.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_pits_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 6,
+          "sampled_pixels": 5543,
+          "colour": "v032_worked.tga",
+          "colour_repeats": 157.0,
+          "normal": "v032_worked_n.tga",
+          "normal_repeats": 157.0
+        },
+        {
+          "layer": 5,
+          "sampled_pixels": 1271,
+          "colour": "v032_grass.tga",
+          "colour_repeats": 82.0,
+          "normal": "grass_n.tga",
+          "normal_repeats": 82.0
+        },
+        {
+          "layer": 4,
+          "sampled_pixels": 2621,
+          "colour": "v032_sand.tga",
+          "colour_repeats": 181.0,
+          "normal": "v032_sand_n.tga",
+          "normal_repeats": 181.0
+        },
+        {
+          "layer": 3,
+          "sampled_pixels": 0,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 2,
+          "sampled_pixels": 70834,
+          "colour": "v032_prepared.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_prepared_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 1,
+          "sampled_pixels": 86800,
+          "colour": "v032_soil.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_soil_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 0,
+          "sampled_pixels": 0,
+          "colour": "basemap.tga",
+          "colour_repeats": 1.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        }
+      ]
+    },
+    {
+      "key": "0a5577e1a0edb705acc199217ccb239a70c361d989c2cd7cef55990b373996cef8396562560cfce6ddcd8243dc4697ebb0fe4a1deccb0d812edc95fab9c91349573ab7de0b4107b3b5817b5aa1a89a000e9e9bf30762e8087f6770722c7aa884",
+      "file": "Orlando_v062_REF_07.jpg",
+      "method": "REF",
+      "original_light": false,
+      "view": {
+        "id": "07",
+        "title": "Corner 09 / approach after R10",
+        "eye_s": 860.0,
+        "target_s": 885.0,
+        "eye_h": 2.0,
+        "target_h": 0.4,
+        "eye_l": 0.0,
+        "target_l": 0.0,
+        "fov": 65.0
+      },
+      "sha256": "5309b673e473f16f2b876a18c4447fc95d96e36a3f704ab9de2d66fb31f4821f",
+      "eye_xzy_m": [
+        296.30023193359375,
+        420.8128967285156,
+        4.986804962158203
+      ],
+      "target_xzy_m": [
+        275.89013671875,
+        419.464599609375,
+        3.581897020339966
+      ],
+      "seconds": 33.65,
+      "terrain_pixels": 917508,
+      "medium_distance_albedo_luma_std": 5.896575275352599,
+      "medium_distance_pixels": 279106,
+      "layers": [
+        {
+          "layer": 13,
+          "sampled_pixels": 869890,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 12,
+          "sampled_pixels": 868164,
+          "colour": "v045_packed.tga",
+          "colour_repeats": 300.0,
+          "normal": "v045_packed_n.tga",
+          "normal_repeats": 300.0
+        },
+        {
+          "layer": 11,
+          "sampled_pixels": 869886,
+          "colour": "v045_loose.tga",
+          "colour_repeats": 200.0,
+          "normal": "v045_loose_n.tga",
+          "normal_repeats": 200.0
+        },
+        {
+          "layer": 10,
+          "sampled_pixels": 0,
+          "colour": "v024_pit_gravel.tga",
+          "colour_repeats": 95.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 9,
+          "sampled_pixels": 0,
+          "colour": "v032_face.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_face_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 8,
+          "sampled_pixels": 0,
+          "colour": "v032_packed.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_packed_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 7,
+          "sampled_pixels": 0,
+          "colour": "v032_pits.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_pits_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 6,
+          "sampled_pixels": 44668,
+          "colour": "v032_worked.tga",
+          "colour_repeats": 157.0,
+          "normal": "v032_worked_n.tga",
+          "normal_repeats": 157.0
+        },
+        {
+          "layer": 5,
+          "sampled_pixels": 80867,
+          "colour": "v032_grass.tga",
+          "colour_repeats": 82.0,
+          "normal": "grass_n.tga",
+          "normal_repeats": 82.0
+        },
+        {
+          "layer": 4,
+          "sampled_pixels": 14258,
+          "colour": "v032_sand.tga",
+          "colour_repeats": 181.0,
+          "normal": "v032_sand_n.tga",
+          "normal_repeats": 181.0
+        },
+        {
+          "layer": 3,
+          "sampled_pixels": 0,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 2,
+          "sampled_pixels": 66100,
+          "colour": "v032_prepared.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_prepared_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 1,
+          "sampled_pixels": 102304,
+          "colour": "v032_soil.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_soil_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 0,
+          "sampled_pixels": 0,
+          "colour": "basemap.tga",
+          "colour_repeats": 1.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        }
+      ]
+    },
+    {
+      "key": "0a5577e1a0edb705acc199217ccb239a70c361d989c2cd7cef55990b373996cef8396562560cfce6ddcd8243dc4697ebb0fe4a1deccb0d812edc95fab9c91349573ab7de0b4107b3b5817b5aa1a89a000e9e9bf30762e8087f6770722c7aa884",
+      "file": "Orlando_v062_A_01.jpg",
+      "method": "A",
+      "original_light": false,
+      "view": {
+        "id": "01",
+        "title": "Corner 01 / approaching the turn",
+        "eye_s": 68.0,
+        "target_s": 98.0,
+        "eye_h": 1.85,
+        "target_h": 0.35,
+        "eye_l": 0.0,
+        "target_l": 0.0,
+        "fov": 66.0
+      },
+      "sha256": "cc3b092ea7e4c67a6d1aa850d2fcfceed22128560df41557e2b9fe8c20b3763a",
+      "eye_xzy_m": [
+        366.1679382324219,
+        191.43048095703125,
+        4.941479682922363
+      ],
+      "target_xzy_m": [
+        382.671142578125,
+        211.95184326171875,
+        3.3353629112243652
+      ],
+      "seconds": 16.77,
+      "terrain_pixels": 897828,
+      "medium_distance_albedo_luma_std": 5.803122693672524,
+      "medium_distance_pixels": 233013,
+      "layers": [
+        {
+          "layer": 13,
+          "sampled_pixels": 850033,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 12,
+          "sampled_pixels": 848657,
+          "colour": "v045_packed.tga",
+          "colour_repeats": 300.0,
+          "normal": "v045_packed_n.tga",
+          "normal_repeats": 300.0
+        },
+        {
+          "layer": 11,
+          "sampled_pixels": 851697,
+          "colour": "v045_loose.tga",
+          "colour_repeats": 200.0,
+          "normal": "v045_loose_n.tga",
+          "normal_repeats": 200.0
+        },
+        {
+          "layer": 10,
+          "sampled_pixels": 0,
+          "colour": "v024_pit_gravel.tga",
+          "colour_repeats": 95.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 9,
+          "sampled_pixels": 0,
+          "colour": "v032_face.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_face_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 8,
+          "sampled_pixels": 500,
+          "colour": "v032_packed.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_packed_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 7,
+          "sampled_pixels": 63,
+          "colour": "v032_pits.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_pits_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 6,
+          "sampled_pixels": 31644,
+          "colour": "v032_worked.tga",
+          "colour_repeats": 157.0,
+          "normal": "v032_worked_n.tga",
+          "normal_repeats": 157.0
+        },
+        {
+          "layer": 5,
+          "sampled_pixels": 6418,
+          "colour": "v032_grass.tga",
+          "colour_repeats": 82.0,
+          "normal": "grass_n.tga",
+          "normal_repeats": 82.0
+        },
+        {
+          "layer": 4,
+          "sampled_pixels": 3117,
+          "colour": "v032_sand.tga",
+          "colour_repeats": 181.0,
+          "normal": "v032_sand_n.tga",
+          "normal_repeats": 181.0
+        },
+        {
+          "layer": 3,
+          "sampled_pixels": 0,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 2,
+          "sampled_pixels": 65464,
+          "colour": "v032_prepared.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_prepared_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 1,
+          "sampled_pixels": 93215,
+          "colour": "v032_soil.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_soil_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 0,
+          "sampled_pixels": 0,
+          "colour": "basemap.tga",
+          "colour_repeats": 1.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        }
+      ]
+    },
+    {
+      "key": "0a5577e1a0edb705acc199217ccb239a70c361d989c2cd7cef55990b373996cef8396562560cfce6ddcd8243dc4697ebb0fe4a1deccb0d812edc95fab9c91349573ab7de0b4107b3b5817b5aa1a89a000e9e9bf30762e8087f6770722c7aa884",
+      "file": "Orlando_v062_A_02.jpg",
+      "method": "A",
+      "original_light": false,
+      "view": {
+        "id": "02",
+        "title": "Corner 01 / full berm and riding line",
+        "eye_s": 78.0,
+        "target_s": 103.0,
+        "eye_h": 6.0,
+        "target_h": 0.35,
+        "eye_l": -9.0,
+        "target_l": 0.0,
+        "fov": 64.0
+      },
+      "sha256": "5ca2556db7e4e2e230604efc543d3898526f354e526d9cde1537e7de12a646b3",
+      "eye_xzy_m": [
+        379.4185791015625,
+        187.8158721923828,
+        9.053193092346191
+      ],
+      "target_xzy_m": [
+        379.7173156738281,
+        215.9459991455078,
+        3.370154619216919
+      ],
+      "seconds": 13.96,
+      "terrain_pixels": 1137243,
+      "medium_distance_albedo_luma_std": 6.642566861191974,
+      "medium_distance_pixels": 636147,
+      "layers": [
+        {
+          "layer": 13,
+          "sampled_pixels": 941783,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 12,
+          "sampled_pixels": 938869,
+          "colour": "v045_packed.tga",
+          "colour_repeats": 300.0,
+          "normal": "v045_packed_n.tga",
+          "normal_repeats": 300.0
+        },
+        {
+          "layer": 11,
+          "sampled_pixels": 964792,
+          "colour": "v045_loose.tga",
+          "colour_repeats": 200.0,
+          "normal": "v045_loose_n.tga",
+          "normal_repeats": 200.0
+        },
+        {
+          "layer": 10,
+          "sampled_pixels": 0,
+          "colour": "v024_pit_gravel.tga",
+          "colour_repeats": 95.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 9,
+          "sampled_pixels": 1572,
+          "colour": "v032_face.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_face_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 8,
+          "sampled_pixels": 2502,
+          "colour": "v032_packed.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_packed_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 7,
+          "sampled_pixels": 1593,
+          "colour": "v032_pits.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_pits_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 6,
+          "sampled_pixels": 75249,
+          "colour": "v032_worked.tga",
+          "colour_repeats": 157.0,
+          "normal": "v032_worked_n.tga",
+          "normal_repeats": 157.0
+        },
+        {
+          "layer": 5,
+          "sampled_pixels": 77375,
+          "colour": "v032_grass.tga",
+          "colour_repeats": 82.0,
+          "normal": "grass_n.tga",
+          "normal_repeats": 82.0
+        },
+        {
+          "layer": 4,
+          "sampled_pixels": 8129,
+          "colour": "v032_sand.tga",
+          "colour_repeats": 181.0,
+          "normal": "v032_sand_n.tga",
+          "normal_repeats": 181.0
+        },
+        {
+          "layer": 3,
+          "sampled_pixels": 3028,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 2,
+          "sampled_pixels": 142159,
+          "colour": "v032_prepared.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_prepared_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 1,
+          "sampled_pixels": 262070,
+          "colour": "v032_soil.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_soil_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 0,
+          "sampled_pixels": 0,
+          "colour": "basemap.tga",
+          "colour_repeats": 1.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        }
+      ]
+    },
+    {
+      "key": "0a5577e1a0edb705acc199217ccb239a70c361d989c2cd7cef55990b373996cef8396562560cfce6ddcd8243dc4697ebb0fe4a1deccb0d812edc95fab9c91349573ab7de0b4107b3b5817b5aa1a89a000e9e9bf30762e8087f6770722c7aa884",
+      "file": "Orlando_v062_A_03.jpg",
+      "method": "A",
+      "original_light": false,
+      "view": {
+        "id": "03",
+        "title": "R03 table-single / takeoff face",
+        "eye_s": 226.0,
+        "target_s": 249.0,
+        "eye_h": 1.8,
+        "target_h": 0.55,
+        "eye_l": 0.0,
+        "target_l": 0.0,
+        "fov": 64.0
+      },
+      "sha256": "b5af959bbbc06270ae80f255c0fc55b687300b39c13e0eb0571e11c8d9fc4c4a",
+      "eye_xzy_m": [
+        264.1531066894531,
+        236.23707580566406,
+        4.650883197784424
+      ],
+      "target_xzy_m": [
+        254.39645385742188,
+        256.9368896484375,
+        5.98274040222168
+      ],
+      "seconds": 6.41,
+      "terrain_pixels": 742107,
+      "medium_distance_albedo_luma_std": 7.023940940693437,
+      "medium_distance_pixels": 212187,
+      "layers": [
+        {
+          "layer": 13,
+          "sampled_pixels": 739361,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 12,
+          "sampled_pixels": 739272,
+          "colour": "v045_packed.tga",
+          "colour_repeats": 300.0,
+          "normal": "v045_packed_n.tga",
+          "normal_repeats": 300.0
+        },
+        {
+          "layer": 11,
+          "sampled_pixels": 739361,
+          "colour": "v045_loose.tga",
+          "colour_repeats": 200.0,
+          "normal": "v045_loose_n.tga",
+          "normal_repeats": 200.0
+        },
+        {
+          "layer": 10,
+          "sampled_pixels": 0,
+          "colour": "v024_pit_gravel.tga",
+          "colour_repeats": 95.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 9,
+          "sampled_pixels": 0,
+          "colour": "v032_face.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_face_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 8,
+          "sampled_pixels": 28,
+          "colour": "v032_packed.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_packed_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 7,
+          "sampled_pixels": 0,
+          "colour": "v032_pits.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_pits_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 6,
+          "sampled_pixels": 11656,
+          "colour": "v032_worked.tga",
+          "colour_repeats": 157.0,
+          "normal": "v032_worked_n.tga",
+          "normal_repeats": 157.0
+        },
+        {
+          "layer": 5,
+          "sampled_pixels": 1123,
+          "colour": "v032_grass.tga",
+          "colour_repeats": 82.0,
+          "normal": "grass_n.tga",
+          "normal_repeats": 82.0
+        },
+        {
+          "layer": 4,
+          "sampled_pixels": 1891,
+          "colour": "v032_sand.tga",
+          "colour_repeats": 181.0,
+          "normal": "v032_sand_n.tga",
+          "normal_repeats": 181.0
+        },
+        {
+          "layer": 3,
+          "sampled_pixels": 80,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 2,
+          "sampled_pixels": 20828,
+          "colour": "v032_prepared.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_prepared_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 1,
+          "sampled_pixels": 22888,
+          "colour": "v032_soil.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_soil_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 0,
+          "sampled_pixels": 0,
+          "colour": "basemap.tga",
+          "colour_repeats": 1.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        }
+      ]
+    },
+    {
+      "key": "0a5577e1a0edb705acc199217ccb239a70c361d989c2cd7cef55990b373996cef8396562560cfce6ddcd8243dc4697ebb0fe4a1deccb0d812edc95fab9c91349573ab7de0b4107b3b5817b5aa1a89a000e9e9bf30762e8087f6770722c7aa884",
+      "file": "Orlando_v062_A_04.jpg",
+      "method": "A",
+      "original_light": false,
+      "view": {
+        "id": "04",
+        "title": "Corner 03 / landing exit into the turn",
+        "eye_s": 270.0,
+        "target_s": 294.0,
+        "eye_h": 1.85,
+        "target_h": 0.35,
+        "eye_l": 0.0,
+        "target_l": 0.0,
+        "fov": 65.0
+      },
+      "sha256": "96054721e8a5d6a76cbe72d2d18595e4b20ac224142d2eddc0bc223ddbb47fe7",
+      "eye_xzy_m": [
+        247.16517639160156,
+        276.6110534667969,
+        6.592228412628174
+      ],
+      "target_xzy_m": [
+        251.43130493164062,
+        295.87493896484375,
+        3.4664549827575684
+      ],
+      "seconds": 12.54,
+      "terrain_pixels": 1101689,
+      "medium_distance_albedo_luma_std": 6.20387119184555,
+      "medium_distance_pixels": 461859,
+      "layers": [
+        {
+          "layer": 13,
+          "sampled_pixels": 1020026,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 12,
+          "sampled_pixels": 1019248,
+          "colour": "v045_packed.tga",
+          "colour_repeats": 300.0,
+          "normal": "v045_packed_n.tga",
+          "normal_repeats": 300.0
+        },
+        {
+          "layer": 11,
+          "sampled_pixels": 1020024,
+          "colour": "v045_loose.tga",
+          "colour_repeats": 200.0,
+          "normal": "v045_loose_n.tga",
+          "normal_repeats": 200.0
+        },
+        {
+          "layer": 10,
+          "sampled_pixels": 0,
+          "colour": "v024_pit_gravel.tga",
+          "colour_repeats": 95.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 9,
+          "sampled_pixels": 0,
+          "colour": "v032_face.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_face_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 8,
+          "sampled_pixels": 0,
+          "colour": "v032_packed.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_packed_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 7,
+          "sampled_pixels": 0,
+          "colour": "v032_pits.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_pits_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 6,
+          "sampled_pixels": 23438,
+          "colour": "v032_worked.tga",
+          "colour_repeats": 157.0,
+          "normal": "v032_worked_n.tga",
+          "normal_repeats": 157.0
+        },
+        {
+          "layer": 5,
+          "sampled_pixels": 723,
+          "colour": "v032_grass.tga",
+          "colour_repeats": 82.0,
+          "normal": "grass_n.tga",
+          "normal_repeats": 82.0
+        },
+        {
+          "layer": 4,
+          "sampled_pixels": 4713,
+          "colour": "v032_sand.tga",
+          "colour_repeats": 181.0,
+          "normal": "v032_sand_n.tga",
+          "normal_repeats": 181.0
+        },
+        {
+          "layer": 3,
+          "sampled_pixels": 0,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 2,
+          "sampled_pixels": 51892,
+          "colour": "v032_prepared.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_prepared_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 1,
+          "sampled_pixels": 120612,
+          "colour": "v032_soil.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_soil_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 0,
+          "sampled_pixels": 0,
+          "colour": "basemap.tga",
+          "colour_repeats": 1.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        }
+      ]
+    },
+    {
+      "key": "0a5577e1a0edb705acc199217ccb239a70c361d989c2cd7cef55990b373996cef8396562560cfce6ddcd8243dc4697ebb0fe4a1deccb0d812edc95fab9c91349573ab7de0b4107b3b5817b5aa1a89a000e9e9bf30762e8087f6770722c7aa884",
+      "file": "Orlando_v062_A_05.jpg",
+      "method": "A",
+      "original_light": false,
+      "view": {
+        "id": "05",
+        "title": "Corner 03 / full width and boundary",
+        "eye_s": 276.0,
+        "target_s": 301.0,
+        "eye_h": 6.0,
+        "target_h": 0.35,
+        "eye_l": -9.0,
+        "target_l": 0.0,
+        "eye_xzy_m": [
+          230.0,
+          269.0,
+          19.0
+        ],
+        "target_xzy_m": [
+          250.0,
+          289.0,
+          3.5
+        ],
+        "fov": 64.0
+      },
+      "sha256": "fc8869d210c6c04275550520548170156a4a1703a7b3de70a364d970b007b32a",
+      "eye_xzy_m": [
+        230.0,
+        269.0,
+        19.0
+      ],
+      "target_xzy_m": [
+        250.0,
+        289.0,
+        3.5
+      ],
+      "seconds": 12.33,
+      "terrain_pixels": 1600000,
+      "medium_distance_albedo_luma_std": 6.316120116785271,
+      "medium_distance_pixels": 826440,
+      "layers": [
+        {
+          "layer": 13,
+          "sampled_pixels": 1207852,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 12,
+          "sampled_pixels": 1202493,
+          "colour": "v045_packed.tga",
+          "colour_repeats": 300.0,
+          "normal": "v045_packed_n.tga",
+          "normal_repeats": 300.0
+        },
+        {
+          "layer": 11,
+          "sampled_pixels": 1206950,
+          "colour": "v045_loose.tga",
+          "colour_repeats": 200.0,
+          "normal": "v045_loose_n.tga",
+          "normal_repeats": 200.0
+        },
+        {
+          "layer": 10,
+          "sampled_pixels": 0,
+          "colour": "v024_pit_gravel.tga",
+          "colour_repeats": 95.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 9,
+          "sampled_pixels": 0,
+          "colour": "v032_face.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_face_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 8,
+          "sampled_pixels": 1167,
+          "colour": "v032_packed.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_packed_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 7,
+          "sampled_pixels": 0,
+          "colour": "v032_pits.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_pits_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 6,
+          "sampled_pixels": 116262,
+          "colour": "v032_worked.tga",
+          "colour_repeats": 157.0,
+          "normal": "v032_worked_n.tga",
+          "normal_repeats": 157.0
+        },
+        {
+          "layer": 5,
+          "sampled_pixels": 0,
+          "colour": "v032_grass.tga",
+          "colour_repeats": 82.0,
+          "normal": "grass_n.tga",
+          "normal_repeats": 82.0
+        },
+        {
+          "layer": 4,
+          "sampled_pixels": 26773,
+          "colour": "v032_sand.tga",
+          "colour_repeats": 181.0,
+          "normal": "v032_sand_n.tga",
+          "normal_repeats": 181.0
+        },
+        {
+          "layer": 3,
+          "sampled_pixels": 2469,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 2,
+          "sampled_pixels": 268811,
+          "colour": "v032_prepared.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_prepared_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 1,
+          "sampled_pixels": 582304,
+          "colour": "v032_soil.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_soil_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 0,
+          "sampled_pixels": 0,
+          "colour": "basemap.tga",
+          "colour_repeats": 1.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        }
+      ]
+    },
+    {
+      "key": "0a5577e1a0edb705acc199217ccb239a70c361d989c2cd7cef55990b373996cef8396562560cfce6ddcd8243dc4697ebb0fe4a1deccb0d812edc95fab9c91349573ab7de0b4107b3b5817b5aa1a89a000e9e9bf30762e8087f6770722c7aa884",
+      "file": "Orlando_v062_A_06.jpg",
+      "method": "A",
+      "original_light": false,
+      "view": {
+        "id": "06",
+        "title": "R04 / flatter riding surface and face",
+        "eye_s": 316.0,
+        "target_s": 341.0,
+        "eye_h": 1.85,
+        "target_h": 0.35,
+        "eye_l": 0.0,
+        "target_l": 0.0,
+        "fov": 64.0
+      },
+      "sha256": "45bc8c8f42a9e18611bc88040580823d074112b0021c0cb06f5c5be0bd310ba0",
+      "eye_xzy_m": [
+        265.7679748535156,
+        279.54248046875,
+        4.747391700744629
+      ],
+      "target_xzy_m": [
+        277.6184387207031,
+        257.5365905761719,
+        3.2022714614868164
+      ],
+      "seconds": 10.69,
+      "terrain_pixels": 925949,
+      "medium_distance_albedo_luma_std": 5.482398182535731,
+      "medium_distance_pixels": 207979,
+      "layers": [
+        {
+          "layer": 13,
+          "sampled_pixels": 885732,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 12,
+          "sampled_pixels": 884196,
+          "colour": "v045_packed.tga",
+          "colour_repeats": 300.0,
+          "normal": "v045_packed_n.tga",
+          "normal_repeats": 300.0
+        },
+        {
+          "layer": 11,
+          "sampled_pixels": 885504,
+          "colour": "v045_loose.tga",
+          "colour_repeats": 200.0,
+          "normal": "v045_loose_n.tga",
+          "normal_repeats": 200.0
+        },
+        {
+          "layer": 10,
+          "sampled_pixels": 801,
+          "colour": "v024_pit_gravel.tga",
+          "colour_repeats": 95.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 9,
+          "sampled_pixels": 0,
+          "colour": "v032_face.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_face_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 8,
+          "sampled_pixels": 0,
+          "colour": "v032_packed.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_packed_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 7,
+          "sampled_pixels": 0,
+          "colour": "v032_pits.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_pits_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 6,
+          "sampled_pixels": 5543,
+          "colour": "v032_worked.tga",
+          "colour_repeats": 157.0,
+          "normal": "v032_worked_n.tga",
+          "normal_repeats": 157.0
+        },
+        {
+          "layer": 5,
+          "sampled_pixels": 1271,
+          "colour": "v032_grass.tga",
+          "colour_repeats": 82.0,
+          "normal": "grass_n.tga",
+          "normal_repeats": 82.0
+        },
+        {
+          "layer": 4,
+          "sampled_pixels": 2621,
+          "colour": "v032_sand.tga",
+          "colour_repeats": 181.0,
+          "normal": "v032_sand_n.tga",
+          "normal_repeats": 181.0
+        },
+        {
+          "layer": 3,
+          "sampled_pixels": 0,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 2,
+          "sampled_pixels": 70834,
+          "colour": "v032_prepared.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_prepared_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 1,
+          "sampled_pixels": 86800,
+          "colour": "v032_soil.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_soil_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 0,
+          "sampled_pixels": 0,
+          "colour": "basemap.tga",
+          "colour_repeats": 1.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        }
+      ]
+    },
+    {
+      "key": "0a5577e1a0edb705acc199217ccb239a70c361d989c2cd7cef55990b373996cef8396562560cfce6ddcd8243dc4697ebb0fe4a1deccb0d812edc95fab9c91349573ab7de0b4107b3b5817b5aa1a89a000e9e9bf30762e8087f6770722c7aa884",
+      "file": "Orlando_v062_A_07.jpg",
+      "method": "A",
+      "original_light": false,
+      "view": {
+        "id": "07",
+        "title": "Corner 09 / approach after R10",
+        "eye_s": 860.0,
+        "target_s": 885.0,
+        "eye_h": 2.0,
+        "target_h": 0.4,
+        "eye_l": 0.0,
+        "target_l": 0.0,
+        "fov": 65.0
+      },
+      "sha256": "622a3a7591d503645352248fe8490e711d28e2e34f8169d5f1f7f00b2e448420",
+      "eye_xzy_m": [
+        296.30023193359375,
+        420.8128967285156,
+        4.986804962158203
+      ],
+      "target_xzy_m": [
+        275.89013671875,
+        419.464599609375,
+        3.581897020339966
+      ],
+      "seconds": 9.58,
+      "terrain_pixels": 917508,
+      "medium_distance_albedo_luma_std": 5.844305459572809,
+      "medium_distance_pixels": 279106,
+      "layers": [
+        {
+          "layer": 13,
+          "sampled_pixels": 869890,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 12,
+          "sampled_pixels": 868164,
+          "colour": "v045_packed.tga",
+          "colour_repeats": 300.0,
+          "normal": "v045_packed_n.tga",
+          "normal_repeats": 300.0
+        },
+        {
+          "layer": 11,
+          "sampled_pixels": 869886,
+          "colour": "v045_loose.tga",
+          "colour_repeats": 200.0,
+          "normal": "v045_loose_n.tga",
+          "normal_repeats": 200.0
+        },
+        {
+          "layer": 10,
+          "sampled_pixels": 0,
+          "colour": "v024_pit_gravel.tga",
+          "colour_repeats": 95.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 9,
+          "sampled_pixels": 0,
+          "colour": "v032_face.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_face_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 8,
+          "sampled_pixels": 0,
+          "colour": "v032_packed.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_packed_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 7,
+          "sampled_pixels": 0,
+          "colour": "v032_pits.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_pits_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 6,
+          "sampled_pixels": 44668,
+          "colour": "v032_worked.tga",
+          "colour_repeats": 157.0,
+          "normal": "v032_worked_n.tga",
+          "normal_repeats": 157.0
+        },
+        {
+          "layer": 5,
+          "sampled_pixels": 80867,
+          "colour": "v032_grass.tga",
+          "colour_repeats": 82.0,
+          "normal": "grass_n.tga",
+          "normal_repeats": 82.0
+        },
+        {
+          "layer": 4,
+          "sampled_pixels": 14258,
+          "colour": "v032_sand.tga",
+          "colour_repeats": 181.0,
+          "normal": "v032_sand_n.tga",
+          "normal_repeats": 181.0
+        },
+        {
+          "layer": 3,
+          "sampled_pixels": 0,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 2,
+          "sampled_pixels": 66100,
+          "colour": "v032_prepared.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_prepared_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 1,
+          "sampled_pixels": 102304,
+          "colour": "v032_soil.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_soil_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 0,
+          "sampled_pixels": 0,
+          "colour": "basemap.tga",
+          "colour_repeats": 1.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        }
+      ]
+    },
+    {
+      "key": "0a5577e1a0edb705acc199217ccb239a70c361d989c2cd7cef55990b373996cef8396562560cfce6ddcd8243dc4697ebb0fe4a1deccb0d812edc95fab9c91349573ab7de0b4107b3b5817b5aa1a89a000e9e9bf30762e8087f6770722c7aa884",
+      "file": "Orlando_v062_B_01.jpg",
+      "method": "B",
+      "original_light": false,
+      "view": {
+        "id": "01",
+        "title": "Corner 01 / approaching the turn",
+        "eye_s": 68.0,
+        "target_s": 98.0,
+        "eye_h": 1.85,
+        "target_h": 0.35,
+        "eye_l": 0.0,
+        "target_l": 0.0,
+        "fov": 66.0
+      },
+      "sha256": "f72796b450708c7f93c981f32dd5a828785580b3556804a5385471b817847cc1",
+      "eye_xzy_m": [
+        366.1679382324219,
+        191.43048095703125,
+        4.941479682922363
+      ],
+      "target_xzy_m": [
+        382.671142578125,
+        211.95184326171875,
+        3.3353629112243652
+      ],
+      "seconds": 13.05,
+      "terrain_pixels": 897828,
+      "medium_distance_albedo_luma_std": 5.606529207874774,
+      "medium_distance_pixels": 233013,
+      "layers": [
+        {
+          "layer": 13,
+          "sampled_pixels": 850033,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 12,
+          "sampled_pixels": 848657,
+          "colour": "v045_packed.tga",
+          "colour_repeats": 300.0,
+          "normal": "v045_packed_n.tga",
+          "normal_repeats": 300.0
+        },
+        {
+          "layer": 11,
+          "sampled_pixels": 851697,
+          "colour": "v045_loose.tga",
+          "colour_repeats": 200.0,
+          "normal": "v045_loose_n.tga",
+          "normal_repeats": 200.0
+        },
+        {
+          "layer": 10,
+          "sampled_pixels": 0,
+          "colour": "v024_pit_gravel.tga",
+          "colour_repeats": 95.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 9,
+          "sampled_pixels": 0,
+          "colour": "v032_face.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_face_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 8,
+          "sampled_pixels": 500,
+          "colour": "v032_packed.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_packed_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 7,
+          "sampled_pixels": 63,
+          "colour": "v032_pits.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_pits_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 6,
+          "sampled_pixels": 31644,
+          "colour": "v032_worked.tga",
+          "colour_repeats": 157.0,
+          "normal": "v032_worked_n.tga",
+          "normal_repeats": 157.0
+        },
+        {
+          "layer": 5,
+          "sampled_pixels": 6418,
+          "colour": "v032_grass.tga",
+          "colour_repeats": 82.0,
+          "normal": "grass_n.tga",
+          "normal_repeats": 82.0
+        },
+        {
+          "layer": 4,
+          "sampled_pixels": 3117,
+          "colour": "v032_sand.tga",
+          "colour_repeats": 181.0,
+          "normal": "v032_sand_n.tga",
+          "normal_repeats": 181.0
+        },
+        {
+          "layer": 3,
+          "sampled_pixels": 0,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 2,
+          "sampled_pixels": 65464,
+          "colour": "v032_prepared.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_prepared_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 1,
+          "sampled_pixels": 93215,
+          "colour": "v032_soil.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_soil_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 0,
+          "sampled_pixels": 0,
+          "colour": "basemap.tga",
+          "colour_repeats": 1.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        }
+      ]
+    },
+    {
+      "key": "0a5577e1a0edb705acc199217ccb239a70c361d989c2cd7cef55990b373996cef8396562560cfce6ddcd8243dc4697ebb0fe4a1deccb0d812edc95fab9c91349573ab7de0b4107b3b5817b5aa1a89a000e9e9bf30762e8087f6770722c7aa884",
+      "file": "Orlando_v062_B_02.jpg",
+      "method": "B",
+      "original_light": false,
+      "view": {
+        "id": "02",
+        "title": "Corner 01 / full berm and riding line",
+        "eye_s": 78.0,
+        "target_s": 103.0,
+        "eye_h": 6.0,
+        "target_h": 0.35,
+        "eye_l": -9.0,
+        "target_l": 0.0,
+        "fov": 64.0
+      },
+      "sha256": "0300112b8fb446a98a193bb908d13c44689e5f2c3e3bdc93fbeae1a26c5e373d",
+      "eye_xzy_m": [
+        379.4185791015625,
+        187.8158721923828,
+        9.053193092346191
+      ],
+      "target_xzy_m": [
+        379.7173156738281,
+        215.9459991455078,
+        3.370154619216919
+      ],
+      "seconds": 11.98,
+      "terrain_pixels": 1137243,
+      "medium_distance_albedo_luma_std": 6.418806127758972,
+      "medium_distance_pixels": 636147,
+      "layers": [
+        {
+          "layer": 13,
+          "sampled_pixels": 941783,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 12,
+          "sampled_pixels": 938869,
+          "colour": "v045_packed.tga",
+          "colour_repeats": 300.0,
+          "normal": "v045_packed_n.tga",
+          "normal_repeats": 300.0
+        },
+        {
+          "layer": 11,
+          "sampled_pixels": 964792,
+          "colour": "v045_loose.tga",
+          "colour_repeats": 200.0,
+          "normal": "v045_loose_n.tga",
+          "normal_repeats": 200.0
+        },
+        {
+          "layer": 10,
+          "sampled_pixels": 0,
+          "colour": "v024_pit_gravel.tga",
+          "colour_repeats": 95.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 9,
+          "sampled_pixels": 1572,
+          "colour": "v032_face.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_face_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 8,
+          "sampled_pixels": 2502,
+          "colour": "v032_packed.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_packed_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 7,
+          "sampled_pixels": 1593,
+          "colour": "v032_pits.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_pits_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 6,
+          "sampled_pixels": 75249,
+          "colour": "v032_worked.tga",
+          "colour_repeats": 157.0,
+          "normal": "v032_worked_n.tga",
+          "normal_repeats": 157.0
+        },
+        {
+          "layer": 5,
+          "sampled_pixels": 77375,
+          "colour": "v032_grass.tga",
+          "colour_repeats": 82.0,
+          "normal": "grass_n.tga",
+          "normal_repeats": 82.0
+        },
+        {
+          "layer": 4,
+          "sampled_pixels": 8129,
+          "colour": "v032_sand.tga",
+          "colour_repeats": 181.0,
+          "normal": "v032_sand_n.tga",
+          "normal_repeats": 181.0
+        },
+        {
+          "layer": 3,
+          "sampled_pixels": 3028,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 2,
+          "sampled_pixels": 142159,
+          "colour": "v032_prepared.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_prepared_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 1,
+          "sampled_pixels": 262070,
+          "colour": "v032_soil.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_soil_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 0,
+          "sampled_pixels": 0,
+          "colour": "basemap.tga",
+          "colour_repeats": 1.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        }
+      ]
+    },
+    {
+      "key": "0a5577e1a0edb705acc199217ccb239a70c361d989c2cd7cef55990b373996cef8396562560cfce6ddcd8243dc4697ebb0fe4a1deccb0d812edc95fab9c91349573ab7de0b4107b3b5817b5aa1a89a000e9e9bf30762e8087f6770722c7aa884",
+      "file": "Orlando_v062_B_03.jpg",
+      "method": "B",
+      "original_light": false,
+      "view": {
+        "id": "03",
+        "title": "R03 table-single / takeoff face",
+        "eye_s": 226.0,
+        "target_s": 249.0,
+        "eye_h": 1.8,
+        "target_h": 0.55,
+        "eye_l": 0.0,
+        "target_l": 0.0,
+        "fov": 64.0
+      },
+      "sha256": "a083854234c8d5af4b948f76811a3b180cea62a5cf4f1a051ec04a36d8b1a090",
+      "eye_xzy_m": [
+        264.1531066894531,
+        236.23707580566406,
+        4.650883197784424
+      ],
+      "target_xzy_m": [
+        254.39645385742188,
+        256.9368896484375,
+        5.98274040222168
+      ],
+      "seconds": 22.89,
+      "terrain_pixels": 742107,
+      "medium_distance_albedo_luma_std": 6.922272002978387,
+      "medium_distance_pixels": 212187,
+      "layers": [
+        {
+          "layer": 13,
+          "sampled_pixels": 739361,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 12,
+          "sampled_pixels": 739272,
+          "colour": "v045_packed.tga",
+          "colour_repeats": 300.0,
+          "normal": "v045_packed_n.tga",
+          "normal_repeats": 300.0
+        },
+        {
+          "layer": 11,
+          "sampled_pixels": 739361,
+          "colour": "v045_loose.tga",
+          "colour_repeats": 200.0,
+          "normal": "v045_loose_n.tga",
+          "normal_repeats": 200.0
+        },
+        {
+          "layer": 10,
+          "sampled_pixels": 0,
+          "colour": "v024_pit_gravel.tga",
+          "colour_repeats": 95.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 9,
+          "sampled_pixels": 0,
+          "colour": "v032_face.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_face_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 8,
+          "sampled_pixels": 28,
+          "colour": "v032_packed.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_packed_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 7,
+          "sampled_pixels": 0,
+          "colour": "v032_pits.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_pits_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 6,
+          "sampled_pixels": 11656,
+          "colour": "v032_worked.tga",
+          "colour_repeats": 157.0,
+          "normal": "v032_worked_n.tga",
+          "normal_repeats": 157.0
+        },
+        {
+          "layer": 5,
+          "sampled_pixels": 1123,
+          "colour": "v032_grass.tga",
+          "colour_repeats": 82.0,
+          "normal": "grass_n.tga",
+          "normal_repeats": 82.0
+        },
+        {
+          "layer": 4,
+          "sampled_pixels": 1891,
+          "colour": "v032_sand.tga",
+          "colour_repeats": 181.0,
+          "normal": "v032_sand_n.tga",
+          "normal_repeats": 181.0
+        },
+        {
+          "layer": 3,
+          "sampled_pixels": 80,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 2,
+          "sampled_pixels": 20828,
+          "colour": "v032_prepared.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_prepared_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 1,
+          "sampled_pixels": 22888,
+          "colour": "v032_soil.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_soil_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 0,
+          "sampled_pixels": 0,
+          "colour": "basemap.tga",
+          "colour_repeats": 1.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        }
+      ]
+    },
+    {
+      "key": "0a5577e1a0edb705acc199217ccb239a70c361d989c2cd7cef55990b373996cef8396562560cfce6ddcd8243dc4697ebb0fe4a1deccb0d812edc95fab9c91349573ab7de0b4107b3b5817b5aa1a89a000e9e9bf30762e8087f6770722c7aa884",
+      "file": "Orlando_v062_B_04.jpg",
+      "method": "B",
+      "original_light": false,
+      "view": {
+        "id": "04",
+        "title": "Corner 03 / landing exit into the turn",
+        "eye_s": 270.0,
+        "target_s": 294.0,
+        "eye_h": 1.85,
+        "target_h": 0.35,
+        "eye_l": 0.0,
+        "target_l": 0.0,
+        "fov": 65.0
+      },
+      "sha256": "15f16d3477d0c86881f5e1b3ccf1676e0bf2774c8f07420821aa45680ca73773",
+      "eye_xzy_m": [
+        247.16517639160156,
+        276.6110534667969,
+        6.592228412628174
+      ],
+      "target_xzy_m": [
+        251.43130493164062,
+        295.87493896484375,
+        3.4664549827575684
+      ],
+      "seconds": 15.88,
+      "terrain_pixels": 1101689,
+      "medium_distance_albedo_luma_std": 5.926298659016977,
+      "medium_distance_pixels": 461859,
+      "layers": [
+        {
+          "layer": 13,
+          "sampled_pixels": 1020026,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 12,
+          "sampled_pixels": 1019248,
+          "colour": "v045_packed.tga",
+          "colour_repeats": 300.0,
+          "normal": "v045_packed_n.tga",
+          "normal_repeats": 300.0
+        },
+        {
+          "layer": 11,
+          "sampled_pixels": 1020024,
+          "colour": "v045_loose.tga",
+          "colour_repeats": 200.0,
+          "normal": "v045_loose_n.tga",
+          "normal_repeats": 200.0
+        },
+        {
+          "layer": 10,
+          "sampled_pixels": 0,
+          "colour": "v024_pit_gravel.tga",
+          "colour_repeats": 95.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 9,
+          "sampled_pixels": 0,
+          "colour": "v032_face.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_face_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 8,
+          "sampled_pixels": 0,
+          "colour": "v032_packed.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_packed_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 7,
+          "sampled_pixels": 0,
+          "colour": "v032_pits.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_pits_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 6,
+          "sampled_pixels": 23438,
+          "colour": "v032_worked.tga",
+          "colour_repeats": 157.0,
+          "normal": "v032_worked_n.tga",
+          "normal_repeats": 157.0
+        },
+        {
+          "layer": 5,
+          "sampled_pixels": 723,
+          "colour": "v032_grass.tga",
+          "colour_repeats": 82.0,
+          "normal": "grass_n.tga",
+          "normal_repeats": 82.0
+        },
+        {
+          "layer": 4,
+          "sampled_pixels": 4713,
+          "colour": "v032_sand.tga",
+          "colour_repeats": 181.0,
+          "normal": "v032_sand_n.tga",
+          "normal_repeats": 181.0
+        },
+        {
+          "layer": 3,
+          "sampled_pixels": 0,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 2,
+          "sampled_pixels": 51892,
+          "colour": "v032_prepared.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_prepared_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 1,
+          "sampled_pixels": 120612,
+          "colour": "v032_soil.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_soil_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 0,
+          "sampled_pixels": 0,
+          "colour": "basemap.tga",
+          "colour_repeats": 1.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        }
+      ]
+    },
+    {
+      "key": "0a5577e1a0edb705acc199217ccb239a70c361d989c2cd7cef55990b373996cef8396562560cfce6ddcd8243dc4697ebb0fe4a1deccb0d812edc95fab9c91349573ab7de0b4107b3b5817b5aa1a89a000e9e9bf30762e8087f6770722c7aa884",
+      "file": "Orlando_v062_B_05.jpg",
+      "method": "B",
+      "original_light": false,
+      "view": {
+        "id": "05",
+        "title": "Corner 03 / full width and boundary",
+        "eye_s": 276.0,
+        "target_s": 301.0,
+        "eye_h": 6.0,
+        "target_h": 0.35,
+        "eye_l": -9.0,
+        "target_l": 0.0,
+        "eye_xzy_m": [
+          230.0,
+          269.0,
+          19.0
+        ],
+        "target_xzy_m": [
+          250.0,
+          289.0,
+          3.5
+        ],
+        "fov": 64.0
+      },
+      "sha256": "8214f363b4eec3947b1ad0042abb345649c8bc2d988adaa6880204bb9529fd12",
+      "eye_xzy_m": [
+        230.0,
+        269.0,
+        19.0
+      ],
+      "target_xzy_m": [
+        250.0,
+        289.0,
+        3.5
+      ],
+      "seconds": 17.69,
+      "terrain_pixels": 1600000,
+      "medium_distance_albedo_luma_std": 6.199275237595018,
+      "medium_distance_pixels": 826440,
+      "layers": [
+        {
+          "layer": 13,
+          "sampled_pixels": 1207852,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 12,
+          "sampled_pixels": 1202493,
+          "colour": "v045_packed.tga",
+          "colour_repeats": 300.0,
+          "normal": "v045_packed_n.tga",
+          "normal_repeats": 300.0
+        },
+        {
+          "layer": 11,
+          "sampled_pixels": 1206950,
+          "colour": "v045_loose.tga",
+          "colour_repeats": 200.0,
+          "normal": "v045_loose_n.tga",
+          "normal_repeats": 200.0
+        },
+        {
+          "layer": 10,
+          "sampled_pixels": 0,
+          "colour": "v024_pit_gravel.tga",
+          "colour_repeats": 95.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 9,
+          "sampled_pixels": 0,
+          "colour": "v032_face.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_face_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 8,
+          "sampled_pixels": 1167,
+          "colour": "v032_packed.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_packed_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 7,
+          "sampled_pixels": 0,
+          "colour": "v032_pits.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_pits_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 6,
+          "sampled_pixels": 116262,
+          "colour": "v032_worked.tga",
+          "colour_repeats": 157.0,
+          "normal": "v032_worked_n.tga",
+          "normal_repeats": 157.0
+        },
+        {
+          "layer": 5,
+          "sampled_pixels": 0,
+          "colour": "v032_grass.tga",
+          "colour_repeats": 82.0,
+          "normal": "grass_n.tga",
+          "normal_repeats": 82.0
+        },
+        {
+          "layer": 4,
+          "sampled_pixels": 26773,
+          "colour": "v032_sand.tga",
+          "colour_repeats": 181.0,
+          "normal": "v032_sand_n.tga",
+          "normal_repeats": 181.0
+        },
+        {
+          "layer": 3,
+          "sampled_pixels": 2469,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 2,
+          "sampled_pixels": 268811,
+          "colour": "v032_prepared.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_prepared_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 1,
+          "sampled_pixels": 582304,
+          "colour": "v032_soil.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_soil_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 0,
+          "sampled_pixels": 0,
+          "colour": "basemap.tga",
+          "colour_repeats": 1.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        }
+      ]
+    },
+    {
+      "key": "0a5577e1a0edb705acc199217ccb239a70c361d989c2cd7cef55990b373996cef8396562560cfce6ddcd8243dc4697ebb0fe4a1deccb0d812edc95fab9c91349573ab7de0b4107b3b5817b5aa1a89a000e9e9bf30762e8087f6770722c7aa884",
+      "file": "Orlando_v062_B_06.jpg",
+      "method": "B",
+      "original_light": false,
+      "view": {
+        "id": "06",
+        "title": "R04 / flatter riding surface and face",
+        "eye_s": 316.0,
+        "target_s": 341.0,
+        "eye_h": 1.85,
+        "target_h": 0.35,
+        "eye_l": 0.0,
+        "target_l": 0.0,
+        "fov": 64.0
+      },
+      "sha256": "11c77bfaf81f0fd848056c1efa4c851075a016b6d40c4ea5fd639372b8234bdd",
+      "eye_xzy_m": [
+        265.7679748535156,
+        279.54248046875,
+        4.747391700744629
+      ],
+      "target_xzy_m": [
+        277.6184387207031,
+        257.5365905761719,
+        3.2022714614868164
+      ],
+      "seconds": 10.79,
+      "terrain_pixels": 925949,
+      "medium_distance_albedo_luma_std": 5.340141975973426,
+      "medium_distance_pixels": 207979,
+      "layers": [
+        {
+          "layer": 13,
+          "sampled_pixels": 885732,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 12,
+          "sampled_pixels": 884196,
+          "colour": "v045_packed.tga",
+          "colour_repeats": 300.0,
+          "normal": "v045_packed_n.tga",
+          "normal_repeats": 300.0
+        },
+        {
+          "layer": 11,
+          "sampled_pixels": 885504,
+          "colour": "v045_loose.tga",
+          "colour_repeats": 200.0,
+          "normal": "v045_loose_n.tga",
+          "normal_repeats": 200.0
+        },
+        {
+          "layer": 10,
+          "sampled_pixels": 801,
+          "colour": "v024_pit_gravel.tga",
+          "colour_repeats": 95.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 9,
+          "sampled_pixels": 0,
+          "colour": "v032_face.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_face_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 8,
+          "sampled_pixels": 0,
+          "colour": "v032_packed.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_packed_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 7,
+          "sampled_pixels": 0,
+          "colour": "v032_pits.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_pits_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 6,
+          "sampled_pixels": 5543,
+          "colour": "v032_worked.tga",
+          "colour_repeats": 157.0,
+          "normal": "v032_worked_n.tga",
+          "normal_repeats": 157.0
+        },
+        {
+          "layer": 5,
+          "sampled_pixels": 1271,
+          "colour": "v032_grass.tga",
+          "colour_repeats": 82.0,
+          "normal": "grass_n.tga",
+          "normal_repeats": 82.0
+        },
+        {
+          "layer": 4,
+          "sampled_pixels": 2621,
+          "colour": "v032_sand.tga",
+          "colour_repeats": 181.0,
+          "normal": "v032_sand_n.tga",
+          "normal_repeats": 181.0
+        },
+        {
+          "layer": 3,
+          "sampled_pixels": 0,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 2,
+          "sampled_pixels": 70834,
+          "colour": "v032_prepared.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_prepared_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 1,
+          "sampled_pixels": 86800,
+          "colour": "v032_soil.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_soil_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 0,
+          "sampled_pixels": 0,
+          "colour": "basemap.tga",
+          "colour_repeats": 1.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        }
+      ]
+    },
+    {
+      "key": "0a5577e1a0edb705acc199217ccb239a70c361d989c2cd7cef55990b373996cef8396562560cfce6ddcd8243dc4697ebb0fe4a1deccb0d812edc95fab9c91349573ab7de0b4107b3b5817b5aa1a89a000e9e9bf30762e8087f6770722c7aa884",
+      "file": "Orlando_v062_B_07.jpg",
+      "method": "B",
+      "original_light": false,
+      "view": {
+        "id": "07",
+        "title": "Corner 09 / approach after R10",
+        "eye_s": 860.0,
+        "target_s": 885.0,
+        "eye_h": 2.0,
+        "target_h": 0.4,
+        "eye_l": 0.0,
+        "target_l": 0.0,
+        "fov": 65.0
+      },
+      "sha256": "a85adad11246ad865e85abd21c00bd733b91d1d7463b634d059669d2c9a2a470",
+      "eye_xzy_m": [
+        296.30023193359375,
+        420.8128967285156,
+        4.986804962158203
+      ],
+      "target_xzy_m": [
+        275.89013671875,
+        419.464599609375,
+        3.581897020339966
+      ],
+      "seconds": 9.5,
+      "terrain_pixels": 917508,
+      "medium_distance_albedo_luma_std": 5.6352650896783025,
+      "medium_distance_pixels": 279106,
+      "layers": [
+        {
+          "layer": 13,
+          "sampled_pixels": 869890,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 12,
+          "sampled_pixels": 868164,
+          "colour": "v045_packed.tga",
+          "colour_repeats": 300.0,
+          "normal": "v045_packed_n.tga",
+          "normal_repeats": 300.0
+        },
+        {
+          "layer": 11,
+          "sampled_pixels": 869886,
+          "colour": "v045_loose.tga",
+          "colour_repeats": 200.0,
+          "normal": "v045_loose_n.tga",
+          "normal_repeats": 200.0
+        },
+        {
+          "layer": 10,
+          "sampled_pixels": 0,
+          "colour": "v024_pit_gravel.tga",
+          "colour_repeats": 95.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 9,
+          "sampled_pixels": 0,
+          "colour": "v032_face.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_face_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 8,
+          "sampled_pixels": 0,
+          "colour": "v032_packed.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_packed_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 7,
+          "sampled_pixels": 0,
+          "colour": "v032_pits.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_pits_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 6,
+          "sampled_pixels": 44668,
+          "colour": "v032_worked.tga",
+          "colour_repeats": 157.0,
+          "normal": "v032_worked_n.tga",
+          "normal_repeats": 157.0
+        },
+        {
+          "layer": 5,
+          "sampled_pixels": 80867,
+          "colour": "v032_grass.tga",
+          "colour_repeats": 82.0,
+          "normal": "grass_n.tga",
+          "normal_repeats": 82.0
+        },
+        {
+          "layer": 4,
+          "sampled_pixels": 14258,
+          "colour": "v032_sand.tga",
+          "colour_repeats": 181.0,
+          "normal": "v032_sand_n.tga",
+          "normal_repeats": 181.0
+        },
+        {
+          "layer": 3,
+          "sampled_pixels": 0,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 2,
+          "sampled_pixels": 66100,
+          "colour": "v032_prepared.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_prepared_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 1,
+          "sampled_pixels": 102304,
+          "colour": "v032_soil.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_soil_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 0,
+          "sampled_pixels": 0,
+          "colour": "basemap.tga",
+          "colour_repeats": 1.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        }
+      ]
+    },
+    {
+      "key": "0a5577e1a0edb705acc199217ccb239a70c361d989c2cd7cef55990b373996cef8396562560cfce6ddcd8243dc4697ebb0fe4a1deccb0d812edc95fab9c91349573ab7de0b4107b3b5817b5aa1a89a000e9e9bf30762e8087f6770722c7aa884",
+      "file": "Orlando_v062_B_oldlight_04.jpg",
+      "method": "B",
+      "original_light": true,
+      "view": {
+        "id": "04",
+        "title": "Corner 03 / landing exit into the turn",
+        "eye_s": 270.0,
+        "target_s": 294.0,
+        "eye_h": 1.85,
+        "target_h": 0.35,
+        "eye_l": 0.0,
+        "target_l": 0.0,
+        "fov": 65.0
+      },
+      "sha256": "7d3f430a46eaa6e3ea64b6cd11034a6cc13d0aa88d2a9d8ab99289a3e48dd0c4",
+      "eye_xzy_m": [
+        247.16517639160156,
+        276.6110534667969,
+        6.592228412628174
+      ],
+      "target_xzy_m": [
+        251.43130493164062,
+        295.87493896484375,
+        3.4664549827575684
+      ],
+      "seconds": 10.32,
+      "terrain_pixels": 1101689,
+      "medium_distance_albedo_luma_std": 5.926298659016977,
+      "medium_distance_pixels": 461859,
+      "layers": [
+        {
+          "layer": 13,
+          "sampled_pixels": 1020026,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 12,
+          "sampled_pixels": 1019248,
+          "colour": "v045_packed.tga",
+          "colour_repeats": 300.0,
+          "normal": "v045_packed_n.tga",
+          "normal_repeats": 300.0
+        },
+        {
+          "layer": 11,
+          "sampled_pixels": 1020024,
+          "colour": "v045_loose.tga",
+          "colour_repeats": 200.0,
+          "normal": "v045_loose_n.tga",
+          "normal_repeats": 200.0
+        },
+        {
+          "layer": 10,
+          "sampled_pixels": 0,
+          "colour": "v024_pit_gravel.tga",
+          "colour_repeats": 95.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 9,
+          "sampled_pixels": 0,
+          "colour": "v032_face.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_face_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 8,
+          "sampled_pixels": 0,
+          "colour": "v032_packed.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_packed_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 7,
+          "sampled_pixels": 0,
+          "colour": "v032_pits.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_pits_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 6,
+          "sampled_pixels": 23438,
+          "colour": "v032_worked.tga",
+          "colour_repeats": 157.0,
+          "normal": "v032_worked_n.tga",
+          "normal_repeats": 157.0
+        },
+        {
+          "layer": 5,
+          "sampled_pixels": 723,
+          "colour": "v032_grass.tga",
+          "colour_repeats": 82.0,
+          "normal": "grass_n.tga",
+          "normal_repeats": 82.0
+        },
+        {
+          "layer": 4,
+          "sampled_pixels": 4713,
+          "colour": "v032_sand.tga",
+          "colour_repeats": 181.0,
+          "normal": "v032_sand_n.tga",
+          "normal_repeats": 181.0
+        },
+        {
+          "layer": 3,
+          "sampled_pixels": 0,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 2,
+          "sampled_pixels": 51892,
+          "colour": "v032_prepared.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_prepared_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 1,
+          "sampled_pixels": 120612,
+          "colour": "v032_soil.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_soil_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 0,
+          "sampled_pixels": 0,
+          "colour": "basemap.tga",
+          "colour_repeats": 1.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        }
+      ]
+    },
+    {
+      "key": "0a5577e1a0edb705acc199217ccb239a70c361d989c2cd7cef55990b373996cef8396562560cfce6ddcd8243dc4697ebb0fe4a1deccb0d812edc95fab9c91349573ab7de0b4107b3b5817b5aa1a89a000e9e9bf30762e8087f6770722c7aa884",
+      "file": "Orlando_v062_C_01.jpg",
+      "method": "C",
+      "original_light": false,
+      "view": {
+        "id": "01",
+        "title": "Corner 01 / approaching the turn",
+        "eye_s": 68.0,
+        "target_s": 98.0,
+        "eye_h": 1.85,
+        "target_h": 0.35,
+        "eye_l": 0.0,
+        "target_l": 0.0,
+        "fov": 66.0
+      },
+      "sha256": "b75063d08902da079dfa826b9f7a489e7c31641fcf78cecaf3da3dd579474e9e",
+      "eye_xzy_m": [
+        366.1679382324219,
+        191.43048095703125,
+        4.941479682922363
+      ],
+      "target_xzy_m": [
+        382.671142578125,
+        211.95184326171875,
+        3.3353629112243652
+      ],
+      "seconds": 23.5,
+      "terrain_pixels": 897828,
+      "medium_distance_albedo_luma_std": 5.796073339168399,
+      "medium_distance_pixels": 233013,
+      "layers": [
+        {
+          "layer": 13,
+          "sampled_pixels": 850033,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 12,
+          "sampled_pixels": 848657,
+          "colour": "v045_packed.tga",
+          "colour_repeats": 300.0,
+          "normal": "v045_packed_n.tga",
+          "normal_repeats": 300.0
+        },
+        {
+          "layer": 11,
+          "sampled_pixels": 851697,
+          "colour": "v045_loose.tga",
+          "colour_repeats": 200.0,
+          "normal": "v045_loose_n.tga",
+          "normal_repeats": 200.0
+        },
+        {
+          "layer": 10,
+          "sampled_pixels": 0,
+          "colour": "v024_pit_gravel.tga",
+          "colour_repeats": 95.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 9,
+          "sampled_pixels": 0,
+          "colour": "v032_face.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_face_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 8,
+          "sampled_pixels": 500,
+          "colour": "v032_packed.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_packed_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 7,
+          "sampled_pixels": 63,
+          "colour": "v032_pits.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_pits_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 6,
+          "sampled_pixels": 31644,
+          "colour": "v032_worked.tga",
+          "colour_repeats": 157.0,
+          "normal": "v032_worked_n.tga",
+          "normal_repeats": 157.0
+        },
+        {
+          "layer": 5,
+          "sampled_pixels": 6418,
+          "colour": "v032_grass.tga",
+          "colour_repeats": 82.0,
+          "normal": "grass_n.tga",
+          "normal_repeats": 82.0
+        },
+        {
+          "layer": 4,
+          "sampled_pixels": 3117,
+          "colour": "v032_sand.tga",
+          "colour_repeats": 181.0,
+          "normal": "v032_sand_n.tga",
+          "normal_repeats": 181.0
+        },
+        {
+          "layer": 3,
+          "sampled_pixels": 0,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 2,
+          "sampled_pixels": 65464,
+          "colour": "v032_prepared.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_prepared_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 1,
+          "sampled_pixels": 93215,
+          "colour": "v032_soil.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_soil_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 0,
+          "sampled_pixels": 0,
+          "colour": "basemap.tga",
+          "colour_repeats": 1.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        }
+      ]
+    },
+    {
+      "key": "0a5577e1a0edb705acc199217ccb239a70c361d989c2cd7cef55990b373996cef8396562560cfce6ddcd8243dc4697ebb0fe4a1deccb0d812edc95fab9c91349573ab7de0b4107b3b5817b5aa1a89a000e9e9bf30762e8087f6770722c7aa884",
+      "file": "Orlando_v062_C_02.jpg",
+      "method": "C",
+      "original_light": false,
+      "view": {
+        "id": "02",
+        "title": "Corner 01 / full berm and riding line",
+        "eye_s": 78.0,
+        "target_s": 103.0,
+        "eye_h": 6.0,
+        "target_h": 0.35,
+        "eye_l": -9.0,
+        "target_l": 0.0,
+        "fov": 64.0
+      },
+      "sha256": "c1b38b3c1394c38cdd3eedfef392a0e0fcf294341c06332ace152fbbc734277e",
+      "eye_xzy_m": [
+        379.4185791015625,
+        187.8158721923828,
+        9.053193092346191
+      ],
+      "target_xzy_m": [
+        379.7173156738281,
+        215.9459991455078,
+        3.370154619216919
+      ],
+      "seconds": 18.11,
+      "terrain_pixels": 1137243,
+      "medium_distance_albedo_luma_std": 6.579499023592076,
+      "medium_distance_pixels": 636147,
+      "layers": [
+        {
+          "layer": 13,
+          "sampled_pixels": 941783,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 12,
+          "sampled_pixels": 938869,
+          "colour": "v045_packed.tga",
+          "colour_repeats": 300.0,
+          "normal": "v045_packed_n.tga",
+          "normal_repeats": 300.0
+        },
+        {
+          "layer": 11,
+          "sampled_pixels": 964792,
+          "colour": "v045_loose.tga",
+          "colour_repeats": 200.0,
+          "normal": "v045_loose_n.tga",
+          "normal_repeats": 200.0
+        },
+        {
+          "layer": 10,
+          "sampled_pixels": 0,
+          "colour": "v024_pit_gravel.tga",
+          "colour_repeats": 95.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 9,
+          "sampled_pixels": 1572,
+          "colour": "v032_face.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_face_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 8,
+          "sampled_pixels": 2502,
+          "colour": "v032_packed.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_packed_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 7,
+          "sampled_pixels": 1593,
+          "colour": "v032_pits.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_pits_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 6,
+          "sampled_pixels": 75249,
+          "colour": "v032_worked.tga",
+          "colour_repeats": 157.0,
+          "normal": "v032_worked_n.tga",
+          "normal_repeats": 157.0
+        },
+        {
+          "layer": 5,
+          "sampled_pixels": 77375,
+          "colour": "v032_grass.tga",
+          "colour_repeats": 82.0,
+          "normal": "grass_n.tga",
+          "normal_repeats": 82.0
+        },
+        {
+          "layer": 4,
+          "sampled_pixels": 8129,
+          "colour": "v032_sand.tga",
+          "colour_repeats": 181.0,
+          "normal": "v032_sand_n.tga",
+          "normal_repeats": 181.0
+        },
+        {
+          "layer": 3,
+          "sampled_pixels": 3028,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 2,
+          "sampled_pixels": 142159,
+          "colour": "v032_prepared.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_prepared_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 1,
+          "sampled_pixels": 262070,
+          "colour": "v032_soil.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_soil_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 0,
+          "sampled_pixels": 0,
+          "colour": "basemap.tga",
+          "colour_repeats": 1.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        }
+      ]
+    },
+    {
+      "key": "0a5577e1a0edb705acc199217ccb239a70c361d989c2cd7cef55990b373996cef8396562560cfce6ddcd8243dc4697ebb0fe4a1deccb0d812edc95fab9c91349573ab7de0b4107b3b5817b5aa1a89a000e9e9bf30762e8087f6770722c7aa884",
+      "file": "Orlando_v062_C_03.jpg",
+      "method": "C",
+      "original_light": false,
+      "view": {
+        "id": "03",
+        "title": "R03 table-single / takeoff face",
+        "eye_s": 226.0,
+        "target_s": 249.0,
+        "eye_h": 1.8,
+        "target_h": 0.55,
+        "eye_l": 0.0,
+        "target_l": 0.0,
+        "fov": 64.0
+      },
+      "sha256": "4947f6b0c18106fca5cafeeaa1384119836fd9107430069587198c995a54de5b",
+      "eye_xzy_m": [
+        264.1531066894531,
+        236.23707580566406,
+        4.650883197784424
+      ],
+      "target_xzy_m": [
+        254.39645385742188,
+        256.9368896484375,
+        5.98274040222168
+      ],
+      "seconds": 9.71,
+      "terrain_pixels": 742107,
+      "medium_distance_albedo_luma_std": 6.943149007815296,
+      "medium_distance_pixels": 212187,
+      "layers": [
+        {
+          "layer": 13,
+          "sampled_pixels": 739361,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 12,
+          "sampled_pixels": 739272,
+          "colour": "v045_packed.tga",
+          "colour_repeats": 300.0,
+          "normal": "v045_packed_n.tga",
+          "normal_repeats": 300.0
+        },
+        {
+          "layer": 11,
+          "sampled_pixels": 739361,
+          "colour": "v045_loose.tga",
+          "colour_repeats": 200.0,
+          "normal": "v045_loose_n.tga",
+          "normal_repeats": 200.0
+        },
+        {
+          "layer": 10,
+          "sampled_pixels": 0,
+          "colour": "v024_pit_gravel.tga",
+          "colour_repeats": 95.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 9,
+          "sampled_pixels": 0,
+          "colour": "v032_face.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_face_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 8,
+          "sampled_pixels": 28,
+          "colour": "v032_packed.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_packed_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 7,
+          "sampled_pixels": 0,
+          "colour": "v032_pits.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_pits_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 6,
+          "sampled_pixels": 11656,
+          "colour": "v032_worked.tga",
+          "colour_repeats": 157.0,
+          "normal": "v032_worked_n.tga",
+          "normal_repeats": 157.0
+        },
+        {
+          "layer": 5,
+          "sampled_pixels": 1123,
+          "colour": "v032_grass.tga",
+          "colour_repeats": 82.0,
+          "normal": "grass_n.tga",
+          "normal_repeats": 82.0
+        },
+        {
+          "layer": 4,
+          "sampled_pixels": 1891,
+          "colour": "v032_sand.tga",
+          "colour_repeats": 181.0,
+          "normal": "v032_sand_n.tga",
+          "normal_repeats": 181.0
+        },
+        {
+          "layer": 3,
+          "sampled_pixels": 80,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 2,
+          "sampled_pixels": 20828,
+          "colour": "v032_prepared.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_prepared_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 1,
+          "sampled_pixels": 22888,
+          "colour": "v032_soil.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_soil_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 0,
+          "sampled_pixels": 0,
+          "colour": "basemap.tga",
+          "colour_repeats": 1.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        }
+      ]
+    },
+    {
+      "key": "0a5577e1a0edb705acc199217ccb239a70c361d989c2cd7cef55990b373996cef8396562560cfce6ddcd8243dc4697ebb0fe4a1deccb0d812edc95fab9c91349573ab7de0b4107b3b5817b5aa1a89a000e9e9bf30762e8087f6770722c7aa884",
+      "file": "Orlando_v062_C_04.jpg",
+      "method": "C",
+      "original_light": false,
+      "view": {
+        "id": "04",
+        "title": "Corner 03 / landing exit into the turn",
+        "eye_s": 270.0,
+        "target_s": 294.0,
+        "eye_h": 1.85,
+        "target_h": 0.35,
+        "eye_l": 0.0,
+        "target_l": 0.0,
+        "fov": 65.0
+      },
+      "sha256": "bd3c758bc2271165b517b958ad7a4c21de94184fe4f013aa0d020528e263a757",
+      "eye_xzy_m": [
+        247.16517639160156,
+        276.6110534667969,
+        6.592228412628174
+      ],
+      "target_xzy_m": [
+        251.43130493164062,
+        295.87493896484375,
+        3.4664549827575684
+      ],
+      "seconds": 14.5,
+      "terrain_pixels": 1101689,
+      "medium_distance_albedo_luma_std": 6.063713422083203,
+      "medium_distance_pixels": 461859,
+      "layers": [
+        {
+          "layer": 13,
+          "sampled_pixels": 1020026,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 12,
+          "sampled_pixels": 1019248,
+          "colour": "v045_packed.tga",
+          "colour_repeats": 300.0,
+          "normal": "v045_packed_n.tga",
+          "normal_repeats": 300.0
+        },
+        {
+          "layer": 11,
+          "sampled_pixels": 1020024,
+          "colour": "v045_loose.tga",
+          "colour_repeats": 200.0,
+          "normal": "v045_loose_n.tga",
+          "normal_repeats": 200.0
+        },
+        {
+          "layer": 10,
+          "sampled_pixels": 0,
+          "colour": "v024_pit_gravel.tga",
+          "colour_repeats": 95.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 9,
+          "sampled_pixels": 0,
+          "colour": "v032_face.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_face_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 8,
+          "sampled_pixels": 0,
+          "colour": "v032_packed.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_packed_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 7,
+          "sampled_pixels": 0,
+          "colour": "v032_pits.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_pits_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 6,
+          "sampled_pixels": 23438,
+          "colour": "v032_worked.tga",
+          "colour_repeats": 157.0,
+          "normal": "v032_worked_n.tga",
+          "normal_repeats": 157.0
+        },
+        {
+          "layer": 5,
+          "sampled_pixels": 723,
+          "colour": "v032_grass.tga",
+          "colour_repeats": 82.0,
+          "normal": "grass_n.tga",
+          "normal_repeats": 82.0
+        },
+        {
+          "layer": 4,
+          "sampled_pixels": 4713,
+          "colour": "v032_sand.tga",
+          "colour_repeats": 181.0,
+          "normal": "v032_sand_n.tga",
+          "normal_repeats": 181.0
+        },
+        {
+          "layer": 3,
+          "sampled_pixels": 0,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 2,
+          "sampled_pixels": 51892,
+          "colour": "v032_prepared.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_prepared_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 1,
+          "sampled_pixels": 120612,
+          "colour": "v032_soil.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_soil_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 0,
+          "sampled_pixels": 0,
+          "colour": "basemap.tga",
+          "colour_repeats": 1.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        }
+      ]
+    },
+    {
+      "key": "0a5577e1a0edb705acc199217ccb239a70c361d989c2cd7cef55990b373996cef8396562560cfce6ddcd8243dc4697ebb0fe4a1deccb0d812edc95fab9c91349573ab7de0b4107b3b5817b5aa1a89a000e9e9bf30762e8087f6770722c7aa884",
+      "file": "Orlando_v062_C_05.jpg",
+      "method": "C",
+      "original_light": false,
+      "view": {
+        "id": "05",
+        "title": "Corner 03 / full width and boundary",
+        "eye_s": 276.0,
+        "target_s": 301.0,
+        "eye_h": 6.0,
+        "target_h": 0.35,
+        "eye_l": -9.0,
+        "target_l": 0.0,
+        "eye_xzy_m": [
+          230.0,
+          269.0,
+          19.0
+        ],
+        "target_xzy_m": [
+          250.0,
+          289.0,
+          3.5
+        ],
+        "fov": 64.0
+      },
+      "sha256": "8dd45a065532208a911550eed9ad47869a400aa4a24f01de756fe9cdddaf6de9",
+      "eye_xzy_m": [
+        230.0,
+        269.0,
+        19.0
+      ],
+      "target_xzy_m": [
+        250.0,
+        289.0,
+        3.5
+      ],
+      "seconds": 15.57,
+      "terrain_pixels": 1600000,
+      "medium_distance_albedo_luma_std": 6.364632800429345,
+      "medium_distance_pixels": 826440,
+      "layers": [
+        {
+          "layer": 13,
+          "sampled_pixels": 1207852,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 12,
+          "sampled_pixels": 1202493,
+          "colour": "v045_packed.tga",
+          "colour_repeats": 300.0,
+          "normal": "v045_packed_n.tga",
+          "normal_repeats": 300.0
+        },
+        {
+          "layer": 11,
+          "sampled_pixels": 1206950,
+          "colour": "v045_loose.tga",
+          "colour_repeats": 200.0,
+          "normal": "v045_loose_n.tga",
+          "normal_repeats": 200.0
+        },
+        {
+          "layer": 10,
+          "sampled_pixels": 0,
+          "colour": "v024_pit_gravel.tga",
+          "colour_repeats": 95.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 9,
+          "sampled_pixels": 0,
+          "colour": "v032_face.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_face_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 8,
+          "sampled_pixels": 1167,
+          "colour": "v032_packed.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_packed_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 7,
+          "sampled_pixels": 0,
+          "colour": "v032_pits.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_pits_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 6,
+          "sampled_pixels": 116262,
+          "colour": "v032_worked.tga",
+          "colour_repeats": 157.0,
+          "normal": "v032_worked_n.tga",
+          "normal_repeats": 157.0
+        },
+        {
+          "layer": 5,
+          "sampled_pixels": 0,
+          "colour": "v032_grass.tga",
+          "colour_repeats": 82.0,
+          "normal": "grass_n.tga",
+          "normal_repeats": 82.0
+        },
+        {
+          "layer": 4,
+          "sampled_pixels": 26773,
+          "colour": "v032_sand.tga",
+          "colour_repeats": 181.0,
+          "normal": "v032_sand_n.tga",
+          "normal_repeats": 181.0
+        },
+        {
+          "layer": 3,
+          "sampled_pixels": 2469,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 2,
+          "sampled_pixels": 268811,
+          "colour": "v032_prepared.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_prepared_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 1,
+          "sampled_pixels": 582304,
+          "colour": "v032_soil.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_soil_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 0,
+          "sampled_pixels": 0,
+          "colour": "basemap.tga",
+          "colour_repeats": 1.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        }
+      ]
+    },
+    {
+      "key": "0a5577e1a0edb705acc199217ccb239a70c361d989c2cd7cef55990b373996cef8396562560cfce6ddcd8243dc4697ebb0fe4a1deccb0d812edc95fab9c91349573ab7de0b4107b3b5817b5aa1a89a000e9e9bf30762e8087f6770722c7aa884",
+      "file": "Orlando_v062_C_06.jpg",
+      "method": "C",
+      "original_light": false,
+      "view": {
+        "id": "06",
+        "title": "R04 / flatter riding surface and face",
+        "eye_s": 316.0,
+        "target_s": 341.0,
+        "eye_h": 1.85,
+        "target_h": 0.35,
+        "eye_l": 0.0,
+        "target_l": 0.0,
+        "fov": 64.0
+      },
+      "sha256": "47176e41f79d65c696578f33d2cdb9f898571bb41ba27b2a50941cd0a114063d",
+      "eye_xzy_m": [
+        265.7679748535156,
+        279.54248046875,
+        4.747391700744629
+      ],
+      "target_xzy_m": [
+        277.6184387207031,
+        257.5365905761719,
+        3.2022714614868164
+      ],
+      "seconds": 13.72,
+      "terrain_pixels": 925949,
+      "medium_distance_albedo_luma_std": 5.5347592537193755,
+      "medium_distance_pixels": 207979,
+      "layers": [
+        {
+          "layer": 13,
+          "sampled_pixels": 885732,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 12,
+          "sampled_pixels": 884196,
+          "colour": "v045_packed.tga",
+          "colour_repeats": 300.0,
+          "normal": "v045_packed_n.tga",
+          "normal_repeats": 300.0
+        },
+        {
+          "layer": 11,
+          "sampled_pixels": 885504,
+          "colour": "v045_loose.tga",
+          "colour_repeats": 200.0,
+          "normal": "v045_loose_n.tga",
+          "normal_repeats": 200.0
+        },
+        {
+          "layer": 10,
+          "sampled_pixels": 801,
+          "colour": "v024_pit_gravel.tga",
+          "colour_repeats": 95.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 9,
+          "sampled_pixels": 0,
+          "colour": "v032_face.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_face_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 8,
+          "sampled_pixels": 0,
+          "colour": "v032_packed.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_packed_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 7,
+          "sampled_pixels": 0,
+          "colour": "v032_pits.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_pits_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 6,
+          "sampled_pixels": 5543,
+          "colour": "v032_worked.tga",
+          "colour_repeats": 157.0,
+          "normal": "v032_worked_n.tga",
+          "normal_repeats": 157.0
+        },
+        {
+          "layer": 5,
+          "sampled_pixels": 1271,
+          "colour": "v032_grass.tga",
+          "colour_repeats": 82.0,
+          "normal": "grass_n.tga",
+          "normal_repeats": 82.0
+        },
+        {
+          "layer": 4,
+          "sampled_pixels": 2621,
+          "colour": "v032_sand.tga",
+          "colour_repeats": 181.0,
+          "normal": "v032_sand_n.tga",
+          "normal_repeats": 181.0
+        },
+        {
+          "layer": 3,
+          "sampled_pixels": 0,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 2,
+          "sampled_pixels": 70834,
+          "colour": "v032_prepared.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_prepared_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 1,
+          "sampled_pixels": 86800,
+          "colour": "v032_soil.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_soil_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 0,
+          "sampled_pixels": 0,
+          "colour": "basemap.tga",
+          "colour_repeats": 1.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        }
+      ]
+    },
+    {
+      "key": "0a5577e1a0edb705acc199217ccb239a70c361d989c2cd7cef55990b373996cef8396562560cfce6ddcd8243dc4697ebb0fe4a1deccb0d812edc95fab9c91349573ab7de0b4107b3b5817b5aa1a89a000e9e9bf30762e8087f6770722c7aa884",
+      "file": "Orlando_v062_C_07.jpg",
+      "method": "C",
+      "original_light": false,
+      "view": {
+        "id": "07",
+        "title": "Corner 09 / approach after R10",
+        "eye_s": 860.0,
+        "target_s": 885.0,
+        "eye_h": 2.0,
+        "target_h": 0.4,
+        "eye_l": 0.0,
+        "target_l": 0.0,
+        "fov": 65.0
+      },
+      "sha256": "4123aa4901e24b77888d23eee5f8c70d162d06e40e340d74bc66f20d4eb0ded2",
+      "eye_xzy_m": [
+        296.30023193359375,
+        420.8128967285156,
+        4.986804962158203
+      ],
+      "target_xzy_m": [
+        275.89013671875,
+        419.464599609375,
+        3.581897020339966
+      ],
+      "seconds": 12.56,
+      "terrain_pixels": 917508,
+      "medium_distance_albedo_luma_std": 5.784021684135647,
+      "medium_distance_pixels": 279106,
+      "layers": [
+        {
+          "layer": 13,
+          "sampled_pixels": 869890,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 12,
+          "sampled_pixels": 868164,
+          "colour": "v045_packed.tga",
+          "colour_repeats": 300.0,
+          "normal": "v045_packed_n.tga",
+          "normal_repeats": 300.0
+        },
+        {
+          "layer": 11,
+          "sampled_pixels": 869886,
+          "colour": "v045_loose.tga",
+          "colour_repeats": 200.0,
+          "normal": "v045_loose_n.tga",
+          "normal_repeats": 200.0
+        },
+        {
+          "layer": 10,
+          "sampled_pixels": 0,
+          "colour": "v024_pit_gravel.tga",
+          "colour_repeats": 95.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 9,
+          "sampled_pixels": 0,
+          "colour": "v032_face.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_face_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 8,
+          "sampled_pixels": 0,
+          "colour": "v032_packed.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_packed_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 7,
+          "sampled_pixels": 0,
+          "colour": "v032_pits.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_pits_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 6,
+          "sampled_pixels": 44668,
+          "colour": "v032_worked.tga",
+          "colour_repeats": 157.0,
+          "normal": "v032_worked_n.tga",
+          "normal_repeats": 157.0
+        },
+        {
+          "layer": 5,
+          "sampled_pixels": 80867,
+          "colour": "v032_grass.tga",
+          "colour_repeats": 82.0,
+          "normal": "grass_n.tga",
+          "normal_repeats": 82.0
+        },
+        {
+          "layer": 4,
+          "sampled_pixels": 14258,
+          "colour": "v032_sand.tga",
+          "colour_repeats": 181.0,
+          "normal": "v032_sand_n.tga",
+          "normal_repeats": 181.0
+        },
+        {
+          "layer": 3,
+          "sampled_pixels": 0,
+          "colour": "v044_route_detail.tga",
+          "colour_repeats": 200.0,
+          "normal": "v044_route_detail_n.tga",
+          "normal_repeats": 1.0
+        },
+        {
+          "layer": 2,
+          "sampled_pixels": 66100,
+          "colour": "v032_prepared.tga",
+          "colour_repeats": 193.0,
+          "normal": "v032_prepared_n.tga",
+          "normal_repeats": 193.0
+        },
+        {
+          "layer": 1,
+          "sampled_pixels": 102304,
+          "colour": "v032_soil.tga",
+          "colour_repeats": 171.0,
+          "normal": "v032_soil_n.tga",
+          "normal_repeats": 171.0
+        },
+        {
+          "layer": 0,
+          "sampled_pixels": 0,
+          "colour": "basemap.tga",
+          "colour_repeats": 1.0,
+          "normal": null,
+          "normal_repeats": 1.0
+        }
+      ]
+    }
+  ],
+  "comparisons": [
+    "Orlando_v062_Compare_01.jpg",
+    "Orlando_v062_Compare_02.jpg",
+    "Orlando_v062_Compare_03.jpg",
+    "Orlando_v062_Compare_04.jpg",
+    "Orlando_v062_Compare_05.jpg",
+    "Orlando_v062_Compare_06.jpg",
+    "Orlando_v062_Compare_07.jpg",
+    "Orlando_v062_Daylight_Control.jpg"
+  ]
+}

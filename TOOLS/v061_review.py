@@ -45,7 +45,7 @@ def trace(c,view):
   hi=np.where(hit&below,distance,hi);lo=np.where(hit&~below,distance,lo)
  p=eye+rays*hi[:,:,None];far=eye+rays*maximum;x=np.where(hit,p[:,:,0],far[:,:,0]);z=np.where(hit,p[:,:,1],far[:,:,1])
  data=dict(x=x.ravel(),z=z.ravel(),ground=p[:,:,2].ravel(),hit=hit.ravel(),eye=eye,target=target,**ray.footprint(x,z))
- temp=filename.with_suffix('.writing.npz');np.savez_compressed(temp,width=W,height=H,fov=view['fov'],max_distance=maximum,**data);temp.replace(filename)
+ temp=filename.with_suffix('.writing.'+str(os.getpid())+'.npz');np.savez_compressed(temp,width=W,height=H,fov=view['fov'],max_distance=maximum,**data);temp.replace(filename)
  print('Traced',view['id'],int(hit.sum()),'terrain pixels',flush=True);return data
 
 @njit(cache=True)

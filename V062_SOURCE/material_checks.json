@@ -1,0 +1,14 @@
+{
+  "checks_pass": true,
+  "all_three_hmf_files_exact_v061": true,
+  "loose_photograph_mean_rgb_change": [
+    2.7477741241455078e-05,
+    -3.7550926208496094e-05,
+    -3.123283386230469e-05
+  ],
+  "original_scanned_fine_normal_hashes": {
+    "v045_loose_n.tga": "0bbef17bacb7af58ef1ab693d43c7531ec5a9adbef35eef77917c5ec1fc03d21",
+    "v045_packed_n.tga": "b3d45a29d4f270b249323ba2b8b8a23225c6d547bc378d3f741d7e6aa567d64d"
+  },
+  "final_compilation_started": false
+}

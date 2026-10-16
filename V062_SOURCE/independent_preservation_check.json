@@ -1,0 +1,29 @@
+{
+  "checks_pass": true,
+  "designs": [
+    {
+      "method": "A",
+      "normal_changed_pixels": 5557504,
+      "normal_alpha_exact": true,
+      "normal_and_height_exact_at_wall_roller": true,
+      "all_height_samples_exact": true,
+      "all_scenery_exact": true
+    },
+    {
+      "method": "B",
+      "normal_changed_pixels": 5503408,
+      "normal_alpha_exact": true,
+      "normal_and_height_exact_at_wall_roller": true,
+      "all_height_samples_exact": true,
+      "all_scenery_exact": true
+    },
+    {
+      "method": "C",
+      "normal_changed_pixels": 5568706,
+      "normal_alpha_exact": true,
+      "normal_and_height_exact_at_wall_roller": true,
+      "all_height_samples_exact": true,
+      "all_scenery_exact": true
+    }
+  ]
+}

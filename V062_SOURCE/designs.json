@@ -1,0 +1,17 @@
+{
+  "A": {
+    "title": "A - Deep tilled loam",
+    "description": "Heavy, irregular clods through corners; short broken cultivation on faces. No crosswise tractor comb.",
+    "wear": 0.66
+  },
+  "B": {
+    "title": "B - Flowing cultivation",
+    "description": "Irregularly spaced curved grooves follow the riding line through corners and lengthwise up jump faces.",
+    "wear": 0.66
+  },
+  "C": {
+    "title": "C - Ridden loam",
+    "description": "Broken wheel ruts through mixed loose loam, with churned shoulders and stronger shape cues at distance.",
+    "wear": 0.62
+  }
+}
