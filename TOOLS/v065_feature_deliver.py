@@ -67,7 +67,8 @@ def main():
             assert max(hi - lo for lo, hi in image.getextrema()) > 120, name
             thumbnail = image.resize((580, 326), Image.Resampling.LANCZOS)
         target = OUT / ('OrlandoMX_v065_' + name + '.png')
-        shutil.copy2(source, target)
+        if not target.exists() or sha(target) != record['sha256']:
+            shutil.copy2(source, target)
         x = 10 + index % 3 * 600
         y = 106 + index // 3 * 366
         sheet.paste(thumbnail, (x, y))

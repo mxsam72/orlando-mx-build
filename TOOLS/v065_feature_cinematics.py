@@ -5,9 +5,10 @@ photographic crocodile are framed from their serialized bounds. No track or
 scenery source is edited. Rendering uses presentation lighting, not game capture.
 """
 from pathlib import Path
-import argparse,json,math,time,hashlib
+import argparse,json,math,time,hashlib,os
 import numpy as np
 import bpy
+from PIL import Image
 from mathutils import Vector,Quaternion
 import v065_cinematic_render as base
 
@@ -163,8 +164,16 @@ def main():
   start=time.time();obj=scene.camera;obj.location=cam['eye'];direction=Vector(cam['target'])-obj.location
   obj.rotation_euler=direction.to_track_quat('-Z','Y').to_euler();obj.data.lens=cam['lens']
   obj.data.dof.use_dof=not args.draft;obj.data.dof.aperture_fstop=cam.get('fstop',8);obj.data.dof.focus_distance=direction.length
-  lights(scene,cam);path=folder/(cam['name']+'.png');scene.render.filepath=str(path)
+  lights(scene,cam);path=folder/(cam['name']+'.png');temporary=folder/(cam['name']+'.render.png');scene.render.filepath=str(temporary)
   print('FEATURE_RENDER_START',cam['name'],flush=True);bpy.ops.render.render(write_still=True)
+  # Publish a complete, decoded and flushed image before recording its hash.
+  with Image.open(temporary) as exported:
+   exported.load();assert exported.size==(scene.render.resolution_x,scene.render.resolution_y)
+  with temporary.open('rb') as handle:os.fsync(handle.fileno())
+  temporary.replace(path)
+  directory=os.open(str(folder),os.O_RDONLY)
+  try:os.fsync(directory)
+  finally:os.close(directory)
   rows.append(dict(cam,file=path.name,seconds=round(time.time()-start,1),sha256=sha(path)));rows.sort(key=lambda r:r['name'])
   report=dict(provenance,renders=rows)
   (folder/'renders.json').write_text(json.dumps(report,indent=2)+'\n')

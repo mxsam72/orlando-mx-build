@@ -1,0 +1,275 @@
+{
+  "version": "v065",
+  "source_assets": "Released v065 checkpoint",
+  "source_only": true,
+  "in_game_capture": false,
+  "terrain_sha256": "860350c4c733e5d26939e9e2f40204679ecef302d6e07889f78a849afc8a8fa2",
+  "scenery_sha256": "40d8e6ddeacfa0d0c3c9fad454abd2f83acee633fb367e31c8530d8dbafa6e99",
+  "material_validation_sha256": "61b54b53c867eadcd17a0f26712255fd183d805282d25ef5e7fdde7778fabdff",
+  "renders": [
+    {
+      "name": "01_four_vehicles_and_candy",
+      "title": "The four-vehicle lineup",
+      "eye": [
+        351.0,
+        130.0,
+        8.0
+      ],
+      "target": [
+        336,
+        153,
+        4.2
+      ],
+      "lens": 36.0,
+      "fstop": 9,
+      "fit": [
+        "truck_jordan_",
+        "truck_premier_",
+        "truck_sam_",
+        "van_shane_",
+        "v057_cardboard_sign_"
+      ],
+      "file": "01_four_vehicles_and_candy.png",
+      "seconds": 140.6,
+      "sha256": "2bc8eb8c9f91b2ed2d00aae01658cdae9c34add2b61d7da5dbdba7fc96ca7d34"
+    },
+    {
+      "name": "02_chevy_express_and_candy",
+      "title": "Express and candy sign",
+      "eye": [
+        351.0,
+        141.0,
+        5.8
+      ],
+      "target": [
+        342.7,
+        151.5,
+        4.05
+      ],
+      "lens": 42.0,
+      "fstop": 7.1,
+      "fit": [
+        "van_shane_",
+        "v057_cardboard_sign_"
+      ],
+      "file": "02_chevy_express_and_candy.png",
+      "seconds": 148.2,
+      "sha256": "febfe8eda88bd2dc1c8d9d05b21a1a96e4b6f7489c43b088c58592c795e1e25a"
+    },
+    {
+      "name": "03_sam_king_ranch",
+      "title": "Sam's Ford King Ranch",
+      "eye": [
+        335.9,
+        143.0,
+        5.2
+      ],
+      "target": [
+        338.4,
+        153.0,
+        4.05
+      ],
+      "lens": 41.22168876114014,
+      "fstop": 5.6,
+      "fit": [
+        "truck_sam_"
+      ],
+      "file": "03_sam_king_ranch.png",
+      "seconds": 153.8,
+      "sha256": "31348bdcf4bdbef93e11b394532776601c8f1f46d2a4e3a7b7dd25c06862a895"
+    },
+    {
+      "name": "04_premier_chevy",
+      "title": "Premier service Chevrolet",
+      "eye": [
+        329.0,
+        142.5,
+        5.6
+      ],
+      "target": [
+        333,
+        153.5,
+        4.1
+      ],
+      "lens": 48.2915161928257,
+      "fstop": 5.6,
+      "fit": [
+        "truck_premier_"
+      ],
+      "file": "04_premier_chevy.png",
+      "seconds": 143.1,
+      "sha256": "a8a452606c3e980c115890397668a74f5147d84a2b9475a03f12a547c4ae7cf2"
+    },
+    {
+      "name": "05_silver_cybertruck",
+      "title": "Stainless Cybertruck",
+      "eye": [
+        319.0,
+        147.5,
+        5.4
+      ],
+      "target": [
+        327.4,
+        153.2,
+        4.1
+      ],
+      "lens": 41.70395056704111,
+      "fstop": 5.6,
+      "fit": [
+        "truck_jordan_"
+      ],
+      "file": "05_silver_cybertruck.png",
+      "seconds": 163.7,
+      "sha256": "fdaf9c597883a1c0787ddca4f22551e580b94bea859d59f9739394b369c4784d"
+    },
+    {
+      "name": "06_pup_memorial_close",
+      "title": "Pup Whatley memorial",
+      "eye": [
+        322.0,
+        126.0,
+        7.7
+      ],
+      "target": [
+        322,
+        144,
+        7.3
+      ],
+      "lens": 46.0,
+      "fstop": 9,
+      "fit": [
+        "v032_pup_whatley_memorial_memorial"
+      ],
+      "file": "06_pup_memorial_close.png",
+      "seconds": 110.5,
+      "sha256": "eb6c3813bb23307b9a1e2d2614dfde6d7b530985b4f26c72a8bc6f201fb472bc"
+    },
+    {
+      "name": "07_pup_memorial_pits",
+      "title": "Remembering Pup in the pits",
+      "eye": [
+        307.0,
+        122.0,
+        8.7
+      ],
+      "target": [
+        322,
+        144,
+        6.8
+      ],
+      "lens": 40.0,
+      "fstop": 8,
+      "fit": [
+        "v032_pup_whatley_memorial_"
+      ],
+      "file": "07_pup_memorial_pits.png",
+      "seconds": 113.3,
+      "sha256": "458c28b8fdbefb3ace08573327cfa0bb13b1a2fe76c532c180ab7c055a7f0f88"
+    },
+    {
+      "name": "08_crocodile_close",
+      "title": "The pond resident",
+      "eye": [
+        265.6319274902344,
+        344.71002197265625,
+        5.887549424171448
+      ],
+      "target": [
+        265.6319274902344,
+        364.71002197265625,
+        3.1375494241714477
+      ],
+      "lens": 48.0,
+      "fstop": 6.3,
+      "fit": [
+        "v041_pond_crocodile_photographic"
+      ],
+      "file": "08_crocodile_close.png",
+      "seconds": 154.0,
+      "sha256": "97bb98bf659092883bcef9e625bde9eaf7105f4706ba5a9f479a0fd7d2825c50"
+    },
+    {
+      "name": "09_crocodile_pond",
+      "title": "Crocodile pond",
+      "eye": [
+        257.6319274902344,
+        333.71002197265625,
+        13.987549424171448
+      ],
+      "target": [
+        265.6319274902344,
+        364.71002197265625,
+        3.1375494241714477
+      ],
+      "lens": 40.0,
+      "fstop": 8,
+      "fit": [
+        "v041_pond_crocodile_photographic"
+      ],
+      "file": "09_crocodile_pond.png",
+      "seconds": 120.1,
+      "sha256": "f071fed4864f0f729cb3889b6dd94a92252c5e5c74f81122fbbf074766763164"
+    },
+    {
+      "name": "10_speedway_golden_hour",
+      "title": "Speedway in golden light",
+      "eye": [
+        440.0,
+        325.0,
+        185.0
+      ],
+      "target": [
+        520,
+        325,
+        4
+      ],
+      "lens": 33,
+      "fstop": 9,
+      "sun_azimuth_degrees": 310,
+      "sun_elevation_degrees": 16,
+      "file": "10_speedway_golden_hour.png",
+      "seconds": 94.2,
+      "sha256": "d20fc6753a33388d0e38559dbad7e534feae4f26d1e8b16a24453c44d436ab6c"
+    },
+    {
+      "name": "11_tabletop_three_quarter",
+      "title": "Loam on the tabletop",
+      "eye": [
+        349.438378268183,
+        371.0914237105903,
+        9.57038420668445
+      ],
+      "target": [
+        326.31568876999364,
+        391.5728850786026,
+        8.681673516962862
+      ],
+      "lens": 36,
+      "fstop": 8,
+      "file": "11_tabletop_three_quarter.png",
+      "seconds": 148.6,
+      "sha256": "7547ba3bf57876ed3404caa902fd3e25b9153f3988e56679ff4e444ffa08bea7"
+    },
+    {
+      "name": "12_berm_golden_hour",
+      "title": "Golden-hour berm",
+      "eye": [
+        381.49152461876,
+        188.99099994343078,
+        5.868780348087904
+      ],
+      "target": [
+        373.9071805208295,
+        219.79638265019352,
+        3.5799997896029967
+      ],
+      "lens": 40,
+      "fstop": 8,
+      "sun_azimuth_degrees": 310,
+      "sun_elevation_degrees": 13,
+      "file": "12_berm_golden_hour.png",
+      "seconds": 204.6,
+      "sha256": "a4988cbf97b996ede9e2e8db5b097c5a7cb7cee2115a4b1d2bca737cdf480ef3"
+    }
+  ]
+}
