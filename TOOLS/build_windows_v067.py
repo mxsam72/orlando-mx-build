@@ -1,4 +1,4 @@
-"""v067 native MX Bikes build: unchanged v067 geometry, approved material and late-morning sunlight changes."""
+"""v067 native MX Bikes build: unchanged v066 geometry, approved material and late-morning sunlight changes."""
 import argparse
 import mmap
 import os
@@ -216,19 +216,19 @@ def validate(native, pkz):
     assert all(value['checks_pass'] for value in report['source_validation'].values())
     save(R / '12_RELEASE/OrlandoMX_v067_Validation.json', report)
     (R / '12_RELEASE/Install_v067.txt').write_text(
-        'Orlando MX 2026 v067 - approved dirt and late-morning lighting update\\n\\n'
+        'Orlando MX 2026 v067 - approved dirt and late-morning lighting update\n\n'
         'Keep v066 installed for comparison. Copy OrlandoMX_2026_v067.pkz to '
         'Documents\\\\PiBoSo\\\\MX Bikes\\\\mods\\\\tracks\\\\motocross\\\\. Select v067 and reset the track. '
-        'All players must use the same PKZ.\\n\\n'
+        'All players must use the same PKZ.\n\n'
         'Compare in CLEAR weather with shadows enabled and identical graphics settings. '
         'Approved v067 changes: 3 photographic soil colors with controlled aggregate detail, '
         '3 normal maps with revised grain/clod relief, and a 45-degree sun aimed for approximately 11 a.m. daylight. '
-        'Runtime sunshine and baked terrain shadows are synchronized.\\n\\n'
+        'Runtime sunshine and baked terrain shadows are synchronized.\n\n'
         'All v066 terrain, routes, starting grid, B corners, C course and start color, grass clearing, wall roller, '
         'vehicles, candy sign, Pup memorial, crocodile, scenery and race data remain unchanged. '
-        'No added texture images, terrain layers or scenery mesh.\\n\\n'
+        'No added texture images, terrain layers or scenery mesh.\n\n'
         'Offline Blender preview appearance is not identical to MX Bikes. In-game appearance, '
-        'performance and physics behavior require testing.\\n', encoding='utf-8')
+        'performance and physics behavior require testing.\n', encoding='utf-8')
     print('V067_NATIVE_VALIDATED', pkz.stat().st_size, 'bytes', sha(pkz), flush=True)
 
 
