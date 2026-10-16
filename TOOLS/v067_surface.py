@@ -119,7 +119,7 @@ def lighting(spec):
     # Replace the linked copies atomically, never mutate the baseline inode.
     for name,text in [('trial_daylight.amb',old.format_amb(amb)),
                       ('map_params.ini',old.author_params((BASE/'map_params.ini').read_text(),spec))]:
-        temp=O/(name+'.writing');temp.write_text(text);temp.replace(O/name)
+        temp=O/(name+'.writing');temp.write_text(text,encoding='utf-8',newline='\n');temp.replace(O/name)
     return old.validate_pair((O/'trial_daylight.amb').read_text(),(O/'map_params.ini').read_text())
 
 def validate(edits,light):
