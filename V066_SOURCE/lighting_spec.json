@@ -1,0 +1,19 @@
+{
+  "version": "v066",
+  "baseline": "v065-start-C-38852452690",
+  "purpose": "Playable daylight test inspired by the v065 cinematic renders; not an offline-render equivalence claim",
+  "sun_azimuth_xz_degrees": 230.0,
+  "sun_elevation_degrees": 28.0,
+  "sun_position_y": 10.0,
+  "clear_ambient_rgb": [0.34, 0.37, 0.42],
+  "clear_sun_rgb": [1.0, 0.93, 0.82],
+  "clear_fog_density": 0.00010,
+  "preserve_cloudy_and_rainy_colors": true,
+  "preserve_stock_skies": true,
+  "preserve_native_shadow_allocation": true,
+  "shadowmaps_scale": 0.1,
+  "shadowmaps_supersampling": 4,
+  "shadowvolumes_supersampling": 4,
+  "reference_blender_main_sun_elevation_degrees": 23.0,
+  "rationale": "A slightly higher sun than the 23-degree photo key keeps the riding surface usable; warm direct light and cool fill separate faces without blacking out the van or shaded berms."
+}

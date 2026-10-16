@@ -1,0 +1,70 @@
+name: Final v066 build - cinematic native daylight test
+on:
+  workflow_dispatch:
+  push:
+    branches: [rebuild-v066]
+    paths: ['.github/workflows/build-v066.yml', 'TOOLS/*v066*.py', 'V066_SOURCE/**']
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: orlando-v066-native
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 180
+    env:
+      V052_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+      PYTHONUNBUFFERED: '1'
+      OPENBLAS_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned authoring dependencies
+        run: python -m pip install -r requirements-v009.txt shapely==2.2.0
+      - name: Recover authenticated v065 and author synchronized native daylight
+        run: |
+          New-Item -ItemType Directory -Force DOCUMENTATION | Out-Null
+          python TOOLS/v066_lighting.py restore 2>&1 | Tee-Object DOCUMENTATION/v066_source_recovery.log
+          exit $LASTEXITCODE
+      - name: Verify lighting and native checker contracts
+        run: |
+          python TOOLS/test_v066_lighting.py -v
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python TOOLS/test_native_texture_aliases_v044.py
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python TOOLS/test_native_coordinate_scan_v044.py
+          exit $LASTEXITCODE
+      - name: Stage exact v065 materials and retained native scenery
+        run: python TOOLS/build_windows_v066.py stage
+      - name: Preserve complete lighting test source before compilation
+        run: python TOOLS/v066_transfer.py checkpoint
+      - name: Compile unchanged collision and merge retained race routes
+        run: python TOOLS/build_windows_v066.py collision
+      - name: FINAL NATIVE LIGHTING AND SHADOW COMPILATION AND VALIDATION
+        run: python TOOLS/build_windows_v066.py final
+      - name: Publish validated v066 PKZ and comparison notes
+        run: python TOOLS/v066_transfer.py deliver
+      - name: Preserve diagnostics on failure
+        if: failure()
+        run: python TOOLS/v066_transfer.py diagnostics
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v066-validation-and-delivery
+          path: |
+            V066_OUTPUT/*validation.json
+            V066_OUTPUT/native_compile_results.json
+            V066_OUTPUT/generated_final_inputs.json
+            BUILD/v066_recovered_inputs.json
+            DOCUMENTATION/*v066*.log
+            DOCUMENTATION/*v066*.json
+            12_RELEASE/OrlandoMX_v066_Validation.json
+            12_RELEASE/Install_v066.txt
+            BUILD/v066_delivery.json
+            BUILD/v066_checkpoint_descriptor.json
