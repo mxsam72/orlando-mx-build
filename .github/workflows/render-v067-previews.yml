@@ -1,12 +1,6 @@
 name: v067 Full Resolution Preview Renders (NO native compilation)
 
 on:
-  push:
-    branches: [rebuild-v067]
-    paths:
-      - .github/workflows/render-v067-previews.yml
-      - TOOLS/v067_*.py
-      - V067_SOURCE/**
   workflow_dispatch:
 
 permissions:
