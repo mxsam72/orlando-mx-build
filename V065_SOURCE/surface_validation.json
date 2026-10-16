@@ -1,0 +1,651 @@
+{
+  "checks_pass": true,
+  "version": "v065 start C coverage and left grass strip",
+  "baseline": "v064-hybrid-38832665174",
+  "changed_material_files": [
+    {
+      "file": "mask_v046_section.tga",
+      "changed_pixels": 149575,
+      "changes_outside_start_scope": 0
+    },
+    {
+      "file": "mask_v046_packed.tga",
+      "changed_pixels": 151691,
+      "changes_outside_start_scope": 0
+    },
+    {
+      "file": "mask_v046_wear.tga",
+      "changed_pixels": 151817,
+      "changes_outside_start_scope": 0
+    },
+    {
+      "file": "mask_visual_grass.tga",
+      "changed_pixels": 10718,
+      "changes_outside_start_scope": 0
+    },
+    {
+      "file": "v044_route_detail_n.tga",
+      "changed_pixels": 583297,
+      "changes_outside_start_scope": 0
+    }
+  ],
+  "retained_source_files": [
+    {
+      "file": ".scenery.fbx.VfD6qh",
+      "sha256": "25a82a77d8301be8175bc1982766cd3df8b762add50129b08a9e843ac4087456"
+    },
+    {
+      "file": "compiled_track.hmf",
+      "sha256": "99829038ec7adeecd2566ae75e9cae06e34dfdaa4c99f13ff06ab27574a4b13b"
+    },
+    {
+      "file": "main.tcl",
+      "sha256": "421db4e38c22229b873fd93750ac1364dd519b1c7b416f065e562a0335db5e85"
+    },
+    {
+      "file": "route.npz",
+      "sha256": "a84053aec4c4ba71e947c37e6f9dfba4058e981c6085448419ff1bf14bfde34a"
+    },
+    {
+      "file": "scenery.fbx",
+      "sha256": "40d8e6ddeacfa0d0c3c9fad454abd2f83acee633fb367e31c8530d8dbafa6e99"
+    },
+    {
+      "file": "start.tcl",
+      "sha256": "d7cfaa7732d3d76a836814938a894d0cd4b0022ab88bca9255c2359107fe2e4c"
+    },
+    {
+      "file": "terrain.raw",
+      "sha256": "860350c4c733e5d26939e9e2f40204679ecef302d6e07889f78a849afc8a8fa2"
+    },
+    {
+      "file": "trial_daylight.amb",
+      "sha256": "77f98c93c8cd3d9ae7277f01c94edf06b7e6da1c6f96c38027484b4172735ecb"
+    }
+  ],
+  "active_terrain_inventory": [
+    {
+      "file": "basemap.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 16777216,
+      "sha256": "75fc72427f37e57c711c9d73c002d7bdba10e8501ae25e9c0a60c79e08fdc5b1"
+    },
+    {
+      "file": "grass_n.tga",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 4194304,
+      "sha256": "4de81532bf419efdc60fee0ca3f377b89168371f6bf858ab4f2e7a773a6cf881"
+    },
+    {
+      "file": "mask_grass.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "8e8fed492a9a5d78b42fa39a1239311ccdc082d6a68da4b5235a9cf9ddb994d5"
+    },
+    {
+      "file": "mask_off.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "71fb105b35ff60e71e788e76fa8b442f0230b086879317412f76587480fc3f2d"
+    },
+    {
+      "file": "mask_pits.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "8b61429919597f60290f22125edf96f0b0fae6d87728007dc59951399f66147f"
+    },
+    {
+      "file": "mask_racing.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "7a9fec7981793972820dcbec3912121fc3cd87e5d2d389c37a2d27ca90b4d941"
+    },
+    {
+      "file": "mask_sand.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "bb261a702d9782373ce5d7298727b8be1197fbe120203ae66f62b65c9a0d9e92"
+    },
+    {
+      "file": "mask_start.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "95aa1699b4955be48ce1171d52baa4dacf0a1e113543839da52f9b0156f7faa1"
+    },
+    {
+      "file": "mask_v024_pit_roads.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "9556301a61968c603b557420f5f325dbd8a4c1ee3f341340897cb3282f744f70"
+    },
+    {
+      "file": "mask_v032_face.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "a3cb8e83b0458c1db04271662be142f2560459ca75f0a7195be8eb79ccfe4904"
+    },
+    {
+      "file": "mask_v032_packed.tga",
+      "size": [
+        4096,
+        4096
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 67108864,
+      "sha256": "999d7a43aff380a64b5abd93ae554a3c2a9ab7165f06dd7549df49b3bab03879"
+    },
+    {
+      "file": "mask_v032_pits.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "87c542928b0bd35b1b4243c6b6489c2f796f86cf48081c6d0b02a424440d1bf3"
+    },
+    {
+      "file": "mask_v044_route_detail.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "308a2fc581020289a98d2766c82ab92aef4caa611d5459fbf6577d15ada70a38"
+    },
+    {
+      "file": "mask_v046_packed.tga",
+      "size": [
+        4096,
+        4096
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 67108864,
+      "sha256": "66484ae6fedb52105b898af90777ea306a43716a872b4f93490ffdb899b48837"
+    },
+    {
+      "file": "mask_v046_section.tga",
+      "size": [
+        4096,
+        4096
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 67108864,
+      "sha256": "354cdf17eeea8c70731eebd20506be35bf2a38eb3e2726d1988fd18d09a33607"
+    },
+    {
+      "file": "mask_v046_wear.tga",
+      "size": [
+        4096,
+        4096
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 67108864,
+      "sha256": "2e438eda66ac812b76065931b8301ca4d28a5e9733a3597280c6bf089bedd728"
+    },
+    {
+      "file": "mask_visual_grass.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "6838c66a6e3796ac12617fa5451267a5225257832c7d6d79e66c750193dd8ce1"
+    },
+    {
+      "file": "mask_visual_racing.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "41a9ba59fd7c64235a3efee648897f4b1350a4e6dc3de4b6c0c6abdc9cf0f1bf"
+    },
+    {
+      "file": "mask_visual_sand.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "1bdb64199b30d15ad536e76d37691ee52d56404bb22e635baee460b46d8650c7"
+    },
+    {
+      "file": "mask_visual_worked.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "253f5386a7ed069f13db3c6e38699a5997977860709ebf95b85596dd3a63c9f6"
+    },
+    {
+      "file": "v024_pit_gravel.tga",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 262144,
+      "sha256": "162ed35bd7b91d2b20cb482d514258556f01dea831deb034b37f3a678bf15ddd"
+    },
+    {
+      "file": "v032_face.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 16777216,
+      "sha256": "cc7be7c49934f03d03790666bdec32532ddb10bfc76e7a798c3bee1e8945480e"
+    },
+    {
+      "file": "v032_face_n.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "46134bcd1305a56cee2f21ac28ff1b637c2f26f22c61808de6672016c19f1cf6"
+    },
+    {
+      "file": "v032_face_wet.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 16777216,
+      "sha256": "62d356226047b5ef71deb3736ee787d17444a8abd0e91b972390369e66c55551"
+    },
+    {
+      "file": "v032_grass.tga",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 4194304,
+      "sha256": "dbd2f911716204c6ab7d4f92781fddacfd2ad9ad1afa41e6ec17c07df9265cfd"
+    },
+    {
+      "file": "v032_packed.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 16777216,
+      "sha256": "2cde91e9ace70ea12b8c06fbc00b563cc83a11dc62fdfd4cdb2821c6eadcee36"
+    },
+    {
+      "file": "v032_packed_n.tga",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 4194304,
+      "sha256": "3648913fa12e16ca2552b4ca9ba3765ea1e1bcbc222046ce9fd101a4feefd9b6"
+    },
+    {
+      "file": "v032_packed_wet.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 16777216,
+      "sha256": "47bd351cc5c6f189c8221ec9b4dc6aabade3d1b38b28bf87b7d5ffa5990c408f"
+    },
+    {
+      "file": "v032_pits.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 16777216,
+      "sha256": "7eb2bb7e62526d7477fd09d3ea05df1a596a89b4db71d8a88a86daa64d41e5b1"
+    },
+    {
+      "file": "v032_pits_n.tga",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 4194304,
+      "sha256": "2e3e48437f7ba21ddc4bfd5c69ee81f00b5f31f457c36f5accb0c8e2ca713d66"
+    },
+    {
+      "file": "v032_pits_wet.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 16777216,
+      "sha256": "24b0cf75b14183db8f3c997d2f05c5a304f7efd054451a8fddc7672173acde5a"
+    },
+    {
+      "file": "v032_prepared.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 16777216,
+      "sha256": "792541f73817215e53b9af659a7a7c2d67dc1646e48f869c2aa0a71095fdc8f0"
+    },
+    {
+      "file": "v032_prepared_n.tga",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 4194304,
+      "sha256": "8559530dbf0e0b5663724912f7c12b9010fb08e25b2d0fa77049298f3731d957"
+    },
+    {
+      "file": "v032_prepared_wet.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 16777216,
+      "sha256": "56482aaffd05c3cef749d770e32a59bff9052f92098000c75dba299c14ddb3a2"
+    },
+    {
+      "file": "v032_sand.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 16777216,
+      "sha256": "314c5a0d3de1174bd5f725dbccb4d45fb51e869a7edf831f5f30c2461ad18e61"
+    },
+    {
+      "file": "v032_sand_n.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "94b1374abbd6132f5861ec6ba63a9d068ec989b26909f857617ae041ffe1a467"
+    },
+    {
+      "file": "v032_sand_wet.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 16777216,
+      "sha256": "d33f7c74c8f3e028f4897f5306d7352b3b9fbbdb7a32da66b5b4e385e87a6624"
+    },
+    {
+      "file": "v032_soil.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 16777216,
+      "sha256": "603820594388e9bc88e3787cc3f0d67285a1e259a03047fa683fce35ef25cd57"
+    },
+    {
+      "file": "v032_soil_n.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "92f85a43fefd3aa88be292dd61870ef141ad9137bc1da653e5b9c3a6b9593896"
+    },
+    {
+      "file": "v032_soil_wet.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 16777216,
+      "sha256": "5391319cb56c4e7ddd082d17a76c3f19965c0143196baafcc5f904f99e0d0865"
+    },
+    {
+      "file": "v032_worked.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 16777216,
+      "sha256": "5356db5781f7e103fffe76938479a22442c4b83991a8fc164379638e097930f0"
+    },
+    {
+      "file": "v032_worked_n.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 16777216,
+      "sha256": "ec4a2cd20b8aa831189a56d7f4f3e2869d90da3aa26664b8cbcb8baa692b8480"
+    },
+    {
+      "file": "v032_worked_wet.tga",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 16777216,
+      "sha256": "7c043659aee89bbcae1e9e2641b41839dbeb635900fcacb272ddb76bd8304ea6"
+    },
+    {
+      "file": "v044_route_detail.tga",
+      "size": [
+        4096,
+        4096
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 67108864,
+      "sha256": "311e848052b3b399f5650d93b8213e5282b06eb70284c4e5cc6591588c6baba7"
+    },
+    {
+      "file": "v044_route_detail_n.tga",
+      "size": [
+        8192,
+        8192
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 268435456,
+      "sha256": "6331c1cb143b22b83ee428c538a91fa9c1a7501c2bb4c2630f3551f57c1c538f"
+    },
+    {
+      "file": "v045_loose.tga",
+      "size": [
+        4096,
+        4096
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 67108864,
+      "sha256": "311e848052b3b399f5650d93b8213e5282b06eb70284c4e5cc6591588c6baba7"
+    },
+    {
+      "file": "v045_loose_n.tga",
+      "size": [
+        4096,
+        4096
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 67108864,
+      "sha256": "0bbef17bacb7af58ef1ab693d43c7531ec5a9adbef35eef77917c5ec1fc03d21"
+    },
+    {
+      "file": "v045_packed.tga",
+      "size": [
+        4096,
+        4096
+      ],
+      "mode": "RGB",
+      "rgba8_bytes": 67108864,
+      "sha256": "7bbced31ce4bcbe1d40ddff175308ec08ef9df76e19fc941e1154effd12a680d"
+    },
+    {
+      "file": "v045_packed_n.tga",
+      "size": [
+        4096,
+        4096
+      ],
+      "mode": "RGBA",
+      "rgba8_bytes": 67108864,
+      "sha256": "b3d45a29d4f270b249323ba2b8b8a23225c6d547bc378d3f741d7e6aa567d64d"
+    }
+  ],
+  "active_shaders": [
+    {
+      "file": "v032_face.shd",
+      "sha256": "cade0da33ea6e6851d410317f545126c6916620477e78ce958c263435ee4491a"
+    },
+    {
+      "file": "v032_packed.shd",
+      "sha256": "103d8b0472b818e6bc3ed16ed284c0f4a8d24b22ac740f252a1b0cc6c71d8373"
+    },
+    {
+      "file": "v032_worked_wet.shd",
+      "sha256": "5ab3d63cbcbddd1fc7470b64db1b9e0d109875aac0e7d18ee2a01919b82c5a87"
+    },
+    {
+      "file": "v032_sand_wet.shd",
+      "sha256": "2e23891bf68fd3114d08e951577d39e373c41111f3005ffb95c986575e1ac8a0"
+    },
+    {
+      "file": "v044_route_detail.shd",
+      "sha256": "7e4e1862e75fedc459bd0ed4da00bdb59f33cb0e40a72b05477e16c9b7e4f466"
+    },
+    {
+      "file": "v045_loose.shd",
+      "sha256": "f7e26443b34fa0cd98ee78aa83842a4b356ad924608aee9573c5e7e34139e424"
+    },
+    {
+      "file": "v032_face_wet.shd",
+      "sha256": "cade0da33ea6e6851d410317f545126c6916620477e78ce958c263435ee4491a"
+    },
+    {
+      "file": "v032_soil.shd",
+      "sha256": "61a46f27188589c9786af09d3d13c334399205beb7f2e44829d0a5c53518b5b4"
+    },
+    {
+      "file": "v045_packed.shd",
+      "sha256": "119a527cf3cff04db86128a8a6d5947afaae514049237e673453ba8887259bab"
+    },
+    {
+      "file": "v032_grass.shd",
+      "sha256": "3c3ec923311d4ddced9593cda8c5c86de35908cbd365797658717b3a9cef0534"
+    },
+    {
+      "file": "v032_pits_wet.shd",
+      "sha256": "8a6b1e8c7b94e73ad803b4c891268dfdbf3bca68397d3c548ca1f3f7400ae0eb"
+    },
+    {
+      "file": "v032_worked.shd",
+      "sha256": "5ab3d63cbcbddd1fc7470b64db1b9e0d109875aac0e7d18ee2a01919b82c5a87"
+    },
+    {
+      "file": "v032_sand.shd",
+      "sha256": "2e23891bf68fd3114d08e951577d39e373c41111f3005ffb95c986575e1ac8a0"
+    },
+    {
+      "file": "v032_prepared.shd",
+      "sha256": "bd9e62984d6d2307b701dece55ec08739c5a67c65b08cb7b9af9968e93e1e843"
+    },
+    {
+      "file": "v032_pits.shd",
+      "sha256": "8a6b1e8c7b94e73ad803b4c891268dfdbf3bca68397d3c548ca1f3f7400ae0eb"
+    },
+    {
+      "file": "v032_packed_wet.shd",
+      "sha256": "103d8b0472b818e6bc3ed16ed284c0f4a8d24b22ac740f252a1b0cc6c71d8373"
+    },
+    {
+      "file": "v032_prepared_wet.shd",
+      "sha256": "bd9e62984d6d2307b701dece55ec08739c5a67c65b08cb7b9af9968e93e1e843"
+    },
+    {
+      "file": "v032_soil_wet.shd",
+      "sha256": "61a46f27188589c9786af09d3d13c334399205beb7f2e44829d0a5c53518b5b4"
+    }
+  ],
+  "texture_allocation_bytes": 1447297024,
+  "rgba8_base_level_bytes_before": 1447297024,
+  "rgba8_base_level_bytes_after": 1447297024,
+  "added_images": 0,
+  "added_layers": 0,
+  "layer_count": 14,
+  "start_C_full_opening_coverage": true,
+  "circled_visual_grass_strip_removed": true,
+  "physical_grass_and_physical_declarations_unchanged": true,
+  "pit_grass_outside_start_scope_exact": true,
+  "original_B_corners_and_C_course_outside_start_scope_exact": true,
+  "normal_specular_alpha_exact": true,
+  "mask_RGB_exact": true,
+  "terrain_and_wall_roller_exact": true,
+  "scenery_vehicles_and_sign_exact": true,
+  "lighting_exact_v064": true,
+  "correction": "v064 C generation inherited masks that were empty in the opening 60 m. v065 extends their coverage explicitly.",
+  "native_compilation_started": false,
+  "in_game_verified": false
+}

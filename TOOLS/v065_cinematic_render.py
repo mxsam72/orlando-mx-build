@@ -116,8 +116,13 @@ def load_scene():
  az=math.radians(220);el=math.radians(25)
  sky.sun_elevation=el;sky.sun_rotation=az;sky.sun_disc=False;sky.air_density=1;sky.dust_density=.35;sky.ozone_density=1
  bg=nodes.new('ShaderNodeBackground');bg.inputs['Strength'].default_value=.35;links.new(sky.outputs['Color'],bg.inputs['Color'])
- output=nodes.new('ShaderNodeOutputWorld');links.new(bg.outputs[0],output.inputs[0])
- sun=bpy.data.lights.new('Presentation sun','SUN');sun.energy=3;sun.angle=math.radians(2);sun.color=(1,.95,.86)
+ # Retain a natural sky in the camera while using restrained neutral fill.
+ # A full-strength procedural sky overwhelms the sun and turns brown soil grey.
+ fill=nodes.new('ShaderNodeBackground');fill.inputs['Color'].default_value=(.52,.59,.67,1);fill.inputs['Strength'].default_value=.45
+ path=nodes.new('ShaderNodeLightPath');worldmix=nodes.new('ShaderNodeMixShader')
+ links.new(path.outputs['Is Camera Ray'],worldmix.inputs[0]);links.new(fill.outputs[0],worldmix.inputs[1]);links.new(bg.outputs[0],worldmix.inputs[2])
+ output=nodes.new('ShaderNodeOutputWorld');links.new(worldmix.outputs[0],output.inputs[0])
+ sun=bpy.data.lights.new('Presentation sun','SUN');sun.energy=3.2;sun.angle=math.radians(2);sun.color=(1,.89,.73)
  ob=bpy.data.objects.new('Presentation sun',sun);scene.collection.objects.link(ob)
  direction=Vector((math.cos(az)*math.cos(el),math.sin(az)*math.cos(el),math.sin(el)))
  ob.rotation_euler=(-direction).to_track_quat('-Z','Y').to_euler()
@@ -137,12 +142,12 @@ def cameras():
   x,z,t=[np.interp(s,route[:,3],route[:,i]) for i in [0,1,2]]
   return loc(x-math.sin(t)*l,z+math.cos(t)*l,h)
  return [
-  dict(name='01_orlando_hero',eye=loc(460,135,112),target=loc(315,302,2),lens=32),
+  dict(name='01_orlando_hero',eye=loc(450,80,260),target=loc(320,270,1),lens=30),
   dict(name='02_flowing_corner',eye=at(72,-13,5),target=at(103,0,.55),lens=34),
   dict(name='03_tabletop',eye=at(780,-6,2.4),target=at(816,0,.7),lens=33),
   dict(name='04_rhythm_section',eye=at(1373,-27,12),target=at(1397,0,.65),lens=35),
   dict(name='05_speedway_double',eye=loc(597,224,59),target=[529,331,5],lens=29),
-  dict(name='06_start_straight',eye=loc(439,144,9),target=loc(411,209,.8),lens=33),
+  dict(name='06_start_straight',eye=loc(443,188,14),target=loc(410,222,1),lens=31),
   dict(name='07_c_dirt_start_detail',eye=loc(418,177,1.55),target=loc(413,216,.65),lens=29),
   dict(name='08_express_and_sign',eye=loc(352,143,2.8),target=loc(343,152,1.1),lens=36),
  ]

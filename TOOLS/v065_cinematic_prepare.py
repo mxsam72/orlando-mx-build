@@ -21,6 +21,10 @@ def image_file(path,kind='color',limit=2048):
  path=Path(path);digest=sha(path);key=(digest,kind,limit)
  if key in IMAGE_CACHE:return IMAGE_CACHE[key]
  name=digest[:20]+'_'+kind+f'_{limit}.png';dest=T/name
+ if dest.exists():
+  try:
+   with Image.open(dest) as test:test.load()
+  except (OSError,ValueError):dest.unlink()
  if not dest.exists():
   with Image.open(path) as im:
    if kind=='mask':im=im.getchannel('A')
@@ -28,7 +32,7 @@ def image_file(path,kind='color',limit=2048):
    else:im=im.convert('RGBA' if 'A' in im.getbands() else 'RGB')
    if max(im.size)>limit:
     im.thumbnail((limit,limit),Image.Resampling.LANCZOS if kind=='color' else Image.Resampling.BOX)
-   im.save(dest)
+   tmp=dest.with_suffix('.writing.png');im.save(tmp);tmp.replace(dest)
  IMAGE_CACHE[key]=dest.as_posix();return dest.as_posix()
 
 def material_layers():
@@ -81,7 +85,12 @@ def scenery():
   nl=next((n for n in g['children'] if n['name']==b'LayerElementNormal'),None)
   if nl:
    nv=array(child(nl,b'Normals')).reshape(-1,3)
-   if len(nv)==len(v):nv=nv[indices]
+   nr=values(child(nl,b'ReferenceInformationType'))[0]
+   if nr==b'IndexToDirect':nv=nv[array(child(nl,b'NormalsIndex')).astype(int)]
+   nm=values(child(nl,b'MappingInformationType'))[0]
+   if nm in [b'ByVertice',b'ByVertex',b'ByControlPoint']:nv=nv[indices]
+   elif nm==b'ByPolygon':nv=np.repeat(nv,lengths,axis=0)
+   elif nm==b'AllSame':nv=np.repeat(nv[:1],len(pi),axis=0)
    assert len(nv)==len(pi),(name,'normals')
    nv=nv[:,[0,2,1]]*np.array([1,-1,1])
   else:
