@@ -47,7 +47,7 @@ def cameras():
        fit=['van_shane_','v057_cardboard_sign_']),
   dict(name='03_sam_king_ranch',title="Sam's Ford King Ranch",eye=[335.9,143,5.2],target=[338.4,153.0,4.05],lens=50,fstop=5.6,fit=['truck_sam_']),
   dict(name='04_premier_chevy',title='Premier service Chevrolet',eye=[329,142.5,5.6],target=[333,153.5,4.1],lens=50,fstop=5.6,fit=['truck_premier_']),
-  dict(name='05_silver_cybertruck',title='Stainless Cybertruck',eye=[320.5,143.5,5.1],target=[327.4,153.2,4.1],lens=50,fstop=5.6,fit=['truck_jordan_']),
+  dict(name='05_silver_cybertruck',title='Stainless Cybertruck',eye=[319,147.5,5.4],target=[327.4,153.2,4.1],lens=45,fstop=5.6,fit=['truck_jordan_']),
   dict(name='06_pup_memorial_close',title='Pup Whatley memorial',eye=[322,126,7.7],target=[322,144,7.3],lens=46,fstop=9,
        fit=['v032_pup_whatley_memorial_memorial']),
   dict(name='07_pup_memorial_pits',title='Remembering Pup in the pits',eye=[307,122,8.7],target=[322,144,6.8],lens=40,fstop=8,
@@ -56,8 +56,9 @@ def cameras():
        fit=['v041_pond_crocodile_photographic']),
   dict(name='09_crocodile_pond',title='Crocodile pond',eye=croc_wide,target=crop_target,lens=40,fstop=8,
        fit=['v041_pond_crocodile_photographic']),
-  dict(name='10_wall_entry_roller',title='The wall-entry roller',eye=loc(542,207,4.5),target=loc(535,246.2,.25),lens=38,fstop=9),
-  dict(name='11_tabletop_three_quarter',title='Loam on the tabletop',eye=at(789,-18,10),target=at(816,0,.9),lens=43,fstop=8),
+  dict(name='10_speedway_golden_hour',title='Speedway in golden light',eye=[440,325,185],target=[520,325,4],lens=33,fstop=9,
+       sun_azimuth_degrees=310,sun_elevation_degrees=16),
+  dict(name='11_tabletop_three_quarter',title='Loam on the tabletop',eye=at(788,-6,6.5),target=at(818,0,.6),lens=36,fstop=8),
   dict(name='12_berm_golden_hour',title='Golden-hour berm',eye=at(80,-9,2.8),target=at(110,0,.5),lens=40,fstop=8,
        sun_azimuth_degrees=310,sun_elevation_degrees=13),
  ]
@@ -85,12 +86,64 @@ def lights(scene,cam):
  sun.data.color=(1,.89,.73) if el>math.radians(16) else (1,.76,.51)
  scene.view_settings.exposure=.65
 
+def optimize_ground_material():
+ """Prune identically-zero masks in bounded tiles with a two-metre halo.
+
+ A fully opaque layer also makes every earlier layer irrelevant. Source maps,
+ shader order, native vertices and UVs remain unchanged. Share image data and
+ materials for repeated layer sets instead of sampling all 13 layers per ray.
+ """
+ from PIL import Image
+ layers=read(W/'terrain_layers.json');masks={}
+ for row in layers:
+  if row.get('mask'):
+   with Image.open(row['mask']) as im:masks[row['index']]=np.array(im)
+ step=8.;n=75;tile=np.zeros((n,n),np.int32);sets={};records=[]
+ for j in range(n):
+  for i in range(n):
+   x0=i*step-2;x1=(i+1)*step+2;y0=j*step-2;y1=(j+1)*step+2;active=[]
+   for row in layers:
+    if row['index'] in masks:
+     a=masks[row['index']];h,w=a.shape
+     crop=a[max(0,int((600-y1)/600*h)):min(h,int((600-y0)/600*h)+1),max(0,int(x0/600*w)):min(w,int(x1/600*w)+1)]
+     lo,hi=int(crop.min()),int(crop.max())
+     if hi==0:continue
+     if lo==255:active=[]
+    else:active=[]
+    active.append(row['index'])
+   key=tuple(active)
+   if key not in sets:sets[key]=len(sets)+1;records.append(key)
+   tile[j,i]=sets[key]
+ materials=[base.terrain_material([r for r in layers if r['index'] in key],'Native ground layers '+','.join(map(str,key))) for key in records]
+ for name in ['course','outer']:
+  obj=bpy.data.objects['Native terrain '+name]
+  with np.load(W/('terrain_'+name+'.npz')) as data:
+   v=data['v'];faces=data['faces'];centres=(v[faces[:,0],:2]+v[faces[:,2],:2])*.5
+   cols=np.clip((centres[:,0]/step).astype(int),0,n-1);rows=np.clip((centres[:,1]/step).astype(int),0,n-1);indices=tile[rows,cols]
+  for material in materials:obj.data.materials.append(material)
+  obj.data.polygons.foreach_set('material_index',indices);obj.data.update()
+ print('REGIONAL_GROUND_MATERIALS',len(materials),'shared source layer sets',flush=True)
+
 def main():
  ap=argparse.ArgumentParser();ap.add_argument('--draft',action='store_true');ap.add_argument('--shots',default='all');args=ap.parse_args()
  OUT.mkdir(parents=True,exist_ok=True);cams=cameras()
  if args.shots!='all':cams=[c for c in cams if c['name'].split('_')[0] in args.shots.split(',')]
  assert cams
  scene=base.load_scene()
+ optimize_ground_material()
+ # Translate the cardboard board's U orientation for Blender. Culling its
+ # near artwork exposes the black solid backing; use the near artwork with
+ # readable U instead. Only this render material changes, never the FBX/TGA.
+ board=bpy.data.materials.get('v057_cardboard')
+ if board:
+  nodes=board.node_tree.nodes;links=board.node_tree.links;p=nodes.get('Principled BSDF')
+  for link in list(p.inputs['Alpha'].links):links.remove(link)
+  p.inputs['Alpha'].default_value=1
+  for node in list(nodes):
+   if node.type!='TEX_IMAGE':continue
+   uv=node.inputs['Vector'].links[0].from_socket
+   scale=nodes.new('ShaderNodeVectorMath');scale.operation='MULTIPLY';scale.inputs[1].default_value=(-1,1,1);links.new(uv,scale.inputs[0])
+   add=nodes.new('ShaderNodeVectorMath');add.operation='ADD';add.inputs[1].default_value=(1,0,0);links.new(scale.outputs[0],add.inputs[0]);links.new(add.outputs[0],node.inputs['Vector'])
  # Faithful PBR translation of the existing water surface for path tracing.
  # Its original mesh, UVs and diffuse photograph remain untouched.
  water=bpy.data.materials.get('water')
@@ -98,8 +151,8 @@ def main():
   p=water.node_tree.nodes.get('Principled BSDF');p.inputs['IOR'].default_value=1.333;p.inputs['Roughness'].default_value=.20
   p.inputs['Coat Weight'].default_value=.6;p.inputs['Coat Roughness'].default_value=.12
  scene.render.resolution_x=1120 if args.draft else 2560;scene.render.resolution_y=630 if args.draft else 1440
- scene.cycles.samples=16 if args.draft else 48;scene.cycles.adaptive_min_samples=6 if args.draft else 12
- scene.cycles.adaptive_threshold=.12 if args.draft else .045
+ scene.cycles.samples=16 if args.draft else 40;scene.cycles.adaptive_min_samples=6 if args.draft else 10
+ scene.cycles.adaptive_threshold=.12 if args.draft else .05
  folder=OUT/'drafts' if args.draft else OUT;folder.mkdir(exist_ok=True)
  prior=read(folder/'renders.json') if (folder/'renders.json').exists() else {};names={c['name'] for c in cams}
  rows=[r for r in prior.get('renders',[]) if r['name'] not in names]

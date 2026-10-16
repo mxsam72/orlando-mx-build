@@ -38,11 +38,11 @@ def mix(nodes,links,a,b,factor):
  else:links.new(factor,m.inputs[0])
  return m.outputs[0]
 
-def terrain_material():
- mat=bpy.data.materials.new('Actual accepted B/C terrain, with corrected C start');mat.use_nodes=True
+def terrain_material(layer_rows=None,name='Actual accepted B/C terrain, with corrected C start'):
+ mat=bpy.data.materials.new(name);mat.use_nodes=True
  nodes=mat.node_tree.nodes;links=mat.node_tree.links;nodes.clear()
  uv=nodes.new('ShaderNodeTexCoord').outputs['UV'];color=(.2,.17,.12);normal=(.5,.5,1)
- for row in read(W/'terrain_layers.json'):
+ for row in (read(W/'terrain_layers.json') if layer_rows is None else layer_rows):
   tex=texture(nodes,links,row['color'],uv,row['repetitions'])
   factor=texture(nodes,links,row['mask'],uv,1,True).outputs['Color'] if row.get('mask') else 1
   nn=texture(nodes,links,row['normal'],uv,row['normal_repetitions'],True).outputs['Color'] if row.get('normal') else (.5,.5,1)
