@@ -7,7 +7,7 @@ from pathlib import Path
 import argparse,gc,json,math,time
 import numpy as np
 import bpy
-from mathutils import Vector
+from mathutils import Vector,Quaternion
 
 R=Path(__file__).resolve().parents[1];W=R/'BUILD/v065_cinematic'
 OUT=R/'DOCUMENTATION/v065_cinematic';B=R/'V065_OUTPUT'
@@ -145,11 +145,13 @@ def cameras():
   dict(name='01_orlando_hero',eye=loc(450,80,260),target=loc(320,270,1),lens=34),
   dict(name='02_flowing_corner',eye=at(72,-13,5),target=at(103,0,.55),lens=34),
   dict(name='03_tabletop',eye=at(780,-6,2.4),target=at(816,0,.7),lens=33),
-  dict(name='04_rhythm_section',eye=at(1373,-27,12),target=at(1397,0,.65),lens=35),
-  dict(name='05_speedway_double',eye=loc(597,224,59),target=[529,331,5],lens=29),
+  dict(name='04_rhythm_section',eye=at(1373,-10,18),target=at(1404,0,.65),lens=34),
+  dict(name='05_speedway_double',eye=[440,325,185],target=[520,325,4],lens=33),
   dict(name='06_start_straight',eye=loc(443,188,14),target=loc(410,222,1),lens=31),
   dict(name='07_c_dirt_start_detail',eye=loc(418,177,1.55),target=loc(413,216,.65),lens=29),
   dict(name='08_express_and_sign',eye=loc(352,143,2.8),target=loc(343,152,1.1),lens=36),
+  # Framed against the complete route/width envelope and native world bounds.
+  dict(name='09_full_track_overview',eye=[363.158073,-4.001376,412.850129],target=[311.037660,291.121778,4.0],lens=42.511557,roll_degrees=-11.215835),
  ]
 
 def main():
@@ -159,14 +161,19 @@ def main():
  folder=OUT/'drafts' if args.draft else OUT;folder.mkdir(exist_ok=True)
  scene.render.resolution_x=1200 if args.draft else 2560;scene.render.resolution_y=675 if args.draft else 1440
  scene.cycles.samples=20 if args.draft else 48;scene.cycles.adaptive_min_samples=8 if args.draft else 12;scene.cycles.adaptive_threshold=.10 if args.draft else .045
- rows=[]
+ prior=read(folder/'renders.json') if (folder/'renders.json').is_file() else {}
+ names={c['name'] for c in cams};rows=[r for r in prior.get('renders',[]) if r['name'] not in names]
  for cam in cams:
   start=time.time();obj=scene.camera;obj.location=cam['eye'];direction=Vector(cam['target'])-obj.location
-  obj.rotation_euler=direction.to_track_quat('-Z','Y').to_euler();obj.data.lens=cam['lens'];obj.data.dof.use_dof=not args.draft
+  rotation=direction.to_track_quat('-Z','Y')
+  if cam.get('roll_degrees'):rotation=rotation@Quaternion((0,0,1),math.radians(cam['roll_degrees']))
+  obj.rotation_euler=rotation.to_euler();obj.data.lens=cam['lens'];obj.data.dof.use_dof=not args.draft
   obj.data.dof.focus_distance=direction.length;path=folder/(cam['name']+'.png');scene.render.filepath=path.as_posix()
   log('CINEMATIC_RENDER_START',cam['name']);bpy.ops.render.render(write_still=True)
   rows.append(dict(cam,file=path.name,render_seconds=round(time.time()-start,1)))
-  (folder/'renders.json').write_text(json.dumps(dict(source_only=True,in_game_capture=False,version='v065',presentation_lighting=True,renders=rows),indent=2)+'\n')
+  rows.sort(key=lambda r:r['name'])
+  (folder/'renders.json').write_text(json.dumps(dict(source_only=True,in_game_capture=False,version='v065',presentation_lighting=True,
+   material_validation_sha256=read(W/'preparation.json')['material_validation_sha256'],renders=rows),indent=2)+'\n')
   log('CINEMATIC_RENDER_SAVED',path.as_posix(),round(time.time()-start,1),'s')
  log('CINEMATIC_RENDER_COMPLETE')
 if __name__=='__main__':main()
