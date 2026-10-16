@@ -157,8 +157,8 @@ def main():
  OUT.mkdir(parents=True,exist_ok=True);scene=load_scene();cams=cameras()
  if args.shots!='all':cams=[c for c in cams if c['name'].split('_')[0] in args.shots.split(',')]
  folder=OUT/'drafts' if args.draft else OUT;folder.mkdir(exist_ok=True)
- scene.render.resolution_x=1200 if args.draft else 3200;scene.render.resolution_y=675 if args.draft else 1800
- scene.cycles.samples=20 if args.draft else 72;scene.cycles.adaptive_min_samples=8 if args.draft else 16;scene.cycles.adaptive_threshold=.10 if args.draft else .035
+ scene.render.resolution_x=1200 if args.draft else 2560;scene.render.resolution_y=675 if args.draft else 1440
+ scene.cycles.samples=20 if args.draft else 48;scene.cycles.adaptive_min_samples=8 if args.draft else 12;scene.cycles.adaptive_threshold=.10 if args.draft else .045
  rows=[]
  for cam in cams:
   start=time.time();obj=scene.camera;obj.location=cam['eye'];direction=Vector(cam['target'])-obj.location

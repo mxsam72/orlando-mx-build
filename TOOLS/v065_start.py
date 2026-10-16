@@ -64,7 +64,13 @@ class Start:
   left_extra=7*smooth((79-ss)/12)
   side=smooth((l+half+1.2)/1.2)*smooth((half+left_extra+1.5-l)/1.5)
   along=smooth((ss+2.8)/2.8)*smooth((82-ss)/18)
-  w=(side*along).reshape(shape);grass_scope=w.copy()
+  w=(side*along).reshape(shape)
+  # The screenshot's green band extends between the straight and the
+  # neighbouring course, beyond the lane's immediate seven-metre shoulder.
+  # Use its world-space footprint so the bending start centreline cannot
+  # incorrectly assign its far end to a later station and leave a fringe.
+  strip=smooth((x-379)/2)*smooth((400-x)/2)*smooth((z-168)/3)*smooth((250-z)/8)
+  w=np.maximum(w,strip);grass_scope=w.copy()
   dm,_=self.main_tree.query(pos,workers=2)
   n=len(self.old_section);old=map_coordinates(self.old_section,[(600-z)/600*n-.5,x/600*n-.5],order=1,mode='nearest')
   # Keep the adjacent original B corner/approach exact even where the
@@ -92,7 +98,7 @@ def retain():
 
 def author(c,name):
  old=np.array(Image.open(source(name,True)));out=old.copy();n=len(old);dx=600/n
- normal=name.endswith('_n.tga');bounds=(385.,443.,165.,260.)
+ normal=name.endswith('_n.tga');bounds=(377.,443.,165.,260.)
  x0=max(1,int(bounds[0]/dx));x1=min(n-1,int(bounds[1]/dx)+1)
  y0=max(1,int((600-bounds[3])/dx));y1=min(n-1,int((600-bounds[2])/dx)+1)
  changed=0;outside=0
@@ -146,7 +152,7 @@ def validate(c,retained,edits):
   core=(ss>=1)&(abs(ll)<=18.0)
   assert np.all(samples[core]==target),(name,int(samples[core].min()),int(samples[core].max()))
  # Circled strip: six metres beyond left edge, away from gate and end blends.
- x=np.full(80,392.5);z=np.linspace(176,230,80)
+ x,z=np.meshgrid(np.linspace(381.5,396.5,31),np.linspace(172,241,100))
  a=np.asarray(Image.open(source('mask_visual_grass.tga')).getchannel('A'));n=len(a)
  strip=map_coordinates(a,[(600-z)/600*n-.5,x/600*n-.5],order=0,mode='nearest')
  assert int(strip.max())==0,strip.max()

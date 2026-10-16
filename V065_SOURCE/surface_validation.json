@@ -5,27 +5,27 @@
   "changed_material_files": [
     {
       "file": "mask_v046_section.tga",
-      "changed_pixels": 149575,
+      "changed_pixels": 177323,
       "changes_outside_start_scope": 0
     },
     {
       "file": "mask_v046_packed.tga",
-      "changed_pixels": 151691,
+      "changed_pixels": 179667,
       "changes_outside_start_scope": 0
     },
     {
       "file": "mask_v046_wear.tga",
-      "changed_pixels": 151817,
+      "changed_pixels": 179964,
       "changes_outside_start_scope": 0
     },
     {
       "file": "mask_visual_grass.tga",
-      "changed_pixels": 10718,
+      "changed_pixels": 15950,
       "changes_outside_start_scope": 0
     },
     {
       "file": "v044_route_detail_n.tga",
-      "changed_pixels": 583297,
+      "changed_pixels": 691810,
       "changes_outside_start_scope": 0
     }
   ],
@@ -202,7 +202,7 @@
       ],
       "mode": "RGBA",
       "rgba8_bytes": 67108864,
-      "sha256": "66484ae6fedb52105b898af90777ea306a43716a872b4f93490ffdb899b48837"
+      "sha256": "a229520af3fa8079ee9d5c7cf1b9520c17f481a8760ca247ce3fbd8a5181f437"
     },
     {
       "file": "mask_v046_section.tga",
@@ -212,7 +212,7 @@
       ],
       "mode": "RGBA",
       "rgba8_bytes": 67108864,
-      "sha256": "354cdf17eeea8c70731eebd20506be35bf2a38eb3e2726d1988fd18d09a33607"
+      "sha256": "ce82fe4cd8694074ac3b12da16c449dd5613e12535b54d98987b2a15e9c5c853"
     },
     {
       "file": "mask_v046_wear.tga",
@@ -222,7 +222,7 @@
       ],
       "mode": "RGBA",
       "rgba8_bytes": 67108864,
-      "sha256": "2e438eda66ac812b76065931b8301ca4d28a5e9733a3597280c6bf089bedd728"
+      "sha256": "9680fc679c91b3e3f112211b55a388018981b751c89148c2b74597c506f3c57f"
     },
     {
       "file": "mask_visual_grass.tga",
@@ -232,7 +232,7 @@
       ],
       "mode": "RGBA",
       "rgba8_bytes": 16777216,
-      "sha256": "6838c66a6e3796ac12617fa5451267a5225257832c7d6d79e66c750193dd8ce1"
+      "sha256": "a7f333f0cadaea45e96f0c8bfd432ab613e9f763db3dcf762a41de2f91603332"
     },
     {
       "file": "mask_visual_racing.tga",
@@ -512,7 +512,7 @@
       ],
       "mode": "RGBA",
       "rgba8_bytes": 268435456,
-      "sha256": "6331c1cb143b22b83ee428c538a91fa9c1a7501c2bb4c2630f3551f57c1c538f"
+      "sha256": "dca20521bf222707f3e2402069aaad4632c1b2bf6e1768c091518741643fc21d"
     },
     {
       "file": "v045_loose.tga",
