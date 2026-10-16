@@ -78,7 +78,7 @@ def prepare_game():
             copy_exact(O / 'trial_daylight.amb', target)
         elif path.suffix.lower() == '.ini':
             target.write_text(path.read_text(encoding='utf-8').replace('v066','v067'),
-                              encoding='utf-8', newline='\\n')
+                              encoding='utf-8', newline='\n')
         else:
             copy_exact(path,target)
     assert len(expected_names) == 11 and {p.name for p in DEST.iterdir()} == expected_names
