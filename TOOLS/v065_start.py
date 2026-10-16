@@ -32,7 +32,7 @@ def save(p,value):
  p.write_text(json.dumps(value,indent=2)+'\n',encoding='utf-8')
 def source(name,baseline=False):
  folders=([BASE/'materials',BASE/'facility_textures',BASE] if baseline else
-          [M,O,BASE/'materials',BASE/'facility_textures',BASE])
+          [M,O/'facility_textures',O,BASE/'materials',BASE/'facility_textures',BASE])
  for folder in folders:
   if (folder/name).is_file():return folder/name
  raise FileNotFoundError(name)
