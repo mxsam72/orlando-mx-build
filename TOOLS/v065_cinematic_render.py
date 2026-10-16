@@ -74,7 +74,7 @@ def scene_material(row):
    links.new(tx.outputs['Alpha'],p.inputs['Alpha'])
  # These source boards contain front and rear coplanar artwork. Render the
  # facing artwork only, as the native/previous review renderer does.
- if any(x in name for x in ['entry_sign','v032_memorial','v033_qwikchute_logo']):
+ if any(x in name for x in ['entry_sign','v032_memorial','v033_qwikchute_logo','v057_cardboard']):
   geom=nodes.new('ShaderNodeNewGeometry');subtract=nodes.new('ShaderNodeMath');subtract.operation='SUBTRACT';subtract.inputs[0].default_value=1
   links.new(geom.outputs['Backfacing'],subtract.inputs[1]);links.new(subtract.outputs[0],p.inputs['Alpha'])
  return mat
@@ -110,7 +110,7 @@ def load_scene():
  scene.cycles.use_adaptive_sampling=True;scene.cycles.use_denoising=True;scene.cycles.denoiser='OPENIMAGEDENOISE'
  scene.cycles.max_bounces=6;scene.cycles.diffuse_bounces=3;scene.cycles.glossy_bounces=3;scene.cycles.transmission_bounces=2;scene.cycles.transparent_max_bounces=12
  scene.render.use_persistent_data=True
- scene.view_settings.view_transform='AgX';scene.view_settings.look='AgX - Medium High Contrast';scene.view_settings.exposure=.3
+ scene.view_settings.view_transform='AgX';scene.view_settings.look='AgX - Medium High Contrast';scene.view_settings.exposure=.65
  world=bpy.data.worlds.new('Late afternoon Florida daylight');world.use_nodes=True;scene.world=world
  nodes=world.node_tree.nodes;links=world.node_tree.links;nodes.clear();sky=nodes.new('ShaderNodeTexSky');sky.sky_type='NISHITA'
  az=math.radians(220);el=math.radians(25)
@@ -118,7 +118,7 @@ def load_scene():
  bg=nodes.new('ShaderNodeBackground');bg.inputs['Strength'].default_value=.35;links.new(sky.outputs['Color'],bg.inputs['Color'])
  # Retain a natural sky in the camera while using restrained neutral fill.
  # A full-strength procedural sky overwhelms the sun and turns brown soil grey.
- fill=nodes.new('ShaderNodeBackground');fill.inputs['Color'].default_value=(.52,.59,.67,1);fill.inputs['Strength'].default_value=.45
+ fill=nodes.new('ShaderNodeBackground');fill.inputs['Color'].default_value=(.52,.59,.67,1);fill.inputs['Strength'].default_value=.6
  path=nodes.new('ShaderNodeLightPath');worldmix=nodes.new('ShaderNodeMixShader')
  links.new(path.outputs['Is Camera Ray'],worldmix.inputs[0]);links.new(fill.outputs[0],worldmix.inputs[1]);links.new(bg.outputs[0],worldmix.inputs[2])
  output=nodes.new('ShaderNodeOutputWorld');links.new(worldmix.outputs[0],output.inputs[0])
@@ -142,7 +142,7 @@ def cameras():
   x,z,t=[np.interp(s,route[:,3],route[:,i]) for i in [0,1,2]]
   return loc(x-math.sin(t)*l,z+math.cos(t)*l,h)
  return [
-  dict(name='01_orlando_hero',eye=loc(450,80,260),target=loc(320,270,1),lens=30),
+  dict(name='01_orlando_hero',eye=loc(450,80,260),target=loc(320,270,1),lens=34),
   dict(name='02_flowing_corner',eye=at(72,-13,5),target=at(103,0,.55),lens=34),
   dict(name='03_tabletop',eye=at(780,-6,2.4),target=at(816,0,.7),lens=33),
   dict(name='04_rhythm_section',eye=at(1373,-27,12),target=at(1397,0,.65),lens=35),
