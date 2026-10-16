@@ -42,7 +42,20 @@ def verify_candidate():
     assert len(report['changed_material_files']) == 6
     expected = read(S / 'native_expected_inputs.json')
     pinned = read(R / 'BUILD/v067_pinned_expected.json')
-    assert expected == pinned, 'Generated v067 source differs from the user-reviewed hashes'
+    if expected != pinned:
+        differences = []
+        for key in sorted(set(expected) | set(pinned)):
+            actual, saved = expected.get(key), pinned.get(key)
+            if isinstance(actual, dict) and isinstance(saved, dict):
+                for name in sorted(set(actual) | set(saved)):
+                    if actual.get(name) != saved.get(name):
+                        differences.append((key + '.' + name, saved.get(name), actual.get(name)))
+            elif actual != saved:
+                differences.append((key, saved, actual))
+        for key, old_hash, new_hash in differences:
+            print('V067_SOURCE_HASH_MISMATCH', key, 'preview=',old_hash, 'windows=',new_hash, flush=True)
+        raise AssertionError('Generated v067 source differs from approved preview: ' +
+                             str(len(differences)) + ' mismatches; see exact file hashes above')
     assets = dict(terrain='terrain.raw', scenery='scenery.fbx', hmf='compiled_track.hmf',
                   main_route='main.tcl', start_route='start.tcl',
                   daylight='trial_daylight.amb', map_params='map_params.ini')
