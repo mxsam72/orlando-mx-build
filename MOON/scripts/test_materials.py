@@ -25,6 +25,10 @@ def build(xy,s,norm):
  h+=peb;grain=gaussian_filter(white,.6,mode='wrap');grain/=grain.std();broad=gaussian_filter(white,25,mode='wrap');broad/=broad.std();color=np.clip(116+grain*7+broad*4+peb*480,65,168)
  for name,adjust,relief in [('v002_regolith',0,1.),('v002_fine',-4,.55)]:
   rgb=np.uint8(np.repeat((color+adjust)[:,:,None],3,axis=2));Image.fromarray(rgb).save(B/(name+'.tga'));Image.fromarray(normals(h*relief,2/n)).save(B/(name+'_n.tga'));shader(name,name+'_n',800)
+ # Separate native object shader: scenery UVs already express 2 m tiles.
+ with Image.open(B/'v002_regolith.tga') as im:im.resize((1024,1024),Image.Resampling.BILINEAR).save(B/'v002_context.tga')
+ with Image.open(B/'v002_regolith_n.tga') as im:im.resize((1024,1024),Image.Resampling.BILINEAR).save(B/'v002_context_n.tga')
+ shader('v002_context','v002_context_n',1)
  n=4096;dx=1600/n;rgb=np.empty((n,n,3),np.uint8);relief=np.zeros((n,n),np.float32);coverage=np.empty((n,n),np.float32);tree=cKDTree(xy)
  tangent=np.roll(xy,-1,axis=0)-np.roll(xy,1,axis=0);tangent/=np.linalg.norm(tangent,axis=1)[:,None]
  for r0 in range(0,n,64):

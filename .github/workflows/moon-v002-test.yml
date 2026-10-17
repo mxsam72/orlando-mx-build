@@ -9,7 +9,7 @@ permissions:
   actions: read
 concurrency:
   group: moon-v002-native
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   source:
     runs-on: ubuntu-24.04

@@ -14,7 +14,7 @@ def height(px,py):
 def mat(name):
  m=bpy.data.materials.new(name);m.use_nodes=True;p=m.node_tree.nodes.get('Principled BSDF');p.inputs['Roughness'].default_value=.96;p.inputs['Specular IOR Level'].default_value=.1
  tex=m.node_tree.nodes.new('ShaderNodeTexImage');tex.image=bpy.data.images.load(str(B/(name+'.tga')),check_existing=True);m.node_tree.links.new(tex.outputs['Color'],p.inputs['Base Color']);return m
-mats={n:mat(n) for n in ['v002_regolith','v002_marker_white','v002_marker_blue','v002_rock','v002_panel','NOLIGHTING_moon_black']}
+mats={n:mat(n) for n in ['v002_regolith','v002_context','v002_marker_white','v002_marker_blue','v002_rock','v002_panel','NOLIGHTING_moon_black']}
 
 def finish(o,name,material):
  o.name=name;o.data.materials.append(mats[material]);assets.append(o)
@@ -39,7 +39,7 @@ def mesh_grid(name,data,step=1,hole=0):
 
 # Native scenery excludes the riding height field. Mesh coordinates are local
 # around Shorty; the HMF applies the +800,+800 game-world translation.
-o=mesh_grid('SHAD_measured_near',np.load(B/'mid_preview.npz'),2,800);o.data.materials.append(mats['v002_regolith']);assets.append(o)
+o=mesh_grid('SHAD_measured_near',np.load(B/'mid_preview.npz'),2,800);o.data.materials.append(mats['v002_context']);assets.append(o)
 # Align the 80 m context grid with the 1760 m near-terrain edge. Split
 # the remote scenery into bounded patches for native lightmap allocation.
 context=np.load(B/'context_preview.npz');context={k:context[k][1::2] if k in ['x','y'] else context[k][1::2,1::2] for k in ['x','y','height']}
@@ -47,7 +47,7 @@ for row in range(0,len(context['y'])-1,75):
  for col in range(0,len(context['x'])-1,75):
   rr=slice(row,min(row+76,len(context['y'])));cc=slice(col,min(col+76,len(context['x'])))
   tile=dict(x=context['x'][cc],y=context['y'][rr],height=context['height'][rr,cc])
-  o=mesh_grid(f'SHAD_massif_patch_{row}_{col}',tile,1,1760);o.data.materials.append(mats['v002_regolith']);assets.append(o)
+  o=mesh_grid(f'SHAD_massif_patch_{row}_{col}',tile,1,1760);o.data.materials.append(mats['v002_context']);assets.append(o)
 tangent=np.roll(xy,-1,axis=0)-np.roll(xy,1,axis=0);tangent/=np.linalg.norm(tangent,axis=1)[:,None];norm=np.c_[-tangent[:,1],tangent[:,0]]
 for i in range(0,len(xy),90):
  for side in [-1,1]:
