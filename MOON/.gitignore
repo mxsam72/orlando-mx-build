@@ -1,3 +1,11 @@
 build/
 __pycache__/
 *.blend1
+
+previews_v002/
+native_tools/
+native_logs/
+*.pkz
+*.pkz.sha256
+*_Inputs.zip
+*_Previews.zip

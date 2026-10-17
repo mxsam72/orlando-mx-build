@@ -36,7 +36,7 @@ def main():
   with Image.open(bitmap) as im:
    if any(v & (v-1) for v in im.size):im.resize((2048,2048),Image.Resampling.BILINEAR).save(bitmap)
  positions=race.build(xy,s,tangent,L,pc,pit_h)
- text('map_params.ini','[params]\nlightdir_x=-6\nlightdir_y=10\nlightdir_z=-6.6666667\nshadowvolumes_create=1\nshadowvolumes_supersampling=2\nshadowmaps_create=1\nshadowmaps_scale=0.5\nshadowmaps_supersampling=2\nshadowmaps_terraincast=1\n');text('edf_params.ini','[params]\ntype=0\nuse_normals=1\n');text('trh_params.ini','[params]\ntype=3\ntrackcode_filename=code.txt\n')
+ text('map_params.ini','[params]\nlightdir_x=-6\nlightdir_y=10\nlightdir_z=-6.6666667\nshadowvolumes_create=0\nshadowvolumes_supersampling=2\nshadowmaps_create=1\nshadowmaps_scale=0.5\nshadowmaps_supersampling=2\nshadowmaps_terraincast=1\n');text('edf_params.ini','[params]\ntype=0\nuse_normals=1\n');text('trh_params.ini','[params]\ntype=3\ntrackcode_filename=code.txt\n')
  report=dict(version='moon-v002',stage='native source',checks_pass=True,baseline='moon-v001',main_riding_height_samples_unchanged=True,shorty_90m_unchanged=True,physical_changes_only_pit_and_access=True,max_pit_cut_fill_m=float(np.max(abs(h-original))),source_raw_sha256=sha(B/'terrain.raw'),terrain_source_resolution_m=2,half_gravity_m_s2=4.905,pit_stalls=8,grid_stalls=8,native_centerline_closure_m=positions['native_centerline_closure_m'],native_route_error_max_m=positions['native_route_error_max_m'],material=mat,in_game_test=False)
  save(B/'v002_source_validation.json',report);save(R/'source/v002_spec.json',report);print('MOON_V002_SOURCE_PASS',json.dumps(report),flush=True)
 if __name__=='__main__':main()

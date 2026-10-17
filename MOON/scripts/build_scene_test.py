@@ -39,8 +39,15 @@ def mesh_grid(name,data,step=1,hole=0):
 
 # Native scenery excludes the riding height field. Mesh coordinates are local
 # around Shorty; the HMF applies the +800,+800 game-world translation.
-for name,file,step,hole in [('SHAD_measured_near','mid_preview.npz',2,800),('SHAD_measured_massifs','context_preview.npz',2,1760)]:
- o=mesh_grid(name,np.load(B/file),step,hole);o.data.materials.append(mats['v002_regolith']);assets.append(o)
+o=mesh_grid('SHAD_measured_near',np.load(B/'mid_preview.npz'),2,800);o.data.materials.append(mats['v002_regolith']);assets.append(o)
+# Align the 80 m context grid with the 1760 m near-terrain edge. Split
+# the remote scenery into bounded patches for native lightmap allocation.
+context=np.load(B/'context_preview.npz');context={k:context[k][1::2] if k in ['x','y'] else context[k][1::2,1::2] for k in ['x','y','height']}
+for row in range(0,len(context['y'])-1,75):
+ for col in range(0,len(context['x'])-1,75):
+  rr=slice(row,min(row+76,len(context['y'])));cc=slice(col,min(col+76,len(context['x'])))
+  tile=dict(x=context['x'][cc],y=context['y'][rr],height=context['height'][rr,cc])
+  o=mesh_grid(f'SHAD_massif_patch_{row}_{col}',tile,1,1760);o.data.materials.append(mats['v002_regolith']);assets.append(o)
 tangent=np.roll(xy,-1,axis=0)-np.roll(xy,1,axis=0);tangent/=np.linalg.norm(tangent,axis=1)[:,None];norm=np.c_[-tangent[:,1],tangent[:,0]]
 for i in range(0,len(xy),90):
  for side in [-1,1]:

@@ -1,0 +1,33 @@
+TAURUS-LITTROW MX v002 — FIRST NATIVE TEST CANDIDATE
+
+1. Place Taurus_Littrow_MX_v002.pkz in:
+   Documents\PiBoSo\MX Bikes\mods\tracks\motocross\
+   Keep the PKZ intact. Select Taurus-Littrow MX v002 in the game.
+2. Use your existing MXB Quiet Gravity v4 plugin. Set its INI file to:
+   [gravity]
+   preset=half
+   A matching mxb_gravity_quiet.ini is included separately with this release.
+   Put that INI beside your installed mxb_gravity_quiet.dlo in the game's
+   plugins folder. Close the game before changing the preset.
+3. Use single-player Testing and CLEAR weather for the first ride.
+
+The PKZ does not set gravity. It does not include or replace the plugin DLO.
+This is 4.905 m/s² gameplay gravity, not the real Moon's 1.62 m/s².
+Only single-player Testing has been validated for the separate gravity plugin.
+
+Start in the pit apron marked by the small service canopy. Follow its access
+lane toward the main circuit. White markers with blue tops mark both edges.
+The loop is approximately 3.64 km, 16 m wide, with four low broad rollers.
+Native race data includes eight pit positions, eight starting positions,
+finish/split timing and reset boundaries. Pack starts and lap timing need
+confirmation in the game; do not assume multiplayer compatibility.
+
+This is the first playable test candidate, not a finished photoreal release.
+LROC measured terrain uses 2 m source spacing without vertical exaggeration.
+Microscopic grains, rocks, grooming, the course and pit earthworks are authored.
+The game still uses provisional compact/soft-soil tire and dust behavior;
+no real lunar granular mechanics or vacuum dust system is implemented.
+
+Please assess: loading, pit spawning and entry, riding direction, resets,
+lap timing, half-gravity airtime, grip, lighting, visual seams and FPS.
+Preview images are Blender source renders, not captures from MX Bikes.
