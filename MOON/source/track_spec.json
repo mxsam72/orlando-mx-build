@@ -1,0 +1,71 @@
+{
+  "version": "moon-v001",
+  "name": "Taurus-Littrow MX \u2014 Shorty Loop",
+  "stage": "source and offline preview; not native compiled",
+  "half_gravity_m_s2": 4.905,
+  "gravity_applied_by": "Separate MXB Quiet Gravity v4 preset=half; single-player Testing only validated",
+  "lunar_gravity_is_not_simulated": true,
+  "track_length_m": 3643.1,
+  "riding_width_m": 16.0,
+  "terrain_size_m": 1600.0,
+  "native_samples": 2049,
+  "native_sample_spacing_m": 0.78125,
+  "measured_source_resolution_m": 2,
+  "terrain_height_offset_m": -2578.0,
+  "native_height_scale_m": 59.0,
+  "shorty_reference_lonlat": [
+    30.625359173611393,
+    20.217170263230255
+  ],
+  "route_elevation_change_m": 24.12,
+  "max_route_grade_percent": 12.28,
+  "min_centerline_radius_m": 25.1,
+  "min_centerline_distance_from_shorty_m": 139.8,
+  "max_earthwork_cut_fill_m": 3.79,
+  "shorty_90m_radius_unchanged": true,
+  "route_simple": true,
+  "native_quantization_max_error_m": 0.0004533486699074274,
+  "source_data_valid_in_riding_area": true,
+  "context_nodata": "Approximately 0.41% of coarse context crop filled with nearest valid elevation; no riding-area gaps",
+  "geometry_vertical_exaggeration": 1,
+  "features": [
+    {
+      "type": "broad_rollover",
+      "station_m": 249.97,
+      "height_m": 1.15,
+      "length_m": 54.0,
+      "max_added_grade": 0.06690428799311596
+    },
+    {
+      "type": "broad_rollover",
+      "station_m": 751.92,
+      "height_m": 1.15,
+      "length_m": 54.0,
+      "max_added_grade": 0.06690428799311596
+    },
+    {
+      "type": "broad_rollover",
+      "station_m": 1449.85,
+      "height_m": 1.15,
+      "length_m": 54.0,
+      "max_added_grade": 0.06690428799311596
+    },
+    {
+      "type": "broad_rollover",
+      "station_m": 2199.78,
+      "height_m": 1.15,
+      "length_m": 54.0,
+      "max_added_grade": 0.06690428799311596
+    }
+  ],
+  "limitations": [
+    "Authored racing surface and procedural grain are fictional, not measured microtopography.",
+    "Provisional compact/soft soil mappings; no lunar granular tire or dust physics.",
+    "No timing, pits, native MAP/TRH/EDF or playable PKZ yet.",
+    "Rideability, jump clearances and engine lighting require a test build."
+  ],
+  "source_hashes": {
+    "shorty_2m.tif": "98c0cb20a4e884feeb025425a7605483b5412531bf85f7ce5ebab6279a54618b",
+    "valley_context_20m.tif": "0f252361799079fc704c72ff6175d383c313792daaaad3035f1b2e5e8180c6cb"
+  }
+}

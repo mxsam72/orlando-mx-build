@@ -1,0 +1,29 @@
+{
+  "product": "NAC_DTM_APOLLO17_2M",
+  "url": "https://pds.mcp.nasa.gov/data/store/img/lunar_reconnaissance_orbiter/pds4/lroc/lro-l-lroc-5-rdr/LROLRC_2001/DATA/SDP/NAC_DTM/APOLLO17_2M/NAC_DTM_APOLLO17_2M.TIF",
+  "source_pixel_size_m": 2,
+  "extraction_window_pixels": [
+    3869,
+    7549,
+    1801,
+    1801
+  ],
+  "sample_stride": 1,
+  "sample_centers_preserved": true,
+  "shorty_reference_lonlat": [
+    30.625359173611393,
+    20.217170263230255
+  ],
+  "shorty_projected_xy_m": [
+    -4256374.917248682,
+    613052.3384766254
+  ],
+  "sha256": "98c0cb20a4e884feeb025425a7605483b5412531bf85f7ce5ebab6279a54618b",
+  "source_vertical_exaggeration": 1,
+  "crs": "PROJCS[\"Equirectangular Moon\",GEOGCS[\"GCS_Moon\",DATUM[\"D_Moon\",SPHEROID[\"Moon_localRadius\",1737400,0]],PRIMEM[\"Reference_Meridian\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Equirectangular\"],PARAMETER[\"standard_parallel_1\",20],PARAMETER[\"central_meridian\",180],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+  "valid_fraction": 1.0,
+  "height_range_m": [
+    -2609.380126953125,
+    -2427.912353515625
+  ]
+}
