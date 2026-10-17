@@ -43,6 +43,14 @@ def tools():
  return root/'fbx2edf/fbx2edf_x64.exe',root/'terrained/terrained.exe',root/'tracked/tracked.exe'
 
 def preflight():
+ # Blender embeds the diffuse pixels but references its relative .fbm folder.
+ # Stage colors and companion shaders/normals there for the Windows importer.
+ for folder,names in [('scenery',['v002_context','v002_marker_white','v002_marker_blue','v002_panel','v002_rock']),('moon_sky',['NOLIGHTING_moon_black'])]:
+  dest=B/(folder+'.fbm');dest.mkdir(exist_ok=True)
+  for name in names:
+   for suffix in ['.tga','.shd','_n.tga']:
+    path=B/(name+suffix)
+    if path.exists():shutil.copy2(path,dest/path.name)
  source=json.loads((B/'v002_source_validation.json').read_text());scene=json.loads((B/'scenery_source_validation.json').read_text());assert source['checks_pass'] and scene['checks_pass'];assert sha(B/'terrain.raw')==source['source_raw_sha256'];assert sha(B/'scenery.fbx')==scene['native_fbx_sha256']
  for path in list(B.glob('*.hmf'))+list(B.glob('*.tht'))+list(B.glob('*.shd')):
   for ref in re.findall(r'(?m)^\s*(?:map|mask|data)\s*=\s*(\S+)',path.read_text()):assert Path(ref).name==ref and (B/ref).is_file(),(path.name,ref)
