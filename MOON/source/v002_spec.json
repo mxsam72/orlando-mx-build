@@ -1,0 +1,27 @@
+{
+  "version": "moon-v002",
+  "stage": "native source",
+  "checks_pass": true,
+  "baseline": "moon-v001",
+  "main_riding_height_samples_unchanged": true,
+  "shorty_90m_unchanged": true,
+  "physical_changes_only_pit_and_access": true,
+  "max_pit_cut_fill_m": 3.9801464080810547,
+  "source_raw_sha256": "1c501d6f3803b8ff2adc471adef6a1ff9edc01316f18a38808a5fce3ec2500dc",
+  "terrain_source_resolution_m": 2,
+  "half_gravity_m_s2": 4.905,
+  "pit_stalls": 8,
+  "grid_stalls": 8,
+  "native_centerline_closure_m": 2.2393709973121313e-12,
+  "native_route_error_max_m": 0.25456761897465496,
+  "material": {
+    "tile_m": 2,
+    "tile_pixels": 2048,
+    "route_atlas_pixels": 4096,
+    "route_texel_m": 0.390625,
+    "normal_specular_alpha": 0,
+    "photographic_scan": false,
+    "physical_micro_relief": false
+  },
+  "in_game_test": false
+}
