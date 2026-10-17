@@ -1,0 +1,54 @@
+name: Moon v001 source checkpoint
+on:
+  push:
+    branches: [moon-taurus-littrow-v001]
+    paths: ['MOON/**', '.github/workflows/moon-source-preview.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            MOON
+          sparse-checkout-cone-mode: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install source authoring dependencies
+        run: python -m pip install -r MOON/requirements.txt
+      - name: Verify measured source data
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,hashlib
+          root=Path('MOON/source')
+          for meta in root.glob('*.json'):
+              record=json.loads(meta.read_text())
+              if 'product' not in record: continue
+              source=meta.with_suffix('.tif')
+              assert hashlib.sha256(source.read_bytes()).hexdigest()==record['sha256'],source
+          PY
+      - name: Generate terrain and native authoring inputs
+        run: python MOON/scripts/build_source.py
+      - name: Package source-stage checkpoint (not installable)
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          root=Path('MOON')
+          with zipfile.ZipFile('Moon_v001_Source_Checkpoint.zip','w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:
+              for p in sorted(root.rglob('*')):
+                  if p.is_file() and '__pycache__' not in p.parts:
+                      z.write(p,p.as_posix())
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Moon-v001-source-and-previews-NOT-PKZ
+          path: Moon_v001_Source_Checkpoint.zip
+          retention-days: 30
+          if-no-files-found: error

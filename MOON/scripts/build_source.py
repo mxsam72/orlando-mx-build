@@ -61,6 +61,8 @@ def main():
  context_x=np.arange(-11960,11961,40,dtype=np.float32);cx,cy=np.meshgrid(context_x,context_x[::-1]);context,_=dem_grid('valley_context_20m.tif',cx,cy,fill=True)
  radial=np.maximum(abs(cx),abs(cy));near=radial<1750;measured,_=dem_grid('shorty_2m.tif',cx[near],cy[near]);weight=np.clip((1750-radial[near])/250,0,1);context[near]=context[near]*(1-weight)+measured*weight
  np.savez_compressed(B/'context_preview.npz',x=context_x,y=context_x[::-1],height=context-offset)
+ mid_x=np.arange(-1760,1761,4,dtype=np.float32);mx,my=np.meshgrid(mid_x,mid_x[::-1]);mid,_=dem_grid('shorty_2m.tif',mx,my)
+ np.savez_compressed(B/'mid_preview.npz',x=mid_x,y=mid_x[::-1],height=mid-offset)
  rng=np.random.default_rng(17017);noise=gaussian_filter(rng.normal(size=(N,N)).astype(np.float32),30);noise/=noise.std()
  grooming=.009*np.cos(lateral*2*np.pi/1.8)+.007*np.sin(lateral*2*np.pi/3.7)
  gray=np.clip(.46+noise*.018-blend*.035+grooming*blend,.25,.65);rgb=np.uint8(np.clip(np.stack([gray*1.015,gray,gray*.985],axis=-1)*255,0,255))

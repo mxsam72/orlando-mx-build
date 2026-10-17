@@ -17,6 +17,16 @@ A Moon motocross source draft designed for **half Earth gravity (4.905 m/s²)**.
 
 The 0.78125 m output grid interpolates a 2 m measurement source; it is **not** a sub-meter lunar survey. Berms, rollers, grooming and individual scattered rocks are authored details. The current gray regolith is a procedural starting material, not a finished photographic scan.
 
+## Source previews
+
+These are Blender terrain drafts, not in-game captures or the final photoreal material pass.
+
+![Terrain overview](previews/02_valley_overview.png)
+
+![Shorty crater from above trackside](previews/03_shorty_trackside.png)
+
+[First-straight view](previews/04_first_straight.png)
+
 ## Gravity
 
 The track itself does not set global gravity. Use the separately validated **MXB Quiet Gravity v4** with:
@@ -60,3 +70,5 @@ Elevation data credit: NASA/GSFC/Arizona State University, LRO/LROC team. Measur
 Refine regolith, tire grooves, track edge readability and rock distribution; add start/pit/timing definitions and export contextual scenery; compile native MAP/TRH/EDF and package a separate Moon test track. Then tune with half gravity held fixed. Blender previews do not validate MX Bikes lighting, performance or rideability.
 
 All Moon work is contained under `MOON/` on this branch. Orlando's published v067 remains unchanged on its own branch.
+
+The **Moon v001 source checkpoint** GitHub Actions workflow regenerates the authoring inputs and makes a downloadable source-and-preview ZIP. Its name explicitly says NOT-PKZ; it cannot be installed as a track.

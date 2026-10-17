@@ -1,0 +1,64 @@
+{
+  "offline_source_renders": true,
+  "in_game_capture": false,
+  "vertical_exaggeration": 1,
+  "procedural_microdetail": true,
+  "renders": [
+    {
+      "name": "02_valley_overview",
+      "eye": [
+        -900,
+        -1250,
+        810
+      ],
+      "target": [
+        -20,
+        30,
+        65
+      ],
+      "lens": 43,
+      "seconds": 32.07
+    },
+    {
+      "name": "03_shorty_trackside",
+      "eye": [
+        -160,
+        -130,
+        71.395263671875
+      ],
+      "target": [
+        0,
+        35,
+        26.226123046874974
+      ],
+      "lens": 32,
+      "seconds": 31.42
+    },
+    {
+      "name": "04_first_straight",
+      "eye": [
+        -350,
+        -317,
+        34.580156249999995
+      ],
+      "target": [
+        -100,
+        -310,
+        37.569873046875
+      ],
+      "lens": 30,
+      "seconds": 22.58
+    }
+  ],
+  "sun_direction": [
+    -0.4466625002869186,
+    -0.4962916669854651,
+    0.7444375004781977
+  ],
+  "exposure": 1.0,
+  "render_inputs_sha256": {
+    "context_preview.npz": "9e8d711e14d44b0a02209f6d5b20087ecc34aa42189d477f47fe66850719e042",
+    "terrain_preview.npz": "b8d22c15ece691911b308b46e30e65926512f269629d852229a489a8cd976f2c",
+    "mid_preview.npz": "c51922c5473e0f6967d3ceeb0109aa74125056dc7c2b0068eaa4630bca1065c0"
+  }
+}
