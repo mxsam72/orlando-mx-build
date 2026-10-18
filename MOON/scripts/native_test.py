@@ -11,25 +11,62 @@ from native_coordinate_scan_v044 import scan_points
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def save(p,x):p.write_text(json.dumps(x,indent=2)+'\n',encoding='utf-8',newline='\n')
 def run(exe,args,label,timeout=10800):
- print('MOON_NATIVE_START',label,flush=True);start=time.monotonic();last=start;q=queue.Queue();tail='';error=False
- p=subprocess.Popen([str(exe),*map(str,args)],cwd=B,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True,errors='replace',bufsize=1)
+ print('MOON_NATIVE_START',label,flush=True)
+ start=time.monotonic();last=start;q=queue.Queue();tail='';error=False
+ p=subprocess.Popen([str(exe),*map(str,args)],cwd=B,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,bufsize=0)
+ try:
+  import psutil
+  process=psutil.Process(p.pid)
+ except Exception as exc:
+  process=None;print('MOON_PROCESS_MONITOR_UNAVAILABLE',type(exc).__name__,flush=True)
  def reader():
-  for line in p.stdout:q.put(line)
-  q.put(None)
+  try:
+   while True:
+    block=os.read(p.stdout.fileno(),4096)
+    if not block:break
+    q.put(block.decode('utf-8',errors='replace'))
+  except OSError:pass
+  finally:q.put(None)
  t=threading.Thread(target=reader,daemon=True);t.start()
+ def snapshot():
+  state=dict(label=label,elapsed_seconds=round(time.monotonic()-start,1),pid=p.pid)
+  if process is not None:
+   try:
+    cpu=process.cpu_times();mem=process.memory_info();io=process.io_counters()
+    state.update(cpu_seconds=round(cpu.user+cpu.system,1),rss_mib=round(mem.rss/1048576,1),vms_mib=round(mem.vms/1048576,1),io_read_bytes=io.read_bytes,io_write_bytes=io.write_bytes)
+   except Exception as exc:state['process_stat_error']=type(exc).__name__
+  paths=list(B.glob('*.edf'))+list(G.glob('*.map'))+list(G.glob('*.trh'))
+  state['output_bytes']={}
+  for path in paths:
+   try:state['output_bytes'][str(path.relative_to(M))]=path.stat().st_size
+   except OSError:pass
+  state['free_disk_gib']=round(shutil.disk_usage(B).free/1073741824,2)
+  with (LOG/(label+'_status.jsonl')).open('a',encoding='utf-8') as f:f.write(json.dumps(state)+'\n')
+  print('MOON_NATIVE_STATUS',json.dumps(state),flush=True)
+  return state
  try:
   with (LOG/(label+'.log')).open('w',encoding='utf-8') as log:
+   snapshot()
    while True:
-    if time.monotonic()-start>timeout:raise TimeoutError(label)
-    try:line=q.get(timeout=1)
-    except queue.Empty:line=''
-    if line is None:break
-    if line:log.write(line);log.flush();tail=(tail+line)[-6000:];error|='ERROR:' in line.upper()
-    if time.monotonic()-last>45:print(label,'active',round((time.monotonic()-start)/60,1),'min',flush=True);last=time.monotonic()
-  code=p.wait(timeout=60);print(tail,flush=True);assert code==0 and not error,(label,code)
-  return dict(returncode=code,seconds=round(time.monotonic()-start,1))
+    if time.monotonic()-start>timeout:
+     snapshot();print(tail,flush=True);raise TimeoutError(label)
+    try:chunk=q.get(timeout=1)
+    except queue.Empty:chunk=''
+    if chunk is None:break
+    if chunk:
+     log.write(chunk);log.flush();tail=(tail+chunk)[-6000:];error|='ERROR:' in tail.upper();print(chunk,end='',flush=True)
+    if time.monotonic()-last>45:snapshot();last=time.monotonic()
+  code=p.wait(timeout=60);assert code==0 and not error,(label,code,tail)
+  result=dict(returncode=code,seconds=round(time.monotonic()-start,1));print('MOON_NATIVE_COMPLETE',label,json.dumps(result),flush=True)
+  return result
  finally:
-  if p.poll() is None:p.kill();p.wait()
+  if p.poll() is None:
+   if process is not None:
+    try:
+     for child in process.children(recursive=True):child.kill()
+    except Exception:pass
+   p.kill();p.wait()
+  t.join(timeout=5);p.stdout.close()
 
 def tools():
  root=M/'native_tools';root.mkdir(exist_ok=True)
@@ -90,6 +127,14 @@ def compile_all():
  result['collision']=run(terrain,['track.tht',trh,'trh_params.ini'],'moon_collision',3600);before=sha(trh)
  result['centerline']=run(tracked,['-merge',trh,'cl',B/'main.tcl'],'moon_route_merge',1800);assert sha(trh)!=before
  result['graphics']=run(terrain,['track.hmf',mp,'map_params.ini'],'moon_terrain',10800)
+ return validate_package(source,scenery,result)
+
+def validate_package(source,scenery,result,bake_profile=None,diagnostic=False):
+ trh=G/(NAME+'.trh');mp=G/(NAME+'.map');local=scenery['native_probe_local_xyz_m']
+ if bake_profile is None:
+  import configparser
+  cfg=configparser.ConfigParser();cfg.read(B/'map_params.ini');params=cfg['params']
+  bake_profile=dict(name='native-map-params',shadowmaps=bool(int(params['shadowmaps_create'])),scale=float(params['shadowmaps_scale']),supersampling=int(params['shadowmaps_supersampling']))
  height=validate_heights(mp,trh);bitmaps=[]
  with mp.open('rb') as f,mmap.mmap(f.fileno(),0,access=mmap.ACCESS_READ) as data:
   expected_points=[[p[0]+800,p[1],p[2]+800] for p in local];errors=scan_points(data,expected_points,tolerance=.001);assert all(e is not None for e in errors),('MAP placement mismatch',errors)
@@ -101,12 +146,13 @@ def compile_all():
  for suffix in ['.rdf','.ini','.amb','.tga','_map.tga']:assert (G/(NAME+suffix)).is_file()
  for file,preview in [(NAME+'.tga','01_full_loop.png')]:
   with Image.open(M/'previews_v002'/preview) as im:im.convert('RGB').resize((1024,1024)).save(G/file)
- pkz=M/'Taurus_Littrow_MX_v002.pkz'
+ pkz=M/('Taurus_Littrow_MX_v002_Diagnostic_No_Baked_Shadows.pkz' if diagnostic else 'Taurus_Littrow_MX_v002.pkz')
  with zipfile.ZipFile(pkz,'w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:
   for p in sorted(G.iterdir()):
    if p.is_file():z.write(p,NAME+'/'+p.name)
  with zipfile.ZipFile(pkz) as z:assert z.testzip() is None and all(n.startswith(NAME+'/') for n in z.namelist())
  assert pkz.stat().st_size<500_000_000,'Test package exceeds the 500 MB target'
- report=dict(version='moon-v002',compiled=True,checks_pass=True,centerline_merged=True,native_height_validation=height,native_coordinate_probe_count=len(errors),native_material_signatures=bitmaps,source_validation=source,native_compilers=result,pkz_sha256=sha(pkz),pkz_bytes=pkz.stat().st_size,source_commit=os.environ.get('GITHUB_SHA','local'),run_id=os.environ.get('GITHUB_RUN_ID'),in_game_load_test=False,in_game_riding_test=False,in_game_visual_check=False,multiplayer_supported=False,pending=['Load and ride in single-player Testing with Quiet Gravity v4 preset=half.','Verify pit entry, direction, lap timing and resets.','Assess jump airtime, grip, native lighting and FPS.'])
- save(M/'Moon_v002_Validation.json',report);(M/'Taurus_Littrow_MX_v002.pkz.sha256').write_text(sha(pkz)+'  '+pkz.name+'\n');print('MOON_V002_NATIVE_PASS',pkz.stat().st_size,sha(pkz),flush=True)
+ report=dict(version='moon-v002',bake_profile=bake_profile,diagnostic_only=diagnostic,compiled=True,checks_pass=True,centerline_merged=True,native_height_validation=height,native_coordinate_probe_count=len(errors),native_material_signatures=bitmaps,source_validation=source,native_compilers=result,pkz_sha256=sha(pkz),pkz_bytes=pkz.stat().st_size,source_commit=os.environ.get('GITHUB_SHA','local'),run_id=os.environ.get('GITHUB_RUN_ID'),in_game_load_test=False,in_game_riding_test=False,in_game_visual_check=False,multiplayer_supported=False,pending=['Load and ride in single-player Testing with Quiet Gravity v4 preset=half.','Verify pit entry, direction, lap timing and resets.','Assess jump airtime, grip, native lighting and FPS.'])
+ save(M/('Moon_v002_Diagnostic_Validation.json' if diagnostic else 'Moon_v002_Validation.json'),report);pkz.with_suffix(pkz.suffix+'.sha256').write_text(sha(pkz)+'  '+pkz.name+'\n');print('MOON_V002_NATIVE_PASS',pkz.stat().st_size,sha(pkz),flush=True)
+ return report
 if __name__=='__main__':compile_all()

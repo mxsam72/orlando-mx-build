@@ -1,0 +1,319 @@
+name: Moon v002 recovery — checkpointed native build
+'on':
+  push:
+    branches:
+    - moon-taurus-littrow-v002-recovery
+    paths:
+    - MOON/scripts/native_test.py
+    - MOON/scripts/native_recovery.py
+    - .github/workflows/moon-v002-recovery.yml
+  workflow_dispatch: {}
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: moon-v002-recovery
+  cancel-in-progress: true
+env:
+  PYTHONUTF8: '1'
+  PYTHONUNBUFFERED: '1'
+  OPENBLAS_NUM_THREADS: '2'
+  OMP_NUM_THREADS: '2'
+jobs:
+  sky:
+    name: sky — compile and checkpoint
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        sparse-checkout: 'MOON
+
+          TOOLS
+
+          BUILD'
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    - name: Install native validation and process monitoring dependencies
+      run: python -m pip install numpy scipy pillow "psutil>=7,<8"
+    - name: Download the preserved original authored inputs
+      uses: actions/download-artifact@v4
+      with:
+        name: Moon-v002-native-input-checkpoint
+        run-id: 39070771277
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Verify SHA256 and restore the original terrain and textures
+      run: python MOON/scripts/native_recovery.py unpack
+    - name: Compile, validate and checkpoint sky
+      run: python MOON/scripts/native_recovery.py sky
+    - uses: actions/upload-artifact@v4
+      with:
+        name: Moon-v002-assets-sky
+        path: MOON/recovery_checkpoints/sky.zip
+        retention-days: 30
+        if-no-files-found: error
+        overwrite: true
+    - uses: actions/upload-artifact@v4
+      with:
+        name: Moon-v002-logs-sky
+        path: 'MOON/native_logs/
+
+          MOON/recovery_source.json
+
+          MOON/recovery_checkpoints/*manifest.json'
+        retention-days: 30
+        if-no-files-found: warn
+        overwrite: true
+      if: always()
+  scenery:
+    name: scenery — compile and checkpoint
+    runs-on: windows-latest
+    timeout-minutes: 75
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        sparse-checkout: 'MOON
+
+          TOOLS
+
+          BUILD'
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    - name: Install native validation and process monitoring dependencies
+      run: python -m pip install numpy scipy pillow "psutil>=7,<8"
+    - name: Download the preserved original authored inputs
+      uses: actions/download-artifact@v4
+      with:
+        name: Moon-v002-native-input-checkpoint
+        run-id: 39070771277
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Verify SHA256 and restore the original terrain and textures
+      run: python MOON/scripts/native_recovery.py unpack
+    - name: Compile, validate and checkpoint scenery
+      run: python MOON/scripts/native_recovery.py scenery
+    - uses: actions/upload-artifact@v4
+      with:
+        name: Moon-v002-assets-scenery
+        path: MOON/recovery_checkpoints/scenery.zip
+        retention-days: 30
+        if-no-files-found: error
+        overwrite: true
+    - uses: actions/upload-artifact@v4
+      with:
+        name: Moon-v002-logs-scenery
+        path: 'MOON/native_logs/
+
+          MOON/recovery_source.json
+
+          MOON/recovery_checkpoints/*manifest.json'
+        retention-days: 30
+        if-no-files-found: warn
+        overwrite: true
+      if: always()
+  collision:
+    name: collision — compile and checkpoint
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        sparse-checkout: 'MOON
+
+          TOOLS
+
+          BUILD'
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    - name: Install native validation and process monitoring dependencies
+      run: python -m pip install numpy scipy pillow "psutil>=7,<8"
+    - name: Download the preserved original authored inputs
+      uses: actions/download-artifact@v4
+      with:
+        name: Moon-v002-native-input-checkpoint
+        run-id: 39070771277
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Verify SHA256 and restore the original terrain and textures
+      run: python MOON/scripts/native_recovery.py unpack
+    - name: Compile, validate and checkpoint collision
+      run: python MOON/scripts/native_recovery.py collision
+    - uses: actions/upload-artifact@v4
+      with:
+        name: Moon-v002-assets-collision
+        path: MOON/recovery_checkpoints/collision.zip
+        retention-days: 30
+        if-no-files-found: error
+        overwrite: true
+    - uses: actions/upload-artifact@v4
+      with:
+        name: Moon-v002-logs-collision
+        path: 'MOON/native_logs/
+
+          MOON/recovery_source.json
+
+          MOON/recovery_checkpoints/*manifest.json'
+        retention-days: 30
+        if-no-files-found: warn
+        overwrite: true
+      if: always()
+  map_test:
+    name: Graphics diagnostic — no baked shadows
+    needs:
+    - sky
+    - scenery
+    - collision
+    runs-on: windows-latest
+    timeout-minutes: 35
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        sparse-checkout: 'MOON
+
+          TOOLS
+
+          BUILD'
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    - name: Install native validation and process monitoring dependencies
+      run: python -m pip install numpy scipy pillow "psutil>=7,<8"
+    - name: Download the preserved original authored inputs
+      uses: actions/download-artifact@v4
+      with:
+        name: Moon-v002-native-input-checkpoint
+        run-id: 39070771277
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Verify SHA256 and restore the original terrain and textures
+      run: python MOON/scripts/native_recovery.py unpack
+    - name: Restore validated native asset checkpoints
+      uses: actions/download-artifact@v4
+      with:
+        pattern: Moon-v002-assets-*
+        path: MOON/checkpoint_downloads
+        merge-multiple: true
+    - name: Compile graphics without shadows; run all native validation gates
+      run: python MOON/scripts/native_recovery.py map-test
+    - uses: actions/upload-artifact@v4
+      with:
+        name: Moon-v002-diagnostic-checkpoint
+        path: MOON/recovery_checkpoints/map-test.zip
+        retention-days: 30
+        if-no-files-found: error
+        overwrite: true
+    - uses: actions/upload-artifact@v4
+      with:
+        name: Moon-v002-logs-map-test
+        path: 'MOON/native_logs/
+
+          MOON/recovery_source.json
+
+          MOON/recovery_checkpoints/*manifest.json'
+        retention-days: 30
+        if-no-files-found: warn
+        overwrite: true
+      if: always()
+  map:
+    name: Shadowed graphics — validate and checkpoint package
+    needs:
+    - sky
+    - scenery
+    - collision
+    - map_test
+    runs-on: windows-latest
+    timeout-minutes: 110
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        sparse-checkout: 'MOON
+
+          TOOLS
+
+          BUILD'
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    - name: Install native validation and process monitoring dependencies
+      run: python -m pip install numpy scipy pillow "psutil>=7,<8"
+    - name: Download the preserved original authored inputs
+      uses: actions/download-artifact@v4
+      with:
+        name: Moon-v002-native-input-checkpoint
+        run-id: 39070771277
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Verify SHA256 and restore the original terrain and textures
+      run: python MOON/scripts/native_recovery.py unpack
+    - name: Restore validated native asset checkpoints
+      uses: actions/download-artifact@v4
+      with:
+        pattern: Moon-v002-assets-*
+        path: MOON/checkpoint_downloads
+        merge-multiple: true
+    - name: Compile balanced baked shadows; validate geometry, heights and materials
+      run: python MOON/scripts/native_recovery.py map
+    - uses: actions/upload-artifact@v4
+      with:
+        name: Moon-v002-publish-checkpoint
+        path: MOON/recovery_checkpoints/map.zip
+        retention-days: 30
+        if-no-files-found: error
+        overwrite: true
+    - uses: actions/upload-artifact@v4
+      with:
+        name: Moon-v002-logs-map
+        path: 'MOON/native_logs/
+
+          MOON/recovery_source.json
+
+          MOON/recovery_checkpoints/*manifest.json'
+        retention-days: 30
+        if-no-files-found: warn
+        overwrite: true
+      if: always()
+  publish:
+    name: Publish the validated shadowed test build
+    needs:
+    - map
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        sparse-checkout: 'MOON
+
+          TOOLS
+
+          BUILD'
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    - name: Install native validation and process monitoring dependencies
+      run: python -m pip install numpy scipy pillow "psutil>=7,<8"
+    - uses: actions/download-artifact@v4
+      with:
+        name: Moon-v002-publish-checkpoint
+        path: MOON/checkpoint_downloads
+    - name: Verify the completed package checkpoint
+      run: python MOON/scripts/native_recovery.py publish-restore
+    - name: Publish validated test candidate
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: python MOON/scripts/publish_test.py
+    - uses: actions/upload-artifact@v4
+      with:
+        name: Moon-v002-recovered-test-track
+        path: 'MOON/Taurus_Littrow_MX_v002.pkz*
+
+          MOON/Moon_v002_Validation.json
+
+          MOON/v002_delivery.json
+
+          MOON/Install_Moon_v002.txt
+
+          MOON/mxb_gravity_quiet.ini
+
+          MOON/Moon_v002_Previews.zip'
+        retention-days: 30
+        if-no-files-found: error
+        overwrite: true
