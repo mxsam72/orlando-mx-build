@@ -62,6 +62,32 @@ inconclusive diagnostic, and does not block either release. Any successfully
 compiled probe is labelled diagnostic and is saved separately. Its result
 will help distinguish terrain casting from the distant receiver cost.
 
+## Validation correction after run 39131482282
+
+The revised scenery converter completed successfully in 1,685 seconds and the
+sixteen coordinate probes passed. The subsequent name check failed because
+the validator used `bytes_substring in mmap_object`. Membership does not
+perform the required subsequence search on that object; a present name can
+therefore be reported missing. This was a bug in the recovery validator,
+not evidence of failed scenery conversion. It also made the negative name
+check unreliable. Both checks now use `mmap.find`, with explicit missing-name
+and unexpected-receiver errors. Regression checks use real memory-mapped
+temporary files, including missing names and a forbidden original prefix.
+
+That run did not upload the newly converted EDF after validation failed, so
+one scenery conversion must be repeated. Subsequent runs write a separate
+`scenery-localized-raw.zip` checkpoint immediately after conversion and upload
+it even when validation fails. Its manifest explicitly says validation is
+pending and `checks_pass=false`; it cannot be restored as the validated
+scenery stage. Only the verified checkpoint can feed the graphics job.
+Regression checks now run before native conversion on the Windows runner.
+
+The green terrain-cast-off diagnostic job in that run recorded a 900-second
+timeout, not a completed MAP. Its result is inconclusive. The unchanged probe
+is removed from subsequent automatic builds to avoid repeating that cost.
+The revised shadow bake was skipped after the scenery validation failure;
+the effectiveness of limiting distant receivers remains untested.
+
 Actual game loading, riding, timing, resets, appearance, FPS and multiplayer
 remain untested. The PKZ does not set gravity. Use the separately installed
 compatible Quiet Gravity plugin with `preset=half` for single-player Testing.

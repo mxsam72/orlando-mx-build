@@ -62,68 +62,6 @@ jobs:
         retention-days: 30
         if-no-files-found: error
         overwrite: true
-  cast_probe:
-    name: 15-minute diagnostic — terrain self-casting disabled
-    runs-on: windows-latest
-    timeout-minutes: 25
-    steps:
-    - uses: actions/checkout@v4
-      with:
-        sparse-checkout: 'MOON
-
-          TOOLS
-
-          BUILD'
-    - uses: actions/setup-python@v5
-      with:
-        python-version: '3.12'
-    - name: Install native validation dependencies
-      run: python -m pip install numpy scipy pillow "psutil>=7,<8"
-    - uses: actions/download-artifact@v4
-      with:
-        name: Moon-v002-native-input-checkpoint
-        run-id: 39070771277
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-    - name: Authenticate and restore exact authored inputs
-      run: python MOON/scripts/native_lighting.py unpack
-    - uses: actions/download-artifact@v4
-      with:
-        pattern: Moon-v002-assets-*
-        path: MOON/checkpoint_downloads
-        merge-multiple: true
-        run-id: 39121779597
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-    - name: Isolate terrain self-shadow cost; record a timeout as inconclusive
-      run: python MOON/scripts/native_lighting.py probe-terrain-cast-off
-    - uses: actions/upload-artifact@v4
-      with:
-        name: Moon-v002-terrain-cast-off-probe
-        path: 'MOON/terrain_cast_probe_outcome.json
-
-          MOON/Taurus_Littrow_MX_v002_Diagnostic_Terrain_Cast_Off.pkz*
-
-          MOON/Moon_v002_Terrain_Cast_Off_Validation.json'
-        retention-days: 30
-        if-no-files-found: error
-        overwrite: true
-    - uses: actions/upload-artifact@v4
-      with:
-        name: Moon-v002-lighting-logs-terrain-cast-off
-        path: 'MOON/native_logs/
-
-          MOON/recovery_source.json
-
-          MOON/build/recovered_*.json
-
-          MOON/build/localized_scenery_derivation.json
-
-          MOON/recovery_checkpoints/*manifest.json
-
-          MOON/terrain_cast_probe_outcome.json'
-        retention-days: 30
-        if-no-files-found: warn
-        overwrite: true
-      if: always()
   localized_scenery:
     name: Compile scenery with distant shadow receivers removed
     runs-on: windows-latest
@@ -141,6 +79,8 @@ jobs:
         python-version: '3.12'
     - name: Install native validation dependencies
       run: python -m pip install numpy scipy pillow "psutil>=7,<8"
+    - name: Run recovery and memory-map search regression checks
+      run: python -m unittest discover -s MOON/tests -p "test_native*.py" -v
     - uses: actions/download-artifact@v4
       with:
         name: Moon-v002-native-input-checkpoint
@@ -150,6 +90,15 @@ jobs:
       run: python MOON/scripts/native_lighting.py unpack
     - name: Verify name-only FBX changes and convert with official tool
       run: python MOON/scripts/native_lighting.py scenery-localized
+    - name: Preserve converted scenery even if validation fails
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: Moon-v002-scenery-converted-unverified
+        path: MOON/recovery_checkpoints/scenery-localized-raw.zip
+        retention-days: 30
+        if-no-files-found: warn
+        overwrite: true
     - uses: actions/upload-artifact@v4
       with:
         name: Moon-v002-assets-scenery-localized

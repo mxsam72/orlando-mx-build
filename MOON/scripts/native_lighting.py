@@ -14,6 +14,7 @@ LOCALIZED_FBX_SHA = 'cd951a4702ab9d74e1010d42ec4145ae2e163fd26fc46076185f18a532a
 DIAGNOSTIC_SHA = 'd0f38fc0cc7b9a3ca789b3c50af84b5bcf7bd2dfb106b394e66bce35c30559a1'
 LOCALIZED_FILES = ['MOON/build/scenery.edf', 'MOON/build/localized_scenery_derivation.json']
 recovery.CHECKPOINT_FILES['scenery-localized'] = LOCALIZED_FILES
+recovery.CHECKPOINT_FILES['scenery-localized-raw'] = LOCALIZED_FILES
 
 
 def restore_base(stage):
@@ -84,6 +85,29 @@ def derive_scenery():
     return dest, report
 
 
+def validate_receiver_names(data, edits):
+    # mmap membership iterates individual bytes; use find for byte sequences.
+    required = [edit['replacement'] for edit in edits if edit['kind'] == 'Model']
+    assert len(required) == len(set(required)) == 16
+    required += ['SHAD_measured_near', 'SHAD_illustrative_clasts']
+    offsets = {name: data.find(name.encode('ascii')+b'\x00') for name in required}
+    missing = [name for name, offset in offsets.items() if offset < 0]
+    assert not missing, ('Missing native scenery receiver names', missing)
+    old = data.find(b'SHAD_massif_patch_')
+    assert old < 0, ('Distant forced shadow receiver remains', old)
+    return dict(checks_pass=True, required_name_offsets=offsets,
+                distant_forced_receiver_prefix_absent=True)
+
+
+def checkpoint_converted_scenery(dest, report, result):
+    # Preserve successful converter output even if a later validator rejects it.
+    report = report | dict(native_edf_sha256=n.sha(dest), native_validation_passed=False)
+    n.save(n.B/'localized_scenery_derivation.json', report)
+    recovery.checkpoint('scenery-localized-raw', LOCALIZED_FILES,
+                        dict(checks_pass=False, validation='pending', native_compile=result))
+    return report
+
+
 def localized_scenery():
     assert os.name == 'nt', 'Official tools require Windows'
     _, scene = n.preflight(); edf, _, _ = n.tools()
@@ -91,16 +115,14 @@ def localized_scenery():
     shutil.copytree(n.B/'scenery.fbm', n.B/'scenery_localized.fbm', dirs_exist_ok=True)
     dest = n.B/'scenery.edf'; dest.unlink(missing_ok=True)
     result = n.run(edf, [derived.name, dest, 'edf_params.ini', '-q'], 'moon_scenery_localized', 2700)
-    assert dest.read_bytes()[:4] == b'EDF\0'
+    report = checkpoint_converted_scenery(dest, report, result)
     import mmap
     with dest.open('rb') as f, mmap.mmap(f.fileno(), 0, access=mmap.ACCESS_READ) as data:
+        assert data[:4] == b'EDF\0'
         errors = n.scan_points(data, scene['native_probe_local_xyz_m'], tolerance=.001)
         assert all(e is not None for e in errors) and len(errors) == 16
-        for edit in report['changed_names']:
-            if edit['kind'] == 'Model': assert edit['replacement'].encode()+b'\x00' in data
-        assert b'SHAD_measured_near\x00' in data and b'SHAD_illustrative_clasts\x00' in data
-        assert b'SHAD_massif_patch_' not in data
-    report['native_edf_sha256'] = n.sha(dest)
+        names = validate_receiver_names(data, report['changed_names'])
+    report.update(native_validation_passed=True, native_receiver_validation=names)
     n.save(n.B/'localized_scenery_derivation.json', report)
     recovery.checkpoint('scenery-localized', LOCALIZED_FILES,
                         dict(native_compile=result, derivation=report, native_coordinate_probes=len(errors)))
@@ -125,6 +147,7 @@ def graphics(localized):
         _, expected = derive_scenery()
         got = json.loads((n.B/'localized_scenery_derivation.json').read_text())
         assert all(got[k] == value for k,value in expected.items())
+        assert got['native_validation_passed'] and got['native_receiver_validation']['checks_pass']
         assert got['native_edf_sha256'] == n.sha(n.B/'scenery.edf')
     source, scene = n.preflight(); _, terrain, _ = n.tools()
     profile = dict(name='localized-baked-shadows' if localized else 'probe-terrain-cast-off',
