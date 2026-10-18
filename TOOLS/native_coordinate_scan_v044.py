@@ -1,7 +1,43 @@
 """Check every byte alignment for required native vertices in one bounded scan."""
 import struct, time
 import numpy as np
-from build_windows_v037 import probe
+def probe(raw, point, tolerance=.0001):
+    """Find signed float triples; negative IEEE-754 bit order runs backwards."""
+    point = tuple(map(float, point))
+    if raw.find(struct.pack('<3f', *point)) >= 0:
+        return 0.
+    bounds = [struct.unpack('<I', struct.pack('<f', point[0] + delta))[0]
+              for delta in (-tolerance, tolerance)]
+    lo, hi = sorted(bounds)
+    if hi - lo <= 65536:
+        for bits in range(lo, hi + 1):
+            needle = struct.pack('<I', bits)
+            offset = raw.find(needle)
+            while offset >= 0 and offset + 12 <= len(raw):
+                got = struct.unpack_from('<3f', raw, offset)
+                if all(np.isfinite(got)):
+                    error = max(abs(a-b) for a, b in zip(point, got))
+                    if error < tolerance:
+                        return error
+                offset = raw.find(needle, offset + 1)
+        return None
+    # A tolerance interval crossing zero has distant unsigned endpoints.
+    # Scan bounded blocks numerically rather than iterating billions of bits.
+    for alignment in range(4):
+        count = max(0, (len(raw) - alignment) // 4)
+        words = np.frombuffer(raw, dtype='<f4', offset=alignment, count=count)
+        for start in range(0, max(0, count - 2), 1048576):
+            stop = min(start + 1048576, count - 2)
+            with np.errstate(invalid='ignore', over='ignore'):
+                positions = np.flatnonzero(abs(words[start:stop].astype(float) - point[0]) < tolerance)
+            for index in positions:
+                got = tuple(float(v) for v in words[start + int(index):start + int(index) + 3])
+                if all(np.isfinite(got)):
+                    error = max(abs(a-b) for a, b in zip(point, got))
+                    if error < tolerance:
+                        return error
+    return None
+
 
 def scan_points(raw, points, tolerance=.0001, chunk_words=1048576):
     points = [tuple(map(float, point)) for point in points]
