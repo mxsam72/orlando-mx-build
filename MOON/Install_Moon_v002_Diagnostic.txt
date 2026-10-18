@@ -1,0 +1,35 @@
+TAURUS-LITTROW MX v002 — DIAGNOSTIC, NO BAKED SHADOWS
+
+This package has baked shadows disabled. Use it to test the track while its
+shadow bake is repaired. It is not the final lighting or photoreal visual result.
+Native compilation and package checks passed; actual game loading and riding
+have not yet been tested.
+
+1. Close MX Bikes. Place
+   Taurus_Littrow_MX_v002_Diagnostic_No_Baked_Shadows.pkz
+   in your existing mods track folder, normally:
+   Documents\PiBoSo\MX Bikes\mods\tracks\motocross\
+   Keep the PKZ intact.
+2. Install only ONE v002 Moon track package at a time. Move any other PKZ or
+   extracted folder using track ID taurus_littrow_mx_v002 outside the tracks
+   folder before installing this one.
+3. Keep your existing compatible MXB Quiet Gravity plugin. In its existing
+   mxb_gravity_quiet.ini, set [gravity] preset=half while the game is closed.
+   This PKZ does not include the plugin or change gravity itself. The baseline
+   is 4.905 m/s^2, chosen for gameplay; the real Moon is about 1.62 m/s^2.
+4. Start the game, choose Taurus-Littrow MX v002, and use single-player Testing
+   with Clear weather for the first ride.
+
+Spawn at the pit apron near the service canopy. Follow the access lane to the
+main loop. White markers with blue tops show its edges. The loop is about
+3.64 km long and 16 m wide, with four low broad rollers.
+
+Please check: track loading, pit spawn and entry, direction, resets, lap timing,
+half-gravity airtime, grip, visibility, seams and FPS. Shadows are deliberately
+absent in this build. Do not use this diagnostic to judge final lighting.
+
+The riding height field comes from mapped LROC terrain near Shorty crater,
+without vertical exaggeration. Route earthworks, pits, rocks and microscopic
+surface detail are authored. Tire and dust behavior remains provisional MX
+soil behavior. No vacuum dust or real lunar soil model is implemented.
+Multiplayer behavior has not been validated.

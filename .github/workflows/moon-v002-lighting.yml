@@ -1,0 +1,288 @@
+name: Moon v002 — localized shadow recovery
+'on':
+  push:
+    branches:
+    - moon-taurus-littrow-v002-lighting
+    paths:
+    - MOON/scripts/native_lighting.py
+    - MOON/scripts/native_recovery.py
+    - MOON/scripts/publish_diagnostic.py
+    - MOON/scripts/publish_test.py
+    - .github/workflows/moon-v002-lighting.yml
+  workflow_dispatch: {}
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: moon-v002-lighting
+  cancel-in-progress: true
+env:
+  PYTHONUTF8: '1'
+  PYTHONUNBUFFERED: '1'
+  OPENBLAS_NUM_THREADS: '2'
+  OMP_NUM_THREADS: '2'
+jobs:
+  publish_diagnostic:
+    name: Publish saved diagnostic — no baked shadows
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        sparse-checkout: 'MOON
+
+          TOOLS
+
+          BUILD'
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    - name: Install native validation dependencies
+      run: python -m pip install numpy scipy pillow "psutil>=7,<8"
+    - uses: actions/download-artifact@v4
+      with:
+        name: Moon-v002-diagnostic-checkpoint
+        path: MOON/checkpoint_downloads
+        run-id: 39121779597
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Verify and publish preserved diagnostic independently of lighting
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: python MOON/scripts/publish_diagnostic.py
+    - uses: actions/upload-artifact@v4
+      with:
+        name: Moon-v002-diagnostic-download
+        path: 'MOON/Taurus_Littrow_MX_v002_Diagnostic_No_Baked_Shadows.pkz*
+
+          MOON/Moon_v002_Diagnostic_Validation.json
+
+          MOON/Install_Moon_v002_Diagnostic.txt
+
+          MOON/v002_diagnostic_delivery.json'
+        retention-days: 30
+        if-no-files-found: error
+        overwrite: true
+  cast_probe:
+    name: 15-minute diagnostic — terrain self-casting disabled
+    runs-on: windows-latest
+    timeout-minutes: 25
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        sparse-checkout: 'MOON
+
+          TOOLS
+
+          BUILD'
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    - name: Install native validation dependencies
+      run: python -m pip install numpy scipy pillow "psutil>=7,<8"
+    - uses: actions/download-artifact@v4
+      with:
+        name: Moon-v002-native-input-checkpoint
+        run-id: 39070771277
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Authenticate and restore exact authored inputs
+      run: python MOON/scripts/native_lighting.py unpack
+    - uses: actions/download-artifact@v4
+      with:
+        pattern: Moon-v002-assets-*
+        path: MOON/checkpoint_downloads
+        merge-multiple: true
+        run-id: 39121779597
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Isolate terrain self-shadow cost; record a timeout as inconclusive
+      run: python MOON/scripts/native_lighting.py probe-terrain-cast-off
+    - uses: actions/upload-artifact@v4
+      with:
+        name: Moon-v002-terrain-cast-off-probe
+        path: 'MOON/terrain_cast_probe_outcome.json
+
+          MOON/Taurus_Littrow_MX_v002_Diagnostic_Terrain_Cast_Off.pkz*
+
+          MOON/Moon_v002_Terrain_Cast_Off_Validation.json'
+        retention-days: 30
+        if-no-files-found: error
+        overwrite: true
+    - uses: actions/upload-artifact@v4
+      with:
+        name: Moon-v002-lighting-logs-terrain-cast-off
+        path: 'MOON/native_logs/
+
+          MOON/recovery_source.json
+
+          MOON/build/recovered_*.json
+
+          MOON/build/localized_scenery_derivation.json
+
+          MOON/recovery_checkpoints/*manifest.json
+
+          MOON/terrain_cast_probe_outcome.json'
+        retention-days: 30
+        if-no-files-found: warn
+        overwrite: true
+      if: always()
+  localized_scenery:
+    name: Compile scenery with distant shadow receivers removed
+    runs-on: windows-latest
+    timeout-minutes: 60
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        sparse-checkout: 'MOON
+
+          TOOLS
+
+          BUILD'
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    - name: Install native validation dependencies
+      run: python -m pip install numpy scipy pillow "psutil>=7,<8"
+    - uses: actions/download-artifact@v4
+      with:
+        name: Moon-v002-native-input-checkpoint
+        run-id: 39070771277
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Authenticate and restore exact authored inputs
+      run: python MOON/scripts/native_lighting.py unpack
+    - name: Verify name-only FBX changes and convert with official tool
+      run: python MOON/scripts/native_lighting.py scenery-localized
+    - uses: actions/upload-artifact@v4
+      with:
+        name: Moon-v002-assets-scenery-localized
+        path: MOON/recovery_checkpoints/scenery-localized.zip
+        retention-days: 30
+        if-no-files-found: error
+        overwrite: true
+    - uses: actions/upload-artifact@v4
+      with:
+        name: Moon-v002-lighting-logs-scenery-localized
+        path: 'MOON/native_logs/
+
+          MOON/recovery_source.json
+
+          MOON/build/recovered_*.json
+
+          MOON/build/localized_scenery_derivation.json
+
+          MOON/recovery_checkpoints/*manifest.json
+
+          MOON/terrain_cast_probe_outcome.json'
+        retention-days: 30
+        if-no-files-found: warn
+        overwrite: true
+      if: always()
+  localized_graphics:
+    name: 20-minute shadow bake — nearby receivers and terrain self-shadowing
+    needs:
+    - localized_scenery
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        sparse-checkout: 'MOON
+
+          TOOLS
+
+          BUILD'
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    - name: Install native validation dependencies
+      run: python -m pip install numpy scipy pillow "psutil>=7,<8"
+    - uses: actions/download-artifact@v4
+      with:
+        name: Moon-v002-native-input-checkpoint
+        run-id: 39070771277
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Authenticate and restore exact authored inputs
+      run: python MOON/scripts/native_lighting.py unpack
+    - uses: actions/download-artifact@v4
+      with:
+        pattern: Moon-v002-assets-*
+        path: MOON/checkpoint_downloads
+        merge-multiple: true
+        run-id: 39121779597
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: actions/download-artifact@v4
+      with:
+        name: Moon-v002-assets-scenery-localized
+        path: MOON/checkpoint_downloads
+    - name: Compile localized shadows and run full native geometry, height and material
+        validation
+      run: python MOON/scripts/native_lighting.py map-localized
+    - uses: actions/upload-artifact@v4
+      with:
+        name: Moon-v002-localized-publish-checkpoint
+        path: MOON/recovery_checkpoints/map.zip
+        retention-days: 30
+        if-no-files-found: error
+        overwrite: true
+    - uses: actions/upload-artifact@v4
+      with:
+        name: Moon-v002-lighting-logs-map-localized
+        path: 'MOON/native_logs/
+
+          MOON/recovery_source.json
+
+          MOON/build/recovered_*.json
+
+          MOON/build/localized_scenery_derivation.json
+
+          MOON/recovery_checkpoints/*manifest.json
+
+          MOON/terrain_cast_probe_outcome.json'
+        retention-days: 30
+        if-no-files-found: warn
+        overwrite: true
+      if: always()
+  publish_shadowed:
+    name: Publish validated localized-shadow test candidate
+    needs:
+    - localized_graphics
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        sparse-checkout: 'MOON
+
+          TOOLS
+
+          BUILD'
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    - name: Install native validation dependencies
+      run: python -m pip install numpy scipy pillow "psutil>=7,<8"
+    - uses: actions/download-artifact@v4
+      with:
+        name: Moon-v002-localized-publish-checkpoint
+        path: MOON/checkpoint_downloads
+    - name: Authenticate complete shadowed package
+      run: python MOON/scripts/native_lighting.py publish-restore
+    - name: Publish shadowed test candidate
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: python MOON/scripts/publish_test.py
+    - uses: actions/upload-artifact@v4
+      with:
+        name: Moon-v002-localized-test-track
+        path: 'MOON/Taurus_Littrow_MX_v002.pkz*
+
+          MOON/Moon_v002_Validation.json
+
+          MOON/v002_delivery.json
+
+          MOON/Install_Moon_v002.txt
+
+          MOON/mxb_gravity_quiet.ini
+
+          MOON/Moon_v002_Previews.zip'
+        retention-days: 30
+        if-no-files-found: error
+        overwrite: true

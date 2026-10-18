@@ -46,12 +46,14 @@ def checkpoint(stage, paths, details):
     print('MOON_CHECKPOINT_SAVED', stage, dest.stat().st_size, n.sha(dest), flush=True)
     return dest
 
-def restore(stage):
+def restore(stage, expected_context=None):
+    expected_context = context() if expected_context is None else expected_context
+    assert set(expected_context) == set(context()), 'Incomplete checkpoint provenance contract'
     path = n.M/'checkpoint_downloads'/(stage+'.zip')
     with zipfile.ZipFile(path) as z:
         assert z.testzip() is None, ('Bad checkpoint CRC', stage)
         manifest = json.loads(z.read('manifest.json'))
-        for key, value in context().items():
+        for key, value in expected_context.items():
             assert manifest[key] == value, ('Checkpoint provenance mismatch', stage, key)
         assert manifest['stage'] == stage
         assert set(manifest['files']) == set(CHECKPOINT_FILES[stage]), ('Unexpected restored files', stage)
