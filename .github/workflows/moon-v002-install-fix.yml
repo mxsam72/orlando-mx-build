@@ -1,0 +1,56 @@
+name: Moon v002 — correct diagnostic installation filename
+'on':
+  push:
+    branches: [moon-v002-diagnostic-install-fix]
+    paths:
+      - MOON/scripts/publish_diagnostic.py
+      - MOON/Install_Moon_v002_Diagnostic.txt
+      - .github/workflows/moon-v002-install-fix.yml
+  workflow_dispatch: {}
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: moon-v002-diagnostic-install-fix
+  cancel-in-progress: true
+env:
+  PYTHONUTF8: '1'
+  PYTHONUNBUFFERED: '1'
+jobs:
+  correct_download:
+    name: Correct package name without rebuilding terrain
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            MOON
+            TOOLS
+            BUILD
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install checkpoint verification dependencies
+        run: python -m pip install numpy scipy pillow "psutil>=7,<8"
+      - uses: actions/download-artifact@v4
+        with:
+          name: Moon-v002-diagnostic-checkpoint
+          path: MOON/checkpoint_downloads
+          run-id: 39121779597
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Verify native bytes and publish the correct installation filename
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python MOON/scripts/publish_diagnostic.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Moon-v002-diagnostic-corrected-download
+          path: |
+            MOON/taurus_littrow_mx_v002.pkz*
+            MOON/Moon_v002_Diagnostic_Validation.json
+            MOON/Install_Moon_v002_Diagnostic.txt
+            MOON/v002_diagnostic_delivery.json
+          retention-days: 30
+          if-no-files-found: error
+          overwrite: true

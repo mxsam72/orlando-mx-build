@@ -6,10 +6,13 @@ Native compilation and package checks passed; actual game loading and riding
 have not yet been tested.
 
 1. Close MX Bikes. Place
-   Taurus_Littrow_MX_v002_Diagnostic_No_Baked_Shadows.pkz
+   taurus_littrow_mx_v002.pkz
    in your existing mods track folder, normally:
    Documents\PiBoSo\MX Bikes\mods\tracks\motocross\
-   Keep the PKZ intact.
+   Keep the PKZ intact and keep this exact filename. It must match the track
+   folder inside the package. If you already downloaded the file named
+   Taurus_Littrow_MX_v002_Diagnostic_No_Baked_Shadows.pkz, simply rename it
+   to taurus_littrow_mx_v002.pkz. No new download or native build is needed.
 2. Install only ONE v002 Moon track package at a time. Move any other PKZ or
    extracted folder using track ID taurus_littrow_mx_v002 outside the tracks
    folder before installing this one.
@@ -17,8 +20,9 @@ have not yet been tested.
    mxb_gravity_quiet.ini, set [gravity] preset=half while the game is closed.
    This PKZ does not include the plugin or change gravity itself. The baseline
    is 4.905 m/s^2, chosen for gameplay; the real Moon is about 1.62 m/s^2.
-4. Start the game, choose Taurus-Littrow MX v002, and use single-player Testing
-   with Clear weather for the first ride.
+4. Fully close and restart MX Bikes. Look in the Motocross track list for
+   Taurus-Littrow MX v002. Use single-player Testing with Clear weather for
+   the first ride.
 
 Spawn at the pit apron near the service canopy. Follow the access lane to the
 main loop. White markers with blue tops show its edges. The loop is about
