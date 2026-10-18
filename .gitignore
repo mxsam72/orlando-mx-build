@@ -88,3 +88,19 @@ BUILD/v065_*
 BUILD/v066_*
 BUILD/v067_*
 DOCUMENTATION/v067_review/
+
+# Crater Send v003: generated native inputs, previews and verified download caches.
+MOON/v003/build/
+MOON/v003/previews/
+MOON/v003/native_tools/
+MOON/v003/native_logs/
+MOON/v003/checkpoints/
+MOON/v003/checkpoint_downloads/
+MOON/v003/source/earth_blue_marble_nasa.jpg
+MOON/v003/*.pkz*
+MOON/v003/Moon_v003_*.json
+Moon_v003_Native_Inputs.zip
+Moon_v003_Native_Inputs.json
+Moon_v003_Native_Inputs.zip.sha256
+MOON/v003/Moon_v003_Previews.zip
+MOON/v003/Install_Moon_v003.txt

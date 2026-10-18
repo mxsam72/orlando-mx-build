@@ -1,0 +1,46 @@
+TAURUS-LITTROW CRATER SEND v003 — FIRST RIDING TEST
+
+1. Close MX Bikes.
+2. Copy taurus_littrow_mx_v003.pkz into your active mods folder:
+   Documents\PiBoSo\MX Bikes\mods\tracks\motocross\
+   If you configured a different mods location, use that one.
+   Keep the filename exactly as downloaded. Do not extract it.
+3. Restart MX Bikes. Select Taurus-Littrow Crater Send v003 in Testing.
+4. Use your separately installed compatible MXB Quiet Gravity plugin,
+   preset=half (4.905 m/s²). Start with Clear weather and a 450.
+   This PKZ contains track/environment files only; it does not set gravity.
+
+THE NEW CIRCUIT
+From the pits, follow the access lane west. Turn north onto the main loop.
+The six jumps run clockwise around the arena. There is a bypass around
+the inner side of each main crater. The optional Shorty transfer is in
+the center of the arena, running west to east; it is not part of the lap.
+
+Jump                   Gap       Suggested speed AT THE TAKEOFF LIP
+J1 First Contact        90 m      86 km/h  /  54 mph
+J2 Rim Reaper          160 m     110 km/h  /  68 mph
+J3 Blue Marble         120 m      97 km/h  /  60 mph
+J4 Event Horizon       175 m     114 km/h  /  71 mph
+J5 Dark Side           110 m      94 km/h  /  58 mph
+J6 Homeward Bound      140 m     103 km/h  /  64 mph
+H1 Shorty Overflight   220 m     126 km/h  /  78 mph (optional)
+
+These speeds come from a gravity-only point-mass model. Actual takeoff
+speed, suspension, bike pitch and rider input will change the result.
+They are test starting points, not verified guarantees of a clean landing.
+There is no 1.62 m/s² physical Moon-gravity calibration for these jumps.
+
+CHECK DURING THE FIRST RIDE
+Confirm the track loads, stars/Earth appear, the pit exit works, and each
+takeoff/landing behaves sensibly. Check resets, lap timing, grip and FPS.
+Please identify the jump ID when reporting a short/long/awkward landing.
+Multiplayer and online gravity synchronization have not been verified.
+
+The Taurus-Littrow surroundings use mapped LROC elevation data. The giant
+craters and motocross earthworks are fictional. The 12-degree Earth and
+star-filled sky are artistic. Terrain shadows use a static source-baked
+occlusion texture; the slow native shadow bake is disabled for this test.
+
+NASA Earth: NASA / Reto Stöckli / Robert Simmon / MODIS Science Team.
+KBOLTZ MOONED informed the visual direction and archive inspection;
+its models, compiled skies and textures are not included in this package.

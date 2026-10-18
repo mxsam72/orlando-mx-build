@@ -1,0 +1,381 @@
+{
+  "version": "moon-v003",
+  "name": "Taurus-Littrow Crater Send",
+  "checks_pass": true,
+  "source_raw_sha256": "3e0b543631a54ea4b96df2fd2bf9d733ce08ce65ea8147e163725db6625959df",
+  "terrain_size_m": 1600.0,
+  "native_samples": 2049,
+  "native_scale_m": 86.0,
+  "terrain_height_offset_m": -2591.0,
+  "route_length_m": 4319.6,
+  "half_gravity_m_s2": 4.905,
+  "features": [
+    {
+      "id": "J1",
+      "name": "First Contact",
+      "center": [
+        -540,
+        -270
+      ],
+      "direction": [
+        0,
+        1
+      ],
+      "radius": 100,
+      "depth": 18,
+      "gap": 90,
+      "angle": 32,
+      "runup_profile_m": 60.0,
+      "landing_length_m": 85.0,
+      "takeoff_width_m": 32,
+      "landing_width_m": 48,
+      "launch_height_absolute_m": -2519.3697289787006,
+      "suggested_lip_speed_kmh": 86.2,
+      "crater_diameter_m": 200,
+      "nominal_touchdown_from_lip_m": 120.0
+    },
+    {
+      "id": "J2",
+      "name": "Rim Reaper",
+      "center": [
+        -540,
+        180
+      ],
+      "direction": [
+        0,
+        1
+      ],
+      "radius": 130,
+      "depth": 28,
+      "gap": 160,
+      "angle": 34,
+      "runup_profile_m": 60.0,
+      "landing_length_m": 85.0,
+      "takeoff_width_m": 32,
+      "landing_width_m": 48,
+      "launch_height_absolute_m": -2511.917088244727,
+      "suggested_lip_speed_kmh": 109.5,
+      "crater_diameter_m": 260,
+      "nominal_touchdown_from_lip_m": 190.0
+    },
+    {
+      "id": "J3",
+      "name": "Blue Marble",
+      "center": [
+        60,
+        600
+      ],
+      "direction": [
+        1,
+        0
+      ],
+      "radius": 110,
+      "depth": 23,
+      "gap": 120,
+      "angle": 33,
+      "runup_profile_m": 60.0,
+      "landing_length_m": 85.0,
+      "takeoff_width_m": 32,
+      "landing_width_m": 48,
+      "launch_height_absolute_m": -2516.899119860325,
+      "suggested_lip_speed_kmh": 96.9,
+      "crater_diameter_m": 220,
+      "nominal_touchdown_from_lip_m": 150.0
+    },
+    {
+      "id": "J4",
+      "name": "Event Horizon",
+      "center": [
+        540,
+        230
+      ],
+      "direction": [
+        0,
+        -1
+      ],
+      "radius": 135,
+      "depth": 32,
+      "gap": 175,
+      "angle": 34,
+      "runup_profile_m": 60.0,
+      "landing_length_m": 85.0,
+      "takeoff_width_m": 32,
+      "landing_width_m": 48,
+      "launch_height_absolute_m": -2526.351170275977,
+      "suggested_lip_speed_kmh": 114.1,
+      "crater_diameter_m": 270,
+      "nominal_touchdown_from_lip_m": 205.0
+    },
+    {
+      "id": "J5",
+      "name": "Dark Side",
+      "center": [
+        540,
+        -250
+      ],
+      "direction": [
+        0,
+        -1
+      ],
+      "radius": 100,
+      "depth": 20,
+      "gap": 110,
+      "angle": 32,
+      "runup_profile_m": 60.0,
+      "landing_length_m": 85.0,
+      "takeoff_width_m": 32,
+      "landing_width_m": 48,
+      "launch_height_absolute_m": -2539.17677100522,
+      "suggested_lip_speed_kmh": 94.0,
+      "crater_diameter_m": 200,
+      "nominal_touchdown_from_lip_m": 140.0
+    },
+    {
+      "id": "J6",
+      "name": "Homeward Bound",
+      "center": [
+        40,
+        -600
+      ],
+      "direction": [
+        -1,
+        0
+      ],
+      "radius": 120,
+      "depth": 26,
+      "gap": 140,
+      "angle": 34,
+      "runup_profile_m": 60.0,
+      "landing_length_m": 85.0,
+      "takeoff_width_m": 32,
+      "landing_width_m": 48,
+      "launch_height_absolute_m": -2531.950535510352,
+      "suggested_lip_speed_kmh": 103.1,
+      "crater_diameter_m": 240,
+      "nominal_touchdown_from_lip_m": 170.0
+    }
+  ],
+  "optional_transfer": {
+    "id": "H1",
+    "name": "Shorty Overflight",
+    "center": [
+      0,
+      0
+    ],
+    "direction": [
+      1,
+      0
+    ],
+    "radius": 0,
+    "depth": 0,
+    "gap": 220,
+    "angle": 35,
+    "optional": true,
+    "runup_profile_m": 60.0,
+    "landing_length_m": 85.0,
+    "takeoff_width_m": 32,
+    "landing_width_m": 48,
+    "launch_height_absolute_m": -2521.0804437755837,
+    "suggested_lip_speed_kmh": 126.1,
+    "crater_diameter_m": 0,
+    "nominal_touchdown_from_lip_m": 250.0
+  },
+  "flight_validation": [
+    {
+      "jump": "J1",
+      "suggested_lip_speed_kmh": 86.2,
+      "nominal_contact_from_lip_m": 118.95,
+      "landing_angle_difference_degrees": 1.2,
+      "crater_center_clearance_m": 58.3,
+      "model": "point-mass ballistic calculation, no suspension, drag or rider input",
+      "in_game_verified": false
+    },
+    {
+      "jump": "J2",
+      "suggested_lip_speed_kmh": 109.5,
+      "nominal_contact_from_lip_m": 188.94,
+      "landing_angle_difference_degrees": 1.19,
+      "crater_center_clearance_m": 79.1,
+      "model": "point-mass ballistic calculation, no suspension, drag or rider input",
+      "in_game_verified": false
+    },
+    {
+      "jump": "J3",
+      "suggested_lip_speed_kmh": 96.9,
+      "nominal_contact_from_lip_m": 149.02,
+      "landing_angle_difference_degrees": 1.07,
+      "crater_center_clearance_m": 68.9,
+      "model": "point-mass ballistic calculation, no suspension, drag or rider input",
+      "in_game_verified": false
+    },
+    {
+      "jump": "J4",
+      "suggested_lip_speed_kmh": 114.1,
+      "nominal_contact_from_lip_m": 204.04,
+      "landing_angle_difference_degrees": 1.08,
+      "crater_center_clearance_m": 91.9,
+      "model": "point-mass ballistic calculation, no suspension, drag or rider input",
+      "in_game_verified": false
+    },
+    {
+      "jump": "J5",
+      "suggested_lip_speed_kmh": 94.0,
+      "nominal_contact_from_lip_m": 138.98,
+      "landing_angle_difference_degrees": 1.21,
+      "crater_center_clearance_m": 59.7,
+      "model": "point-mass ballistic calculation, no suspension, drag or rider input",
+      "in_game_verified": false
+    },
+    {
+      "jump": "J6",
+      "suggested_lip_speed_kmh": 103.1,
+      "nominal_contact_from_lip_m": 168.98,
+      "landing_angle_difference_degrees": 1.19,
+      "crater_center_clearance_m": 71.8,
+      "model": "point-mass ballistic calculation, no suspension, drag or rider input",
+      "in_game_verified": false
+    },
+    {
+      "jump": "H1",
+      "suggested_lip_speed_kmh": 126.1,
+      "nominal_contact_from_lip_m": 248.94,
+      "landing_angle_difference_degrees": 1.18,
+      "crater_center_clearance_m": 78.0,
+      "model": "point-mass ballistic calculation, no suspension, drag or rider input",
+      "in_game_verified": false
+    }
+  ],
+  "measured_shorty_90m_retained": true,
+  "legacy_rollers_removed": true,
+  "sky": {
+    "stars": 12500,
+    "starfield_pixels": [
+      4096,
+      2048
+    ],
+    "earth_source_sha256": "df0434cf74a06e9dd3c7b9b197b6e215e13db70b4210115969eac9e89f6da502",
+    "earth_source": "https://science.nasa.gov/earth/earth-observatory/the-blue-marble-2181/",
+    "earth_credit": "NASA / Reto Stockli / Robert Simmon / MODIS Science Team",
+    "earth_angular_diameter_degrees": 12,
+    "earth_azimuth_degrees": 0,
+    "earth_elevation_degrees": 24,
+    "artistic_earth_scale_and_placement": true,
+    "astronomically_scaled_sky": false
+  },
+  "source_baked_terrain_shadow_mask": true,
+  "native_shadow_bake_disabled": true,
+  "imported_kboltz_asset_files": [],
+  "reference_only": "KBOLTZ MOONED gameplay, archive structure and lighting approach",
+  "material": {
+    "tile_m": 2,
+    "tile_pixels": 2048,
+    "route_atlas_pixels": 4096,
+    "route_texel_m": 0.390625,
+    "normal_specular_alpha": 0,
+    "photographic_scan": false,
+    "physical_micro_relief": false
+  },
+  "race": {
+    "pits": [
+      {
+        "x": 476.0,
+        "z": 412.0,
+        "angle": 90
+      },
+      {
+        "x": 490.0,
+        "z": 412.0,
+        "angle": 90
+      },
+      {
+        "x": 504.0,
+        "z": 412.0,
+        "angle": 90
+      },
+      {
+        "x": 518.0,
+        "z": 412.0,
+        "angle": 90
+      },
+      {
+        "x": 476.0,
+        "z": 428.0,
+        "angle": 90
+      },
+      {
+        "x": 490.0,
+        "z": 428.0,
+        "angle": 90
+      },
+      {
+        "x": 504.0,
+        "z": 428.0,
+        "angle": 90
+      },
+      {
+        "x": 518.0,
+        "z": 428.0,
+        "angle": 90
+      }
+    ],
+    "grid": [
+      {
+        "x": 255.8,
+        "z": 349.1998383863176,
+        "angle": 0.0
+      },
+      {
+        "x": 258.6,
+        "z": 349.1998383863176,
+        "angle": 0.0
+      },
+      {
+        "x": 261.4,
+        "z": 349.1998383863176,
+        "angle": 0.0
+      },
+      {
+        "x": 264.2,
+        "z": 349.1998383863176,
+        "angle": 0.0
+      },
+      {
+        "x": 255.8,
+        "z": 343.1998383863176,
+        "angle": 0.0
+      },
+      {
+        "x": 258.6,
+        "z": 343.1998383863176,
+        "angle": 0.0
+      },
+      {
+        "x": 261.4,
+        "z": 343.1998383863176,
+        "angle": 0.0
+      },
+      {
+        "x": 264.2,
+        "z": 343.1998383863176,
+        "angle": 0.0
+      }
+    ],
+    "finish_station_m": 60.0,
+    "native_length_m": 4319.554453243756,
+    "pit_center_local": [
+      -300.0,
+      -380.0
+    ],
+    "pit_elevation_m": 45.36767578125,
+    "native_centerline_closure_m": 1.25510732241245e-10,
+    "native_route_error_max_m": 0.25039138303683084,
+    "reset_half_width_m": 180.0
+  },
+  "in_game_test": false,
+  "limitations": [
+    "Giant craters and launch/landing earthworks are fictional additions to the mapped lunar setting.",
+    "Visible stars and oversized Earth are an artistic sky treatment.",
+    "Ballistic checks do not establish rideability; bike, rider input and lip speed must be tested.",
+    "Soil grip and dust use provisional MX Bikes materials; no vacuum or granular physics model."
+  ]
+}

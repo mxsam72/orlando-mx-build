@@ -1,0 +1,231 @@
+name: Moon v003 — giant crater jumps and Earth
+'on':
+  push:
+    branches: [moon-taurus-littrow-v003]
+    paths:
+      - MOON/v003/**
+      - .github/workflows/moon-v003-crater-send.yml
+  workflow_dispatch: {}
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: moon-v003-crater-send
+  cancel-in-progress: false
+env:
+  PYTHONUTF8: '1'
+  PYTHONUNBUFFERED: '1'
+  OPENBLAS_NUM_THREADS: '2'
+  OMP_NUM_THREADS: '2'
+jobs:
+  source:
+    name: Build giant craters, original sky and source previews
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    outputs:
+      input_sha256: ${{ steps.bundle.outputs.input_sha256 }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            MOON
+            TOOLS
+            BUILD
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install source dependencies
+        run: python -m pip install -r MOON/requirements.txt "psutil>=7,<8"
+      - name: Verify shadow direction, archive integrity and package identity tests
+        run: python -m unittest discover -s MOON/v003/tests -v
+      - name: Sculpt craters and validate half-gravity paths against quantized terrain
+        run: python MOON/v003/scripts/build_v003.py
+      - name: Plot actual heightfield and flight profiles
+        run: python MOON/v003/scripts/review_v003.py
+      - name: Verify pinned Blender 4.5.3
+        run: python MOON/v003/scripts/setup_blender.py
+      - name: Export native geometry and render the same source assets
+        run: '"$BLENDER_V003" -b --factory-startup -t 8 --python MOON/v003/scripts/scene_v003.py'
+      - name: Verify generated geometry, preserved Shorty and landing corridors
+        run: python -m unittest discover -s MOON/v003/tests -v
+      - name: Preserve authenticated native inputs
+        id: bundle
+        run: python MOON/v003/scripts/native_v003.py source
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Moon-v003-native-inputs
+          path: |
+            Moon_v003_Native_Inputs.zip
+            Moon_v003_Native_Inputs.json
+            Moon_v003_Native_Inputs.zip.sha256
+          retention-days: 30
+          if-no-files-found: error
+          overwrite: true
+      - name: Preserve source previews and design report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Moon-v003-source-previews
+          path: |
+            MOON/v003/previews/
+            MOON/v003/build/*validation.json
+            MOON/v003/source/v003_design.json
+          retention-days: 30
+          if-no-files-found: warn
+          overwrite: true
+  assets:
+    name: Native ${{ matrix.stage }} — preserve and validate
+    needs: source
+    strategy:
+      fail-fast: false
+      matrix:
+        stage: [sky, scenery, collision]
+    runs-on: windows-latest
+    timeout-minutes: 45
+    env:
+      SOURCE_INPUT_SHA256: ${{ needs.source.outputs.input_sha256 }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            MOON
+            TOOLS
+            BUILD
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install "numpy>=2.1,<3" "Pillow>=11,<13" "psutil>=7,<8"
+      - uses: actions/download-artifact@v4
+        with:
+          name: Moon-v003-native-inputs
+      - name: Authenticate inputs and stage texture companions
+        run: python MOON/v003/scripts/native_v003.py unpack
+      - name: Convert and validate ${{ matrix.stage }}
+        run: python MOON/v003/scripts/native_v003.py ${{ matrix.stage }}
+      - name: Preserve raw conversion even if a validator fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Moon-v003-raw-${{ matrix.stage }}
+          path: MOON/v003/checkpoints/${{ matrix.stage }}-raw.zip
+          retention-days: 30
+          if-no-files-found: warn
+          overwrite: true
+      - name: Upload validated native stage
+        uses: actions/upload-artifact@v4
+        with:
+          name: Moon-v003-assets-${{ matrix.stage }}
+          path: MOON/v003/checkpoints/${{ matrix.stage }}.zip
+          retention-days: 30
+          if-no-files-found: error
+          overwrite: true
+      - name: Preserve conversion logs and manifests
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Moon-v003-logs-${{ matrix.stage }}
+          path: |
+            MOON/v003/native_logs/
+            MOON/v003/checkpoints/*manifest.json
+          retention-days: 30
+          if-no-files-found: warn
+          overwrite: true
+  graphics:
+    name: Compile graphics, verify all heights and package canonical PKZ
+    needs: [source, assets]
+    runs-on: windows-latest
+    timeout-minutes: 25
+    env:
+      SOURCE_INPUT_SHA256: ${{ needs.source.outputs.input_sha256 }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            MOON
+            TOOLS
+            BUILD
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install "numpy>=2.1,<3" "Pillow>=11,<13" "psutil>=7,<8"
+      - uses: actions/download-artifact@v4
+        with:
+          name: Moon-v003-native-inputs
+      - run: python MOON/v003/scripts/native_v003.py unpack
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: Moon-v003-assets-*
+          path: MOON/v003/checkpoint_downloads
+          merge-multiple: true
+      - name: Compile source-baked terrain shading and run full native validation
+        run: python MOON/v003/scripts/native_v003.py graphics
+      - name: Preserve graphics output even if validation fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Moon-v003-raw-graphics
+          path: MOON/v003/checkpoints/graphics-raw.zip
+          retention-days: 30
+          if-no-files-found: warn
+          overwrite: true
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Moon-v003-package-checkpoint
+          path: MOON/v003/checkpoints/package.zip
+          retention-days: 30
+          if-no-files-found: error
+          overwrite: true
+      - name: Preserve graphics logs and manifests
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Moon-v003-logs-graphics
+          path: |
+            MOON/v003/native_logs/
+            MOON/v003/checkpoints/*manifest.json
+            MOON/v003/Moon_v003_Validation.json
+          retention-days: 30
+          if-no-files-found: warn
+          overwrite: true
+  publish:
+    name: Publish validated Crater Send v003 test download
+    needs: [source, graphics]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      SOURCE_INPUT_SHA256: ${{ needs.source.outputs.input_sha256 }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            MOON
+            TOOLS
+            BUILD
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install "numpy>=2.1,<3" "Pillow>=11,<13"
+      - uses: actions/download-artifact@v4
+        with:
+          name: Moon-v003-package-checkpoint
+          path: MOON/v003/checkpoint_downloads
+      - name: Restore authenticated completed package
+        run: python MOON/v003/scripts/native_v003.py publish-restore
+      - name: Create test release with installation notes and previews
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python MOON/v003/scripts/publish_v003.py
+      - name: Preserve complete download separately from release publication
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Moon-v003-test-track-download
+          path: |
+            MOON/v003/taurus_littrow_mx_v003.pkz*
+            MOON/v003/Moon_v003_Validation.json
+            MOON/v003/Moon_v003_Previews.zip
+            MOON/v003/Install_Moon_v003.txt
+            MOON/v003/Moon_v003_Delivery.json
+          retention-days: 30
+          if-no-files-found: error
+          overwrite: true
