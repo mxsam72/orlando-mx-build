@@ -1,4 +1,4 @@
-name: Bushnell MX - v001 source foundation
+name: Bushnell MX - v001 ride test
 on:
   push:
     branches: [bushnell-v001]
@@ -9,40 +9,131 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: bushnell-source-${{ github.ref }}
+  group: bushnell-v001-ride-test
   cancel-in-progress: false
+env:
+  PYTHONUTF8: '1'
+  PYTHONUNBUFFERED: '1'
+  OPENBLAS_NUM_THREADS: '2'
+  OMP_NUM_THREADS: '2'
 jobs:
-  bushnell-source:
+  source:
     if: github.ref_name == 'bushnell-v001'
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
+    name: Bushnell terrain, scenery and source review
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    outputs:
+      input_sha256: ${{ steps.bundle.outputs.input_sha256 }}
     steps:
       - uses: actions/checkout@v4
         with:
-          sparse-checkout: |
-            BUSHNELL
-            .github/workflows/bushnell-v001-source.yml
+          sparse-checkout: BUSHNELL
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
           cache: pip
           cache-dependency-path: BUSHNELL/requirements.txt
-      - name: Install Bushnell source dependencies
-        run: python -m pip install -r BUSHNELL/requirements.txt
-      - name: Check accepted layout and coordinate orientation
+      - run: python -m pip install -r BUSHNELL/requirements.txt
+      - name: Check approved geometry and package safeguards
         run: python -m unittest discover -s BUSHNELL/tests -v
-      - name: Build Bushnell terrain source and preview
+      - name: Author the video-referenced terrain
         run: python BUSHNELL/scripts/build_source.py
-      - name: Upload Bushnell-only source and previews
-        uses: actions/upload-artifact@v7
+      - name: Author Bushnell native race data
+        run: python BUSHNELL/scripts/build_race.py
+      - name: Install verified Blender
+        run: python BUSHNELL/scripts/setup_blender.py
+      - name: Export scenery and render source review views
+        run: '"$BUSHNELL_BLENDER" -b --factory-startup -t 8 --python BUSHNELL/scripts/build_scene.py'
+      - name: Check the generated source
+        run: python -m unittest discover -s BUSHNELL/tests -v
+      - name: Authenticate native inputs
+        id: bundle
+        run: python BUSHNELL/scripts/build_native.py bundle
+      - uses: actions/upload-artifact@v4
         with:
-          name: BushnellMX-v001-source-and-previews
+          name: BushnellMX-v001-native-inputs
           path: |
-            BUSHNELL/build/v001/
-            BUSHNELL/previews/
-            BUSHNELL/project.json
-            BUSHNELL/source/
-            BUSHNELL/references/
+            BUSHNELL/build/BushnellMX_v001_native_inputs.zip
+            BUSHNELL/build/BushnellMX_v001_native_inputs.json
           if-no-files-found: error
           retention-days: 30
-          compression-level: 6
+      - name: Preserve source previews and validation
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BushnellMX-v001-source-review
+          path: |
+            BUSHNELL/previews/BushnellMX_v001*
+            BUSHNELL/build/v001/*validation.json
+            BUSHNELL/build/BushnellMX_blender.log
+          if-no-files-found: warn
+          retention-days: 30
+  native:
+    name: Bushnell native compilation and complete package checks
+    needs: source
+    runs-on: windows-latest
+    timeout-minutes: 55
+    env:
+      SOURCE_INPUT_SHA256: ${{ needs.source.outputs.input_sha256 }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: BUSHNELL
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install "numpy==2.3.5" "Pillow==12.3.0"
+      - uses: actions/download-artifact@v4
+        with:
+          name: BushnellMX-v001-native-inputs
+          path: BUSHNELL/build
+      - name: Verify and restore source archive
+        run: python BUSHNELL/scripts/build_native.py unpack
+      - name: Compile Bushnell scenery, collision, centerline and graphics
+        run: python BUSHNELL/scripts/build_native.py compile
+      - name: Preserve compiler evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BushnellMX-v001-native-evidence
+          path: |
+            BUSHNELL/native_logs/
+            BUSHNELL/release/*Validation.json
+          if-no-files-found: warn
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        with:
+          name: BushnellMX-v001-ride-test-download
+          path: BUSHNELL/release/
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 30
+  publish:
+    name: Publish separate Bushnell first ride download
+    needs: native
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: BUSHNELL
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: BushnellMX-v001-ride-test-download
+          path: BUSHNELL/release
+      - name: Publish validated first ride package and previews
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python BUSHNELL/scripts/publish_release.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: BushnellMX-v001-delivery
+          path: BUSHNELL/release/BushnellMX_v001_Delivery.json
+          if-no-files-found: warn
+          retention-days: 30

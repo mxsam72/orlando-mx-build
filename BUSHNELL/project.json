@@ -5,9 +5,9 @@
   "version": "v001",
   "branch": "bushnell-v001",
   "project_root": "BUSHNELL",
-  "game_track_id": "bushnell_mx_v001",
+  "game_track_id": "BushnellMX_v001",
   "artifact_prefix": "BushnellMX-v001",
-  "stage": "source_foundation",
+  "stage": "first_ride_test",
   "physics_profile": "standard_game",
   "approved_layout": "source/approved_layout.json",
   "approved_layout_sha256": "acd5088a9b358244435f7d2a626e7248a9dd21da96b7a189de57201155f589ba",
@@ -16,21 +16,23 @@
     "samples": 2049,
     "native_height_scale_m": 16.0,
     "authoring_base_height_m": 3.0,
-    "elevation_basis": "Flat authoring placeholder; no GPS altitude used."
+    "elevation_basis": "Video-authored obstacle profiles and subtle graded base. All vertical dimensions are estimates; GPS altitude is excluded."
   },
   "corridor": {
-    "width_m": 8.0,
+    "width_m": 7.2,
     "shoulder_m": 2.0,
-    "status": "Provisional blockout width; not measured from footage."
+    "status": "Estimated variable widths, locally limited by the separation of approved neighboring lanes."
   },
   "obstacles": {
-    "profiles_authored": 0,
-    "dimension_status": "Unmeasured; review source/obstacle_review.json before authoring individual profiles."
+    "profiles_authored": 19,
+    "berms_authored": 12,
+    "dimension_status": "Visually inferred types; estimated dimensions and positions documented per feature in source/terrain_features.json."
   },
   "packaging": {
     "pkz_name": "BushnellMX_v001.pkz",
     "native_compiled": false,
-    "installable": false
+    "installable": false,
+    "status_file": "release/BushnellMX_v001_Validation.json"
   },
-  "workflow_name": "Bushnell MX - v001 source foundation"
+  "workflow_name": "Bushnell MX - v001 ride test"
 }

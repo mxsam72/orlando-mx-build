@@ -5,3 +5,7 @@ __pycache__/
 *.mp4
 *.pkz
 previews/*.png
+native_logs/
+native_tools/
+release/
+previews/BushnellMX_v001_preview_notes.json

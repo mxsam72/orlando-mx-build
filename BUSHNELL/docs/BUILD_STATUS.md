@@ -1,7 +1,11 @@
-# Bushnell v001 status
+# Bushnell v001 first ride pass
 
-Accepted: layout v002, approved October 18, 2026; clip order GH010225-GH010232; yellow connections and camera-detour corrections; 8-to-1 closing bend.
+The eight supplied originals were downloaded, byte-count verified, hashed and reviewed in order. The detailed pass inspected 323 sequential frames at three-second intervals in addition to the initial 109-frame pass. Clip-spanning features and side-view camera excursions were reconciled against the accepted plan.
 
-The initial source uses a flat authoring base and an explicitly provisional 8 m corridor. The 384 m domain and 2049 samples are authoring settings. The original local origin and north direction are retained.
+The source now authors 19 jump/rise profiles and 12 berms. It includes the large west-side tables, south return table, north fence jump, interior jump sequence, shaded hairpins, cone-marked eastern loop, shallow static worn lines, variable widths and reference scenery. Every numeric obstacle dimension is marked `authored_estimate` and retains the clip/time evidence behind its shape.
 
-Next: individual obstacle positions and estimated profiles, local widths and berms, scenery, start/pits, and native centreline/timing/reset/native compilation. Do not use camera GPS altitude as a jump-height measurement. A successful source build does not mean the track is installable.
+The accepted JSON route is unchanged. The derived riding line is smoothed by less than 0.54 m at any sample. Terrain is quantized once into the same RAW used by the preview, scenery and native converters. No GoPro GPS altitude or nonstandard gravity settings are used.
+
+A source pass is not an installable game track. The dedicated workflow only emits the ride-test PKZ and publishes its prerelease after native graphics, terrain collision, scenery, closed centerline, race/reset files and package checks pass. The release's `BushnellMX_v001_Validation.json` is the authoritative build result for its commit and run.
+
+Still requiring in-game verification: initial load, grip, jump spacing and landings, camera views, reset behavior, lap timing, object collisions and FPS. Real-world gate and paddock positions remain provisional.

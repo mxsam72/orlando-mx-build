@@ -1,0 +1,12 @@
+{
+  "tt.zip": {
+    "url": "https://www.kartracing-pro.com/downloads/tt.zip",
+    "sha256": "3e874eeeec5297fc04d7dbcfbed75ff497a5fb464833c1f2693034f1d7f91aa0",
+    "bytes": 988558
+  },
+  "ct.zip": {
+    "url": "https://www.kartracing-pro.com/downloads/ct.zip",
+    "sha256": "ac5c02f744c23309af3df7b446ba6380437611008cf91e835f6f304f2f47589e",
+    "bytes": 6035896
+  }
+}
