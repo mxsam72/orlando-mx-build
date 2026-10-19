@@ -1,0 +1,299 @@
+{
+  "schema": 1,
+  "project_id": "bushnell-mx",
+  "version": "v001",
+  "source_commit": "c3d473ac122dff9828ac2c3f21190e485e40adf3",
+  "run_id": "39193039049",
+  "source_input_sha256": "802c38ba27da2103737ff1365a4c20de8b3f64a81a061846272d67582fbacf2a",
+  "native_compiled": true,
+  "installable": true,
+  "checks_pass": true,
+  "physics_profile": "standard_game",
+  "centerline_merged": true,
+  "height_validation": {
+    "checks_pass": true,
+    "samples_per_grid": 4198401,
+    "source_visual_and_collision_identical": true,
+    "map_height_offset": 29092670
+  },
+  "scenery_coordinate_validation": {
+    "checks_pass": true,
+    "probes": 24,
+    "tolerance_m": 0.001
+  },
+  "map_coordinate_validation": {
+    "checks_pass": true,
+    "probes": 24,
+    "tolerance_m": 0.001
+  },
+  "material_payloads": [
+    {
+      "file": "basemap.tga",
+      "width": 2048,
+      "height": 2048,
+      "pixel_md5": "29de4de567f0ccd28426a0da2b3f3a4e",
+      "native_offset": 37489664
+    },
+    {
+      "file": "prepared.tga",
+      "width": 512,
+      "height": 512,
+      "pixel_md5": "a325b10a8f6337b8cb52cf2efc0d735c",
+      "native_offset": 45287048
+    },
+    {
+      "file": "prepared_n.tga",
+      "width": 512,
+      "height": 512,
+      "pixel_md5": "a32da7ac8307dcf7c88dd5c4b6f63194",
+      "native_offset": 45483971
+    },
+    {
+      "file": "soil.tga",
+      "width": 512,
+      "height": 512,
+      "pixel_md5": "3d57680e3564072b9fe085b373ae9d55",
+      "native_offset": 44272071
+    },
+    {
+      "file": "grass.tga",
+      "width": 512,
+      "height": 512,
+      "pixel_md5": "39c84663d38e14a7027cf78e184f079b",
+      "native_offset": 42387305
+    },
+    {
+      "file": "BushnellMX_bark.tga",
+      "width": 128,
+      "height": 128,
+      "pixel_md5": "1f59c7c362b036c2d5d918c935cdc04d",
+      "native_offset": 28800920
+    },
+    {
+      "file": "BushnellMX_wood.tga",
+      "width": 128,
+      "height": 128,
+      "pixel_md5": "6e3ffc74f6c4b5ade9dafc0983c14237",
+      "native_offset": 29046337
+    },
+    {
+      "file": "BushnellMX_white.tga",
+      "width": 128,
+      "height": 128,
+      "pixel_md5": "4c7d6b8539e8b387e7777553520e0e58",
+      "native_offset": 28843283
+    }
+  ],
+  "compilers": {
+    "scenery": {
+      "returncode": 0,
+      "seconds": 110.97
+    },
+    "collision": {
+      "returncode": 0,
+      "seconds": 0.7
+    },
+    "centerline": {
+      "returncode": 0,
+      "seconds": 7.09
+    },
+    "graphics": {
+      "returncode": 0,
+      "seconds": 10.0
+    }
+  },
+  "source_validation": {
+    "project_id": "bushnell-mx",
+    "version": "v001",
+    "stage": "first_ride_source",
+    "checks_pass": true,
+    "approved_layout_sha256": "acd5088a9b358244435f7d2a626e7248a9dd21da96b7a189de57201155f589ba",
+    "loop_closure_m": 0.0,
+    "approximate_route_length_m": 1166.22,
+    "length_basis": "GPS and user sketch; not surveyed",
+    "terrain_size_m": 384.0,
+    "native_samples": 2049,
+    "sample_spacing_m": 0.1875,
+    "raw_bytes": 8396802,
+    "source_raw_sha256": "0bf0ef92f75fd1748fdc086df7a26e6f766e83325e061fb2305cf39ce1222fe5",
+    "native_origin_local_east_north_m": [
+      -185.64415,
+      -160.4352
+    ],
+    "image_top_is_north": true,
+    "width_range_m": [
+      5.1,
+      8.26
+    ],
+    "authored_jump_profiles": 19,
+    "authored_berms": 12,
+    "terrain_height_range_m": [
+      2.4075074195861816,
+      6.6951704025268555
+    ],
+    "maximum_centerline_grade_degrees": 34.72684860229492,
+    "riding_line_smoothing_sigma_m": 0.85,
+    "maximum_riding_line_displacement_m": 0.5380664949965631,
+    "estimated_trees": 155,
+    "gps_altitude_used": false,
+    "physics_profile": "standard_game",
+    "native_compiled": false,
+    "installable": false
+  },
+  "race_validation": {
+    "checks_pass": true,
+    "native_centerline_length_m": 1149.6576406525642,
+    "native_closure_m": 4.864762891030637e-09,
+    "native_route_error_max_m": 0.25987261484668367,
+    "native_segments": 1841,
+    "finish_station_m": 33.0,
+    "pits": [
+      {
+        "x": 229.64415,
+        "z": 73.43520000000001,
+        "angle": 0
+      },
+      {
+        "x": 237.64415,
+        "z": 73.43520000000001,
+        "angle": 0
+      },
+      {
+        "x": 245.64415,
+        "z": 73.43520000000001,
+        "angle": 0
+      },
+      {
+        "x": 253.64415,
+        "z": 73.43520000000001,
+        "angle": 0
+      },
+      {
+        "x": 229.64415,
+        "z": 81.43520000000001,
+        "angle": 0
+      },
+      {
+        "x": 237.64415,
+        "z": 81.43520000000001,
+        "angle": 0
+      },
+      {
+        "x": 245.64415,
+        "z": 81.43520000000001,
+        "angle": 0
+      },
+      {
+        "x": 253.64415,
+        "z": 81.43520000000001,
+        "angle": 0
+      }
+    ],
+    "grid": [
+      {
+        "x": 200.2242219651424,
+        "z": 112.44950697175918,
+        "angle": 265.36861430348483
+      },
+      {
+        "x": 200.03043412946263,
+        "z": 114.84167048513834,
+        "angle": 265.36861430348483
+      },
+      {
+        "x": 204.6644630244643,
+        "z": 112.73586802791083,
+        "angle": 267.7630120110274
+      },
+      {
+        "x": 204.57078409470043,
+        "z": 115.13403905144487,
+        "angle": 267.7630120110274
+      },
+      {
+        "x": 208.9581998085008,
+        "z": 112.64258208525399,
+        "angle": 277.1340620406384
+      },
+      {
+        "x": 209.25625914690136,
+        "z": 115.0240019623005,
+        "angle": 277.1340620406384
+      },
+      {
+        "x": 213.48109465837274,
+        "z": 112.11563528566684,
+        "angle": 274.5369531694793
+      },
+      {
+        "x": 213.6709395679619,
+        "z": 114.50811494290598,
+        "angle": 274.5369531694793
+      }
+    ],
+    "pits_and_start_grid_status": "provisional test layout; exact real gate not established",
+    "physics_profile": "standard_game"
+  },
+  "pkz_name": "BushnellMX_v001.pkz",
+  "pkz_bytes": 23142442,
+  "pkz_sha256": "5419d0aed15781111b156a52fb8a268f4b57091f695817c4cc39a292cc3fed07",
+  "in_game_load_test": false,
+  "in_game_riding_test": false,
+  "in_game_visual_check": false,
+  "multiplayer_test": false,
+  "remaining": "In-game load, riding, jump tuning, timing and performance verification",
+  "outputs": {
+    "BushnellMX_v001.amb": {
+      "bytes": 686,
+      "sha256": "005bf71a8d5dd336a71f7592bbc3b8d5200e40e9695f627f0a90f3537b983579"
+    },
+    "BushnellMX_v001.ini": {
+      "bytes": 300,
+      "sha256": "c4e5543f9d9b45d8337f570f0e09fcd703c2492072308511f4e4c3f30d68c17a"
+    },
+    "BushnellMX_v001.map": {
+      "bytes": 46366066,
+      "sha256": "3288c8e3a9db819b042ba70f3c5e0f77f0a20a2e6481f42b5abd0f8492ecb77b"
+    },
+    "BushnellMX_v001.rdf": {
+      "bytes": 3417,
+      "sha256": "4f023e418ec18411af14b748bb94998876a436d7f7fed979fd7215b35bde8c1e"
+    },
+    "BushnellMX_v001.tga": {
+      "bytes": 3145772,
+      "sha256": "c73ea0725785ec34c5d30ec037176e2c9aec4477a231cfcf8e2c8bb9a96cb1ee"
+    },
+    "BushnellMX_v001.trh": {
+      "bytes": 21094550,
+      "sha256": "960145a6f18da987b91783c46c5f6bdf1a1a67106f2c256212717225cda128bf"
+    },
+    "BushnellMX_v001.tsc": {
+      "bytes": 1422,
+      "sha256": "43dce9f973677034a118f6b5dfb42d6fe6f290bf1410d24c178973b5e23cf1ca"
+    },
+    "BushnellMX_v001_map.tga": {
+      "bytes": 3145772,
+      "sha256": "c81ef0c0fb0a21d352bf43e3e58b78dda682ac1d3f092f3440053844880ead37"
+    },
+    "checkleft.tl": {
+      "bytes": 6152,
+      "sha256": "e90812e130d0a130eb22fc68e9b8ee07f7f91f5a5da15ce1051d117cbff18093"
+    },
+    "checkright.tl": {
+      "bytes": 6152,
+      "sha256": "b457caad4597dfe5460ec53320e066d9b423ac08b402e5b1a588530fa33f80c6"
+    },
+    "marshals.cfg": {
+      "bytes": 82,
+      "sha256": "0b5480167c0311230fddf0b99c9880789821b82d60671540cff159dc4f0f051d"
+    },
+    "maxrace.tl": {
+      "bytes": 6152,
+      "sha256": "ac29a883588e0790cbffaa33ecc06443e8622ff120ba861fec0fd5092a56c537"
+    },
+    "minrace.tl": {
+      "bytes": 6152,
+      "sha256": "8dd317b03be894ac923303e40f9d79cebc974b2f50d8a46cc27d0db244640a2a"
+    }
+  }
+}

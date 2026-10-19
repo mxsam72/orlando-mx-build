@@ -6,7 +6,11 @@ The first ride pass has **19 individually authored jump/rise profiles, 12 berms,
 
 ## Downloads and build evidence
 
-The [Bushnell workflow](https://github.com/mxsam72/orlando-mx-build/actions/workflows/bushnell-v001-source.yml) builds the source, scenery, native MAP/TRH and race setup, then publishes a separate **Bushnell MX v001 — first ride test** prerelease after validation. Check [releases](https://github.com/mxsam72/orlando-mx-build/releases) for that Bushnell title and tag prefix `bushnell-v001-first-ride-`.
+**First ride-test download:** [BushnellMX_v001.pkz — 23.1 MB](https://github.com/mxsam72/orlando-mx-build/releases/download/bushnell-v001-first-ride-39193039049/BushnellMX_v001.pkz). [Release, previews and installation notes](https://github.com/mxsam72/orlando-mx-build/releases/tag/bushnell-v001-first-ride-39193039049).
+
+[Native compilation and package checks passed](https://github.com/mxsam72/orlando-mx-build/actions/runs/39193039049) for source commit `c3d473ac122dff9828ac2c3f21190e485e40adf3`. The public package was downloaded again, hash-verified, CRC-checked and independently checked against all 4,198,401 source height samples. [Validation result](docs/BushnellMX_v001_Validation.json).
+
+The [Bushnell workflow](https://github.com/mxsam72/orlando-mx-build/actions/workflows/bushnell-v001-source.yml) publishes separate Bushnell prereleases after native validation. Its source cache is keyed to the exact authoring scripts, approved route, feature estimates and dependency pins.
 
 Install **`BushnellMX_v001.pkz`** unchanged in the active MX Bikes `mods/tracks` folder and choose **Bushnell Motocross v001** in Testing. The downloadable installation text, validation JSON, source overview and preview ZIP accompany the PKZ. In-game load, riding, timing and FPS verification remain pending until a rider tests it.
 
