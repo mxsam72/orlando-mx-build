@@ -1,0 +1,95 @@
+{
+  "footage_date": "2026-10-18",
+  "camera": "GoPro HERO9 Black",
+  "original_videos_tracked_in_git": false,
+  "videos": [
+    {
+      "video": 1,
+      "id": "1_W4itDGPg4-euQIImQI7Pe04ELtviiw_",
+      "name": "GH010225.MP4",
+      "size": 766087458,
+      "url": "https://drive.google.com/file/d/1_W4itDGPg4-euQIImQI7Pe04ELtviiw_/view?usp=drivesdk",
+      "sha256": null,
+      "role": "track walk in supplied viewing order",
+      "original_bytes_verified": true,
+      "verification_note": "Downloaded and size-verified during the original review. The full-file hash was not retained after the temporary workspace reset; rehash the original if needed."
+    },
+    {
+      "video": 2,
+      "id": "1BRSifYftoI9-eamo2_ukb_XbZD3AN7d7",
+      "name": "GH010226.MP4",
+      "size": 533317054,
+      "url": "https://drive.google.com/file/d/1BRSifYftoI9-eamo2_ukb_XbZD3AN7d7/view?usp=drivesdk",
+      "sha256": null,
+      "role": "track walk in supplied viewing order",
+      "original_bytes_verified": true,
+      "verification_note": "Downloaded and size-verified during the original review. The full-file hash was not retained after the temporary workspace reset; rehash the original if needed."
+    },
+    {
+      "video": 3,
+      "id": "1oUUh7i_PUfgLmwGOdX8l9Vbysanfqz9r",
+      "name": "GH010227.MP4",
+      "size": 662286663,
+      "url": "https://drive.google.com/file/d/1oUUh7i_PUfgLmwGOdX8l9Vbysanfqz9r/view?usp=drivesdk",
+      "sha256": null,
+      "role": "track walk in supplied viewing order",
+      "original_bytes_verified": true,
+      "verification_note": "Downloaded and size-verified during the original review. The full-file hash was not retained after the temporary workspace reset; rehash the original if needed."
+    },
+    {
+      "video": 4,
+      "id": "14LFBu-Sn0MjUWtLOtQ4hQkceXWFesXCr",
+      "name": "GH010228.MP4",
+      "size": 717243438,
+      "url": "https://drive.google.com/file/d/14LFBu-Sn0MjUWtLOtQ4hQkceXWFesXCr/view?usp=drivesdk",
+      "sha256": null,
+      "role": "track walk in supplied viewing order",
+      "original_bytes_verified": true,
+      "verification_note": "Downloaded and size-verified during the original review. The full-file hash was not retained after the temporary workspace reset; rehash the original if needed."
+    },
+    {
+      "video": 5,
+      "id": "1y54nAwJK0sXv0ArHik3zo8RMETLzCwgp",
+      "name": "GH010229.MP4",
+      "size": 759709520,
+      "url": "https://drive.google.com/file/d/1y54nAwJK0sXv0ArHik3zo8RMETLzCwgp/view?usp=drivesdk",
+      "sha256": null,
+      "role": "track walk in supplied viewing order",
+      "original_bytes_verified": true,
+      "verification_note": "Downloaded and size-verified during the original review. The full-file hash was not retained after the temporary workspace reset; rehash the original if needed."
+    },
+    {
+      "video": 6,
+      "id": "1rhX4f9gOwblyzINhM7CjCMwO-bkPx58i",
+      "name": "GH010230.MP4",
+      "size": 733065657,
+      "url": "https://drive.google.com/file/d/1rhX4f9gOwblyzINhM7CjCMwO-bkPx58i/view?usp=drivesdk",
+      "sha256": null,
+      "role": "track walk in supplied viewing order",
+      "original_bytes_verified": true,
+      "verification_note": "Downloaded and size-verified during the original review. The full-file hash was not retained after the temporary workspace reset; rehash the original if needed."
+    },
+    {
+      "video": 7,
+      "id": "1o3epEtpBgblYfz0FSqsE_Xlcp7ra221L",
+      "name": "GH010231.MP4",
+      "size": 857006971,
+      "url": "https://drive.google.com/file/d/1o3epEtpBgblYfz0FSqsE_Xlcp7ra221L/view?usp=drivesdk",
+      "sha256": null,
+      "role": "track walk in supplied viewing order",
+      "original_bytes_verified": true,
+      "verification_note": "Downloaded and size-verified during the original review. The full-file hash was not retained after the temporary workspace reset; rehash the original if needed."
+    },
+    {
+      "video": 8,
+      "id": "1fG_qZMbtQ7HflPeQuqT2B09lvJHjZlcf",
+      "name": "GH010232.MP4",
+      "size": 480857080,
+      "url": "https://drive.google.com/file/d/1fG_qZMbtQ7HflPeQuqT2B09lvJHjZlcf/view?usp=drivesdk",
+      "sha256": null,
+      "role": "track walk in supplied viewing order",
+      "original_bytes_verified": true,
+      "verification_note": "Downloaded and size-verified during the original review. The full-file hash was not retained after the temporary workspace reset; rehash the original if needed."
+    }
+  ]
+}

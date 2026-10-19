@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "project_id": "bushnell-mx",
+  "name": "Bushnell Motocross",
+  "version": "v001",
+  "branch": "bushnell-v001",
+  "project_root": "BUSHNELL",
+  "game_track_id": "bushnell_mx_v001",
+  "artifact_prefix": "BushnellMX-v001",
+  "stage": "source_foundation",
+  "physics_profile": "standard_game",
+  "approved_layout": "source/approved_layout.json",
+  "approved_layout_sha256": "acd5088a9b358244435f7d2a626e7248a9dd21da96b7a189de57201155f589ba",
+  "terrain": {
+    "size_m": 384.0,
+    "samples": 2049,
+    "native_height_scale_m": 16.0,
+    "authoring_base_height_m": 3.0,
+    "elevation_basis": "Flat authoring placeholder; no GPS altitude used."
+  },
+  "corridor": {
+    "width_m": 8.0,
+    "shoulder_m": 2.0,
+    "status": "Provisional blockout width; not measured from footage."
+  },
+  "obstacles": {
+    "profiles_authored": 0,
+    "dimension_status": "Unmeasured; review source/obstacle_review.json before authoring individual profiles."
+  },
+  "packaging": {
+    "pkz_name": "BushnellMX_v001.pkz",
+    "native_compiled": false,
+    "installable": false
+  },
+  "workflow_name": "Bushnell MX - v001 source foundation"
+}

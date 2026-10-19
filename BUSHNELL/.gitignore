@@ -1,0 +1,7 @@
+build/
+__pycache__/
+*.pyc
+*.MP4
+*.mp4
+*.pkz
+previews/*.png

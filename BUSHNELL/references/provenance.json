@@ -1,0 +1,20 @@
+{
+  "approved_reference": "approved-layout-v002",
+  "source_annotation": "image(20261019-005106).png",
+  "route_sha256_restored_exactly": true,
+  "source_pdf_revision": "Layout v2",
+  "user_confirmed_camera_side_detours": true,
+  "route_order": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "loop_connection": "8 to 1, following the user yellow southeast bend",
+  "scale_status": "GPS estimate",
+  "jump_elevations_measured": false
+}

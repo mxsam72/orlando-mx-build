@@ -1,7 +1,12 @@
-# Orlando MX 2026 v006
+# Bushnell Motocross - dedicated project branch
 
-Native MX Bikes rebuild refined from the user's complete GoPro lap and ridden v005 test. Retains user-traced aerial lap connectivity. Dimensions are construction estimates. See DOCUMENTATION/v006_comparison.md for section-by-section changes.
+This is **`bushnell-v001`**, the separate Bushnell MX Bikes project.
 
-Windows CI verifies input hashes, compiles original scenery and terrain with pinned official PiBoSo tools, checks compiled scenery coordinates, merges both centerlines, and validates the PKZ archive. In-game riding of v006 is not performed in CI.
+## [Open the Bushnell project](BUSHNELL/)
 
-TOOLS/pack_inputs.py creates the CI input archive. TOOLS/build_windows.py produces the installable PKZ.
+- Source and references: **`BUSHNELL/`**
+- Workflow: **Bushnell MX - v001 source foundation**
+- Output prefix: **`BushnellMX-v001`**
+- Approved route: [layout v002](BUSHNELL/source/approved_layout.json)
+
+Bushnell has its own configuration, geometry and generated outputs. Other branches retain the Orlando and Moon projects.
