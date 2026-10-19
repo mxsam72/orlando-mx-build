@@ -1,0 +1,25 @@
+{
+  "project_id": "bushnell-mx",
+  "version": "v001",
+  "stage": "source_foundation",
+  "approved_layout_sha256": "acd5088a9b358244435f7d2a626e7248a9dd21da96b7a189de57201155f589ba",
+  "loop_closure_m": 0.0,
+  "approximate_route_length_m": 1166.22,
+  "length_basis": "GPS and user sketch; not surveyed",
+  "terrain_size_m": 384.0,
+  "native_samples": 2049,
+  "sample_spacing_m": 0.1875,
+  "raw_bytes": 8396802,
+  "native_origin_local_east_north_m": [
+    -185.64415,
+    -160.4352
+  ],
+  "image_top_is_north": true,
+  "provisional_corridor_width_m": 8.0,
+  "authored_jump_profiles": 0,
+  "gps_altitude_used": false,
+  "physics_profile": "standard_game",
+  "native_compiled": false,
+  "installable": false,
+  "next_stage": "Author individual obstacle positions and estimated profiles from the eight clips."
+}

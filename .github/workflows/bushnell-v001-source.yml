@@ -1,0 +1,48 @@
+name: Bushnell MX - v001 source foundation
+on:
+  push:
+    branches: [bushnell-v001]
+    paths:
+      - BUSHNELL/**
+      - .github/workflows/bushnell-v001-source.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: bushnell-source-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  bushnell-source:
+    if: github.ref_name == 'bushnell-v001'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            BUSHNELL
+            .github/workflows/bushnell-v001-source.yml
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: BUSHNELL/requirements.txt
+      - name: Install Bushnell source dependencies
+        run: python -m pip install -r BUSHNELL/requirements.txt
+      - name: Check accepted layout and coordinate orientation
+        run: python -m unittest discover -s BUSHNELL/tests -v
+      - name: Build Bushnell terrain source and preview
+        run: python BUSHNELL/scripts/build_source.py
+      - name: Upload Bushnell-only source and previews
+        uses: actions/upload-artifact@v7
+        with:
+          name: BushnellMX-v001-source-and-previews
+          path: |
+            BUSHNELL/build/v001/
+            BUSHNELL/previews/
+            BUSHNELL/project.json
+            BUSHNELL/source/
+            BUSHNELL/references/
+          if-no-files-found: error
+          retention-days: 30
+          compression-level: 6

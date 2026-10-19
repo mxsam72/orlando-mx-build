@@ -4,6 +4,8 @@ Bushnell is a separate MX Bikes project on branch **`bushnell-v001`**, entirely 
 
 The route is the user-approved layout v002: yellow connections applied, loop closed from video 8 to 1, and marked camera viewing detours excluded. The accepted geometry is locked by SHA-256 in `project.json`.
 
+![Initial Bushnell source foundation](previews/01_source_foundation.svg)
+
 ## Initial source milestone
 
 - Approved closed route and eight ordered GoPro footage references.
@@ -26,3 +28,5 @@ The workflow **Bushnell MX - v001 source foundation** runs only on `bushnell-v00
 ## Next construction stage
 
 Locate individual faces, lips, landings, rollers and berms on the approved route using the clip-by-clip queue. Author evidence-based or clearly identified estimated profiles, refine widths and scenery, and build the first native ride-test package.
+
+Local validation: four geometry/coordinate regression tests passed and the full source build completed. See [source validation](docs/source_validation_v001.json).
