@@ -34,15 +34,27 @@ jobs:
           cache: pip
           cache-dependency-path: BUSHNELL/requirements.txt
       - run: python -m pip install -r BUSHNELL/requirements.txt
+      - name: Restore source assets for the exact authoring inputs
+        id: authoring
+        uses: actions/cache@v4
+        with:
+          path: |
+            BUSHNELL/build/v001
+            BUSHNELL/previews/BushnellMX_v001*
+          key: BushnellMX-authoring-v1-${{ hashFiles('BUSHNELL/scripts/build_source.py', 'BUSHNELL/scripts/build_race.py', 'BUSHNELL/scripts/build_scene.py', 'BUSHNELL/scripts/native_route.py', 'BUSHNELL/scripts/setup_blender.py', 'BUSHNELL/project.json', 'BUSHNELL/source/approved_layout.json', 'BUSHNELL/source/terrain_features.json', 'BUSHNELL/references/videos.json', 'BUSHNELL/requirements.txt') }}
       - name: Check approved geometry and package safeguards
         run: python -m unittest discover -s BUSHNELL/tests -v
       - name: Author the video-referenced terrain
+        if: steps.authoring.outputs.cache-hit != 'true'
         run: python BUSHNELL/scripts/build_source.py
       - name: Author Bushnell native race data
+        if: steps.authoring.outputs.cache-hit != 'true'
         run: python BUSHNELL/scripts/build_race.py
       - name: Install verified Blender
+        if: steps.authoring.outputs.cache-hit != 'true'
         run: python BUSHNELL/scripts/setup_blender.py
       - name: Export scenery and render source review views
+        if: steps.authoring.outputs.cache-hit != 'true'
         run: '"$BUSHNELL_BLENDER" -b --factory-startup -t 8 --python BUSHNELL/scripts/build_scene.py'
       - name: Check the generated source
         run: python -m unittest discover -s BUSHNELL/tests -v

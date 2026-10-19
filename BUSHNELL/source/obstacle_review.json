@@ -1,5 +1,5 @@
 {
-  "review_basis": "Initial sampled-frame pass; features may span clips and must be deduplicated.",
+  "review_basis": "Historical initial sampled-frame notes. Detailed geometry review is complete for the first ride pass; authored estimates and clip citations are in terrain_features.json.",
   "features": [
     {
       "id": "V01-F01",
@@ -7,13 +7,17 @@
       "clip_time_range": "00:00\u201300:15",
       "visual_note": "Tire boundary, broad dirt bend and water-tower view establish opening landmarks.",
       "classification": "observed_feature_group",
-      "status": "needs_detailed_geometry_review",
+      "status": "reviewed_and_authored_estimate",
       "height_m": null,
       "takeoff_length_m": null,
       "landing_length_m": null,
       "width_m": null,
       "obstacle_world_position": null,
-      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position."
+      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position.",
+      "authored_feature_ids": [
+        "B01"
+      ],
+      "dimension_note": "Original measured dimensions remain unknown/null. Use terrain_features.json for explicitly estimated construction dimensions."
     },
     {
       "id": "V01-F02",
@@ -21,13 +25,17 @@
       "clip_time_range": "00:45\u201301:20",
       "visual_note": "Banked curve with a raised outer edge; retain the berm profile in the reference.",
       "classification": "observed_feature_group",
-      "status": "needs_detailed_geometry_review",
+      "status": "reviewed_and_authored_estimate",
       "height_m": null,
       "takeoff_length_m": null,
       "landing_length_m": null,
       "width_m": null,
       "obstacle_world_position": null,
-      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position."
+      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position.",
+      "authored_feature_ids": [
+        "B02"
+      ],
+      "dimension_note": "Original measured dimensions remain unknown/null. Use terrain_features.json for explicitly estimated construction dimensions."
     },
     {
       "id": "V01-F03",
@@ -35,13 +43,17 @@
       "clip_time_range": "01:25\u201301:40",
       "visual_note": "Raised dirt crest beside a small water/drainage edge; obstacle type needs closer confirmation.",
       "classification": "observed_feature_group",
-      "status": "needs_detailed_geometry_review",
+      "status": "reviewed_and_authored_estimate",
       "height_m": null,
       "takeoff_length_m": null,
       "landing_length_m": null,
       "width_m": null,
       "obstacle_world_position": null,
-      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position."
+      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position.",
+      "authored_feature_ids": [
+        "J01"
+      ],
+      "dimension_note": "Original measured dimensions remain unknown/null. Use terrain_features.json for explicitly estimated construction dimensions."
     },
     {
       "id": "V01-F04",
@@ -49,13 +61,18 @@
       "clip_time_range": "01:50\u201302:14",
       "visual_note": "Low rise into a tree-shaded lane; this lane continues into video 2.",
       "classification": "observed_feature_group",
-      "status": "needs_detailed_geometry_review",
+      "status": "reviewed_and_authored_estimate",
       "height_m": null,
       "takeoff_length_m": null,
       "landing_length_m": null,
       "width_m": null,
       "obstacle_world_position": null,
-      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position."
+      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position.",
+      "authored_feature_ids": [
+        "J02",
+        "B03"
+      ],
+      "dimension_note": "Original measured dimensions remain unknown/null. Use terrain_features.json for explicitly estimated construction dimensions."
     },
     {
       "id": "V02-F01",
@@ -63,13 +80,17 @@
       "clip_time_range": "00:00\u201300:35",
       "visual_note": "Tree-shaded bermed turn with a built-up outside edge.",
       "classification": "observed_feature_group",
-      "status": "needs_detailed_geometry_review",
+      "status": "reviewed_and_authored_estimate",
       "height_m": null,
       "takeoff_length_m": null,
       "landing_length_m": null,
       "width_m": null,
       "obstacle_world_position": null,
-      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position."
+      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position.",
+      "authored_feature_ids": [
+        "B03"
+      ],
+      "dimension_note": "Original measured dimensions remain unknown/null. Use terrain_features.json for explicitly estimated construction dimensions."
     },
     {
       "id": "V02-F02",
@@ -77,13 +98,18 @@
       "clip_time_range": "00:40\u201301:15",
       "visual_note": "Rising approach and rutted transition leading toward a larger crest.",
       "classification": "observed_feature_group",
-      "status": "needs_detailed_geometry_review",
+      "status": "reviewed_and_authored_estimate",
       "height_m": null,
       "takeoff_length_m": null,
       "landing_length_m": null,
       "width_m": null,
       "obstacle_world_position": null,
-      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position."
+      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position.",
+      "authored_feature_ids": [
+        "B04",
+        "J03"
+      ],
+      "dimension_note": "Original measured dimensions remain unknown/null. Use terrain_features.json for explicitly estimated construction dimensions."
     },
     {
       "id": "V02-F03",
@@ -91,13 +117,17 @@
       "clip_time_range": "01:20\u201301:34",
       "visual_note": "Raised crest and further jump shapes ahead; this view continues into video 3. Count the shared feature once.",
       "classification": "observed_feature_group",
-      "status": "needs_detailed_geometry_review",
+      "status": "reviewed_and_authored_estimate",
       "height_m": null,
       "takeoff_length_m": null,
       "landing_length_m": null,
       "width_m": null,
       "obstacle_world_position": null,
-      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position."
+      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position.",
+      "authored_feature_ids": [
+        "J04"
+      ],
+      "dimension_note": "Original measured dimensions remain unknown/null. Use terrain_features.json for explicitly estimated construction dimensions."
     },
     {
       "id": "V03-F01",
@@ -105,13 +135,18 @@
       "clip_time_range": "00:00\u201300:20",
       "visual_note": "Continuation of the raised feature seen at the end of video 2.",
       "classification": "observed_feature_group",
-      "status": "needs_detailed_geometry_review",
+      "status": "reviewed_and_authored_estimate",
       "height_m": null,
       "takeoff_length_m": null,
       "landing_length_m": null,
       "width_m": null,
       "obstacle_world_position": null,
-      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position."
+      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position.",
+      "authored_feature_ids": [
+        "J04",
+        "J05"
+      ],
+      "dimension_note": "Original measured dimensions remain unknown/null. Use terrain_features.json for explicitly estimated construction dimensions."
     },
     {
       "id": "V03-F02",
@@ -119,13 +154,17 @@
       "clip_time_range": "00:25\u201300:40",
       "visual_note": "Broad banked turnaround in the northern interior section.",
       "classification": "observed_feature_group",
-      "status": "needs_detailed_geometry_review",
+      "status": "reviewed_and_authored_estimate",
       "height_m": null,
       "takeoff_length_m": null,
       "landing_length_m": null,
       "width_m": null,
       "obstacle_world_position": null,
-      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position."
+      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position.",
+      "authored_feature_ids": [
+        "B05"
+      ],
+      "dimension_note": "Original measured dimensions remain unknown/null. Use terrain_features.json for explicitly estimated construction dimensions."
     },
     {
       "id": "V03-F03",
@@ -133,13 +172,18 @@
       "clip_time_range": "00:45\u201301:20",
       "visual_note": "Pronounced dirt face/crest sequence on the return lane; classify individual jumps after a closer pass.",
       "classification": "observed_feature_group",
-      "status": "needs_detailed_geometry_review",
+      "status": "reviewed_and_authored_estimate",
       "height_m": null,
       "takeoff_length_m": null,
       "landing_length_m": null,
       "width_m": null,
       "obstacle_world_position": null,
-      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position."
+      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position.",
+      "authored_feature_ids": [
+        "J06",
+        "J07"
+      ],
+      "dimension_note": "Original measured dimensions remain unknown/null. Use terrain_features.json for explicitly estimated construction dimensions."
     },
     {
       "id": "V03-F04",
@@ -147,13 +191,17 @@
       "clip_time_range": "01:25\u201301:56",
       "visual_note": "Lower mound and tree-lined approach continuing toward video 4.",
       "classification": "observed_feature_group",
-      "status": "needs_detailed_geometry_review",
+      "status": "reviewed_and_authored_estimate",
       "height_m": null,
       "takeoff_length_m": null,
       "landing_length_m": null,
       "width_m": null,
       "obstacle_world_position": null,
-      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position."
+      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position.",
+      "authored_feature_ids": [
+        "J08"
+      ],
+      "dimension_note": "Original measured dimensions remain unknown/null. Use terrain_features.json for explicitly estimated construction dimensions."
     },
     {
       "id": "V04-F01",
@@ -161,13 +209,17 @@
       "clip_time_range": "00:00\u201300:25",
       "visual_note": "Low rise and rutted transition at the start of the clip.",
       "classification": "observed_feature_group",
-      "status": "needs_detailed_geometry_review",
+      "status": "reviewed_and_authored_estimate",
       "height_m": null,
       "takeoff_length_m": null,
       "landing_length_m": null,
       "width_m": null,
       "obstacle_world_position": null,
-      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position."
+      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position.",
+      "authored_feature_ids": [
+        "J08"
+      ],
+      "dimension_note": "Original measured dimensions remain unknown/null. Use terrain_features.json for explicitly estimated construction dimensions."
     },
     {
       "id": "V04-F02",
@@ -175,13 +227,18 @@
       "clip_time_range": "00:30\u201301:05",
       "visual_note": "Wide sweeping curve with several worn lines.",
       "classification": "observed_feature_group",
-      "status": "needs_detailed_geometry_review",
+      "status": "reviewed_and_authored_estimate",
       "height_m": null,
       "takeoff_length_m": null,
       "landing_length_m": null,
       "width_m": null,
       "obstacle_world_position": null,
-      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position."
+      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position.",
+      "authored_feature_ids": [
+        "J09",
+        "B06"
+      ],
+      "dimension_note": "Original measured dimensions remain unknown/null. Use terrain_features.json for explicitly estimated construction dimensions."
     },
     {
       "id": "V04-F03",
@@ -189,13 +246,17 @@
       "clip_time_range": "01:05\u201301:35",
       "visual_note": "Steep face, crest and descending transition; the water tower helps orient this view.",
       "classification": "observed_feature_group",
-      "status": "needs_detailed_geometry_review",
+      "status": "reviewed_and_authored_estimate",
       "height_m": null,
       "takeoff_length_m": null,
       "landing_length_m": null,
       "width_m": null,
       "obstacle_world_position": null,
-      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position."
+      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position.",
+      "authored_feature_ids": [
+        "J10"
+      ],
+      "dimension_note": "Original measured dimensions remain unknown/null. Use terrain_features.json for explicitly estimated construction dimensions."
     },
     {
       "id": "V04-F04",
@@ -203,13 +264,18 @@
       "clip_time_range": "01:40\u201302:05",
       "visual_note": "Further rise and a cone-marked open turn/transition area.",
       "classification": "observed_feature_group",
-      "status": "needs_detailed_geometry_review",
+      "status": "reviewed_and_authored_estimate",
       "height_m": null,
       "takeoff_length_m": null,
       "landing_length_m": null,
       "width_m": null,
       "obstacle_world_position": null,
-      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position."
+      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position.",
+      "authored_feature_ids": [
+        "J11",
+        "B07"
+      ],
+      "dimension_note": "Original measured dimensions remain unknown/null. Use terrain_features.json for explicitly estimated construction dimensions."
     },
     {
       "id": "V05-F01",
@@ -217,13 +283,18 @@
       "clip_time_range": "00:00\u201300:30",
       "visual_note": "Continuation through the cone-adjacent transition and bend.",
       "classification": "observed_feature_group",
-      "status": "needs_detailed_geometry_review",
+      "status": "reviewed_and_authored_estimate",
       "height_m": null,
       "takeoff_length_m": null,
       "landing_length_m": null,
       "width_m": null,
       "obstacle_world_position": null,
-      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position."
+      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position.",
+      "authored_feature_ids": [
+        "J11",
+        "B07"
+      ],
+      "dimension_note": "Original measured dimensions remain unknown/null. Use terrain_features.json for explicitly estimated construction dimensions."
     },
     {
       "id": "V05-F02",
@@ -231,13 +302,17 @@
       "clip_time_range": "00:30\u201301:05",
       "visual_note": "Deep, high outside berm around a broad turn; an orange cone marks the inside area.",
       "classification": "observed_feature_group",
-      "status": "needs_detailed_geometry_review",
+      "status": "reviewed_and_authored_estimate",
       "height_m": null,
       "takeoff_length_m": null,
       "landing_length_m": null,
       "width_m": null,
       "obstacle_world_position": null,
-      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position."
+      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position.",
+      "authored_feature_ids": [
+        "B08"
+      ],
+      "dimension_note": "Original measured dimensions remain unknown/null. Use terrain_features.json for explicitly estimated construction dimensions."
     },
     {
       "id": "V05-F03",
@@ -245,13 +320,19 @@
       "clip_time_range": "01:05\u201302:13",
       "visual_note": "Series of raised faces and crests along the tree-side lane. Individual pairings and gaps remain provisional.",
       "classification": "observed_feature_group",
-      "status": "needs_detailed_geometry_review",
+      "status": "reviewed_and_authored_estimate",
       "height_m": null,
       "takeoff_length_m": null,
       "landing_length_m": null,
       "width_m": null,
       "obstacle_world_position": null,
-      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position."
+      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position.",
+      "authored_feature_ids": [
+        "J12",
+        "J13",
+        "J14"
+      ],
+      "dimension_note": "Original measured dimensions remain unknown/null. Use terrain_features.json for explicitly estimated construction dimensions."
     },
     {
       "id": "V06-F01",
@@ -259,13 +340,18 @@
       "clip_time_range": "00:00\u201300:40",
       "visual_note": "Banked, rising curve with a high outside dirt shoulder.",
       "classification": "observed_feature_group",
-      "status": "needs_detailed_geometry_review",
+      "status": "reviewed_and_authored_estimate",
       "height_m": null,
       "takeoff_length_m": null,
       "landing_length_m": null,
       "width_m": null,
       "obstacle_world_position": null,
-      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position."
+      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position.",
+      "authored_feature_ids": [
+        "J14",
+        "B09"
+      ],
+      "dimension_note": "Original measured dimensions remain unknown/null. Use terrain_features.json for explicitly estimated construction dimensions."
     },
     {
       "id": "V06-F02",
@@ -273,13 +359,17 @@
       "clip_time_range": "00:40\u201301:10",
       "visual_note": "Perimeter turn beside the fence/road and a white pickup; useful location landmark.",
       "classification": "observed_feature_group",
-      "status": "needs_detailed_geometry_review",
+      "status": "reviewed_and_authored_estimate",
       "height_m": null,
       "takeoff_length_m": null,
       "landing_length_m": null,
       "width_m": null,
       "obstacle_world_position": null,
-      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position."
+      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position.",
+      "authored_feature_ids": [
+        "B10"
+      ],
+      "dimension_note": "Original measured dimensions remain unknown/null. Use terrain_features.json for explicitly estimated construction dimensions."
     },
     {
       "id": "V06-F03",
@@ -287,13 +377,17 @@
       "clip_time_range": "01:15\u201302:08",
       "visual_note": "Steeper face and further crest views along the northern perimeter sequence.",
       "classification": "observed_feature_group",
-      "status": "needs_detailed_geometry_review",
+      "status": "reviewed_and_authored_estimate",
       "height_m": null,
       "takeoff_length_m": null,
       "landing_length_m": null,
       "width_m": null,
       "obstacle_world_position": null,
-      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position."
+      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position.",
+      "authored_feature_ids": [
+        "J15"
+      ],
+      "dimension_note": "Original measured dimensions remain unknown/null. Use terrain_features.json for explicitly estimated construction dimensions."
     },
     {
       "id": "V07-F01",
@@ -301,13 +395,17 @@
       "clip_time_range": "00:00\u201300:25",
       "visual_note": "Bermed corner at the northwest end of the recorded route.",
       "classification": "observed_feature_group",
-      "status": "needs_detailed_geometry_review",
+      "status": "reviewed_and_authored_estimate",
       "height_m": null,
       "takeoff_length_m": null,
       "landing_length_m": null,
       "width_m": null,
       "obstacle_world_position": null,
-      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position."
+      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position.",
+      "authored_feature_ids": [
+        "B11"
+      ],
+      "dimension_note": "Original measured dimensions remain unknown/null. Use terrain_features.json for explicitly estimated construction dimensions."
     },
     {
       "id": "V07-F02",
@@ -315,13 +413,17 @@
       "clip_time_range": "00:30\u201300:50",
       "visual_note": "Lower mound/approach before a larger feature.",
       "classification": "observed_feature_group",
-      "status": "needs_detailed_geometry_review",
+      "status": "reviewed_and_authored_estimate",
       "height_m": null,
       "takeoff_length_m": null,
       "landing_length_m": null,
       "width_m": null,
       "obstacle_world_position": null,
-      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position."
+      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position.",
+      "authored_feature_ids": [
+        "J16"
+      ],
+      "dimension_note": "Original measured dimensions remain unknown/null. Use terrain_features.json for explicitly estimated construction dimensions."
     },
     {
       "id": "V07-F03",
@@ -329,13 +431,17 @@
       "clip_time_range": "00:55\u201301:20",
       "visual_note": "Large steep-faced jump with a broad visible crest; tabletop-style shape is a candidate, not a confirmed classification.",
       "classification": "observed_feature_group",
-      "status": "needs_detailed_geometry_review",
+      "status": "reviewed_and_authored_estimate",
       "height_m": null,
       "takeoff_length_m": null,
       "landing_length_m": null,
       "width_m": null,
       "obstacle_world_position": null,
-      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position."
+      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position.",
+      "authored_feature_ids": [
+        "J17"
+      ],
+      "dimension_note": "Original measured dimensions remain unknown/null. Use terrain_features.json for explicitly estimated construction dimensions."
     },
     {
       "id": "V07-F04",
@@ -343,13 +449,17 @@
       "clip_time_range": "01:35\u201302:15",
       "visual_note": "Tall face/crest beside a wooden platform. The user walked along the obstacle edge for another view; follow corrected corridor G.",
       "classification": "observed_feature_group",
-      "status": "needs_detailed_geometry_review",
+      "status": "reviewed_and_authored_estimate",
       "height_m": null,
       "takeoff_length_m": null,
       "landing_length_m": null,
       "width_m": null,
       "obstacle_world_position": null,
-      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position."
+      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position.",
+      "authored_feature_ids": [
+        "J18"
+      ],
+      "dimension_note": "Original measured dimensions remain unknown/null. Use terrain_features.json for explicitly estimated construction dimensions."
     },
     {
       "id": "V07-F05",
@@ -357,13 +467,17 @@
       "clip_time_range": "02:20\u201302:30",
       "visual_note": "Approach toward the southwest end turn, continuing into video 8.",
       "classification": "observed_feature_group",
-      "status": "needs_detailed_geometry_review",
+      "status": "reviewed_and_authored_estimate",
       "height_m": null,
       "takeoff_length_m": null,
       "landing_length_m": null,
       "width_m": null,
       "obstacle_world_position": null,
-      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position."
+      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position.",
+      "authored_feature_ids": [
+        "B12"
+      ],
+      "dimension_note": "Original measured dimensions remain unknown/null. Use terrain_features.json for explicitly estimated construction dimensions."
     },
     {
       "id": "V08-F01",
@@ -371,13 +485,17 @@
       "clip_time_range": "00:00\u201300:15",
       "visual_note": "Broad berm/raised curve at the southwest end of the walk.",
       "classification": "observed_feature_group",
-      "status": "needs_detailed_geometry_review",
+      "status": "reviewed_and_authored_estimate",
       "height_m": null,
       "takeoff_length_m": null,
       "landing_length_m": null,
       "width_m": null,
       "obstacle_world_position": null,
-      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position."
+      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position.",
+      "authored_feature_ids": [
+        "B12"
+      ],
+      "dimension_note": "Original measured dimensions remain unknown/null. Use terrain_features.json for explicitly estimated construction dimensions."
     },
     {
       "id": "V08-F02",
@@ -385,13 +503,17 @@
       "clip_time_range": "00:20\u201300:50",
       "visual_note": "Wide, pronounced jump face and crest progression with the water tower in view.",
       "classification": "observed_feature_group",
-      "status": "needs_detailed_geometry_review",
+      "status": "reviewed_and_authored_estimate",
       "height_m": null,
       "takeoff_length_m": null,
       "landing_length_m": null,
       "width_m": null,
       "obstacle_world_position": null,
-      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position."
+      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position.",
+      "authored_feature_ids": [
+        "J19"
+      ],
+      "dimension_note": "Original measured dimensions remain unknown/null. Use terrain_features.json for explicitly estimated construction dimensions."
     },
     {
       "id": "V08-F03",
@@ -399,13 +521,18 @@
       "clip_time_range": "00:50\u201301:23",
       "visual_note": "Open bend with orange-cone landmark; corrected bend I closes section 8 into section 1.",
       "classification": "observed_feature_group",
-      "status": "needs_detailed_geometry_review",
+      "status": "reviewed_and_authored_estimate",
       "height_m": null,
       "takeoff_length_m": null,
       "landing_length_m": null,
       "width_m": null,
       "obstacle_world_position": null,
-      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position."
+      "position_note": "The camera viewpoint may be beside an obstacle or aimed ahead; do not treat camera GPS as an exact lip position.",
+      "authored_feature_ids": [
+        "B01"
+      ],
+      "dimension_note": "Original measured dimensions remain unknown/null. Use terrain_features.json for explicitly estimated construction dimensions."
     }
-  ]
+  ],
+  "authoring_reference": "terrain_features.json"
 }

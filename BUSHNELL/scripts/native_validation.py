@@ -66,9 +66,13 @@ def texture_checks(native_path,paths):
     return records
 
 
+def game_filenames(name):
+    return [name+s for s in ['.map','.trh','.rdf','.ini','.amb','.tsc','.tga','_map.tga']]+['minrace.tl','maxrace.tl','checkleft.tl','checkright.tl','marshals.cfg']
+
+
 def package_identity(filename,names,name):
     if filename!=name+'.pkz':raise ValueError('PKZ basename must equal its internal track directory')
     if len(names)!=len(set(names)) or not names or not all(valid_member(n,name+'/') for n in names):raise ValueError('Invalid PKZ member set')
-    required=[name+s for s in ['.map','.trh','.rdf','.ini','.amb','.tsc','.tga','_map.tga']]+['minrace.tl','maxrace.tl','checkleft.tl','checkright.tl','marshals.cfg']
+    required=game_filenames(name)
     if set(names)!={name+'/'+n for n in required}:raise ValueError('Missing or unexpected game files')
     return True

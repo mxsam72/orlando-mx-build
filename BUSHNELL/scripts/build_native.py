@@ -3,7 +3,7 @@ from pathlib import Path
 import argparse, hashlib, json, mmap, os, queue, re, shutil, struct, subprocess, threading, time, urllib.request, zipfile
 import numpy as np
 from PIL import Image
-from native_validation import valid_member,point_checks,height_checks,texture_checks,package_identity
+from native_validation import valid_member,point_checks,height_checks,texture_checks,package_identity,game_filenames
 R=Path(__file__).resolve().parents[1];B=R/'build/v001';G=B/'game';LOG=R/'native_logs';OUT=R/'release';INPUT=R/'build/BushnellMX_v001_native_inputs.zip';NAME='BushnellMX_v001'
 
 
@@ -41,7 +41,8 @@ def bundle():
     if not overview.exists():raise ValueError('Reviewed source overview is missing')
     with Image.open(overview) as im:
         im=im.convert('RGB');im.thumbnail((1024,1024));canvas=Image.new('RGB',(1024,1024),(55,67,55));canvas.paste(im,((1024-im.width)//2,(1024-im.height)//2));canvas.save(G/(NAME+'.tga'))
-    paths=[p for folder in [B,G,R/'previews'] for p in folder.iterdir() if p.is_file() and p.suffix not in ['.blend','.blend1','.edf','.map','.trh'] and p.name!='manifest.json']
+    extensions={'.raw','.png','.tga','.npz','.npy','.json','.csv','.tcl','.hmf','.tht','.shd','.ini','.fbx','.txt','.svg','.flg','.tl','.rdf','.amb','.tsc','.cfg'}
+    paths=[p for folder in [B,G,R/'previews'] for p in folder.iterdir() if p.is_file() and p.suffix.lower() in extensions and not p.name.startswith('.') and p.name!='manifest.json']
     manifest=dict(schema=1,project_id='bushnell-mx',source_commit=os.environ.get('GITHUB_SHA','local'),run_id=os.environ.get('GITHUB_RUN_ID','local'),files={relative(p):dict(bytes=p.stat().st_size,sha256=sha(p)) for p in paths})
     with zipfile.ZipFile(INPUT,'w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:
         z.writestr('manifest.json',json.dumps(manifest,indent=2)+'\n')
@@ -136,8 +137,8 @@ def compile_all():
     required(G/'marshals.cfg',16)
     package=OUT/(NAME+'.pkz');temporary=package.with_suffix('.pkz.tmp')
     with zipfile.ZipFile(temporary,'w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:
-        for path in sorted(G.iterdir()):
-            if path.is_file():z.write(path,NAME+'/'+path.name)
+        for filename in sorted(game_filenames(NAME)):
+            path=G/filename;required(path,16);z.write(path,NAME+'/'+path.name)
     with zipfile.ZipFile(temporary) as z:
         if z.testzip():raise ValueError('Package CRC check failed')
         package_identity(package.name,z.namelist(),NAME)
